@@ -1,0 +1,6 @@
+http://developer.android.com/reference/android/app/FragmentTransaction.html
+
+transaction[英][trænˈzækʃn] [美][trænˈsækʃən, -ˈzæk-]
+n.交易，业务，事务；办理，处理；（一笔）交易，（一项）事务；（学会等的）会议记录，学报
+
+API for performing a set of Fragment operations.

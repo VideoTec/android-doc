@@ -1,0 +1,60 @@
+Camera.Parameters
+
+public List<String> getSupportedColorEffects ()
+public String getColorEffect ()
+public void setColorEffect (String value)
+
+-------------------------------
+color effect list
+-------------------------------
+mono[英][ˈmɒnəʊ] [美][ˈmɑ:noʊ] 黑白？
+
+negative[英][ˈnegətɪv] [美][ˈnɛɡətɪv]
+n.否定词语；否定的观点；消极性；[摄]底片
+
+solarize[英]['səʊləraɪz] [美]['soʊlə'raɪz]
+v.使过度曝光，晒曝光
+
+sepia[英][ˈsi:piə] [美][ˈsipiə]
+n.乌贼；乌贼属；乌贼的墨；颜料
+棕褐色调图像特效 Sepia Tone image effect
+棕褐色调是一个简单的图像特效，它可以使图片呈现出老照片的效果
+
+posterize[英]['pəʊstəraɪz] [美]['poʊstəraɪz]
+vt.多色调分色印（相片） 色调分离？
+
+whiteboard[英][ˈwaɪtbɔ:d] [美][ˈwaɪtbɔ:rd] n.白色书写板
+blackboard[英][ˈblækbɔ:d] [美][ˈblækbɔ:rd] n.黑板
+
+aqua[英][ˈækwə] [美][ˈækwə, ˈɑkwə]
+n.浅绿色，水绿色
+
+EFFECT_NONE
+EFFECT_MONO
+EFFECT_NEGATIVE
+EFFECT_SOLARIZE
+EFFECT_SEPIA
+EFFECT_POSTERIZE
+EFFECT_WHITEBOARD
+EFFECT_BLACKBOARD
+EFFECT_AQUA
+
+GT-I9308 后置摄像头的颜色效果
+washed[英][wɒʃt] [美][wɒʃt] 洗过的
+vintage[英][ˈvɪntɪdʒ] [美][ˈvɪntɪdʒ] 复古
+n.美酒；葡萄产量；酒产年，酒产地；制造年份
+
+  
+none
+mono         黑白
+negative     负片
+sepia        深褐色
+solarize      曝光过度
+posterize     色调分享
+washed       曝光
+vintage-warm 暖复古
+vintage-cold 冷复古
+point-blue
+point-red-yellow
+point-green
+cartoonize       漫画化

@@ -1,0 +1,6 @@
+1. 怎么指定？
+AndroidManifest.xml
+
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+2. 怎么在程序中判断，是否有此权限？

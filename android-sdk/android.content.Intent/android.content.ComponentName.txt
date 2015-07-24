@@ -1,0 +1,21 @@
+http://developer.android.com/reference/android/content/ComponentName.html
+
+ava.lang.Object
+   ↳	android.content.ComponentName
+
+Identifier for a specific application component (Activity, Service, BroadcastReceiver, or ContentProvider) that is available. Two pieces of information, encapsulated here, are required to identify a component: the package (a String) it exists in, and the class (a String) name inside of that package.
+
+---------------------------
+例子
+---------------------------
+  private void getResizedImageData(final Context context, final Uri uri, final int quality, final int widthLimit, final int heightLimit) {
+    showLoadingDialog(R.string.activity_broadcastlist_progress_dialog_body);
+    Intent imageService = new Intent();
+    File cacheFile = ImageCache.getExternalCacheDir(ImageProcessorActivity.this);
+    File file = new File(cacheFile, "compress_" + System.currentTimeMillis() + ".jpg");
+    mCompressPath = file.getAbsolutePath();
+    imageService.putExtra("path", mRealPath);
+    imageService.putExtra("compress", mCompressPath);
+    imageService.setComponent(new ComponentName("cn.com.fetion", "com.feinno.beside.service.ImageService"));
+    startService(imageService);
+  }

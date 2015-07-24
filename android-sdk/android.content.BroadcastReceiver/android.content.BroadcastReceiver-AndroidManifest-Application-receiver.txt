@@ -1,0 +1,4 @@
+注册 接收器 的两种方法
+There are two ways to make a broadcast receiver known to the system: 
+1）One is declare it in the manifest file with this element. 
+2）The other is to create the receiver dynamically in code and register it with the Context.registerReceiver() method. See the BroadcastReceiver class description for more on dynamically created receivers.

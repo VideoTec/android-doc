@@ -1,0 +1,9 @@
+http://developer.android.com/reference/android/hardware/Camera.html#cancelAutoFocus()
+
+public final void cancelAutoFocus ()
+
+Added in API level 5
+Cancels any auto-focus function in progress. 
+Whether or not auto-focus is currently in progress, 
+this function will return the focus position to the default. 
+If the camera does not support auto-focus, this is a no-op.

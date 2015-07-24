@@ -1,0 +1,34 @@
+http://developer.android.com/reference/android/hardware/Camera.html
+
+Application framework -> JNI -> Native framework -> Binder IPC proxies -> Camera service
+android.hardware.Camera API 
+frameworks/base/core/jni/android_hardware_Camera.cpp
+frameworks/av/camera/Camera.cpp
+frameworks/av/camera directory
+frameworks/av/services/camera/libcameraservice/CameraService.cpp
+
+Camera service
+The camera service, located in frameworks/av/services/camera/libcameraservice/CameraService.cpp, 
+is the actual code that interacts with the HAL.
+
+Kernel driver
+The camera's driver interacts with the actual camera hardware and your implementation of the HAL. 
+The camera and driver must support YV12 and NV21 image formats to provide support for 
+previewing the camera image on the display and 
+video recording
+
+应用使用 Camera 时，需要下面的权限
+Add permission's in the manifest file
+<manifest> </manifest> 标签下的单独字段
+
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" />
+<uses-feature android:name="android.hardware.camera.autofocus" />
+
+构造函数
+Camera 没有构造函数，使用下面的静态方法创建 Camera 对象
+
+static Camera	open(int cameraId)
+Creates a new Camera object to access a particular hardware camera.
+static Camera	open()
+Creates a new Camera object to access the first back-facing camera on the device.

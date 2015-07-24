@@ -1,0 +1,56 @@
+参考：
+http://developer.android.com/guide/topics/resources/providing-resources.html
+
+-----------------------------------------------
+什么情况合适使用别名资源
+-----------------------------------------------
+When you have a resource that you'd like to use for more than one device configuration 
+(but do not want to provide as a default resource), 
+you do not need to put the same resource in more than one alternative resource directory. 
+
+Instead, you can (in some cases) create an alternative resource 
+that acts as an alias for a resource saved in your default resource directory.
+
+-----------------------------------------------
+能够定义别名 的资源类型
+-----------------------------------------------
+Not all resources offer a mechanism by which you can create an alias to another resource. In particular, animation, menu, raw, and other unspecified resources in the xml/ directory do not offer this feature.
+
+-----------------------------------------------
+怎么定义 别名资源
+-----------------------------------------------
+For example, imagine you have an application icon, icon.png, and need unique version of it for different locales. 
+However, two locales, English-Canadian and French-Canadian, need to use the same version. 
+
+You might assume that you need to 
+copy the same image into the resource directory for both English-Canadian and French-Canadian, but it's not true. 
+
+Instead, you can 
+save the image that's used for both as icon_ca.png (any name other than icon.png) and 
+put it in the default res/drawable/ directory. 
+Then create an icon.xml file in res/drawable-en-rCA/ and res/drawable-fr-rCA/ 
+that refers to the icon_ca.png resource using the <bitmap> element. 
+
+This allows you to store just 
+one version of the PNG file and 
+two small XML files that point to it. (An example XML file is shown below.)
+
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/icon_ca" />
+
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+    <include layout="@layout/main_ltr"/>
+</merge>
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello</string>
+    <string name="hi">@string/hello</string>
+</resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="yellow">#f00</color>
+    <color name="highlight">@color/red</color>
+</resources>

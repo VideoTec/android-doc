@@ -1,0 +1,54 @@
+Camera.Parameters
+
+balance[英][ˈbæləns] [美][ˈbæləns]
+n.平衡；天平；平衡力；（酿酒配料的）均衡
+
+----------------------------------------------
+White Balance Lock
+----------------------------------------------
+
+boolean isAutoWhiteBalanceLockSupported()
+Returns true if auto-white balance locking is supported.
+
+boolean getAutoWhiteBalanceLock()
+Gets the state of the auto-white balance lock.
+
+void setAutoWhiteBalanceLock(boolean toggle)
+Sets the auto-white balance lock state.
+
+----------------------------------------------
+White Balance
+----------------------------------------------
+
+List<String> getSupportedWhiteBalance()
+Gets the supported white balance. 如果不支持 white-balance 返回 null
+
+String getWhiteBalance()
+Gets the current white balance setting.
+
+void setWhiteBalance(String value)
+Sets the white balance.
+
+----------------------------------------------
+White Balance 列表
+----------------------------------------------
+fluorescent[英][ˌflɔ:ˈresnt] [美][flʊˈrɛsənt, flɔ-, flo-]
+n.<美口>荧光灯；日光灯
+
+incandescent[英][ˌɪnkænˈdesnt] [美][ˌɪnkənˈdɛsənt]
+adj.<术>白热的；白炽的；<正>十分明亮的；<正>感情强烈的
+
+daylight[英][ˈdeɪlaɪt] [美][ˈdeˌlaɪt]
+n.日光，白昼；清早，黎明；公开，发表；<俚>眼睛，视力
+
+twilight[英][ˈtwaɪlaɪt] [美][ˈtwaɪˌlaɪt]
+n.黎明，黄昏，暮光；暮年，晚期，晚年；衰退期，没落时期；<电影>暮光之城
+
+String	WHITE_BALANCE_AUTO	
+String	WHITE_BALANCE_CLOUDY_DAYLIGHT	cloudy-daylight
+String	WHITE_BALANCE_DAYLIGHT	daylight
+String	WHITE_BALANCE_FLUORESCENT	fluorescent
+String	WHITE_BALANCE_INCANDESCENT	incandescent
+String	WHITE_BALANCE_SHADE	shade
+String	WHITE_BALANCE_TWILIGHT	twilight
+String	WHITE_BALANCE_WARM_FLUORESCENT	warm-fluorescent

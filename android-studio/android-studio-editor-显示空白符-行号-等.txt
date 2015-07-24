@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/25500123/how-to-show-white-space-character-in-android-studio-as-eclipse-tool
+
+File->Settings->Editor->General->in Appearance->toggle Show whitespaces on
+just search show whitespaces in searchbox in Settings, you can also find the way to show white space

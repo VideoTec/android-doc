@@ -1,0 +1,8 @@
+public final CharSequence getText (int resId)
+Return a localized, styled CharSequence  from the application's package's default string table.
+
+public final String getString (int resId)
+Return a localized string                from the application's package's default string table.
+
+You can use either getString(int) or getText(int) to retrieve a string. 
+getText(int) will retain any rich text styling applied to the string.

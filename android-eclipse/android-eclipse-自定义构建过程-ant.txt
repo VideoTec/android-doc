@@ -1,0 +1,36 @@
+http://www.codejava.net/ides/eclipse/add-custom-ant-build-script-to-eclipse-project
+http://www.ibm.com/developerworks/opensource/tutorials/os-eclipse-tools/
+http://www.cnblogs.com/sw926/p/3238512.html
+
+-------------------------------------------------------
+ant 作用
+http://www.uml.org.cn/j2ee/201205103.asp
+-------------------------------------------------------
+在 使用 Eclipse Java IDE 时，默认使用了 Java Builder。每当我们保存文件时，Java Builder 就会在后台默默地运行，并立即对这些文件进行编译。它是 Eclipse 重大的特性之一：Java Builder 允许我们完全跳过编译过程，因为我们的程序总是 处于已编译状态，即使它充满了错误亦是如此。因此，我们可以在键入之后立即运行 Java 程序，无需首先通过一个漫长而乏味的编译过程。该功能为 Eclipse 用户省去了大量的时间和争论，也是 Eclipse 能够在程序员中广泛流行的原因之一。
+
+但 是如果我们想要做编译文件以外的事情呢？如果我们想要为整个项目创建一个 jar 文件，并且在每次修改项目时将该文件复制到一个特定的目录呢？如果我们想要所有这些都发生在后台，无需每次都告诉 Eclipse 呢？我们完全可以坐下来、放松、编写一些代码、喝杯咖啡，让 Eclipse 在后台处理复杂的构建过程，甚至无需知道这个过程正在后台进行。
+
+听起来是不是像做梦呀？不是做梦。我们可以真正做到这样的事情。我们只需要将一个 Ant 构建文件作为“构建器” 添加到我们的项目即可，这个构建文件中定义了构建过程的所有复杂性。这样做之后，魔术将开始上演
+
+Package Explorer 视图中的项目并单击 Properties（或者：Eclipse菜单->Project->Properties），
+展开 Builders 并单击 New，向项目添加一个新的构建器MyAntBuilder
+
+After a "Clean" —— 每当我们在项目上执行一个清除操作时，目标就会运行。
+Manual Build —— 在自动构建被关闭的时候使用该选项。每当我们执行手动构建时，指定的目标就将运行。
+Auto-Build —— 每当执行自动构建时，目标就会运行。一般来说，就是每当我们保存 Java 文件时。
+During a "Clean" —— 该选项与 After a "Clean" 选项不同，因为目标是在清除操作本身期间被调用。使用该选项在清除操作期间执行一些定制的文件清除
+
+-------------------------------------------------------
+使用 android 命令，生成 build.xml 和 local.properties
+-------------------------------------------------------
+android.bat update project -p ./
+
+-------------------------------------------------------
+使用 build.xml 构建工程
+-------------------------------------------------------
+在 build.xml 文件上右击，选择菜单，run as 'Ant Build'
+
+-------------------------------------------------------
+Eclipse -> External Tools Configurations
+-------------------------------------------------------
+在 build.xml 文件上右击，选择菜单，run as -> External Tools Configurations

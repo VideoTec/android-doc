@@ -1,0 +1,38 @@
+重载函数
+public void startActivities (Intent[] intents, Bundle options)
+public void startActivities (Intent[] intents)
+public void startActivity (Intent intent, Bundle options)
+public void startActivity (Intent intent)
+
+
+示例：
+        Intent intent = new Intent(MainActivity.this, VideoRecordActivity.class);
+        startActivity(intent);
+
+
+-----------------------------------------------
+public void startActivity (Intent intent, Bundle options)
+-----------------------------------------------
+
+Added in API level 16
+Launch a new activity. You will not receive any information about when the activity exits. This implementation overrides the base version, providing information about the activity performing the launch. Because of this additional information, the FLAG_ACTIVITY_NEW_TASK launch flag is not required; if not specified, the new activity will be added to the task of the caller.
+
+This method throws ActivityNotFoundException if there was no Activity found to run the given Intent.
+
+Parameters
+intent	The intent to start.
+options	Additional options for how the Activity should be started. See Context.startActivity(Intent, Bundle) for more details.
+Throws
+android.content.ActivityNotFoundException
+
+-----------------------------------------------
+public void startActivity (Intent intent)
+-----------------------------------------------
+
+Added in API level 1
+Same as startActivity(Intent, Bundle) with no options specified.
+
+Parameters
+intent	The intent to start.
+Throws
+android.content.ActivityNotFoundException

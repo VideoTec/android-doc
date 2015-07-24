@@ -1,0 +1,9 @@
+public void setFocusAreas (List<Camera.Area> focusAreas)
+
+Added in API level 14
+Sets focus areas. See getFocusAreas() for documentation.
+
+Parameters
+focusAreas	the focus areas
+See Also
+getFocusAreas()

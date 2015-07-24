@@ -1,0 +1,63 @@
+http://developer.android.com/reference/android/view/OrientationEventListener.html
+
+public abstract class 抽象类
+OrientationEventListener
+
+Helper class for receiving notifications from the SensorManager 
+when the orientation of the device has changed.
+
+构造函数：
+
+---------------------------------------------------------
+public OrientationEventListener (Context context)
+---------------------------------------------------------
+
+Added in API level 3
+Creates a new OrientationEventListener.
+
+Parameters
+context	for the OrientationEventListener.
+
+---------------------------------------------------------
+public OrientationEventListener (Context context, int rate)
+---------------------------------------------------------
+
+Added in API level 3
+Creates a new OrientationEventListener.
+
+Parameters
+context	for the OrientationEventListener.
+rate	at which sensor events are processed (see also SensorManager). Use the default value of SENSOR_DELAY_NORMAL for simple screen orientation change detection.
+
+---------------------------------------------------------
+参考
+---------------------------------------------------------
+http://android-developers.blogspot.com/2010/09/one-screen-turn-deserves-another.html
+
+---------------------------------------------------------
+使用示例
+---------------------------------------------------------
+http://androidbiancheng.blogspot.com/2011/05/orientationeventlistener.html
+http://ticktick.blog.51cto.com/823160/1301209
+http://android-er.blogspot.com/2010/08/orientationeventlistener-detect.html
+
+在 Activity 创建时，生成 OrientationEventListener 对象
+myOrientationEventListener
+   = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL){
+
+    @Override
+    public void onOrientationChanged(int arg0) {
+     // TODO Auto-generated method stub
+     textviewOrientation.setText("Orientation: " + String.valueOf(arg0));
+    }};
+    
+启动检测
+myOrientationEventListener.enable();
+
+停止检测
+myOrientationEventListener.disable();
+
+问题一：即使转到后台，也可以继续收到旋转角度事件
+问题二：水平放置，不会收到旋转事件
+问题三：当静止不动时，会停止收到事件
+问题四：事件发生的频率，和，手机动的快慢相关？

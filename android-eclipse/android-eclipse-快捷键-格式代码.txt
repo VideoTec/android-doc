@@ -1,0 +1,4 @@
+默认为：ctrl+Shift+F
+
+查询：
+Menu >> Windows >> Preferences#//WorkBench>>Keys

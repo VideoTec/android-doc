@@ -1,0 +1,10 @@
+public void startAnimation (Animation animation)
+
+Added in API level 1
+Start the specified animation now.
+
+Parameters
+animation	the animation to start now
+
+问题是什么时候 如果不主动调用这个函数，还有什么时候自动开始动画？
+父View调用 invalidated 的时候会调用设置的动画 setAnimation

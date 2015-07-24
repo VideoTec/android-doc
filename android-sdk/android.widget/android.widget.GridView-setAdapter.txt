@@ -1,0 +1,10 @@
+adapter[英][ə'dæptə] [美][əˈdæptɚ]
+n.适配器；改编者；改写者适应者；适应物
+
+public void setAdapter (ListAdapter adapter)
+
+Added in API level 1
+Sets the data behind this GridView.
+
+接口
+android.widget.ListAdapter

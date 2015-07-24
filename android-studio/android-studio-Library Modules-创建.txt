@@ -1,0 +1,42 @@
+创建 android 库模块
+
+Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含
+application module（com.android.application），与
+library module（com.android.library）两种module。
+
+参考
+https://developer.android.com/tools/projects/index.html
+E:\doc\Computer software\Android平台\Sharing Android Source Code and Resources Using Library Projects.txt
+
+Library Modules
+These modules contain shareable Android source code and resources that you can reference in Android projects. 
+This is useful when you have common code that you want to reuse. 
+Library modules cannot be installed onto a device, however, 
+they are pulled into the .apk file at build time.
+
+An Android library module is a development module that holds shared Android source code and resources. 
+Other Android application modules can reference the library module and, at build time, include its compiled sources in their .apk files. 
+Multiple application modules can reference the same library module and any single application module can reference multiple library modules.
+
+Note: You need SDK Tools r14 or newer to use the new library module feature that generates each library module into its own JAR file. 
+You can download the tools and platforms using the Android SDK Manager, as described in SDK tools help.
+
+If you have source code and resources that are common to multiple Android projects, 
+you can move them to a library module so that it is easier to maintain across applications and versions. 
+Here are some common scenarios in which you could make use of library modules:
+
+If you are developing multiple related applications that use some of the same components, you move the redundant components out of their respective application module and create a single, reusable set of the same components in a library module.
+
+If you are creating an application that exists in both free and paid versions. You move the part of the application that is common to both versions into a library module. The two dependent modules, with their different package names, will reference the library module and provide only the difference between the two application versions.
+
+Structurally, a library module is similar to a standard Android application module. For example, it includes a manifest file at the module root, as well as src/, res/ and similar directories. The module can contain the same types of source code and resources as a standard Android module, stored in the same way. For example, source code in the library module can access its own resources through its R class.
+
+However, a library module differs from a standard Android application module in that you cannot compile it directly to its own .apk and run it on an Android device. Similarly, you cannot export the library module to a self-contained JAR file, as you would do for a true library. Instead, you must compile the library indirectly, by referencing the library in the dependent application and building that application.
+
+When you build an application that depends on a library module, the SDK tools compile the library into a temporary JAR file and use it in the main module, then uses the result to generate the .apk. In cases where a resource ID is defined in both the application and the library, the tools ensure that the resource declared in the application gets priority and that the resource in the library module is not compiled into the application .apk. This gives your application the flexibility to either use or redefine any resource behaviors or values that are defined in any library.
+
+To organize your code further, your application can add references to multiple library modules, then specify the relative priority of the resources in each library. This lets you build up the resources actually used in your application in a cumulative manner. When two libraries referenced from an application define the same resource ID, the tools select the resource from the library with higher priority and discard the other.
+
+Once you have added references to library modules to your Android application module, you can set their relative priority. At build time, the libraries are merged with the application one at a time, starting from the lowest priority to the highest.
+
+Library modules can reference other library modules and can import an external library (JAR) in the normal way.

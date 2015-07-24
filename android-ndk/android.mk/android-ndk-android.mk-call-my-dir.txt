@@ -1,0 +1,14 @@
+The following are GNU Make 'function' macros, and must be evaluated by using '$(call <function>)'. They return textual information
+
+my-dir  返回上个include的 makefile 文件夹路径
+Returns the path of the last included Makefile, 
+which typically is the current Android.mk's directory. 
+
+用于定义本地路径
+This is useful to define LOCAL_PATH at the start of your Android.mk
+
+LOCAL_PATH := $(call my-dir)
+
+Do not call my-dir after including another file.
+Due to the way GNU Make works, 
+this really returns the path of the last included Makefile during the parsing of build scripts

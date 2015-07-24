@@ -1,0 +1,40 @@
+public class MyView extends View {
+	private Context mContext;
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		canvas.drawARGB(0xff, 0x0, 0xff, 0xaa);
+	}
+
+	public MyView(Context context) {
+		super(context);
+		mContext = context;
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}
+
+	public MyView(Context context, AttributeSet attrs) {  如果不加这个构造函数，就会引发下面的异常
+		super(context, attrs);
+		mContext = context;
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}
+	AttributeSet attrs 是从 layout.xml 中读取的对应控件的属性
+
+}
+
+举例：
+R.styleable.VideoRecordProgress 定义了所有的属性
+TypedArray a 用于保存所有 键值对
+
+	public VideoRecordProgressView(Context context, AttributeSet attrs) {
+		
+		super(context, attrs);
+		this.mContext = context;
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VideoRecordProgress);
+		mBarWidth = a.getDimensionPixelOffset(R.styleable.VideoRecordProgress_barWidth, mBarWidth);
+		mTotalTime = a.getFloat(R.styleable.VideoRecordProgress_totalTime, mTotalTime);
+		mMinTime = a.getFloat(R.styleable.VideoRecordProgress_minTime, mMinTime);
+		a.recycle();
+		
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}

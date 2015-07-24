@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/widget/ImageView.html
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.widget.ImageView
+
+Known Direct Subclasses
+FloatingActionButton, ImageButton, QuickContactBadge
+
+Known Indirect Subclasses
+ZoomButton
+
+Displays an arbitrary image, such as an icon. The ImageView class can load images from various sources (such as resources or content providers), takes care of computing its measurement from the image so that it can be used in any layout manager, and provides various display options such as scaling and tinting.

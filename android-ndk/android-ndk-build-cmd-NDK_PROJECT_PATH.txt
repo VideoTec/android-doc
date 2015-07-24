@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/25868989/build-android-shared-lib-using-ndk-build-without-have-jni-folder
+ndk-build APP_BUILD_SCRIPT=path/to/path/to/project/Android.mk NDK_PROJECT_PATH=path/to/path/to/project
+
+http://blog.csdn.net/yuanjingjiang/article/details/34857623
+ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
+
+NDK_APPLICATION_MK=<file>
+Build, using a specific Application.mk file pointed to by the NDK_APPLICATION_MK variable.
+
+APP_BUILD_SCRIPT
+没有文档
+
+NDK_PROJECT_PATH
+也没有文档

@@ -1,0 +1,14 @@
+
+01-23 10:17:57.386  6480  6480 E AndroidRuntime: FATAL EXCEPTION: main
+
+01-23 10:17:57.386  6480  6480 E AndroidRuntime: java.lang.NoSuchMethodError: android.widget.Button.setBackground
+
+01-23 10:17:57.386  6480  6480 E AndroidRuntime: 	at cn.com.fetion.mvclip.activity.VideoEditActivity.setDecorateInfo(VideoEditActivity.java:971)
+
+01-23 10:17:57.386  6480  6480 E AndroidRuntime: 	at cn.com.fetion.mvclip.activity.VideoEditActivity.onResume(VideoEditActivity.java:946)
+
+
+android.view.View 的setBackground在大于 API-16 即 4.1.x 添加的
+public void setBackground (Drawable background)
+
+Added in API level 16

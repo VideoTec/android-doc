@@ -1,0 +1,17 @@
+http://blog.csdn.net/leixiaohua1020/article/details/12234821
+YV12 ： 亮度（行×列） ＋ V（行×列/4) + U（行×列/4）
+I420 ： 亮度（行×列） ＋ U（行×列/4) + V（行×列/4）
+
+YV12和I420基本上是一样的，就是UV的顺序不同
+yuv420p就是I420格式，使用极其广泛
+
+http://www.fourcc.org/yuv.php
+NV12	0x3231564E	12	8-bit Y plane followed by an interleaved U/V plane with 2x2 subsampling
+NV21	0x3132564E	12	As NV12 with U and V reversed in the interleaved plane
+
+YV12	0x32315659	12	8 bit Y plane followed by 8 bit 2x2 subsampled V and U planes.
+I420	0x30323449	12	8 bit Y plane followed by 8 bit 2x2 subsampled U and V planes.
+
+http://blog.csdn.net/jumper511/article/details/21626121
+http://www.programering.com/a/MjMyYTMwATY.html
+public static final int YUV_420_888 是什么格式？不知道

@@ -1,0 +1,13 @@
+gravity[英][ˈgrævəti] [美][ˈɡrævɪti]
+n.重力；万有引力，地心引力；重要性，严重性；严肃，庄重
+
+public void setGravity (int gravity)
+
+Added in API level 1
+Set the gravity for this grid. Gravity describes how the child views are horizontally aligned. Defaults to Gravity.LEFT
+
+Related XML Attributes
+android:gravity
+
+Parameters
+gravity	the gravity to apply to this grid's children

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project">
+    <target name="copyJar" description="copyJar to lib folder">
+        <copy file="bin/animation-everfrost-engine.jar"
+              todir="../VideoEffectDemo/libs/"
+              overwrite="true" />
+    </target>
+</project>

@@ -1,0 +1,43 @@
+Explicit Intents 
+have specified a component (via setComponent(ComponentName) or setClass(Context, Class)), 
+which provides the exact class to be run. 
+Often these will not include any other information, 
+simply being a way for an application to 
+launch various internal activities it has as the user interacts with the application.
+
+Implicit Intents 
+have not specified a component; instead, 
+they must include enough information for the system to determine which of the available components is best to run for that intent.
+
+理解Intent的关键之一是理解清楚Intent的两种基本用法：
+一种是   显式的Intent，  即在构造Intent对象时就指定接收者；
+另一种是 隐式的Intent，  即Intent的发送者在构造Intent对象时，并不知道也不关心接收者是谁，有利于降低发送者和接收者之间的耦合
+
+隐式，即不是像显式的那样直接指定需要调用的Activity，
+隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。
+筛选是根据所有的<intent-filter>来筛选
+
+对于显式Intent，Android不需要去做解析，因为目标组件已经很明确，
+Android需要解析的是那些隐式Intent，
+通过解析，将 Intent映射给可以处理此Intent的Activity、IntentReceiver或Service
+
+Intent解析机制主要是通过
+查找已注册在AndroidManifest.xml中的所有IntentFilter及其中定义的Intent，最终找到匹配的Intent。
+在这个解析过程中，Android是通过Intent的action、type、category这三个属性来进行判断的，判断方法如下：
+
+如果Intent指明定了action，
+则目标组件的IntentFilter的action列表中就必须包含有这个action，否则不能匹配；
+
+如果Intent没有提供type，
+系统将从data中得到数据类型。
+和action一样，目标组件的数据类型列表中必须包含Intent的数据类型，否则不能匹配。
+
+如果Intent中的数据不是content: 
+类型的URI，而且Intent也没有明确指定它的type，
+将根据Intent中数据的scheme （比如 http: 或者mailto:） 进行匹配。
+同上，Intent 的scheme必须出现在目标组件的scheme列表中。
+
+如果Intent指定了一个或多个category，
+这些类别必须全部出现在组建的类别列表中。
+比如Intent中包含了两个类别：
+LAUNCHER_CATEGORY 和 ALTERNATIVE_CATEGORY，解析得到的目标组件必须至少包含这两个类别。

@@ -1,0 +1,18 @@
+------------------------------------------------------
+public abstract int commit ()
+------------------------------------------------------
+
+Added in API level 11
+Schedules a commit of this transaction. The commit does not happen immediately; it will be scheduled as work on the main thread to be done the next time that thread is ready.
+
+A transaction can only be committed with this method prior to its containing activity saving its state. If the commit is attempted after that point, an exception will be thrown. This is because the state after the commit can be lost if the activity needs to be restored from its state. See commitAllowingStateLoss() for situations where it may be okay to lose the commit.
+
+Returns
+Returns the identifier of this transaction's back stack entry, if addToBackStack(String) had been called. Otherwise, returns a negative number.
+
+------------------------------------------------------
+public abstract int commitAllowingStateLoss ()
+------------------------------------------------------
+
+Added in API level 11
+Like commit() but allows the commit to be executed after an activity's state is saved. This is dangerous because the commit can be lost if the activity needs to later be restored from its state, so this should only be used for cases where it is okay for the UI state to change unexpectedly on the user.

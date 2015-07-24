@@ -1,0 +1,54 @@
+除了 Read(r)、Write(w) 和Execute(x) 三个权限之外，还有个 SUID (s)
+
+我们对Android手机进行root的过程中，会在里面放置一个su文件。这个su文件就具有SUID权限
+一个可执行文件一旦被设置了SUID位，
+那么当它被一个进程通过exec加载之后，该进程的UID就会变成该可执行文件的所有者的UID。
+也就是说，当上述的su被执行的时候，它所运行在的进程的UID是root，于是它就具有最高级别的权限，想干什么就干什么
+
+adb shell 进入 android 系统。
+
+cd /
+ls -l
+
+drwxr-xr-x root     root              2015-05-18 10:06 acct
+drwxrwx--- system   cache             2014-06-24 16:13 cache
+dr-x------ root     root              2015-05-18 10:06 config
+lrwxrwxrwx root     root              2015-05-18 10:06 d -> /sys/kernel/debug
+drwxrwx--x system   system            2015-05-18 10:06 data
+-rw-r--r-- root     root          116 1970-01-01 08:00 default.prop
+drwxr-xr-x root     root              2015-05-18 10:06 dev
+drwxrwx--x radio    system            2012-01-01 11:17 efs
+lrwxrwxrwx root     root              2015-05-18 10:06 etc -> /system/etc
+lrwxrwxrwx root     root              2015-05-18 10:06 factory -> /efs
+-rw-r----- root     root          923 1970-01-01 08:00 fstab.smdk4x12
+-rwxr-x--- root     root       109336 1970-01-01 08:00 init
+-rwxr-x--- root     root         3604 1970-01-01 08:00 init.bt.rc
+-rwxr-x--- root     root         2344 1970-01-01 08:00 init.goldfish.rc
+-rwxr-x--- root     root        31081 1970-01-01 08:00 init.rc
+-rwxr-x--- root     root        15158 1970-01-01 08:00 init.smdk4x12.rc
+-rwxr-x--- root     root         6583 1970-01-01 08:00 init.smdk4x12.usb.rc
+-rwxr-x--- root     root         1637 1970-01-01 08:00 init.trace.rc
+-rwxr-x--- root     root         3915 1970-01-01 08:00 init.usb.rc
+drwxr-xr-x root     root              1970-01-01 08:00 lib
+-rw-r--r-- root     root         1618 1970-01-01 08:00 lpm.rc
+drwxrwxr-x root     system            2015-05-18 10:06 mnt
+drwxrwx--x system   system            2015-05-18 10:06 preload
+dr-xr-xr-x root     root              1970-01-01 08:00 proc
+drwx------ root     root              2013-08-14 13:01 root
+drwxr-x--- root     root              1970-01-01 08:00 sbin
+lrwxrwxrwx root     root              2015-05-18 10:06 sdcard -> /storage/sdcard0
+dr-xr-x--- system   sdcard_r          2015-05-18 10:06 storage
+drwxr-xr-x root     root              2015-05-18 10:06 sys
+drwxr-xr-x root     root              2012-01-01 11:16 system
+-rw-r--r-- root     root          272 1970-01-01 08:00 ueventd.goldfish.rc
+-rw-r--r-- root     root         3879 1970-01-01 08:00 ueventd.rc
+-rw-r--r-- root     root         3492 1970-01-01 08:00 ueventd.smdk4x12.rc
+lrwxrwxrwx root     root              2015-05-18 10:06 vendor -> /system/vendor
+
+第一个字符，表示类型： d - 目录， l - 链接， - 表示是文件
+
+Linux中的每一个文件都具有三种权限：Read、Write和Execute。
+这三种权限又按照用户属性划分为三组：
+Owner   所有者
+Group   所有者所在的组
+Other   其它用户

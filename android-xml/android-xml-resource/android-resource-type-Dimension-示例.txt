@@ -1,0 +1,31 @@
+dimension[英][daɪˈmenʃn] [美][dɪˈmɛnʃən, daɪ-]
+n.尺寸；[复]面积，范围；[物]量纲；[数]次元，度，维
+
+在 res/values 目录里定义 xxx.xml
+
+<resources>
+    <!-- video record -->
+    <dimen name="video_record_title_finish_btn_textsize">14dip</dimen>
+    <dimen name="video_record_progress_h">6dip</dimen>
+    <dimen name="project_detail_progress_width">284dip</dimen>
+    <dimen name="project_detail_progress_margin">18dip</dimen>
+
+</resources>
+
+在 layout.xml 中使用示例：
+"@dimen/px_to_dip_150"
+        <TextView
+            android:id="@+id/camera_delay_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:shadowColor="@color/video_record_delay_text_color"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="8"
+            android:textColor="@color/video_record_delay_text_color"
+            android:textSize="@dimen/px_to_dip_150"
+            android:textStyle="bold"
+            android:visibility="gone" />  

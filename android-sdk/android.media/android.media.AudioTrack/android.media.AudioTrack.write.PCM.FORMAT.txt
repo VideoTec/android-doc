@@ -1,0 +1,9 @@
+If you want to play left/right channel at the same time with different data. You should handle data to meet this target. If you select stereo mode with 16Bit PCM, the data is one byte for left and one byte for right. For example:
+
+left channel want to play: 12, 23, 34, 45
+
+right channel want to play: 54, 43, 32, 21 at the same time with left channel.
+
+data should be generated as: {12, 54, 23, 43, 34, 32, 45, 21}
+
+Then, use AudioTrack.write(data). It will perfectly meet you target.

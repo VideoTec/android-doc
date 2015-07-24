@@ -1,0 +1,36 @@
+/**
+     * Sets the listener the AudioRecord notifies when a previously set marker is reached or
+     * for each periodic record head position update.
+     * @param listener
+     */
+    public void setRecordPositionUpdateListener(OnRecordPositionUpdateListener listener) {
+        setRecordPositionUpdateListener(listener, null);
+    }
+
+    /**
+     * Sets the listener the AudioRecord notifies when a previously set marker is reached or
+     * for each periodic record head position update.
+     * Use this method to receive AudioRecord events in the Handler associated with another
+     * thread than the one in which you created the AudioTrack instance.
+     * @param listener
+     * @param handler the Handler that will receive the event notification messages.
+     */
+    public void setRecordPositionUpdateListener(OnRecordPositionUpdateListener listener,
+                                                    Handler handler) {
+        synchronized (mPositionListenerLock) {
+
+            mPositionListener = listener;
+
+            if (listener != null) {
+                if (handler != null) {
+                    mEventHandler = new NativeEventHandler(this, handler.getLooper());
+                } else {
+                    // no given handler, use the looper the AudioRecord was created in
+                    mEventHandler = new NativeEventHandler(this, mInitializationLooper);
+                }
+            } else {
+                mEventHandler = null;
+            }
+        }
+
+    }

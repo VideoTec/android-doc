@@ -1,0 +1,18 @@
+http://developer.android.com/reference/android/content/ContextWrapper.html
+
+java.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+       
+Known Direct Subclasses
+Application, BackupAgent, IsolatedContext, 
+MutableContextWrapper, RenamingDelegatingContext, Service
+
+Known Indirect Subclasses
+AbstractInputMethodService, AccessibilityService, AccountAuthenticatorActivity, ActionBarActivity, Activity, ActivityGroup, AliasActivity, AppCompatActivity, BackupAgentHelper, CarrierMessagingService, and 25 others.
+
+-----------------------------
+概述：
+-----------------------------
+
+Proxying implementation of Context that simply delegates all of its calls to another Context. Can be subclassed to modify behavior without changing the original Context.

@@ -1,0 +1,37 @@
+参考：
+http://blog.csdn.net/feng88724/article/details/6457431
+
+主题Theme就是用来设置界面UI风格，可以设置整个应用或者某个活动Activity的界面风格
+
+在Android SDK中内置了下面的Theme，可以按标题栏Title Bar和状态栏Status Bar是否可见来分类：
+
+•android:theme="@android:style/Theme.Dialog"   将一个Activity显示为能话框模式  
+•android:theme="@android:style/Theme.NoTitleBar"  不显示应用程序标题栏  
+•android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  不显示应用程序标题栏，并全屏  
+•android:theme="Theme.Light"  背景为白色  
+•android:theme="Theme.Light.NoTitleBar"  白色背景并无标题栏   
+•android:theme="Theme.Light.NoTitleBar.Fullscreen"  白色背景，无标题栏，全屏  
+•android:theme="Theme.Black"  背景黑色  
+•android:theme="Theme.Black.NoTitleBar"  黑色背景并无标题栏  
+•android:theme="Theme.Black.NoTitleBar.Fullscreen"    黑色背景，无标题栏，全屏  
+•android:theme="Theme.Wallpaper"  用系统桌面为应用程序背景  
+•android:theme="Theme.Wallpaper.NoTitleBar"  用系统桌面为应用程序背景，且无标题栏  
+•android:theme="Theme.Wallpaper.NoTitleBar.Fullscreen"  用系统桌面为应用程序背景，无标题栏，全屏  
+•android:theme="Translucent"  半透明  
+•android:theme="Theme.Translucent.NoTitleBar" 半透明、无标题栏  
+•android:theme="Theme.Translucent.NoTitleBar.Fullscreen" 半透明、无标题栏、全屏  
+•android:theme="Theme.Panel"  
+•android:theme="Theme.Light.Panel"
+
+-------------------------------------
+什么是 theme
+-------------------------------------
+A theme is a style 
+applied to an entire Activity or application, 
+rather than an individual View (as in the example above). 
+
+When a style is applied as a theme, 
+every View in the Activity or application will apply each style property that it supports. 
+
+For example, you can apply the same CodeFont style as a theme for an Activity and 
+then all text inside that Activity will have green monospace font.

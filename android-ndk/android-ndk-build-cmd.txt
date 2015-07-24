@@ -1,0 +1,30 @@
+命令所在路径
+ndk\ndk-build.cmd
+
+命令示例：
+ndk-build V=1 NDK_DEBUG=0
+
+批处理中调用
+call ndk-build V=1 NDK_DEBUG=0
+
+ndk-build 所有参数列表：
+clean         Clean all generated binaries.
+V=1           Launch build, and display build commands.
+-B            Force a complete rebuild.
+-B V=1        Force a complete rebuild and display build commands.
+NDK_LOG=1             Display internal NDK log messages (used for debugging the NDK itself).
+NDK_DEBUG=1           Force a debuggable build (see below).
+NDK_DEBUG=0           Force a release build (see below).
+NDK_HOST_32BIT=1      Always use toolchain in 32-bit mode (see below).
+-C <project>          Build the native code for the project path located at <project>. Useful if you don't want to cd to it in your terminal.
+NDK_APPLICATION_MK=<file>   Build, using a specific Application.mk file pointed to by the NDK_APPLICATION_MK variable.
+
+NDK_DEBUG=1 is the equivalent of APP_OPTIM= debug in Application.mk, and complies with the GCC -O0 option.
+NDK_DEBUG=0 is the equivalent of APP_OPTIM=release, and complies with GCC -O2
+
+-------------------------------------------
+ndk-build 的一些 默认行为
+-------------------------------------------
+ndk-build 自动查找当前目录下的 jni 文件夹下的 android.mk 和 application.mk
+ndk-build 会在 LOCAL_SRC_FILES 开头添加 jni/
+ndk-build 不会在 LOCAL_EXPORT_C_INCLUDES 开头添加任何东西

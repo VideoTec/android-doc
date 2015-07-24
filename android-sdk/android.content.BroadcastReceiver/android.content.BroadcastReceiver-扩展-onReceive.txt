@@ -1,0 +1,18 @@
+示例：
+
+	private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        public void onReceive(android.content.Context context, Intent intent) {
+            try {
+                long id = intent.getLongExtra("rpid", -1);
+                if (id == -1) {
+                    return;
+                }
+                LogSystem.d("report", Long.toString(id));
+                if (BesideInitUtil.getUserBehaviorCounter() != null) {
+                    BesideInitUtil.getUserBehaviorCounter().setUserBehavior(id);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        };
+	};

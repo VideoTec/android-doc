@@ -1,0 +1,28 @@
+An Application.mk file is usually placed under $PROJECT/jni/Application.mk
+
+The Application.mk is really a tiny GNU Makefile fragment that must define a few variables
+变量列表：
+APP_PROJECT_PATH       give the absolute path to your Application's project root directory
+APP_MODULES            list the corresponding modules and those that they depend on
+APP_OPTIM
+APP_CFLAGS             A set of C compiler flags passed when compiling any C or C++ source code of any of the modules.
+                       优化和调试 编译选项
+APP_CPPFLAGS           A set of C++ compiler flags passed when building C++ sources only
+                       APP_CXXFLAGS
+APP_LDFLAGS            This only applies when building shared libraries and executables
+                       构建静态库，用不到这个选项
+APP_BUILD_SCRIPT
+APP_ABI                 armeabi-v7a (:= all)(:= armeabi armeabi-v7a x86 mips arm64-v8a x86_64 mips64)
+APP_PLATFORM            android-14 (3,4,5,8,9,12,13,14,15,16,17,18,19,20,21)
+APP_STL
+                        APP_STL := stlport_static    --> static STLport library
+                        APP_STL := stlport_shared    --> shared STLport library
+                        APP_STL := system            --> default C++ runtime library
+APP_GNUSTL_FORCE_CPP_FEATURES
+APP_SHORT_COMMANDS
+NDK_TOOLCHAIN_VERSION
+APP_PIE
+APP_THIN_ARCHIVE        用于构建静态库时，.a 文件里是 .o 文件的引用 gnu ar thin archive
+
+变量赋值示例：
+APP_PLATFORM := android-8

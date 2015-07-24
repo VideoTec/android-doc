@@ -1,0 +1,34 @@
+su (short for Switch User) is a binary executable. 
+It's used by Android and other *nix based systems to allow a process to change the user account it is associated with. 
+The reason it's important from a rooting standpoint is that 
+su without any other parameters will switch to the root user, 
+meaning that processes that require root permission for their functionality need to invoke su 
+(since by default they are not being run by root).
+
+Superuser is an Android application (.apk is an Android application package). 
+It works as a sort of "gatekeeper" to the su binary. 
+Applications which attempt to invoke su will be forced to route through Superuser, 
+which will then prompt the user if it is an unknown or new application. 
+The user then has the option of approving or denying the access to su and 
+optionally having Superuser remember their decision so 
+it can automatically apply it for subsequent calls by that app. 
+By doing this, the only apps which are granted root permissions are ones that the user chooses.
+
+The source of both applications is available on Github, 
+and can be examined/audited by anyone who wishes to look at it (Superuser here, su here).
+
+You can find further details - as well as changelogs - on Superuser's website.
+
+Other related questions on Android Enthusiasts:
+
+How exactly does "root" user access/account works? Do all applications run as root on my phone after rooting?
+What are the security disadvantages of rooting an Android phone?
+How do I protect my phone from malicious apps once it is rooted?
+
+
+http://blog.csdn.net/dairyman000/article/details/8072029
+superuser.apk，这个程序是root成功后，专门用来管理root权限使用的，防止被恶意程序滥用
+superuser和su程序是如何通讯的，他们俩位于不通的时空，一个在java虚拟机中，一个在linux的真实进程中
+
+http://hold-on.iteye.com/blog/1901152 源码分析
+http://blog.csdn.net/dairyman000/article/details/8072029

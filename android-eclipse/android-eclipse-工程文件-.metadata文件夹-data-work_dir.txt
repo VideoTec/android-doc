@@ -1,0 +1,6 @@
+set work_dir=%~dp0
+E:\android\adt\eclipse\eclipse.exe -data %work_dir%
+
+work_dir 存放 .metadata 文件夹
+
+.metadata 文件夹 的同级目录里，不能用于创建工程。

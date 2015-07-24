@@ -1,0 +1,6 @@
+public List<String> getSupportedFlashModes ()
+
+a list of supported flash modes. 
+null if flash mode setting is not supported.
+
+注意：有可能返回空

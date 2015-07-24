@@ -1,0 +1,23 @@
+http://developer.android.com/reference/android/graphics/Camera.html
+
+可以理解成，OpengGL，中的相机概念
+
+java.lang.Object
+   ↳	android.graphics.Camera
+
+Class Overview
+A camera instance can be used to compute 3D transformations and generate a matrix that can be applied, for instance, on a Canvas.
+
+http://www.oschina.net/question/54100_34015
+android.graphics.Camera可以对图像执行一些比较复杂的操作，诸如旋转与绽放，与Matrix可实现图像的倾斜。
+
+个人总结Camera与Matrix的一些区别如下：
+
+Camera的rotate()相关方法是指定某一维度上旋转指定的角度。
+Matrix的rotate()相关方法实现的效果是顺时针旋转指定的角度；与Camera指定Z轴旋转效果相同，但方向相反。
+Camera的translate()方法根据某一维度上视点的位移实现图像的缩放，与Matrix的scale()相关方法作用效果相似，只是Matrix的scale()相关方法是直接指定缩放比例。
+Camera不支持倾斜操作，Matrix可以直接实现倾斜操作。
+
+http://blog.csdn.net/sharetop/article/details/5277655
+此Camera非彼Camera，在android.graphics包里的Camera，
+可以理解为2D图形系统中的视角，或者照相机的机位，根据透视的原理我们可以实现一些简单的3D效果

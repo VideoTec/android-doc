@@ -1,0 +1,9 @@
+添加环境变量名为ANDROID_HOME，变量值为android_sdk的存放目录
+Path环境变量里最前面添加“%ANDROID_HOME%/tools;”
+
+在控制台运行 android -version
+
+--------------------------------------------------
+生成 ant-build.xml 和 ant-local.properties
+--------------------------------------------------
+android update project -p ./

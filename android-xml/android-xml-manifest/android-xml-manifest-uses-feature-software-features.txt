@@ -1,0 +1,11 @@
+http://developer.android.com/guide/topics/manifest/uses-feature-element.html#sw-features
+
+android.software.app_widgets
+android.software.device_admin
+android.software.home_screen
+android.software.input_methods
+android.software.live_wallpaper
+android.software.sip             会话发起协议（Session Initiation Protocol，缩写SIP）
+android.software.sip.voip
+VoIP（Voice over Internet Protocol）简而言之就是将模拟信号（Voice）数字化，
+以数据封包（Data Packet）的形式在IP网络(IP Network）上做实时传递

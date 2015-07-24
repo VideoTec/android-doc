@@ -1,0 +1,39 @@
+@SuppressLint(NewApi)
+
+忽略错误
+AndroidManifest.xml 设置的版本是 
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
+下面的代码中用到了， API-16 的接口
+mDecorateBtn.setBackground
+使用
+@SuppressLint(NewApi)
+就可以忽略这个错误
+
+@SuppressLint("NewApi")
+	private void setDecorateInfo() {
+		int type = VideoCommonInfo.getInstance().getDeocratetype();
+		String index = VideoCommonInfo.getInstance().getDecorateindex();
+		String imageText = VideoCommonInfo.getInstance().getImageText();
+		if (type != -1 && index != null && imageText != null) {
+			switch (type) {
+			case 1:
+				addWatermark(index, imageText);
+				// 水印
+				break;
+			case 2:
+				addFrame(index, imageText);
+				// 边框
+				break;
+			}
+			mDecorateBtn.setBackground(getResources().getDrawable(
+					R.drawable.video_edit_decorate_pressed));
+		} else {
+			frameImage.setImageBitmap(null);
+			cartoonView.getPushView().setVisibility(View.GONE);
+			cartoonView.setVisibility(View.GONE);
+			mDecorateBtn.setBackgroundDrawable(getResources().getDrawable(
+					R.drawable.video_edit_decorate_normal));
+		}
+	}

@@ -1,0 +1,8 @@
+
+10:17 2015/7/16 昨天遇到的情况是
+手机 设置 -> 开发者选项 -> 
+调试 （USB调试：连接USB时调试模式启动） 
+没有勾上。
+
+参考
+E:\doc\Computer software\Android平台\android-sdk-tools\android-adb\android-adb-driver-驱动是否安装.txt

@@ -1,0 +1,31 @@
+interpolator[英][ɪn'tɜ:pəʊleɪtə] [美][ɪn'tɜ:poʊleɪtə] n.撺改者，校对机，分类机 插补器
+overshoot[英][ˌəʊvəˈʃu:t] [美][ˌoʊvərˈʃu:t] vt.超过；言过其实，夸张
+undershoot[英][ˌʌndəˈʃu:t] [美][ˌʌndərˈʃu:t] vt.射击低于，脱靶  低于
+derive[英][dɪˈraɪv] [美][dɪˈraɪv] vt.& vi.得到，导出；源于，来自；（从…中）提取
+
+文档
+
+一个 public 接口
+public interface TimeInterpolator
+
+A time interpolator defines the rate of change of an animation. 
+This allows animations to have non-linear motion, such as acceleration and deceleration.
+
+唯一的成员函数
+public abstract float getInterpolation (float input)
+
+Added in API level 1
+Maps 
+a value representing the elapsed fraction of an animation to 
+a value that represents the interpolated fraction. 
+This interpolated value is then multiplied by the change in value of an animation 
+to derive the animated value at the current elapsed animation time.
+
+Parameters
+input A value between 0 and 1.0 indicating our current point in the animation where 
+0 represents the start and 1.0 represents the end
+
+Returns
+The interpolation value. This value can be 
+more than 1.0 for interpolators which overshoot their targets, or 
+less than 0 for interpolators that undershoot their targets.

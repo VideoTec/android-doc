@@ -1,0 +1,40 @@
+public abstract void onOrientationChanged (int orientation)
+
+Added in API level 3
+Called when the orientation of the device has changed. 
+orientation parameter is in degrees, ranging from 0 to 359. 
+
+orientation is 
+0 degrees when the device is oriented in its natural position, 
+90 degrees when its left side is at the top, 
+180 degrees when it is upside down, and 
+270 degrees when its right side is to the top. 
+
+用法示例：
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html#setRotation(int)
+public void onOrientationChanged(int orientation) {
+     if (orientation == ORIENTATION_UNKNOWN) return;
+     android.hardware.Camera.CameraInfo info =
+            new android.hardware.Camera.CameraInfo();
+     android.hardware.Camera.getCameraInfo(cameraId, info);
+     orientation = (orientation + 45) / 90 * 90;
+     int rotation = 0;
+     if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
+         rotation = (info.orientation - orientation + 360) % 360;
+     } else {  // back-facing camera
+         rotation = (info.orientation + orientation) % 360;
+     }
+     mParameters.setRotation(rotation);
+ }
+
+19:23 2015/7/15
+-1 当手机放平时，会接收到这个值
+
+ORIENTATION_UNKNOWN is returned 
+when the device is close to flat and the orientation cannot be determined.
+
+Parameters
+orientation	The new orientation of the device.
+
+See Also
+ORIENTATION_UNKNOWN

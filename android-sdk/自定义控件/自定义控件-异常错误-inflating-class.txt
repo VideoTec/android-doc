@@ -1,0 +1,66 @@
+自定义控制，引发异常
+
+public class MyView extends View {
+	private Context mContext;
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		canvas.drawARGB(0xff, 0x0, 0xff, 0xaa);
+	}
+
+	public MyView(Context context) {
+		super(context);
+		mContext = context;
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}
+
+	public MyView(Context context, AttributeSet attrs) {  如果不加这个构造函数，就会引发下面的异常
+		super(context, attrs);
+		mContext = context;
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}
+	AttributeSet attrs 是从 layout.xml 中读取的对应控件的属性
+
+}
+
+原因是少加了一个构造函数 public MyView(Context context, AttributeSet attrs) 
+参考
+http://stackoverflow.com/questions/3739661/android-error-inflating-class
+
+inflating[英][ɪn'fleɪtɪŋ] [美][ɪn'fleɪtɪŋ] 
+v.使充气（于轮胎、气球等）( inflate的现在分词 )；（使）膨胀；（使）通货膨胀；物价上涨
+
+05-21 16:37:28.480: E/AndroidRuntime(20559): FATAL EXCEPTION: main
+05-21 16:37:28.480: E/AndroidRuntime(20559): java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.testdemo/com.example.testdemo.MainActivity}: android.view.InflateException: Binary XML file line #24: Error inflating class com.example.testdemo.MyView
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2100)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2125)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread.access$600(ActivityThread.java:140)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1227)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.os.Looper.loop(Looper.java:137)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread.main(ActivityThread.java:4898)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at java.lang.reflect.Method.invokeNative(Native Method)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at java.lang.reflect.Method.invoke(Method.java:511)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1013)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:780)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at dalvik.system.NativeStart.main(Native Method)
+05-21 16:37:28.480: E/AndroidRuntime(20559): Caused by: android.view.InflateException: Binary XML file line #24: Error inflating class com.example.testdemo.MyView
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.createView(LayoutInflater.java:596)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:687)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:746)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:489)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:396)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:352)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at com.android.internal.policy.impl.PhoneWindow.setContentView(PhoneWindow.java:308)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.Activity.setContentView(Activity.java:1924)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at com.example.testdemo.MainActivity.onCreate(MainActivity.java:23)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.Activity.performCreate(Activity.java:5206)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1083)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2064)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	... 11 more
+05-21 16:37:28.480: E/AndroidRuntime(20559): Caused by: java.lang.NoSuchMethodException: <init> [class android.content.Context, interface android.util.AttributeSet]
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at java.lang.Class.getConstructorOrMethod(Class.java:460)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at java.lang.Class.getConstructor(Class.java:431)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	at android.view.LayoutInflater.createView(LayoutInflater.java:561)
+05-21 16:37:28.480: E/AndroidRuntime(20559): 	... 22 more

@@ -1,0 +1,7 @@
+public void play ()
+
+Added in API level 3
+Starts playing an AudioTrack. If track's creation mode is MODE_STATIC, you must have called write() prior.
+
+Throws
+IllegalStateException

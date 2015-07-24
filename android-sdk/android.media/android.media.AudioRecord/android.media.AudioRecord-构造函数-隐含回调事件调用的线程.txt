@@ -1,0 +1,7 @@
+E:\doc\Computer software\Android平台\android-sdk\android.media\android.media.AudioRecord\android.media.AudioRecord-OnRecordPositionUpdateListener-线程问题.txt
+
+根据源码分析
+
+    构造函数时，指定 Looper，
+	如果当前线程，有looper，就在当前线程，调用回调
+	如果当前线程，没有looper，就在主线程，调用回调

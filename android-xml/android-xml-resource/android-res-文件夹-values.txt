@@ -1,0 +1,38 @@
+MyProject/
+    src/  
+        MyActivity.java  
+    res/
+        drawable/  
+            graphic.png  
+        layout/  
+            main.xml
+            info.xml
+        mipmap/  
+            icon.png 
+        values/  
+            strings.xml  
+
+概述：
+
+XML files that contain simple values, such as strings, integers, and colors.
+
+Whereas XML resource files in other res/ subdirectories define a single resource based on the XML filename, 
+files in the values/ directory describe multiple resources. 
+
+For a file in this directory, each child of the <resources> element defines a single resource. 
+For example, 
+a <string> element creates an R.string resource and 
+a <color> element creates an R.color resource.
+
+Because each resource is defined with its own XML element, 
+you can name the file whatever you want and place different resource types in one file. 
+
+However, for clarity, you might want to place unique resource types in different files. 
+For example, here are some filename conventions for resources you can create in this directory:
+
+其中 values 目录下有什么文件：
+arrays.xml for resource arrays (typed arrays).
+colors.xml for color values
+dimens.xml for dimension values.
+strings.xml for string values.
+styles.xml for styles.

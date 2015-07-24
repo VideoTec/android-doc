@@ -1,0 +1,16 @@
+https://android.googlesource.com/platform/packages/apps/Camera/+/donut-release/src/com/android/camera/CameraHolder.java
+http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/4.3_r1/com/android/camera/CameraHolder.java
+http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/4.4.4_r1/com/android/camera/CameraHolder.java?av=f
+http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/5.0.0_r1/com/android/camera/CameraHolder.java?av=f
+http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/5.1.0_r1/com/android/camera/CameraHolder.java?av=f
+
+这个类是，android，app，工程中的一个类：
+com.android.camera.CameraHolder
+
+主要功能是：
+The class is used to hold an android.hardware.Camera instance.
+The open() and release() calls are similar to the ones in android.hardware.Camera. 
+The difference is if keep() is called before release(), 
+CameraHolder will try to hold the android.hardware.Camera instance for a while, 
+so if open() is called soon after, we can avoid the cost of open() in android.hardware.Camera.
+This is used in switching between different modules

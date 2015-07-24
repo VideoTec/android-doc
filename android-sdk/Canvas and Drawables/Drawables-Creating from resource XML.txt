@@ -1,0 +1,51 @@
+Creating from resource XML
+
+principle[英][ˈprɪnsəpl] [美][ˈprɪnsəpəl] n.原则，原理；准则，道义；道德标准；本能
+inherent[英][ɪnˈhɪərənt] [美][ɪnˈhɪrənt] adj.固有的，内在的；天生
+philosophy[英][fəˈlɒsəfi] [美][fəˈlɑ:səfi] n.哲学；哲学体系，哲学思想；生活信条；哲理
+inflate[英][ɪnˈfleɪt] [美][ɪnˈflet] vt.& vi.使充气（于轮胎、气球等）；（使）膨胀；（使）通货膨胀；物价上涨
+
+By now, you should be familiar with Android's principles of developing a User Interface. 
+Hence, you understand the power and flexibility inherent in defining objects in XML. 
+This philosophy caries over from Views to Drawables. 
+If there is a Drawable object that you'd like to create, 
+which is not initially dependent on variables defined by your application code or user interaction, 
+then defining the Drawable in XML is a good option. 
+Even if you expect your Drawable to change its properties during the user's experience with your application, 
+you should consider defining the object in XML, as you can always modify properties once it is instantiated.
+
+Once you've defined your Drawable in XML, 
+save the file in the res/drawable/ directory of your project. 
+Then, retrieve and instantiate the object by calling Resources.getDrawable(), 
+passing it the resource ID of your XML file. (See the example below.)
+
+Any Drawable subclass that supports the inflate() method 
+can be defined in XML and instantiated by your application. 
+Each Drawable that supports XML inflation utilizes specific XML attributes 
+that help define the object properties (see the class reference to see what these are). 
+See the class documentation for each Drawable subclass for information on how to define it in XML.
+
+
+Example
+
+Here's some XML that defines a TransitionDrawable:
+
+      <transition xmlns:android="http://schemas.android.com/apk/res/android">
+      <item android:drawable="@drawable/image_expand">
+      <item android:drawable="@drawable/image_collapse">
+      </transition>
+    
+With this XML saved in the file res/drawable/expand_collapse.xml, 
+the following code will instantiate the TransitionDrawable and set it as the content of an ImageView:
+
+      Resources res = mContext.getResources();
+      TransitionDrawable transition = (TransitionDrawable)
+res.getDrawable(R.drawable.expand_collapse);
+      ImageView image = (ImageView) findViewById(R.id.toggle_image);
+      image.setImageDrawable(transition);
+    
+Then this transition can be run forward (for 1 second) with:
+
+transition.startTransition(1000);
+
+Refer to the Drawable classes listed above for more information on the XML attributes supported by each.

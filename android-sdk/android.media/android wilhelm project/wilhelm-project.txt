@@ -1,0 +1,27 @@
+源码：
+http://omapzoom.org/?p=platform/frameworks/wilhelm.git
+/e/android-src/platform/frameworks/wilhelm
+
+frameworks/wilhelm is the pathname of the git repository for 2 APIs:
+ - Android native audio based on OpenSL ES
+ - Android native media based on OpenMAX AL
+
+OpenSL ES is recommended for lower-latency audio output. 低延迟
+For audio input and normal latency audio output, 正常延迟
+I recommend 建议使用下面的接口：
+android.media.AudioRecord and 
+android.media.AudioTrack 
+respectively[美][rɪˈspɛktɪvli]各自的
+
+Android native media APIs based on OpenMAX AL 1.0.1, and 
+Android native audio APIs based on OpenSL ES 1.0.1, are both primarily API 
+bindings only ... 
+they don't directly interact with OpenMAX IL for the most part.  
+Instead they do that through the 
+Stagefright media framework and 
+AudioFlinger for low-level audio. 
+So if Stagefright and AudioFlinger are ported and working, then the native APIs should also work fine. 
+There are a couple of exceptions[美][ɪkˈsɛpʃən]例外 where the native APIs access OpenMAX IL codecs, 
+but even there they do it via a Stagefright wrapper. Those are: 
+(1) enumerating supported video codecs, and 
+(2) decoding audio to PCM. 

@@ -1,0 +1,9 @@
+File->Settings->Editor->Colors & Fonts->
+Android Studio -> Preferences->Editor->Colors&Fonts
+File-> settings in that choose IDE settings-> Appearance in that choose the Theme: options
+
+需要添加 scheme 结构：
+save as - 保存自定义 scheme 才能修改字体
+
+https://www.jetbrains.com/phpstorm/help/configuring-colors-and-fonts.html
+详细介绍了，字体和颜色的设置

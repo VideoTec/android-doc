@@ -1,0 +1,47 @@
+FILE LOCATION:
+res/values/colors.xml
+The filename is arbitrary. The <color> element's name will be used as the resource ID.
+
+RESOURCE REFERENCE:
+In Java: R.color.color_name
+In XML: @[package:]color/color_name
+
+SYNTAX:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color
+        name="color_name"
+        >hex_color</color>
+</resources>
+
+----------------------------------------------
+例子 Color 资源 
+----------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <color name="opaque_red">#f00</color>
+   <color name="translucent_red">#80ff0000</color>
+</resources>
+
+Resources res = getResources();
+int color = res.getColor(R.color.opaque_red);
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/translucent_red"
+    android:text="Hello"/>
+
+----------------------------------------------
+文档说明 Color 资源
+----------------------------------------------
+A color value defined in XML. 
+The color is specified with an RGB value and alpha channel. 
+You can use a color resource any place that accepts a hexadecimal color value. 
+You can use a color resource when a drawable resource is expected in XML (for example, android:drawable="@color/green").
+
+The value always begins with a pound (#) character and then followed by the Alpha-Red-Green-Blue information in one of the following formats:
+#RGB
+#ARGB
+#RRGGBB
+#AARRGGBB

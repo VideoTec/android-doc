@@ -1,0 +1,3 @@
+file | settings | keymap
+
+设置自定义的快捷键时，需要，从一个系统 keymaps 设置中 copy 一个，再设置。

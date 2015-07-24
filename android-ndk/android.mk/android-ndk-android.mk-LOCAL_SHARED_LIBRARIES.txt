@@ -1,0 +1,14 @@
+--------------------------------------------------
+LOCAL_SHARED_LIBRARIES LOCAL_STATIC_LIBRARIES
+--------------------------------------------------
+依赖当前 android.mk 文件里的 其它模块 (模块名称)
+LOCAL_SHARED_LIBRARIES
+LOCAL_STATIC_LIBRARIES     The list of static libraries modules that the current module depends on
+If the current module is a shared library or an executable, this will force these libraries to be linked into the resulting binary
+If the current module is a static library, this simply tells that another other module that depends on the current one will also depend on the listed libraries
+相关的变量, 依赖模块中输出的编译选项
+LOCAL_EXPORT_CFLAGS
+LOCAL_EXPORT_CPPFLAGS
+LOCAL_EXPORT_C_INCLUDES
+LOCAL_EXPORT_LDFLAGS
+LOCAL_EXPORT_LDLIBS

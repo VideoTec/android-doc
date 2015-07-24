@@ -1,0 +1,27 @@
+java.lang.UnsatisfiedLinkError: Couldn't load vi_voslib from loader dalvik.system.PathClassLoader
+
+百度地图 运行提示
+
+java.lang.UnsatisfiedLinkError: Couldn't load vi_voslib from loader dalvik.system.PathClassLoader
+
+解放办法
+
+在libs下面创建一个armeabi-v7a文件夹 把armeabi *.so的文件复制一份放在armeabi-v7a运行测试通过
+
+baidumapapi_v2_1_1.jar 版本
+
+------------------------------------
+fvideo.so 库找不到， 在联想K900手机上， 可能是没有搜索 armeabi 目录引发错误，armeabi-v7a
+------------------------------------
+01-30 18:01:50.735: E/AndroidRuntime(13900): FATAL EXCEPTION: Thread-950
+01-30 18:01:50.735: E/AndroidRuntime(13900): java.lang.ExceptionInInitializerError
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at cn.com.feinnovideo.template.VideoAsset.startDecode(VideoAsset.java:68)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at cn.com.fetion.mvclip.utils.VideoThumbsUtil.getVideoThumbs(VideoThumbsUtil.java:134)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at cn.com.fetion.mvclip.activity.VideoChooseActivity$2.run(VideoChooseActivity.java:251)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at java.lang.Thread.run(Thread.java:856)
+01-30 18:01:50.735: E/AndroidRuntime(13900): Caused by: java.lang.UnsatisfiedLinkError: Couldn't load fvideo from loader dalvik.system.PathClassLoader[dexPath=/mnt/asec/cn.com.fetion.mvclip-1/pkg.apk,libraryPath=/mnt/asec/cn.com.fetion.mvclip-1/lib]: findLibrary returned null
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at java.lang.Runtime.loadLibrary(Runtime.java:365)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at java.lang.System.loadLibrary(System.java:535)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  at com.feinno.fvideo.MediaSource.<clinit>(MediaSource.java:161)
+01-30 18:01:50.735: E/AndroidRuntime(13900):  ... 4 more
+01-30 18:01:50.975: E/topa(435): restore brightness to 105

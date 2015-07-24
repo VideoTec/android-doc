@@ -1,0 +1,25 @@
+android stuido 如果去掉 @style/AppTheme 运行时出异常
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.wangxiang.myapplication" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >  这里不能去掉
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+05-14 23:03:29.235 16014 16014 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.wangxiang.myapplication/com.example.wangxiang.myapplication.MainActivity}: java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.

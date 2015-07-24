@@ -1,0 +1,19 @@
+把 post-的-runnable 转换成 带回调的 Message
+
+    private static Message getPostMessage(Runnable r) {
+        Message m = Message.obtain();
+        m.callback = r;
+        return m;
+    }
+    
+    public final boolean post(Runnable r)
+    {
+       return  sendMessageDelayed(getPostMessage(r), 0);
+    }
+
+    private static Message getPostMessage(Runnable r, Object token) {
+        Message m = Message.obtain();
+        m.obj = token;
+        m.callback = r;
+        return m;
+    }

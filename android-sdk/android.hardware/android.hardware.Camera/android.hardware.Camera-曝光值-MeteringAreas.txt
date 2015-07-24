@@ -1,0 +1,6 @@
+
+曝光的依赖区域
+
+int getMaxNumMeteringAreas()
+List<Camera.Area> getMeteringAreas()
+void setMeteringAreas(List<Camera.Area> meteringAreas)

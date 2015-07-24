@@ -1,0 +1,19 @@
+16:45 2015/5/25
+[2015-05-25 16:41:36 - VideoButifyDemo] Found 2 versions of android-support-v4.jar in the dependency list,
+[2015-05-25 16:41:36 - VideoButifyDemo] but not all the versions are identical (check is based on SHA-1 only at this time).
+[2015-05-25 16:41:36 - VideoButifyDemo] All versions of the libraries must be the same at this time.
+[2015-05-25 16:41:36 - VideoButifyDemo] Versions found are:
+[2015-05-25 16:41:36 - VideoButifyDemo] Path: D:\2.3.0\sea-monster-video\libs\android-support-v4.jar
+[2015-05-25 16:41:36 - VideoButifyDemo] 	Length: 627582
+[2015-05-25 16:41:36 - VideoButifyDemo] 	SHA-1: db0f122c99ef9f90dbab3fada6d191f2880cbb8e
+[2015-05-25 16:41:36 - VideoButifyDemo] Path: D:\2.3.0\VideoButifyDemo\libs\android-support-v4.jar
+[2015-05-25 16:41:36 - VideoButifyDemo] 	Length: 758727
+[2015-05-25 16:41:36 - VideoButifyDemo] 	SHA-1: efec67655f6db90757faa37201efcee2a9ec3507
+[2015-05-25 16:41:36 - VideoButifyDemo] Jar mismatch! Fix your dependencies
+
+两个 android-support-v4.jar 的来历
+
+一个在 VideoButifyDemo 的 lib 目录下
+另一个在 VideoButifyDemo 依赖的 库文件的 lib 目录下
+
+造成，加载 android private libraries 失败

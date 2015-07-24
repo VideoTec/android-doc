@@ -1,0 +1,11 @@
+Handler(Looper looper)
+Use the provided Looper instead of the default one.
+
+public Handler (Looper looper, Handler.Callback callback)
+Use the provided Looper instead of the default one and take a callback interface in which to handle messages
+
+public Handler (Handler.Callback callback)
+Constructor associates this handler with the Looper for the current thread and takes a callback interface in which you can handle messages. If this thread does not have a looper, this handler won't be able to receive messages so an exception is thrown.
+
+public Handler ()
+Default constructor associates this handler with the Looper for the current thread. If this thread does not have a looper, this handler won't be able to receive messages so an exception is thrown.

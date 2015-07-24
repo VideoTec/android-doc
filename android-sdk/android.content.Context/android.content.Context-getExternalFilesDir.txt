@@ -1,0 +1,11 @@
+public abstract File getExternalFilesDir (String type)
+
+Returns the absolute path to the directory on the primary external filesystem (that is somewhere on Environment.getExternalStorageDirectory()) where the application can place persistent files it owns. These files are internal to the applications, and not typically visible to the user as media.
+
+This is like getFilesDir() in that these files will be deleted when the application is uninstalled, however there are some important differences:
+
+External files are not always available: they will disappear if the user mounts the external storage on a computer or removes it. See the APIs on Environment for information in the storage state.
+There is no security enforced with these files. For example, any application holding WRITE_EXTERNAL_STORAGE can write to these files.
+Starting in KITKAT, no permissions are required to read or write to the returned path; it's always accessible to the calling app. This only applies to paths generated for package name of the calling application. To access paths belonging to other packages, WRITE_EXTERNAL_STORAGE and/or READ_EXTERNAL_STORAGE are required.
+
+On devices with multiple users (as described by UserManager), each user has their own isolated external storage. Applications only have access to the external storage for the user they're running as.

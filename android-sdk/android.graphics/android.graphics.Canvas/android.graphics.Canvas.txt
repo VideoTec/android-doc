@@ -1,0 +1,27 @@
+继承关系
+
+java.lang.Object
+   ↳  android.graphics.Canvas
+
+用于绘制的四个基本组件
+
+The Canvas class holds the "draw" calls. To draw something, you need 4 basic components: 
+A Bitmap to hold the pixels, 
+a Canvas to host the draw calls (writing into the bitmap), 
+a drawing primitive (e.g. Rect, Path, text, Bitmap), and 
+a paint (to describe the colors and styles for the drawing).
+
+android.view.View 绘制回调函数
+
+  protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+    
+    drawInerCircle(canvas);
+    drawRim(canvas);
+    drawMinTimeRim(canvas);
+    drawBar(canvas);
+    
+    if(mNeedDraw){
+      invalidate();
+    }
+  }

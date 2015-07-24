@@ -1,0 +1,5 @@
+android.view 是一个包名
+
+package
+android.view
+Provides classes that expose basic user interface classes that handle screen layout and interaction with the user.

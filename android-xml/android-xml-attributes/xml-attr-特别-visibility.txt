@@ -1,0 +1,18 @@
+visibility[英][ˌvɪzəˈbɪləti] [美][ˌvɪzəˈbɪlɪti] n.能见度；可见性；可见距离；清晰度
+gone[英][gɒn] [美][gɔ:n] adj.过去的；用完了；死去的；无望的，无可挽救的
+
+android:visibility
+
+Controls the initial visibility of the view.
+
+Must be one of the following constant values.
+
+Constant	Value	Description
+visible		0		Visible on screen; the default value.
+invisible	1		Not displayed, but taken into account during layout (space is left for it).
+gone		2		Completely hidden, as if the view had not been added.
+
+This corresponds to the global attribute resource symbol visibility.
+
+Related Methods
+setVisibility(int)

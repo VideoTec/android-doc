@@ -1,0 +1,35 @@
+FILE LOCATION:
+res/values/filename.xml
+The filename is arbitrary. The <string> element's name will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to a String.
+
+RESOURCE REFERENCE:
+In Java: R.string.string_name
+In XML:@string/string_name
+
+SYNTAX:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string
+        name="string_name"
+        >text_string</string>
+</resources>
+
+----------------------------------------
+例子
+----------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello!</string>
+</resources>
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/hello" />
+
+String string = getString(R.string.hello);
+You can use either getString(int) or getText(int) to retrieve a string. 
+getText(int) will retain any rich text styling applied to the string.

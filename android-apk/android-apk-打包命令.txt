@@ -1,0 +1,81 @@
+The Android build process provides project and module build settings 
+so that your Android modules are compiled and packaged into .apk files, 
+the containers for your application binaries, based on your build settings.
+
+The apk file for each app contains all of the information necessary to run your application on a device or emulator, 
+such as 
+compiled .dex files (.class files converted to Dalvik byte code), 
+a binary version of the AndroidManifest.xml file, 
+compiled resources (resources.arsc) and 
+uncompiled resource files for your application.
+
+To run an application on an emulator or device, the application must be signed using debug or release mode. 
+You typically want to sign your application in debug mode when you develop and test your application, 
+because the build system uses a debug key with a known password so you do not have to enter it every time you build. 
+When you are ready to release the application to Google Play, 
+you must sign the application in release mode, using your own private key.
+
+If you are using Android development tools, 
+the build system can sign the application for you when build your app for debugging. 
+You must obtain a certificate to sign your app when you build and app for release. 
+For more information on signing applications, see Signing Your Applications.
+
+------------------------------------------------------------
+aapt（Android Asset Package Tool） 资源打包工具
+------------------------------------------------------------
+
+参考： Android应用程序资源的编译和打包过程分析
+http://blog.csdn.net/luoshengyang/article/details/8744683
+在一个APK文件中，除了有代码文件之外，还有很多资源文件。
+这些资源文件是通过Android资源打包工具 aapt（Android Asset Package Tool）打包到APK文件里面的。
+在打包之前，大部分文本格式的XML资源文件还会被编译成二进制格式的XML资源文件
+
+将XML资源文件从文本格式编译成二进制格式解决了空间占用以及解析效率的问题
+
+appt 做的两个工作：
+赋予每一个非assets资源一个ID值，这些ID值以常量的形式定义在一个R.java文件中
+生成一个resources.arsc文件，用来描述那些具有ID值的资源的配置信息，它的内容就相当于是一个资源索引表
+
+------------------------------------------------------------
+示例命令行
+------------------------------------------------------------
+打包过程： sea-monster-video 
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-m -v --non-constant-id --output-text-symbols D:\03Android\sea-monster-video\bin 
+-J D:\03Android\sea-monster-video\gen 
+-M D:\03Android\sea-monster-video\AndroidManifest.xml
+-S D:\03Android\sea-monster-video\res 
+-I E:\android\adt\sdk\platforms\android-20\android.jar
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe crunch 
+-v 
+-S D:\03Android\sea-monster-video\res 
+-C D:\03Android\sea-monster-video\bin\res\crunch
+
+打包过程： sea-monster-mvclip 
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-m -v --auto-add-overlay --output-text-symbols D:\03Android\sea-monster-mvclip\bin 
+-J D:\03Android\sea-monster-mvclip\gen 
+-M D:\03Android\sea-monster-mvclip\AndroidManifest.xml 
+-S D:\03Android\sea-monster-mvclip\res 
+-S D:\03Android\sea-monster-core\res 
+-S D:\03Android\sea-monster-video\res 
+-I E:\android\adt\sdk\platforms\android-20\android.jar 
+-G D:\03Android\sea-monster-mvclip\bin\proguard.txt
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe crunch 
+-v -S D:\03Android\sea-monster-mvclip\res 
+-C D:\03Android\sea-monster-mvclip\bin\res\crunch 
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-v 
+-S D:\03Android\sea-monster-mvclip\bin\res\crunch 
+-S D:\03Android\sea-monster-mvclip\res 
+-S D:\03Android\sea-monster-core\res 
+-S D:\03Android\sea-monster-video\bin\res\crunch 
+-S D:\03Android\sea-monster-video\res 
+-f --no-crunch --auto-add-overlay --debug-mode 
+-M D:\03Android\sea-monster-mvclip\bin\AndroidManifest.xml 
+-A D:\03Android\sea-monster-mvclip\assets 
+-I E:\android\adt\sdk\platforms\android-20\android.jar 
+-F D:\03Android\sea-monster-mvclip\bin\resources.ap_ 

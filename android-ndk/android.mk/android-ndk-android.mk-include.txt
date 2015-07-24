@@ -1,0 +1,15 @@
+Including Other Makefiles
+
+The include directive tells make to suspend reading the current makefile and read one or more other makefiles before continuing. The directive is a line in the makefile that looks like this:
+
+include filenames…
+filenames can contain shell file name patterns. If filenames is empty, nothing is included and no error is printed.
+
+------------------------------
+例如： 
+------------------------------
+
+android.mk
+include ./jni/lib/lib.mk
+
+lib目录下，建立 lib.mk 文件

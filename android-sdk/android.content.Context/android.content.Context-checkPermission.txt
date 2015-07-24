@@ -1,0 +1,24 @@
+http://developer.android.com/reference/android/content/Context.html
+
+java.lang.Object
+   ↳	android.content.Context
+permission[英][pəˈmɪʃn] [美][pərˈmɪʃn] n.允许；批准，正式认可，认可
+denied[英][dɪ'naɪəd] [美][dɪ'naɪəd] adj.拒签
+granted[英][ˈgrɑ:ntɪd] [美][ˈgræntɪd] v.（退一步）承认( grant的过去式和过去分词 )；（尤指正式地或法律上）同意；准许；让渡
+
+public abstract int checkPermission (String permission, int pid, int uid)
+
+Added in API level 1
+Determine whether the given permission is allowed for a particular process and user ID running in the system.
+
+Parameters
+permission	The name of the permission being checked.
+pid	The process ID being checked against. Must be > 0.
+uid	The user ID being checked against. A uid of 0 is the root user, which will pass every permission check.
+
+Returns
+PERMISSION_GRANTED if the given pid/uid is allowed that permission, or PERMISSION_DENIED if it is not.
+
+See Also
+checkPermission(String, String)
+checkCallingPermission(String)

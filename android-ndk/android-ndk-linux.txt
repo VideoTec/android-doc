@@ -1,0 +1,14 @@
+android-ndk-r10d-linux-x86_64.bin
+http://jingyan.baidu.com/article/3ea51489e7a9bd52e61bbac7.html 安装说明
+
+将下载下来的“android-ndk-r10c-linux-x86_64.bin”复制到home下的android下面，如“/home/fuke-ubuntu/android”
+
+在shell中运行：./android-ndk-r10d-linux-x86_64.bin 将 android-ndk-r10d-linux-x86_64.bin 解压到当前目录
+
+
+通过在shell中输入：“sudo gedit /etc/profile”打开 profile 文件
+
+在profile文件中添加环境变量：
+NDK_ROOT="/home/fuke-ubuntu/android/android-ndk-r10d"
+PATH=$NDK_ROOT:$PATH
+

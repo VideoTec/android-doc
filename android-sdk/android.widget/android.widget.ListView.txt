@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/widget/ListView.html
+http://developer.android.com/guide/topics/ui/layout/listview.html ListView Guide
+
+ava.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.AdapterView<android.widget.ListAdapter>
+ 	 	 	   ↳	android.widget.AbsListView
+ 	 	 	 	   ↳	android.widget.ListView
+
+
+Known Direct Subclasses
+ExpandableListView
+
+A view that shows items in a vertically scrolling list. The items come from the ListAdapter associated with this view.
+
+See the List View guide.
+http://developer.android.com/guide/topics/ui/layout/listview.html
+ListView is a view group that displays a list of scrollable items. 
+The list items are automatically inserted to the list using an Adapter that pulls content from a source such as an array or database query and converts each item result into a view that's placed into the list.

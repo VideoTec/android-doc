@@ -1,0 +1,13 @@
+Contains classes to explore data returned through a content provider.
+If you need to manage data in a private database, 
+use the android.database.sqlite classes. 
+
+These classes are used to manage the Cursor object returned from a content provider query. 
+Databases are usually created and opened with openOrCreateDatabase(String, int, SQLiteDatabase.CursorFactory) 
+To make requests through content providers, you can use the content.ContentResolver class.
+
+All databases are stored on the device in /data/data/<package_name>/databases
+
+db=SQLiteDatabase.openOrCreateDatabase("/data/data/com.lingdududu.db/databases/stu.db",null);
+
+SQLiteOpenHelper 该类是SQLiteDatabase一个辅助类

@@ -1,0 +1,46 @@
+出错代码：
+    protected void onResume() {
+        mCamera = Camera.open();
+        mCamera.setParameters(mCamera.getParameters());
+    }
+
+java.lang.RuntimeException: Fail to connect to camera service
+
+造成这种错误的原因是，没有添加权限，造成错误
+<uses-permission android:name="android.permission.CAMERA" />
+
+20:02 2015/7/14 是因为其它 app 占用了 Camera 没有释放
+        int numCameras = Camera.getNumberOfCameras();
+        for(int i = 0; i < numCameras; i++) {
+            Camera camera = Camera.open(i);
+            camera.release(); 
+            因为没有调用这行，造成第二次 Camera.open 失败
+        }
+
+错误信息
+06-17 16:45:59.620: E/AndroidRuntime(24368): FATAL EXCEPTION: main
+06-17 16:45:59.620: E/AndroidRuntime(24368): java.lang.RuntimeException: Unable to resume activity {com.example.testdemo/com.example.testdemo.MainActivity}: java.lang.RuntimeException: Fail to connect to camera service
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2945)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2974)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2355)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.access$700(ActivityThread.java:160)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1317)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.os.Looper.loop(Looper.java:176)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.main(ActivityThread.java:5454)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at java.lang.reflect.Method.invokeNative(Native Method)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at java.lang.reflect.Method.invoke(Method.java:525)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at dalvik.system.NativeStart.main(Native Method)
+06-17 16:45:59.620: E/AndroidRuntime(24368): Caused by: java.lang.RuntimeException: Fail to connect to camera service
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.hardware.Camera.native_setup(Native Method)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.hardware.Camera.<init>(Camera.java:413)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.hardware.Camera.open(Camera.java:384)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at com.example.testdemo.MainActivity.onResume(MainActivity.java:101)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.Instrumentation.callActivityOnResume(Instrumentation.java:1209)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.Activity.performResume(Activity.java:5450)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2935)
+06-17 16:45:59.620: E/AndroidRuntime(24368): 	... 12 more
+
+NativeCrashListener: Couldn't find ProcessRecord for pid 25286

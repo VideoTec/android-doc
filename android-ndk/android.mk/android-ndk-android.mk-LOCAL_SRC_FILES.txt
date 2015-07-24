@@ -1,0 +1,38 @@
+LOCAL_SRC_FILES
+
+------------------------
+指定源文件列表
+------------------------
+This is a list of source files that will be built for your module. 
+Only list the files that will be passed to a compiler, since the build system automatically computes dependencies for you.
+
+特别示例：
+LOCAL_SRC_FILES := foo.c bar.c.arm 
+Tells the build system to always compile 'bar.c' in ARM mode, and to build foo.c according to the value of LOCAL_ARM_MODE
+解释：ARM mode 相对于 'thumb' mode。 可通过 LOCAL_ARM_MODE := arm 来指定，默认值为 thumb
+
+LOCAL_SRC_FILES = foo.c.neon bar.c zoo.c.arm.neon
+'foo.c' will be compiled in thumb+neon mode,
+'bar.c' will be compiled in 'thumb' mode, and 
+'zoo.c' will be compiled in 'arm+neon' mode       注意顺序 zoo.c.arm.neon
+解释：LOCAL_ARM_NEON 是否为true, 
+'true' allows the use of 
+ARM Advanced SIMD (a.k.a. NEON) GCC intrinsics in your C and C++ sources, as well as 
+NEON instructions in Assembly files
+
+------------------------
+对于 PREBUILT_STATIC_LIBRARY 模块，可以用这个变量指定，要链接的静态库
+------------------------
+
+例如：
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := jpeg
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/$(TARGET_ARCH_ABI)/libjpeg/include
+
+include $(PREBUILT_STATIC_LIBRARY)
+
+------------------------
+ndk-build 会在 LOCAL_SRC_FILES 开头添加 jni/
+------------------------

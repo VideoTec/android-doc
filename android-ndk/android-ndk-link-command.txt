@@ -1,0 +1,30 @@
+查看NDK-BUILD创建的编译命令行：
+
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++ 
+-Wl,-soname,libfvideo.so 
+-shared 
+--sysroot=E:/android/ndk/platforms/android-8/arch-arm 
+./obj/local/armeabi/objs/fvideo/MediaSource.o 
+./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/MediaTarget.o 
+./obj/local/armeabi/objs/fvideo/MediaTargetNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/VideoCache.o 
+./obj/local/armeabi/objs/fvideo/VideoCacheNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/JNICommon.o 
+./obj/local/armeabi/libstdc++.a 
+-lgcc 
+-no-canonical-prefixes 
+-L..\..\..\libav-10.1\output\lib 
+-Wl,--no-undefined                       提示：error: undefined reference to '__android_log_print'
+-Wl,-z,noexecstack                       Marks the object as not requiring executable stack
+-Wl,-z,relro                             Create an ELF "PT_GNU_RELRO" segment header in the object.
+-Wl,-z,now
+			When generating an executable or shared library, 
+			mark it to tell the dynamic linker to resolve all symbols 
+			when the program is started, or 
+			when the shared library is linked to using dlopen, 
+			instead of deferring function call resolution to the point when the function is first called.
+-LE:/android/ndk/platforms/android-8/arch-arm/usr/lib 
+-lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb 
+-ljnigraphics -lz -lstdc++ -lc -lm 
+-o ./obj/local/armeabi/libfvideo.so

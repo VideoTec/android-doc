@@ -1,0 +1,20 @@
+14:14 2015/7/15
+
+设备已经连接，QQ(AndroidServer.exe)，也检测到了。
+
+C:\Users\wangxiangfx>E:\android\adt\sdk\platform-tools\adb.exe devices
+* daemon not running. starting it now on port 5037 *
+* daemon started successfully *
+List of devices attached
+
+查看设备管理器：
+Android USB Device (没有这个)
+
+14:41 2015/7/15
+没有驱动：
+SAMSUNG Android Phone -> SAMSUNG Android ADB Interface
+
+原因是：
+手机 设置 -> 开发者选项 -> 
+调试 （USB调试：连接USB时调试模式启动） 
+没有勾上。

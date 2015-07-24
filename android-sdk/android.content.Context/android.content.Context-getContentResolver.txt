@@ -1,0 +1,13 @@
+public abstract ContentResolver getContentResolver ()
+
+Return a ContentResolver instance for your application's package.
+
+要获取ContentResolver 对象，可以使用Activity提供的getContentResolver()方法。 ContentResolver 类提供了与ContentProvider类相同签名的四个方法：
+1）
+public Uri insert(Uri uri, ContentValues values)：该方法用于往ContentProvider添加数据。
+2）
+public int delete(Uri uri, String selection, String[] selectionArgs)：该方法用于从ContentProvider删除数据。
+3）
+public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)：该方法用于更新ContentProvider中的数据。
+4）
+public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)：该方法用于从ContentProvider中获取数据

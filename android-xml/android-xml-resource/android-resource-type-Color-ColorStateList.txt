@@ -1,0 +1,68 @@
+---------------------------------------
+android.content.res.ColorStateList
+---------------------------------------
+Lets you map View state sets to colors. 
+ColorStateLists are created from XML resource files defined in the "color" subdirectory directory of an application's resource directory. 
+The XML file contains a single "selector" element with a number of "item" elements inside
+
+This defines a set of state spec / color pairs where each state spec specifies a set of states 
+that a view must either be in or not be in and the color specifies the color associated with that spec. 
+The list of state specs will be processed in order of the items in the XML file. 
+An item with no state spec is considered to match any set of states and is generally useful as a final item to be used as a default. 
+Note that if you have such an item before any other items in the list then any subsequent items will end up being ignored.
+
+---------------------------------------
+Color State List Resource
+---------------------------------------
+A ColorStateList is an object you can define in XML that you can apply as a color, 
+but will actually change colors, depending on the state of the View object to which it is applied. 
+
+During each state change, 
+the state list is traversed[英][trəˈvɜ:s] [美][trəˈvɜ:rs]横越 横贯 通过 top to bottom and 
+the first item that matches the current state will be used—the selection is not based on the "best match," but simply 
+the first item that meets the minimum criteria of the state.
+
+--------------------------------------- 
+Color State List Resource XML 定义
+---------------------------------------
+FILE LOCATION:
+res/color/filename.xml
+The filename will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to a ColorStateList.
+
+RESOURCE REFERENCE:
+In Java: R.color.filename
+In XML: @[package:]color/filename
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:color="hex_color"
+        android:state_pressed=["true" | "false"]
+        android:state_focused=["true" | "false"]
+        android:state_selected=["true" | "false"]
+        android:state_checkable=["true" | "false"]
+        android:state_checked=["true" | "false"]
+        android:state_enabled=["true" | "false"]
+        android:state_window_focused=["true" | "false"] />
+</selector>
+
+--------------------------------------- 
+Color State List Resource XML 示例
+---------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+          android:color="#ffff0000"/> <!-- pressed -->
+    <item android:state_focused="true"
+          android:color="#ff0000ff"/> <!-- focused -->
+    <item android:color="#ff000000"/> <!-- default -->
+</selector>
+
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/button_text"
+    android:textColor="@color/button_text" />

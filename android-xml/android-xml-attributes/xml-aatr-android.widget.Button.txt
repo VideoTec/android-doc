@@ -1,0 +1,6 @@
+示例
+<Button
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:text="@string/self_destruct"
+     android:onClick="selfDestruct" />

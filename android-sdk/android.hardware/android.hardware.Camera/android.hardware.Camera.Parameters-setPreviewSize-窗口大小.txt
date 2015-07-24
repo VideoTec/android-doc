@@ -1,0 +1,38 @@
+http://stackoverflow.com/questions/17804309/android-camera-preview-wrong-aspect-ratio
+
+tolerance[英][ˈtɒlərəns] [美][ˈtɑ:lərəns]
+n.宽容，容忍；限度；公差；耐药量，耐药性
+
+private Size getOptimalPreviewSize(List<Size> sizes, int w, int h) {
+    final double ASPECT_TOLERANCE = 0.05;
+    double targetRatio = (double) w/h;
+
+    if (sizes==null) return null;
+
+    Size optimalSize = null;
+
+    double minDiff = Double.MAX_VALUE;
+
+    int targetHeight = h;
+
+    // Find size
+    for (Size size : sizes) {
+        double ratio = (double) size.width / size.height;
+        if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;
+        if (Math.abs(size.height - targetHeight) < minDiff) {
+            optimalSize = size;
+            minDiff = Math.abs(size.height - targetHeight);
+        }
+    }
+
+    if (optimalSize == null) {
+        minDiff = Double.MAX_VALUE;
+        for (Size size : sizes) {
+            if (Math.abs(size.height - targetHeight) < minDiff) {
+                optimalSize = size;
+                minDiff = Math.abs(size.height - targetHeight);
+            }
+        }
+    }
+    return optimalSize;
+}

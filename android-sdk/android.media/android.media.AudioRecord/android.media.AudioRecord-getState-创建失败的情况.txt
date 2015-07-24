@@ -1,0 +1,23 @@
+16:35 2015/6/11
+
+            mAudioRecord = new AudioRecord(
+                    MediaRecorder.AudioSource.MIC,
+                    SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT,
+                    2 * mBufferSize);
+            if(mAudioRecord.getState() == AudioRecord.STATE_INITIALIZED) {
+                return 0;
+            }
+            return -1;
+
+返回负一，构建成功，但是，录制对象初始化失败
+失败的原因是：没有指定权限
+
+06-11 16:31:16.780  1939  2325 E         : Request requires android.permission.RECORD_AUDIO
+
+06-11 16:31:16.785  6077  6077 E AudioRecord: AudioFlinger could not create record track, status: -1
+
+06-11 16:31:16.785  6077  6077 E AudioRecord-JNI: Error creating AudioRecord instance: initialization check failed.
+
+06-11 16:31:16.785  6077  6077 E AudioRecord-Java: [ android.media.AudioRecord ] Error code -20 when initializing native AudioRecord object.
+
+06-11 16:31:16.785  6077  6077 E MainActiviry-Test: pcm reader init error: -1

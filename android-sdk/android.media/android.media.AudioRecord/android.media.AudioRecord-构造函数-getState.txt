@@ -1,0 +1,10 @@
+http://developer.android.com/reference/android/media/AudioRecord.html
+
+构造函数的异常处理和验证工作。
+Class constructor. Though some invalid parameters will result in an IllegalArgumentException exception, other errors do not. Thus you should call getState() immediately after construction to confirm that the object is usable.
+
+构造完成后，应该调用 getState 判断，AudioRecord 对象，是否创建成功
+
+if(mRecordInstance.getState() == AudioRecord.STATE_UNINITIALIZED) {
+    return -1;
+}

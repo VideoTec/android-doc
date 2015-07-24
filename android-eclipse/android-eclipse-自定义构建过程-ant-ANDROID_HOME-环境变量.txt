@@ -1,0 +1,58 @@
+http://blog.csdn.net/zhongkejingwang/article/details/37914219
+
+在“系统变量”下新建一个变量，变量名为ANDROID_HOME，变量值为android_sdk的存放目录
+然后，在系统变量中的Path变量里最前面添加“%ANDROID_HOME%/tools;”
+
+检测配置情况
+确定配置完毕，这样完了之后我们就可以在cmd窗口中执行android命令了
+
+前面我们已经配置好ANDROID_HOME了，下面我们进入cmd，并进入需要ant打包的工程根目录，
+执行命令
+“android update project -p ./”，
+参数p表示路径，用./表示当前路径
+
+-------------------------------------------------
+14:47 2015/6/1
+-------------------------------------------------
+
+android update project -p ./
+
+Updated local.properties
+No project name specified, using project folder name 'animation-everfrost-engine'.
+If you wish to change it, edit the first line of build.xml.
+Added file D:\CoreSDK\trunk\android-demo\animation-everfrost-engine\build.xml
+Updated file D:\CoreSDK\trunk\android-demo\animation-everfrost-engine\proguard-project.txt
+It seems that there are sub-projects. If you want to update them
+please use the --subprojects parameter.
+
+-------------------------------------------------
+14:44 2015/6/1 出现下面错误
+-------------------------------------------------
+
+原因工程目录里有 build.xml 需要删除，再运行
+android update project -p ./
+
+D:\CoreSDK\trunk\android-demo\VideoEffectDemo>android update project -p ./
+
+Updated local.properties
+----------
+build.xml: Failed to find version-tag string. File must be updated.
+In order to not erase potential customizations, the file will not be automatical
+ly regenerated.
+If no changes have been made to the file, delete it manually and run the command
+ again.
+If you have made customizations to the build process, the file must be manually
+updated.
+It is recommended to:
+        * Copy current file to a safe location.
+        * Delete original file.
+        * Run command again to generate a new file.
+        * Port customizations to the new file, by looking at the new rules file
+          located at <SDK>/tools/ant/build.xml
+        * Update file to contain
+              version-tag: custom
+          to prevent file from being rewritten automatically by the SDK tools.
+----------
+Updated file D:\CoreSDK\trunk\android-demo\VideoEffectDemo\proguard-project.txt
+It seems that there are sub-projects. If you want to update them
+please use the --subprojects parameter.

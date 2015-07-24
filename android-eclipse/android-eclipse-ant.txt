@@ -1,0 +1,38 @@
+----------------------------------------------------------------
+http://ant.apache.org/bindownload.cgi
+----------------------------------------------------------------
+
+Apache Ant is a Java library and command-line tool that help building software.
+
+----------------------------------------------------------------
+http://zh.wikipedia.org/wiki/Apache_Ant
+----------------------------------------------------------------
+Apache Ant，
+是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。
+由Apache软件基金会所提供。
+默认情况下，它的buildfile(XML文件)名为build.xml。
+每一个buildfile含有一个<project>和至少一个预设的<target>，这些targets包含许多task elements。
+每一个task element有一个用来被参考的 id ，此id必须是唯一的
+
+build.xml 范例
+
+<?xml version="1.0" ?> 
+<project name="Hello World" default="execute">
+ 
+	<target name="init">
+		<mkdir dir="build/classes"/>                       为构建 做初始化操作
+		<mkdir dir="dist"/>
+	</target>
+	<target name="compile" depends="init">                 编译操作
+		<javac srcdir="src" destdir="build/classes"/>
+	</target>
+ 
+	<target name="compress" depends="compile">              压缩操作
+	        <jar destfile="dist/HelloWorld.jar" basedir="build/classes"  />
+	</target>
+ 
+	<target name="execute" depends="compile">                执行操作
+		<java classname="HelloWorld" classpath="build/classes"/>
+	</target>
+ 
+</project>

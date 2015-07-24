@@ -1,0 +1,19 @@
+public List<Camera.Area> getFocusAreas ()
+
+Added in API level 14
+Gets the current focus areas. Camera driver uses the areas to decide focus.
+
+Before using this API or setFocusAreas(List), apps should call getMaxNumFocusAreas() to know the maximum number of focus areas first. If the value is 0, focus area is not supported.
+
+Each focus area is a rectangle with specified weight. The direction is relative to the sensor orientation, that is, what the sensor sees. The direction is not affected by the rotation or mirroring of setDisplayOrientation(int). Coordinates of the rectangle range from -1000 to 1000. (-1000, -1000) is the upper left point. (1000, 1000) is the lower right point. The width and height of focus areas cannot be 0 or negative.
+
+The weight must range from 1 to 1000. The weight should be interpreted as a per-pixel weight - all pixels in the area have the specified weight. This means a small area with the same weight as a larger area will have less influence on the focusing than the larger area. Focus areas can partially overlap and the driver will add the weights in the overlap region.
+
+A special case of a null focus area list means the driver is free to select focus targets as it wants. For example, the driver may use more signals to select focus areas and change them dynamically. Apps can set the focus area list to null if they want the driver to completely control focusing.
+
+Focus areas are relative to the current field of view (getZoom()). No matter what the zoom level is, (-1000,-1000) represents the top of the currently visible camera frame. The focus area cannot be set to be outside the current field of view, even when using zoom.
+
+Focus area only has effect if the current focus mode is FOCUS_MODE_AUTO, FOCUS_MODE_MACRO, FOCUS_MODE_CONTINUOUS_VIDEO, or FOCUS_MODE_CONTINUOUS_PICTURE.
+
+Returns
+a list of current focus areas

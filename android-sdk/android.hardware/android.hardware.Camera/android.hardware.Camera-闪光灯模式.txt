@@ -1,0 +1,26 @@
+android.Parameters
+
+List<String> getSupportedFlashModes() Gets the supported flash modes
+void setFlashMode(String value) Sets the flash mode.
+String getFlashMode() Gets the current flash mode setting.
+
+----------------------------------------
+所有的闪光灯模式：
+----------------------------------------
+String	FLASH_MODE_AUTO auto
+Flash will be fired automatically when required.
+
+String	FLASH_MODE_OFF off
+Flash will not be fired.
+
+String	FLASH_MODE_ON on
+flash will always be fired during snapshot.
+
+String	FLASH_MODE_RED_EYE eye
+Flash will be fired in red-eye reduction mode.
+
+emission[英][iˈmɪʃn] [美][ɪˈmɪʃən]
+n.排放，辐射；排放物，散发物（尤指气体）；（书刊）发行，发布（通知）
+
+String	FLASH_MODE_TORCH torch
+Constant emission of light during preview, auto-focus and snapshot.

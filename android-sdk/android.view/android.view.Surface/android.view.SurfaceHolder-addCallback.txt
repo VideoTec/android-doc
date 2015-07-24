@@ -1,0 +1,23 @@
+-------------------------
+描述
+-------------------------
+A client may implement this interface to receive information about changes to the surface. 
+
+When used with a SurfaceView, the Surface being held is only available 
+between calls to surfaceCreated(SurfaceHolder) and surfaceDestroyed(SurfaceHolder). 
+
+The Callback is set with SurfaceHolder.addCallback method
+
+-------------------------
+文档
+-------------------------
+public abstract void addCallback (SurfaceHolder.Callback callback)
+
+Added in API level 1
+Add a Callback interface for this holder. There can several Callback interfaces associated with a holder.
+
+-------------------------
+示例
+-------------------------
+        mSurfaceView = (SurfaceView)findViewById(R.id.preview_window2);
+        mSurfaceView.getHolder().addCallback(this);

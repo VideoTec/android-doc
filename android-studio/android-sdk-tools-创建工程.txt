@@ -1,0 +1,7 @@
+SDK Tools Only
+
+These packages provide the basic SDK tools for app development, without an IDE
+提供基本的 SDK 工具，可以独立开发APP，不需要 IDE
+
+主要命令：
+E:\android-sdk-windows\tools\android.bat

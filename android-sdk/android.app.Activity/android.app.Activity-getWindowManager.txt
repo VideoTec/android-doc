@@ -1,0 +1,5 @@
+http://developer.android.com/reference/android/app/Activity.html#getWindowManager()
+
+public WindowManager getWindowManager ()
+
+Retrieve the window manager for showing custom windows.

@@ -1,0 +1,161 @@
+关键部分
+AssetManager assetManager = context.getAssets();
+InputStream in = assetManager.open(filename);
+File outFile = new File(newFileName);
+      byte[] buffer = new byte[1024];
+      int read;
+      while ((read = in.read(buffer)) != -1) {
+        out.write(buffer, 0, read);
+        mProgress += read;
+      }
+      in.close();
+      out.flush();
+      out.close();
+
+  // 复制assert下的文件到sd卡
+  private int copyFile(String filename, Context context,
+      String getAbsolutePath) {
+
+    AssetManager assetManager = context.getAssets();
+    InputStream in = null;
+    OutputStream out = null;
+    try {
+      in = assetManager.open(filename);
+      String newFileName = getAbsolutePath + filename;
+      //有同名文件需要删除，file生成不区分文件名大小写，所以必须删除
+      File outFile = new File(newFileName);
+      if(outFile != null && outFile.exists())   
+               outFile.delete();  
+      
+      out = new FileOutputStream(newFileName);
+      byte[] buffer = new byte[1024];
+      int read;
+      while ((read = in.read(buffer)) != -1) {
+        out.write(buffer, 0, read);
+        mProgress += read;
+      }
+      in.close();
+      in = null;
+      out.flush();
+      out.close();
+      out = null;
+
+    } catch (Exception e) {
+      mInitErrorCode = IVideoEditInit.IEC_IO_FAILED;
+      Log.e("init", InitErrorMessage[mInitErrorCode], e);
+      return mInitErrorCode;
+    }
+
+    return 0;
+  }
+
+
+  
+
+  // 复制assert下的单个文件到sd卡//
+  public int copyOneFileOrDir(String path, Context context,
+      String getAbsolutePath, String filePath) {
+    mInitErrorCode = IVideoEditInit.IEC_OK;
+    AssetManager assetManager = context.getAssets();
+    String assets[] = { filePath };
+    try {
+      if (path != "")
+        assets = assetManager.list(path);
+
+      if (assets.length == 0) {
+        File dirs = new File(getAbsolutePath + path);
+        if (!dirs.exists()) {
+          copyFile(path, context, getAbsolutePath);
+
+        }
+      } else {
+        String themePath = getAbsolutePath + "theme";
+        String filterPath = getAbsolutePath + "filter";
+        String musicPath = getAbsolutePath + "music";
+        // String fontPath = getAbsolutePath + "font";
+        File themedir = new File(themePath);
+        if (!themedir.exists())
+          themedir.mkdir();
+        File filterdir = new File(filterPath);
+        if (!filterdir.exists())
+          filterdir.mkdir();
+        File musicdir = new File(musicPath);
+        if (!musicdir.exists())
+          musicdir.mkdir();
+        // File fontdir = new File(fontPath);
+        // if (!fontdir.exists())
+        // fontdir.mkdir();
+
+        String fullPath = getAbsolutePath + path;
+        File dir = new File(fullPath);
+        if (!dir.exists())
+          dir.mkdir();
+        for (int i = 0; i < assets.length; ++i) {
+          if (path == "") {
+            copyOneFileOrDir(assets[i], context, getAbsolutePath,
+                filePath);
+          } else
+            copyOneFileOrDir(path + "/" + assets[i], context,
+                getAbsolutePath, filePath);
+        }
+      }
+    } catch (IOException ex) {
+
+      mInitErrorCode = IVideoEditInit.IEC_IO_FAILED;
+      Log.e("init", InitErrorMessage[mInitErrorCode], ex);
+      return mInitErrorCode;
+
+    }
+    return 0;
+  }
+
+  // 复制assert下的文件到sd卡
+  public int copyListFileOrDir(String path, Context context,
+      String getAbsolutePath, String onePath) {
+    mInitErrorCode = IVideoEditInit.IEC_OK;
+    String assets[] = context.getResources().getStringArray(
+        R.array.beautify_categories);
+    try {
+      for (int i = 0; i < assets.length; ++i) {
+        String files = "";
+        if (assets[i].indexOf("/") != -1) {
+          files = getAbsolutePath
+              + "/"
+              + assets[i]
+                  .substring(0, assets[i].lastIndexOf("/"));
+        } else
+          files = getAbsolutePath;
+        File dir = new File(files);
+      
+        if (!dir.exists())
+          dir.mkdirs();
+        
+        TemplateUtil.insertNoMediaFile(dir);
+        if (onePath == "") {
+
+          copyFile(assets[i], context, getAbsolutePath);
+        } else {
+          if (assets[i].indexOf(onePath) != -1) {
+
+            if (!new File(getAbsolutePath + "/" + assets[i])
+                .exists()) {
+              copyFile(assets[i], context, getAbsolutePath);
+            }
+          }
+
+        }
+        if (i == assets.length - 1) {
+          saveLocalTemplateRef(mContext, AudioTemplateUtil.AUDIOTEMPLATE_PREF_ASSERTRESULT_SUCC, mLocalVersion);
+        }
+
+      }
+
+    } catch (Exception ex) {
+
+      mInitErrorCode = IVideoEditInit.IEC_IO_FAILED;
+      Log.e("init", InitErrorMessage[mInitErrorCode], ex);
+      return mInitErrorCode;
+
+    }
+    return 0;
+  }

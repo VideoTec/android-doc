@@ -1,0 +1,4 @@
+参考
+E:\doc\Computer software\Android平台\android-sdk\android.content.pm.PackageManager\android.content.pm.PackageManager-permission.txt
+
+E:\doc\Computer software\Android平台\android-使用\设置app的权限.txt

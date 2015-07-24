@@ -1,0 +1,82 @@
+FILE LOCATION:
+res/drawable/filename.xml
+The filename is used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to a StateListDrawable.
+
+RESOURCE REFERENCE:
+In Java: R.drawable.filename
+In XML: @[package:]drawable/filename
+
+StateListDrawable 对象概述
+A StateListDrawable is a drawable object defined in XML that 
+uses a several different images to represent the same graphic, depending on the state of the object. 
+
+For example, a Button widget can exist in one of several different states (pressed, focused, or niether) and, 
+using a state list drawable, you can provide a different background image for each state.
+
+<selector> element 和 <item> element
+You can describe the state list in an XML file. 
+Each graphic is represented by an <item> element inside a single <selector> element. 
+Each <item> uses various attributes to describe the state in which it should be used as the graphic for the drawable.
+
+相关的 XMLAttrs
+android:drawable="@drawable/video_beautify_btn_save_down"
+android:drawable="@drawable/video_beautify_btn_save_normal"
+
+android:state_pressed="true"
+android:state_selected="true"
+android:state_focused="true"
+android:state_hovered="true"
+
+语法：
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:constantSize=["true" | "false"]
+    android:dither=["true" | "false"]
+    android:variablePadding=["true" | "false"] >
+    <item
+        android:drawable="@[package:]drawable/drawable_resource"
+        android:state_pressed=["true" | "false"]
+        android:state_focused=["true" | "false"]
+        android:state_hovered=["true" | "false"]
+        android:state_selected=["true" | "false"]
+        android:state_checkable=["true" | "false"]
+        android:state_checked=["true" | "false"]
+        android:state_enabled=["true" | "false"]
+        android:state_activated=["true" | "false"]
+        android:state_window_focused=["true" | "false"] />
+</selector>
+
+示例：
+video_beautify_btn_save_selector.xml 文件：定义一个按钮的背景
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/video_beautify_btn_save_down" android:state_pressed="true"/>
+    <!-- pressed,enable等多个属性 -->
+    <item android:drawable="@drawable/video_beautify_btn_save_down" android:state_selected="true"/>
+    <item android:drawable="@drawable/video_beautify_btn_save_down" android:state_focused="true"/>
+    <!-- focused -->
+    <item android:drawable="@drawable/video_beautify_btn_save_down" android:state_hovered="true"/>
+    <!-- hovered -->
+    <item android:drawable="@drawable/video_beautify_btn_save_normal"/>
+    <!-- default -->
+
+</selector>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/video_beautify_title_bg"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/video_beautify_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/video_beautify_btn_save_selector" />  这个是一个 video_beautify_btn_save_selector.xml 文件
+        </LinearLayout>

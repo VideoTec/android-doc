@@ -1,0 +1,38 @@
+----------------------------------------
+文档
+----------------------------------------
+FILE LOCATION:
+res/values/filename.xml
+The filename is arbitrary. The <string-array> element's name will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to an array of Strings.
+
+RESOURCE REFERENCE:
+In Java: R.array.string_array_name
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="string_array_name">
+        <item>text_string</item>
+    </string-array>
+</resources>
+
+A string array is a simple resource that is referenced using the value provided in the name attribute (not the name of the XML file). 
+As such, you can combine string array resources with other simple resources in the one XML file, under one <resources> element.
+----------------------------------------
+例子
+----------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+    </string-array>
+</resources>
+
+代码中使用，android.content.res.Resources：
+Resources res = getResources();  
+String[] planets = res.getStringArray(R.array.planets_array);

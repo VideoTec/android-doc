@@ -1,0 +1,19 @@
+MarkerPosition 
+
+相关 AudioTrack 接口
+getNotificationMarkerPosition()
+setNotificationMarkerPosition(int markerInFrames)
+
+setPlaybackPositionUpdateListener(AudioTrack.OnPlaybackPositionUpdateListener listener)
+setPlaybackPositionUpdateListener(AudioTrack.OnPlaybackPositionUpdateListener listener, Handler handler)
+
+markerInFrames
+marker position in wrapping frame units similar to getPlaybackHeadPosition(), or zero to disable the marker. 
+To set a marker at a position which would appear as zero due to wraparound [美]['ræpəˌraʊnd], 包着的
+a workaround is to use a non-zero position near zero, such as -1 or 1.
+
+第一点：frames  是 samples
+第二点：单，双声道的值不会变，即， duration * sampleRate
+第三点：这个值是绝对值，（从 AudioTrack.play 开始算？）
+        可以用 getPlaybackHeadPosition 来计算，相对值
+        tmpAudioTrack.getPlaybackHeadPosition() + (duration * sampleRate)

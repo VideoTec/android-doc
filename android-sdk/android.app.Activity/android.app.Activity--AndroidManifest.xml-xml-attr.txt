@@ -1,0 +1,67 @@
+示例列表
+
+参考
+E:\doc\Computer software\Android平台\android-xml\android-xml-manifest\android-xml-manifest-activity.txt
+file:///D:/android-sdk-windows/docs/guide/topics/manifest/activity-element.html
+
+        <activity
+            android:name=".RecordPreview"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_record_preview"
+			android:screenOrientation="landscape" 会强制屏幕横过来，即使禁止旋转
+			                                       The orientation of the activity's display on the device.
+												   "unspecified" The default value. The system chooses the orientation.
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+orientation[英][ˌɔ:riənˈteɪʃn] [美][ˌɔriɛnˈteʃən, -ən-, ˌor-] n.方向，定位，取向
+landscape[英][ˈlændskeɪp] [美][ˈlændˌskep] n.风景；风景画；乡村风景画；地形
+portrait[英][ˈpɔ:treɪt] [美][ˈpɔ:rtrət] n.肖像，肖像画
+
+<activity android:allowEmbedded=["true" | "false"]
+          android:allowTaskReparenting=["true" | "false"]
+          android:alwaysRetainTaskState=["true" | "false"]
+          android:autoRemoveFromRecents=["true" | "false"]
+          android:banner="drawable resource"
+          android:clearTaskOnLaunch=["true" | "false"]
+          android:configChanges=["mcc", "mnc", "locale",
+                                 "touchscreen", "keyboard", "keyboardHidden",
+                                 "navigation", "screenLayout", "fontScale", "uiMode",
+                                 "orientation", "screenSize", "smallestScreenSize"]
+          android:documentLaunchMode=["intoExisting", "always",
+                                  "none", "never"]
+          android:enabled=["true" | "false"]
+          android:excludeFromRecents=["true" | "false"]
+          android:exported=["true" | "false"]
+          android:finishOnTaskLaunch=["true" | "false"]
+          android:hardwareAccelerated=["true" | "false"]
+          android:icon="drawable resource"
+          android:label="string resource"
+          android:launchMode=["multiple" | "singleTop" |
+                              "singleTask" | "singleInstance"]
+          android:maxRecents="integer"
+          android:multiprocess=["true" | "false"]
+          android:name="string"
+          android:noHistory=["true" | "false"]  
+          android:parentActivityName="string" 
+          android:permission="string"
+          android:process="string"
+          android:relinquishTaskIdentity=["true" | "false"]
+          android:screenOrientation=["unspecified" | "behind" |
+                                     "landscape" | "portrait" |
+                                     "reverseLandscape" | "reversePortrait" |
+                                     "sensorLandscape" | "sensorPortrait" |
+                                     "userLandscape" | "userPortrait" |
+                                     "sensor" | "fullSensor" | "nosensor" |
+                                     "user" | "fullUser" | "locked"]
+          android:stateNotNeeded=["true" | "false"]
+          android:taskAffinity="string"
+          android:theme="resource or theme"
+          android:uiOptions=["none" | "splitActionBarWhenNarrow"]
+          android:windowSoftInputMode=["stateUnspecified",
+                                       "stateUnchanged", "stateHidden",
+                                       "stateAlwaysHidden", "stateVisible",
+                                       "stateAlwaysVisible", "adjustUnspecified",
+                                       "adjustResize", "adjustPan"] >   
+    . . .
+</activity>

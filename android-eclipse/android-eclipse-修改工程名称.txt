@@ -1,0 +1,17 @@
+14:58 2015/5/19
+com_sea_monster_video_jniinterface_VideoConvert
+改成
+com_animation_everfrost_engine
+
+Java_com_sea_1monster_video_jniinterface_VideoConvert_register
+转成
+Java_com_animation_everfrost_engine_register
+
+第一步，修改工程名称为 animation-everfrost-engine 在工程名上按F2
+第二步，修改包名
+        com.sea_monster.video.jniinterface 改成 com.animation.everfrost.engine
+		重命令时出错：characters which are not supported by the "GBK" character encoding.
+		解决方法：右击 工程名 Resource Text file encoding 改成 utf-8
+		com.sea_monster.video.record 改成 com.animation.everfrost.record
+		com.sea_monster.video.utils 改成 com.animation.everfrost.utils
+		com.sea_monster.video.view 改成 com.animation.everfrost.view

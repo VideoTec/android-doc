@@ -1,0 +1,28 @@
+http://developer.android.com/reference/android/view/LayoutInflater.html
+
+java.lang.Object
+   ↳	android.view.LayoutInflater
+   
+   inflater[英][ɪnf'leɪtər] [美][ɪnf'leɪtər] [体]充气机
+   
+Instantiates a layout XML file into its corresponding View objects. It is never used directly. Instead, use getLayoutInflater() or getSystemService(String) to retrieve a standard LayoutInflater instance that is already hooked up to the current context and correctly configured for the device you are running on. For example:
+
+   LayoutInflater inflater = (LayoutInflater)context.getSystemService
+      (Context.LAYOUT_INFLATER_SERVICE);
+
+To create a new LayoutInflater with an additional LayoutInflater.Factory for your own views, you can use cloneInContext(Context) to clone an existing ViewFactory, and then call setFactory(LayoutInflater.Factory) on it to include your Factory.
+
+For performance reasons, view inflation relies heavily on pre-processing of XML files that is done at build time. Therefore, it is not currently possible to use LayoutInflater with an XmlPullParser over a plain XML file at runtime; it only works with an XmlPullParser returned from a compiled resource (R.something file.)
+
+---------------------------------------
+用法示例
+---------------------------------------
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.beside_broadcast_image_attachment_item, null);
+            holder.image = (ImageView) convertView.findViewById(R.id.beside_broadcast_attachment_thumb_id);
+            holder.gif_image_logo = (ImageView) convertView.findViewById(R.id.beside_broadcast_attachment_type_gif_id);
+            convertView.setTag(holder);
+        } 

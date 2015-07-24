@@ -1,0 +1,16 @@
+android:orientation
+
+horizontal[英][ˌhɒrɪˈzɒntl] [美][ˌhɔ:rəˈzɑ:ntl]
+n.水平线；水平面；水平位置；水平的物体
+
+Should the layout be a column or a row? Use "horizontal" for a row, "vertical" for a column. The default is horizontal.
+
+Must be one of the following constant values.
+
+Constant	Value	Description
+horizontal	0	Defines an horizontal widget.
+vertical	1	Defines a vertical widget.
+This corresponds to the global attribute resource symbol orientation.
+
+Related Methods
+setOrientation(int)

@@ -1,0 +1,54 @@
+------------------------------------------------------------
+第一步：先在工程目录里，添加 copyjar.xml (ant 脚本)
+------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project">
+    <description>
+            This is a custom Ant build file which contains a target that
+            package the web application as a deployable WAR file.
+    </description>
+    <target name="makeWAR" description="Bundles the application as a WAR file">
+        <war destfile="UploadServlet30.war"
+                basedir="WebContent"
+                needxmlfile="false">
+        </war>
+    </target>
+</project>
+
+------------------------------------------------------------
+第二步：刷新工程，添加自定义 builder
+------------------------------------------------------------
+Package Explorer 视图中的项目并单击 Properties
+（或者：Eclipse菜单->Project->Properties）
+
+展开 Builders 并单击 New，向项目添加一个新的构建器MyAntBuilder
+
+------------------------------------------------------------
+第三步：为新建的 builder 指定
+------------------------------------------------------------
+指定 Buildfile: 
+${workspace_loc:/animation-everfrost-engine/CopyJar.xml}
+
+指定 Base Directory: 
+${workspace_loc:/animation-everfrost-engine}
+
+build.xml 示例 copy 是一种 ant task
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project">
+    <target name="copyJar" description="copyJar to lib folder">
+        <copy file="bin/animation-everfrost-engine.jar"
+              todir="../VideoEffectDemo/libs/"
+              overwrite="true" />
+    </target>
+</project>
+
+------------------------------------------------------------
+指定 执行目标 及 时间点
+------------------------------------------------------------
+After a "Clean" —— 每当我们在项目上执行一个清除操作时，目标就会运行。
+Manual Build —— 在自动构建被关闭的时候使用该选项。每当我们执行手动构建时，指定的目标就将运行。
+Auto-Build —— 每当执行自动构建时，目标就会运行。一般来说，就是每当我们保存 Java 文件时。
+During a "Clean" —— 该选项与 After a "Clean" 
+
+9:32 2015/6/2
+怎么指定 生成 jar 后，再执行 target?

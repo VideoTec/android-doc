@@ -1,0 +1,36 @@
+在 res/value 文件夹里添加 xxx.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 公用标题栏  -->
+	<color name="titlebar_titleview_text_color">#ff333333</color>
+	<color name="titlebar_titleview_bg_color">#ff19c390</color>
+	<color name="titlebar_titleview_gray_color">#ff909090</color>
+	<color name="empty_no_data_text_color">#ffacadaf</color>
+	<color name="view_bg">#ffe7e9eb</color>
+	<color name="main_orange_color">#ffff6ab8</color>
+	<color name="main_black_color">#ffc1c4c6</color>
+    
+</resources>
+
+第一：
+在代码中的使用方法
+
+第二：
+在 layout.xml 中的使用方法
+        <TextView
+            android:id="@+id/camera_delay_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:shadowColor="@color/video_record_delay_text_color"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="8"
+            android:textColor="@color/video_record_delay_text_color"
+            android:textSize="@dimen/px_to_dip_150"
+            android:textStyle="bold"
+            android:visibility="gone" />  

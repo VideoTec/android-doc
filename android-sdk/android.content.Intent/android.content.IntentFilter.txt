@@ -1,0 +1,34 @@
+http://developer.android.com/reference/android/content/IntentFilter.html
+
+java.lang.Object
+   ↳	android.content.IntentFilter
+
+Structured description of Intent values to be matched. An IntentFilter can match against actions, categories, and data (either via its type, scheme, and/or path) in an Intent. It also includes a "priority" value which is used to order multiple matching filters.
+
+IntentFilter objects are often created in XML as part of a package's AndroidManifest.xml file, using intent-filter tags.
+
+There are three Intent characteristics you can filter on: the action, data, and categories. For each of these characteristics you can provide multiple possible matching values (via addAction(String), addDataType(String), addDataScheme(String), addDataSchemeSpecificPart(String, int), addDataAuthority(String, String), addDataPath(String, int), and addCategory(String), respectively). For actions, the field will not be tested if no values have been given (treating it as a wildcard); if no data characteristics are specified, however, then the filter will only match intents that contain no data.
+
+The data characteristic is itself divided into three attributes: type, scheme, authority, and path. Any that are specified must match the contents of the Intent. If you specify a scheme but no type, only Intent that does not have a type (such as mailto:) will match; a content: URI will never match because they always have a MIME type that is supplied by their content provider. Specifying a type with no scheme has somewhat special meaning: it will match either an Intent with no URI field, or an Intent with a content: or file: URI. If you specify neither, then only an Intent with no data or type will match. To specify an authority, you must also specify one or more schemes that it is associated with. To specify a path, you also must specify both one or more authorities and one or more schemes it is associated with.
+
+Developer Guides
+
+For information about how to create and resolve intents, read the Intents and Intent Filters developer guide.
+
+Filter Rules
+
+A match is based on the following rules. Note that for an IntentFilter to match an Intent, three conditions must hold: the action and category must match, and the data (both the data type and data scheme+authority+path if specified) must match (see match(ContentResolver, Intent, boolean, String) for more details on how the data fields match).
+
+Action matches if any of the given values match the Intent action; if the filter specifies no actions, then it will only match Intents that do not contain an action.
+
+Data Type matches if any of the given values match the Intent type. The Intent type is determined by calling resolveType(ContentResolver). A wildcard can be used for the MIME sub-type, in both the Intent and IntentFilter, so that the type "audio/*" will match "audio/mpeg", "audio/aiff", "audio/*", etc. Note that MIME type matching here is case sensitive, unlike formal RFC MIME types! You should thus always use lower case letters for your MIME types.
+
+Data Scheme matches if any of the given values match the Intent data's scheme. The Intent scheme is determined by calling getData() and getScheme() on that URI. Note that scheme matching here is case sensitive, unlike formal RFC schemes! You should thus always use lower case letters for your schemes.
+
+Data Scheme Specific Part matches if any of the given values match the Intent's data scheme specific part and one of the data schemes in the filter has matched the Intent, or no scheme specific parts were supplied in the filter. The Intent scheme specific part is determined by calling getData() and getSchemeSpecificPart() on that URI. Note that scheme specific part matching is case sensitive.
+
+Data Authority matches if any of the given values match the Intent's data authority and one of the data schemes in the filter has matched the Intent, or no authories were supplied in the filter. The Intent authority is determined by calling getData() and getAuthority() on that URI. Note that authority matching here is case sensitive, unlike formal RFC host names! You should thus always use lower case letters for your authority.
+
+Data Path matches if any of the given values match the Intent's data path and both a scheme and authority in the filter has matched against the Intent, or no paths were supplied in the filter. The Intent authority is determined by calling getData() and getPath() on that URI.
+
+Categories match if all of the categories in the Intent match categories given in the filter. Extra categories in the filter that are not in the Intent will not cause the match to fail. Note that unlike the action, an IntentFilter with no categories will only match an Intent that does not have any categories.

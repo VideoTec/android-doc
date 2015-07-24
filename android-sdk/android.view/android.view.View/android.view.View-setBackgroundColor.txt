@@ -1,0 +1,26 @@
+    public void setBackgroundColor(int color) {
+        if (mBackground instanceof ColorDrawable) {
+            ((ColorDrawable) mBackground).setColor(color);
+        } else {
+            setBackground(new ColorDrawable(color));
+        }
+    }
+
+用法：
+ImageView.setBackgroundColor(android.graphics.Color.parseColor("#ffffff"));
+ImageView.setBackgroundColor(Color.rgb(255, 0, 0));
+ImageView.setBackgroundColor(Color.RED);
+
+颜色4个字节从高到低对应 不透明度 红 绿 蓝 四个分量，0xFFFFFF对应不透明度的分量是0，
+所以后面不管是什么背景都是透明的。
+0xFFFFFFFF就是白色了，
+0x80FFFFFF就是半透明的白色。
+Color.rgb()会自动把不透明读设成255，
+而解析字符串颜色"#FFFFFF"也能判断出只给出了三个分量会自动把不透明度设成255。
+而对于整数0xFFFFFF和0x00FFFFFF是一样的，是完全透明的
+
+详见：android.graphics.Color
+
+下面都是什么结果？
+iView.setBackgroundColor(Color.red(123)); 详见：android.graphics.Color
+imageView.setBackgroundColor(0xffffff);  0xffffff 这个值，透明度为 0

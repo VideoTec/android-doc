@@ -1,0 +1,32 @@
+properties for xxx
+
+properties -> android -> project build target
+
+Target Name   Vendor                        Platform   API-Level
+Android 4.4W  Android Open Source Project   4.4W       20
+
+使用 Android SDK Manager 下载相应的 SDK Platform，会添加到这个列表里。
+注意，下载新的sdk后需要，重新启动 eclipse，才能选择新的 sdk
+
+http://stackoverflow.com/questions/3342739/how-to-change-target-build-on-android-project
+Right click the project and click "Properties". 
+Then select "Android" from the tree on the left. 
+You can then select the target version on the right.
+
+android.bat update project --path .  --target "android-8"
+
+http://stackoverflow.com/questions/8938348/difference-between-build-target-sdk-in-eclipse-and-androidtargetsdkversion-in
+android:minSdkVersion in manifest file means that market will filter devices with lower sdk.
+
+target=android-x in project properties file means that Eclipse will not allow use methods or classes from sdk higher than x. It will show compiler errors.
+
+You can use it like this: provide min version in manifest - depending on your app critical features. Set the same value to project properties. Then, if you want use somewhere APIs from higher SDKs - raise up value in project properties, and wrap code with check if device API can do this code:
+
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1)
+{
+    // here you can use APIs, that appears in Android 2.1
+}
+
+参考
+E:\doc\Computer software\Android平台\android-eclipse\android-eclipse-工程文件-project.properties.txt
+E:\doc\Computer software\Android平台\android-xml\android-xml-manifest\android-xml-manifest-uses-sdk.txt

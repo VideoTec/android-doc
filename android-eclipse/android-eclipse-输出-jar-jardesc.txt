@@ -1,0 +1,7 @@
+http://www.codejava.net/ides/eclipse/how-to-create-jar-file-in-eclipse
+
+*.jardesc 文件解释：
+the description of this JAR in the workspace
+
+*.jardesc 文件右击：
+Create JAR

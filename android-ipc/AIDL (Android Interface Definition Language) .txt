@@ -1,0 +1,1 @@
+AIDL (Android Interface Definition Language)是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(IPC)的代码

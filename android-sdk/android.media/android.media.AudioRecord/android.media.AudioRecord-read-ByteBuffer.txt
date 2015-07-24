@@ -1,0 +1,15 @@
+读取后的 ByteBuffer
+
+1.
+that the value returned by position() on this buffer is unchanged after a call to this method.
+
+2.
+读取其中的数据时，需要先 flip 吗？           不需要
+读取完后，再用于 read 调用时，需要 reset吗？ 依据，用户怎么处理的，这个Buffer对象。
+
+3. 猜测
+AudioRecord 的 read - bytebuffer 版本，
+对输入的 ByteBuffer 参数，直接用于JNI层，
+不对其做，ByteBuffer，相关的操作（clear, flip 等等）
+
+clear, flip 等等操作，也不会影响，read 函数。

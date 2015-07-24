@@ -1,0 +1,66 @@
+动画开始的时间点
+
+什么时候自动开始动画？
+父View调用 invalidated 的时候会调用设置的动画
+
+----------------------------------------------
+public void postInvalidateOnAnimation ()
+----------------------------------------------
+
+Added in API level 16
+Cause an invalidate to happen on the next animation time step, typically the next display frame.
+
+This method can be invoked from outside of the UI thread only when this View is attached to a window.
+
+----------------------------------------------
+public void postInvalidateOnAnimation (int left, int top, int right, int bottom)
+----------------------------------------------
+
+Added in API level 16
+Cause an invalidate of the specified area to happen on the next animation time step, typically the next display frame.
+
+This method can be invoked from outside of the UI thread only when this View is attached to a window.
+
+Parameters
+left	The left coordinate of the rectangle to invalidate.
+top	The top coordinate of the rectangle to invalidate.
+right	The right coordinate of the rectangle to invalidate.
+bottom	The bottom coordinate of the rectangle to invalidate.
+
+----------------------------------------------
+public void invalidate (Rect dirty)
+----------------------------------------------
+
+Added in API level 1
+Mark the area defined by dirty as needing to be drawn. If the view is visible, onDraw(android.graphics.Canvas) will be called at some point in the future.
+
+This must be called from a UI thread. To call from a non-UI thread, call postInvalidate().
+
+WARNING: In API 19 and below, this method may be destructive to dirty.
+
+Parameters
+dirty	the rectangle representing the bounds of the dirty region
+
+----------------------------------------------
+public void invalidate (int l, int t, int r, int b)
+----------------------------------------------
+
+Added in API level 1
+Mark the area defined by the rect (l,t,r,b) as needing to be drawn. The coordinates of the dirty rect are relative to the view. If the view is visible, onDraw(android.graphics.Canvas) will be called at some point in the future.
+
+This must be called from a UI thread. To call from a non-UI thread, call postInvalidate().
+
+Parameters
+l	the left position of the dirty region
+t	the top position of the dirty region
+r	the right position of the dirty region
+b	the bottom position of the dirty region
+
+----------------------------------------------
+public void invalidate ()
+----------------------------------------------
+
+Added in API level 1
+Invalidate the whole view. If the view is visible, onDraw(android.graphics.Canvas) will be called at some point in the future.
+
+This must be called from a UI thread. To call from a non-UI thread, call postInvalidate()

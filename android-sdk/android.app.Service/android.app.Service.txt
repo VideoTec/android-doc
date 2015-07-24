@@ -1,0 +1,28 @@
+http://developer.android.com/reference/android/app/Service.html
+
+java.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+ 	 	   ↳	android.app.Service
+
+Known Direct Subclasses
+AbstractInputMethodService, 
+AccessibilityService, 
+CarrierMessagingService, 
+DreamService, 
+HostApduService, 
+IntentService, 
+JobService, 
+MediaBrowserService, MediaRouteProviderService, 
+NotificationCompatSideChannelService, NotificationListenerService, and 8 others.
+
+Known Indirect Subclasses
+InputMethodService
+
+-------------------------------------------------------------------
+概述
+-------------------------------------------------------------------
+
+A Service is an application component representing either an application's desire to perform a longer-running operation while not interacting with the user or to supply functionality for other applications to use. Each service class must have a corresponding <service> declaration in its package's AndroidManifest.xml. Services can be started with Context.startService() and Context.bindService().
+
+Note that services, like other application objects, run in the main thread of their hosting process. This means that, if your service is going to do any CPU intensive (such as MP3 playback) or blocking (such as networking) operations, it should spawn its own thread in which to do that work. More information on this can be found in Processes and Threads. The IntentService class is available as a standard implementation of Service that has its own thread where it schedules its work to be done.

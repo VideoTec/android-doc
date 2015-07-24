@@ -1,0 +1,34 @@
+public abstract PackageInfo getPackageInfo (String packageName, int flags)
+
+Added in API level 1
+Retrieve overall information about an application package that is installed on the system.
+
+Throws PackageManager.NameNotFoundException if a package with the given name can not be found on the system.
+
+Parameters
+
+packageName
+The full name (i.e. com.google.apps.contacts) of the desired package.
+
+flags
+Additional option flags. Use any combination of GET_ACTIVITIES, GET_GIDS, GET_CONFIGURATIONS, GET_INSTRUMENTATION, GET_PERMISSIONS, GET_PROVIDERS, GET_RECEIVERS, GET_SERVICES, GET_SIGNATURES, GET_UNINSTALLED_PACKAGES to modify the data returned.
+
+Returns
+Returns a PackageInfo object containing information about the package. If flag GET_UNINSTALLED_PACKAGES is set and if the package is not found in the list of installed applications, the package information is retrieved from the list of uninstalled applications (which includes installed applications as well as applications with data directory i.e. applications which had been deleted with DONT_DELETE_DATA flag set).
+
+Throws
+PackageManager.NameNotFoundException
+
+----------------------------------
+PackageManager getPackageManager 例子
+----------------------------------
+PackageManager manager = this.getPackageManager();
+try {
+PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+appVersion = info.versionName; // 版本名
+} catch (NameNotFoundException e)
+ {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+appVersion 就是从配置文件取出的版本名，versionCode同理

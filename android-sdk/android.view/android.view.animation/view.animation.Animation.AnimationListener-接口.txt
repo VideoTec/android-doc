@@ -1,0 +1,34 @@
+静态接口
+
+repetition[英][ˌrepəˈtɪʃn] [美][ˌrɛpɪˈtɪʃən] 
+n.重复，反复；背诵；复制品，副本；[乐]复唱，复奏，重奏
+
+public static interface Animation.AnimationListener
+
+An animation listener receives notifications from an animation.
+Notifications indicate animation related events, 
+such as the end or the repetition of the animation.
+
+三个方法
+
+public abstract void onAnimationEnd (Animation animation)
+
+Added in API level 1
+Notifies the end of the animation. This callback is not invoked for animations with repeat count set to INFINITE.
+
+Parameters
+animation	The animation which reached its end.
+public abstract void onAnimationRepeat (Animation animation)
+
+Added in API level 1
+Notifies the repetition of the animation.
+
+Parameters
+animation	The animation which was repeated.
+public abstract void onAnimationStart (Animation animation)
+
+Added in API level 1
+Notifies the start of the animation.
+
+Parameters
+animation	The started animation.

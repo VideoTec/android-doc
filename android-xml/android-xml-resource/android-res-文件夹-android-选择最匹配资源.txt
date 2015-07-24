@@ -1,0 +1,25 @@
+参考
+http://developer.android.com/guide/topics/resources/providing-resources.html
+
+How Android Finds the Best-matching Resource
+
+When you request a resource for which you provide alternatives, Android selects which alternative resource to use at runtime, depending on the current device configuration. To demonstrate how Android selects an alternative resource, assume the following drawable directories each contain different versions of the same images:
+
+drawable/
+drawable-en/
+drawable-fr-rCA/
+drawable-en-port/
+drawable-en-notouch-12key/
+drawable-port-ldpi/
+drawable-port-notouch-12key/
+
+
+And assume the following is the device configuration:
+
+Locale = en-GB 
+Screen orientation = port 
+Screen pixel density = hdpi 
+Touchscreen type = notouch 
+Primary text input method = 12key
+
+By comparing the device configuration to the available alternative resources, Android selects drawables from drawable-en-port.

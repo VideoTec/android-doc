@@ -1,0 +1,7 @@
+右键工程，属性里有
+
+Resouce 页面，有下列信息
+
+Path: /sea-monster-video
+Type: Project
+Location: d:\03Android\sea-monster-video

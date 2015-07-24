@@ -1,0 +1,5 @@
+public Camera.Parameters getParameters ()
+
+Returns the current settings for this Camera service. 
+If modifications are made to the returned Parameters, 
+they must be passed to setParameters(Camera.Parameters) to take effect.

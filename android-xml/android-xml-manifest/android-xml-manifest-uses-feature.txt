@@ -1,0 +1,11 @@
+<manifest> </manifest> 标签下的单独字段
+
+<uses-feature
+  android:name="string"
+  android:required=["true" | "false"]
+  android:glEsVersion="integer" />
+  
+  
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" />
+<uses-feature android:name="android.hardware.camera.autofocus" />

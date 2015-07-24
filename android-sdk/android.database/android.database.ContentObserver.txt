@@ -1,0 +1,17 @@
+http://developer.android.com/reference/android/database/ContentObserver.html
+
+
+java.lang.Object
+   ↳	android.database.ContentObserver
+
+Known Direct Subclasses
+AbstractCursor.SelfContentObserver, Loader.ForceLoadContentObserver
+
+Receives call backs for changes to content. Must be implemented by objects which are added to a ContentObservable.
+
+使用方式：
+http://www.cnblogs.com/linjiqin/archive/2011/05/28/2061396.html
+android.content.ContentResolver registerContentObserver 
+如果ContentProvider的访问者需要得到数据变化通知，
+必须使用ContentObserver对数据（数据采用uri描述）进行监听，
+当监听到数据变化通知时，系统就会调用ContentObserver的onChange()方法

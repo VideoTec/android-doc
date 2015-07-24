@@ -1,0 +1,51 @@
+public int getState ()
+
+acquired[英][ə'kwaɪəd] [美][əˈkwaɪrd]
+v.获得( acquire的过去式和过去分词 )；（使用探测器）捕获（目标）；取得；（计算机、机器人等）捕捉
+Added in API level 3
+
+Returns the state of the AudioRecord instance. 
+This is useful after the AudioRecord instance has been created to check if it was initialized properly. 
+This ensures that the appropriate hardware resources have been acquired.
+
+两种状态，初始化状态，未初始状态
+    /**
+     *  indicates AudioRecord state is not successfully initialized.
+     */
+    public static final int STATE_UNINITIALIZED = 0;
+    /**
+     *  indicates AudioRecord state is ready to be used
+     */
+    public static final int STATE_INITIALIZED   = 1;
+
+
+         /**
+         * 初始化安卓的AudioRecord用于采集音频数据
+         * @return
+         */
+        public int init(){
+            int bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+            if(bufferSize < 1024) bufferSize = 1024;
+            
+            mRecordInstance = new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, 
+                    AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, bufferSize);
+            
+            if(mRecordInstance.getState() == AudioRecord.STATE_UNINITIALIZED){
+                Log.e(TAG,"AudioRecord.STATE_UNINITIALIZED");
+                return -1;
+            }
+            if(mRecordInstance.getAudioFormat()==AudioFormat.ENCODING_PCM_16BIT){
+                Log.i(TAG,"Audio data format: PCM 16 bit per sample ");
+            }else{
+                Log.e(TAG,"unsupported Audio Format " +mRecordInstance.getAudioFormat());
+                return -1;
+            }
+            if(mRecordInstance.getChannelConfiguration()==AudioFormat.CHANNEL_IN_MONO){
+                Log.i(TAG,"CHANNEL_IN_MONO ");
+            }else{
+                Log.e(TAG,"unsupported Channel Configuration " +mRecordInstance.getChannelConfiguration());
+                return -1;
+            }
+            
+            return bufferSize;
+        }

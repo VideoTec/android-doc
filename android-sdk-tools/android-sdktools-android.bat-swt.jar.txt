@@ -1,0 +1,11 @@
+命令行： E:\android-sdk-windows\tools\android.bat
+最终会调用： swt.jar  环境变量 ANDROID_SWT 指定 swt.jar 的路径
+
+解释：
+SWT: The Standard Widget Toolkit
+SWT is an open source widget toolkit for Java designed to provide efficient, 
+portable access to the user-interface facilities of the operating systems on which it is implemented.
+
+路径：
+E:\android-sdk-windows\tools\lib\x86\swt.jar
+E:\android-sdk-windows\tools\lib\x86_64\swt.jar

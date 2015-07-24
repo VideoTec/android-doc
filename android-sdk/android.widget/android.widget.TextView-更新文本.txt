@@ -1,0 +1,13 @@
+9:57 2015/5/20
+在工作线程里，调用 setText 运行时异常。
+
+参考
+http://stackoverflow.com/questions/9884246/how-to-set-text-of-text-view-in-another-thread
+http://stackoverflow.com/questions/6049882/how-to-textview-settext-from-thread
+http://practicaldroid.blogspot.com/2012/11/how-to-update-ui-from-different-thread.html
+
+textView.post(new Runnable() {
+    public void run() {
+        textView.setText(yourText);
+    } 
+}

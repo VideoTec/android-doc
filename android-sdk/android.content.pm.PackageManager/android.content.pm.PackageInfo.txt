@@ -1,0 +1,9 @@
+http://developer.android.com/reference/android/content/pm/PackageInfo.html
+
+
+java.lang.Object
+   ↳	android.content.pm.PackageInfo
+   
+Overall information about the contents of a package. 
+This corresponds to all of the information collected from AndroidManifest.xml.
+

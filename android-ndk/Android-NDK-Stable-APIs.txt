@@ -1,0 +1,49 @@
+This is the list of stable APIs/ABIs exposed by the Android NDK.
+
+For example, 
+to use system library "Foo", you would include a header like <foo.h> in your code, 
+then tell the build system that your native module needs to link to /system/lib/libfoo.so at load-time by adding the following line to your Android.mk file:
+
+LOCAL_LDLIBS := -lfoo
+
+Note that the build system automatically links the C library, the Math library and the C++ support library to your native code, there is no need to list them in a LOCAL_LDLIBS line.
+
+There are several "API Levels" defined. Each API level corresponds to a given Android system platform release. The following levels are currently supported:
+
+  android-3      -> Official Android 1.5 system images
+  The C Library                   automatically links your native modules to the C library
+                                  the Android C library includes support for pthread (-lpthread)
+                                  the Android C library includes support for real-time extensions (-lrt)
+  The Math Library                the math library(-lm) is automatically linked to your native modules at build time
+  C++ Library                     The C++ support library (-lstdc++) is automatically linked to your native modules
+
+  Android-specific Log Support    LOCAL_LDLIBS := -llog
+  ZLib Compression Library        LOCAL_LDLIBS := -lz
+  Dynamic Linker Library          LOCAL_LDLIBS := -ldl
+  
+  android-4      -> Official Android 1.6 system images
+  The OpenGL ES 1.x Library  LOCAL_LDLIBS := -lGLESv1_CM
+
+  android-6      -> Official Android 2.0.1 system images
+  android-7      -> Official Android 2.1 system images
+  android-5      -> Official Android 2.0 system images
+  The OpenGL ES 2.0 Library  LOCAL_LDLIBS := -lGLESv2
+
+  android-8      -> Official Android 2.2 system images
+  The 'jnigraphics' Library  LOCAL_LDLIBS += -ljnigraphics
+  
+  android-9      -> Official Android 2.3 system images
+  The EGL graphics library             LOCAL_LDLIBS += -lEGL
+  The OpenSL ES native audio Library   LOCAL_LDLIBS += -lOpenSLES
+  The Android native application APIs  LOCAL_LDLIBS += -landroid
+                                       Starting from API level 9, it is possible to entirely write an Android application with native code 
+                                       (i.e. without any Java)
+  
+  android-14     -> Official Android 4.0 system images
+  The OpenMAX AL native multimedia library  LOCAL_LDLIBS += -lOpenMAXAL
+  The OpenSL ES native audio library
+  
+  android-18     -> Official Android 4.3 system images
+  The OpenGL ES 3.0 Library  LOCAL_LDLIBS := -lGLESv3
+
+Note that android-6 and android-7 are the same as android-5 for the NDK, i.e. they provide exactly the same native ABIs!

@@ -1,0 +1,8 @@
+12-30 15:50:36.075: E/libOpenSLES(22245): Error (-2147483648) encountered while prefetching
+#define ERROR_PLAYER_PREFETCH_d \
+        "Error (%d) encountered while prefetching"
+这个错误出现在下面的源文件里：
+http://omapzoom.org/?p=platform/frameworks/wilhelm.git;a=blob;f=src/android/AudioPlayer_to_android.cpp;h=c3244bb4ef9bab7f18c4e911e4647928801a2afb;hb=HEAD
+static void sfplayer_handlePrefetchEvent(int event, int data1, int data2, void* user)
+case android::GenericPlayer::kEventPrepared:
+SL_LOGE(ERROR_PLAYER_PREFETCH_d, data1);

@@ -1,0 +1,83 @@
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe
+aapt即Android Asset Packaging Tool , 
+在SDK的build-tools目录下. 
+该工具可以查看, 创建, 更新ZIP格式的文档附件(zip, jar, apk). 
+也可将资源文件编译成二进制文件.
+
+在一个APK文件中，除了有代码文件之外，还有很多资源文件。
+这些资源文件是通过Android资源打包工具aapt（Android Asset Package Tool）打包到APK文件里面的
+
+1）将XML资源文件从文本格式编译成二进制格式解决了空间占用以及解析效率的问题
+2）根据资源ID来快速找到对应的资源
+
+aapt在编译和打包资源的过程中，会执行以下两个额外的操作
+1）赋予每一个非assets资源一个ID值，这些ID值以常量的形式定义在一个R.java文件中
+2）生成一个resources.arsc文件，用来描述那些具有ID值的资源的配置信息，它的内容就相当于是一个资源索引表。
+
+尽管你可能没有直接使用过aapt工具, 
+但是build scripts和IDE插件会使用这个工具打包apk文件构成一个Android 应用程序.
+在使用aapt之前需要在环境变量里面配置SDK-tools路径，或者是路径+aapt的方式进入aapt
+
+在编译的时候，AAPT会扫描你所定义的所有资源（在不同文件中定义的以及单独的资源文件），然后给它们指定不同的资源ID
+
+aapt dump resources <apk的路径>  resources.arsc文件的详细描述信息，查看所有资源的ID值
+
+aapt工具也支持很多子命令。
+aapt l[ist]:列出资源压缩包里的内容。
+aapt d[ump]：查看APK包内指定的内容。
+aapt p[ackage]：打包生成资源压缩包。
+aapt r[emove]：从压缩包中删除指定文件。
+aapt a[dd]：向压缩包中添加指定文件。
+aapt v[ersion]:打印aapt的版本。
+
+示例：
+aapt package -f -m -J ./gen -S res -M AndroidManifest.xml -I D:\android.jar 生成R文件
+-f 如果编译生成的文件已经存在，强制覆盖。
+-m 使生成的包的目录存放在-J参数指定的目录
+-J 指定生成的R.java 的输出目录路径
+-S 指定res文件夹的路径
+-I 指定某个版本平台的android.jar文件的路径
+-A 指定assert文件夹的路径
+
+aapt命令，打包资源
+aapt package -f -M AndroidManifest.xml -S res -I D:\android-sdk-windows\platforms\android-8\android.jar -F bin\resources.ap_ 
+-f 如果编译生成的文件已经存在，强制覆盖
+-M 指定AndroidManifest.xml的路径
+-S 指定res文件夹路径
+-I 指定某个版本平台的android.jar的路径
+-F 指定输出文件完整路径
+
+aapt -A <附件资源路径> -S <资源路径> -M <Android应用清单文件> -I <额外添加的包> And -F 目标文件路径
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-m -v --non-constant-id 
+--output-text-symbols D:\feinno-video\Android\feinnovideo\FVideo\bin 
+-J D:\feinno-video\Android\feinnovideo\FVideo\gen 
+-M D:\feinno-video\Android\feinnovideo\FVideo\AndroidManifest.xml 
+-S D:\feinno-video\Android\feinnovideo\FVideo\res 
+-I E:\android\adt\sdk\platforms\android-20\android.jar
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-v 
+-S D:\feinno-video\Android\feinnovideo\TestFVideo\bin\res\crunch 
+-S D:\feinno-video\Android\feinnovideo\TestFVideo\res 
+-S D:\feinno-video\Android\feinnovideo\appcompat_v7\bin\res\crunch 
+-S D:\feinno-video\Android\feinnovideo\appcompat_v7\res 
+-f --no-crunch --auto-add-overlay --debug-mode 
+-M D:\feinno-video\Android\feinnovideo\TestFVideo\bin\AndroidManifest.xml 
+-A D:\feinno-video\Android\feinnovideo\TestFVideo\assets 
+-I E:\android\adt\sdk\platforms\android-20\android.jar 
+-F D:\feinno-video\Android\feinnovideo\TestFVideo\bin\resources.ap_
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe crunch 
+-v 
+-S D:\feinno-video\Android\feinnovideo\FPlayer\res 
+-C D:\feinno-video\Android\feinnovideo\FPlayer\bin\res\crunch 
+
+E:\android\adt\sdk\build-tools\android-4.4W\aapt.exe package 
+-m -v --auto-add-overlay 
+--output-text-symbols D:\feinno-video\Android\feinnovideo\TestFVideo\bin 
+-J D:\feinno-video\Android\feinnovideo\TestFVideo\gen 
+-M D:\feinno-video\Android\feinnovideo\TestFVideo\AndroidManifest.xml 
+-S D:\feinno-video\Android\feinnovideo\TestFVideo\res 
+-S D:\feinno-video\Android\feinnovideo\appcompat_v7\res 
+-I E:\android\adt\sdk\platforms\android-20\android.jar

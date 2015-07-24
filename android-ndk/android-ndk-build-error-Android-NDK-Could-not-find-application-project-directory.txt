@@ -1,0 +1,10 @@
+C:\Users\Administrator>D:\workspace\shequn\video\06CoreSDK\01代码\trunk\build.bat
+Android NDK: Could not find application project directory !
+Android NDK: Please define the NDK_PROJECT_PATH variable to point to it.
+D:\android-ndk-r10d\build/core/build-local.mk:148: *** Android NDK: Aborting.  Stop.
+
+原因出在 build.bat 写法上，把这个批处理拉到 CMD 窗口里运行，会出上面的错误
+@echo off
+cd %~dp0
+:BUILD
+call ndk-build V=1 NDK_DEBUG=0

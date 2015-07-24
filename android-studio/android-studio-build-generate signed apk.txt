@@ -1,0 +1,4 @@
+生成 签名 APK 包
+
+输出到 工程目录下
+MyApplication\app\app-release.apk

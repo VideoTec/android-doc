@@ -1,0 +1,73 @@
+XML Attributes	
+Attribute Name							Related Method	Description	
+android:accessibilityLiveRegion			setAccessibilityLiveRegion(int)	Indicates to accessibility services whether the user should be notified when             this view changes.	
+android:alpha							setAlpha(float)	alpha property of the view, as a value between 0 (completely transparent) and 1             (completely opaque).	
+android:background						setBackgroundResource(int)	A drawable to use as the background.	
+android:backgroundTint					setBackgroundTintList(ColorStateList)	Tint to apply to the background.	
+android:backgroundTintMode				setBackgroundTintMode(PorterDuff.Mode)	Blending mode used to apply the background tint.	
+android:clickable						setClickable(boolean)	Defines whether this view reacts to click events.	
+android:contentDescription				setContentDescription(CharSequence)	Defines text that briefly describes content of the view.	
+android:drawingCacheQuality				setDrawingCacheQuality(int)	Defines the quality of translucent drawing caches.	
+android:duplicateParentState			When this attribute is set to true, the view gets its drawable state             (focused, pressed, etc.) from its direct parent rather than from itself.	
+android:elevation						setElevation(float)	base z depth of the viewMust be a dimension value, which is a floating point number appended with a unit such as "14.5sp".	
+android:fadeScrollbars					setScrollbarFadingEnabled(boolean)	Defines whether to fade out scrollbars when they are not in use.	
+android:fadingEdgeLength				getVerticalFadingEdgeLength()	Defines the length of the fading edges.	
+android:filterTouchesWhenObscured		setFilterTouchesWhenObscured(boolean)	Specifies whether to filter touches when the view's window is obscured by             another visible window.	
+android:fitsSystemWindows				setFitsSystemWindows(boolean)	Boolean internal attribute to adjust view layout based on             system windows such as the status bar.	
+android:focusable	setFocusable(boolean)	Boolean that controls whether a view can take focus.	
+android:focusableInTouchMode		setFocusableInTouchMode(boolean)	Boolean that controls whether a view can take focus while in touch mode.	
+android:hapticFeedbackEnabled		setHapticFeedbackEnabled(boolean)	Boolean that controls whether a view should have haptic feedback             enabled for events such as long presses.	
+android:id							setId(int)	Supply an identifier name for this view, to later retrieve it             withView.findViewById()orActivity.findViewById().	
+android:importantForAccessibility	setImportantForAccessibility(int)	Controls how this View is important for accessibility which is if it fires             accessibility events and if it is reported to accessibility services that             query the screen.	
+android:isScrollContainer	setScrollContainer(boolean)	Set this if the view will serve as a scrolling container, meaing             that it can be resized to shrink its overall window so that there             will be space for an input method.	
+android:keepScreenOn		setKeepScreenOn(boolean)	Controls whether the view's window should keep the screen on             while visible.	
+android:layerType			setLayerType(int,Paint)	Specifies the type of layer backing this view.	
+android:layoutDirection		setLayoutDirection(int)	Defines the direction of layout drawing.	
+android:longClickable		setLongClickable(boolean)	Defines whether this view reacts to long click events.	
+android:minHeight			setMinimumHeight(int)	Defines the minimum height of the view.	
+android:minWidth			setMinimumWidth(int)	Defines the minimum width of the view.	
+android:nextFocusDown		setNextFocusDownId(int)	Defines the next view to give focus to when the next focus isFOCUS_DOWNIf the reference refers to a view that does not exist or is part             of a hierarchy that is invisible, aRuntimeExceptionwill result when the reference is accessed.	
+android:nextFocusForward	setNextFocusForwardId(int)	Defines the next view to give focus to when the next focus isFOCUS_FORWARDIf the reference refers to a view that does not exist or is part             of a hierarchy that is invisible, aRuntimeExceptionwill result when the reference is accessed.	
+android:nextFocusLeft		setNextFocusLeftId(int)	Defines the next view to give focus to when the next focus isFOCUS_LEFT.	
+android:nextFocusRight		setNextFocusRightId(int)	Defines the next view to give focus to when the next focus isFOCUS_RIGHTIf the reference refers to a view that does not exist or is part             of a hierarchy that is invisible, aRuntimeExceptionwill result when the reference is accessed.	
+android:nextFocusUp			setNextFocusUpId(int)	Defines the next view to give focus to when the next focus isFOCUS_UPIf the reference refers to a view that does not exist or is part             of a hierarchy that is invisible, aRuntimeExceptionwill result when the reference is accessed.	
+android:onClick				Name of the method in this View's context to invoke when the view is             clicked.	
+android:padding				setPaddingRelative(int,int,int,int)	Sets the padding, in pixels, of all four edges.	
+android:paddingBottom		setPaddingRelative(int,int,int,int)	Sets the padding, in pixels, of the bottom edge; seepadding.	
+android:paddingEnd			setPaddingRelative(int,int,int,int)	Sets the padding, in pixels, of the end edge; seepadding.	
+android:paddingLeft			setPadding(int,int,int,int)	Sets the padding, in pixels, of the left edge; seepadding.	
+android:paddingRight		setPadding(int,int,int,int)	Sets the padding, in pixels, of the right edge; seepadding.	
+android:paddingStart		setPaddingRelative(int,int,int,int)	Sets the padding, in pixels, of the start edge; seepadding.	
+android:paddingTop			setPaddingRelative(int,int,int,int)	Sets the padding, in pixels, of the top edge; seepadding.	
+android:requiresFadingEdge	setVerticalFadingEdgeEnabled(boolean)	Defines which edges should be faded on scrolling.	
+android:rotation	setRotation(float)	rotation of the view, in degrees.	
+android:rotationX	setRotationX(float)	rotation of the view around the x axis, in degrees.	
+android:rotationY	setRotationY(float)	rotation of the view around the y axis, in degrees.	
+android:saveEnabled	setSaveEnabled(boolean)	If unset, no state will be saved for this view when it is being             frozen.	
+android:scaleX		setScaleX(float)	scale of the view in the x direction.	
+android:scaleY		setScaleY(float)	scale of the view in the y direction.	
+android:scrollX		The initial horizontal scroll offset, in pixels.	
+android:scrollY		The initial vertical scroll offset, in pixels.	
+android:scrollbarAlwaysDrawHorizontalTrack		Defines whether the horizontal scrollbar track should always be drawn.	
+android:scrollbarAlwaysDrawVerticalTrack		Defines whether the vertical scrollbar track should always be drawn.	
+android:scrollbarDefaultDelayBeforeFade	setScrollBarDefaultDelayBeforeFade(int)	Defines the delay in milliseconds that a scrollbar waits before fade out.	
+android:scrollbarFadeDuration			setScrollBarFadeDuration(int)	Defines the delay in milliseconds that a scrollbar takes to fade out.	
+android:scrollbarSize					setScrollBarSize(int)	Sets the width of vertical scrollbars and height of horizontal scrollbars.	
+android:scrollbarStyle					setScrollBarStyle(int)	Controls the scrollbar style and position.	
+android:scrollbarThumbHorizontal		Defines the horizontal scrollbar thumb drawable.	
+android:scrollbarThumbVertical			Defines the vertical scrollbar thumb drawable.	
+android:scrollbarTrackHorizontal		Defines the horizontal scrollbar track drawable.	
+android:scrollbarTrackVertical			Defines the vertical scrollbar track drawable.	
+android:scrollbars				Defines which scrollbars should be displayed on scrolling or not.	
+android:soundEffectsEnabled		setSoundEffectsEnabled(boolean)	Boolean that controls whether a view should have sound effects             enabled for events such as clicking and touching.	
+android:stateListAnimator		Sets the state-based animator for the View.	
+android:tag					Supply a tag for this view containing a String, to be retrieved             later withView.getTag()or             searched for withView.findViewWithTag().	
+android:textAlignment		setTextAlignment(int)	Defines the alignment of the text.	
+android:textDirection		setTextDirection(int)	Defines the direction of the text.	
+android:transformPivotX		setPivotX(float)	x location of the pivot point around which the view will rotate and scale.	
+android:transformPivotY		setPivotY(float)	y location of the pivot point around which the view will rotate and scale.	
+android:transitionName		Names a View such that it can be identified for Transitions.	
+android:translationX	setTranslationX(float)	translation in x of the view.	
+android:translationY	setTranslationY(float)	translation in y of the view.	
+android:translationZ	setTranslationZ(float)	translation in z of the view.	
+android:visibility		setVisibility(int)	Controls the initial visibility of the view.	

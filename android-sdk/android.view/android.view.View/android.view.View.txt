@@ -1,0 +1,12 @@
+http://developer.android.com/reference/android/view/View.html
+
+java.lang.Object
+   ↳	android.view.View
+   
+   analog[英]['ænəlɔ:g] [美]['ænəlɔ:g] adj.（钟表）有长短针的；<电脑>模拟的
+   
+Known Direct Subclasses
+AnalogClock, ImageView, KeyboardView, MediaRouteButton, ProgressBar, Space, SurfaceView, TextView, TextureView, ViewGroup, ViewStub
+
+Known Indirect Subclasses
+AbsListView, AbsSeekBar, AbsSpinner, AbsoluteLayout, ActionMenuView, AdapterView<T extends Adapter>, AdapterViewAnimator, and 86 others.

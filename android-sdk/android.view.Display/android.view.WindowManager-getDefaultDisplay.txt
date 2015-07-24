@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/view/WindowManager.html#getDefaultDisplay()
+
+public abstract Display getDefaultDisplay ()
+
+Added in API level 1
+Returns the Display upon which this WindowManager instance will create new windows.
+
+Despite the name of this method, the display that is returned is not necessarily the primary display of the system (see DEFAULT_DISPLAY). The returned display could instead be a secondary display that this window manager instance is managing. Think of it as the display that this WindowManager instance uses by default.
+
+To create windows on a different display, you need to obtain a WindowManager for that Display. (See the WindowManager class documentation for more information.)
+
+Returns
+The display that this window manager is managing.

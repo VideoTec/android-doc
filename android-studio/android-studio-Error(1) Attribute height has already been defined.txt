@@ -1,0 +1,37 @@
+20:06 2015/5/14
+从 OpenslTest Eclipse 工程里复制的 
+C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\src\main\res\values\hundred_colors.xml
+编译时提示下面的错误
+
+Error:(1) Attribute "height" has already been defined
+
+第一步，把 hundred_colors.xml 的所有值全部删除，再编译
+同样的错误发生在下面的文件：
+C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\res\values\values.xml
+
+<declare-styleable name="ActionMode">
+<attr name="titleTextStyle"/>
+<attr name="subtitleTextStyle"/>
+<attr name="background"/>
+<attr name="backgroundSplit"/>
+<attr name="height"/>
+<attr format="reference" name="closeItemLayout"/>
+</declare-styleable>
+
+最后发现，去掉，attrs.xml 文件就可解决了，因为
+	<declare-styleable name="DoubleSeekBar">
+		<attr name="minValue" format="float" />
+		<attr name="maxValue" format="float" />
+		<attr name="duration" format="float" />
+		<attr name="width" format="dimension">
+			<enum name="fill_parent" value="-1" />
+			<enum name="match_parent" value="-1" />
+			<enum name="wrap_content" value="-2" />
+		</attr>
+		<attr name="height" format="dimension">
+			<enum name="fill_parent" value="-1" />
+			<enum name="match_parent" value="-1" />
+			<enum name="wrap_content" value="-2" />
+		</attr>
+	</declare-styleable>
+但是为什么 提示到 hundred_colors.xml 里？

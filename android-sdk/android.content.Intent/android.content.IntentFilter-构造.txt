@@ -1,0 +1,37 @@
+public IntentFilter ()
+
+Added in API level 1
+New empty IntentFilter.
+
+public IntentFilter (String action)
+
+Added in API level 1
+New IntentFilter that matches a single action with no data. If no data characteristics are subsequently specified, then the filter will only match intents that contain no data.
+
+Parameters
+action	The action to match, i.e. Intent.ACTION_MAIN.
+public IntentFilter (String action, String dataType)
+
+Added in API level 1
+New IntentFilter that matches a single action and data type.
+
+Note: MIME type matching in the Android framework is case-sensitive, unlike formal RFC MIME types. As a result, you should always write your MIME types with lower case letters, and any MIME types you receive from outside of Android should be converted to lower case before supplying them here.
+
+Throws IntentFilter.MalformedMimeTypeException if the given MIME type is not syntactically correct.
+
+Parameters
+action	The action to match, i.e. Intent.ACTION_VIEW.
+dataType	The type to match, i.e. "vnd.android.cursor.dir/person".
+
+Throws
+IntentFilter.MalformedMimeTypeException	
+
+-------------------------------------------------------------------
+public IntentFilter (IntentFilter o)
+-------------------------------------------------------------------
+
+Added in API level 1
+New IntentFilter containing a copy of an existing filter.
+
+Parameters
+o	The original filter to copy.

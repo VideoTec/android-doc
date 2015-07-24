@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html#getSupportedPreviewSizes()
+
+public void setPreviewSize (int width, int height)
+
+Sets the dimensions for preview pictures. If the preview has already started, applications should stop the preview first before changing preview size. The sides of width and height are based on camera orientation. That is, the preview size is the size before it is rotated by display orientation. So applications need to consider the display orientation while setting preview size. For example, 
+suppose the camera supports both 480x320 and 320x480 preview sizes. 
+The application wants a 3:2 preview ratio. 
+If the display orientation is set to 0 or 180, preview size should be set to 480x320. 
+If the display orientation is set to 90 or 270, preview size should be set to 320x480. 
+The display orientation should also be considered while setting picture size and thumbnail size.
+
+Parameters
+width	the width of the pictures, in pixels
+height	the height of the pictures, in pixels
+
+See Also
+setDisplayOrientation(int)
+getCameraInfo(int, CameraInfo)
+setPictureSize(int, int)
+setJpegThumbnailSize(int, int)

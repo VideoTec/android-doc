@@ -1,0 +1,42 @@
+http://www.android-x86.org/download
+
+android-x86 和 eclipse
+Try Android x86. It's much faster than the Google Android emulator. Follow these steps:
+
+Install VirtualBox.
+Download the ISO file that you need.
+Create a virtual machine as Linux 2.6/Other Linux, 512 Mb RAM, HD 2 GB. Network: PCnet-Fast III, attached to NAT. You can also use a bridged adapter, but you need a DHCP server in your environment.
+Install Android x86 on the emulator, run it.
+Press Alt+F1, type netcfg, remember the IP address, press Alt+F7.
+Run cmd on your Windows XP system, change the directory to your Android tools directory, type adb connect <virtual_machine_IP>.
+Start Eclipse, open the ADT plugin, find the device, and enjoy!
+
+可以先用，adb连接测试下，adb connect 10.10.90.146
+
+android-x86开启后，看不到光标
+解决方法是
+在窗口的右下方选择“禁止自动独占鼠标"即可解决。(就是在virtualbox右下角的鼠标图标处点右键,选禁止自动独占鼠标)
+
+android-x86休眠后唤醒
+Android菜单键 - 按下这个键就可以唤醒。
+右边的菜单键（win和ctrl中间的键） = Android菜单键
+
+安卓（Android）x86怎么关机？
+把鼠标移到安卓（Android）x86系统桌面的右上方，往下拉。
+
+安卓（Android）x86怎么锁定横屏
+
+android-x86快捷键
+Alt-F1 = 进入 console 模式
+Alt-F7 = 回到 GUI 模式
+Alt-F9 = 图形界面
+Alt-F10 = 画面旋转 180 度
+Alt-F10 = 画面旋转 180 度
+Alt-F11 = 画面向左旋转 90 度
+Alt-F12 = 画面向右旋转 90 度
+Ctrl-P = 开启Android设定画面
+"Windows 键"相当于 Android 的 Home 按钮。
+"Esc" 相当于 Android 的 Back 按钮
+F2 相当于 Android 的 Menu 按钮
+F3 相当于 Android 的 Search 按钮
+右边的菜单键（win和ctrl中间的键） = Android菜单键

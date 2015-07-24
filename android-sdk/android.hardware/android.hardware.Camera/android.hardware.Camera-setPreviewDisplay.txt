@@ -1,0 +1,26 @@
+设置显示预览画出的窗口
+
+-----------------------------------------------------------
+public final void setPreviewDisplay (SurfaceHolder holder)
+-----------------------------------------------------------
+Sets the Surface to be used for live preview. Either a surface or surface texture is necessary for preview, and preview is necessary to take pictures. The same surface can be re-set without harm. Setting a preview surface will un-set any preview surface texture that was set via setPreviewTexture(SurfaceTexture).
+
+The SurfaceHolder must already contain a surface when this method is called. If you are using SurfaceView, you will need to register a SurfaceHolder.Callback with addCallback(SurfaceHolder.Callback) and wait for surfaceCreated(SurfaceHolder) before calling setPreviewDisplay() or starting preview.
+
+This method must be called before startPreview(). The one exception is that if the preview surface is not set (or set to null) before startPreview() is called, then this method may be called once with a non-null parameter to set the preview surface. (This allows camera setup and surface creation to happen in parallel, saving time.) The preview surface may not otherwise change while preview is running.
+
+Parameters
+holder	containing the Surface on which to place the preview, or null to remove the preview surface
+Throws
+IOException	if the method fails (for example, if the surface is unavailable or unsuitable).
+
+在 void onResume() 函数里，调用
+        try {
+			mCamera.setPreviewDisplay(mSurfaceView.getHolder());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+造成，不出预览画面。原因可能是：
+这时，mSurfaceView，还没有surfaceCreated创建成功，就是文档里这条注意事项：
+If you are using SurfaceView, you will need to register a SurfaceHolder.Callback with addCallback(SurfaceHolder.Callback) and wait for surfaceCreated(SurfaceHolder) before calling setPreviewDisplay() or starting preview.

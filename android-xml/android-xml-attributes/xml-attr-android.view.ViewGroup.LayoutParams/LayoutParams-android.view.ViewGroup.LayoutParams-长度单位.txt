@@ -1,0 +1,6 @@
+Available units are: 
+px (pixels), 
+dp (density-independent pixels), 
+sp (scaled pixels based on preferred font size), 
+in (inches),
+mm (millimeters).

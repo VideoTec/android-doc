@@ -1,0 +1,19 @@
+http://developer.android.com/reference/android/widget/ListAdapter.html
+
+adapter[英][ə'dæptə] [美][əˈdæptɚ]
+n.适配器；改编者；改写者适应者；适应物
+
+implements Adapter
+public interface
+android.widget.ListAdapter
+
+Known Indirect Subclasses
+ArrayAdapter<T>, 
+BaseAdapter, 
+CursorAdapter, 
+HeaderViewListAdapter, 
+ResourceCursorAdapter, 
+SimpleAdapter, SimpleCursorAdapter, 
+WrapperListAdapter
+
+Extended Adapter that is the bridge between a ListView and the data that backs the list. Frequently that data comes from a Cursor, but that is not required. The ListView can display any data provided that it is wrapped in a ListAdapter.

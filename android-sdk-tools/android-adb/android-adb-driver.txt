@@ -1,0 +1,24 @@
+android ADB 驱动
+
+问题：
+MX2 的ADB驱动去哪下载？
+已经搞定了，用google自带的ADB驱动就可以。我不爽的是魅族的态度。
+搜了一圈，魅族官方没有任何说明。去微软那边注册个驱动也应该费不了多少事。
+这种事情为什么不做呢？
+我这边从milestone,nexus one,lt26i驱动都插上去，自动更新就好了
+
+google的ADB驱动下载
+http://developer.android.com/sdk/win-usb.html#top
+安装方法
+http://bbs.zol.com.cn/sjbbs/d143_11302.html
+安装 usb_driver\android_winusb.inf 文件
+设备管理器 -> 更新驱动程序 
+-> 从计算机的设备驱动程序列表中选择 -> 显示所有设备
+-> 从磁盘安装
+有三个选项：
+Android ADB Interface         选择这个
+Android Bootloader Interface
+Android Composite ADB Interface
+
+Android SDK Manager 列表中有这个驱动
+G:\android-sdk-windows\extras\google\usb_driver

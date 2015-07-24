@@ -1,0 +1,28 @@
+参考：
+http://developer.android.com/guide/topics/ui/themes.html
+https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/styles.xml
+https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/themes.xml
+
+The Android platform provides a large collection of styles and themes that you can use in your applications. 
+You can find a reference of all available styles in the R.style class. 
+To use the styles listed here, replace all underscores in the style name with a period. 
+For example, you can apply the Theme_NoTitleBar theme with "@android:style/Theme.NoTitleBar".
+
+The R.style reference, however, is not well documented and does not thoroughly describe the styles, 
+so viewing the actual source code for these styles and themes 
+will give you a better understanding of what style properties each one provides. 
+For a better reference to the Android styles and themes, see the following source code:
+
+Android Styles (styles.xml)
+Android Themes (themes.xml)
+
+These files will help you learn through example. 
+For instance, in the Android themes source code, you'll find a declaration for <style name="Theme.Dialog">. 
+In this definition, you'll see all of the properties that are used to style dialogs 
+that are used by the Android framework.
+
+For more information about the syntax for styles and themes in XML, see the Style Resource document.
+
+For a reference of available style attributes 
+that you can use to define a style or theme (e.g., "windowBackground" or "textAppearance"), 
+see R.attr or the respective View class for which you are creating a style.

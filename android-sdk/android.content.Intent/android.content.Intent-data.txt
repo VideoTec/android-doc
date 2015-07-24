@@ -1,0 +1,49 @@
+intent 数据传递
+
+1.无参数Activity跳转
+
+Intent it = new Intent(Activity.Main.this, Activity2.class);
+startActivity(it);   
+ 
+
+2.向下一个Activity传递数据（使用Bundle和Intent.putExtras）
+
+Intent it = new Intent(Activity.Main.this, Activity2.class);
+Bundle bundle=new Bundle();
+bundle.putString("name", "This is from MainActivity!");
+it.putExtras(bundle);       // it.putExtra(“test”, "shuju”);
+startActivity(it);            // startActivityForResult(it,REQUEST_CODE);
+ 
+
+对于数据的获取可以采用：
+
+Bundle bundle=getIntent().getExtras();
+String name=bundle.getString("name");
+ 
+
+3.向上一个Activity返回结果（使用setResult，针对startActivityForResult(it,REQUEST_CODE)启动的Activity）
+
+        Intent intent=getIntent();
+        Bundle bundle2=new Bundle();
+        bundle2.putString("name", "This is from ShowMsg!");
+        intent.putExtras(bundle2);
+        setResult(RESULT_OK, intent);
+
+
+4.回调上一个Activity的结果处理函数（onActivityResult）
+
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_CODE){
+            if(resultCode==RESULT_CANCELED)
+                  setTitle("cancle");
+            else if (resultCode==RESULT_OK) {
+                 String temp=null;
+                 Bundle bundle=data.getExtras();
+                 if(bundle!=null)   temp=bundle.getString("name");
+                 setTitle(temp);
+            }
+        }
+    }

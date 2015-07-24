@@ -1,0 +1,4 @@
+public static Looper myLooper ()
+
+Return the Looper object associated with the current thread. 
+Returns null if the calling thread is not associated with a Looper.

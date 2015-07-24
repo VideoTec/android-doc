@@ -1,0 +1,19 @@
+activity 中所有的控件加载完成后的事件，
+特别是， SurfaceView 的Surface创建完成后。
+
+第一种方法： 设置 SurfaceView的 SurfaceHolder.Callback 
+    public void surfaceCreated(SurfaceHolder holder)
+    {
+    	mSurface = holder.getSurface();
+    }
+    
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+    {
+    	VideoConvert.getInstance(mContext).videoEffectChangeSize(width, height);
+    }
+    
+    public void surfaceDestroyed(SurfaceHolder holder)
+    {
+    	
+
+第二种方法：加按钮处理

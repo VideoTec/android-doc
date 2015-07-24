@@ -1,0 +1,15 @@
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html
+
+Obtain an instance of Camera from open(int).
+Get existing (default) settings with getParameters().
+
+If necessary, modify the returned Camera.Parameters object and call setParameters(Camera.Parameters).
+
+------------------------------------------
+获取图片大小
+------------------------------------------
+public Camera.Size getPictureSize ()
+
+android.hardware.Camera.Size
+public int	height	height of the picture
+public int	width	width of the picture

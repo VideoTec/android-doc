@@ -1,0 +1,32 @@
+-----------------------------------------
+列表
+-----------------------------------------
+
+ldpi
+mdpi
+hdpi
+xhdpi
+xxhdpi
+xxxhdpi
+nodpi       不应用缩放的图片
+tvdpi
+
+
+-----------------------------------------
+-----------------------------------------
+ldpi: Low-density screens; approximately 120dpi.
+mdpi: Medium-density (on traditional HVGA) screens; approximately 160dpi.
+hdpi: High-density screens; approximately 240dpi.
+xhdpi: Extra-high-density screens; approximately 320dpi. Added in API Level 8
+xxhdpi: Extra-extra-high-density screens; approximately 480dpi. Added in API Level 16
+xxxhdpi: Extra-extra-extra-high-density uses (launcher icon only, see the note in Supporting Multiple Screens); approximately 640dpi. Added in API Level 18
+nodpi: This can be used for bitmap resources that you do not want to be scaled to match the device density.
+tvdpi: Screens somewhere between mdpi and hdpi; approximately 213dpi. This is not considered a "primary" density group. It is mostly intended for televisions and most apps shouldn't need it—providing mdpi and hdpi resources is sufficient for most apps and the system will scale them as appropriate. This qualifier was introduced with API level 13.
+
+There is a 3:4:6:8:12:16 scaling ratio between the six primary densities (ignoring the tvdpi density). So, a 9x9 bitmap in ldpi is 12x12 in mdpi, 18x18 in hdpi, 24x24 in xhdpi and so on.
+
+If you decide that your image resources don't look good enough on a television or other certain devices and want to try tvdpi resources, the scaling factor is 1.33*mdpi. For example, a 100px x 100px image for mdpi screens should be 133px x 133px for tvdpi.
+
+Note: Using a density qualifier does not imply that the resources are only for screens of that density. If you do not provide alternative resources with qualifiers that better match the current device configuration, the system may use whichever resources are the best match.
+
+See Supporting Multiple Screens for more information about how to handle different screen densities and how Android might scale your bitmaps to fit the current density.

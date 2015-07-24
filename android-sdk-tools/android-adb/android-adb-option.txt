@@ -1,0 +1,23 @@
+adb 常用命令项
+
+参考
+http://www.cnblogs.com/playing/archive/2010/09/19/1830799.html
+发出adb命令
+查询模拟器/设备实例
+给特定的模拟器/设备实例发送命令
+安装软件
+转发端口
+从模拟器/设备中拷入或拷出文件
+Adb命令列表
+启动shell命令
+通过远程shell端运行sqllite3连接数据库
+UI/软件 试验程序 Monkey
+其它的shell命令
+启用logcat日志
+使用logcat命令
+过滤日志输出
+控制日志输出格式
+查看可用日志缓冲区
+查看stdout 和stderr
+Logcat命令列表
+停止adb服务

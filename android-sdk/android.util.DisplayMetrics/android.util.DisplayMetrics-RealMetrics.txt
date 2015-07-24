@@ -1,0 +1,4 @@
+The real display area specifies the part of the display that contains content including the system decorations. Even so, the real display area may be smaller than the physical size of the display if the window manager is emulating a smaller display using (adb shell am display-size). Use the following methods to query the real display area: getRealSize(Point), getRealMetrics(DisplayMetrics)
+
+GT-I9308 的长宽
+720 x 1280

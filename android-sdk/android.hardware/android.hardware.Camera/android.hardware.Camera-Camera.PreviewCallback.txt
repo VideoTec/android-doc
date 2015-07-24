@@ -1,0 +1,15 @@
+摄像头回调接口
+public static interface Camera.PreviewCallback {
+}
+
+public abstract void onPreviewFrame (byte[] data, Camera camera)
+
+Added in API level 1
+Called as preview frames are displayed. This callback is invoked on the event thread open(int) was called from.
+
+If using the YV12 format, refer to the equations in setPreviewFormat(int) for the arrangement of the pixel data in the preview callback buffers.
+
+Parameters
+data	the contents of the preview frame in the format defined by ImageFormat, which can be queried with getPreviewFormat(). 
+        If setPreviewFormat(int) is never called, the default will be the YCbCr_420_SP (NV21) format.
+camera	the Camera service object.

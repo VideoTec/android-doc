@@ -1,0 +1,40 @@
+http://developer.android.com/guide/topics/manifest/provider-element.html
+
+<provider android:authorities="list"
+          android:enabled=["true" | "false"]
+          android:exported=["true" | "false"]
+          android:grantUriPermissions=["true" | "false"]
+          android:icon="drawable resource"
+          android:initOrder="integer"
+          android:label="string resource"
+          android:multiprocess=["true" | "false"]
+          android:name="string"
+          android:permission="string"
+          android:process="string"
+          android:readPermission="string"
+          android:syncable=["true" | "false"]
+          android:writePermission="string" >
+    . . .
+</provider>
+
+CONTAINED IN:
+<application>
+
+CAN CONTAIN:
+<meta-data> 
+<grant-uri-permission> 
+<path-permission>
+
+DESCRIPTION:
+
+Declares a content provider component. A content provider is a subclass of ContentProvider that supplies structured access to data managed by the application. All content providers in your application must be defined in a <provider> element in the manifest file; otherwise, the system is unaware of them and doesn't run them.
+You only declare content providers that are part of your application. Content providers in other applications that you use in your application should not be declared.
+
+The Android system stores references to content providers according to an authority string, part of the provider's content URI. For example, suppose you want to access a content provider that stores information about health care professionals. To do this, you call the method ContentResolver.query(), which among other arguments takes a URI that identifies the provider:
+
+content://com.example.project.healthcareprovider/nurses/rn
+The content: scheme identifies the URI as a content URI pointing to an Android content provider. The authority com.example.project.healthcareprovider identifies the provider itself; the Android system looks up the authority in its list of known providers and their authorities. The substring nurses/rn is a path, which the content provider can use to identify subsets of the provider data.
+
+Notice that when you define your provider in the <provider> element, you don't include the scheme or the path in the android:name argument, only the authority.
+
+For information on using and developing content providers, see the API Guide, Content Providers.

@@ -1,0 +1,21 @@
+开机后，打开ECLIPSE编译出现下面的错误。之前还是好的
+
+Description	Resource	Path	Location	Type
+The project was not built since its build path is incomplete. 
+Cannot find the class file for java.lang.Object. Fix the build path then try building this project	OpenSLTest		Unknown	Java Problem
+
+出错时，工程里没有 包含 android.jar
+关闭重启 eclipse 就好了，真不知道是什么原因啊
+
+2015.4.9 又发现这个问题最后重启，就可以了，猜测可能的原因：第一次启动时，eclipse没有加载 android sdk
+
+下面是网上找到的一段
+It seems that you lack JDK (java.lang.Object comes from there )
+
+The problem is that you used the same Android API on different PC. 
+Eclipse is lost with path names that are differents but with same API.
+
+To solve it, first re-select Android API version 
+(set to another one and valid, then restore the on you want and validate it -> it will force Eclipse to reload API). 
+Then go into project->properties-> java build path. 
+Then remove "Unable to get system library for the project" then "Add library" and select "Android Classpath container".

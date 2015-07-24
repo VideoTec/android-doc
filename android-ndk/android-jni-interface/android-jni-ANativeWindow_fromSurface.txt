@@ -1,0 +1,13 @@
+实例
+#include <android/native_window.h>
+#include <android/native_window_jni.h>
+
+ANativeWindow *native_window = ANativeWindow_fromSurface(env, jsurface);
+
+/**
+ * Return the ANativeWindow associated with a Java Surface object,
+ * for interacting with it through native code.  This acquires a reference
+ * on the ANativeWindow that is returned; be sure to use ANativeWindow_release()
+ * when done with it so that it doesn't leak.
+ */
+ANativeWindow* ANativeWindow_fromSurface(JNIEnv* env, jobject surface);

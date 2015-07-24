@@ -1,0 +1,17 @@
+Complete list of all Android resource folders 所有文件
+
+http://developer.android.com/guide/topics/resources/providing-resources.html
+
+MyProject/
+    src/  
+        MyActivity.java  
+    res/
+        drawable/  
+            graphic.png  
+        layout/  
+            main.xml
+            info.xml
+        mipmap/  
+            icon.png 
+        values/  
+            strings.xml  

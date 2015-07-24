@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/support/v4/app/FragmentActivity.html
+
+java.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+ 	 	   ↳	android.view.ContextThemeWrapper
+ 	 	 	   ↳	android.app.Activity
+ 	 	 	 	   ↳	android.support.v4.app.FragmentActivity
+
+http://www.cnblogs.com/wanqieddy/p/3818718.html
+
+fragment是3.0以后的东西，为了在低版本中使用fragment就要用到android-support-v4.jar兼容包,而fragmentActivity就是这个兼容包里面的，它提供了操作fragment的一些方法，其功能跟3.0及以后的版本的Activity的功能一样。
+下面是API中的原话：
+FragmentActivity is a special activity provided in the Support Library to handle fragments on system versions older than API level 11. If the lowest system version you support is API level 11 or higher, then you can use a regular Activity.
+
+1、fragmentactivity 继承自activity，用来解决android3.0 之前没有fragment的api，所以在使用的时候需要导入support包，同时继承fragmentActivity，这样在activity中就能嵌入fragment来实现你想要的布局效果。 
+2、当然3.0之后你就可以直接继承自Activity，并且在其中嵌入使用fragment了。 
+3、获得Manager的方式也不同 
+3.0以下： getSupportFragmentManager() 
+3.0以上： getFragmentManager() 

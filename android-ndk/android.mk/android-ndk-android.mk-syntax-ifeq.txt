@@ -1,0 +1,11 @@
+构建时，条件判断
+
+There is TARGET_ARCH variable that holds the value of the current ABI being built. You can use it the following way:
+
+ifeq ($(TARGET_ARCH),x86)
+    LOCAL_CFLAGS   := $(COMMON_FLAGS_LIST)
+else
+    LOCAL_CFLAGS   := -mfpu=vfp -mfloat-abi=softfp $(COMMON_FLAGS_LIST)
+endif
+
+If you specify APP_ABI := armeabi-v7a armeabi mips x86 or APP_ABI := all in your Application.mk you will get each and every separate ABI value.

@@ -1,0 +1,10 @@
+http://bbs.gfan.com/android-5407578-1-1.html
+
+第五步 
+安装好Google Play后请千万千万别手欠打开，
+请确保你的平板电脑已经Root获得了最高的权限，
+然后到随便什么市场里面下载一个RE文件浏览器的软件，
+进入data/app目录下找到这个com.android.vending-1.apk文件(其实就是安装好的google play)，
+然后复制到system/app目录下
+
+第六步 重启平板电脑

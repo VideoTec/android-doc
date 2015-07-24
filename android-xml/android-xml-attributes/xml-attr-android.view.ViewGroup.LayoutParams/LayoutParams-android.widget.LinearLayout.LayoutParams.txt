@@ -1,0 +1,26 @@
+继承关系
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.ViewGroup.MarginLayoutParams
+ 	 	   ↳	android.widget.LinearLayout.LayoutParams
+
+属性
+android:layout_gravity		Standard gravity constant that a child supplies to its parent. 
+android:layout_weight		比重
+
+android:layout_weight
+Indicates how much of the extra space（剩余空间） in the LinearLayout will be allocated to the view associated with these LayoutParams. 
+Specify 0 if the view should not be stretched. 
+Otherwise the extra pixels will be pro-rated （额定）among all views whose weight is greater than 0.
+
+11:35 2015/7/14
+layout_wight 默认值是 0, 如果一个
+
+更好的理解剩余空间
+决定（垂直或者水平）剩余空间的分配
+http://mobile.51cto.com/abased-375428.htm
+extra space ： 剩余空间
+1. 所有 view 按照 layout_width/layout_height 分配完后，剩下的空间
+2. 剩余空间可能为负值
+3. 使用layout_weight分配水平剩余空间时，layout_width  最好赋值为 0dip
+4. 使用layout_height分配垂直剩余空间时，layout_height 最好赋值为 0dip

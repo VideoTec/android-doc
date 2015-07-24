@@ -1,0 +1,39 @@
+Android平台给我们提供了一个SharedPreferences类，
+它是一个轻量级的存储类，特别适合用于保存软件配置参数。
+使用SharedPreferences保存数据，
+其背后是用xml文件存放数据，
+文件存放在/data/data/<package name>/shared_prefs目录下
+
+private SharedPreferences sharedPreferences; 
+sharedPreferences = this.getSharedPreferences("test",MODE_WORLD_READABLE); 
+问题:
+1. 路径在那？一般这个文件存储在/data/data/<package name>/shared_prefs
+   为什么在DDMS的File Explorer不能查看这个目录?
+   drwxrwx--x system   system            2014-12-11 12:00 data
+   http://stackoverflow.com/questions/4867379/android-eclipse-ddms-cant-access-data-data-on-phone-to-pull-files
+2. XML格式？
+3. this是？Activity 
+4. SharedPreferences提供了java常规的Long、Int、String等类型数据的保存接口
+
+mode：是指定读写方式，其值有三种，分别为：
+Context.MODE_PRIVATE ：指定该SharedPreferences数据只能被本应用程序读、写
+Context.MODE_MULTI_PROCESS
+以下两种模式已经在4.2中废弃
+Context.MODE_WORLD_READABLE ：指定该SharedPreferences数据能被其他应用程序读，但不能写
+Context.MODE_WORLD_WRITEABLE ：指定该SharedPreferences数据能被其他应用程序读写
+
+sharedPreferences = this.getSharedPreferences("test",MODE_WORLD_READABLE);  
+editor = sharedPreferences.edit(); 
+editor.putInt("age", age);  
+editor.putString("name", name);  
+
+上面代码生成的XML文件：
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>  
+<map>  
+<int name="age" value="20" />  
+<string name="name">jiahui</string>  
+</map> 
+
+//读取数据 如果没有这个key就以默认值  
+String name = sharedPreferences.getString("name", null);  
+int age = sharedPreferences.getInt("age", 0); 

@@ -1,0 +1,5 @@
+public void finish ()
+
+Added in API level 1
+
+Call this when your activity is done and should be closed. The ActivityResult is propagated back to whoever launched you via onActivityResult().

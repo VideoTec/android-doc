@@ -1,0 +1,17 @@
+http://developer.android.com/reference/android/widget/BaseAdapter.html
+
+adapter[英][ə'dæptə] [美][əˈdæptɚ]
+n.适配器；改编者；改写者适应者；适应物
+
+implements ListAdapter SpinnerAdapter
+
+java.lang.Object
+   ↳	android.widget.BaseAdapter
+   
+Known Direct Subclasses
+ArrayAdapter<T>, CursorAdapter, SimpleAdapter
+
+Known Indirect Subclasses
+ResourceCursorAdapter, SimpleCursorAdapter
+
+Common base class of common implementation for an Adapter that can be used in both ListView (by implementing the specialized ListAdapter interface) and Spinner (by implementing the specialized SpinnerAdapter interface).

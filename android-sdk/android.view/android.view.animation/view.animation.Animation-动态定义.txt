@@ -1,0 +1,39 @@
+示例一：
+
+        Animation scaleAnimation = new ScaleAnimation(1.0f, 0.0f, 1.0f,
+                0.0f, Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f);
+        Animation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+        AnimationSet animationSet = new AnimationSet(false);
+        animationSet.addAnimation(scaleAnimation);
+        animationSet.addAnimation(alphaAnimation);
+        mCountDownAnimation.setStartCount(COUNT_DOWN_DELAY);
+        mCountDownAnimation.setAnimation(animationSet);
+示例二：
+view.animate()
+        .translationY(view.getHeight())
+        .alpha(0.0f)
+        .setDuration(300)
+        .setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                view.setVisibility(View.GONE);
+            }
+        });
+
+示例三： 自己写的
+    mView 开始动画后，透明度逐渐加大。动画结束后，会重新显示出来。
+    public void btnAnimation(View v) {
+    	Animation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+    	alphaAnimation.setDuration(1000 * 3);
+    	mView.startAnimation(alphaAnimation);
+    }
+
+    另一种写法：mView.setVisibility(View.GONE) 执行这句后，mView 的位置立即消失了，同时开始执行动画。
+	public void btnAnimation(View v) {
+    	Animation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+    	alphaAnimation.setDuration(1000 * 3);
+    	mView.setAnimation(alphaAnimation);
+    	mView.setVisibility(View.GONE);
+    }

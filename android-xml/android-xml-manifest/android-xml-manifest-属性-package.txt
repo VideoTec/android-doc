@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/5487683/renaming-the-package-that-r-java-is-generated-in
+第一种方法
+Right click your project, then Android Tools -> Rename Application Name:
+
+第二种方法
+手动修改 AndroidManifest.xml 文件，里面的包名
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testdemo"
+    android:versionCode="1"
+    android:versionName="1.0" >

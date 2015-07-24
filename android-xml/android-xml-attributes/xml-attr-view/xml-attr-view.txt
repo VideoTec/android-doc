@@ -1,0 +1,19 @@
+The classes which have XML attributes, list them XML attributes in their own documentation. 
+
+查看所有的 attributes
+http://developer.android.com/reference/android/R.styleable.html
+http://developer.android.com/reference/android/R.attr.html
+
+参考
+http://developer.android.com/guide/topics/ui/declaring-layout.html#attributes
+
+Every View and ViewGroup object supports their own variety of XML attributes. 
+
+Some attributes are specific to a View object (for example, TextView supports the textSize attribute), 
+but these attributes are also inherited by any View objects that may extend this class. 
+
+Some are common to all View objects, because they are inherited from the root View class (like the id attribute).
+
+And, other attributes are considered "layout parameters," which are attributes 
+that describe certain layout orientations of the View object, 
+as defined by that object's parent ViewGroup object.

@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/content/pm/PackageManager.html
+
+java.lang.Object
+   ↳	android.content.pm.PackageManager
+   
+Known Direct Subclasses
+MockPackageManager
+
+Class for retrieving various kinds of information 
+related to the application packages that are currently installed on the device. 
+You can find this class through getPackageManager().
+
+public class ContextWrapper extends Context 的成员函数 getPackageManager

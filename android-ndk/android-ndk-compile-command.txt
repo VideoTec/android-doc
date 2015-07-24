@@ -1,0 +1,50 @@
+查看NDK-BUILD创建的编译命令行：
+参考 
+https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html
+
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++ 
+-MMD -MP -MF 
+./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o.d 
+-fpic 
+-ffunction-sections 
+
+-funwind-tables 
+Similar to -fexceptions, except that it just generates any needed static data, but does not affect the generated code in any other way. 
+You normally do not need to enable this option; 
+instead, a language processor that needs this handling enables it on your behalf.
+
+-fstack-protector 
+Emit extra code to check for buffer overflows, such as stack smashing attacks. 
+This is done by adding a guard variable to functions with vulnerable objects. 
+This includes functions that call alloca, and functions with buffers larger than 8 bytes. 
+The guards are initialized when a function is entered and then checked when the function exits. 
+If a guard check fails, an error message is printed and the program exits. 
+
+-no-canonical-prefixes  Do not expand any symbolic links, resolve references to ‘/../’ or ‘/./’, or 
+                        make the path absolute when generating a relative prefix.
+-march=armv5te          specifies the name of the target ARM architecture
+                        This option can be used in conjunction with or instead of the -mcpu= option
+-mtune=xscale           This option specifies the name of the target ARM processor for which GCC should tune the performance of the code
+-msoft-float            Generate output containing library calls for floating point
+                        默认用 hard-float
+-fno-exceptions 
+-fno-rtti 
+-mthumb                 Select between generating code that executes in ARM and Thumb states  -mthumb  -marm
+-Os                     Optimize for size. -Os enables all -O2 optimizations that do not typically increase code size.
+-g 
+-DNDEBUG 
+-fomit-frame-pointer 
+-fno-strict-aliasing 
+-finline-limit=64 
+-I..\..\..\libav-10.1\output\include 
+-IE:/android/ndk/sources/cxx-stl/system/include 
+-Ijni 
+-DANDROID 
+-std=c++11 
+-Wa,--noexecstack 
+-Wformat                   printf(fmt, ...); 格式符号 和 实际参数， 数量 和 类型对比
+-Werror=format-security    示例错误：LOGI(str_utf8); 需要改成 LOGI("%s", str_utf8);
+-IE:/android/ndk/platforms/android-8/arch-arm/usr/include 
+-c  jni/MediaSourceNativeInterface.cpp 
+-o ./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o
+[armeabi] Compile++ thumb: fvideo <= MediaTarget.cpp

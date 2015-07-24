@@ -1,0 +1,6 @@
+Camera.Parameters 不依赖 Camera，
+Camera 对象被 release 后，获取的 Parameters 仍然可以正常使用
+
+        Camera cam0 = Camera.open(0);
+        mParam = cam0.getParameters();
+        cam0.release();

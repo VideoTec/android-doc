@@ -1,0 +1,30 @@
+E:/android/ndk/toolchains/arm-linux-androideabi-4.8/prebuilt/windows-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld.exe: 
+warning: cannot scan executable section 1 of jni/lib/libx264.a(pixel-a.o) for Cortex-A8 erratum because it has no mapping symbols.
+
+原因可能是 libx264.a 编译问题？
+
+This is apparently a known "issue" (behaviour) of the new linker that was introduced in R8C. See this bug report. 
+These warnings can result from having stripped non-global symbols from the objects files that the linker needs to perform fixups.
+
+That discussion yielded two suggested workarounds:
+
+1) Remove all instances of strip -x in your makefile (if any exist).
+
+2) Build with make STRIP=
+
+
+https://code.google.com/p/android/issues/detail?id=40794
+Issue 40794:	NDK r8c warning for asm objects regarding "Cortex-A8 erratum"
+With NDK r8c, linking of X264 encoder (on Mac OS, if that matters) issues warnings:
+
+"cannot scan executable section 1 of libx264.a(dct-a.o) for Cortex-A8 erratum because it has no mapping symbols".
+
+... same warning for all assembly files in libx264.
+
+libx264.a itself was cross-compiled on the same Mac with the same 4.6 toolchain taken from NDK. Is it a problem with the new linker, or with the assembler that produced dct-a.o from dct-a.S, or with our configuration?
+
+Sincerely,
+Alex
+
+产生问题的原因是：
+The short answer is that (libx264的) Makefile wrongfully calling "strip" on *.o which removes essential mapping symbols ld.gold needs to fixup cortex-a8 erratum

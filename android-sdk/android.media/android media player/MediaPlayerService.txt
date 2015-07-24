@@ -1,0 +1,14 @@
+服务器端
+class BnMediaPlayerService: public BnInterface<IMediaPlayerService>
+class MediaPlayerService : public BnMediaPlayerService
+
+class BnMediaPlayer: public BnInterface<IMediaPlayer>
+MediaPlayerService::Client : public BnMediaPlayer
+
+客户端
+class BpMediaPlayerService: public BpInterface<IMediaPlayerService>
+class BpMediaPlayer: public BpInterface<IMediaPlayer>
+
+问题是下面这两个类是做什么的？
+class BpMediaPlayerClient: public BpInterface<IMediaPlayerClient>
+class BnMediaPlayerClient: public BnInterface<IMediaPlayerClient>

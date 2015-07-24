@@ -1,0 +1,15 @@
+http://developer.android.com/reference/android/view/View.html#getLayoutParams()
+
+public ViewGroup.LayoutParams getLayoutParams ()
+
+Added in API level 1
+Get the LayoutParams associated with this view. All views should have layout parameters. These supply parameters to the parent of this view specifying how it should be arranged. There are many subclasses of ViewGroup.LayoutParams, and these correspond to the different subclasses of ViewGroup that are responsible for arranging their children. This method may return null if this View is not attached to a parent ViewGroup or setLayoutParams(android.view.ViewGroup.LayoutParams) was not invoked successfully. When a View is attached to a parent ViewGroup, this method must not return null.
+
+Returns
+The LayoutParams associated with this view, or null if no parameters have been set yet
+
+第一种方法：
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.height = mVideoHeight;
+        p.width = mVideoWidth;
+        mSurfaceview.setLayoutParams(p);

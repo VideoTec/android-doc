@@ -1,0 +1,15 @@
+android:layout_height
+
+Specifies the basic height of the view. This is a required attribute for any view inside of a containing layout manager. Its value may be a dimension (such as "12dip") for a constant height or one of the special constants.
+
+May be a dimension value, which is a floating point number appended with a unit such as "14.5sp". Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), mm (millimeters).
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+May be one of the following constant values.
+
+Constant	Value	Description
+fill_parent	-1	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
+match_parent	-1	The view should be as big as its parent (minus padding). Introduced in API Level 8.
+wrap_content	-2	The view should be only big enough to enclose its content (plus padding).
+This corresponds to the global attribute resource symbol layout_height.

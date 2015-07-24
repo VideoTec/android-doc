@@ -1,0 +1,10 @@
+http://developer.android.com/reference/android/hardware/Camera.html#unlock()
+
+public final void unlock ()
+
+Added in API level 5
+Unlocks the camera to allow another process to access it. Normally, the camera is locked to the process with an active Camera object until release() is called. To allow rapid handoff between processes, you can call this method to release the camera temporarily for another process to use; once the other process is done you can call reconnect() to reclaim the camera.
+
+This must be done before calling setCamera(Camera). This cannot be called after recording starts.
+
+If you are not recording video, you probably do not need this method.

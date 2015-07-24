@@ -1,0 +1,22 @@
+http://developer.android.com/reference/android/hardware/Camera.CameraInfo.html
+
+shutter[英][ˈʃʌtə(r)] [美][ˈʃʌtɚ] n.遮光器；百叶窗；快门
+
+Information about a camera 摄像头的信息
+
+public boolean	canDisableShutterSound	Whether the shutter sound can be disabled.
+public int		facing					The direction that the camera faces.
+                                        The direction that the camera faces. It should be 
+                                        CameraInfo.CAMERA_FACING_BACK (0) or 
+                                        CameraInfo.CAMERA_FACING_FRONT (1)
+
+public int		orientation				The orientation of the camera image.
+The orientation of the camera image. 
+The value is the angle that the camera image needs to be rotated clockwise so it shows correctly on the display in its natural orientation. 
+It should be 0, 90, 180, or 270.
+
+For example, suppose a device has a naturally tall screen. 
+The back-facing camera sensor is mounted in landscape. 
+You are looking at the screen. 
+If the top side of the camera sensor is aligned with the right edge of the screen in natural orientation, the value should be 90. 
+If the top side of a front-facing camera sensor is aligned with the right of the screen, the value should be 270.

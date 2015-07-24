@@ -1,0 +1,20 @@
+ant[英][ænt] [美][ænt] 蚂蚁
+
+Apache Ant，
+是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，
+大多用于Java环境中的软件开发。由Apache软件基金会所提供。
+
+默认情况下，它的buildfile(XML文件)名为build.xml。
+每一个buildfile含有一个<project>和至少一个预设的<target>，
+这些targets包含许多task elements。
+
+每一个task element有一个用来被参考的id，此id必须是唯一的。
+
+使用方法：
+apache-ant-1.9.4\bin\ant.bat -f xxx.xml
+
+官网
+https://ant.apache.org/bindownload.cgi
+
+eclipse 插件
+E:\android\adt\eclipse\plugins\org.apache.ant_1.8.3.v201301120609\bin\ant.bat

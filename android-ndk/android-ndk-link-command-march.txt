@@ -1,0 +1,31 @@
+查看NDK-BUILD创建的编译命令行：
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++ 
+-MMD -MP -MF 
+./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o.d 
+-fpic 
+-ffunction-sections 
+-funwind-tables 
+-fstack-protector 
+-no-canonical-prefixes 
+-march=armv5te 
+-mtune=xscale 
+-msoft-float 
+-fno-exceptions 
+-fno-rtti 
+-mthumb 
+-Os -g -DNDEBUG 
+-fomit-frame-pointer 
+-fno-strict-aliasing 
+-finline-limit=64 
+-I..\..\..\libav-10.1\output\include 
+-IE:/android/ndk/sources/cxx-stl/system/include 
+-Ijni 
+-DANDROID 
+-std=c++11 
+-Wa,--noexecstack 
+-Wformat 
+-Werror=format-security      
+-IE:/android/ndk/platforms/android-8/arch-arm/usr/include 
+-c  jni/MediaSourceNativeInterface.cpp 
+-o ./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o
+[armeabi] Compile++ thumb: fvideo <= MediaTarget.cpp

@@ -1,0 +1,21 @@
+定义了下面的结构体：
+struct CAudioPlayer_struct
+struct CAudioRecorder_struct
+struct CEngine_struct
+struct COutputMix_struct
+struct CMediaPlayer_struct
+
+另外其它几个结构体
+CVibraDevice
+CMidiPlayer
+CMetadataExtractor
+CListener
+CLEDDevice
+
+struct CAudioPlayer_struct 结构体，重要的成员
+    /** plays the PCM data for this player */
+    android::sp<android::AudioTrack> mAudioTrack;
+    android::sp<android::CallbackProtector> mCallbackProtector;
+    android::sp<android::GenericPlayer> mAPlayer;
+    /** aux effect the AudioTrack will be attached to if aux send enabled */
+    android::sp<android::AudioEffect> mAuxEffect;

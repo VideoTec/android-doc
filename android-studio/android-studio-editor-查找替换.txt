@@ -1,0 +1,10 @@
+Edit -> Find -> 
+
+在当前文件里查找替换
+ctrl + f
+ctrl + r
+
+在工程里查找替换
+https://www.jetbrains.com/idea/help/find-and-replace-in-path.html
+ctr + shift + r
+Ctrl+Shift+F and Ctrl+Shift+R to switch between the find and replace modes.

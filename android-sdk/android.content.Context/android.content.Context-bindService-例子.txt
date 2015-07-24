@@ -1,0 +1,16 @@
+	private void bindService(final OnBindSuccess success) {
+		if(application != null) {
+			application.bindService(new Intent("com.feinno.fetion.proxy.service"), new ServiceConnection() {
+				
+				@Override
+				public void onServiceDisconnected(ComponentName name) {
+					mFetionProxy = null;
+				}
+				
+				@Override
+				public void onServiceConnected(ComponentName name, IBinder service) {
+					success.onServiceConnected(name,service);
+				}
+			}, Activity.BIND_AUTO_CREATE);
+		}
+	}

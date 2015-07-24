@@ -1,0 +1,34 @@
+
+gravity[英][ˈgrævəti] [美][ˈɡrævɪti]
+n.重力；万有引力，地心引力；重要性，严重性；严肃，庄重
+
+http://developer.android.com/reference/android/widget/TextView.html#attr_android:gravity
+
+android:gravity
+Specifies how to align the text by the view's x- and/or y-axis 
+when the text is smaller than the view.
+Must be one or more (separated by '|') of the following constant values.
+
+http://developer.android.com/reference/android/widget/RelativeLayout.html#attr_android:gravity
+
+android:gravity
+Specifies how an object should position its content, on both the X and Y axes, within its own bounds.
+
+Describes how the child views are positioned. Defaults to Gravity.START | Gravity.TOP
+
+Note that since RelativeLayout considers the positioning of each child relative to one another to be significant, setting gravity will affect the positioning of all children as a single unit within the parent. This happens after children have been relatively positioned.
+
+top	0x30	Push object to the top of its container, not changing its size.
+bottom	0x50	Push object to the bottom of its container, not changing its size.
+left	0x03	Push object to the left of its container, not changing its size.
+right	0x05	Push object to the right of its container, not changing its size.
+center_vertical	0x10	Place object in the vertical center of its container, not changing its size.
+fill_vertical	0x70	Grow the vertical size of the object if needed so it completely fills its container.
+center_horizontal	0x01	Place object in the horizontal center of its container, not changing its size.
+fill_horizontal	0x07	Grow the horizontal size of the object if needed so it completely fills its container.
+center	0x11	Place the object in the center of its container in both the vertical and horizontal axis, not changing its size.
+fill	0x77	Grow the horizontal and vertical size of the object if needed so it completely fills its container.
+clip_vertical	0x80	Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges.
+clip_horizontal	0x08	Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges.
+start	0x00800003	Push object to the beginning of its container, not changing its size.
+end	0x00800005	Push object to the end of its container, not changing its size.

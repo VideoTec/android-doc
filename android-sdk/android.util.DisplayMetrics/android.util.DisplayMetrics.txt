@@ -1,0 +1,32 @@
+文档
+http://developer.android.com/reference/android/util/DisplayMetrics.html
+
+
+density[英][ˈdensəti] [美][ˈdɛnsɪti] n.密度；稠密，浓厚；[物]浓度，比重；愚钝
+metrics[英]['metrɪks] [美]['metrɪks] 度量
+
+A structure describing general information about a display, such as its size, density, and font scaling.
+
+To access the DisplayMetrics members, initialize an object like this:
+
+ DisplayMetrics metrics = new DisplayMetrics();
+ getWindowManager().getDefaultDisplay().getMetrics(metrics);
+ 
+ 	/**
+	 * 获取屏幕宽高
+	 * @param activity
+	 * @return
+	 */
+	public static int[] getScreenWH(Activity activity) {
+		int[] wh = new int[2];
+		DisplayMetrics dm = new DisplayMetrics();
+		activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+		wh[0] = dm.widthPixels;
+		wh[1] = dm.heightPixels;
+		return wh;
+	}
+    
+    19:38 2015/7/15  和 Display 的 rotation 也相关
+    竖着时：720x1280
+    横着时：1280x720
+    当屏幕（窗口）不能旋转时，其值不变

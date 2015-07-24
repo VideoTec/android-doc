@@ -1,0 +1,7 @@
+android studio 自动升级
+
+android studio ide update
+Current version 1.2.0 build-141.1890965
+new version        1.2.1 build-141.1903250
+
+patch size 11mb

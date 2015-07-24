@@ -1,0 +1,13 @@
+16:18 2015/5/19
+
+菜单：
+Java Build Path -> Libraries -> Android Private Libraries
+
+添加方式：
+右击 工程 属性， Android -> Library 添加
+
+参考
+http://blog.csdn.net/p106786860/article/details/12152011
+
+会 把依赖 Android Private Libraries 工程的， R.class 和 lib　目录下的 jar 包，引入到主工程里。
+会 把依赖 Android Private Libraries 工程的， 的 libs 目录下的动态库，打到 apk 里

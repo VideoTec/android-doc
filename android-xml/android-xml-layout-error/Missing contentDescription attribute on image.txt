@@ -1,0 +1,20 @@
+11:47 2015/5/13
+
+出现警告提示
+[Accessibility] Missing contentDescription attribute on image
+
+    <ImageView
+		    android:id="@+id/recorder_guide"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerInParent="true"
+		    android:background="@drawable/movie_cover_plate"
+		    android:visibility="gone"/>
+
+在main.xml（或其他xml）中增加ImageView控件或ImageButton控件时
+如果没有加android:contentDescription="@string/app_name"时
+会引起Missing contentDescription attribute on image ，
+主要是因为在main.xml中没有使用TextView之类的文本控件，
+ADT会提示给像ImageView增加一个说明，
+这里添加android:contentDescription="@string/app_name即可，
+其实加不加影响不大。只是在IDE中会显示一个黄色下划线，不美观

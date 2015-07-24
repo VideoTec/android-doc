@@ -1,0 +1,5 @@
+自定义控件
+
+参考
+http://developer.android.com/training/custom-views/create-view.html
+http://blog.csdn.net/vipzjyno1/article/details/23696537

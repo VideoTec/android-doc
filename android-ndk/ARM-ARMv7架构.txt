@@ -1,0 +1,23 @@
+Architecture	Bitwidth	Cores designed by ARM Holdings		Cores designed by third parties				Cortex profile		References
+
+ARMv7-M			32			ARM Cortex-M3																	Microcontroller
+ARMv7E-M		32			ARM Cortex-M4,ARM Cortex-M7														Microcontroller
+ARMv7-R			32			ARM Cortex-R4,ARM Cortex-R5,ARM Cortex-R7										Real-time
+
+ARMv7-A			32			ARM Cortex-A5,ARM Cortex-A7,ARM Cortex-A8,ARM Cortex-A9,ARM Cortex-A12,ARM Cortex-A15,ARM Cortex-A17
+																Krait,Scorpion, PJ4/Sheeva, AppleA6/A6X		Application
+
+arm 开发的 Cores (处理器内核)
+ARM Cortex-A5,
+ARM Cortex-A7,
+ARM Cortex-A8,
+ARM Cortex-A9,
+ARM Cortex-A12,
+ARM Cortex-A15,
+ARM Cortex-A17
+
+第三方开发的 Cores (处理器内核)
+Krait,
+Scorpion, 
+PJ4/Sheeva, 
+AppleA6/A6X

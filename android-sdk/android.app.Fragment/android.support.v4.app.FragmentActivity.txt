@@ -1,0 +1,30 @@
+http://developer.android.com/reference/android/support/v4/app/FragmentActivity.html
+
+
+java.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+ 	 	   ↳	android.view.ContextThemeWrapper
+ 	 	 	   ↳	android.app.Activity
+ 	 	 	 	   ↳	android.support.v4.app.FragmentActivity
+Known Direct Subclasses
+AppCompatActivity
+
+Known Indirect Subclasses
+ActionBarActivity
+
+----------------------------------------
+概述
+----------------------------------------
+
+Base class for activities that want to use the support-based Fragment and Loader APIs.
+
+When using this class as opposed to new platform's built-in fragment and loader support, you must use the getSupportFragmentManager() and getSupportLoaderManager() methods respectively to access those features.
+
+Note: If you want to implement an activity that includes an action bar, you should instead use the ActionBarActivity class, which is a subclass of this one, so allows you to use Fragment APIs on API level 7 and higher.
+
+Known limitations:
+
+When using the <fragment> tag, this implementation can not use the parent view's ID as the new fragment's ID. You must explicitly specify an ID (or tag) in the <fragment>.
+
+Prior to Honeycomb (3.0), an activity's state was saved before pausing. Fragments are a significant amount of new state, and dynamic enough that one often wants them to change between pausing and stopping. These classes throw an exception if you try to change the fragment state after it has been saved, to avoid accidental loss of UI state. However this is too restrictive prior to Honeycomb, where the state is saved before pausing. To address this, when running on platforms prior to Honeycomb an exception will not be thrown if you change fragments between the state save and the activity being stopped. This means that in some cases if the activity is restored from its last saved state, this may be a snapshot slightly before what the user last saw.

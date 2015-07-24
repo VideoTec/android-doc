@@ -1,0 +1,16 @@
+public static int getMinBufferSize (int sampleRateInHz, int channelConfig, int audioFormat)
+
+Added in API level 3
+Returns the minimum buffer size required for the successful creation of an AudioRecord object, in byte units. Note that this size doesn't guarantee a smooth recording under load, and higher values should be chosen according to the expected frequency at which the AudioRecord instance will be polled for new data. See AudioRecord(int, int, int, int, int) for more information on valid configuration values.
+
+Parameters
+sampleRateInHz	the sample rate expressed in Hertz.
+channelConfig	describes the configuration of the audio channels. See CHANNEL_IN_MONO and CHANNEL_IN_STEREO
+audioFormat	the format in which the audio data is represented. See ENCODING_PCM_16BIT.
+Returns
+ERROR_BAD_VALUE if the recording parameters are not supported by the hardware, or an invalid parameter was passed, or ERROR if the implementation was unable to query the hardware for its input properties, or the minimum buffer size expressed in bytes.
+See Also
+AudioRecord(int, int, int, int, int)
+
+示例
+int bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);

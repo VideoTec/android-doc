@@ -1,0 +1,26 @@
+10:41 2015/6/2
+没有找到合适的办法：
+builder -> target 方法的四个时间都不对
+After a "Clean" —— 每当我们在项目上执行一个清除操作时，目标就会运行。
+Manual Build —— 在自动构建被关闭的时候使用该选项。每当我们执行手动构建时，指定的目标就将运行。
+Auto-Build —— 每当执行自动构建时，目标就会运行。一般来说，就是每当我们保存 Java 文件时。
+During a "Clean" —— 该选项与 After a "Clean" 
+
+----------------------------------------------------------------------------
+第一个任务，构建完成后，把生成的 jar 包，复制到别的工程 libs 目录里
+----------------------------------------------------------------------------
+http://stackoverflow.com/questions/5607723/copying-data-files-upon-build-in-java-eclipse
+Go with Ant. To be honest this is the best solution for automation of app building process.
+
+
+----------------------------------------------------------------------------
+为 eclipse 创建新的 custom builder-program
+----------------------------------------------------------------------------
+Add a custom builder to your project: open Project properties from the popup menu, on the builders page add a new Program. That will open a "External tool configuration" page.
+
+There you can define a script to run, and also add parameters, where you can add Eclipse variables, such as ${workspace}, etc.
+
+Be careful though: this will run every time when the incremental project builder runs, and the configuration is shared through version control (so beware of absolute paths).
+
+参考
+http://www.ibm.com/developerworks/opensource/tutorials/os-eclipse-tools/

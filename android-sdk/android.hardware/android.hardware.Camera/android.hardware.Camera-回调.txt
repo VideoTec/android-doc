@@ -1,0 +1,42 @@
+-----------------------------------------------------
+public static interface Camera.PreviewCallback
+-----------------------------------------------------
+
+android.hardware.Camera.PreviewCallback onPreviewFrame(byte[] data, Camera camera)
+回调所在的线程
+This callback is invoked on the event thread open(int) was called from
+图片数据的格式
+the contents of the preview frame in the format defined by ImageFormat, 
+which can be queried with getPreviewFormat(). 
+If setPreviewFormat(int) is never called, the default will be the YCbCr_420_SP (NV21) format.
+
+for every preview frame
+setPreviewCallback(Camera.PreviewCallback cb)
+setPreviewCallbackWithBuffer(Camera.PreviewCallback cb)  addCallbackBuffer(byte[])
+
+for the next preview frame - After one invocation, the callback is cleared
+setOneShotPreviewCallback(Camera.PreviewCallback cb)
+
+获取 preview 图片的大小
+The width and height can be read from 
+android.hardware.Camera.Parameters getPreviewSize()
+                                   getPreferredPreviewSizeForVideo() 录制视频的最佳尺寸
+
+获取 preview 图片的格式
+YV12 NV21
+the default will be the YCbCr_420_SP (NV21) format
+android.hardware.Camera.Parameters getPreviewFormat()
+android.hardware.Camera.Parameters setPreviewFormat()
+计算每个象素字节数
+Bytes per pixel can be computed from android.graphics.ImageFormat.getBitsPerPixel(int-image-format) / 8
+
+回调传的回的 byte 可以不进 JAVA 层吗？直接在 NATIVE 层获取？
+I addition, it would be nice if images are not passed from the message queue but from the driver's thread. 
+I traced the processing chain for the camera images down to the driver level and realized that the driver has its own thread. 
+However, the events from the driver are thrown in the message queue when they reach the Java layer. 
+I changed that as well in my firmware and it improved the performance quite a bit. 
+I assume that it would also be more flexible for developers.
+
+I agree fully with your proposal, and 
+would also like to underline the need to have the preview data delivered in a direct ByteBuffer, 
+thereby enabling native app code to access it without copying.

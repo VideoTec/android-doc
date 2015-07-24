@@ -1,0 +1,35 @@
+16:33 2015/5/13
+
+参考
+http://blog.csdn.net/feng88724/article/details/6457431
+
+方法一：代码修改
+
+public void onCreate(Bundle savedInstanceState) { 
+super.onCreate(savedInstanceState); 
+   //去除title   
+   requestWindowFeature(Window.FEATURE_NO_TITLE);   
+   //去掉Activity上面的状态栏
+   getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);  
+   setContentView(R.layout.main); 
+}
+
+或者
+
+requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title_1);
+
+R.layout.custom_title_1  这个就是你的标题文件布局
+
+方法二：配置文件 AndroidManifest.xml
+(关键代码：android:theme="@android:style/Theme.NoTitleBar.Fullscreen"，
+如果想只是去除标题栏就后面不用加Fullscreen了，另外，
+如果想要整个应用都去除标题栏和状态栏，就把这句代码加到<application。。标签里面，
+如果只是想某个activity起作用，这句代码就加到相应的activity上):
+
+隐藏标题栏需要使用预定义样式：android:theme=”@android:style/Theme.NoTitleBar”.
+隐藏状态栏：                  android:theme=”@android:style/Theme.NoTitleBar.Fullscreen”.
+
+在这里我还想说明一下，
+用前者在我们应用运行后，会看到短暂的状态栏，然后才全屏，
+而第二种方法是不会有这种情况的，所以我建议大家使用后者！

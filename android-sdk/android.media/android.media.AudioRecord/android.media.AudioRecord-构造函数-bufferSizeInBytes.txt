@@ -1,0 +1,22 @@
+inferior[英][ɪnˈfɪəriə(r)] [美][ɪnˈfɪriə(r)]
+adj.（质量等）低劣的；下级的，下等的；（位置在）下面的；[植]下位的
+
+inferior to 次于，劣于；不如；不及
+
+public AudioRecord (int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
+
+bufferSizeInBytes
+the total size (in bytes) of the buffer where audio data is written to during the recording. 
+New audio data can be read from this buffer in smaller chunks than this size. 
+
+See getMinBufferSize(int, int, int) to determine the minimum required buffer size for the successful creation of an AudioRecord instance. 
+Using values smaller than getMinBufferSize() will result in an initialization failure.
+
+另外的解释：
+AudioRecord object initializes its associated audio buffer that it will fill with the new audio data. 
+The size of this buffer, specified during the construction, 
+determines how long an AudioRecord can record before "over-running" data that has not been read yet. 
+Data should be read from the audio hardware in chunks of sizes inferior to the total recording buffer size.
+
+http://www.cnblogs.com/ct2011/p/4080193.html
+bufferSizeInBytes该传入什么

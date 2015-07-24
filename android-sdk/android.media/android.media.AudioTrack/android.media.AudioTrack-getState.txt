@@ -1,0 +1,26 @@
+public int getState ()
+
+Added in API level 3
+Returns the state of the AudioTrack instance. This is useful after the AudioTrack instance has been created to check if it was initialized properly. This ensures that the appropriate resources have been acquired.
+
+See Also
+STATE_INITIALIZED
+STATE_NO_STATIC_DATA
+STATE_UNINITIALIZED
+
+        if (mAudioTrack == null) {
+            mAudioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate,
+                    channelConfig, audioFormat, desiredFrames * frameSize, AudioTrack.MODE_STREAM);
+            
+            // Instantiating AudioTrack can "succeed" without an exception and the track may still be invalid
+            // Ref: https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/media/java/android/media/AudioTrack.java
+            // Ref: http://developer.android.com/reference/android/media/AudioTrack.html#getState()
+            
+            if (mAudioTrack.getState() != AudioTrack.STATE_INITIALIZED) {
+                Log.e("SDL", "Failed during initialization of Audio Track");
+                mAudioTrack = null;
+                return -1;
+            }
+            
+            mAudioTrack.play();
+        }

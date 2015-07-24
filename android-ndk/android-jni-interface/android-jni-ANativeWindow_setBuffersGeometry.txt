@@ -1,0 +1,23 @@
+E:\android\ndk\platforms\android-9\arch-arm\usr\include\android\native_window.h
+
+/*
+ * Change the format and size of the window buffers.
+ *
+ * The width and height control the number of pixels in the buffers, not the
+ * dimensions of the window on screen.  If these are different than the
+ * window's physical size, then it buffer will be scaled to match that size
+ * when compositing it to the screen.
+ *
+ * For all of these parameters, if 0 is supplied then the window's base
+ * value will come back in force.
+ */
+int32_t ANativeWindow_setBuffersGeometry(ANativeWindow* window, int32_t width, int32_t height, int32_t format);
+
+用法：
+    /* EGL_NATIVE_VISUAL_ID is an attribute of the EGLConfig that is
+     * guaranteed to be accepted by ANativeWindow_setBuffersGeometry().
+     * As soon as we picked a EGLConfig, we can safely reconfigure the
+     * ANativeWindow buffers to match, using EGL_NATIVE_VISUAL_ID. */
+
+    eglGetConfigAttrib(display, config, EGL_NATIVE_VISUAL_ID, &format);
+    ANativeWindow_setBuffersGeometry(engine->app->window, 0, 0, format);

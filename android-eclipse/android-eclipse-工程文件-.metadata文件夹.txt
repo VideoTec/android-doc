@@ -1,0 +1,19 @@
+Eclipse .metadata 文件夹
+
+10:51 2015/5/20 结论
+不应该加入 版本控制中
+
+http://stackoverflow.com/questions/19996170/what-is-the-metadata-folder-in-eclipse-workspace
+
+The .metadata folder is an area where Eclipse plug-ins can save any information they want to save. 
+This will include things like 
+your preference setting and 
+the index the Java plug-in uses to find classes and methods quickly.
+
+It also includes the .log file where Eclipse logs errors.
+
+Exactly what is stored there depends on the plug-ins you have installed 
+(one of my plug-ins has a database in the .metadata) 
+so it is a good idea to back it up (along with the projects).
+
+http://stackoverflow.com/questions/11768106/clean-out-eclipse-workspace-metadata

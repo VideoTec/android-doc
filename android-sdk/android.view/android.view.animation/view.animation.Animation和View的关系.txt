@@ -1,0 +1,22 @@
+文档
+
+setAnimation(Animation) or startAnimation(Animation)
+
+contrast[英][ˈkɒntrɑ:st] [美][ˈkɑ:ntræst] n.对比，对照；差异；对照物，对立面；[摄]反差
+appropriate[英][əˈprəʊpriət] [美][əˈproʊpriət] adj.适当的；恰当的；合适的
+
+Animation
+
+Starting with Android 3.0, the preferred way of animating views is to use the android.animation package APIs. 
+These Animator-based classes change actual properties of the View object, such as alpha and translationX. 
+This behavior is contrasted to that of the pre-3.0 Animation-based classes, 
+which instead animate only how the view is drawn on the display. 
+In particular, the ViewPropertyAnimator class makes animating these View properties particularly easy and efficient.
+
+Alternatively, you can use the pre-3.0 animation classes to animate how Views are rendered. 
+You can attach an Animation object to a view using setAnimation(Animation) or startAnimation(Animation). 
+The animation can alter the scale, rotation, translation and alpha of a view over time. 
+If the animation is attached to a view that has children, 
+the animation will affect the entire subtree rooted by that node. 
+When an animation is started, 
+the framework will take care of redrawing the appropriate views until the animation completes.

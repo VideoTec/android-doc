@@ -1,0 +1,17 @@
+public void scrollTo (int x, int y)
+
+Added in API level 1
+Set the scrolled position of your view. This will cause a call to onScrollChanged(int, int, int, int) and the view will be invalidated.
+
+Parameters
+x	the x position to scroll to
+y	the y position to scroll to
+
+11:30 2015/7/22
+ImageView 会滚动图片吗？
+
+E:\doc\Computer software\Android平台\android-sdk\android.widget\android.widget.ImageView-setScaleType-centerCrop.txt
+imageW < viewW 的情况,且，按比例拉宽后， imageSaleH > viewH
+这时，CENTER_CROP，情况下显示中间部分，怎么让他显示，上面部分呢？
+
+第一种想法： View 的 iView.scrollTo(0, 0); 不行。

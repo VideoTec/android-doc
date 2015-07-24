@@ -1,0 +1,6 @@
+sparse[英][spɑ:s] adj.稀疏的；稀少的
+
+Use new SparseArray<View> (...) instead for better performance
+
+android.util.SparseArray<E>
+SparseArrays map integers to Objects. 整数到对象的映射

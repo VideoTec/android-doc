@@ -1,0 +1,42 @@
+interpolator[英][ɪn'tɜ:pəʊleɪtə] [美][ɪn'tɜ:poʊleɪtə] n.撺改者，校对机，分类机 插补器
+accelerate[英][əkˈseləreɪt] [美][ækˈsɛləˌret] vi.加快，加速
+decelerate[英][ˌdi:ˈseləreɪt] [美][diˈsɛləˌret] vt.& vi.（使）减速
+anticipate[英][ænˈtɪsɪpeɪt] [美][ænˈtɪsəˌpet] vt.预感；预见；预料；先于…行动
+overshoot[英][ˌəʊvəˈʃu:t] [美][ˌoʊvərˈʃu:t] vt.超过；言过其实，夸张
+bounce[英][baʊns] [美][baʊns] vi.跳，反弹；急促地动；拒付，退票
+fraction[英][ˈfrækʃn] [美][ˈfrækʃən] n.[数]分数；一小部分，些微；不相连的一块，片段；[化]分馏
+elapse[英][ɪˈlæps] [美][ɪˈlæps] vi.消逝；时间过去
+elapsed[英][ɪ'læpst] [美][ɪ'læpst] v.（时间）消逝，过去（ elapse 的过去式和过去分词 ）
+
+Interpolators（插值器）
+所谓插值器就是用于数值的起始间的变化，就是相当于一个类似于物理引擎的东西。
+android官方内置了一些简单常用的数值变换，让我们，不需要去学习相关的物理知识
+
+An interpolator defines the rate of change of an animation. 
+This allows the basic animation effects (alpha, scale, translate, rotate) to be accelerated, decelerated, repeated, etc.
+
+继承 android.animation.TimeInterpolator 接口，只有一个抽象方法：
+
+abstract float getInterpolation(float input)
+Maps a value representing the elapsed fraction of an animation 
+to a value that represents the interpolated fraction.
+
+实现的插值器有
+BaseInterpolator,  An abstract class which is extended by default interpolators.
+
+AccelerateInterpolator, 
+DecelerateInterpolator, 
+AccelerateDecelerateInterpolator, 
+
+AnticipateInterpolator,               开始向后一点，往前抛
+OvershootInterpolator,                往前抛超过一点，然后返回来
+AnticipateOvershootInterpolator,      开始向后一点，往前抛过点，然后返回来
+
+LinearInterpolator, 
+FastOutLinearInInterpolator, 
+FastOutSlowInInterpolator, 
+LinearOutSlowInInterpolator,
+
+BounceInterpolator,       结束的时候弹一下
+CycleInterpolator,  
+PathInterpolator

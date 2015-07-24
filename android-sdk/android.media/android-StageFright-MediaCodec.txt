@@ -1,0 +1,39 @@
+Android 没有直接使用OpenMax IL层提供的纯C接口
+
+在Android2.x版本之后：
+Android的框架层也对OpenMax IL层的接口进行了封装定义，
+使用Android中的Binder IPC机制
+
+Android provides a media playback engine at the native level called Stagefright 
+
+Stagefright
+comes built-in with software-based codecs for several popular media formats. 
+
+Stagefright features for 
+audio and video playback include integration with OpenMAX codecs, 
+session management, 
+time-synchronized rendering, 
+transport control, and DRM. 
+
+Stagefright supports integration with custom hardware codecs that you provide. 
+There actually isn't a HAL to implement for custom codecs, 
+but to provide a hardware path to encode and decode media, 
+you must implement your hardware-based codec as an OpenMax IL (Integration Layer) component.
+
+整合自定义的编解码器到系统
+he Stagefright service parses the 
+
+system/etc/media_codecs.xml and 
+system/etc/media_profiles.xml 
+
+to expose the supported codecs and profiles on the device to app developers via the 
+android.media.MediaCodecList and 
+android.media.CamcorderProfile classes. 
+
+You need to create both files in the 
+device/<company_name>/<device_name>/ directory and 
+copy this over to the system image's system/etc directory in your device's Makefile. 
+
+https://android.googlesource.com/platform/frameworks/base/+/56a2301/media/java/android/media/MediaExtractor.java
+分析 android.media.MediaExtractor native final void setDataSource(DataSource source) 流程
+libmedia_jni.so

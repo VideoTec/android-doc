@@ -1,0 +1,9 @@
+引入别的 jni 工程
+import-module
+
+A function that allows you to find and include the Android.mk of another module by name. A typical example is:
+
+        $(call import-module,<name>)
+And this will look for the module tagged <name> in the list of directories referenced by your NDK_MODULE_PATH environment variable, and include its Android.mk automatically for you.
+
+Read Andoid Module Paths (Sharing Code Made Easy) for more details.

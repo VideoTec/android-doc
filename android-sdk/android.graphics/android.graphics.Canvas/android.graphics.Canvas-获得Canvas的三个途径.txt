@@ -1,0 +1,10 @@
+第一种途径
+View.onDraw(Canvas canvas)
+the Android framework will provide you with a pre-defined Canvas to which you will place your drawing calls.
+
+第二种途径
+SurfaceHandler lockCanvas()
+
+第三种途径
+Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+Canvas c = new Canvas(b);

@@ -1,0 +1,37 @@
+When you create a new Handler, 
+it is bound to the thread / message queue of the thread that is creating it -- from that point on, 
+
+it will 
+deliver messages and runnables to that message queue and 
+execute them as they come out of the message queue.
+
+在那个线程里创建的 Handler，就在那个线程里调用，它的 handleMessage 方法。
+注意：创建 Handler 的线程，必须要有对应的 Looper 对象，否则异常.
+
+handleMessage 示例
+
+private final Object mPositionListenerLock = new Object();
+ 
+        @Override
+        public void handleMessage(Message msg) {
+            OnRecordPositionUpdateListener listener = null;
+            synchronized (mPositionListenerLock) {
+                listener = mAudioRecord.mPositionListener;
+            }
+
+            switch (msg.what) {
+            case NATIVE_EVENT_MARKER:
+                if (listener != null) {
+                    listener.onMarkerReached(mAudioRecord);
+                }
+                break;
+            case NATIVE_EVENT_NEW_POS:
+                if (listener != null) {
+                    listener.onPeriodicNotification(mAudioRecord);
+                }
+                break;
+            default:
+                loge("Unknown native event type: " + msg.what);
+                break;
+            }
+        }

@@ -1,0 +1,41 @@
+获取复数字符串
+When using the getQuantityString() method, you need to pass the count twice if your string includes string formatting with a number. 
+For example, for the string %d songs found, 
+the first count parameter selects the appropriate plural string and 
+the second count parameter is inserted into the %d placeholder. 
+If your plural strings do not include string formatting, 
+you don't need to pass the third parameter to getQuantityString.
+
+int count = getNumberOfsongsAvailable();
+Resources res = getResources();
+String songsFound = res.getQuantityString(R.plurals.numberOfSongsAvailable, count, count);
+
+R.plurals.numberOfSongsAvailable 定义了复数字符串资源
+
+英语的复数
+XML file saved at res/values/strings.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfSongsAvailable">
+        <!--
+             As a developer, you should always supply "one" and "other"
+             strings. Your translators will know which strings are actually
+             needed for their language. Always include %d in "one" because
+             translators will need to use %d for languages where "one"
+             doesn't mean 1 (as explained above).
+          -->
+        <item quantity="one">%d song found.</item>
+        <item quantity="other">%d songs found.</item>
+    </plurals>
+</resources>
+
+波兰语的复数
+XML file saved at res/values-pl/strings.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfSongsAvailable">
+        <item quantity="one">Znaleziono %d piosenkę.</item>
+        <item quantity="few">Znaleziono %d piosenki.</item>
+        <item quantity="other">Znaleziono %d piosenek.</item>
+    </plurals>
+</resources>

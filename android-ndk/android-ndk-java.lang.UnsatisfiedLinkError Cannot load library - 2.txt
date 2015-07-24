@@ -1,0 +1,33 @@
+21:04 2015/5/22
+
+/**
+ * Created by wangxiang on 2015/5/22.
+ */
+public class HelloWorld {
+    static {
+        System.load("helloworld");                      为什么写错了？应该是 System.loadlibrary
+    }
+    public native void say_hello(String s);
+}
+
+android studio 测试 NDK
+
+Caused by: java.lang.UnsatisfiedLinkError: Cannot load library: load_library[1094]: Library 'helloworld' not found
+            at java.lang.Runtime.load(Runtime.java:340)
+            at java.lang.System.load(System.java:521)
+            at com.example.jni.HelloWorld.<clinit>(HelloWorld.java:8)
+            at com.example.wangxiang.myapplication.MainActivity.on1Click(MainActivity.java:46)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:511)
+            at android.view.View$1.onClick(View.java:3686)
+            at android.view.View.performClick(View.java:4211)
+            at android.view.View$PerformClick.run(View.java:17267)
+            at android.os.Handler.handleCallback(Handler.java:615)
+            at android.os.Handler.dispatchMessage(Handler.java:92)
+            at android.os.Looper.loop(Looper.java:137)
+            at android.app.ActivityThread.main(ActivityThread.java:4898)
+            at java.lang.reflect.Method.invokeNative(Native Method)
+            at java.lang.reflect.Method.invoke(Method.java:511)
+            at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1013)
+            at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:780)
+            at dalvik.system.NativeStart.main(Native Method)

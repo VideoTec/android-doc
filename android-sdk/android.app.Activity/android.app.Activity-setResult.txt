@@ -1,0 +1,50 @@
+--------------------------------------------------------------
+public final void setResult (int resultCode)
+--------------------------------------------------------------
+
+Added in API level 1
+Call this to set the result that your activity will return to its caller.
+
+Parameters
+
+resultCode
+The result code to propagate back to the originating activity, often RESULT_CANCELED or RESULT_OK
+
+See Also
+RESULT_CANCELED
+RESULT_OK
+RESULT_FIRST_USER
+setResult(int, Intent)
+
+示例：
+setResult(RESULT_OK);
+finish();
+
+--------------------------------------------------------------
+public final void setResult (int resultCode, Intent data)
+--------------------------------------------------------------
+
+Added in API level 1
+Call this to set the result that your activity will return to its caller.
+
+As of GINGERBREAD, the Intent you supply here can have Intent.FLAG_GRANT_READ_URI_PERMISSION and/or Intent.FLAG_GRANT_WRITE_URI_PERMISSION set. This will grant the Activity receiving the result access to the specific URIs in the Intent. Access will remain until the Activity has finished (it will remain across the hosting process being killed and other temporary destruction) and will be added to any existing set of URI permissions it already holds.
+
+Parameters
+
+resultCode
+The result code to propagate back to the originating activity, often RESULT_CANCELED or RESULT_OK
+
+data
+The data to propagate back to the originating activity.
+
+See Also
+RESULT_CANCELED
+RESULT_OK
+RESULT_FIRST_USER
+setResult(int)
+
+示例：
+                Intent intent = new Intent();
+                intent.putExtra("selectname", name.getText().toString());
+                setResult(RESULT_OK, intent);
+                finish();

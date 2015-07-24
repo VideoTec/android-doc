@@ -1,0 +1,24 @@
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html
+
+public List<String> getSupportedSceneModes ()
+
+Added in API level 5
+Gets the supported scene modes.
+
+Returns
+a list of supported scene modes. null if scene mode setting is not supported.
+
+场景模式举例：
+landscape
+night
+beach
+snow
+sunset
+fireworks
+sports
+party
+candlelight
+dusk-dawn
+fall-color
+text
+back-light

@@ -1,0 +1,45 @@
+http://developer.android.com/reference/android/app/Application.html
+
+ava.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+ 	 	   ↳	android.app.Application
+
+Known Direct Subclasses
+MockApplication, MultiDexApplication
+
+参考
+E:\doc\Computer software\Android平台\android-xml\android-xml-manifest\android-xml-manifest-application-应用入口.txt
+
+Base class for those who need to maintain global application state. You can provide your own implementation by specifying its name in your AndroidManifest.xml's <application> tag, which will cause that class to be instantiated for you when the process for your application/package is created.
+
+There is normally no need to subclass Application. In most situation, static singletons can provide the same functionality in a more modular way. If your singleton needs a global context (for example to register broadcast receivers), the function to retrieve it can be given a Context which internally uses Context.getApplicationContext() when first constructing the singleton.
+
+-----------------------------------
+BesideApplication.java
+-----------------------------------
+
+package com.feinno.beside.application;
+public class BesideApplication extends Application {
+
+    private BesideInitUtil mBesideInitUtil;  
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mBesideInitUtil = BesideInitUtil.getBesideInitUtilInstance();
+        mBesideInitUtil.initBeside(this, false);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mBesideInitUtil.closeImageCache();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
+}

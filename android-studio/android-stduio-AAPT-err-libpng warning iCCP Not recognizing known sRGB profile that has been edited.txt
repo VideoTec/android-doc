@@ -1,0 +1,44 @@
+19:54 2015/5/14
+
+从 OpenslTest Eclipse 工程里直接复制过来的图片，出现在下面的错误
+
+AAPT err(1899704683): C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\src\main\res\mipmap-xhdpi\progress_bar_green_start.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+
+http://stackoverflow.com/questions/26446610/android-gradle-project-upgrading-build-tools-to-21-0-1-aapt-throws-exception
+原因是：
+
+This is caused by a faulty aapt. 
+There was a similer problem in 21.0.0 too (Error Code: -1073741819). 
+You need to update build-tools again to fix it.
+
+Open sdk manager and install build-tools 21.0.2.
+
+Then change your build.gradle so that it looks like this.
+
+apply plugin: 'com.android.application'
+       android {
+       compileSdkVersion 21
+       buildToolsVersion "21.0.2"
+
+可能是这个原因，但是，我遇到的情况是， 21.0.1 没有改变，只是重新编译就没问题了
+不是没有问题了，需要 clean 后再编译，还出错
+
+参考 
+https://code.google.com/p/android/issues/detail?id=77704
+修改PNG文件
+imagemagick 
+
+At least for your drawables (PNG) you can take care by using "convert" or "mogrify" to remove the image profile sRGB as already described in one of the links (#8).
+I would just like to add the correct command because the examples using "-strip" parameter remove ALL image profiles which is not necessary. 
+To just remove the image profile sRGB use the following command:
+
+mogrify +profile sRGB <png file>
+
+or as batch command:
+
+find <path to res folder> -name *.png -exec mogrify +profile sRGB {}  \;
+
+After this most of the warnings will be gone but the warnings coming from PNGs inside the appcompat library will remain.
+
+
+PS: isn't it weird to use "+profile" to remove profile?

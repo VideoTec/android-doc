@@ -1,0 +1,16 @@
+https://code.google.com/p/android/issues/detail?id=53996
+
+As far as I know, the only work around was to have a separate thread polling the audio recorder.
+在单独的线程里，使用循环提取声音。是唯一可行的方法
+
+-------------------------------------------------
+录制LOOPER循环 需要做的事情
+-------------------------------------------------
+ startRecording -> read, read, read ... -> stop
+
+-------------------------------------------------
+录制LOOPER循环 和 主线程的同步方式
+-------------------------------------------------
+主要是处理， stop ，停止录制的情况
+
+使用一个 内置类型 boolean mIsRecording

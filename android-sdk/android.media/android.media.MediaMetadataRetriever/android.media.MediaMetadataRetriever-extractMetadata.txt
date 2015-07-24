@@ -1,0 +1,20 @@
+示例：
+retriever.setDataSource(videoPath);
+mVideo_duration = (Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION))) / 1000;
+mVideoWidth = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
+mVideoHeight = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
+
+文档：
+public String extractMetadata (int keyCode)
+
+Added in API level 10
+Call this method after setDataSource(). 
+This method retrieves the meta data value associated with the keyCode. 
+The keyCode currently supported is listed below as METADATA_XXX constants. 
+With any other value, it returns a null pointer.
+
+Parameters
+keyCode	One of the constants listed below at the end of the class.
+
+Returns
+The meta data value associate with the given keyCode on success; null on failure.

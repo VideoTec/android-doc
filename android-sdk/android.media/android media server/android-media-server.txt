@@ -1,0 +1,18 @@
+http://androidxref.com/5.0.0_r2/xref/frameworks/av/media/mediaserver/Android.mk
+
+注册下面的服务：IServiceManager::addService
+        AudioFlinger::instantiate();
+        MediaPlayerService::instantiate();
+        CameraService::instantiate();
+        AudioPolicyService::instantiate();
+        SoundTriggerHwService::instantiate();
+
+通过 adb shell ps 打印出的 mediaserver 进程信息：
+USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME
+media     124   1     51744  5176  ffffffff 00000000 S /system/bin/mediaserver
+其父进程是
+root      1     0     488    348   ffffffff 00000000 S /init
+
+MediaServer是整个android中media部分的核心和灵魂。
+几乎所有与多媒体播放相关的内容都放在这里。
+包括了音视频的编解码以及显示输出 (显示输出不在这里吧？)

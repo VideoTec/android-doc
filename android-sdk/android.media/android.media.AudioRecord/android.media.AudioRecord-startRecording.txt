@@ -1,0 +1,16 @@
+-------------------------------------------------------------
+public void startRecording ()
+-------------------------------------------------------------
+
+Starts recording from the AudioRecord instance
+
+-------------------------------------------------------------
+public void startRecording (MediaSyncEvent syncEvent)
+-------------------------------------------------------------
+
+Added in API level 16
+Starts recording from the AudioRecord instance 
+when the specified synchronization event occurs on the specified audio session.
+
+Parameters
+syncEvent	event that triggers the capture.

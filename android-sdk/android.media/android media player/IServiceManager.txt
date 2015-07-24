@@ -1,0 +1,58 @@
+/frameworks/av/media/libmedia/AudioSystem.cpp
+const sp<IAudioFlinger>& AudioSystem::get_audio_flinger()
+sp<IBinder> binder = sm->getService(String16("media.audio_flinger"));
+const sp<IAudioPolicyService>& AudioSystem::get_audio_policy_service()
+sp<IBinder> binder = sm->getService(String16("media.audio_policy"));
+
+/frameworks/av/media/ndk/NdkMediaCrypto.cpp
+static sp<ICrypto> makeCrypto() {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->makeCrypto();
+
+/frameworks/av/media/ndk/NdkMediaDrm.cpp
+static sp<IDrm> CreateDrm() {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->makeDrm();
+
+/frameworks/av/media/mediaserver/main_mediaserver.cpp
+sp<IBinder> binder = sm->getService(String16("media.log"));
+
+/frameworks/av/camera/CameraBase.cpp
+const char*               kCameraServiceName      = "media.camera";
+const sp<ICameraService>& CameraBase<TCam, TCamTraits>::getCameraService()
+binder = sm->getService(String16(kCameraServiceName));
+
+/frameworks/av/media/libstagefright/wifi-display/source/WifiDisplaySource.cpp
+status_t WifiDisplaySource::makeHDCP() {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->makeHDCP(true /* createEncryptionModule */);
+
+/frameworks/av/media/libstagefright/omx/tests/OMXHarness.cpp
+sp<IBinder> binder = sm->getService(String16("media.player"));
+
+/frameworks/av/media/libstagefright/OMXClient.cpp
+status_t OMXClient::connect() {
+sp<IBinder> binder = sm->getService(String16("media.player"));  service->getOMX();
+
+/frameworks/av/soundtrigger/SoundTrigger.cpp
+const char*                kSoundTriggerHwServiceName      = "media.sound_trigger_hw";
+binder = sm->getService(String16(kSoundTriggerHwServiceName));
+
+/frameworks/av/media/libstagefright/MediaCodec.cpp
+const String16 name("batterystats");
+mBatteryStatService = interface_cast<IBatteryStats>(sm->getService(name));
+
+/frameworks/av/cmds/stagefright/stream.cpp
+int main(int argc, char **argv) {
+sp<IBinder> binder = sm->getService(String16("media.player"));  service->create(client, AUDIO_SESSION_ALLOCATE);
+
+/frameworks/av/cmds/stagefright/stagefright.cpp
+int main(int argc, char **argv) {
+if (extractThumbnail) {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->createMetadataRetriever();
+if (dumpProfiles) {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->getOMX();
+if (listComponents) {
+sp<IBinder> binder = sm->getService(String16("media.player")); service->getOMX();
+
+/frameworks/base/core/jni/android_media_RemoteDisplay.cpp
+static jlong nativeListen(JNIEnv* env, jobject remoteDisplayObj, jstring ifaceStr) {
+sp<IMediaPlayerService> service = interface_cast<IMediaPlayerService>(sm->getService(String16("media.player")));
+sp<IRemoteDisplay> display = service->listenForRemoteDisplay(client, String8(iface.c_str()));

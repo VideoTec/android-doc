@@ -1,0 +1,7 @@
+arc[英][ɑ:k] [美][ɑ:rk]
+n.综合症状；弧（度）；天穹；电弧，弧光
+
+java.lang.Object
+   ↳	android.graphics.drawable.shapes.Shape
+ 	   ↳	android.graphics.drawable.shapes.RectShape
+ 	 	   ↳	android.graphics.drawable.shapes.ArcShape

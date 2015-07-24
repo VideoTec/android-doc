@@ -1,0 +1,20 @@
+文档
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt] 实例化
+
+Android offers a custom 2D graphics library for drawing shapes and images. 
+The android.graphics.drawable package is where you'll find the common classes used for drawing in two-dimensions.
+
+This document discusses the basics of using Drawable objects to draw graphics and 
+how to use a couple subclasses of the Drawable class. 
+For information on using Drawables to do frame-by-frame animation, see Drawable Animation.
+
+A Drawable is a general abstraction for "something that can be drawn." 
+You'll discover that the Drawable class extends to define a variety of specific kinds of drawable graphics, 
+including BitmapDrawable, ShapeDrawable, PictureDrawable, LayerDrawable, and several more. 
+Of course, you can also extend these to define your own custom Drawable objects that behave in unique ways.
+
+There are three ways to define and instantiate a Drawable: 
+using an image saved in your project resources; 
+using an XML file that defines the Drawable properties; or 
+using the normal class constructors. 
+Below, we'll discuss each the first two techniques (using constructors is nothing new for an experienced developer).

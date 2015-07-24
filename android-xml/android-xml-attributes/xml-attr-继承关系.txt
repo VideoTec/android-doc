@@ -1,0 +1,39 @@
+http://www.cnblogs.com/luoaz/p/3947100.html
+http://stackoverflow.com/questions/10636962/android-sdk-layout-width-and-layout-height-xml-attributes-inheritance
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hello_world" />
+        
+</RelativeLayout>
+
+TextView设置了三个属性layout_width、layout_height以及text，
+可以看到这三个属性中layout_width、layout_height属性为layout_开头而text没有以Layout_开头。
+
+以layout_开头的属性为从容器中继承的属性，在这个例子里面即是从RelativeLayout中继承来的，TextView本身并没有此属性。
+而text则是TextView自身拥有的属性
+
+layout开头的属性并非TextView所拥有，
+而是继承的容器中关于布局的属性，
+继而推而广之，可以得出结论，控件的属性可以分为自身属性和容器中的布局属性
+
+appropriate[英][əˈprəʊpriət] [美][əˈproʊpriət] v.盗用；侵吞；拨（专款等）
+XML layout attributes named layout_something define layout parameters for the View that are appropriate for the ViewGroup in which it resides.
+
+http://developer.android.com/guide/topics/ui/declaring-layout.html in figure 1 描述了 LayoutParams 的继承关系
+Every ViewGroup class implements a nested class that extends ViewGroup.LayoutParams. 
+This subclass contains property types that define the size and position for each child view, as appropriate for the view group. 
+As you can see in figure 1, the parent view group defines layout parameters for each child view (including the child view group). 
+Note that every LayoutParams subclass has its own syntax for setting values. 
+Each child element must define LayoutParams that are appropriate for its parent, 
+though it may also define different LayoutParams for its own children.
+
+All view groups include a width and height (layout_width and layout_height), and each view is required to define them.
+
+参考
+http://stackoverflow.com/questions/10869184/how-does-an-androidattr-style-work

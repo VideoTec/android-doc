@@ -1,0 +1,7 @@
+wp其实是弱指针的意思，wp<T>类型不能直接对类型T进行操作，要想对T进行某种操作，必需把wp升级为sp指针，使用promote()来实现升级：
+
+        wp<T> weakp= new T();
+
+        sp<T> t = weakp.promote();
+
+wp可能会在弱引用计数不为0的情况下被销毁

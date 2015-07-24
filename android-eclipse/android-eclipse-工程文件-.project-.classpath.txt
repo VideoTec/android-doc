@@ -1,0 +1,86 @@
+http://blog.csdn.net/Ghost_T/article/details/5782999
+
+eclipse中的.project 和 .classpath文件的具体作用是什么？
+
+.project    是项目文件，项目的结构都在其中定义，比如lib的位置,src的位置,classes的位置
+.classpath  定义项目在编译时所使用的 $CLASSPATH
+
+------------------------------------
+http://stackoverflow.com/questions/6700445/how-do-you-import-an-android-project-with-no-classpath-or-project-files-into-e
+------------------------------------
+
+How do you import an android project with no .classpath or .project files into Eclipse?
+
+This is very simple.
+
+You have to know that ".classpath" file is totally the same thing with other android projects. 
+and, also ".project" file is the same except project name in it.
+
+Copy ".classpath" and ".project" files from other android project and, paste to to your project directory.
+
+if you don't have any android project, just create new one. (it's not important package name.)
+
+Open ".project" file on the notepad(or any text editor).
+
+You can find "name" xml tag on the line 3 of the ".project" file. Change this to your real project name.
+
+------------------------------------
+.classpath 文件
+------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+        <classpathentry kind="src" path="src"/>
+        <classpathentry kind="src" path="test"/>
+        <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+        <classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+        <classpathentry kind="lib" path="lib/dom4j-1.6.1.jar">
+                <attributes>
+                        <attribute name="javadoc_location" value="file:/home/wpc/Work/Apache/dom4j-1.6.1/docs/api$
+                </attributes>
+        </classpathentry>
+        <classpathentry kind="output" path="bin"/>
+</classpath>
+
+描述了工程的依赖文件
+
+1. 源文件的具体位置（kind="src"）
+2. 运行的系统环境（kind="con"）
+3. 工程的library的具体位置信息(kind="lib")
+4. 在每个lib的xml子节点中，有关于它的其它配置信息（例如我配置的那个"javadoc_location"）
+5. 项目的输出目录(kind="output")
+
+------------------------------------
+.project 文件
+------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>CreateInterpret</name>  这个名字很重要，import 工程时，如果和别的工程重名，就导不进来
+	<comment>JavaCC Nature@key 32303037303632392D3130303020437265617465496E746572707265742F777063 </comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>sf.eclipse.javacc.javaccbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>sf.eclipse.javacc.javaccnature</nature>
+	</natures>
+</projectDescription>
+
+1. 工程名<name></name>
+2. 工程注释描述<comment></comment>
+3. 运行时需要的额外Eclipse插件<natures></natures>，及其具体加载方式信息<buildSpec></buildSpec>
+
+如果你在开发过程中向工程里面加入了很多额外的插件，
+则必然会导致你的Eclipse启动速度变慢。
+在这种情况下，你可以到这个文件里面去掉一些插件，
+不过这样一来你在开启那些关联文件的时候会加载那些插件。

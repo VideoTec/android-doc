@@ -1,0 +1,30 @@
+返回 View 的长宽 - 像素为单位
+public final int getWidth ()
+public final int getHeight ()
+
+设置 View 的长宽
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.height = mVideoHeight;  这个是什么单位？ dip p
+        p.width = mVideoWidth;
+        mSurfaceview.setLayoutParams(p);
+
+参考：xml-attr-android.view.ViewGroup.LayoutParams
+
+第一种情况：
+    <SurfaceView
+        android:id="@+id/beside_video_record_video_view"
+        android:layout_width="320dip"
+        android:layout_height="240dip" />
+    在 onCreate 时：
+    getWidth，getHeight 都是零
+    getLayoutParams 返回的 LayoutParams 的 width/height 是XML中的值
+
+第二种情况：
+    <SurfaceView
+        android:id="@+id/beside_video_record_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    在 onCreate 时：
+    getWidth，getHeight 都是零
+    getLayoutParams 返回的 LayoutParams 的 width/height 是 -1
+    

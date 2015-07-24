@@ -1,0 +1,4 @@
+Apache Ant 的 buildfile 默认是 build.xml
+
+E:\android\adt\sdk\tools\ant\build.xml
+E:\android\adt\sdk\tools\ant\uibuild.xml

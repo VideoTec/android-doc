@@ -1,0 +1,105 @@
+texture = createTexture();
+mDirectVideo = new DirectVideo(texture);
+
+private final String vertexShaderCode =
+        "attribute vec4 position;" +
+        "attribute vec2 inputTextureCoordinate;" +
+        "varying vec2 textureCoordinate;" +
+        "void main()" +
+        "{"+
+            "gl_Position = position;"+
+            "textureCoordinate = inputTextureCoordinate;" +
+        "}";
+
+    private final String fragmentShaderCode =
+        "#extension GL_OES_EGL_image_external : require\n"+
+        "precision mediump float;" +
+        "varying vec2 textureCoordinate;                            \n" +
+        "uniform samplerExternalOES s_texture;               \n" +
+        "void main() {" +
+        "  gl_FragColor = texture2D( s_texture, textureCoordinate );\n" +
+        "}";
+
+public void draw()
+{
+    GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture);
+    GLES20.glDrawElements(GLES20.GL_TRIANGLES, drawOrder.length,
+            GLES20.GL_UNSIGNED_SHORT, drawListBuffer);
+}
+
+private SurfaceTexture surface;
+surface = new SurfaceTexture(texture);
+surface.setOnFrameAvailableListener(this);
+mCamera.setPreviewTexture(surface);
+
+static private int createTexture()
+    {
+        int[] texture = new int[1];
+
+        GLES20.glGenTextures(1,texture, 0);
+        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture[0]);
+        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+             GL10.GL_TEXTURE_MIN_FILTER,GL10.GL_LINEAR);        
+        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+             GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
+     GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+             GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+     GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+             GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+
+        return texture[0];
+    }
+
+在Android中Camera产生的preview texture是以一种特殊的格式传送的，
+因此shader里的纹理类型并不是普通的sampler2D,
+而是 samplerExternalOES, 
+在shader的头部也必须声明OES 的扩展。
+除此之外，external OES的纹理和Sampler2D在使用时没有差别。
+
+绑定纹理,值得注意的是，
+纹理帮定的目标(target)并不是通常的GL_TEXTURE_2D，
+而是GL_TEXTURE_EXTERNAL_OES,
+这是因为Camera使用的输出texture是一种特殊的格式。
+同样的，在shader中我们也必须使用SamperExternalOES 的变量类型来访问该纹理
+
+OpenGL ES 扩展
+GLES11Ext.GL_TEXTURE_EXTERNAL_OES
+GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, texture);
+
+#extension GL_OES_EGL_image_external : require
+uniform samplerExternalOES s_texture;
+
+The texture object uses the GL_TEXTURE_EXTERNAL_OES texture target, 
+which is defined by the GL_OES_EGL_image_external OpenGL ES extension. 
+This limits how the texture may be used. 
+Each time the texture is bound it must be bound to 
+the GL_TEXTURE_EXTERNAL_OES target rather than 
+the GL_TEXTURE_2D target. 
+
+Additionally, any OpenGL ES 2.0 shader that samples from the texture must declare its use of this extension using, 
+for example, 
+an "#extension GL_OES_EGL_image_external : require" directive. 
+Such shaders must also access the texture using 
+the samplerExternalOES GLSL sampler type.
+
+SurfaceTexture objects may be created on any thread. 
+updateTexImage() may only be called on the thread with the OpenGL ES context that contains the texture object. 
+The frame-available callback is called on an arbitrary[美][?ɑ:rb?treri]随意的 thread, 
+so unless special care is taken updateTexImage() should not be called directly from the callback.
+
+public void updateTexImage ()
+Update the texture image to the most recent frame from the image stream. 
+This may only be called while the OpenGL ES context that owns the texture is current on the calling thread. 
+It will implicitly[美][?m?pl?s?tl?]暗示地 bind its texture to the GL_TEXTURE_EXTERNAL_OES texture target.
+
+public void setOnFrameAvailableListener (SurfaceTexture.OnFrameAvailableListener listener)
+Added in API level 11
+Register a callback to be invoked when a new image frame becomes available to the SurfaceTexture.
+The callback may be called on an arbitrary[美][?ɑ:rb?treri]随意的 thread, so it is not safe to call updateTexImage() without first binding the OpenGL ES context to the thread invoking the callback.
+Parameters
+listener	The listener to use, or null to remove the listener.
+
+
+分析，实现下面的示例
+http://tangzm.com/blog/?p=20
+ANDROID 高性能图形处理 之 二. OPENGL ES

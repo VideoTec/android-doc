@@ -1,0 +1,29 @@
+observer[英][əbˈzɜ:və(r)] [美][əbˈzɜ:rvə(r)]
+n.遵守者，观察者；观察团；观察员
+
+public final void registerContentObserver (Uri uri, boolean notifyForDescendents, ContentObserver observer)
+
+android.database.ContentObserver
+
+Added in API level 1
+Register an observer class that gets callbacks when data identified by a given content URI changes.
+
+Parameters
+uri
+The URI to watch for changes. This can be a specific row URI, or a base URI for a whole class of content.
+
+notifyForDescendents
+If true changes to URIs beginning with uri will also cause notifications to be sent. If false only changes to the exact URI specified by uri will cause notifications to be sent. If true, any URI values at or below the specified URI will also trigger a match.
+
+observer
+The object that receives callbacks when changes occur.
+
+See Also
+unregisterContentObserver(ContentObserver)
+
+使用方式：
+http://www.cnblogs.com/linjiqin/archive/2011/05/28/2061396.html
+android.content.ContentResolver registerContentObserver 
+如果ContentProvider的访问者需要得到数据变化通知，
+必须使用ContentObserver对数据（数据采用uri描述）进行监听，
+当监听到数据变化通知时，系统就会调用ContentObserver的onChange()方法

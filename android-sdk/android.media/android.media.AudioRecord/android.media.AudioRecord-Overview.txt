@@ -1,0 +1,10 @@
+http://developer.android.com/reference/android/media/AudioRecord.html
+
+inferior[英][ɪnˈfɪəriə(r)] [美][ɪnˈfɪriə(r)]
+adj.（质量等）低劣的；下级的，下等的；（位置在）下面的；[植]下位的
+
+inferior to 次于，劣于；不如；不及
+
+The AudioRecord class manages the audio resources for Java applications to record audio from the audio input hardware of the platform. This is achieved by "pulling" (reading) the data from the AudioRecord object. The application is responsible for polling the AudioRecord object in time using one of the following three methods: read(byte[], int, int), read(short[], int, int) or read(ByteBuffer, int). The choice of which method to use will be based on the audio data storage format that is the most convenient for the user of AudioRecord.
+
+Upon creation, an AudioRecord object initializes its associated audio buffer that it will fill with the new audio data. The size of this buffer, specified during the construction, determines how long an AudioRecord can record before "over-running" data that has not been read yet. Data should be read from the audio hardware in chunks of sizes inferior to the total recording buffer size.

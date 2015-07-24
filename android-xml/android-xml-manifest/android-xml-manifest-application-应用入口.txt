@@ -1,0 +1,47 @@
+android:name
+
+The fully qualified name of an Application subclass implemented for the application. When the application process is started, this class is instantiated before any of the application's components.
+
+可选的，大部分应用，不需要设置这个选项，
+The subclass is optional; 
+most applications won't need one. 
+In the absence of a subclass, Android uses an instance of the base Application class.
+
+-----------------------------------
+示例：
+-----------------------------------
+    <application
+        android:name="com.feinno.beside.application.BesideApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/FeinnoBesideTheme" >
+
+-----------------------------------
+BesideApplication.java
+-----------------------------------
+
+package com.feinno.beside.application;
+public class BesideApplication extends Application {
+
+    private BesideInitUtil mBesideInitUtil;  
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mBesideInitUtil = BesideInitUtil.getBesideInitUtilInstance();
+        mBesideInitUtil.initBeside(this, false);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mBesideInitUtil.closeImageCache();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
+}

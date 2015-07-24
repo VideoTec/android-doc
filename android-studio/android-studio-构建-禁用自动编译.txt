@@ -1,0 +1,35 @@
+http://stackoverflow.com/questions/20480822/android-studio-auto-build-like-eclipse
+
+enable "auto-import" for Gradle 
+
+under preferences > Gradle you can disable auto-import. 
+With it selected it'll reimport the gradle project 
+(which right now builds it first) every time you change the file.
+
+-----------------------------------------------
+File -> Settings -> Build ... -> Compiler
+-----------------------------------------------
+parallel[英][ˈpærəlel] [美][ˈpærəˌlɛl] adv.平行地，并列地
+
+Compile independent modules in parallel(may require larger heap size)
+
+并行化（Parallelized）是IntelliJ IDEA 12版本中的一个新的编译选项，允许你使用多个核心来编译构建项目。
+在这种情况下，编译器可以并行运行多个独立的项目模块。
+由于每个编译线程都要使用文件系统，因此，并行编译的速度取决于你的硬盘有多快。
+尽管如此，对于大型项目的编译性能平均增益依然在10%~20%
+
+http://dourok.info/notes/tools/gradle/
+Android Studio 在设置 Build, Execution, Deployment > Compiler 中可开启，线程数应该要通过 Command-line options 指定
+平行编译（Gradle parallel）
+
+Make project automatically(only works while not running/debugging)
+
+Use in-process build
+Faster, and integrated with the "Gradle Console"
+
+demand[英][dɪˈmɑ:nd] [美][dɪˈmænd] n.需求；需要；要求，请求；销路
+incubation[英][ˌɪŋkjuˈbeɪʃn] [美][ˌɪnkjəˈbeʃən, ˌɪŋ-]
+n.孵卵；孵化；<医，生>（传染病的）潜伏期；<生>（细菌等的）繁殖
+
+Configure on demand
+This option may speed up builds. This options is in "incubation"

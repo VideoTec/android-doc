@@ -1,0 +1,33 @@
+创建 android 库工程
+
+
+Sharing Android Source Code and Resources Using Library Projects
+https://www.jetbrains.com/idea/help/sharing-android-source-code-and-resources-using-library-projects.html
+
+To enable sharing Android source code and resources, do one of the following:
+创建 library module 工程
+Create a new Library module.
+把当前工程转换成 library module 工程
+Convert an Application module that contains sources you want to share into a Library module.
+
+-----------------------------------------------
+Using a Library module in another project
+-----------------------------------------------
+
+To use a Library module in another project, you need to import this module into it.
+
+From the main menu, select File | New | Module from Existing Sources.
+
+In the dialog that opens, browse to the .iml module file that you want to import and click OK. 
+The module node will be added to the tree view.
+
+Add dependencies on the imported library module to the modules where its data is going to be used:
+Open the settings of the non-library module: 
+navigate to File | Project Structure, 
+select Modules in the left pane and select your non-library module in the central pane.
+
+In the right pane, switch to the Dependencies tab. 
+Click the Add button add.png in the toolbar on the right and select Module Dependency from the context menu.
+
+In the Choose Modules dialog box that opens, 
+select the imported library module from the list and click OK.

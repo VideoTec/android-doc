@@ -1,0 +1,45 @@
+20:19 2015/5/12
+
+repository[英][rɪˈpɒzətri] [美][rɪˈpɑ:zətɔ:ri] n.仓库；贮藏室；博物馆；亲信
+
+android studio 测试程序，出下面的错误
+
+Error:(23, 13) Failed to resolve: com.android.support:appcompat-v7:22.+
+<a href="install.m2.repo">Install Repository and sync project</a><br><a href="openFile">Show in File</a><br><a href="open.dependency.in.project.structure">Show in Project Structure dialog</a>
+
+出问题的代码是
+C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\build.gradle
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.+'
+}
+
+需要安装
+不是这个： Android SDK Manager -> Extras -> Android Support Repository
+           可能是安装完，没有重启 AndroidStudio
+
+正确的安装信息
+Loading SDK information...
+Refresh Sources:
+  Fetched Add-ons List successfully
+  Refresh Sources
+
+Installing Archives:
+  Preparing to install archives
+  Installing Android Support Repository, revision 14
+    Installed Android Support Repository, revision 14
+  Done. 1 package installed.
+
+参考
+http://stackoverflow.com/questions/25890015/error-failed-to-find-com-android-supportsupport-v420-0
+The Android support repository was missing,
+So go to Android SDK, install the Android Support Repository and Android Support Library. 
+
+Also you can use the following
+
+compile 'com.android.support:support-v4:20.0.0'
+compile 'com.android.support:appcompat-v7:20.0.0'
+instead of
+
+compile 'com.android.support:appcompat-v7:20.0.+'
+compile 'com.android.support:support-v4:20.0.+'

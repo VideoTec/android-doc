@@ -1,0 +1,16 @@
+    /**
+     * Image size (width and height dimensions).
+     */
+    public class Size {
+    
+    
+    20:25 2015/7/15
+    Size screenSize = new Size(width, height); 
+    错误
+    No enclosing instance of type Camera is accessible. Must qualify the allocation with an 
+    enclosing instance of type Camera (e.g. x.new A() where x is an instance of Camera).
+    http://stackoverflow.com/questions/9509577/no-enclosing-instance-of-type-camera-is-accessible
+    Camera cam = Camera.open();
+    Size size = cam.new Size(100, 100);
+    OK. This seems to be a non static inner class
+    http://stackoverflow.com/questions/12661041/how-to-initialize-a-new-camera-size-in-android

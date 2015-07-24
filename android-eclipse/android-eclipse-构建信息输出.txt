@@ -1,0 +1,4 @@
+工程 属性 android -> build -> Verbose
+
+同时注意：勾掉 
+Skip packaging and dexing until export or launch.

@@ -1,0 +1,87 @@
+Set up listeners: 
+Views allow clients to set listeners that will be notified when something interesting happens to the view. 
+For example, all views will let you set a listener to be notified when the view gains or loses focus. 
+You can register such a listener using setOnFocusChangeListener(android.view.View.OnFocusChangeListener). 
+Other view subclasses offer more specialized listeners. 
+For example, a Button exposes a listener to notify clients when the button is clicked.
+
+所有的Listener列表：
+(01) public void setOnApplyWindowInsetsListener(OnApplyWindowInsetsListener listener)
+(02) public void setOnClickListener(OnClickListener l)
+(03) public void setOnCreateContextMenuListener(OnCreateContextMenuListener l)
+(04) public void setOnDragListener(OnDragListener l)
+(05) public void setOnFocusChangeListener(OnFocusChangeListener l)
+(06) public void setOnGenericMotionListener(OnGenericMotionListener l)
+(07) public void setOnHoverListener(OnHoverListener l)
+(08) public void setOnKeyListener(OnKeyListener l)
+(09) public void setOnLongClickListener(OnLongClickListener l)
+(10) public void setOnSystemUiVisibilityChangeListener(OnSystemUiVisibilityChangeListener l)
+(11) public void setOnTouchListener(OnTouchListener l)
+
+有些Listener接口函数 对应 [View类的]一个成员函数
+public WindowInsets onApplyWindowInsets(WindowInsets insets)
+protected void onAttachedToWindow()
+无          public void onViewDetachedFromWindow(View v);
+无          void onClick(View v);
+protected void onCreateContextMenu(ContextMenu menu)
+public boolean onDragEvent(DragEvent event)
+protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect)
+public boolean onGenericMotionEvent(MotionEvent event)
+public boolean onHoverEvent(MotionEvent event)
+public void onHoverChanged(boolean hovered) 
+无          boolean onKey(View v, int keyCode, KeyEvent event);
+protected void onLayout(boolean changed, int left, int top, int right, int bottom)
+public boolean onKeyLongPress(int keyCode, KeyEvent event)
+public void onWindowSystemUiVisibilityChanged(int visible)
+public boolean onTouchEvent(MotionEvent event)
+
+所有Listener接口定义
+(01) public interface OnApplyWindowInsetsListener
+       public WindowInsets onApplyWindowInsets(View v, WindowInsets insets);
+
+(02) public interface OnAttachStateChangeListener            没有set函数
+       public void onViewAttachedToWindow(View v);
+	   public void onViewDetachedFromWindow(View v);
+
+(03) public interface OnClickListener
+       void onClick(View v);
+
+(04) public interface OnCreateContexMenuListener
+       void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo);
+
+(05) public interface OnDragListener
+       boolean onDrag(View v, DragEvent event);
+
+(06) public interface OnFocusChangeListener
+       void onFocusChange(View v, boolean hasFocus);
+
+(07) public interface OnGenericMotionListener
+       boolean onGenericMotion(View v, MotionEvent event);
+
+(08) public interface OnHoverListener
+       boolean onHover(View v, MotionEvent event);
+
+(09) public interface OnKeyListener
+       boolean onKey(View v, int keyCode, KeyEvent event);
+
+(10) public interface OnLayoutChangeListener                     没有set函数
+       void onLayoutChange(
+               View v, 
+               int left, int top, int right, int bottom,
+               int oldLeft, int oldTop, int oldRight, int oldBottom);
+
+(11) public interface OnLongClickListener
+       boolean onLongClick(View v);
+
+(12) public interface OnSystemUiVisibilityChangeListener
+       public void onSystemUiVisibilityChange(int visibility);
+
+(13) public interface OnToucchListener
+       boolean onTouch(View v, MotionEvent event);
+
+用法：
+<Button  android:onClick="xxxx">
+button.setOnClickListener(new OnClickListener(){  
+            public void onClick(View v) {  
+  
+            } 

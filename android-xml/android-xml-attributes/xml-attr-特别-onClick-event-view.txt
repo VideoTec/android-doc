@@ -1,0 +1,21 @@
+事件 属性
+
+一定要注意， onClick 方法的声明，是 public
+public void onBtn(View v);
+
+correspond[英][ˌkɒrəˈspɒnd] [美][ˌkɔ:rəˈspɑ:nd] 符合，一致；相应；通信
+
+android:onClick
+
+Name of the method in this View's context to invoke when the view is clicked. 
+This name must correspond to a public method that takes exactly one parameter of type View. 
+
+For instance, if you specify android:onClick="sayHello", 
+you must declare a public void sayHello(View v) method of your context (typically, your Activity).
+
+Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or 
+theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol onClick.

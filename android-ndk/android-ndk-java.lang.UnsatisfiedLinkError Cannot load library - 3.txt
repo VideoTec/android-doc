@@ -1,0 +1,71 @@
+不指定动态库，链接是可以通过的，但是运行时会出错
+java.lang.UnsatisfiedLinkError: Cannot load library: reloc_library[1290]:   122 cannot locate '__android_log_print'...
+
+链接时，应该出下面的提示
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld.exe: 
+./obj/local/armeabi/objs/fvideo/MediaSource.o: 
+in function CMediaSource::get_frame(unsigned char*, unsigned char*, int&):jni/MediaSource.cpp:95: 
+error: undefined reference to '__android_log_print'
+
+最后找到原因是，必须要，指定下面的链接选项，链接时就会输出 error: undefined reference to 错误了
+-Wl,--no-undefined
+
+原因是，链接命令行里，*.o *.lib 的顺序没有放正确
+应该根据依赖关系放置
+
+查看NDK-BUILD创建的编译命令行：
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++ 
+-MMD -MP -MF 
+./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o.d 
+-fpic 
+-ffunction-sections 
+-funwind-tables 
+-fstack-protector 
+-no-canonical-prefixes 
+-march=armv5te 
+-mtune=xscale 
+-msoft-float 
+-fno-exceptions 
+-fno-rtti 
+-mthumb 
+-Os -g -DNDEBUG 
+-fomit-frame-pointer 
+-fno-strict-aliasing 
+-finline-limit=64 
+-I..\..\..\libav-10.1\output\include 
+-IE:/android/ndk/sources/cxx-stl/system/include 
+-Ijni 
+-DANDROID 
+-std=c++11 
+-Wa,--noexecstack 
+-Wformat 
+-Werror=format-security      
+-IE:/android/ndk/platforms/android-8/arch-arm/usr/include 
+-c  jni/MediaSourceNativeInterface.cpp 
+-o ./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o
+[armeabi] Compile++ thumb: fvideo <= MediaTarget.cpp
+
+查看NDK-BUILD创建的编译命令行：
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-x86_64/bin/arm-linux-androideabi-g++ 
+-Wl,-soname,libfvideo.so 
+-shared 
+--sysroot=E:/android/ndk/platforms/android-8/arch-arm 
+./obj/local/armeabi/objs/fvideo/MediaSource.o 
+./obj/local/armeabi/objs/fvideo/MediaSourceNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/MediaTarget.o 
+./obj/local/armeabi/objs/fvideo/MediaTargetNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/VideoCache.o 
+./obj/local/armeabi/objs/fvideo/VideoCacheNativeInterface.o 
+./obj/local/armeabi/objs/fvideo/JNICommon.o 
+./obj/local/armeabi/libstdc++.a 
+-lgcc 
+-no-canonical-prefixes 
+-L..\..\..\libav-10.1\output\lib 
+-Wl,--no-undefined 
+-Wl,-z,noexecstack 
+-Wl,-z,relro 
+-Wl,-z,now  
+-LE:/android/ndk/platforms/android-8/arch-arm/usr/lib 
+-lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb 
+-ljnigraphics -lz -lstdc++ -lc -lm 
+-o ./obj/local/armeabi/libfvideo.so

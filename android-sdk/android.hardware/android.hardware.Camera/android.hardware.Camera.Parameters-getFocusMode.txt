@@ -1,0 +1,18 @@
+public String getFocusMode ()
+
+Added in API level 5
+Gets the current focus mode setting.
+
+Returns
+current focus mode. This method will always return a non-null value. 
+Applications should call autoFocus(AutoFocusCallback) 
+to start the focus if focus mode is FOCUS_MODE_AUTO or FOCUS_MODE_MACRO.
+
+See Also
+FOCUS_MODE_AUTO
+FOCUS_MODE_INFINITY
+FOCUS_MODE_MACRO
+FOCUS_MODE_FIXED
+FOCUS_MODE_EDOF
+FOCUS_MODE_CONTINUOUS_VIDEO
+FOCUS_MODE_CONTINUOUS_PICTURE

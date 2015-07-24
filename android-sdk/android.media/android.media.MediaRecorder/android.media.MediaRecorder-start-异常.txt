@@ -1,0 +1,42 @@
+
+        mCamera.unlock(); - 出异常的原因，没有调用穿上函数 unlock
+        mMediaRecorder.setCamera(mCamera);
+        UIUtils.setOrientationHint(mMediaRecorder);
+        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+        setVideoParams();
+        tempFileDir = ImageCache.getExternalCacheDir(this);
+        if ((tempFileDir.exists() && !tempFileDir.isDirectory()) || !tempFileDir.exists()) {
+            tempFileDir.mkdirs();
+        }
+        mRecAudioFile = new File(tempFileDir.getAbsoluteFile(),System.currentTimeMillis() + ".mp4");
+        mMediaRecorder.setOutputFile(mRecAudioFile.getAbsolutePath());
+        try {
+            mMediaRecorder.prepare();
+            mMediaRecorder.start();       调用这个时，抛出异常
+            mStatus = Status.RECORDING;
+        } catch (Exception e) {
+            e.printStackTrace();
+            stopRecord();
+            Intent intentresult = new Intent();
+            setResult(RESULT_OK, intentresult);
+            intentresult.putExtra(VIDEO_RESULT_KEY, VIDEO_RESULT_FAIL);
+            finish();
+            mStatus = Status.NORMAL;
+            return;
+        }
+        
+-----------------------------------------------------------------
+android.hardware.Camera 方法 unlock
+-----------------------------------------------------------------
+        public final void unlock ()
+
+Added in API level 5
+Unlocks the camera to allow another process to access it. Normally, the camera is locked to the process with an active Camera object until release() is called. To allow rapid handoff between processes, you can call this method to release the camera temporarily for another process to use; once the other process is done you can call reconnect() to reclaim the camera.
+
+This must be done before calling setCamera(Camera). This cannot be called after recording starts.
+
+If you are not recording video, you probably do not need this method.

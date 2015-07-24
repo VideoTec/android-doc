@@ -1,0 +1,13 @@
+示例
+	private boolean isSdCardReady() {
+		String sd = Environment.getExternalStorageState();
+		return sd.equals(Environment.MEDIA_MOUNTED);
+	}
+
+public static String getExternalStorageState ()
+
+Added in API level 1
+Returns the current state of the primary "external" storage device.
+
+Returns
+one of MEDIA_UNKNOWN, MEDIA_REMOVED, MEDIA_UNMOUNTED, MEDIA_CHECKING, MEDIA_NOFS, MEDIA_MOUNTED, MEDIA_MOUNTED_READ_ONLY, MEDIA_SHARED, MEDIA_BAD_REMOVAL, or MEDIA_UNMOUNTABLE.

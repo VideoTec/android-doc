@@ -1,0 +1,31 @@
+android.view.View 文档说明
+
+public void setOnTouchListener (View.OnTouchListener l)
+
+Added in API level 1
+Register a callback to be invoked when a touch event is sent to this view.
+
+Parameters
+l	the touch listener to attach to this view
+
+
+----------------------------------------------------
+public static interface View.OnTouchListener
+----------------------------------------------------
+
+Interface definition for a callback to be invoked 
+when a touch event is dispatched to this view. 
+The callback will be invoked before the touch event is given to the view.
+
+只有一个抽象方法
+public abstract boolean onTouch (View v, MotionEvent event)
+
+Added in API level 1
+Called when a touch event is dispatched to a view. 
+This allows listeners to get a chance to respond before the target view.
+
+Parameters
+v	The view the touch event has been dispatched to.
+event	The MotionEvent object containing full information about the event.
+Returns
+True if the listener has consumed the event, false otherwise.

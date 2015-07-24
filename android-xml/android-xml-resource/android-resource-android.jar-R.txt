@@ -1,0 +1,22 @@
+android.jar R.class R 类
+
+类型列表
+anim
+animator
+array
+attr
+bool
+color
+dimen
+drawable
+fraction
+id
+integer
+layout
+menu
+mipmap
+plurals
+raw
+string
+style
+xml

@@ -1,0 +1,12 @@
+/frameworks/base/media/java/android/media/AudioTrack.java
+/frameworks/base/core/jni/android_media_AudioTrack.cpp
+
+// field names found in android/media/AudioTrack.java
+#define JAVA_POSTEVENT_CALLBACK_NAME                    "postEventFromNative"
+#define JAVA_NATIVETRACKINJAVAOBJ_FIELD_NAME            "mNativeTrackInJavaObj"
+#define JAVA_JNIDATA_FIELD_NAME                         "mJniData"
+#define JAVA_STREAMTYPE_FIELD_NAME                      "mStreamType"
+
+    javaAudioTrackFields.nativeTrackInJavaObj = env->GetFieldID(
+            audioTrackClass,
+            JAVA_NATIVETRACKINJAVAOBJ_FIELD_NAME, "J");

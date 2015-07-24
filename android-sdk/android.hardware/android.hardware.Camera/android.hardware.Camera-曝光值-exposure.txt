@@ -1,0 +1,38 @@
+Camera.Parameters
+
+-----------------------------------------
+the state of the auto-exposure lock
+-----------------------------------------
+boolean isAutoExposureLockSupported()
+boolean getAutoExposureLock()
+void setAutoExposureLock(boolean toggle)
+
+------------------------------------------
+exposure compensation index
+ 0 means exposure is not adjusted
+------------------------------------------
+compensation[英][ˌkɒmpenˈseɪʃn] [美][ˌkɑ:mpenˈseɪʃn]
+n.补偿，赔偿；修正；补救办法
+
+get the current exposure compensation index
+int getExposureCompensation()
+
+Sets the exposure compensation index.
+void setExposureCompensation(int value)
+
+maximum exposure compensation index (>=0)
+minimum exposure compensation index.
+int getMaxExposureCompensation()
+int getMinExposureCompensation()
+
+float getExposureCompensationStep()
+exposure compensation step. 
+Applications can get EV by multiplying(相乘) the 
+exposure compensation index and step. 
+Ex: if exposure compensation index is -6 and step is 0.333333333, EV is -2.
+
+-------------------------------------------------------
+Gets the current metering areas. 
+Camera driver uses these areas to decide exposure.
+-------------------------------------------------------
+public List<Camera.Area> getMeteringAreas ()

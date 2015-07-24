@@ -1,0 +1,90 @@
+dimension[英][daɪˈmenʃn] [美][dɪˈmɛnʃən, daɪ-]
+n.尺寸；[复]面积，范围；[物]量纲；[数]次元，度，维
+density[英][ˈdensəti] [美][ˈdɛnsɪti] 密度
+abstract[英][ˈæbstrækt] [美][ˈæbˌstrækt] adj.抽象的
+consistency[英][kənˈsɪstənsi] [美][kənˈsɪstənsi] n.连贯；符合；前后一致；浓度
+
+A dimension value defined in XML. A dimension is specified with a number followed by a unit of measure. For example: 10px, 2in, 5sp. The following units of measure are supported by Android:
+
+-----------------------------------------------
+dip device independent pixels(设备独立像素). 
+-----------------------------------------------
+不同设备不同的显示效果,这个和设备硬件有关，一般我们为了支持WVGA、HVGA和QVGA 推荐使用这个，不依赖像素
+
+在android上开发的程序将会在不同分辨率的手机上运行。为了让程序外观不至于相差太大，所以引入了dip的概念。
+
+比如定义一个矩形10 x 10dip.
+在160dpi的屏上，比如G1，正好是10 x 10像素。
+在240dpi的屏，则是15 x 15像素.
+
+换算公式为pixs = dips * (density/160).
+
+这里要特别注意dip与屏幕密度有关，
+而屏幕密度又与具体的硬件有关，
+硬件设置不正确，有可能导致dip不能正常显示。
+
+在屏幕密度为160的显示屏上，1dip=1px，
+有时候可能你的屏幕分辨率很大如480*800，但是屏幕密度没有正确设置
+比如说还是160，那么这个时候凡是使用dip的都会显示异常，基本都是显示过小。
+
+dip的换算： dip（value）=(int) (px（value）/1.5 + 0.5)
+
+Is dp the same as dip
+http://stackoverflow.com/questions/7608251/is-dp-the-same-as-dip
+Yes, they are the same. There is no difference, its just an alias.
+The compiler accepts both "dip" and "dp", though "dp" is more consistent with "sp"
+
+-------------------------------------
+dp Density-independent Pixels
+-------------------------------------
+Density-independent Pixels - An abstract unit that is based on the physical density of the screen. 
+These units are relative to a 160 dpi (dots per inch) screen, 
+on which 1dp is roughly equal to 1px. 
+
+When running on a higher density screen, the number of pixels used to draw 1dp is scaled up by a factor appropriate for the screen's dpi. Likewise, 
+
+when on a lower density screen, the number of pixels used for 1dp is scaled down. The ratio of dp-to-pixel will change with the screen density, but not necessarily in direct proportion. 
+
+Using dp units (instead of px units) is a simple solution to making the view dimensions in your layout resize properly for different screen densities. In other words, it provides consistency for the real-world sizes of your UI elements across different devices.
+
+例如界面上有一个长度为“100dp”的图片，
+在240dpi的手机上实际显示为80×1.5=120px，
+在320dpi的手机上实际显示为80×2=160px。
+如果你拿这两部手机放在一起对比，会发现这个图片的物理尺寸“差不多”，这就是使用dp作为单位的效果
+
+
+-------------------------------------
+sp  Scale-independent Pixels
+-------------------------------------
+Scale-independent Pixels - This is like the dp unit, but it is also scaled by the user's font size preference. It is recommend you use this unit when specifying font sizes, so they will be adjusted for both the screen density and the user's preference.
+
+sp scaled pixels — best for text size (放大像素)（与刻度无关的像素）：主要处理字体的大小。
+与dp类似，但是可以根据用户的字体大小首选项进行缩放。
+主要用于字体显示best for textsize。
+
+由此，根据 google 的建议，TextView 的字号最好使用 sp 做单位，
+而且查看TextView的源码可知 Android 默认使用 sp 作为字号单位
+
+-------------------------------------
+pt
+-------------------------------------
+Points - 1/72 of an inch based on the physical size of the screen.
+pt（磅） point，是一个标准的长度单位，1pt＝1/72英寸，用于印刷业，非常简单易用； 
+在 Android 中，1pt 大概等于 2.22sp
+
+-------------------------------------
+px
+-------------------------------------
+Pixels - Corresponds to actual pixels on the screen. This unit of measure is not recommended because the actual representation can vary across devices; each devices may have a different number of pixels per inch and may have more or fewer total pixels available on the screen.
+
+
+-------------------------------------
+mm
+-------------------------------------
+Millimeters - Based on the physical size of the screen.
+
+
+-------------------------------------
+in
+-------------------------------------
+Inches - Based on the physical size of the screen.

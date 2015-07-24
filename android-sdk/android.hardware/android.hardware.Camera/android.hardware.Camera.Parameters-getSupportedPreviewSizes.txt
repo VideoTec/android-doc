@@ -1,0 +1,12 @@
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html#getSupportedPreviewSizes()
+
+public List<Camera.Size> getSupportedPreviewSizes ()
+
+Added in API level 5
+Gets the supported preview sizes.
+
+Returns
+a list of Size object. This method will always return a list with at least one element.
+
+参考：
+Parameters.setPreviewSize(int, int)

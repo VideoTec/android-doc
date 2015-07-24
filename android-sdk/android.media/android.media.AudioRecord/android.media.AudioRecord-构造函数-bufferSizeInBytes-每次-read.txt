@@ -1,0 +1,41 @@
+构建时，指定的缓存大小 bufferSizeInBytes
+每次读取的字节数
+
+这两者之间的关系，怎么设置才是最好的？
+bufferSizeInBytes 中没来得及读的数据，会怎么处理？会被新数据覆盖吗？
+
+http://developer.android.com/reference/android/media/AudioRecord.html#startRecording()
+文档中说，每次应该读取小于bufferSizeInBytes的数据块？
+The size of this buffer, specified during the construction, 
+determines how long an AudioRecord can record before "over-running" data that has not been read yet.
+Data should be read from the audio hardware in chunks of sizes inferior to the total recording buffer size
+
+http://www.cnblogs.com/ct2011/p/4080193.html
+录音的读取其实和UDP差不多，需要不断的读取数据。
+既然是不断，那么我们当然需要循环读取，意味着我们需要一个线程来单独读取录音，避免阻塞主线程。
+还和UDP差不多的是，如果不及时读取，数据超过缓冲区大小，会造成这段录音数据的丢失。
+上面提到过，我们想要实现的是边录边转。
+那么问题来了，如果我们读取完数据后接着将数据传给Lame进行MP3编码，Lame的编码时间是不确定的，是不是有可能造成数据的丢失呢？
+答案当然是有可能，所以我们不能巧合编程。
+我们需要另外一个线程，即数据编码线程来专门进行MP3编码，而当前的录音读取线程只负责读取录音PCM数据。
+
+http://stackoverflow.com/questions/18815518/android-recommended-buffersizeinbytes-value-in-audiorecord
+The buffer size(bufferSizeInBytes) doesn't determine how much data you can request from read(), though. 
+It's ok to request more data than the size of the AudioRecord's buffer; 
+read() simply won't return until all the data you've requested has been read.
+
+getMinBufferSize returns for a given configuration is the smallest buffer size 
+you'll be allowed to specify when creating you AudioRecord
+这个是最小值，最好设置比这个值大一些
+
+http://stackoverflow.com/questions/8499042/android-audiorecord-example/13487250#13487250
+http://audiorecordandroid.blogspot.in/
+这个示例，也是每次只读一半的缓存。
+
+https://github.com/yhirano/Mp3VoiceRecorderSampleForAndroid/blob/master/src/com/uraroji/garage/android/mp3recvoice/RecMicToMp3.java
+这个示例，也是每次只读一半的缓存。
+readSize = audioRecord.read(buffer, 0, minBufferSize);
+AudioRecord audioRecord = new AudioRecord(
+						MediaRecorder.AudioSource.MIC, mSampleRate,
+						AudioFormat.CHANNEL_IN_MONO,
+						AudioFormat.ENCODING_PCM_16BIT, minBufferSize * 2);

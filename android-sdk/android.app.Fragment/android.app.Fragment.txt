@@ -1,0 +1,28 @@
+http://developer.android.com/reference/android/app/Fragment.html
+
+java.lang.Object
+   ↳	android.app.Fragment
+   
+Known Direct Subclasses
+BrowseFragment, 
+DetailsFragment, DialogFragment, 
+ErrorFragment, 
+GuidedStepFragment, 
+HeadersFragment, 
+ListFragment, 
+PreferenceFragment, 
+RowsFragment, SearchFragment, 
+VerticalGridFragment, WebViewFragment
+
+Known Indirect Subclasses
+PlaybackOverlayFragment
+
+-----------------------------------------------
+概述
+-----------------------------------------------
+
+A Fragment is a piece of an application's user interface or behavior that can be placed in an Activity. Interaction with fragments is done through FragmentManager, which can be obtained via Activity.getFragmentManager() and Fragment.getFragmentManager().
+
+The Fragment class can be used many ways to achieve a wide variety of results. In its core, it represents a particular operation or interface that is running within a larger Activity. A Fragment is closely tied to the Activity it is in, and can not be used apart from one. Though Fragment defines its own lifecycle, that lifecycle is dependent on its activity: if the activity is stopped, no fragments inside of it can be started; when the activity is destroyed, all fragments will be destroyed.
+
+All subclasses of Fragment must include a public no-argument constructor. The framework will often re-instantiate a fragment class when needed, in particular during state restore, and needs to be able to find this constructor to instantiate it. If the no-argument constructor is not available, a runtime exception will occur in some cases during state restore.

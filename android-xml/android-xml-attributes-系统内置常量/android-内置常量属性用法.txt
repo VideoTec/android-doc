@@ -1,0 +1,35 @@
+例如：
+@android:color/white
+
+    <TextView
+        android:id="@+id/beside_video_record_video_pushalert"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/beside_video_boxbg"
+        android:gravity="center"
+        android:text="@string/videorecord_pushalert"
+        android:textColor="@android:color/white" />
+
+-------------------------------------------------
+15:19 2015/7/16
+-------------------------------------------------
+引用 android:background="@android:color/hint_foreground_dark"
+error: Error: Resource is not public. 
+(at 'background' with value '@android:color/ hint_foreground_dark').
+
+所有公开的值，列表:
+sdk-platforms-android-20-data-res-values-public.xml
+
+http://blog.csdn.net/id19870510/article/details/34122303
+经验分享：
+Android中没有公开的资源，在xml中直接引用会报错。
+除了去找到对应资源并拷贝到我们自己的应用目录下使用以外，
+我们还可以将引用“@android”改成“@*android”解决。
+比如上面引用的附件图标，可以修改成下面的代码。
+
+android:icon="@*android:drawable/ic_menu_attachment"
+
+修改后，再次Build工程，就不会报错了
+
+http://androidgill.blogspot.com/2011/12/theme.html

@@ -1,0 +1,12 @@
+10:42 2015/6/2
+第一种可能是没有选择 Android SDK
+project -> property -> Android -> Project Build Target
+选择合适的 Android SDK
+
+第二种可能是
+project -> property -> Android -> Project Build Target
+已经选中了 SDK，但是，
+project -> property -> Java Build Path -> Libraries 里没有对应的SDK
+
+解决方法：
+重启 eclipse

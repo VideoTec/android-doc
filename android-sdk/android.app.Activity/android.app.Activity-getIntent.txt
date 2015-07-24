@@ -1,0 +1,22 @@
+public Intent getIntent ()
+Return the intent that started this activity.
+
+在打开的 ACTIVITY 里，读取 intent 里的数据
+	@Override
+	protected void preCurrentView() {
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		String path = b.getString(ActivityUtil.INTENT_PATH);
+		if (TextUtils.isEmpty(path)) {
+			videoPath = VideoCommonInfo.getInstance().getVideoPath();
+		} else {
+			videoPath = path;
+			VideoCommonInfo.getInstance().setVideoPath(videoPath);
+		}
+		setContentView(R.layout.activity_video_edit);
+		VideoBeautifyContext.getInstance().setmContext(this);
+		VideoBeautifyContext.getInstance().setmActivity(this);
+
+		BeautifySoundTrackTemplateUtil.getInstance(this).checkDownloadTemplate();
+//		BeautifyDecoratorTemplateUtil.getInstance(this).checkDownloadTemplate();
+	}

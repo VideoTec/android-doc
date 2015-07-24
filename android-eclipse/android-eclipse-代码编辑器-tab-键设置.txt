@@ -1,0 +1,17 @@
+窗口(windows)->首选项(preferences...)， 
+在左边选Java->代码样式(code style)->格式化程序(Formatter)，
+
+接下来：
+
+Active Profile: (当前使用的 profile) 选择一种，有三个选项项 Eclipse [build-in]
+Edit: 弹出 Profile 对话框
+第一个选项卡 -> Indentation -> General settings -> Tab policy -> 选择 space only
+
+11:01 2015/6/11
+更改 profile 的选项时，会提示，修改不了：
+This is a built-in profile, change the name to create a new profile.
+
+10:56 2015/6/11 下面不正确 
+右边点“显示(show)”按钮，选“缩进(Indentation)”选项卡， 
+在“常规设置(general settings)”里的“跳格策略(Tab policy)” 
+下拉列表选“仅空格(Spaces only)” 

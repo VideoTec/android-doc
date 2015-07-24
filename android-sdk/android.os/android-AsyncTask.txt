@@ -1,0 +1,87 @@
+android.os.AsyncTask<Params, Progress, Result>
+
+使用方法： new DownloadFilesTask() 一个任务实际，只能运行一次
+new DownloadFilesTask().execute(url1, url2, url3); execute(Params... params)方法必须在UI线程中调用
+
+示例：
+ private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
+     protected Long doInBackground(URL... urls) {
+         int count = urls.length;
+         long totalSize = 0;
+         for (int i = 0; i < count; i++) {
+             totalSize += Downloader.downloadFile(urls[i]);
+             publishProgress((int) ((i / (float) count) * 100));
+             // Escape early if cancel() is called
+             if (isCancelled()) break;
+         }
+         return totalSize;
+     }
+
+     protected void onProgressUpdate(Integer... progress) {
+         setProgressPercent(progress[0]);
+     }
+
+     protected void onPostExecute(Long result) {
+         showDialog("Downloaded " + result + " bytes");
+     }
+ }
+
+当异步任务执行时，通过的四个步骤：
+When an asynchronous task is executed, the task goes through 4 steps:
+
+onPreExecute(), invoked on the UI thread before the task is executed. This step is normally used to setup the task, for instance by showing a progress bar in the user interface.
+
+doInBackground(Params...), invoked on the background thread immediately after onPreExecute() finishes executing. This step is used to perform background computation that can take a long time. The parameters of the asynchronous task are passed to this step. The result of the computation must be returned by this step and will be passed back to the last step. This step can also use publishProgress(Progress...) to publish one or more units of progress. These values are published on the UI thread, in the onProgressUpdate(Progress...) step.
+执行过程中可以调用 publishProgress(Progress... values)来更新进度信息
+
+onProgressUpdate(Progress...), invoked on the UI thread after a call to publishProgress(Progress...). The timing of the execution is undefined. This method is used to display any form of progress in the user interface while the background computation is still executing. For instance, it can be used to animate a progress bar or show logs in a text field.
+
+onPostExecute(Result), invoked on the UI thread after the background computation finishes. The result of the background computation is passed to this step as a parameter.
+
+取消异步任务：doInBackground 中调用 isCancelled 判断，是否要退出
+A task can be cancelled at any time by invoking cancel(boolean). 
+Invoking this method will cause subsequent calls to isCancelled() to return true. 
+After invoking this method, onCancelled(Object), instead of onPostExecute(Object) will be invoked after doInBackground(Object[]) returns. 
+To ensure that a task is cancelled as quickly as possible, 
+you should always check the return value of isCancelled() periodically from doInBackground(Object[]), 
+if possible (inside a loop for instance.)
+
+线程规则：
+There are a few threading rules that must be followed for this class to work properly:
+
+The AsyncTask class must be loaded on the UI thread. This is done automatically as of JELLY_BEAN.
+The task instance must be created on the UI thread. 异步任务的实例必须在UI线程中创建
+execute(Params...) must be invoked on the UI thread. execute(Params... params)方法必须在UI线程中调用
+Do not call onPreExecute(), onPostExecute(Result), doInBackground(Params...), onProgressUpdate(Progress...) manually.
+The task can be executed only once (an exception will be thrown if a second execution is attempted.)
+一个任务实例只能执行一次，如果执行第二次将会抛出异常
+
+Memory observability[美][əb'zɜ:vəbɪlɪtɪ]可观察性
+AsyncTask guarantees that all callback calls are synchronized in such a way that 
+the following operations are safe without explicit[美][ɪkˈsplɪsɪt]明确的 synchronizations.
+
+Set member fields in the constructor or onPreExecute(), and refer to them in doInBackground(Params...).
+Set member fields in doInBackground(Params...), and refer to them in onProgressUpdate(Progress...) and onPostExecute(Result).
+
+执行顺序：Order of execution
+When first introduced, AsyncTasks were executed serially on a single background thread. 
+Starting with DONUT, this was changed to a pool of threads allowing multiple tasks to operate in parallel. 
+Starting with HONEYCOMB, tasks are executed on a single thread to avoid common application errors caused by parallel execution.
+
+If you truly want parallel execution, 
+you can invoke executeOnExecutor(java.util.concurrent.Executor, Object[]) with THREAD_POOL_EXECUTOR.
+
+AsyncTask与（屏幕）旋转：当一个App旋转时，整个Activity会被销毁和重建
+如果使用AsyncTask作为Activity的内部类，AsyncTask会隐式引用了当前Activity
+
+AsyncTasks与生命周期
+这表明你必须亲自管理 AsyncTask的取消操作；否则，由于不必要的后台线程会导致app阻塞的风险，或者内存泄露
+
+取消AsyncTasks
+调用cancel()其实是给AsyncTask设置一个"canceled"状态。
+这取决于你去检查AsyncTask是否已经取消，之后决定是否终止你的操作
+在长期运行的操作中定期检查AsyncTask.isCancelled()的调用；或者使线程中断
+成功的案例是创建一个引起异常抛出的场景
+
+在当前AsyncTasks中的限制
+最新版的AsyncTask限制使用128个并发线程，另外还有10个在阻塞队列中。因此在队列任务完成之前，如果队列中的task多于138个就会引起app崩溃

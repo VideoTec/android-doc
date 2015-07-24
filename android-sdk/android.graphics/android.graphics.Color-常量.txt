@@ -1,0 +1,12 @@
+int	BLACK	
+int	BLUE	
+int	CYAN	
+int	DKGRAY	
+int	GRAY	
+int	GREEN	
+int	LTGRAY	
+int	MAGENTA	
+int	RED	
+int	TRANSPARENT	
+int	WHITE	
+int	YELLOW

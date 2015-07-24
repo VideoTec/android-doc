@@ -1,0 +1,7 @@
+参考
+E:\doc\Computer software\KhronosGroup\OpenGL\OpenGL-translate-rotate-scale.txt
+E:\doc\Computer software\Android平台\android.graphics\android.graphics.Matrix.txt
+
+2015.04.16 先缩放 再 平移，平移的基础，以缩放后的尺寸为准
+    Matrix.scaleM(fs, 0, scale,1f,  1f);
+    Matrix.translateM(fs, 0, (1-scale)/2*1/scale, 0,  0);

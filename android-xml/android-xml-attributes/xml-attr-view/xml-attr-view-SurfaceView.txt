@@ -1,0 +1,7 @@
+layout xml 格式
+
+<SurfaceView
+                android:id="@+id/surfaceView1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp" 
+                android:layout_weight = "1" />

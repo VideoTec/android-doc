@@ -1,0 +1,30 @@
+-----------------------------
+public void sendBroadcast (Intent intent)
+-----------------------------
+
+Added in API level 1
+Broadcast the given intent to all interested BroadcastReceivers. This call is asynchronous; it returns immediately, and you will continue executing while the receivers are run. No results are propagated from receivers and receivers can not abort the broadcast. If you want to allow receivers to propagate results or abort the broadcast, you must send an ordered broadcast using sendOrderedBroadcast(Intent, String).
+
+See BroadcastReceiver for more information on Intent broadcasts.
+
+Parameters
+
+intent
+The Intent to broadcast; all receivers matching this Intent will receive the broadcast.
+
+-----------------------------
+public void sendBroadcast (Intent intent, String receiverPermission)
+-----------------------------
+
+Added in API level 1
+Broadcast the given intent to all interested BroadcastReceivers, allowing an optional required permission to be enforced. This call is asynchronous; it returns immediately, and you will continue executing while the receivers are run. No results are propagated from receivers and receivers can not abort the broadcast. If you want to allow receivers to propagate results or abort the broadcast, you must send an ordered broadcast using sendOrderedBroadcast(Intent, String).
+
+See BroadcastReceiver for more information on Intent broadcasts.
+
+Parameters
+
+intent
+The Intent to broadcast; all receivers matching this Intent will receive the broadcast.
+
+receiverPermission
+(optional) String naming a permission that a receiver must hold in order to receive your broadcast. If null, no permission is required.

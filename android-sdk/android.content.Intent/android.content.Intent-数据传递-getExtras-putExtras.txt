@@ -1,0 +1,83 @@
+-----------------------------------------
+public Bundle getExtras ()
+-----------------------------------------
+Retrieves a map of extended data from the intent.
+
+Returns
+the map of all extras previously added with putExtra(), or null if none have been added.
+
+-----------------------------------------
+ putExtras () 重载函数列表
+-----------------------------------------
+Intent	putExtra(String name, double[] value) Add extended data to the intent.
+Intent	putExtra(String name, int value) Add extended data to the intent.
+Intent	putExtra(String name, CharSequence value) Add extended data to the intent.
+Intent	putExtra(String name, char value) Add extended data to the intent.
+Intent	putExtra(String name, Bundle value) Add extended data to the intent.
+Intent	putExtra(String name, Parcelable[] value) Add extended data to the intent.
+Intent	putExtra(String name, Serializable value) Add extended data to the intent.
+Intent	putExtra(String name, int[] value) Add extended data to the intent.
+Intent	putExtra(String name, float value) Add extended data to the intent.
+Intent	putExtra(String name, byte[] value) Add extended data to the intent.
+Intent	putExtra(String name, long[] value) Add extended data to the intent.
+Intent	putExtra(String name, Parcelable value) Add extended data to the intent.
+Intent	putExtra(String name, float[] value) Add extended data to the intent.
+Intent	putExtra(String name, long value) Add extended data to the intent.
+Intent	putExtra(String name, String[] value) Add extended data to the intent.
+Intent	putExtra(String name, boolean value) Add extended data to the intent.
+Intent	putExtra(String name, boolean[] value) Add extended data to the intent.
+Intent	putExtra(String name, short value) Add extended data to the intent.
+Intent	putExtra(String name, double value) Add extended data to the intent.
+Intent	putExtra(String name, short[] value) Add extended data to the intent.
+Intent	putExtra(String name, String value) Add extended data to the intent.
+Intent	putExtra(String name, byte value) Add extended data to the intent.
+Intent	putExtra(String name, char[] value) Add extended data to the intent.
+Intent	putExtra(String name, CharSequence[] value) Add extended data to the intent.
+Intent	putExtras(Intent src) Copy all extras in 'src' in to this intent.
+Intent	putExtras(Bundle extras) Add a set of extended data to the intent.
+
+
+准备打开 activity 时，准备 intent 数据
+	public static void startFilterWindow(Activity act, String videopath,
+			int channel, boolean keyvalue, long recordtime, String description,
+			String lastfilter) {
+		// 跳转美化actiivity改为 VideoEditActivity
+		Intent intent = new Intent();
+		Bundle b = new Bundle();
+		intent.setClass(act, VideoEditActivity.class);
+		intent.putExtra(VideoEditActivity.Cannel, channel);
+		intent.putExtra(VideoEditActivity.KeyValue, keyvalue);
+		intent.putExtra(VideoEditActivity.VideoTime, recordtime);
+		intent.putExtra(VideoEditActivity.VideoDes, description);
+		if (!TextUtils.isEmpty(lastfilter)) {
+			intent.putExtra(VideoEditActivity.EditItem, lastfilter);
+		}
+
+		if (!TextUtils.isEmpty(videopath)) {
+			b.putString(ActivityUtil.INTENT_PATH, videopath);
+			intent.putExtras(b);
+			act.startActivityForResult(intent, VideoRecordActivity.REQUEST_CODE);
+		} else {
+			act.startActivity(intent);
+		}
+	}
+
+在打开的 ACTIVITY 里，读取 intent 里的数据
+	@Override
+	protected void preCurrentView() {
+		Intent intent = getIntent();
+		Bundle b = intent.getExtras();
+		String path = b.getString(ActivityUtil.INTENT_PATH);
+		if (TextUtils.isEmpty(path)) {
+			videoPath = VideoCommonInfo.getInstance().getVideoPath();
+		} else {
+			videoPath = path;
+			VideoCommonInfo.getInstance().setVideoPath(videoPath);
+		}
+		setContentView(R.layout.activity_video_edit);
+		VideoBeautifyContext.getInstance().setmContext(this);
+		VideoBeautifyContext.getInstance().setmActivity(this);
+
+		BeautifySoundTrackTemplateUtil.getInstance(this).checkDownloadTemplate();
+//		BeautifyDecoratorTemplateUtil.getInstance(this).checkDownloadTemplate();
+	}

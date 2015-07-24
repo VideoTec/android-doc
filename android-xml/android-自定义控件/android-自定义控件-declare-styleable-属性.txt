@@ -1,0 +1,30 @@
+XML 示例
+
+<resources>
+    <declare-styleable name="VideoRecordProgress">
+        <attr name="totalTime" format="float"/>
+        <attr name="minTime" format="float"/>
+        <attr name="barWidth" format="dimension" />
+    </declare-styleable>
+</resources>
+
+自定义控件构造函数
+    /** 圆环宽度 **/
+    private int mBarWidth = 40;
+	/** 视频最长时长 **/
+	private float mTotalTime = 6*10000l;
+	/** 视频最短时长 **/
+	private float mMinTime = 4000l;
+
+	public VideoRecordProgressView(Context context, AttributeSet attrs) {
+		
+		super(context, attrs);
+		this.mContext = context;
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VideoRecordProgress);
+		mBarWidth = a.getDimensionPixelOffset(R.styleable.VideoRecordProgress_barWidth, mBarWidth);
+		mTotalTime = a.getFloat(R.styleable.VideoRecordProgress_totalTime, mTotalTime);
+		mMinTime = a.getFloat(R.styleable.VideoRecordProgress_minTime, mMinTime);
+		a.recycle();
+		
+		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+	}

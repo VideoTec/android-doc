@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/hardware/Camera.html#takePicture(android.hardware.Camera.ShutterCallback, android.hardware.Camera.PictureCallback, android.hardware.Camera.PictureCallback, android.hardware.Camera.PictureCallback)
+
+trigger[英][ˈtrɪgə(r)] [美][ˈtrɪɡɚ]
+vt.引发，触发；扣…的扳机；发射或使爆炸（武器或爆炸性弹药）
+
+public final void takePicture (Camera.ShutterCallback shutter, Camera.PictureCallback raw, Camera.PictureCallback postview, Camera.PictureCallback jpeg)
+
+Added in API level 5
+
+Triggers an asynchronous image capture. The camera service will initiate a series of callbacks to the application as the image capture progresses. The shutter callback occurs after the image is captured. This can be used to trigger a sound to let the user know that image has been captured. The raw callback occurs when the raw image data is available (NOTE: the data will be null if there is no raw image callback buffer available or the raw image callback buffer is not large enough to hold the raw image). The postview callback occurs when a scaled, fully processed postview image is available (NOTE: not all hardware supports this). The jpeg callback occurs when the compressed image is available. If the application does not need a particular callback, a null can be passed instead of a callback method.
+
+This method is only valid when preview is active (after startPreview()). Preview will be stopped after the image is taken; callers must call startPreview() again if they want to re-start preview or take more pictures. This should not be called between start() and stop().
+
+After calling this method, you must not call startPreview() or take another picture until the JPEG callback has returned.
+
+Parameters
+shutter	the callback for image capture moment, or null
+raw	the callback for raw (uncompressed) image data, or null
+postview	callback with postview image data, may be null
+jpeg	the callback for JPEG image data, or null

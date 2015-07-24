@@ -1,0 +1,35 @@
+
+Create a new directory in res/ named in the form <resources_name>-<config_qualifier>.
+
+示例
+drawable/
+drawable-en/
+drawable-fr-rCA/
+drawable-en-port/
+drawable-en-notouch-12key/
+drawable-port-ldpi/
+drawable-port-notouch-12key/
+
+
+-----------------------------------------------
+<config_qualifier>- 列表
+-----------------------------------------------
+分下面几类 修饰符：可同时包含多个修饰符，用中划线分开，但顺序必须按照下面的列表
+MCC and MNC                The mobile country code / mobile network code (MNC) from the SIM card in the device
+Language and region
+Layout Direction
+smallestWidth
+Available width
+Available height
+Screen size
+Screen aspect
+Screen orientation
+UI mode
+Night mode
+Screen pixel density (dpi)
+Touchscreen type
+Keyboard availability
+Primary text input method
+Navigation key availability
+Primary non-touch navigation method
+Platform Version (API level)

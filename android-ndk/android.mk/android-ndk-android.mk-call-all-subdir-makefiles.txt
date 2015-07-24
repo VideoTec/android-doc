@@ -1,0 +1,16 @@
+返回所有子文件夹的 android.mk 路径
+
+Returns a list of Android.mk located in all sub-directories of the current 'my-dir' path. For example, consider the following hierarchy:
+
+          sources/foo/Android.mk
+          sources/foo/lib1/Android.mk
+          sources/foo/lib2/Android.mk
+If sources/foo/Android.mk contains the single line:
+
+          include $(call all-subdir-makefiles)
+
+Then it will include automatically sources/foo/lib1/Android.mk and sources/foo/lib2/Android.mk
+
+This function can be used to provide deep-nested source directory hierarchies to the build system. 
+
+Note that by default, the NDK will only look for files in sources/*/Android.mk

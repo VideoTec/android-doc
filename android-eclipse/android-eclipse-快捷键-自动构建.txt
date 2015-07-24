@@ -1,0 +1,31 @@
+automatically[英][ˌɔ:tə'mætɪklɪ] [美][ˌɔtəˈmætɪkl:ɪ]
+adv.自动地；无意识地；不自觉地；机械地
+
+-------------------------
+取消自动构建
+-------------------------
+Project -> Build Automatically 
+
+-------------------------
+增加构建 和 clean 的快捷键
+-------------------------
+
+Windows -> Preferences -> General -> keys
+
+搜索 build
+
+build project: ctl shift b
+build clean: ctl c
+
+-------------------------
+build 时生成 APK
+-------------------------
+eclipse -> windows -> preferences 
+-> android -> Build
+
+第一个 Build Settings 全部取消
+Automatically refresh resources and assets folder on build
+Force error when external jars contain native libraries
+Skip packaging and dexing until export or launch. (Speeds up automatic builds on file save)
+
+第二个 Build output 选择 Verbos

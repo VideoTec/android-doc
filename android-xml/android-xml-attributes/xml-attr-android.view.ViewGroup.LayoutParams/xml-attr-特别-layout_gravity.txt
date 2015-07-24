@@ -1,0 +1,69 @@
+gravity[英][ˈgrævəti] [美][ˈɡrævɪti]
+n.重力；万有引力，地心引力；重要性，严重性；严肃，庄重
+
+supply[英][səˈplaɪ] [美][səˈplaɪ] vt.供给；补充；弥补（缺陷、损失等）；向…提供（物资等）
+
+android:layout_gravity
+
+
+包含这个属性的 布局参数类 有
+
+第一组
+android.widget.LinearLayout.LayoutParams
+ActionMenuView.LayoutParams, RadioGroup.LayoutParams, TableLayout.LayoutParams, TableRow.LayoutParams
+
+第二组
+android.widget.FrameLayout.LayoutParams
+android.support.v17.leanback.widget.BaseCardView.LayoutParams
+
+第三组，和 android.widget.RelativeLayout.LayoutParams 的关系
+android.widget.RelativeLayout.LayoutParams 没有这个属性，
+
+但是 RelativeLayout 的属性：
+android:gravity	setGravity(int)	
+Specifies how an object should position its content, on both the X and Y axes, within its own bounds. 
+android:ignoreGravity	setIgnoreGravity(int)	
+Indicates what view should not be affected by gravity. 
+
+Standard gravity constant that a child supplies to its parent. 
+Defines how the child view should be positioned, on both the X and Y axes, within its enclosing layout.
+
+Must be one or more (separated by '|') of the following constant values.
+
+Constant  Value  Description
+top     0x30  Push object to the top of its container, not changing its size.
+bottom  0x50  Push object to the bottom of its container, not changing its size.
+left    0x03  Push object to the left of its container, not changing its size.
+right   0x05  Push object to the right of its container, not changing its size.
+
+center              0x11  
+Place the object in the center of its container in both the vertical and horizontal axis, not changing its size.
+
+center_vertical     0x10  
+Place object in the vertical center of its container, not changing its size.
+
+center_horizontal   0x01  
+Place object in the horizontal center of its container, not changing its size.
+
+start               0x00800003  
+Push object to the beginning of its container, not changing its size.
+
+fill_vertical       0x70  
+Grow the vertical size of the object if needed so it completely fills its container.
+
+fill_horizontal     0x07  
+Grow the horizontal size of the object if needed so it completely fills its container.
+
+fill                0x77  
+Grow the horizontal and vertical size of the object if needed so it completely fills its container.
+
+end                 0x00800005  
+Push object to the end of its container, not changing its size.
+
+clip_vertical       0x80  
+Additional option that can be set to have the top and/or bottom edges of the child clipped to its container's bounds. The clip will be based on the vertical gravity: a top gravity will clip the bottom edge, a bottom gravity will clip the top edge, and neither will clip both edges.
+
+clip_horizontal     0x08  
+Additional option that can be set to have the left and/or right edges of the child clipped to its container's bounds. The clip will be based on the horizontal gravity: a left gravity will clip the right edge, a right gravity will clip the left edge, and neither will clip both edges.
+
+

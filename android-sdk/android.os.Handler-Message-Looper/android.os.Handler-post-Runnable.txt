@@ -1,0 +1,96 @@
+public final boolean post (Runnable r)
+public final boolean postAtFrontOfQueue (Runnable r)
+public final boolean postAtTime (Runnable r, Object token, long uptimeMillis)
+public final boolean postAtTime (Runnable r, long uptimeMillis)
+public final boolean postDelayed (Runnable r, long delayMillis)
+
+--------------------------------------------------------------
+public final boolean post (Runnable r)
+--------------------------------------------------------------
+
+Added in API level 1
+Causes the Runnable r to be added to the message queue. The runnable will be run on the thread to which this handler is attached.
+
+Parameters
+r
+The Runnable that will be executed.
+
+Returns
+
+Returns true if the Runnable was successfully placed in to the message queue. Returns false on failure, usually because the looper processing the message queue is exiting.
+
+--------------------------------------------------------------
+public final boolean postAtFrontOfQueue (Runnable r)
+--------------------------------------------------------------
+
+Added in API level 1
+Posts a message to an object that implements Runnable. Causes the Runnable r to executed on the next iteration through the message queue. The runnable will be run on the thread to which this handler is attached. This method is only for use in very special circumstances -- it can easily starve the message queue, cause ordering problems, or have other unexpected side-effects.
+
+Parameters
+r
+The Runnable that will be executed.
+
+Returns
+
+Returns true if the message was successfully placed in to the message queue. Returns false on failure, usually because the looper processing the message queue is exiting.
+
+--------------------------------------------------------------
+public final boolean postAtTime (Runnable r, Object token, long uptimeMillis)
+--------------------------------------------------------------
+
+Added in API level 1
+Causes the Runnable r to be added to the message queue, to be run at a specific time given by uptimeMillis. The time-base is uptimeMillis(). Time spent in deep sleep will add an additional delay to execution. The runnable will be run on the thread to which this handler is attached.
+
+Parameters
+
+r
+The Runnable that will be executed.
+
+uptimeMillis
+The absolute time at which the callback should run, using the uptimeMillis() time-base.
+
+Returns
+
+Returns true if the Runnable was successfully placed in to the message queue. Returns false on failure, usually because the looper processing the message queue is exiting. Note that a result of true does not mean the Runnable will be processed -- if the looper is quit before the delivery time of the message occurs then the message will be dropped.
+
+See Also
+uptimeMillis()
+
+--------------------------------------------------------------
+public final boolean postAtTime (Runnable r, long uptimeMillis)
+--------------------------------------------------------------
+
+Added in API level 1
+
+Causes the Runnable r to be added to the message queue, to be run at a specific time given by uptimeMillis. The time-base is uptimeMillis(). Time spent in deep sleep will add an additional delay to execution. The runnable will be run on the thread to which this handler is attached.
+
+Parameters
+
+r
+The Runnable that will be executed.
+
+uptimeMillis
+The absolute time at which the callback should run, using the uptimeMillis() time-base.
+
+Returns
+
+Returns true if the Runnable was successfully placed in to the message queue. Returns false on failure, usually because the looper processing the message queue is exiting. Note that a result of true does not mean the Runnable will be processed -- if the looper is quit before the delivery time of the message occurs then the message will be dropped.
+
+--------------------------------------------------------------
+public final boolean postDelayed (Runnable r, long delayMillis)
+--------------------------------------------------------------
+
+Added in API level 1
+Causes the Runnable r to be added to the message queue, to be run after the specified amount of time elapses. The runnable will be run on the thread to which this handler is attached. The time-base is uptimeMillis(). Time spent in deep sleep will add an additional delay to execution.
+
+Parameters
+
+r
+The Runnable that will be executed.
+
+delayMillis
+The delay (in milliseconds) until the Runnable will be executed.
+
+Returns
+
+Returns true if the Runnable was successfully placed in to the message queue. Returns false on failure, usually because the looper processing the message queue is exiting. Note that a result of true does not mean the Runnable will be processed -- if the looper is quit before the delivery time of the message occurs then the message will be dropped.

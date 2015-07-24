@@ -1,0 +1,72 @@
+AndroidManifest.xml 列出了所有的 activity 类
+
+---------------------------------------------------
+18:10 2015/5/12  每个 activity 必须在 AndroidManifest.xml 中定义
+---------------------------------------------------
+
+代码：
+    	Intent in = new Intent(this, RecordView.class);
+    	startActivity(in);
+
+异常：
+android.content.ActivityNotFoundException: Unable to find explicit activity class {com.example.opensltest/com.example.opensltest.RecordView}; have you declared this activity in your AndroidManifest.xml?
+
+原因及解决方法
+需要在 AndroidManifest.xml <application></application>中注册 activity
+
+        <activity
+            android:name= ".RecordView">
+        </activity>
+
+---------------------------------------------------
+示例代码：
+---------------------------------------------------
+        <activity
+            android:name=".activity.VideoRecordActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="intent.action.start.mvclip.record" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+--------------------------------------
+intent-filter 的意思是
+--------------------------------------
+Specifies the types of intents that an activity, service, or broadcast receiver can respond to. 
+
+An intent filter declares the capabilities of its parent component — 
+what an activity or service can do and what types of broadcasts a receiver can handle. 
+
+It opens the component to receiving intents of the advertised type, 
+while filtering out those that are not meaningful for the component.
+
+Most of the contents of the filter are described by its <action>, <category>, and <data> subelements.
+
+literal[英][ˈlɪtərəl] [美][ˈlɪtərəl] 字面量
+
+<action>
+Declares the intent action accepted, in the name attribute. 
+The value must be the literal string value of an action, not the class constant
+可指定 0-n 个 <action> 元素
+To specify accepted intent actions, an intent filter can declare zero or more <action> elements. 
+
+<category>
+Declares the intent category accepted, in the name attribute. 
+The value must be the literal string value of an action, not the class constant.
+"android.intent.category.DEFAULT"
+"android.intent.category.BROWSABLE"
+"android.intent.category.LAUNCHER"
+
+<data> 
+Declares the type of data accepted, 
+using one or more attributes that specify various aspects of the data URI (scheme, host, port, path, etc.) and MIME type
+
+--------------------------------------
+Intent Filters 单独文档
+--------------------------------------
+For a more detailed discussion of filters, 
+see the separate Intents and Intent Filters document, 
+as well as the Intents Filters section in the introduction.

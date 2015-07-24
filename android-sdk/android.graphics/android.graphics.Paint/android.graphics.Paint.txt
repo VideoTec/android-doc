@@ -1,0 +1,8 @@
+文档
+java.lang.Object
+   ↳	android.graphics.Paint
+   
+Known Direct Subclasses
+TextPaint
+
+The Paint class holds the style and color information about how to draw geometries, text and bitmaps.

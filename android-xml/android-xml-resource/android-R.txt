@@ -1,0 +1,37 @@
+http://code.google.com/android/reference/android/R.html
+The defined constants cover the following resource types
+
+
+anim
+array
+attr
+color
+dimen
+drawable
+id
+layout
+plurals
+raw
+sting
+style
+styleable
+xml
+
+APK中的目录结构：res目录下的文件夹是固定的，不能再创建子文件夹，每个文件夹对应上面的一种类型
+/res/values/strings.xml
+           /colors.xml
+           /dimens.xml
+           /attrs.xml
+           /styles.xml
+    /drawable/*.png
+             /*.jpg
+             /*.gif
+             /*.9.png
+    /anim/*.xml`
+    /layout/*.xml
+    /raw/*.*
+    /xml/*.xml
+/assets/*.*/*.*  
+Notice that only the non resource directory of "assets" can contain an arbitrary list of sub directories. 
+Every other directory can only have files at the level of that directory and no deeper. 
+This is how R.java generates identifiers for those files.

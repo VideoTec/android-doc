@@ -1,0 +1,54 @@
+http://developer.android.com/reference/android/content/Context.html
+
+java.lang.Object
+   ↳	android.content.Context
+permission[英][pəˈmɪʃn] [美][pərˈmɪʃn] n.允许；批准，正式认可，认可
+denied[英][dɪ'naɪəd] [美][dɪ'naɪəd] adj.拒签
+granted[英][ˈgrɑ:ntɪd] [美][ˈgræntɪd] v.（退一步）承认( grant的过去式和过去分词 )；（尤指正式地或法律上）同意；准许；让渡
+
+transaction[英][trænˈzækʃn] [美][trænˈsækʃən, -ˈzæk-] 
+n.交易，业务，事务；办理，处理；（一笔）交易，（一项）事务；（学会等的）会议记录，学报
+
+检查调用者是否具有 permission权限
+如果package接受到外来访问者的操作请求，那么可以调用Android提供的接口进行permission检查
+只能在远程Services的远程方法中调用
+检查调用者是否有 permission 权限，如果调用者是自己那么返回 PackageManager.PERMISSION_DENIED
+
+public abstract int checkCallingPermission (String permission)
+
+概述：
+Determine whether the calling process of an IPC you are handling has been granted a particular permission.
+
+和 PackageManager.checkPermission(String, String) 的区别
+PackageManager.checkPermission(String, String)：
+如果你有另一个应用程序的包名，可以对该包名对应进程进行检查，
+来确定该包是否已经拥有了相应的权限 
+ 
+This is basically the same as calling 
+checkPermission(String, int, int) 
+with the pid and uid returned by getCallingPid() and getCallingUid().
+解释：
+android.os.Binder getCallingPid
+Return the ID of the process that sent you the current transaction that is being processed.
+android.os.Binder getCallingUid()
+Return the Linux uid assigned to the process that sent you the current transaction that is being processed.
+
+One important difference is that if you are not currently processing an IPC, 
+this function will always fail. 
+This is done to protect against accidentally leaking permissions; 
+you can use checkCallingOrSelfPermission(String) to avoid this protection.
+
+理解：currently processing an IPC
+http://blog.csdn.net/viviwen123/article/details/40828301
+只能在远程Services的远程方法中调用
+
+Parameters
+permission	The name of the permission being checked.
+
+Returns
+PERMISSION_GRANTED if the calling pid/uid is allowed that permission, or PERMISSION_DENIED if it is not.
+
+See Also
+checkPermission(String, String)
+checkPermission(String, int, int)
+checkCallingOrSelfPermission(String)

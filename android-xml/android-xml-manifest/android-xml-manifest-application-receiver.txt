@@ -1,0 +1,27 @@
+http://developer.android.com/guide/topics/manifest/receiver-element.html
+
+<receiver android:enabled=["true" | "false"]
+          android:exported=["true" | "false"]
+          android:icon="drawable resource"
+          android:label="string resource"
+          android:name="string"
+          android:permission="string"
+          android:process="string" >
+    . . .
+</receiver>
+
+CONTAINED IN:
+<application>
+
+CAN CONTAIN:
+<intent-filter> 
+<meta-data>
+
+DESCRIPTION:
+
+Declares a broadcast receiver (a BroadcastReceiver subclass) as one of the application's components. Broadcast receivers enable applications to receive intents that are broadcast by the system or by other applications, even when other components of the application are not running.
+
+注册 接收器 的两种方法
+There are two ways to make a broadcast receiver known to the system: 
+1）One is declare it in the manifest file with this element. 
+2）The other is to create the receiver dynamically in code and register it with the Context.registerReceiver() method. See the BroadcastReceiver class description for more on dynamically created receivers.

@@ -1,0 +1,12 @@
+Type in 'spac' in the search panel of the settings view.
+
+You will find Code Style->Java->Tabs and Indents->Use tab character.
+
+还有一个设置的地方：
+code style -> 右边： Default Indent Options: Tab-character / tab-size 等设置
+
+还有一个重要的设置的地方：
+菜单： edit -> Convert Indents -> to spaces / to tabs
+
+下面这个方法有效
+For those wondering, auto-format is: CTRL + ALT + L (Win/ Linux), and OPTION + CMD + L (Mac) 

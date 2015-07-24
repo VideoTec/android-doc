@@ -1,0 +1,67 @@
+相关包
+package android.view.animation
+
+相关组件
+
+参考
+http://developer.android.com/guide/topics/graphics/view-animation.html
+http://developer.android.com/reference/android/view/animation/package-summary.html
+http://www.cnblogs.com/youxilua/archive/2013/05/31/3109563.html
+http://rayleung.iteye.com/blog/413842
+
+interpolator[英][ɪn'tɜ:pəʊleɪtə] [美][ɪn'tɜ:poʊleɪtə] n.撺改者，校对机，分类机 插补器
+accelerate[英][əkˈseləreɪt] [美][ækˈsɛləˌret] vi.加快，加速
+decelerate[英][ˌdi:ˈseləreɪt] [美][diˈsɛləˌret] vt.& vi.（使）减速
+
+android 动画基础
+在Android 里你能够使用的动画效果：
+平移
+缩放
+旋转
+透明
+
+Interpolators（插值器）
+一般而言，要做动画的，需要封装点物理公式，
+用作为计算帧与帧间的数值计算，
+不过，如果，只是，为了搞些动画让app好用一些，倒不需要搞得这么复杂，
+android 官方api 已经封装好了一些常用的动画插值器。
+
+默认内置7种类型的插值器，个人觉得，如果只是应用里面的一些动画的话这7个就够用了
+AccelerateInterpolator            加速
+Decelerate                        减速 
+AccelerateDecelerateInterpolator 开始，和结尾都很慢，但是，中间加速 
+AnticipateInterpolator           开始向后一点，然后，往前抛 
+OvershootInterpolator            往前抛超过一点，然后返回来 
+AnticipateOvershootInterpolator  开始向后一点，往前抛过点，然后返回来
+BounceInterpolator     结束的时候弹一下 
+LinearInterpolator     匀速 
+
+使用方法
+方法一：在xml中定义动画：
+<?xml version="1.0" encoding="utf-8"?>  
+<set xmlns:android="http://schemas.android.com/apk/res/android">  
+          
+<rotate   
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"  
+        android:fromDegrees="0"   
+        android:toDegrees="+360"  
+        android:duration="3000" />  
+          
+<!-- rotate 旋转动画效果  
+       属性：interpolator 指定一个动画的插入器，用来控制动画的速度变化  
+        fromDegrees 属性为动画起始时物件的角度      
+        toDegrees   属性为动画结束时物件旋转的角度,+代表顺时针  
+        duration  属性为动画持续时间,以毫秒为单位  
+-->  
+</set>  
+
+代码中调用
+Animation anim = AnimationUtils.loadAnimation(this, R.anim.my_rotate_action);
+findViewById(R.id.TextView01).startAnimation(anim);
+
+方法二 在代码中定义 动画
+ Animation anim = null;  
+ anim = new RotateAnimation(0.0f,+360.0f);  
+ anim.setInterpolator(new AccelerateDecelerateInterpolator());  
+ anim.setDuration(3000);  
+ findViewById(R.id.TextView01).startAnimation(anim); 

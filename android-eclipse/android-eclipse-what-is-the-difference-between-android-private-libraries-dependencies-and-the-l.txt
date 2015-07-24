@@ -1,0 +1,29 @@
+Try Android Studio, it is way better than Eclipse!!
+
+参考
+http://stackoverflow.com/questions/24008283/what-is-the-difference-between-android-private-libraries-dependencies-and-the-l
+
+Android 4.4.2
+android.jar
+This is the native API library for Android 4.4 (if you go to Android Package Manager, you can see many files ranging from Android 2.* - Android 4.*)
+
+So, when you create a new project in Eclipse, it will automatically use that library which was specified in the property for Android API level.
+
+Android Private Libraries
+android-support-v7-appcompat.jar
+android_support-v4
+These are the support libraries used for your application when it is run on lower Android versions. For example if you are using Android API 19 as the targeted library to compile, you will need the android_support-v4 library the application is to run on lower Android API devices.
+
+The difference between v7 and v4 is that v7 supports Android v3.0 and above and v4 supports Android v2.0 and above.
+
+The Android Private Libraries and the Android Dependencies are not actual folders. They are created by Eclipse for user convenience.
+
+When the project is created, the support libraries for both v4 and v7 are created in the appcompat_v7_x/libs folder.
+
+Android Private Libraries just has references to the support libraries. And Android Dependencies tells us which appcompat_v7_x the project referencing or using.
+
+If you look at the icon in the Eclipse, libs icon and Android Private Libraries are different icons. It is because Android Private Libraries is not an actual folder. You do not find it on the disk.
+
+So, there isn't any redundancy, in the sense that no files are being copied or duplicated.
+
+Enjoy your Android development! :) Try Android Studio, it is way better than Eclipse!!

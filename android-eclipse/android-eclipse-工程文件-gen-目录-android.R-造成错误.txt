@@ -1,0 +1,10 @@
+10:49 2015/5/21
+在测试程序里， MainActivity.java 的开头，不知道怎么添加了这个
+import android.R;
+
+出现警告：
+Don't include android.R here; use a fully qualified name for each usage instead
+
+并且出现，程序找不到，gen，目录下生成的 R.java 文件，造成大量 id 找不到的错误
+
+去掉这行就好了

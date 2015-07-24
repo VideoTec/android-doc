@@ -1,0 +1,16 @@
+static void	getCameraInfo(int cameraId, Camera.CameraInfo cameraInfo)
+Returns the information about a particular camera.
+
+static int	getNumberOfCameras()
+Returns the number of physical cameras available on this device.
+返回零：
+Add permission's in the manifest file
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" />
+<uses-feature android:name="android.hardware.camera.autofocus" />
+
+static Camera	open(int cameraId)
+Creates a new Camera object to access a particular hardware camera.
+
+static Camera	open()
+Creates a new Camera object to access the first back-facing camera on the device.

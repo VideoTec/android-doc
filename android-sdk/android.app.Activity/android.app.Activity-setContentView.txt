@@ -1,0 +1,43 @@
+三个重载函数
+public void setContentView (View view)
+public void setContentView (int layoutResID)
+public void setContentView (View view, ViewGroup.LayoutParams params)
+
+explicit[英][ɪkˈsplɪsɪt] [美][ɪkˈsplɪsɪt] 明确的
+hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki] n.[计]分层，层次
+
+-----------------------------------------------
+public void setContentView (View view)
+-----------------------------------------------
+
+Added in API level 1
+Set the activity content to an explicit view. This view is placed directly into the activity's view hierarchy. It can itself be a complex view hierarchy. When calling this method, the layout parameters of the specified view are ignored. Both the width and the height of the view are set by default to MATCH_PARENT. To use your own layout parameters, invoke setContentView(android.view.View, android.view.ViewGroup.LayoutParams) instead.
+
+Parameters
+view	The desired content to display.
+
+
+-----------------------------------------------
+public void setContentView (int layoutResID)
+-----------------------------------------------
+
+Added in API level 1
+Set the activity content from a layout resource. The resource will be inflated, adding all top-level views to the activity.
+
+Parameters
+layoutResID	Resource ID to be inflated.
+
+示例：
+setContentView(R.layout.activity_video_record);
+
+
+-----------------------------------------------
+public void setContentView (View view, ViewGroup.LayoutParams params)
+-----------------------------------------------
+
+Added in API level 1
+Set the activity content to an explicit view. This view is placed directly into the activity's view hierarchy. It can itself be a complex view hierarchy.
+
+Parameters
+view	The desired content to display.
+params	Layout parameters for the view.

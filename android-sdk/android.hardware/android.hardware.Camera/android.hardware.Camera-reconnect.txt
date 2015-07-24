@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/hardware/Camera.html#reconnect()
+
+public final void reconnect ()
+
+Added in API level 8
+Reconnects to the camera service after another process used it. After unlock() is called, another process may use the camera; when the process is done, you must reconnect to the camera, which will re-acquire the lock and allow you to continue using the camera.
+
+Since API level 14, camera is automatically locked for applications in start(). Applications can use the camera (ex: zoom) after recording starts. There is no need to call this after recording starts or stops.
+
+If you are not recording video, you probably do not need this method.
+
+Throws
+IOException	if a connection cannot be re-established (for example, if the camera is still in use by another process).

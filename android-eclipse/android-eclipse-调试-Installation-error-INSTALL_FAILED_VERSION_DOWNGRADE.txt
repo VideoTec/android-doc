@@ -1,0 +1,23 @@
+error: INSTALL_FAILED_VERSION_DOWNGRADE
+
+downgrade[英][ˌdaʊnˈgreɪd] [美][ˈdaʊnˌɡred]
+v.使降低；使降职；贬低；低估
+
+12:00 2015/7/8 调试运行，身边时，出这个错误
+最后解决方法：删除机器上安装过的飞信就好了
+
+相关技术细节
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.com.fetion"
+    android:versionCode="20130528"     由于这个值造成这个问题
+    android:versionName="1.0" >
+
+参考
+E:\doc\Computer software\Android平台\android-xml\android-xml-manifest\android-xml-manifest-属性-versionCode.txt
+
+http://blog.sina.com.cn/s/blog_68f262210102v7hj.html
+http://blog.csdn.net/renzhe333/article/details/12875697
+
+在家真机出现error: INSTALL_FAILED_VERSION_DOWNGRADE
+网上查原因：模拟器或者实际的device中已经安装了同名的app，且本次的版本并不高
+解决：在模拟器或者实际的device中卸载此同名应用，之后再运行

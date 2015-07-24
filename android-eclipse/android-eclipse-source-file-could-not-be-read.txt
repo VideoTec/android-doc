@@ -1,0 +1,6 @@
+Description	Resource	Path	Location	Type
+The project was not built since the source file 
+/sea-monster-mvclip/src/cn/com/fetion/mvclip/services/MessengerBinderService.java could not be read	sea-monster-mvclip		Unknown	Java Problem
+
+解决方法：
+把工程，从 workspace 移除，重新引入。

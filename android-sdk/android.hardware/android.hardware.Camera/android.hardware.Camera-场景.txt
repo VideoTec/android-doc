@@ -1,0 +1,78 @@
+Camera.Parameters
+
+List<String> getSupportedSceneModes()
+String getSceneMode()
+void setSceneMode(String value)
+
+-------------------------------------
+camera scene list
+-------------------------------------
+portrait[英][ˈpɔ:treɪt] [美][ˈpɔ:rtrət]
+n.肖像，肖像画；模型，标本；半身雕塑像；人物描写
+
+landscape[英][ˈlændskeɪp] [美][ˈlændˌskep]
+n.风景；风景画；乡村风景画；地形
+
+theatre[英][ˈθiətə] [美][ˈθi:ətər] 剧场
+n.电影院，戏院；戏剧工作；演戏；手术室
+
+beach[英][bi:tʃ] [美][bitʃ]
+n.海滩，海滨；岸上的沙子和卵石
+
+sunset[英][ˈsʌnset] [美][ˈsʌnˌsɛt]
+n.日落（时），薄暮；晚霞；黄昏
+
+fireworks[英]['faɪəwɜ:ks] [美]['faɪəˌwɜ:ks]
+n.烟火；烟火( firework的名词复数 )；烟花；烟火表演；烟花表演
+
+candlelight[英][ˈkændllaɪt] [美][ˈkændl:ˌlaɪt]
+n.烛光；暗淡的人造光；掌灯时分；薄暮
+
+barcode[英][bɑ:'kəʊd] [美][bɑ:'koʊd]
+条形码
+
+fall[英][fɔ:l] [美][fɔl]
+n.落下；瀑布；秋天；减少
+
+SCENE_MODE_AUTO
+SCENE_MODE_ACTION    运动
+SCENE_MODE_PORTRAIT
+SCENE_MODE_LANDSCAPE
+SCENE_MODE_NIGHT
+SCENE_MODE_NIGHT_PORTRAIT
+SCENE_MODE_THEATRE
+SCENE_MODE_BEACH
+SCENE_MODE_SNOW
+SCENE_MODE_SUNSET
+SCENE_MODE_STEADYPHOTO 稳定照片
+SCENE_MODE_FIREWORKS
+SCENE_MODE_SPORTS
+SCENE_MODE_PARTY
+SCENE_MODE_CANDLELIGHT
+SCENE_MODE_BARCODE
+
+SCENE_MODE_HDR = "hdr"
+ /**
+ * Capture a scene using high dynamic range imaging techniques. The
+ * camera will return an image that has an extended dynamic range
+ * compared to a regular capture. Capturing such an image may take
+ * longer than a regular capture.
+ */
+
+GT-I9308 后置摄像头的场景模式
+
+auto
+portrait
+landscape
+night
+beach
+snow
+sunset
+fireworks
+sports
+party
+candlelight
+dusk-dawn   黄昏黎明
+fall-color  秋色
+text
+back-light  背光模组

@@ -1,0 +1,13 @@
+/frameworks/native/include/binder/BinderService.h
+/frameworks/av/media/mediaserver/main_mediaserver.cpp
+
+class AudioFlinger : public BinderService<AudioFlinger>, public BnAudioFlinger
+模板类，用于注册服务
+template<typename SERVICE>
+class BinderService
+    static status_t publish(bool allowIsolated = false) {
+        sp<IServiceManager> sm(defaultServiceManager());
+        return sm->addService(
+                String16(SERVICE::getServiceName()),
+                new SERVICE(), allowIsolated);
+    }

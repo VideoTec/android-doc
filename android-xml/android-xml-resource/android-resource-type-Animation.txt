@@ -1,0 +1,200 @@
+Animation Resources
+Define pre-determined animations.
+[英][dɪˈtɜ:mɪnd] [美][dɪˈtɜ:rmɪnd] adj.坚定的；毅然的；确定的
+Tween animations are saved in res/anim/ and accessed from the R.anim class.
+Frame animations are saved in res/drawable/ and accessed from the R.drawable class.
+
+tween[英][twi:n] [美][twi:n]  补间动画  prep.在两者之间，在…中间；非离子活性剂
+
+两种动画的定义：
+Tween animation: Creates an animation by performing a series of transformations on a single image with an Animation
+Frame animation: or creates an animation by showing a sequence of images in order with an AnimationDrawable.
+
+
+----------------------------------------------
+android.animation.AnimatorInflater
+----------------------------------------------
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt] 实例化
+This class is used to instantiate animator XML files into Animator objects.
+
+For performance reasons, inflation relies heavily on pre-processing of XML files that is done at build time. 
+Therefore, it is not currently possible to use this inflater with an XmlPullParser over a plain XML file at runtime; 
+it only works with an XmlPullParser returned from a compiled resource (R. something file.)
+
+示例：R.anim.property_animator 是一个 编译过的 XML资源
+AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(myContext, R.anim.property_animator);
+set.setTarget(myObject);
+set.start()
+
+----------------------------------------------
+XML syntax[英][ˈsɪntæks] [美][ˈsɪnˌtæks] 语法
+An animation defined in XML that modifies properties of the target object, such as background color or alpha value, over a set amount of time.
+----------------------------------------------
+FILE LOCATION:
+res/animator/filename.xml
+The filename will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to a ValueAnimator, ObjectAnimator, or AnimatorSet.
+
+RESOURCE REFERENCE:
+In Java: R.animator.filename
+In XML: @[package:]animator/filename
+
+<set
+  android:ordering=["together" | "sequentially"]>
+
+    <objectAnimator
+        android:propertyName="string"
+        android:duration="int"
+        android:valueFrom="float | int | color"
+        android:valueTo="float | int | color"
+        android:startOffset="int"
+        android:repeatCount="int"
+        android:repeatMode=["repeat" | "reverse"]
+        android:valueType=["intType" | "floatType"]/>
+
+    <animator
+        android:duration="int"
+        android:valueFrom="float | int | color"
+        android:valueTo="float | int | color"
+        android:startOffset="int"
+        android:repeatCount="int"
+        android:repeatMode=["repeat" | "reverse"]
+        android:valueType=["intType" | "floatType"]/>
+
+    <set>
+        ...
+    </set>
+</set>
+
+说明：
+<set>
+A container that holds other animation elements (<objectAnimator>, <valueAnimator>, or other <set> elements). 
+Represents an AnimatorSet.
+
+<objectAnimator>
+Animates a specific property of an object   over a specific amount of time. 
+Represents an ObjectAnimator.
+
+<animator>
+Performs an animation                       over a specified amount of time. 
+Represents a ValueAnimator.
+
+android.animation.ObjectAnimator 是 android.animation.ValueAnimator 的子类
+objectAnimator 比 animator 多了个 android:propertyName 属性
+
+----------------------------------------------
+Frame animation XML syntax[英][ˈsɪntæks] [美][ˈsɪnˌtæks] 语法
+An animation defined in XML that shows a sequence of images in order (like a film).
+----------------------------------------------
+FILE LOCATION:
+res/drawable/filename.xml
+The filename will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to an AnimationDrawable.
+
+RESOURCE REFERENCE:
+In Java: R.drawable.filename
+In XML: @[package:]drawable.filename
+
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot=["true" | "false"] >   Boolean. "true" if you want to perform the animation once; "false" to loop the animation.
+    <item
+        android:drawable="@[package:]drawable/drawable_resource_name"  Drawable resource. The drawable to use for this frame.
+        android:duration="integer" /> Integer. The duration to show this frame, in milliseconds.
+</animation-list>
+
+XML 例子
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/rocket_thrust1" android:duration="200" />
+    <item android:drawable="@drawable/rocket_thrust2" android:duration="200" />
+    <item android:drawable="@drawable/rocket_thrust3" android:duration="200" />
+</animation-list>
+代码 例子
+ImageView rocketImage = (ImageView) findViewById(R.id.rocket_image);
+rocketImage.setBackgroundResource(R.drawable.rocket_thrust);
+
+rocketAnimation = (AnimationDrawable) rocketImage.getBackground();
+rocketAnimation.start();
+
+----------------------------------------------
+Tween animation XML syntax[英][ˈsɪntæks] [美][ˈsɪnˌtæks] 语法
+An animation defined in XML that performs transitions such as rotating, fading, moving, and stretching on a graphic.
+----------------------------------------------
+FILE LOCATION:
+res/anim/filename.xml
+The filename will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to an Animation.
+
+RESOURCE REFERENCE:
+In Java: R.anim.filename
+In XML: @[package:]anim/filename
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@[package:]anim/interpolator_resource"
+    android:shareInterpolator=["true" | "false"] >
+    <alpha                 0.0 is transparent and 1.0 is opaque.
+        android:fromAlpha="float"
+        android:toAlpha="float" />
+    <scale                	android.view.animation.ScaleAnimation
+        android:fromXScale="float"
+        android:toXScale="float"
+        android:fromYScale="float"
+        android:toYScale="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <translate            	android.view.animation.TranslateAnimation
+        android:fromXDelta="float"
+        android:toXDelta="float"
+        android:fromYDelta="float"
+        android:toYDelta="float" />
+    <rotate               	android.view.animation.RotateAnimation
+        android:fromDegrees="float"
+        android:toDegrees="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <set>
+        ...
+    </set>
+</set>
+translate [英][trænsˈleɪt] [美][trænsˈlet, trænz-, ˈtrænsˌlet, ˈtrænz-] vt.& vi.翻译；解释；转化；被翻译
+interpolator[英][ɪn'tɜ:pəʊleɪtə] [美][ɪn'tɜ:poʊleɪtə]  插补器
+
+重要概念
+android.view.animation.Interpolator
+
+示例
+
+loading.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <rotate
+        android:duration="1200"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="-1"
+        android:toDegrees="359" />
+
+</set>
+
+push_bottom_in.xml
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+	<translate android:fromYDelta="100%p" android:toYDelta="0" android:duration="500"/>
+	<alpha android:fromAlpha="0.0" android:toAlpha="1.0" android:duration="500" />
+</set>
+
+push_bottom_out.xml
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+	<translate android:fromYDelta="0" android:toYDelta="100%p" android:duration="500"/>
+	<alpha android:fromAlpha="1.0" android:toAlpha="0.0" android:duration="500" />
+</set>

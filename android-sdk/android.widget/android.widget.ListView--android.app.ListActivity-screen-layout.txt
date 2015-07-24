@@ -1,0 +1,29 @@
+Screen Layout
+
+ListActivity has a default layout that consists of a single, full-screen list in the center of the screen. However, if you desire, you can customize the screen layout by setting your own view layout with setContentView() in onCreate(). To do this, your own view MUST contain a ListView object with the id "@android:id/list" (or list if it's in code)
+
+Optionally, your custom view can contain another view object of any type to display when the list view is empty. This "empty list" notifier must have an id "android:id/empty". Note that when an empty view is present, the list view will be hidden when there is no data to display.
+
+The following code demonstrates an (ugly) custom screen layout. It has a list with a green background, and an alternate red "no data" message.
+
+ <?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:paddingLeft="8dp"
+         android:paddingRight="8dp">
+
+     <ListView android:id="@android:id/list"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="#00FF00"
+               android:layout_weight="1"
+               android:drawSelectorOnTop="false"/>
+
+     <TextView android:id="@android:id/empty"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="#FF0000"
+               android:text="No data"/>
+ </LinearLayout>

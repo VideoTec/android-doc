@@ -1,0 +1,61 @@
+android:layout_weight 比重
+
+包含这个属性的 布局参数类的有 
+android.widget.LinearLayout.LayoutParams
+ActionMenuView.LayoutParams, 
+RadioGroup.LayoutParams, 
+TableLayout.LayoutParams, 
+TableRow.LayoutParams
+
+
+转化成一个浮点型
+public float weight
+
+Added in API level 1
+Indicates how much of the extra space in the LinearLayout will be allocated to the view associated with these LayoutParams. 
+Specify 0 if the view should not be stretched. 
+Otherwise the extra pixels will be pro-rated among all views whose weight is greater than 0.
+
+这个属性会影响 控件的 layout_width 值。会把父窗口的宽度按比例，分配给子控件。
+两个问题：
+1. 父窗口的宽度是怎么计算的？
+   如果父窗口的宽度是，wrap_content，会有什么效果？
+   如果父窗口的宽度是，fill_parent， 这个最好理解了。
+
+2. 子控件之间，和子控件与父窗口之间的 间隙是多少？
+
+-----------------------------------------------------------------------------------
+17:10 2015/6/5 出现下面的错误  android:layout_weight=1 需要用引号把 1 包起来
+-----------------------------------------------------------------------------------
+Multiple annotations found at this line:
+	- Element type "Button" must be followed by either attribute specifications, ">" or "/>".
+	- error: Error parsing XML: not well-formed (invalid token)
+
+举例
+<LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="30dp"
+		    android:orientation="horizontal" >
+	            <Button 
+		            android:id="@+id/none_effect"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:text="无效果"
+		            android:onClick="onBtnNoneEffect" />
+	            <Button 
+		            android:id="@+id/effect_2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:text="效果2"
+		            android:onClick="onBtnEffect2" />
+	            <Button 
+		            android:id="@+id/effect_3"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:text="效果3"
+		            android:onClick="onBtnEffect3" />
+        </LinearLayout>

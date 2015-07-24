@@ -1,0 +1,50 @@
+需要配合 public final void addCallbackBuffer (byte[] callbackBuffer) 使用
+
+---------------------------------------------------------------
+public final void addCallbackBuffer (byte[] callbackBuffer)
+----------------------------------------------------------------
+
+Added in API level 8
+Adds a pre-allocated buffer to the preview callback buffer queue. 
+Applications can add one or more buffers to the queue. 
+When a preview frame arrives and there is still at least one available buffer, the buffer will be used and removed from the queue. 
+Then preview callback is invoked with the buffer. 
+If a frame arrives and there is no buffer left, the frame is discarded. 
+Applications should add buffers back when they finish processing the data in them.
+
+For formats besides YV12, 
+the size of the buffer is determined by multiplying the preview image width, height, and bytes per pixel. 
+The width and height can be read from getPreviewSize(). 
+Bytes per pixel can be computed from getBitsPerPixel(int) / 8, using the image format from getPreviewFormat().
+
+If using the YV12 format, the size can be calculated using the equations listed in setPreviewFormat(int).
+
+This method is only necessary when setPreviewCallbackWithBuffer(PreviewCallback) is used. 
+When setPreviewCallback(PreviewCallback) or setOneShotPreviewCallback(PreviewCallback) are used, buffers are automatically allocated. 
+When a supplied buffer is too small to hold the preview frame data, preview callback will return null and the buffer will be removed from the buffer queue.
+
+Parameters
+callbackBuffer	the buffer to add to the queue. The size of the buffer must match the values described above.
+
+---------------------------------------------------------------
+public final void setPreviewCallbackWithBuffer (Camera.PreviewCallback cb)
+----------------------------------------------------------------
+
+Added in API level 8
+Installs a callback to be invoked for every preview frame, 
+using buffers supplied with addCallbackBuffer(byte[]), in addition to displaying them on the screen. 
+The callback will be repeatedly called for as long as preview is active and buffers are available. 
+Any other preview callbacks are overridden.
+
+The purpose of this method is to improve preview efficiency and frame rate by allowing preview frame memory reuse. 
+You must call addCallbackBuffer(byte[]) at some point -- before or after calling this method -- or no callbacks will received.
+
+The buffer queue will be cleared if this method is called with a null callback, 
+setPreviewCallback(Camera.PreviewCallback) is called, or 
+setOneShotPreviewCallback(Camera.PreviewCallback) is called.
+
+If you are using the preview data to create video or still images, 
+strongly consider using MediaActionSound to properly indicate image capture or recording start/stop to the user.
+
+Parameters
+cb	a callback object that receives a copy of the preview frame, or null to stop receiving callbacks and clear the buffer queue.

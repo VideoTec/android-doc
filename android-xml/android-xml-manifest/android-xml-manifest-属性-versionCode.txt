@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.com.fetion"
+    android:versionCode="20130528"
+    android:versionName="1.0" >
+
+apk 安装时，会检测，已经安装的同包名的 app 的 version-code
+如果小于已经安装的应用的 version-code，会安装失败，前，logcat 下面的错误
+Install error : INSTALL_FAILED_VERSION_DOWNGRADE
+
+参考
+E:\doc\Computer software\Android平台\android-eclipse\android-eclipse-调试-Installation-error-INSTALL_FAILED_VERSION_DOWNGRADE.txt
+
+http://blog.csdn.net/victoryckl/article/details/6699806
+为了获取版本信息，应用程序可以使用PackageManager的getPackageInfo(java.lang.String, int)方法，例如：
+PackageManager manager = this.getPackageManager();
+try {
+PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+appVersion = info.versionName; // 版本名
+} catch (NameNotFoundException e)
+ {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+appVersion 就是从配置文件取出的版本名，versionCode同理
+
+http://dev.xiaomi.com/doc/p=62/index.html
+Google为APK定义了两个属性：VersionCode和VersionName，他们有不同的用途。
+VersionCode：对消费者不可见，仅用于应用市场、程序内部识别版本，判断新旧等用途。
+VersionName：展示给消费者，消费者会通过它认知自己安装的版本，下文提到的版本号都是说VersionName。
+
+应用商店会负责检查消费者手机上应用的版本，并和商店里面最新的版本比较，
+如果商店里面的版本比较新，消费者手机上的版本比较旧，就会提醒消费者升级
+Google要求每个应用都要在APK安装包中记录这个安装包的[VersionCode]，
+只要拿到这个APK文件，就可以知道它对应的[VersionCode]是多少，
+应用商店就会以这个[VersionCode]为准，来判断版本

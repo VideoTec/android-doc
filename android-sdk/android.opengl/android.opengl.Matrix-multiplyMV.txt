@@ -1,0 +1,52 @@
+矩阵 * 向量
+
+static void
+multiplyMV(float[] resultVec, int resultVecOffset, float[] lhsMat, int lhsMatOffset, float[] rhsVec, int rhsVecOffset)
+
+Multiplies a 4 element vector by a 4x4 matrix and stores the result in a 4-element column vector.
+
+Multiplies a 4 element vector by a 4x4 matrix and stores the result in a 4-element column vector. 
+In matrix notation: result = lhs x rhs
+
+The same float array may be passed for resultVec, lhsMat, and/or rhsVec. However, the resultVec element values are undefined if the resultVec elements overlap either the lhsMat or rhsVec elements.
+
+Parameters
+resultVec        The float array that holds the result vector.
+resultVecOffset  The offset into the result array where the result vector is stored.
+
+lhsMat           The float array that holds the left-hand-side matrix.
+lhsMatOffset     The offset into the lhs array where the lhs is stored
+
+rhsVec           The float array that holds the right-hand-side vector.
+rhsVecOffset     The offset into the rhs vector where the rhs vector is stored.
+
+Throws
+IllegalArgumentException
+if resultVec, lhsMat, or rhsVec are null, or 
+if resultVecOffset + 4 > resultVec.length or lhsMatOffset + 16 > lhsMat.length or rhsVecOffset + 4 > rhsVec.length.
+
+示例： 飞信视频 android 
+       /sea-monster-video/src/com/sea_monster/video/record/CameraGLSurfaceView.java
+	    private float[] transformTextureCoordinates( float[] coords)
+	    {   
+	
+	    	float fs[] = new float[16];
+	    	Matrix.setIdentityM(fs, 0);
+
+	    	float scale = mVideoHeight  * 1.0f / mVideoWidth;
+
+	    	Matrix.scaleM(fs, 0, scale,1f,  1f);
+	    	Matrix.translateM(fs, 0, (1-scale)/2*1/scale, 0,  0);
+
+
+	    	float[] result = new float[ coords.length ];        
+	    	float[] vt = new float[4];      
+	
+	    	for ( int i = 0 ; i < coords.length ; i += 2 ) {
+	    		float[] v = { coords[i], coords[i+1], 0 , 1  };
+	    		Matrix.multiplyMV(vt, 0, fs, 0, v, 0);
+	    		result[i] = vt[0];
+	    		result[i+1] = vt[1];
+	    	}
+	    	return result;
+	    }

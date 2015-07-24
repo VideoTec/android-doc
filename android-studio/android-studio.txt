@@ -1,0 +1,13 @@
+安装后运行出下面的错误：
+No JVM installation found. Please install a 64-bit JDK.
+If you already have a JDK installed, define a JAVA_HOME variable install
+Computer > System Properties > System Settings > Environment Variables
+
+Fetching Android SDK component information 等待很长时间
+安装完成后，如果直接启动，Android Studio会去获取 android sdk 组件信息，这个过程相当慢，还经常加载失败，导致Android Studio启动不起开。解决办法就是不去获取android sdk 组件信息。方法如下：
+
+　　1）进入刚安装的Android Studio目录下的bin目录。找到idea.properties文件，用文本编辑器打开。
+
+　　2）在idea.properties文件末尾添加一行：disable.android.first.run=true，然后保存文件。
+
+　　3）关闭Android Studio后重新启动，便可进入界面

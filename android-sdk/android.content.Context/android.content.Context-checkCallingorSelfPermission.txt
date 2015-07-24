@@ -1,0 +1,25 @@
+http://developer.android.com/reference/android/content/Context.html
+
+java.lang.Object
+   ↳	android.content.Context
+
+检查自己或者其它调用者是否有 permission 权限
+public abstract int checkCallingOrSelfPermission (String permission)
+
+Added in API level 1
+Determine whether the calling process of an IPC or you have been granted a particular permission. 
+This is the same as checkCallingPermission(String), 
+except it grants your own permissions if you are not currently processing an IPC. Use with care!
+
+Parameters
+permission	The name of the permission being checked.
+
+Returns
+PERMISSION_GRANTED if the calling pid/uid is allowed that permission, or 
+PERMISSION_DENIED if it is not.
+
+See Also
+checkPermission(String, String)
+checkPermission(String, int, int)
+checkCallingPermission(String)
+   

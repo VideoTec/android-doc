@@ -1,0 +1,16 @@
+android.hardware.camera
+android.hardware.camera.autofocus
+android.hardware.camera.flash
+android.hardware.camera.front
+android.hardware.camera.any
+android.hardware.camera.external
+android.hardware.camera.level.full
+android.hardware.camera.capability.manual_sensor
+android.hardware.camera.capability.manual_post_processing
+android.hardware.camera.capability.raw
+
+示例：
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />

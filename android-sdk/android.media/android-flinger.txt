@@ -1,0 +1,11 @@
+Android usage of the flinger[美][f'lɪnɡər]投掷的人 term? fling[美][flɪŋ]投
+
+I asked the same question on the Android platform mailing list and got the follow reply:
+
+By the definition in the dictionary, a flinger is someone that flings. In the case of the SurfaceFlinger, it's flinging visual data to the surface and AudioFlinger is flinging audio data to the appropriate[美][əˈproʊpriət]合适的 recipient[美][rɪˈsɪpiənt]接收者. They're just "cute" words..:)
+
+Looking up to fling gives the following result (among others):
+
+to throw, cast, or hurl with force or violence: to fling a stone.
+So I guess the original term flinger in Surface Flinger is inspired by the waving action performed by the finger/hand when navigating a touch-screen. And then possibly just used because it was a cute word also for Audio Flinger. 
+But that is just my speculation[美][ˌspɛkjəˈleʃən]推断.

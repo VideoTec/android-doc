@@ -1,0 +1,6 @@
+16:15 2015/5/19
+
+Java Build Path -> Libraries -> Android Private Libraries
+两个位置的 jar 会包含在这里
+1. 工程的 libs 目录下的 jar 包
+2. Android Dependencies 工程里的 lib 目录下的 jar 包

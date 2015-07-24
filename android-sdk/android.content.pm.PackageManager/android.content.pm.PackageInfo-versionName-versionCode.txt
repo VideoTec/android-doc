@@ -1,0 +1,16 @@
+public int versionCode
+The version number of this package, as specified by the <manifest> tag's versionCode attribute.
+
+public String versionName
+The version name of this package, as specified by the <manifest> tag's versionName attribute.
+
+PackageManager manager = this.getPackageManager();
+try {
+PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+appVersion = info.versionName; // 版本名
+} catch (NameNotFoundException e)
+ {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+appVersion 就是从配置文件取出的版本名，versionCode同理

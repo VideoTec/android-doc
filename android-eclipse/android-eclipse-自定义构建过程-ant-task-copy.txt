@@ -1,0 +1,7 @@
+https://ant.apache.org/manual/Tasks/copy.html
+
+Copy a single file
+
+  <copy file="myfile.txt" tofile="mycopy.txt"/>
+
+17:56 2015/6/1 生成 jar 文件之后，再执行，怎么设置？

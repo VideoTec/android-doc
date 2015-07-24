@@ -1,0 +1,42 @@
+java.lang.Object
+   ↳	android.media.MediaMetadataRetriever
+   
+   MediaMetadataRetriever class provides a unified interface for retrieving frame and meta data from an input media file.
+
+String	extractMetadata(int keyCode)
+Call this method after setDataSource().
+
+byte[]	getEmbeddedPicture()
+Call this method after setDataSource(). 封面图片
+This method finds the optional graphic or album/cover art associated associated with the data source. 
+If there are more than one pictures, (any) one of them is returned.
+
+Bitmap	getFrameAtTime(long timeUs, int option)
+Call this method after setDataSource().
+
+Bitmap	getFrameAtTime(long timeUs)
+Call this method after setDataSource().
+
+Bitmap	getFrameAtTime()
+Call this method after setDataSource().
+
+void	release()
+Call it when one is done with the object.
+
+
+设置输入的多媒体文件
+
+void	setDataSource(FileDescriptor fd, long offset, long length)
+Sets the data source (FileDescriptor) to use.
+
+void	setDataSource(String path)
+Sets the data source (file pathname) to use.
+
+void	setDataSource(FileDescriptor fd)
+Sets the data source (FileDescriptor) to use.
+
+void	setDataSource(String uri, Map<String, String> headers)
+Sets the data source (URI) to use.
+
+void	setDataSource(Context context, Uri uri)
+Sets the data source as a content Uri.

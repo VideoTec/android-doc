@@ -1,0 +1,11 @@
+http://developer.android.com/reference/android/graphics/Color.html
+
+The Color class defines methods for creating and converting color ints. Colors are represented as packed ints, made up of 4 bytes: alpha, red, green, blue. The values are unpremultiplied, meaning any transparency is stored solely in the alpha component, and not in the color components. The components are stored as follows (alpha << 24) | (red << 16) | (green << 8) | blue. Each component ranges between 0..255 with 0 meaning no contribution for that component, and 255 meaning 100% contribution. Thus opaque-black would be 0xFF000000 (100% opaque but no contributions from red, green, or blue), and opaque-white would be 0xFFFFFFFF
+
+颜色4个字节从高到低对应 不透明度 红 绿 蓝 四个分量，0xFFFFFF对应不透明度的分量是0，
+所以后面不管是什么背景都是透明的。
+0xFFFFFFFF就是白色了，
+0x80FFFFFF就是半透明的白色。
+Color.rgb()会自动把不透明读设成255，
+而解析字符串颜色"#FFFFFF"也能判断出只给出了三个分量会自动把不透明度设成255。
+而对于整数0xFFFFFF和0x00FFFFFF是一样的，是完全透明的

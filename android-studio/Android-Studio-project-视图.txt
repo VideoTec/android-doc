@@ -1,0 +1,8 @@
+ android studio project 窗口有很多种视图：
+ 
+ projects
+ packages
+ android
+ project files
+ productions
+ 等等

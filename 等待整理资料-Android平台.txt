@@ -1,0 +1,3559 @@
+利用eclipse运行android模拟器
+1. 创建模拟器时，AVD Name中不能有空格。
+2.环境变量ANDORID_SDK_HOME
+    Default debug keystore
+3. Run配置
+
+Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）
+Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit，JDK）
+
+Eclipse 是使用Java语言开发的，但它的用途并不限于 Java 语言；例如，支持诸如C/C++、COBOL、PHP等编程语言的插件已经可用，或预计将会推出。Eclipse 框架还可用来作为与软件开发无关的其他应用程序类型的基础，比如内容管理系统。
+
+Eclipse的本身只是一个框架平台，但是众多插件的支持使得Eclipse拥有其他功能相对固定的IDE软件很难具有的灵活性。许多软件开发商以Eclipse为框架开发自己的IDE
+
+Eclipse 最初由OTI和IBM两家公司的IDE产品开发组创建，起始于1999年4月
+
+
+Eclipse最全快捷键
+Ctrl+1 快速修复(最经典的快捷键,就不用多说了)
+Ctrl+D: 删除当前行
+Ctrl+Alt+↓ 复制当前行到下一行(复制增加)
+Ctrl+Alt+↑ 复制当前行到上一行(复制增加)
+Alt+↓ 当前行和下面一行交互位置(特别实用,可以省去先剪切,再粘贴了)
+Alt+↑ 当前行和上面一行交互位置(同上)
+Alt+← 前一个编辑的页面
+Alt+→ 下一个编辑的页面(当然是针对上面那条来说了)
+Alt+Enter 显示当前选择资源(工程,or 文件 or文件)的属性
+Shift+Enter 在当前行的下一行插入空行(这时鼠标可以在当前行的任一位置,不一定是最后)
+Shift+Ctrl+Enter 在当前行插入空行(原理同上条)
+Ctrl+Q 定位到最后编辑的地方
+Ctrl+L 定位在某行 (对于程序超过100的人就有福音了)
+Ctrl+M 最大化当前的Edit或View (再按则反之)
+Ctrl+/ 注释当前行,再按则取消注释
+Ctrl+O 快速显示 OutLine
+Ctrl+T 快速显示当前类的继承结构
+Ctrl+W 关闭当前Editer
+Ctrl+K 参照选中的Word快速定位到下一个
+Ctrl+E 快速显示当前Editer的下拉列表(如果当前页面没有显示的用黑体表示)
+Ctrl+/(小键盘) 折叠当前类中的所有代码
+Ctrl+×(小键盘) 展开当前类中的所有代码
+Ctrl+Space 代码助手完成一些代码的插入(但一般和输入法有冲突,可以修改输入法的热键,也可以暂用Alt+/来代替)
+Ctrl+Shift+E 显示管理当前打开的所有的View的管理器(可以选择关闭,激活等操作)
+Ctrl+J 正向增量查找(按下Ctrl+J后,你所输入的每个字母编辑器都提供快速匹配定位到某个单词,如果没
+有,则在stutes line中显示没有找到了,查一个单词时,特别实用,这个功能Idea两年前就有了)
+Ctrl+Shift+J 反向增量查找(和上条相同,只不过是从后往前查)
+Ctrl+Shift+F4 关闭所有打开的Editer
+Ctrl+Shift+X 把当前选中的文本全部变味小写
+Ctrl+Shift+Y 把当前选中的文本全部变为小写
+Ctrl+Shift+F 格式化当前代码
+Ctrl+Shift+P 定位到对于的匹配符(譬如{}) (从前面定位后面时,光标要在匹配符里面,后面到前面,则反之)
+下面的快捷键是重构里面常用的,本人就自己喜欢且常用的整理一下(注:一般重构的快捷键都是Alt+Shift开头的了)
+Alt+Shift+R 重命名 (是我自己最爱用的一个了,尤其是变量和类的Rename,比手工方法能节省很多劳动力)
+Alt+Shift+M 抽取方法 (这是重构里面最常用的方法之一了,尤其是对一大堆泥团代码有用)
+Alt+Shift+C 修改函数结构(比较实用,有N个函数调用了这个方法,修改一次搞定)
+Alt+Shift+L 抽取本地变量( 可以直接把一些魔法数字和字符串抽取成一个变量,尤其是多处调用的时候)
+Alt+Shift+F 把Class中的local变量变为field变量 (比较实用的功能)
+Alt+Shift+I 合并变量(可能这样说有点不妥Inline)
+Alt+Shift+V 移动函数和变量(不怎么常用)
+Alt+Shift+Z 重构的后悔药(Undo
+
+
+Activity是android中独有的概念
+它是android系统的最小调度单位，从这个方面讲有点像WIN32的线程，UNIX/LINUX的进程。一个android进程可以有多个Activity，但Activity之间交换数据需要使用Intent，并不能直接共享数据。（这个解释太烂了，看下面这个才靠谱）
+
+一个Activity是一个应用程序组件，提供一个屏幕，用户可以用来交互为了完成某项任务，例如拨号、拍照、发送email、看地图。每一个activity被给予一个窗口，在上面可以绘制用户接口。窗口通常充满屏幕，但也可以小于屏幕而浮于其它窗口之上
+
+每一次一个activity启动，前一个activity就停止了，但是系统保留activity在一个栈上（“back stack”）
+
+
+Intent是android的
+Intent是android的进程之间、Activity之间、线程之间交换数据的载体，类似与WIN32的消息(进程内、进程间消息)。(这个解释也太烂了，看下面解释)
+
+Android使用了Intent这个特殊类，实现在屏幕与屏幕之间移动。Intent类用于描述一个应用将会做什么事。在Intent的描述结构中，有两个最重要的部分：动作和动作对应的数据。典型的动作类型有：MAIN（activity的门户）、VIEW、PICK、EDIT等。而动作对应的数据则以URI的形式进行表示。例如：要查看一个人的联系方式，你需要创建一个动作类型为VIEW的intent，以及一个表示这个人的URI
+
+
+Android平台的四大天王
+Android平台的四大天王：Activity, Service, ContentProvider, BroadcastReceiver, 这四种组件通过Intent进行沟通，Intent就是桥梁了！
+
+Android是跑在Linux kernel上的，每一个APP都有自己的进程，Google的工程师为了简化APP开发人员的开发难度，把进程相关的东西都在底层做掉了，暴漏给APP开发人员的就是这四大天王和一个桥梁！
+
+
+AndroidMainfest.xml的Schema
+Schema
+对于AndroidMainfest.xml的Schema，参考SDK包附带的文档
+
+
+Android系统的手机的每一个你能看到的画面都是一个activity，它像是一个画布，随你在上面怎么涂画，画个按钮，画个图片，画个列表，都随你！专业点其实activity就是一个view类的派生类（比如Button, listview,imageview）的container。
+
+
+Eclipse -> window -> show view   各种视图窗口
+
+
+
+Create New Android Virtual Device 窗口在两台机器上选项不一致
+最后发现是因为笔记本显示器太小，窗口垂直方向拉大些就显示 出来了
+
+Emulation Options(Snapshot   / Use Host GPU)
+
+override the exiting AVD with the same name
+
+
+
+Eclipse 自定义快捷键
+eclipse->windows->preference->General->Keys 界面 在右边部分 找到build clean 命令 添加binding（你想用什么组合键，自己设置就行了）
+
+
+Eclipse（Java） 中的build是什么意思？
+编译的意思，从java文件生成class文件
+
+
+ADT 中怎么输出APK包？怎么输出JAR包？
+Export -> Android application ->
+1. keystore(密钥库)?
+
+问题：C:\Users\html\.android\debug.keystore 这个是什么？
+在Eclipse里面编译生成的APK中有一个签名的，它默认的key是debug.keystore，它默认的路径是：
+C:\Users\<用户名>\.android\debug.keystore
+这个key的密码是：android 
+
+问题：怎么编译生成APK？
+
+
+Eclipse Console 视窗
+可显示多个不同的控制台，分别是：
+Android
+DDMS
+OpenGL Trace View
+
+
+打包，签名，安装命令
+大家好，我想问下，eclipse里面开发android程序，运行之后，进入模拟器，程序就安装到模拟器的系统里面。程序是怎样安装的呢？是如何生成apk文件？还有，如果想把开发的程序安装到手机里面，是如何操作呢
+
+安装方法：
+adb install C:\Demo.apk就可完成安装
+G:\android\adt\sdk\platform-tools\adb.exe
+
+编译生成APK？
+那里有编译菜单，只找个BUILD菜单，且不会生成APK。
+
+签名：
+C:\Program Files\Java\jre8\bin\keytool.exe
+C:\Program Files\Java\jdk1.8.0_05\bin\jarsigner.exe
+
+
+Eclipse (Java) Clean 命令
+会清空BIN目录下的所有文件。
+注意，默认情况下，清空后，立即BUILD当前工程，复选框是选中的。
+
+Eclipse (Java) Build 命令，不生成APK
+原因，见上图。eclipse-android-build-skip-packaging.png
+
+
+Android 编译工具 Ant
+G:\android\adt\eclipse\plugins\org.apache.ant_1.8.4.v201303080030\bin\ant.bat
+
+Ant是一个Apache基金会下的跨平台的构件工具，它可以实现项目的自动构建和部署等功能。在本文中，主要让读者熟悉怎样将Ant应用到Java项目中，让它简化构建和部署操作
+
+Ant，是一种基于Java的build工具，类似于（Unix）C中的make ，与基于shell命令的扩展模式不同，Ant用Java的类来扩展，用户不必编写shell命令。Ant本身是一个流程脚本引擎，用于自动化调用程序完成项目的编译，打包，测试等。除了基于Java是平台无关的外，脚本的格式是基于XML（默认为build.xml），比make脚本来说还要好维护一些.
+
+在SDK中，Google已经为我们写好了一个build.xml文件，就是sdk根目录\tools\ant\build.xml，所以我们只要把这个build.xml引入就可以编译Android工程了
+
+
+         <echo>   clean:    
+ Removes output files created by other targets. This calls the same target on all dependent projects. Use 'ant nodeps clean' to only clean the local project</echo>
+
+        <echo>   debug:     
+Builds the application and signs it with a debug key. The 'nodeps' target can be used to only build the current project and ignore the libraries using: 'ant nodeps debug'
+
+        <echo>   release:   
+Builds the application. The generated apk file must be signed before it is published. The 'nodeps' target can be used to only build the current project and ignore the libraries using:  'ant nodeps release'</echo>
+
+        <echo>   instrument:（仪器）
+Builds an instrumented package and signs it with a  debug key.</echo>
+
+        <echo>   test:     
+ Runs the tests. Project must be a test project and must have been built. Typical usage would be:  ant [emma] debug install test</echo>
+
+        <echo>   emma:      
+Transiently enables code coverage for subsequent  targets.</echo>
+
+        <echo>   install:  
+ Installs the newly build package. Must either be used in conjunction with a build target (debug/release/ instrument) or with the proper suffix indicating which package to install (see below). If the application was previously installed, the application is reinstalled if the signature matches.</echo>
+
+        <echo>   installd:  Installs (only) the debug package.</echo>
+
+        <echo>   installr:  Installs (only) the release package.</echo>
+
+        <echo>   installi:  Installs (only) the instrumented（装有导航仪器的） package.</echo>
+
+        <echo>   installt:  
+Installs (only) the test and tested packages (unless nodeps is used as well.</echo>
+
+        <echo>   uninstall: 
+Uninstalls the application from a running emulator or</echo>
+
+        <echo>              device.
+ Also uninstall tested package if applicable
+ 
+ 
+ 
+ android.bat 批处理用法
+ G:\android\adt\sdk\tools\android.bat
+
+android -h create project
+
+
+android debug release instrument
+Instruments是目前最强大的性能调优工具之一，它也可能是用起来最简单的一个工具。快速地找出性能瓶颈。
+
+使用Java时，Java 是解释语言，无法编译。就无模式之分了
+
+5.4 debug签名和release签名的区别
+1）debug签名的应用程序不能在Android Market上架销售，它会强制你使用自己的签名；Debug模式下签名用的证书(默认是Eclipse/ADT和Ant编译)自从它创建之日起，1年后就会失效。
+
+2）debug.keystore在不同的机器上所生成的可能都不一样，就意味着如果你换了机器进行apk版本升级，那么将会出现上面那种程序不能覆盖安装的问题，相当于软件不具备升级功能！
+
+
+
+
+eclipse  debug as 与 run as 的区别
+运行后，执行程序直接得到结果，成功或者失败；而调试，可以知道你的程序是如何成功的，或者是如何失败的，是在哪一步失败的。当然，调试的代价就是，比运行稍慢。
+调试的时候，打上断点，如同跟随程序执行的脚步，一步一步执行，随时查看你关心的变量值，类型，函数执行结果。
+这在程序运行失败的时候，特别重要。因为你可以很清楚的知道自己的程序在哪一步出了问题，而且调试的时候，有很多工具帮我们分析，比如内存，变量等等。
+至于调试快捷键以及功能，多联系就会掌握了，时间问题！
+只有学会调试，才能成为一名合格的程序员！加油
+
+TextView String资源
+
+
+
+
+
+
+
+eclipse 连接真机调试
+
+eclipse 连接真机调试
+
+首先设置手机，在应用程序那开启usb调试模式（设置 -》 一般 -》开发者选项）
+
+然后是电脑，安装驱动
+下载并安装usb的驱动是关键(或者说是ADB Interface Driver)
+检查驱动是否安装的方法：设备管理器里，看看有没有未安装的设备。
+If you are developing on Windows and would like to connect an Android-powered device to test your applications, then you need to install the appropriate USB driver.
+If you're developing on Mac OS X or Linux, then you probably don't need to install a USB driver. To start developing with your device, read Using Hardware Devices.
+驱动下载列表
+http://developer.android.com/intl/zh-cn/tools/extras/oem-usb.html#Win7
+
+我用的测试机是：三星的，note3。
+下载的驱动程序是：
+SAMSUNG_USB_Driver_for_Mobile_Phones_v1.5.42.0.exe
+安装后，在设备管理器，出现新的设备是
+SAMSUNG Android Phone  -》 SAMSUNG Android ADB Interface。
+
+当驱动完成后，手机会提示，是否允许连接的这台PC通过USB接口调试手机。
+
+安装驱动后，无需重启。（还是习惯重启下。）
+
+Eclipse IDE  菜单上依次选择 Window -> Show View -> Other -> Android -> Devices，OK确认
+
+android device chooser 选项
+需要在run-configure里配置，使用那个设备，调试，运行程序
+
+
+android.util.Log 在真机运行后，Eclipse的LogCat中看不到
+eclipse-android-devices-reset-adb.png
+
+android.util.Log 在真机运行后，Eclipse的LogCat中看不到
+真机调试问题，看不到logcat信息
+
+打开ddms,随便点击一个真机下面的进程就会有logcat信息了
+
+E:\android\adt\sdk\platform-tools\adb.exe
+adb kill-server
+adb start-server
+
+E:\android\adt\sdk\tools\android.bat
+android.bat update adb
+
+C:\Users\Administrator\.android\adb_usb.ini 设置
+
+
+我遇到的问题是，在LogCat中，可以看到输出，但是我自定义的LOG，未看到，解决方法：
+在手机设置中的‘开发者选项中’选择待高度的程序。
+
+
+下面是个问题：
+DDMS中总是显示下面的错误：
+Adb connection Error:远程主机强迫关闭了一个现有的连接
+
+
+如果驱动，手机都设置好了，还连接不上设备，就要看看，是不是有其它手机工具，占用了，ADB.EXE的端口。
+
+
+
+
+
+ddms eclipse
+From Eclipse: Click Window > Open Perspective > Other... > DDMS.
+
+
+在手机上设置，应用程序是否允许调试
+开发者选项：选择待高度的应用程序。
+
+在这个列表时的程序，才可能调试，在程序中怎么设置，是否可调试？
+
+
+switch workspace
+更换工作目录
+
+始终不成功，不知道为什么？(不知道为什么)
+
+
+
+
+
+
+
+
+obj/local/armeabi/libstdc++.a:1:1: syntax error, unexpected '!‘
+删除OBJ目录，就没有问题了。原因是OBJ目录中，的libstdc++，是别的机器上生成的，这个加，一定不能放到版本库中。
+
+
+
+
+AssetManager
+mContext = this.getActivity().getApplicationContext();
+
+filename - asset 文件夹下的相对路径
+in = assetManager.open(filename);  // 三种打开模式：流，随机，缓存
+byte[] buffer = new byte[1024];
+        int read;
+        while ((read = in.read(buffer)) != -1) {
+            out.write(buffer, 0, read);
+        }
+in.close();
+in = null;
+
+import android.content.res.AssetManager;
+import android.content.Context;
+
+
+复制asset文件慢的问题
+遍历所有ASSET文件，非常耗时。
+解决方法：提供COPY文件列表。
+
+mContext = this.getActivity().getApplicationContext();
+AssetManager mgr = mContext.getAssets();
+
+        			InputStream in = mgr.open("assets.zip");
+        			OutputStream out = new FileOutputStream("/sdcard/assets.zip");
+        			byte[] buffer = new byte[1024];
+        	        int read;
+        	        while ((read = in.read(buffer)) != -1) {
+        	            out.write(buffer, 0, read);
+        	        }
+        			in.close();
+        			in = null;
+        			out.flush();
+        			out.close();
+        			out = null;
+        			mgr.close();
+					
+解决COPY，assets文件耗时问题
+提供文件列表，按列表复制，所有文件。
+避免的，遍历操作。
+
+
+
+
+
+
+Android深入浅出之Binder机制
+进程间通信
+
+media / mediaserver / main_mediaserver.cpp
+
+int main(int argc, char** argv)   {
+           sp<ProcessState> proc(ProcessState::self());        
+           sp<IServiceManager> sm = defaultServiceManager();        
+           ALOGI("ServiceManager: %p", sm.get());        
+           AudioFlinger::instantiate();       
+           MediaPlayerService::instantiate();       
+           CameraService::instantiate();        
+           AudioPolicyService::instantiate();       
+           registerExtensions();        
+           ProcessState::self()->startThreadPool();        
+           IPCThreadState::self()->joinThreadPool();
+｝
+
+
+
+
+
+
+
+
+
+
+
+AudioTrack 实现原理
+有“进程” 服务 ？
+
+Android Framework的音频子系统中，
+每一个音频流对应着一个AudioTrack类的一个实例，
+每个AudioTrack会在创建时注册到AudioFlinger中，
+
+由AudioFlinger把所有的AudioTrack进行混合（Mixer），
+然后输送到AudioHardware中进行播放，
+
+目前Android的Froyo版本设定了同时最多可以创建32个音频流
+也就是说，Mixer最多会同时处理32个AudioTrack的数据流
+
+
+
+
+
+
+
+
+
+
+__android_log_print 奇怪的问题
+        LOGI("video_src_frame_pts_(%d)", video_src_frame_pts_);
+                LOGI("video_out_next_frame_pts_(%d)", video_out_next_frame_pts_);
+                LOGI("video_out_next_frame_index_(%d)", video_out_next_frame_index_);
+                LOGI("src-pts(%d), next-out-pts(%d), next_frame_index(%d)",
+                     video_src_frame_pts_,
+                     video_out_next_frame_pts_,
+                     video_out_next_frame_index_);
+
+video_src_frame_pts_(1176)
+
+video_out_next_frame_pts_(1673899920)
+
+video_out_next_frame_index_(182)
+
+src-pts(182), next-out-pts(7333333), next_frame_index(0)
+
+原因是什么：因为%d %lld 的问题？果然是这个问题
+
+
+
+
+
+
+
+
+
+
+Android 目录挂载
+/sdcard   <-  /storage/emulated/legacy  <-  /mnt/shell/emulated/0
+
+
+
+
+
+
+
+
+
+
+
+mpeg4 video tag:rotate=90  android 屏幕旋转
+onConfigurationChanged
+Configuration.ORIENTATION_LANDSCAPE
+Configuration.ORIENTATION_PORTRAIT
+
+Camera.CameraInfo 下面三个参数
+
+canDisableShutterSound
+Whether the shutter sound can be disabled.
+
+public intfacing: The direction that the camera faces.
+
+public intorientation: 
+The orientation of the camera image.
+ It should be 0, 90, 180, or 270.
+
+setRecordingHint (boolean hint) 
+开始录制的标志（）
+
+
+Camera.CameraInfoCamera  
+CameraInfo.orientation is the angle between camera orientation and natural device orientation.
+
+OrientationEventListener
+The value from OrientationEventListener is relative to the natural orientation of the device.
+
+setRotaion 函数：
+The sides of width and height are based on camera orientation
+
+（手机摄像头拍的视频，长宽，是因定的，不会因为，横竖，而调整。
+
+如：某个手机的，640x480，宽始终是，640。
+以上说法是不正确的，不准确。）
+
+
+
+
+
+
+eclipse 设置不了断点
+eclipse 设置不了断点：设置断点时，显示一删除斜线，表示，设置无效
+
+因为选中了skip all breakpoints
+
+run -> skip all breakpoints
+
+
+
+
+
+android log 函数，可以直接输出，异常信息
+Log.w(TAG, "Unable to open content: " + mUri, th);
+
+
+
+
+
+Android MediaPlayer
+start 出错：
+start called in state 0
+
+设置回调函数
+OnErrorListener, 
+OnCompletionListener, 
+OnPreparedListener and 
+OnSeekCompletedListener
+
+正常使用方法
+mp.setDataSource(url); 
+mp.setOnPreparedListener(this);
+mp.prepareAsync();
+
+public void onPrepared(MediaPlayer player) {
+    player.start();
+}
+
+设置回调的方法
+mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        // Do something. For example: playButton.setEnabled(true);
+    }
+});
+
+
+GLSurfaceView GLThread
+GLSurfaceVidew::setRenderer(Renderer renderer) {
+.....
+mGLThread = new GLThread();
+mGLThread.start();
+......
+}
+ 
+//RENDERMODE_CONTINUOUSLY
+//RENDERMODE_WHEN_DIRTY
+public void setRenderMode(int renderMode) {
+        mGLThread.setRenderMode(renderMode);
+    }
+
+public void requestRender() {
+        mGLThread.requestRender();
+    }
+
+/**     *
+A generic GL Thread. Takes care of initializing EGL and GL. 
+Delegates  to a Renderer instance to do the actual drawing. 
+Can be configured to   render continuously or on request.  
+All potentially blocking synchronization is done through the   sGLThreadManager object. 
+This avoids multiple-lock ordering issues.     *     */    
+
+static class GLThread extends Thread {
+
+
+
+
+
+
+
+GLSurfaceView 方法总结
+1.  父类，与，接口类
+public class GLSurfaceView 
+extends SurfaceView 
+implements SurfaceHolder.Callback ｛
+｝
+
+2. 扩展方法
+
+
+
+
+
+
+
+
+
+SurfaceTexture
+SurfaceTexture是从Android3.0（API 11）加入的一个新类。
+这个类跟SurfaceView很像，
+可以从camera preview或者video decode里面获取图像流（image stream）。
+
+但是，和SurfaceView不同的是，SurfaceTexture在接收图像流之后，不需要显示出来。
+
+有做过Android camera开发的人都知道，比较头疼的一个问题就是，
+从camera读取到的预览（preview）
+图像流一定要输出到一个可见的（Visible）SurfaceView上，
+然后通过Camera.PreviewCallback的
+public void onPreviewFrame(byte[] data, Camera camera)
+函数来获得图像帧数据的拷贝。
+
+这就存在一个问题，比如我希望隐藏摄像头的预览图像或者对每一帧进行一些处理再显示到手机显示屏上，那么在Android3.0之前是没有办法做到的，或者说你需要用一些小技巧，
+比如用其他控件把SurfaceView给挡住，
+注意这个显示原始camera图像流的SurfaceView其实是依然存在的，
+也就是说被挡住的SurfaceView依然在接收从camera传过来的图像，
+而且一直按照一定帧率去刷新，这是消耗cpu的，
+而且如果一些参数设置的不恰当，
+后面隐藏的SurfaceView有可能会露出来，因此这些小技巧并不是好办法。
+
+但是，有了SurfaceTexture之后，就好办多了，
+因为SurfaceTexture不需要显示到屏幕上，
+因此我们可以用SurfaceTexture接收来自camera的图像流，
+然后从SurfaceTexture中取得图像帧的拷贝进行处理，
+处理完毕后再送给另一个SurfaceView用于显示即可
+
+
+
+
+
+SurfaceHolder.Callback
+implements SurfaceHolder.Callback
+
+surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+This is called immediately after any structural changes (format or size) have been made to the surface.
+
+surfaceCreated(SurfaceHolder holder)
+This is called immediately after the surface is first created.
+
+surfaceDestroyed(SurfaceHolder holder)
+This is called immediately before a surface is being destroyed.
+
+添加回调对象
+gHolder=this.getHolder();  (this -> SurfaceView)
+gHolder.addCallback(this);
+gHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+从SurfaceHolder里获取，可用的画布
+synchronized (gHolder)
+{        
+           Canvas canvas = this.getHolder().lockCanvas();
+           canvas.drawBitmap(gBitmap, null,gRect, null);
+           this.getHolder().unlockCanvasAndPost(canvas);
+ }
+ 
+ 
+ 
+ GPUImage 的 PixelBuffer类
+ 它模拟了，GLSurfaceView，类的功能。
+
+Render都是用同一个类的对象，GPUImageRender
+
+关键函数：
+EGLSurface eglCreatePbufferSurface(EGLDisplay display, EGLConfig config, EGLint const * attrib_list);
+
+
+GLSurfaceView，EGLDisplay，是怎么创建的？
+egl.eglCreateWindowSurface(display, config, nativeWindow, null);
+
+注意：GLSurfaceView view
+private EGLWindowSurfaceFactory mEGLWindowSurfaceFactory;
+mEGLWindowSurfaceFactory = new DefaultWindowSurfaceFactory();
+
+mEgl = (EGL10) EGLContext.getEGL();
+
+mEglDisplay = mEgl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+
+mEglConfig = view.mEGLConfigChooser.chooseConfig(mEgl, mEglDisplay);
+
+mEglContext = view.mEGLContextFactory.createContext(mEgl, mEglDisplay, mEglConfig);
+
+最重要的部分：
+GLSurfaceView view = mGLSurfaceViewWeakRef.get();
+mEglSurface = 
+view
+.mEGLWindowSurfaceFactory
+.createWindowSurface(mEgl, mEglDisplay, mEglConfig, view.getHolder());
+
+注意：
+view.getHolder()  返回的是 nativeWindow
+
+
+
+
+
+
+
+
+view.getHolder()  返回的是 nativeWindow
+Return the SurfaceHolder providing access and control over this SurfaceView's underlying surface.
+
+SurfaceHolder
+Abstract interface to someone holding a display surface. 
+Allows you to control the surface size and format, edit the pixels in the surface, 
+and monitor changes to the surface. 
+
+This interface is typically available through the SurfaceView class.
+
+When using this interface from a thread other than the one running its SurfaceView, 
+you will want to carefully read the methods 
+lockCanvas() and Callback.surfaceCreated().
+
+
+
+
+OpenGL ES 的EGL 两个API 三个概念EGLDisplay EGLConfig EGLint 
+EGLSurface eglCreatePbufferSurface(
+EGLDisplay display, 
+EGLConfig config,
+EGLint const * attrib_list);
+
+EGLSurface eglCreateWindowSurface(
+EGLDisplay display, 
+EGLConfig config, 
+NativeWindowType native_window, 
+EGLint const * attrib_list);
+
+
+
+
+
+GL10 对象是怎么创建的
+eglMakeCurrent       
+（EGL10 EGLDisplay EGLConfig EGLContext EGLSurface）
+
+mWidth = width;
+        mHeight = height;
+
+        int[] version = new int[2];
+        int[] attribList = new int[] {
+                EGL_WIDTH, mWidth,
+                EGL_HEIGHT, mHeight,
+                EGL_NONE
+        };
+
+        // No error checking performed, minimum required code to elucidate logic
+        mEGL = (EGL10) EGLContext.getEGL();
+        mEGLDisplay = mEGL.eglGetDisplay(EGL_DEFAULT_DISPLAY);
+        mEGL.eglInitialize(mEGLDisplay, version);
+        mEGLConfig = chooseConfig(); // Choosing a config is a little more
+                                     // complicated
+
+        // mEGLContext = mEGL.eglCreateContext(mEGLDisplay, mEGLConfig,
+        // EGL_NO_CONTEXT, null);
+        int EGL_CONTEXT_CLIENT_VERSION = 0x3098;
+        int[] attrib_list = {
+                EGL_CONTEXT_CLIENT_VERSION, 2,
+                EGL10.EGL_NONE
+        };
+        mEGLContext = mEGL.eglCreateContext(mEGLDisplay, mEGLConfig, EGL_NO_CONTEXT, attrib_list);
+
+        mEGLSurface = mEGL.eglCreatePbufferSurface(mEGLDisplay, mEGLConfig, attribList);
+        mEGL.eglMakeCurrent(mEGLDisplay, mEGLSurface, mEGLSurface, mEGLContext);
+
+        mGL = (GL10) mEGLContext.getGL();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Android Eclipse 添加自定义 android.opengl.GLSurfaceView类的方法
+		添加类时，可以指定，父类，及，实现的接口。
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Android Eclipse UI Layout XML
+		 <jp.co.cyberagent.android.gpuimage.GPUImageView
+                    android:id="@+id/video_real_time_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" 
+                    android:visibility="gone" />
+其中的，标签名，就是一个类名。
+
+Graphical Layout 图形工具，在Custom & Library Views，可以添加（拖拽）自定义，控件。
+
+
+
+
+
+
+
+
+
+
+
+
+OpenGL ES 的 EGL 接口
+Android NDKr9 开始加入了，EGL，接口。
+可以直接在NDK层，创建GL Context。
+
+
+
+
+
+Android--UI布局
+FrameLayout（帧布局）。
+LinearLayout（线性布局）
+RelativeLayout（相对布局）。
+TableLayout（表格布局）。
+AbsoluteLayout（绝对布局）。
+
+ViewGroup类是所有布局管理器的父类
+
+android:layout_height:指定该子组件的基本高度；
+android:layout_width：指定该子组件的基本宽度。
+fill_parent / match_parent / wrap_content 
+
+android:layout_marginBottom(下边距);
+android:layout_marginLeft（左边距）;
+android:layout_marginRight（右边距）:
+android:layout_marginTop（上边距）
+
+布局文件出错，修改后，必须要重新编译后才能生效。
+
+注释方法
+    <!-- com.feinno.fvideo.FSurfaceView
+        android:id="@+id/fsurfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/-->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Android设置，打开开发者模式的方法
+		连续点击，内部版本号。
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Eclipse 重载父类方法，及，实现接口方法，自动插入代码操作
+		在相应的类，java，源文件里，右击，source -> Override/Implement methods ...
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		自定义的 GLSurfceView显示时出错
+		总结：在显示GLSurfceView之前，必须要设置好，Render。否则会出错：
+
+原因是：不设置Render，就不会创建mGLThread，
+但是在，SurfaceHolder.Callback，是会调用这个对象，造成，空指针异常。
+mGLThread.surfaceCreated();
+
+
+<VM does not provide monitor information>	
+Choreographer.doCallbacks(int, long) line: 578	
+Choreographer.doFrame(long, int) line: 542	
+Choreographer$FrameDisplayEventReceiver.run() line: 751	
+Handler.handleCallback(Message) line: 725	
+Choreographer$FrameHandler(Handler).dispatchMessage(Message) line: 92	
+Looper.loop() line: 158	
+
+打出的LOG记录如下
+E AndroidRuntime: java.lang.NullPointerException
+at android.opengl.GLSurfaceView.surfaceCreated(GLSurfaceView.java:523)
+at android.view.SurfaceView.updateWindow(SurfaceView.java:569)
+at android.view.SurfaceView.access$000(SurfaceView.java:86)
+at android.view.SurfaceView$3.onPreDraw(SurfaceView.java:174)
+at android.view.ViewTreeObserver.dispatchOnPreDraw(ViewTreeObserver.java:680)
+at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2153)
+at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1187)
+at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:4855)
+at android.view.Choreographer$CallbackRecord.run(Choreographer.java:766)
+at android.view.Choreographer.doCallbacks(Choreographer.java:575)
+at android.view.Choreographer.doFrame(Choreographer.java:542)
+android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:751)
+at android.os.Handler.handleCallback(Handler.java:725)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+
+问题出在下面：
+/**     * 
+This method is part of the SurfaceHolder.Callback interface, and is  not normally called or subclassed by clients of GLSurfaceView.   
+  */   
+
+ public void surfaceCreated(SurfaceHolder holder) {        
+                   mGLThread.surfaceCreated();    
+}
+
+Must not be called before a renderer has been set.
+在设置render之前不要调用
+        @Override
+		public void onPause() {
+			// TODO Auto-generated method stub
+			super.onPause();
+			mFSurfaceView.onPause();
+		}
+
+		@Override
+		public void onResume() {
+			// TODO Auto-generated method stub
+			super.onResume();
+			mFSurfaceView.onResume();
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		avax.microedition.khronos.opengles.GL10 android.opengl.GLES20
+		GL10  / GLES20 之间的关系(想问的不是这个问题)
+
+What is the difference between 
+android.opengl
+javax.microedition.khronos.opengles packages  J2ME的JSR239 OpenGL ES API
+
+OpenGL ES 1.0/1.1 API 包
+android.opengl------                这个包给OpenGL ES 1.0/1.1提供了一个静态的接口
+比javax.microedition.khronos包接口具有更好的性能
+
+OpenGL ES 2.0 API 类
+android.opengl.ELES20------这个包提供OpenGL ES 2.0的接口，并且从Android2.2（API Level 8）开始有效
+
+
+http://docs.oracle.com/javame/config/cldc/opt-pkgs/api/jb/jsr239/javax/microedition/khronos/opengles/package-summary.html
+
+
+
+
+
+
+
+
+
+
+GLSurfaceView初始化，设置的参数
+mGlSurfaceView.setEGLContextClientVersion(2);
+        mGlSurfaceView.setRenderer(mRenderer);
+        mGlSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
+RENDERMODE_WHEN_DIRTY 
+RENDERMODE_CONTINUOUSLY  这两种方式的区别
+下面两者区别的代码。
+private boolean readyToDraw() {            
+return  (!mPaused) 
+                  && mHasSurface 
+                  && (!mSurfaceIsBad) 
+                  && (mWidth > 0) && (mHeight > 0) 
+                  && (mRequestRender || (mRenderMode == RENDERMODE_CONTINUOUSLY));        }
+				  
+				  
+				  
+				  
+				  
+				  
+				  ADT (Eclipse) Java Build Path Libraries问题
+				  JARs and class folders on the build path:
+1)  Android 4.4.2
+2)  Android Dependencies
+3)  Android Private Libraries  
+     (这里的JARS包不能 ‘Java Source Attachment’)
+     (存放在工程工具的libs文件夹下)
+4)  Referenced Libraries 
+      (引用的外部 或者 工作目录里的其它库工程生成的，JAR包)
+      (在Java Build Path面板下的Order and Export中，一定要把你引入的jar文件，勾上)
+
+由私有库改为引用库后，运行时出错如下：
+java.lang.ClassNotFoundException: Didn't find class "com.feinno.fvideo.FSurfaceView" on path: /data/app/com.example.testfvideo-2.apk
+解决方法：
+http://blog.csdn.net/lovexieyuan520/article/details/9032797
+
+在Java Build Path面板下的Order and Export中，一定要把你引入的jar文件，勾上，否则，跟没引用一样
+
+
+
+
+
+
+
+
+
+
+
+gl.glViewport 是必须要调用的，没有默认值吗？有，是窗口的大小
+void onSurfaceChanged(GL10 gl, int width, int height) {
+              gl.glViewport(0, 0, width, height); 
+             // for a fixed camera, set the projection too
+
+             float ratio = (float) width / height;
+             gl.glMatrixMode(GL10.GL_PROJECTION);
+             gl.glLoadIdentity(); 
+             gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10); 
+}
+
+Specify the width and height of the viewport. When a GL context is first attached to a window, width and height are set to the dimensions of that window.
+
+
+
+
+
+
+
+
+
+glClearColor 和 glClear之间的关系
+gl.glClearColor(0, 1, 0, 1);
+gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+
+glClear
+clear buffers to preset values 用预设值，clear帧缓存。
+
+有以下四种预设值 （分别用不同的函数，设置这些值。）
+GL_COLOR_BUFFER_BIT：当前可写的颜色缓冲
+GL_DEPTH_BUFFER_BIT：深度缓冲
+GL_ACCUM_BUFFER_BIT：累积缓冲
+GL_STENCIL_BUFFER_BIT：模板缓冲
+
+
+
+
+
+
+
+
+
+
+
+
+
+EGL context
+概念
+EGLContext           EGL rendering context
+                                     OpenGL资源（如：textures）关联到一个 EGLContext
+EGLDisplay            EGL display connection
+EGLSurface
+EGLConfig              EGL配置 - 系统中有若干种配置，
+                                     选择其中最合适的用于创建EGLContext
+                                     选择其中最合适的用于创建EGLSurface
+每个配置中指定以下参数
+EGL10.EGL_RED_SIZE,                           redSize,                   
+EGL10.EGL_GREEN_SIZE,                    greenSize,                    
+EGL10.EGL_BLUE_SIZE,                        blueSize,                    
+EGL10.EGL_ALPHA_SIZE,                    alphaSize,                    
+EGL10.EGL_DEPTH_SIZE,                    depthSize,                    
+EGL10.EGL_STENCIL_SIZE,                stencilSize,
+
+函数：（注意，java）
+eglGetDisplay               //获取平台相关的EGLDisplay
+
+eglInitialize                  // initialize EGL for that display  
+                                             //可以得到系统中 EGL 的实现版本号  
+
+eglGetConfigAttrib  //得到平台可用EGL 配置
+eglChooseConfig      //选定EGL配置(EGLConfig)
+
+eglCreateContext     //创建EGLContext
+
+eglCreateWindowSurface  // create a new EGL window surface
+eglCreatePbufferSurface    // create a new EGL pixel buffer surface    
+
+eglMakeCurrent        //attach an EGL rendering context to EGL surfaces
+
+
+//绘制
+eglSwapBuffers(EGLDisplay display, EGLSurface surface)
+
+
+创建、销毁
+Initialize EGL for a given configuration spec
+
+应用
+
+问题：
+一个进程可以有几个OpenGL Context?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OpenGL ES   纹理对象( Texture)
+1.  准备工作
+
+2.  生成加载纹理
+glGenTextures(1, &mTextureID);                                       生成【纹理对象】
+glBindTexture(GL_TEXTURE_2D, mTextureID );     绑定【纹理对象】
+
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+//此为纹理过滤参数设置
+
+glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+//width、height等参数必需符合要求，此处不赘述。pData是指像素数据
+
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width,height, 0, GL_RGB, GL_UNSIGNED_BYTE, pData );
+
+3.  显示纹理
+glVertexPointer(3, GL_SHORT, 0, _buffer_vertex_coord);
+glDrawArrays(GL_TRIANGLE_STRIP, 0, total);
+
+每个【纹理对象】对应着 【纹理目标】和【纹理单元】
+【纹理目标】 如： GL_TEXTURE_2D
+【纹理单元】 如： GL_TEXTURE0
+
+可以对纹理对象做什么操作？
+1. 生成   纹理对象
+2. 绑定  纹理对象 （绑定【纹理对象】前，要激活，对应的【纹理单元】）
+3. 
+3. 填充  纹理图象 (指定纹理图象)
+
+
+只创建一次【纹理对象】，然后用glTexSubImage2D，来修改【纹理对象】
+Yes, texture (and buffer, and shader, and framebuffer) creation is slow.
+That's why you should create texture only once. 
+After it is created, you can modify its data by calling glSubTexImage2D
+
+
+
+
+
+
+
+
+
+
+
+
+压缩的纹理图像
+在纹理内存中, 可以以压缩格式存储纹理图像, 以减少其占用的纹理内存空
+加载纹理图像时对其进行压缩, 也可以直接加载压缩过的纹理图像
+
+glCompressedTexImage2D
+
+
+
+
+freetype android compile
+/usr/src/android-ndk-r9d/build/tools/make-standalone-toolchain.sh 
+--platform=android-9
+--install-dir=/usr/src/ndk-standalone-9
+PATH=/usr/src/ndk-standalone-9/bin:$PATH
+
+
+tar xf freetype-2.5.3.tar.bz2
+cd freetype-2.5.3/
+./configure 
+--host=arm-linux-androideabi 
+--prefix=/freetype 
+--without-zlib 
+--with-png=no
+
+make -j4
+make install DESTDIR=$(pwd)
+
+
+
+
+
+
+
+
+
+
+LDFLAGS=-L$HOME/local/lib   指定链接库文件搜索路径
+
+
+
+
+
+
+android.mk 指定LDFLAGS
+指定链接时的，库，搜索路径。
+
+include $(CLEAR_VARS)
+LOCAL_LDFLAGS := -L..\..\..\..\feinno-video\libav-10.1\output\lib
+LOCAL_C_INCLUDES := ..\..\..\..\feinno-video\libav-10.1\output\include
+LOCAL_MODULE    := fvideo
+LOCAL_SRC_FILES := MediaSource.cpp MediaSourceNativeInterface.cpp MediaTarget.cpp MediaTargetNativeInterface.cpp JNICommon.cpp
+LOCAL_LDLIBS    := -llog  -lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb -ljnigraphics -lz 
+
+include $(BUILD_SHARED_LIBRARY)
+
+
+
+
+
+
+
+
+
+logcat DEBUG tag
+
+
+
+
+
+
+
+
+ndk-stack
+This document describes the 'ndk-stack' tool that is distributed with the Android NDK, since release r6.
+
+ndk-stack -sym $PROJECT_PATH/obj/local/armeabi -dump foo.txt
+
+
+
+
+
+
+
+android 线程 Runnable 之间的通信
+Runnable::run 阻塞住了，怎么接收其它线程的信息？
+
+
+
+
+
+
+
+
+
+
+
+android intent 意图
+通知别的组件：广播
+
+if(!mIsPreview) {
+			Intent intent = new Intent();
+			intent.setAction("cn.com.fetion.mvclip.video.publish");
+			intent.putExtra("path", result.getPath());
+			intent.putExtra("orignpath", mVideoView.getUri().getPath());
+			mVideoBeautifyActivity.sendBroadcast(intent);
+			SystemClock.sleep(500);
+			progressDialog.dismiss();
+			return;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		android AsyncTask cancel
+		cancel 函数
+public final boolean cancel (boolean mayInterruptIfRunning)
+
+行为特征：
+如果取消一个未开始的任务，这个任务， this task should never run。
+
+Calling this method will result in onCancelled(Object) being invoked 
+on the UI thread after doInBackground(Object[]) returns. 
+Calling this method guarantees that onPostExecute(Object) is never invoked.
+
+After invoking this method, you should check the value returned by isCancelled() 
+periodically[pɪrɪˈɑdɪklɪ]（周期性的） from doInBackground(Object[]) to finish the task as early as possible.
+
+
+参数
+mayInterruptIfRunning 是否强行中止工作线程
+true if the thread executing this task should be interrupted; 
+otherwise, in-progress tasks are allowed to complete.
+
+返加回值
+false if the task could not be cancelled, typically because it has already completed normally; （已经完成 或者 已经被取消）
+
+true otherwise
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+android log 异常堆栈信息
+catch (Throwable t) {
+    		StringWriter errors = new StringWriter();
+            PrintWriter printer = new PrintWriter(errors);
+    		t.printStackTrace(printer);
+    		Log.e("ExcecuteProject", "onDrawFrame:" + errors.toString());
+            errors = null;        有必要吗？出了作用域，没有引用了，会被垃圾回收吧？
+            printer = null;
+    	}
+
+整理前的写法：
+catch (Throwable t) {
+    		Log.e("ExcecuteProject", "onDrawFrame: string:" + t.toString() + "; message:" + t.getMessage());
+    		StringWriter errors = new StringWriter();
+    		t.printStackTrace(new PrintWriter(errors));
+    		Log.e("ExcecuteProject", "onDrawFrame:" + errors.toString());
+    	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		android AsyncTask 数量，删除
+		public final AsyncTask<Params, Progress, Result> executeOnExecutor (Executor exec, Params... params)
+
+public static final Executor SERIAL_EXECUTOR   按顺序执行提交的任务
+
+public static final Executor THREAD_POOL_EXECUTOR 
+并行执行提交的任务（<= 5线程）
+
+一个实例，只能被执行一次：
+The task can be executed only once (an exception will be thrown if a second execution is attempted.)
+
+public AsyncTask () 构造函数，创建一个新的任务
+Creates a new asynchronous task. This constructor must be invoked on the UI thread.
+
+
+
+
+
+
+
+
+
+
+
+
+View.GONE View.INVISIBLE 有什么区别？
+gone 隐藏
+visible 不可见
+
+区别：
+隐藏 - 不占任何区域
+不可见 - 还占着自己的区域
+
+
+
+
+
+
+
+
+android 时钟
+
+
+
+
+
+
+
+
+
+
+
+android AsyncTask cancel 方法会阻塞？
+应该只是设置个标记，或者发个消息，立即返回吧
+
+
+
+
+
+
+
+
+
+
+
+android.mk 里的相对路径
+相对路径，以工程所在目录，即jni所在目录，为启始目录
+
+
+
+
+
+
+
+
+
+
+
+
+android 某个控件居中，代码
+customProgressDialog.getWindow().setGravity(Gravity.CENTER);
+
+import android.widget.RelativeLayout;
+
+RelativeLayout.LayoutParams layoutParams=
+new RelativeLayout.LayoutParams
+(
+RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT
+);
+
+layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+mTextView.setLayoutParams(layoutParams);
+
+出下面的异常：
+07-24 18:09:52.346 22952 22952 E AndroidRuntime:
+java.lang.ClassCastException: 
+android.widget.RelativeLayout$LayoutParams 
+cannot be cast to 
+android.widget.LinearLayout$LayoutParams
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"    一行的控件，居中显示，一个挨一个
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="19dp"
+            android:orientation="horizontal" >
+			
+			
+			
+			
+			
+			
+			
+			
+			How to set text to a text view from a string.xml and normal string at a time
+			view.setText(mContext.getString(R.string.progress_dialog_waitingmsg));
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-86_64/bin/
+../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld.exe: 
+
+warning: 
+./obj/local/armeabi/objs-debug/fimage/ImageSourceNativeInterface.o 
+uses 2-byte wchar_t yet the output is to use 4-byte wchar_t; 
+use of wchar_t values across objects may fail
+
+
+
+
+
+
+
+
+
+
+
+Project->Properties->C/C++ General->Paths and Symbols
+把所有的分析，警告和错误都取消掉
+
+
+
+
+
+
+
+
+
+eclipse Unresolved inclusion: <wchar.h>  CDT Builder
+eclipse Unresolved inclusion: <wchar.h>
+
+eclipse 选中某个工程，属性->Builders(configure the builders for the project)
+
+CDT Builder
+[重要]Android Resource Manager
+[重要]Android Pre Compiler
+[重要]Java Builder
+[重要]Android Package Builder
+Scanner Configuration Builder
+Code Analysis Project Builder
+
+右击工程属性 -> Android Tools -> Add Native Surpport
+
+In general to remove the C++ nature, you just need to delete the .cproject file in the project tree, remove and re-import project in the workspace and you're good to go (c++ project nature removed)
+
+
+
+
+
+
+
+
+
+jstring jchar wchar_t(android) 
+utf-8 / utf-16 / utf-32
+
+sizeof(jchar) == 2
+
+const jchar *Tmp = env->GetStringChars(jtextContentstr,0); // 返回的是utf-16
+
+Java uses UTF-16 for the internal text representation
+java用户更是没有选择的采用了utf16be
+
+public class ChangeCharset {
+/** 7位ASCII字符，也叫作ISO646-US、Unicode字符集的基本拉丁块 */
+ public static final String US_ASCII = "US-ASCII";
+
+ /** ISO 拉丁字母表 No.1，也叫作 ISO-LATIN-1 */
+ public static final String ISO_8859_1 = "ISO-8859-1";
+
+ /** 8 位 UCS 转换格式 */
+ public static final String UTF_8 = "UTF-8";
+
+ /** 16 位 UCS 转换格式，Big Endian（最低地址存放高位字节）字节顺序 */
+ public static final String UTF_16BE = "UTF-16BE";
+
+ /** 16 位 UCS 转换格式，Little-endian（最高地址存放低位字节）字节顺序 */
+ public static final String UTF_16LE = "UTF-16LE";
+
+ /** 16 位 UCS 转换格式，字节顺序由可选的字节顺序标记来标识 */
+ public static final String UTF_16 = "UTF-16";
+
+ /** 中文超大字符集 */
+ public static final String GBK = "GBK";
+ /**
+  * 将字符编码转换成US-ASCII码
+  */
+ public String toASCII(String str) throws UnsupportedEncodingException{
+  return this.changeCharset(str, US_ASCII);
+}
+
+
+
+
+
+
+
+
+E:/android/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/windows-86_64/bin/
+arm-linux-androideabi-strip 
+
+--strip-unneeded  ./libs/armeabi/libfimage.so
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+android surface view surfaceview 关系
+Surface对应了一块屏幕缓冲区
+每个window对应一个Surface
+任何View都是画在Surface上的
+传统的view共享一块屏幕缓冲区，所有的绘制必须在UI线程中进行 
+
+窗口(Window) - surface - 屏幕缓冲区
+
+什么是Surface？
+1. 通过Surface（因为Surface是句柄）就可以获得原生缓冲器以及其中的内容。
+（就像在C++语言中，可以通过一个文件的句柄，就可以获得文件的内容一样）
+2. 原始缓冲区（a raw buffer）是用于保存当前窗口的像素数据的。
+
+Android中的Surface就是一个用来画图形（graphics）或图像（image）的地方
+Surface中有一个Canvas成员，专门用于画图的
+
+Surface本身的作用类似一个句柄，
+得到了这个句柄就可以得到其中的 
+1）Canvas
+2）原始缓冲区
+3）以及其它方面的内容。
+ 
+Surface是用来管理数据的。（句柄）
+
+窗口又是什么？
+private static class MyWindow extends BaseIWindow
+
+SurfaceView是什么？
+SurfaceView也就内嵌了一个自己的Surface
+1）SurfaceView是展示Surface中数据的地方
+2）SurfaceView是用来控制Surface中View的位置和尺寸的
+
+surfaceView是在一个新起的单独线程中可以重新绘制画面
+lockCanvas是为了防止同一时刻多个线程对同一canvas写入
+
+View必须在UI的主线程中更新画面
+
+SurfaceView
+public class SurfaceView extends View {...}
+
+surfaceview 的源码：
+if (mWindow == null) {
+        mWindow = new MyWindow(this);
+        mLayout.type = mWindowType;
+        mLayout.gravity = Gravity.LEFT|Gravity.TOP;
+        mSession.addWithoutInputChannel(mWindow, mWindow.mSeq, mLayout,        mVisible ? VISIBLE : GONE, mContentInsets);  
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+UI线程不在使用这些繁琐的多线程机制，为了保证对UI操作的正确性，只允许在UI线程中操作UI。在非UI线程中可通过post或者runOnUiThread来刷新view
+
+
+
+
+
+
+
+
+
+
+
+android R.id   R.drawable
+R.id   
+R.drawable      drawable 目录下的文件名称
+R.layout             layout目录下的，XML文件名
+R.menu              menu 目录下的，XML文件名
+R.string              values/strings.xml
+R.style                 values/styles.xml
+1）资源中，所有图片，的文件名（不包括后缀），不能重名
+[2014-07-29 11:00:17 - FVideoOpencv] res\drawable-hdpi\aaa.png:0: error: Resource entry aaa is already defined.
+[2014-07-29 11:00:17 - FVideoOpencv] res\drawable-hdpi\aaa.jpg:0: Originally defined here.
+       图片文件名不能以数字开头，因为，会生成以文件名为变量名的变量。
+
+2）打包前，资源会，缓存到BIN目录下，这个过程会做些检测工作，并且会对图片压缩
+       最后生成一个：bin\resources.ap_
+
+[2014-07-29 11:03:20 - FVideoOpencv] Processing image to cache: 
+
+D:\feinno-video\Android\feinnovideo\FVideoOpencv\New Folder
+\res\drawable-hdpi\aaa3.png 
+=> 
+D:\feinno-video\Android\feinnovideo\FVideoOpencv\New Folder
+\bin\res\crunch\drawable-hdpi\aaa3.png
+
+[2014-07-29 11:03:20 - FVideoOpencv] Crunched 1 PNG files to update cache
+[2014-07-29 11:03:20 - FVideoOpencv] libpng error: Not a PNG file
+
+编译资源后(Android Resource Manager)，得到这个类：
+{project-root}\gen\com\fvideo\image\R.java
+
+public final class R {
+    public static final class attr {
+    }
+    public static final class drawable {
+        public static final int aaa=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+    }
+    public static final class id {
+        public static final int main_button=0x7f070000;
+        public static final int main_image=0x7f070001;
+        public static final int menu_settings=0x7f070002;
+    }
+    public static final class layout {
+        public static final int activity_main=0x7f030000;
+    }
+    public static final class menu {
+        public static final int activity_main=0x7f060000;
+    }
+    public static final class string {
+        public static final int app_name=0x7f040000;
+        public static final int hello_world=0x7f040002;
+        public static final int menu_settings=0x7f040001;
+    }
+}
+
+
+
+
+
+
+
+
+
+安装 Android SDK source code
+Android SDK Manager管理器，下载源码。
+右击，android.jar，指定，源码路径就可以了
+
+
+
+
+
+
+
+
+
+drawable canvas bitmap
+Bitmap bmp2 = Bitmap.createBitmap(480, 480, Bitmap.Config.ARGB_8888);				
+Canvas cs = new Canvas(bmp2);
+cs.drawARGB(255, 255, 0, 0);
+Paint pt = new Paint(Paint.ANTI_ALIAS_FLAG);
+cs.drawText("bla bla bla bla", 0, 0, pt);   为什么，这样做显示不出来文字？y座标是baseline
+mImageView.setImageBitmap(bmp2);
+
+Canvas 作为绘制文本时，使用FontMetrics对象，计算位置的坐标。
+ 它的思路和java.awt.FontMetrics的基本相同
+
+Metrics - 度量
+FontMetrics.top
+FontMetrics.ascent (上升)
+FontMetrics.descent (下降)
+FontMetrics.bottom
+
+FontMetrics fontMetrics = mPaint.getFontMetrics(); 
+float fontTotalHeight = fontMetrics.bottom - fontMetrics.top;  
+float offY = fontTotalHeight / 2 - fontMetrics.bottom; 
+float newY = baseY + offY; 
+
+x默认是‘3’这个字符的左边在屏幕的位置，
+如果设置了paint.setTextAlign(Paint.Align.CENTER);那就是字符的中心，
+
+y是指定这个字符baseline在屏幕上的位置
+
+矩形中文字居中的，baseline的计算公式就是：
+targetRect.top + (targetRect.bottom - targetRect.top) / 2 - (FontMetrics.bottom - FontMetrics.top) / 2 - FontMetrics.top
+
+已经矩形，计算合适原，字体大小
+
+
+
+
+
+
+
+
+
+
+Android 图片资源读取
+Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.aaa);
+
+1） BitmapFactory
+2）getResources() 是从那里来的？
+       java 中的嵌套类，可以直接调用外部类的方法。
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   分析 ADT Build 过程
+	   资源打包过程。。。等等
+
+[2014-07-29 11:10:57 - FVideoOpencv] Opening 'D:\feinno-video\Android\feinnovideo\FVideoOpencv\New Folder\bin\resources.ap_'
+[2014-07-29 11:10:57 - FVideoOpencv] Writing all files...
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/layout/activity_main.xml' (compressed 53%)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/menu/activity_main.xml' (compressed 47%)
+[2014-07-29 11:10:57 - FVideoOpencv]       'AndroidManifest.xml' (compressed 62%)
+[2014-07-29 11:10:57 - FVideoOpencv]       'resources.arsc' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-hdpi/aaa.jpg' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-hdpi/aaa3.jpg' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-hdpi/ic_launcher.png' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-mdpi/ic_launcher.png' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-xhdpi/ic_launcher.png' (not compressed)
+[2014-07-29 11:10:57 - FVideoOpencv]       'res/drawable-xxhdpi/ic_launcher.png' (not compressed)
+
+
+
+
+
+
+
+
+
+
+
+
+eclipse 奇怪的错误
+eclipse 打开时提示，有更新，然后所有工程都出错，编译不了
+
+The type java.lang.Object cannot be resolved. It is indirectly referenced from required .class files
+
+project -> 属性 -> Android -> Project Build Target 
+这里是空的。
+
+查看， windows -> preferences -> Android -> SDK Location
+This Android SDK requires Android Developer Toolkit version 23.0.0 or above.  Current version is 22.6.2.v201403212031-1085508.  Please update ADT to the latest version
+SDK版本对应不同的ADT，而且SDK的更新并不和ADT的更新在一起，这时就必须更新ADT了
+
+Help -> Install New Software  检测更新并安装
+
+解决方法：下载新版本 ADT 使用
+
+
+
+
+
+
+
+
+
+
+
+android.mk LOCAL_LDFLAGS
+LOCAL_LDFLAGS := -LD:/feinno-video/libav-10.1/output/lib
+
+注意：别忘记写，-L
+
+
+
+
+ndk  c++ stl
+APP_STL := gnustl_static
+
+查看，E:\android\ndk\docs\Start_Here.html
+
+
+
+
+
+
+
+
+ndk Standalone Toolchain
+查看，E:\android\ndk\docs\Start_Here.html
+
+
+
+
+
+
+
+
+
+android.mk 定义宏
+LOCAL_CPPFLAGS := -DTEST_FOO=1
+
+
+
+
+
+
+
+
+glVertexPointer android java Direct Buffer / Heap Buffer
+        	FloatBuffer fb;
+        	fb = FloatBuffer.allocate(6);
+        	fb.put(new float[]{-1.0f, -1.0f, 0.0f, 1.0f, 1.0f, 0.0f});
+        	gl.glVertexPointer(2, GL10.GL_FLOAT, 0, fb);
+
+这样写是会出错的，为什么？（1. allocateDirect 2. position(0)）
+
+ByteBuffer.allocateDirect(vertices.length * 4);
+ByteBuffer.allocate(vertices.length * 4);
+之间的区别？
+Java中的 Buffer分两种，一种direct,一种非direct.这里只支持 DirectBuffer,也就是通过ByteBuffer.allocateDirect(int cap) 分配而来的buffer
+
+The buffer memory for a direct ByteBuffer is allocated outside of the normal heap
+
+简单的说，我们需要牢记三点： 
+（1）	平时的read/write，都会在I/O设备与应用程序空间之间经历一个“内核缓冲区”。 
+（2）	Direct Buffer就好比是“内核缓冲区”上的缓存，不直接受GC管理；而Heap Buffer就仅仅是byte[]字节数组的包装形式。因此把一个Direct Buffer写入一个Channel的速度要比把一个Heap Buffer写入一个Channel的速度要快。 
+（3）	Direct Buffer创建和销毁的代价很高，所以要用在尽可能重用的地方。
+
+但Direct Buffer的JAVA对象是归GC管理的，只要GC回收了它的JAVA对象，操作系统才会释放Direct Buffer所申请的空间
+
+正确的写法：
+        	FloatBuffer fb = 
+        			ByteBuffer.allocateDirect(4 * 6)
+        			.order(ByteOrder.nativeOrder())
+        			.asFloatBuffer();
+        	fb.put(new float[]{-1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f});
+        	fb.position(0);
+        	gl.glVertexPointer(2, GL10.GL_FLOAT, 0, fb);
+        	gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			eclipse sh ndk-build no such file or directory
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<gl_draw_error_checks:543>: GL_INVALID_OPERATION
+			最后发现是，在设置，纹理坐标时，使用了顶点数组。
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			android bmp 复制		
+		Canvas canvas = new Canvas(desBmp);
+		canvas.drawARGB(0, 0, 0, 0);
+		canvas.drawBitmap(bmp, 0, 0, null);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		Density的意思是“密度”。密度，就是说单位面积内的容量大小
+				Canvas canvas = new Canvas(desBmp);
+		canvas.drawARGB(0, 0, 0, 0);
+		canvas.drawBitmap(bmp, 0, 0, null);
+上面代码，有个图像缩放的问题：
+
+If the bitmap and canvas have different densities, 
+this function will take care of 
+automatically scaling the bitmap to draw 
+at the same density as the canvas.
+
+解决方法，把bitmap的密度，设置为空
+bm.setDensity(Bitmap.DENSITY_NONE)
+
+Density的意思是“密度”。密度，就是说单位面积内的容量大小。
+
+HVGA屏density=160
+QVGA屏density=120
+WVGA屏density=240
+WQVGA屏density=120
+
+density值表示每英寸有多少个显示点，与分辨率是两个概念。
+
+不同density下屏幕分辨率信息：
+480*800的WVGA(density=240)
+density=120时 屏幕实际分辨率为240*400 （两个点对应一个分辨率）
+
+
+
+
+
+
+
+
+
+
+
+
+Why does BitmapFactory.decodeResource scale my image?
+       	mTestBmp2 = BitmapFactory.decodeResource(mRootView.getResources(), R.drawable.a001);
+        	int w = mTestBmp2.getWidth();  960 实际上是480
+        	int h = mTestBmp2.getHeight(); 960 实际上是480
+
+When you do Bitmapfactory.decodeResource(), 
+Android by default will choose the "matched" dpi version to decode, 
+what happen in your mentioned code will yields:
+
+You can't specify whether it is in mdpi, hdpi or whatever,
+it will choose the version that match your running System. 
+
+i.e., if you are running on a mdpi device, it will decode the mdpi version; 
+        in ldpi, then the ldpi version.
+
+Suppose you are using a hdpi device, 
+but no mdpi resource is defined, 
+what it will do is take your mdpi resource, and during decode, 
+
+it will make it into hdpi (i.e., it enlarge your mdpi bitmap to about 1.5x larger); 
+
+again, if your device has lower resolution then it will shrink the image
+
+I guess this is what happens to you. 
+
+For BitmapFactory, it actually has the option to NOT scaling the image:
+http://developer.android.com/reference/android/graphics/BitmapFactory.Options.html
+Set the inScaled to false will do.
+
+Therefore to prevent scaling you need to
+specify Options param with inScaled=false param. 
+Or 
+put your image to the res/drawable-nodpi folder.
+
+下面的方法修改后，获取的BITMAP的density值变了（480->240）
+
+BitmapFactory.Options mNoScale = new BitmapFactory.Options();
+mNoScale.inScaled = false;
+BitmapFactory.decodeResource(getResources(), R.drawable.id, mNoScale);
+
+
+
+
+
+
+GL郁闷了十几个小时的问题
+	mProgramID = loadProgram(mVertexShader, mFragmentShader);
+
+注意，在应用，着色器，程序后，执行下面的代码才有意义？
+原因：(上传)更新Uniform变量，必须在，应用着色器程序后。否则，无效。
+
+
+			GLES20.glUseProgram(mProgramID);
+
+			GLES20.glUniform1i(mShaderSampler0, 0);
+			GLES20.glUniform1i(mShaderSampler1, 1);
+			GLES20.glUniform1i(mShaderSampler2, 2);		
+
+写在glUniform1i之后，造成的问题。这个产生了一个警告，当时没有正确理解。
+<__load_uniform_int:318>: GL_INVALID_OPERATION
+			//GLES20.glUseProgram(mProgramID); 
+
+从网上找到下面的说法：
+glUniform only works on the currently bound program (obviously because it has no program object as parameter), you must issue glUniform calls AFTER glUseProgram(yourprogram).
+
+
+glUniform doesn't work
+You probably did not bind the correct shader first. Call glUseProgram(myprogram)​ first.
+
+
+
+
+
+
+按HOME键，再返回APP，后，界面上的位图没了
+	<ImageView 
+	    android:id="@+id/testview"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    />
+
+位图没了的原因是，开始进行界面布局时，没有这个控件的位置。
+
+按电源键与按HOME键的区别
+按电源键，只是 onPause / onResume
+按HOME键， 
+onPause->onDestroyView->onDestroy->OnDestroyView->onDetach
+onCreate onResume
+
+
+按HOME键，再返回APP，后，界面上的位图没了
+mImageView.setImageBitmap(mTestBmp);
+1. 如果在XML中设置了位图，就显示这个位图。
+2.如果在XML中没有设置位图，则变成空白。
+
+
+
+
+
+
+
+
+HOME键，电源键，事件分析：
+启动时
+MainActivity(22535): onCreate
+MainActivity(22535): onSupportContentChanged
+PlaceholderFragment(22535): onAttach
+PlaceholderFragment(22535): onCreate
+PlaceholderFragment(22535): onCreateView
+PlaceholderFragment(22535): onCreateAnimation
+PlaceholderFragment(22535): onViewCreated
+PlaceholderFragment(22535): onActivityCreated
+PlaceholderFragment(22535): onViewStateRestored
+PlaceholderFragment(22535): onStart
+MainActivity(22535): onTitleChanged
+MainActivity(22535): onPostResume
+PlaceholderFragment(22535): onResume
+MainActivity(22535): onCreatePanelView
+MainActivity(22535): onCreatePanelMenu
+MainActivity(22535): onCreateOptionsMenu
+MainActivity(22535): onPreparePanel
+MainActivity(22535): onPrepareOptionsPanel
+
+
+按HOME，退出时：(天呢：这样退出后，再进来时，会重新构造这两个类)
+PlaceholderFragment(22535): onPause
+PlaceholderFragment(22535): onSaveInstanceState
+MainActivity(22535): onStop
+PlaceholderFragment(22535): onStop
+PlaceholderFragment(22535): onDestroyView
+PlaceholderFragment(22535): onDestroy
+PlaceholderFragment(22535): onDetach
+
+按HOME，退出后，返回时：
+MainActivity(22535): onCreate
+PlaceholderFragment(22535): onAttach
+PlaceholderFragment(22535): onCreate
+MainActivity(22535): onSupportContentChanged
+PlaceholderFragment(22535): onCreateView
+PlaceholderFragment(22535): onCreateAnimation
+PlaceholderFragment(22535): onViewCreated
+PlaceholderFragment(22535): onActivityCreated
+PlaceholderFragment(22535): onViewStateRestored
+PlaceholderFragment(22535): onStart
+MainActivity(22535): onTitleChanged
+MainActivity(22535): onPostResume
+PlaceholderFragment(22535): onResume
+MainActivity(22535): onCreatePanelView
+MainActivity(22535): onCreatePanelMenu
+MainActivity(22535): onCreateOptionsMenu
+MainActivity(22535): onPreparePanel
+MainActivity(22535): onPrepareOptionsPanel
+MainActivity(22535): onCreatePanelView
+MainActivity(22535): onPreparePanel
+MainActivity(22535): onPrepareOptionsPanel
+
+按电源键，退出时
+PlaceholderFragment(22535): onPause
+PlaceholderFragment(22535): onSaveInstanceState
+MainActivity(22535): onStop
+PlaceholderFragment(22535): onStop
+按电源键，退出，返回时
+PlaceholderFragment(22535): onStart
+MainActivity(22535): onPostResume
+PlaceholderFragment(22535): onResume
+
+
+
+
+
+
+
+mRequestRender 没有做线程同步？
+如果在GLthread即将把mRequestRender设置为FALSE之前，调用了，requestRender，则会无效。
+
+线程同步中的重要概念：原子操作。
+原子操作是不可以被打断的， 所以其保证了数据一致性
+
+
+
+
+
+
+
+
+mTestBmp = BitmapFactory.decodeResource(mRootView.getResources(), R.drawable.android);
+
+得到的BITMAP，长宽不对，为什么？
+
+
+
+
+
+
+
+
+
+
+Grow heap (frag case) 堆内存过大
+
+
+
+
+
+
+
+
+
+
+canvas.drawARGB(0,0,0,0) has no effect.
+Ok, discovered the problem was the default Porter-Duff drawing mode that made drawing a transparent color impossible. Just have to change mode. ie,
+
+Canvas canvas = surfaceView.lockCanvas();
+canvas.drawColor(0, Mode.CLEAR);
+
+canvas.drawColor(0, PorterDuff.Mode.CLEAR);
+见文档：
+drawARGB(int a, int r, int g, int b)
+Fill the entire canvas' bitmap (restricted to the current clip) with the specified ARGB color, using srcover porterduff mode.
+
+
+
+
+
+
+
+
+Immutable bitmap passed to Canvas constructor
+Canvas canvas = new Canvas(mTestBmp3);
+canvas.drawColor(0, PorterDuff.Mode.CLEAR);
+				mImageView.setImageBitmap(mTestBmp3);
+
+出现Immutable bitmap passed to Canvas constructor错误的原因是如果不用copy的方法，直接引用会对资源文件进行修改，而android是不允许在代码里修改res文件里的图片
+
+
+
+
+
+
+
+
+
+
+
+
+
+LOCAL_CFLAGS := -std=c++11
+jni/VideoCache.h:36:5: warning: 
+extended initializer lists only available with 
+-std=c++11 or -std=gnu++11 [enabled by default]
+
+构造函数初始化列表
+    CVideoCache(const char* video_file_name, const char *cache_path) :
+    pcm_file_{0},
+    yuv_file_{0},
+    source_video_file_{0} {
+        sprintf(pcm_file_, "%s/sound", cache_path);
+        sprintf(yuv_file_, "%s/image", cache_path);
+        strcpy(source_video_file_, video_file_name);
+    }
+	
+	
+	
+	
+	
+	
+	
+	env->ReleaseStringUTFChars(fname, utf8);
+	
+	
+	
+	
+	
+	
+	
+	
+	整数，赋值给，枚举值
+	jni/VideoCacheNativeInterface.cpp:29:37: error: invalid conversion from 'int' to
+ 'VideoCacheErrorCode' [-fpermissive]
+
+enum VideoCacheErrorCode {
+};
+
+struct VideoCacheInfo {
+    VideoCacheErrorCode error;
+    int nb_frames;
+    int frames[1000];
+};
+
+VideoCacheInfo t = {0};  这里会出错。
+
+
+
+
+
+
+
+
+
+
+
+
+
+JNI_OnLoad RegisterNatives
+#define MEDIAD_TARGET_CLS "com/feinno/fvideo/MediaTarget"
+jclass media_target_cls = env->FindClass(MEDIAD_TARGET_CLS);
+
+
+
+
+
+
+
+
+
+
+
+extern "C" { } 可以使用引用 ？
+
+
+
+
+
+
+
+
+
+ jump to label 'fail' [-fpermissive]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ jni jlongArray
+ jobjectArray array2
+int size = env->GetArrayLength(array2);
+jstring obja = (jstring)env->GetObjectArrayElement(array2, i);
+
+jintArray iarr = env->NewIntArray(length);
+env->SetIntArrayRegion(iarr,  0,  length,  buf);
+
+jint buf[]={0,0,0,0,0};
+env->GetIntArrayRegion(array1,0,length,buf);
+
+jintArray array1
+jint* arr = env->GetIntArrayElements(array1,NULL);
+jint length = env->GetArrayLength(array1);
+
+
+jintArray arr
+jint *jarr = env->GetIntArrayElements(arr, &isCopy);
+Try
+env->ReleaseIntArrayElements(arr, jarr, 0);
+instead of
+env->ReleaseIntArrayElements(arr, jarr, JNI_ABORT);
+
+本想，从JNI中传个数组引用进来，在C代码里，生成个新的组，赋值给这个引用。（这个引用怎么传递呢？实在没有找到方法）
+
+只好，变通为，由C中调用，JAVA的接口，来传递这个数组。
+
+
+NewIntArray 应该怎么处理？需要释放吗？应该不需要
+
+
+
+
+
+
+
+
+
+
+
+
+JNIEnv *env   env->GetFieldID(integer_class, "value", "I");
+jclass order_class = env->FindClass("com/chnic/bean/Order");      
+jobject order = getInstance(env, order_class); 
+
+jmethodID setName_method = 
+     env->GetMethodID(order_class, "setName", "(Ljava/lang/String;)V");      
+
+env->CallVoidMethod(order, setName_method, name);  
+
+jint amount;
+jmethodID setAmount_method = 
+                        env->GetMethodID(order_class, "setAmount", "(I)V");      
+env->CallVoidMethod(order, setAmount_method, amount);
+
+注意下面的用法
+JNIEXPORT void 
+JNICALL Java_com_test_jniclass_AndroidJniClassDemo_executeMethod (JNIEnv *env, jobject obj)  {      
+
+jclass clazz = (*env)->GetObjectClass(env,obj); //通过类的对象获取类      
+  
+jmethodID mid = (*env)->GetMethodID(env,clazz,"show","()V");
+//查找java中的show方法的ID，最后的签名符号为void类型 
+
+(*env)->CallVoidMethod(env,obj,mid); //执行show方法
+
+
+
+
+
+
+
+org.json.simple.JSONArray  org.json.JSONArray 区别
+org.json.simple.JSONArray  org.json.JSONArray 区别
+
+
+
+
+
+
+
+
+
+Android json
+private void setYUVImageTimes(int[] times) {
+		mYUVImageTimes = times;
+		JSONArray json_array = new JSONArray();
+		for(int i :times) {
+			json_array.put(i);    可以直接从原始数组生成，json数组
+		}
+		try {
+			FileWriter writer = new FileWriter(mInfoFileName);
+			writer.write(json_array.toString());
+			writer.flush();
+			writer.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+JSONArray(String json)
+Creates a new JSONArray with values from the JSON string.JSONArray(Object array)
+Creates a new JSONArray with values from the given primitive array.
+
+// loop array
+		JSONArray msg = (JSONArray) jsonObject.get("messages");
+		Iterator<String> iterator = msg.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		Resource leak: '<unassigned Closeable value>' is never closed
+		mYUVFileChannel = new FileInputStream(mYUVFileName).getChannel();
+
+@SuppressWarnings("resource")
+
+
+
+
+
+
+
+
+
+
+
+
+
+TimerTask 是否会重入？ 但是，它是在工作线程里运行的
+TimerTask 是否会重入？ 但是，它是在工作线程里运行的
+
+查看源码：应该不会重入。
+/java/java/util/Timer.java
+
+ // set when the next task should be launched                        if (task.period >= 0) {                            // this is a repeating task,                            if (task.fixedRate) {                                // task is scheduled at fixed rate                                task.when = task.when + task.period;                            } else {                                // task is scheduled at fixed delay                                task.when = System.currentTimeMillis()                                        + task.period;                            }                            // insert this task into queue                            insertTask(task);                        } else {                            task.when = 0;                        }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ JSONArray 从数组构造时异常
+ private void setYUVImageTimes(int[] times) {
+		mYUVImageTimes = times;
+		try {
+			JSONArray json_array = new JSONArray(mYUVImageTimes);
+
+java.lang.NoSuchMethodError: org.json.JSONArray.<init>
+
+
+JSONArray(Object array) 这个是怎么用的？
+
+
+
+
+
+
+
+
+
+libavresample用法
+AVAudioResampleContext* avresample_alloc_context(void )
+int avresample_open(AVAudioResampleContext * avr)
+
+int nb_samples = avresample_convert(
+                                audio_resample_ctx,
+                                audio_frame_s16->data,
+                                audio_frame_s16->linesize[0],
+                                audio_frame_s16->nb_samples,
+                                audio_frame->data,
+                                audio_frame->linesize[0],
+                                audio_frame->nb_samples);
+这里返回的是，单个声道，的”样数“
+
+void avresample_close(AVAudioResampleContext * avr)
+void avresample_free(AVAudioResampleContext ** avr)
+
+
+
+
+
+
+
+
+
+
+
+AudioTrack marker position
+public int getNotificationMarkerPosition ()
+public int setNotificationMarkerPosition (int markerInFrames)
+
+public void setPlaybackPositionUpdateListener 
+(AudioTrack.OnPlaybackPositionUpdateListener listener)
+public void setPlaybackPositionUpdateListener 
+(AudioTrack.OnPlaybackPositionUpdateListener listener, Handler handler)
+
+public int getPlaybackHeadPosition ()
+getHeadPosition()返回值表示当前已经播放了多少帧
+(1帧就是采样一次的意思，比如采样率是8000的话，那么1秒钟就是8000帧)
+public int setPlaybackHeadPosition (int positionInFrames)
+
+public int setPositionNotificationPeriod (int periodInFrames)
+public int getPositionNotificationPeriod ()
+
+public int setLoopPoints (int startInFrames, int endInFrames, int loopCount)
+
+getHeadPosition  ， onMarkerReached ， onPeriodicNotification 
+可以方便的取得声音播放的时间，了解声音的节奏，可以用来和视频和字幕同步
+
+AudioTrack 如何才能知道已经播放结束了
+setPlaybackPositionUpdateListener可以的，就是播放玩了多久调下回调函数。
+通常这个因为sampleRate等都是固定的，你算好就可以了
+
+positionInFrames 是什么单位？(frameSize一个FRAME的大小：channel * 16bit)
+I don't fully understand the documentation for these APIs. Is each frame the same as a sample? How do I specify a marker for where each sound begin/end?
+
+To me frames are samples. This is the duration of the sound multiplied times the sample rate.(双声道呢？是否还需要乘上2？)
+
+uint32_t AudioTrack::frameCount() const {
+    return mCblk->frameCount;
+}
+
+int AudioTrack::frameSize() const{
+    if (AudioSystem::isLinearPCM(mFormat)) {
+        return channelCount()*((format() == AudioSystem::PCM_8_BIT) ? sizeof(uint8_t) : sizeof(int16_t));
+    } else {
+        return sizeof(uint8_t); 
+   }}
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   mSourceVideoCache.pcmFileChannel().read(mAudioBuffer);
+   FileChannel().read 文件指针不会向前移动？
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   mAudioTrack.write警告
+   mAudioTrack.write(mAudioBuffer.array(), 0, mAudioBufferSizeInBytes); 警告
+08-19 10:48:55.685: W/AudioTrack(22646): releaseBuffer() track 0x69971a00 name=0x1 disabled, restarting
+
+
+
+
+
+
+
+
+
+
+
+FileChannel read write不影响position
+Bytes may be read or written at an absolute position in a file in a way that does not affect the channel's current position.
+
+
+
+
+
+
+
+
+
+
+ByteBuffer FileChannel read时
+int nb_bytes_readed = mSourceVideoCache.pcmFileChannel().read(mAudioBuffer);
+
+mAudioBuffer position是否会变化？
+
+
+
+
+
+
+
+
+
+
+AudioTrack 播放时，噪音
+long offset = miliSeconds * mAudioSampleRate * 4 / 1000;
+
+这个，偏移量，没有，4字节对齐。
+
+(ch 2)   *  (16bit / 8) 
+
+改成下面的样子：
+long offset = (miliSeconds * mAudioSampleRate / 1000 + 1) * 4 ;
+
+
+
+
+
+
+
+ mGLSurfaceView.setOnTouchListener
+  mGLSurfaceView.setOnTouchListener(new View.OnTouchListener() {
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+		    	
+		    });
+			
+			
+			
+			
+			
+			
+			
+			
+			mGLSurfaceView.setOnClickListener
+			mGLSurfaceView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+				}
+		    });
+			
+			
+			
+			
+			
+			
+			
+			MotionEvent对象
+			MotionEvent对象是与用户触摸相关的时间序列，
+
+该序列从用户首次触摸屏幕开始，经历手指在屏幕表面的任何移动，直到手指离开屏幕时结束。
+
+手指的初次触摸(ACTION_DOWN操作)，
+滑动(ACTION_MOVE操作)和
+抬起(ACTION_UP)
+                                        都会创建MotionEvent对象。
+
+所以每次触摸时候这三个操作是肯定发生的，
+而在移动过程中会产生大量事件，
+每个事件都会产生对应的MotionEvent对象记录
+
+MotionEvent对象记录下列信息：
+发生的操作，             getation
+触摸的位置，             event.getX()   event.getY()
+使用的多大压力，
+触摸的面积，
+何时发生，
+以及最初的ACTION_DOWN何时发生等相关的信息
+
+
+手势识别
+
+
+
+
+
+
+
+
+
+
+手势识别
+android.view.GestureDetector来实现手势的识别，我们只需要实现其GestureDetector.OnGestureListener接口来侦听GestureDetector识别后的事件。我们需要在onTouchEvent，GestureDetector的onTouchEvent方法是进行轨迹识别
+
+
+
+
+
+
+
+
+
+
+android.widget.Gallery
+This class was deprecated in API level 16.
+This widget is no longer supported. Other horizontally scrolling widgets include HorizontalScrollView and ViewPager from the support library
+
+
+
+
+
+
+
+
+
+
+为什么不产生，ACTION_MOVE，动作
+Here is my code, I want to detect when my finger goes down the screen so when I touch the screen I detect the ACTION_DOWN but when I go down the screen with my finger, ACTION_MOVE is not recognized, neither ACTION_UP Do you know why?
+
+If your touch handler method always returns false, 
+then after seeing the initial ACTION_DOWN, 
+it will not receive any of the subsequent events that belong to this particular gesture. 
+
+Instead those touch events will be presented to the parent in the hierarchy.
+
+Put simply, if you return false from onTouch(), 
+it signals that the method no longer wants to see any more of the gesture[ˈdʒɛstʃɚ], 
+and that the gesture's events should go to the parent View.
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			ByteBuffer FileChannel read时
+			int nb_bytes_readed = mSourceVideoCache.pcmFileChannel().read(mAudioBuffer);
+
+mAudioBuffer position是否会变化？
+
+
+
+
+
+
+
+mGLSurfaceView.setOnClickListener
+		    mGLSurfaceView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+				}
+		    });
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			AudioTrack 播放时，噪音
+			long offset = miliSeconds * mAudioSampleRate * 4 / 1000;
+
+这个，偏移量，没有，4字节对齐。
+
+(ch 2)   *  (16bit / 8) 
+
+改成下面的样子：
+long offset = (miliSeconds * mAudioSampleRate / 1000 + 1) * 4 ;
+
+
+
+
+
+
+
+
+
+ mGLSurfaceView.setOnTouchListener
+  mGLSurfaceView.setOnTouchListener(new View.OnTouchListener() {
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+		    	
+		    });
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			手势识别
+			android.view.GestureDetector来实现手势的识别，我们只需要实现其GestureDetector.OnGestureListener接口来侦听GestureDetector识别后的事件。我们需要在onTouchEvent，GestureDetector的onTouchEvent方法是进行轨迹识别
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			MotionEvent对象
+			MotionEvent对象是与用户触摸相关的时间序列，
+
+该序列从用户首次触摸屏幕开始，经历手指在屏幕表面的任何移动，直到手指离开屏幕时结束。
+
+手指的初次触摸(ACTION_DOWN操作)，
+滑动(ACTION_MOVE操作)和
+抬起(ACTION_UP)
+                                        都会创建MotionEvent对象。
+
+所以每次触摸时候这三个操作是肯定发生的，
+而在移动过程中会产生大量事件，
+每个事件都会产生对应的MotionEvent对象记录
+
+MotionEvent对象记录下列信息：
+发生的操作，             getation
+触摸的位置，             event.getX()   event.getY()
+使用的多大压力，
+触摸的面积，
+何时发生，
+以及最初的ACTION_DOWN何时发生等相关的信息
+
+
+手势识别
+
+
+
+
+
+
+
+
+
+
+为什么不产生，ACTION_MOVE，动作
+
+Here is my code, I want to detect when my finger goes down the screen so when I touch the screen I detect the ACTION_DOWN but when I go down the screen with my finger, ACTION_MOVE is not recognized, neither ACTION_UP Do you know why?
+
+If your touch handler method always returns false, 
+then after seeing the initial ACTION_DOWN, 
+it will not receive any of the subsequent events that belong to this particular gesture. 
+
+Instead those touch events will be presented to the parent in the hierarchy.
+
+Put simply, if you return false from onTouch(), 
+it signals that the method no longer wants to see any more of the gesture[ˈdʒɛstʃɚ], 
+and that the gesture's events should go to the parent View.
+
+
+
+
+
+
+
+
+android.widget.ProgressBar
+ <LinearLayout
+     android:orientation="horizontal"
+     ... >
+     <ProgressBar
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         style="@android:style/Widget.ProgressBar.Small"
+         android:layout_marginRight="5dp" />
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/loading" />
+ </LinearLayout>
+
+style="@android:style/Widget.ProgressBar.Small"  是一个转圈
+Other progress bar styles provided by the system include:
+Widget.ProgressBar.Horizontal 水平方向的进度条
+Widget.ProgressBar.Small  一个小转圈
+Widget.ProgressBar.Large  一个大转圈
+Widget.ProgressBar.Inverse
+Widget.ProgressBar.Small.Inverse
+Widget.ProgressBar.Large.Inverse
+
+进度条的宽度？android:layout_width="wrap_content"，没有用，只占左边一点点。
+android:layout_width="match_parent" 这个才能，占全宽
+
+
+
+
+
+
+
+
+android.widget.Gallery
+This class was deprecated in API level 16.
+This widget is no longer supported. Other horizontally scrolling widgets include HorizontalScrollView and ViewPager from the support library
+
+
+
+
+
+
+
+
+
+android.os.Handler  android.os.Message
+Handler handler = new Handler() { 
+@Override 
+public void handleMessage(Message msg) { 
+// TODO Auto-generated method stub 
+//要做的事情 
+super.handleMessage(msg); 
+} 
+
+Message message = new Message(); 
+message.what = 1; 
+handler.sendMessage(message); 
+
+
+另一种用法
+private Handler mHandler = new Handler();
+// Update the progress bar
+                     mHandler.post(new Runnable() {
+                         public void run() {
+                             mProgress.setProgress(mProgressStatus);
+                         }
+                     });
+
+public final boolean post (Runnable r)
+Causes the Runnable r to be added to the message queue. The runnable will be run on the thread to which this handler is attached.
+
+
+
+
+
+
+
+
+
+
+android layout 尺寸单位
+Available units are: 
+px (pixels), 
+dp (density-independent pixels), 
+sp (scaled pixels based on preferred font size), 
+in (inches), 
+mm (millimeters)
+
+
+
+
+
+
+
+
+
+android禁止旋转
+在AndroidManifest.xml的每一个需要禁止转向的Activity配置中加入
+
+Activity配置中加入android:screenOrientation=”landscape”
+
+landscape = 横向
+portrait = 纵向
+
+
+
+
+
+
+
+
+
+
+
+
+android.widget.HorizontalScrollView
+<HorizontalScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none" >
+</HorizontalScrollView>
+
+
+
+
+
+
+
+
+
+
+
+android 列表控件
+android.widget.AbsListView
+android.widget.ExpandableListView
+
+android.widget.HeaderViewListAdapter
+android.widget.HorizontalScrollView
+android.widget.ListView
+
+
+
+
+
+
+
+
+android button onClick 
+第一种方法：在XML中指定点击事件函数（寻找对应的activity里的方法）
+<Button
+ android:id="@+id/mybutton"
+ android:layout_height="wrap_content"
+ android:layout_width="wrap_content" 
+ android:onClick="onclickfunction">
+</Button>
+注意：第一次使用失败，提示下面的错误（定义在Fragment里）
+08-23 12:11:59.658: E/AndroidRuntime(15258): FATAL EXCEPTION: main
+08-23 12:11:59.658: E/AndroidRuntime(15258): 
+java.lang.IllegalStateException: 
+Could not find a method onClickButton(View) in 
+the activity class com.example.testfvideo.MainActivity for 
+onClick handler on view class android.widget.Button with id 'btn_load'
+解决方法：在activity定义好，点击函数，再调用fragment里的方法。
+
+第二种方法，自定义，点击事件类
+private class OnButton1Click implements OnClickListener {
+			@Override
+			public void onClick(View arg0) {
+				Log.v(TAG, "OnButton1Click");
+				long tm = System.currentTimeMillis();
+				mFeinnoPlayer.AddSource();
+				Log.v(TAG, "cache video file:" + (System.currentTimeMillis() - tm));
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		feinno video 模板列表 及 滤镜列表
+		即可以看成是两组  Radio按钮
+也可以看成是两组  单选列表框
+
+
+
+
+
+
+
+
+
+
+
+
+mRefreshClockHandler.sendEmptyMessage(1);
+mRefreshClockHandler.removeMessages(1);
+
+public class RefreshClockHandler extends Handler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+android Intent
+An intent is an abstract description of an operation to be performed. 
+
+1）It can be used with startActivity to launch an Activity, 
+
+2）broadcastIntent to send it to any interested BroadcastReceiver components, and 
+
+3）startService(Intent) or bindService(Intent, ServiceConnection, int) to communicate with a background Service.
+
+Android中提供了Intent机制来协助应用间的交互与通讯，
+
+Intent负责对应用中一次操作的动作、动作涉及数据、附加数据进行描述，
+
+Android则根据此Intent的描述，负责找到对应的组件，
+将 Intent传递给调用的组件，并完成组件的调用。
+
+下面是从一个Fragment类中调用的：
+Intent net = new Intent(this.getActivity(), ChooseVideo.class);
+this.getActivity().startActivity(net);
+第一次运行是可以的，退上个Activity,再运行这段代码是出错：
+08-23 14:15:38.744: E/AndroidRuntime(18565): java.lang.IllegalStateException: 
+Could not execute method of the activity
+
+
+
+
+
+
+
+
+
+
+
+
+
+Best way to add Activity to an Android project in Eclipse
+Double click on AndroidManifest.xml in the package explorer.
+
+Click on the "Application" tab of the manifest editor
+
+Click on "Add.." under the "Application Nodes" heading (bottom left of the screen)
+
+Choose Activity from the list in the dialog that pops up (if you have the option, you want to create a new top-level element)
+
+Click on the "Name*" link under the "Attributes for" header (bottom right of the window) to create a class for the new activity.
+
+添加Activity的配置文件
+更改启动Activity
+
+Activity之间的切换 (Intent)
+Intent menuIntent = new Intent(this, MenuActivity.class);
+startActivity(menuIntent);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+change application's starting activity - android
+<activity android:name="ChooseVideo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+ </activity>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ add xml to an exist activity
+ 这种说法，是有问题，属于，没有理解XML 与 ACTIVITY之间的关系
+
+这两者完全是独立的。可以以用下面的方法来把两都联起来：
+protected void onCreate(Bundle savedInstanceState) {
+		Log.v(TAG, "onCreate");
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+}
+
+XML是单独创建的，
+new -> android xml file
+
+
+
+
+
+
+
+
+
+
+
+
+
+android dialog dismiss cancel  ProgressDialog.show
+android dialog dismiss cancel
+
+What is the difference between a dialog being dismissed or canceled in Android?
+
+Typically, a dialog is dismissed when its job is finished and it is being removed from the screen. A dialog is canceled when the user wants to escape the dialog and presses the Back button.
+For example, you have a standard Yes/No dialog on the screen. If the user clicks No, then the dialog is dismissed and the value for No is returned to the caller. If instead of choosing Yes or No, the user clicks Back to escape the dialog rather than make a choice then the dialog is canceled and no value is returned to the caller.
+
+cancel会调用CancelListener，这是最大的区别
+
+看源码就知道了，cancel里面掉用的还是dismiss
+
+ProgressDialog.show 是静态方法
+ProgressDialog.show 会弹出一个模态对话框，但是不会阻塞程序。
+在线程里调用：
+public void onClick(View v) {
+28                //start the progress dialog
+29                progressDialog = ProgressDialog.show(Main.this, "", "Loading...");
+30                new Thread() {
+31                    public void run() {
+32                        try {
+33                            sleep(10000);
+34                        } catch (Exception e) {
+35                            Log.e("tag", e.getMessage());
+36                        }
+37                        // dismiss the progress dialog
+38                        progressDialog.dismiss();
+39                    }
+40                }.start();
+41            }
+
+注意，下面的问题：
+Cannot refer to a non-final variable videoFileName inside an inner class defined in a different method
+
+
+
+
+
+
+
+
+
+
+
+
+
+activity fragment share data
+In your activity : create a bundle and use fragment.setArguments(bundle)
+in your fragment : use Bundle bundle = getArguments()
+
+
+
+
+
+
+
+
+
+
+
+ACTIVIT  shae data
+怎么传递&共享数据？
+
+Send data inside intent
+Use a singleton class
+Use application singleton
+Static fieldsHashMap of WeakReferences
+Persist objects (sqlite, share preferences, file, etc.)
+
+共享数据
+Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+intent.putExtra("some_key", value);
+intent.putExtra("some_other_key", "a value");
+startActivity(intent);
+
+读取数据
+Bundle bundle = getIntent().getExtras();
+int value = bundle.getInt("some_key");
+String value2 = bundle.getString("some_other_key");
+
+
+
+
+
+
+
+
+
+
+
+import android.content.DialogInterface.OnCancelListener;
+	void cacheVideoFile(Context ctx, String progressMsg, OnCancelListener onCancel, final String videoFileName) {
+		final ProgressDialog dlg = ProgressDialog.show(ctx, "", progressMsg);
+		dlg.setOnCancelListener(onCancel);
+
+在主线程里回调这个类的方法：
+new OnCancelListener() {
+
+					@Override
+					public void onCancel(DialogInterface dialog) {
+						preparePlay();
+						changeTemplate(ThemeID.THEME_NONE, FilterID.FILTER_NONE);
+					}
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				Android上使用SparseArray来替代HashMap
+				Use new SparseArray<String>(...) instead for better performance
+Android上使用SparseArray来替代HashMap
+
+
+
+
+
+
+
+
+
+
+
+
+
+遍历JSONArray 
+JSONObject result = new JSONObject(jsonstring);//转换为JSONObject              int num = result.length();              JSONArray nameList = result.getJSONArray("name");//获取JSONArray              int length = nameList.length();              String aa = "";              for(int i = 0; i < length; i++){//遍历JSONArray                  Log.d("debugTest",Integer.toString(i));                  JSONObject oj = nameList.getJSONObject(i);                  aa = aa + oj.getString("name")+"|";      
+
+onCreateView里不能，调用：ProgressDialog.show(Main.this, "", "Loading...");？
+不会，这个方法不阻塞，立刻返回。
+
+
+
+
+
+
+
+
+
+
+
+
+android bmp directbytebuffer  没有找到方法
+
+
+
+
+
+
+
+
+
+
+
+
+YuvImage
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+YuvImage yuv = new YuvImage(data, ImageFormat.NV21, previewWidth, previewHeight, null);
+yuv.compressToJpeg(new Rect(0, 0, previewWidth, previewHeight), 0, baos);
+
+
+ByteArrayOutputStream out = new ByteArrayOutputStream();
+YuvImage yuvImage = new YuvImage(data, PictureFormat.NV21, width, height, null);
+yuvImage.compressToJpeg(new Rect(0, 0, width, height), 50, out);
+byte[] imageBytes = out.toByteArray();
+Bitmap image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+iv.setImageBitmap(image);
+
+
+
+
+
+
+
+
+
+ImageView 
+怎么显示，实际图片的大小？自动缩放到图片实际大小？
+
+	    android:layout_width="200px"
+	    android:layout_height="200px"
+
+下面的设置就，会根据图片大小，自动改变控件大小。
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+
+其中的含义是改变控件的大小。
+ImageView imageView = findViewById(R.id.dl_image);
+LayoutParams params = (LayoutParams) imageView.getLayoutParams();
+params.width = 120;
+// existing height is ok as is, no need to edit it
+imageView.setLayoutParams(params);
+mImageView.setScaleType(ScaleType.CENTER);
+
+ViewGroup.LayoutParams
+
+这个函数的功能，是设置图片的缩放方式，因为图片大小 与 控件大小不一致。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E:\android\adt\sdk\tools\draw9patch.bat
+
+
+
+
+
+
+
+
+
+
+eclipse-android-java-build-path-order-export.png
+eclipse-android-java-build-path-add-jars.png
+如何解决Java.lang.NoClassDefFoundError
+极可能的原因是：
+Java Build Path -> Order and Export -> 没有选中添加的jar包
+
+
+android.media.FaceDetector
+public int findFaces (Bitmap bitmap, Face[] faces)  the bitmap must be in 565 format (for now)
+
+1. android bitmap format: 	android.graphics.Bitmap.Config RGB_565 ARGB_8888
+2. android bitmap fromat互转：RGB_565 ARGB_8888
+
+Bitmap.Config ARGB_4444：每个像素占四位，即A=4，R=4，G=4，B=4，那么一个像素点占4+4+4+4=16位 
+Bitmap.Config ARGB_8888：每个像素占四位，即A=8，R=8，G=8，B=8，那么一个像素点占8+8+8+8=32位
+Bitmap.Config RGB_565：每个像素占四位，即R=5，G=6，B=5，没有透明度，那么一个像素点占5+6+5=16位
+Bitmap.Config ALPHA_8：每个像素占四位，只有透明度，没有颜色。
+
+Bitmap tmpBmp = inputImage.copy(Bitmap.Config.RGB_565, true);转换格式？这样可行吗？
+
+final MediaMetadataRetriever rev = new MediaMetadataRetriever();
+Bitmap bitmap = rev.getFrameAtTime(
+							mVideoView.getCurrentPosition() * 1000 +800000,
+							MediaMetadataRetriever.OPTION_CLOSEST_SYNC);  这个返回的位图，默认是：RGB_565格式？
+
+
+public FaceDetector (int width, int height, int maxFaces) MAX_FACES设成了1，只找出一个可信度最高的人脸
+FaceDetector faceDet = new FaceDetector(tmpBmp.getWidth(), tmpBmp.getHeight(), MAX_FACES);
+FaceDetector.Face[] faceList = new FaceDetector.Face[MAX_FACES];
+faceDet.findFaces(tmpBmp, faceList);
+
+通过读取保存在Face中的人脸数据，我们可以得到一个以两眼间距为边长，中心在两眼中点的一个正方形。
+public float confidence () 可以返回该人脸数据的可信度(0~1)，这个值越大，该人脸数据的准确度也就越高
+public float eyesDistance ()  【两个眼睛中心 的距离】
+public void getMidPoint (PointF point)
+public float pose (int euler) 欧拉角 the FaceDetector from API 1 never returns a pose angle.
+android.media.FaceDetector.Face
+public float eyesDistance () 返回值的，单位是什么？
+
+Camera.Parameters public int getMaxNumDetectedFaces () If the return value is 0, face detection of the specified type is not supported

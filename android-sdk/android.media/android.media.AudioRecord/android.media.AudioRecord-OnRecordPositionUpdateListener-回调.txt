@@ -1,0 +1,29 @@
+AudioRecord 的回调函数
+
+Marker 位置
+public int setNotificationMarkerPosition (int markerInFrames)
+
+Added in API level 3
+Sets the marker position at which the listener is called, if set with 
+setRecordPositionUpdateListener(OnRecordPositionUpdateListener) or 
+setRecordPositionUpdateListener(OnRecordPositionUpdateListener, Handler).
+
+循环通知 时长
+public int setPositionNotificationPeriod (int periodInFrames)
+
+Added in API level 3
+Sets the period at which the listener is called, if set with 
+setRecordPositionUpdateListener(OnRecordPositionUpdateListener) or 
+setRecordPositionUpdateListener(OnRecordPositionUpdateListener, Handler). 
+It is possible for notifications to be lost if the period is too small.
+
+回调事件 AudioRecord.OnRecordPositionUpdateListener
+abstract void	onMarkerReached(AudioRecord recorder)
+Called on the listener to notify it that the previously set marker has been reached by the recording head.
+abstract void	onPeriodicNotification(AudioRecord recorder)
+Called on the listener to periodically notify it that the record head has reached a multiple of the notification period.
+
+解释其中的几个疑问：
+markerInFrames 或者 periodInFrames 的单位是什么？
+1. 从代码分析
+2. GOOGLE 查答案: 可能是, sample 数  应该是 每个 frame 的时长是 1 / sample_rate

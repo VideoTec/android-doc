@@ -1,0 +1,9 @@
+adb pull <remote> <local>	Copies a specified file from an emulator/device instance to your development computer.	
+adb push <local> <remote>	Copies a specified file from your development computer to an emulator/device instance.  
+
+adb pull  就是从真机上拷贝文件到您的PC上。
+adb push  就是从PC上复制一份文件到您的真机上
+
+adb push xxx /sdcard/
+
+adb pull /sdcard/xxx

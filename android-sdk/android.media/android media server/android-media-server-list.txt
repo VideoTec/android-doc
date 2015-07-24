@@ -1,0 +1,20 @@
+/frameworks/av/services/
+        AudioFlinger::instantiate();
+		http://androidxref.com/5.0.0_r2/xref/frameworks/av/services/audioflinger/AudioFlinger.h
+		"media.audio_flinger"
+
+        MediaPlayerService::instantiate();
+		/frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp
+		"media.player"
+
+        CameraService::instantiate();
+		/frameworks/av/services/camera/libcameraservice/CameraService.h
+		"media.camera"
+
+        AudioPolicyService::instantiate();
+		/frameworks/av/services/audiopolicy/AudioPolicyService.h
+		"media.audio_policy"
+
+        SoundTriggerHwService::instantiate();
+		/frameworks/av/services/soundtrigger/SoundTriggerHwService.h
+		"media.sound_trigger_hw"

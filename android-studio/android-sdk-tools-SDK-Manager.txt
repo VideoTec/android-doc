@@ -1,0 +1,45 @@
+SDK Manager 官网访问不了，怎么办？
+修改 HOST
+如果 证书验证通不过，可以，勾选 tools/options / force https:// to http://
+然后，点击菜单，packages / reload，重新加载
+
+Fetching https://dl.google.com/android/repository/addons_list-2.xml
+Fetched Add-ons List successfully
+Fetching URL: https://dl.google.com/android/repository/repository-10.xml
+Done loading packages.
+Fetching https://dl.google.com/android/repository/addons_list-2.xml
+Failed to fetch URL https://dl.google.com/android/repository/addons_list-2.xml, reason: Connection to https://dl.google.com refused
+Fetched Add-ons List successfully
+Fetching URL: https://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL https://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: https://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL https://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: HttpHostConnect Connection to http://127.0.0.1:8087 refused
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: HttpHostConnect Connection to http://127.0.0.1:8087 refused
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: https://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL https://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.
+Fetching URL: http://dl.google.com/android/repository/repository-10.xml
+Failed to fetch URL http://dl.google.com/android/repository/repository-10.xml, reason: SSLPeerUnverified peer not authenticated
+Done loading packages.

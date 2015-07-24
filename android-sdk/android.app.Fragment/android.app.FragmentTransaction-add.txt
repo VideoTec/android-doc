@@ -1,0 +1,31 @@
+public abstract FragmentTransaction add (int containerViewId, Fragment fragment)
+
+Added in API level 11
+Calls add(int, Fragment, String) with a null tag.
+
+public abstract FragmentTransaction add (Fragment fragment, String tag)
+
+Added in API level 11
+Calls add(int, Fragment, String) with a 0 containerViewId.
+
+public abstract FragmentTransaction add (int containerViewId, Fragment fragment, String tag)
+
+Added in API level 11
+
+Add a fragment to the activity state. This fragment may optionally also have its view (if Fragment.onCreateView returns non-null) inserted into a container view of the activity.
+
+Parameters
+
+containerViewId
+Optional identifier of the container this fragment is to be placed in. 
+If 0, it will not be placed in a container.
+传递 layout.xml 中的，VIEW/VIEWGROUP 的ID。
+
+fragment
+The fragment to be added. This fragment must not already be added to the activity.
+
+tag
+Optional tag name for the fragment, to later retrieve the fragment with FragmentManager.findFragmentByTag(String).
+
+Returns
+Returns the same FragmentTransaction instance.

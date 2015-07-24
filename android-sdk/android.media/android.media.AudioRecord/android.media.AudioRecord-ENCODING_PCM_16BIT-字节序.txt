@@ -1,0 +1,10 @@
+public static final int ENCODING_PCM_16BIT
+
+Added in API level 3
+Audio data format: PCM 16 bit per sample. Guaranteed to be supported by devices.
+
+--------------------------------
+字节序？
+--------------------------------
+http://stackoverflow.com/questions/4707994/android-audiorecord-questions
+it's in little endian order

@@ -1,0 +1,20 @@
+android.hardware.Camera
+
+开始和停止预览
+
+------------------------------
+public final void startPreview ()
+------------------------------
+
+Added in API level 1
+Starts capturing and drawing preview frames to the screen. Preview will not actually start until a surface is supplied with setPreviewDisplay(SurfaceHolder) or setPreviewTexture(SurfaceTexture).
+
+If setPreviewCallback(Camera.PreviewCallback), setOneShotPreviewCallback(Camera.PreviewCallback), or setPreviewCallbackWithBuffer(Camera.PreviewCallback) were called, onPreviewFrame(byte[], Camera) will be called when preview data becomes available.
+
+------------------------------
+public final void stopPreview ()
+------------------------------
+
+Added in API level 1
+Stops capturing and drawing preview frames to the surface, and resets the camera for a future call to startPreview().
+

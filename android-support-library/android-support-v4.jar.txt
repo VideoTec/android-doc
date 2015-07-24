@@ -1,0 +1,42 @@
+参考
+E:\doc\Computer software\Android平台\android-sdk-tools\android-Support Library.txt
+
+sdk 包中的位置
+E:\android-sdk-windows\extras\android\support\v4\android-support-v4.jar
+
+作用：
+backward-compatible[英]['bækwədkəmp'ætəbl] [美]['bækwədkəmp'ætəbl]
+向下兼容（downward compatibility），又称向后兼容（backward compatibility）、回溯兼容，
+在计算机中指在一个程序和/或库更新到较新版本后，
+用旧版本程序创建的文档或系统仍能被正常操作或使用（包括写入），
+或在旧版本库的基础上开发的程序仍能正常编译运行的情况
+
+例如： 在旧版本中使用新版本的功能
+import android.support.v4.app.FragmentActivity;
+
+------------------------------
+android.support.v4.app 包提供了下面的功能：
+------------------------------
+assist[英][əˈsɪst] [美][əˈsɪst] n.帮助；援助；机器助手；辅助装置 vi.援助；出席；参加
+
+Support android.app classes to assist with development of applications for android API level 4 or later. 
+The main features here are backwards-compatible versions of FragmentManager and LoaderManager.
+
+添加方法：
+------------------------------
+android studio 在工程文件里
+------------------------------
+C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\build.gradle
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.+'
+}
+
+------------------------------
+eclipse
+------------------------------
+Make sure you have downloaded the Android Support Library using the SDK Manager.
+Create a libs/ directory in the root of your application project.
+Copy the JAR file from your Android SDK installation directory 
+(e.g., <sdk>/extras/android/support/v4/android-support-v4.jar) into your application's project libs/ directory.
+Right click the JAR file and select Build Path > Add to Build Path.

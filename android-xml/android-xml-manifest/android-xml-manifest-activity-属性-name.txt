@@ -1,0 +1,14 @@
+android:name
+The name of the class that implements the activity, a subclass of Activity. The attribute value should be a fully qualified class name (such as, "com.example.project.ExtracurricularActivity"). However, as a shorthand, if the first character of the name is a period (for example, ".ExtracurricularActivity"), it is appended to the package name specified in the <manifest> element.
+Once you publish your application, you should not change this name (unless you've set android:exported="false").
+
+There is no default. The name must be specified.
+
+问题：
+E:\doc\Computer software\Android平台\android-sdk\android.app.Activity\activity-startActivity-ActivityNotFoundException.txt
+
+<activity android:name="ContentResolverTest" /> 可以找到
+<activity android:name=".ContentResolverTest" /> 找不到
+<activity android:name="com.example.cameraapp.ContentResolverTest" /> 也找不到
+
+在 AndroidManifest.xml 管理界面中新加一个 activity后，以上三种不行的方式都可以用了。

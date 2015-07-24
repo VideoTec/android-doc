@@ -1,0 +1,27 @@
+Row Layout
+
+You can specify the layout of individual rows in the list. You do this by specifying a layout resource in the ListAdapter object hosted by the activity (the ListAdapter binds the ListView to the data; more on this later).
+
+A ListAdapter constructor takes a parameter that specifies a layout resource for each row. It also has two additional parameters that let you specify which data field to associate with which object in the row layout resource. These two parameters are typically parallel arrays.
+
+Android provides some standard row layout resources. These are in the R.layout class, and have names such as simple_list_item_1, simple_list_item_2, and two_line_list_item. The following layout XML is the source for the resource two_line_list_item, which displays two data fields,one above the other, for each list row.
+
+ <?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical">
+
+     <TextView android:id="@+id/text1"
+         android:textSize="16sp"
+         android:textStyle="bold"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>
+
+     <TextView android:id="@+id/text2"
+         android:textSize="16sp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>
+ </LinearLayout>
+ 
+You must identify the data bound to each TextView object in this layout. The syntax for this is discussed in the next section.

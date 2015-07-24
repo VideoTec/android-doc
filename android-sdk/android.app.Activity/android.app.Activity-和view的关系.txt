@@ -1,0 +1,8 @@
+-----------------------------------------------------
+根据 activity setContentView 文档说明知道
+-----------------------------------------------------
+Set the activity content to an explicit view. 
+This view is placed directly into the activity's view hierarchy.
+
+1. activity content 放到 view 上。
+2. activity's view hierarchy [ˈhaɪərɑ:ki] 层次

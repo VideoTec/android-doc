@@ -1,0 +1,63 @@
+LOCAL_PATH
+
+This variable is used to give the path of the current file. You MUST define it at the start of your Android.mk, which can be done with:
+
+        LOCAL_PATH := $(call my-dir)
+This variable is not cleared by so only one definition per Android.mk is needed (in case you define several modules in a single file).
+
+问题是 有没有默认值？
+解决下面这个问题
+D:\fvideo\Android\feinnovideo\FVideo\jni\Android.mk
+LOCAL_PATH := $(call my-dir)
+include $(LOCAL_PATH)/lib/lib.mk
+
+D:\fvideo\Android\feinnovideo\FVideo\jni\lib\lib.mk
+在这个文件里  LOCAL_PATH 是什么？ $(call my-dir) 又会返回什么？
+
+-------------------------------------------
+LOCAL_PATH 怎么变成了 jni/jni 应该是 jni, LOCAL_PATH 还是 jni
+ndk-build 会在 LOCAL_SRC_FILES 开头添加 jni/
+-------------------------------------------
+源码
+LOCAL_PATH := $(call my-dir)
+
+# -- libjpeg --
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := jpeg
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../$(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../$(TARGET_ARCH_ABI)/libjpeg/include
+
+include $(PREBUILT_STATIC_LIBRARY)
+
+错误
+Android NDK: ERROR:jni/Android.mk:jpeg: LOCAL_SRC_FILES points to a missing file
+
+Android NDK: Check that jni/jni/../armeabi-v7a/libjpeg/lib/libjpeg.a exists  or that its path is correct
+E:/android/ndk/build/core/prebuilt-library.mk:45: *** Android NDK: Aborting    .  Stop.
+
+这个问题解决了，但是和上面的 jni/jni 无关
+libjpeg.a 的存储目录在 jni 的上级目录，$(LOCAL_PATH)/../ 改成 ../ 就可以了
+
+问题是，如果 LOCAL_PATH 是 jni，这个是正确的
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../$(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg.a
+相当于
+LOCAL_SRC_FILES := jni/../$(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg.a
+这样，会发生和上面一样的错误
+
+解释：可能的原因：
+ndk-build 运行时，会进入当前目录下的，jni，目录(这个分析是不正确的)。
+这样当前目录就变成了 jni，LOCAL_PATH 当然还是 jni
+这就出现了两个 jni。
+这两个 jni 是怎么结合的呢？
+
+分析修改成下面的代码
+LOCAL_SRC_FILES := ../$(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg3.a （注意：这里故意修改成一个不存在的文件）
+会提示：
+jni/../armeabi-v7a/libjpeg/lib/libjpeg3.a
+
+分析修改成下面的代码
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libjpeg/lib/libjpeg.a （注意：这里的文件是存在的）
+会提示：
+jni/armeabi-v7a/libjpeg/lib/libjpeg.a

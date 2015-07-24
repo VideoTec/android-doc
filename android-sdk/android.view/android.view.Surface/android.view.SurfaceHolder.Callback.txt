@@ -1,0 +1,37 @@
+接口
+android.view.SurfaceHolder.Callback
+
+public class RecordView extends Activity 
+                        implements android.view.SurfaceHolder.Callback {
+
+-------------------------
+派生类
+-------------------------
+GLSurfaceView, NativeActivity, SurfaceHolder.Callback2
+
+
+-------------------------
+描述
+-------------------------
+A client may implement this interface to receive information about changes to the surface. 
+
+When used with a SurfaceView, the Surface being held is only available 
+between calls to surfaceCreated(SurfaceHolder) and surfaceDestroyed(SurfaceHolder). 
+
+The Callback is set with SurfaceHolder.addCallback method
+
+SurfaceHolder是一个接口，其作用就像一个关于Surface的监听器。提供访问和控制SurfaceView背后的Surface 相关的方法 
+它通过三个回调方法，让我们可以感知到Surface的创建、销毁或者改变
+在SurfaceView中有一个方法getHolder，可以很方便地获得SurfaceView所对应的Surface所对应的SurfaceHolder
+
+-------------------------
+三个方法：
+-------------------------
+abstract void	surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+This is called immediately after any structural changes (format or size) have been made to the surface.
+
+abstract void	surfaceCreated(SurfaceHolder holder)
+This is called immediately after the surface is first created.
+
+abstract void	surfaceDestroyed(SurfaceHolder holder)
+This is called immediately before a surface is being destroyed.

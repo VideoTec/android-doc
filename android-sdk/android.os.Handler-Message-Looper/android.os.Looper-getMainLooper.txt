@@ -1,0 +1,2 @@
+public static Looper getMainLooper ()
+Returns the application's main looper, which lives in the main thread of the application.

@@ -1,0 +1,29 @@
+http://developer.android.com/reference/android/os/Message.html
+
+文档
+java.lang.Object
+   ↳	android.os.Message
+
+Defines a message containing a description and arbitrary data object that can be sent to a Handler. 
+This object contains two extra int fields and an extra object field 
+that allow you to not do allocations in many cases.
+
+从缓存池里，获取，Message 对象
+While the constructor of Message is public, 
+the best way to get one of these is to call Message.obtain() or one of the Handler.obtainMessage() methods, 
+which will pull them from a pool of recycled objects.
+对于Message对象，一般并不推荐直接使用它的构造方法得到，
+而是建议通过使用Message.obtain()这个静态的方法或者Handler.obtainMessage()获取。
+Message.obtain()会从消息池中获取一个Message对象，
+如果消息池中是空的，才会使用构造方法实例化一个新Message，
+这样有利于消息资源的利用。
+并不需要担心消息池中的消息过多，它是有上限的，上限为10个
+
+Message自带的有如下几个属性：
+int arg1：参数一，用于传递不复杂的数据，复杂数据使用setData()传递。
+int arg2：参数二，用于传递不复杂的数据，复杂数据使用setData()传递。
+Object obj：传递一个任意的对象。
+int what：定义的消息码，一般用于设定消息的标志
+
+使用示例
+Message.obtain(mHandler, MESSAGE_VIDEO_MERGE_RESULT, re, 0).sendToTarget();

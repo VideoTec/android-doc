@@ -1,0 +1,13 @@
+public static final String FOCUS_MODE_CONTINUOUS_PICTURE
+
+aggressive[英][əˈgresɪv] [美][əˈɡrɛsɪv]
+adj.侵略的，侵犯的，攻势的；（美）有进取心的，积极行动的；
+有进取心的，有闯劲的；好争斗的，借故生端的，爱打架的，要打架的
+
+Added in API level 14
+Continuous auto focus mode intended for taking pictures. The camera continuously tries to focus. The speed of focus change is more aggressive than FOCUS_MODE_CONTINUOUS_VIDEO. Auto focus starts when the parameter is set.
+
+Applications can call autoFocus(AutoFocusCallback) in this mode. If the autofocus is in the middle of scanning, the focus callback will return when it completes. If the autofocus is not scanning, the focus callback will immediately return with a boolean that indicates whether the focus is sharp or not. The apps can then decide if they want to take a picture immediately or to change the focus mode to auto, and run a full autofocus cycle. The focus position is locked after autoFocus call. If applications want to resume the continuous focus, cancelAutoFocus must be called. Restarting the preview will not resume the continuous autofocus. To stop continuous focus, applications should change the focus mode to other modes.
+
+
+Constant Value: "continuous-picture"

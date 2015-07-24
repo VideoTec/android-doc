@@ -1,0 +1,33 @@
+15:02 2015/7/24
+这样写还是不行
+        <activity
+            android:name="com.example.cameraapp.ContentResolverTest" />
+这样写还是不行
+        <activity
+            android:name="com.example.cameraapp.ContentResolverTest">
+        </activity>
+这样写还是不行
+        <activity
+            android:name=".ContentResolverTest">
+        </activity>
+
+正确的写法
+<activity android:name="ContentResolverTest" />
+
+在 AndroidManifest.xml 管理界面中新加一个 activity后，以上三种不行的方式都可以用了。
+
+18:10 2015/5/12
+
+代码：
+    	Intent in = new Intent(this, RecordView.class);
+    	startActivity(in);
+
+异常：
+android.content.ActivityNotFoundException: Unable to find explicit activity class {com.example.opensltest/com.example.opensltest.RecordView}; have you declared this activity in your AndroidManifest.xml?
+
+原因及解决方法
+需要在 AndroidManifest.xml <application></application>中注册 activity
+
+        <activity
+            android:name= ".RecordView">
+        </activity>

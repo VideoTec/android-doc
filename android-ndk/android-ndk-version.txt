@@ -1,0 +1,16 @@
+﻿查看 NDK 版本号：NDK目录下的 RELEASE.TXT文件
+
+r10d (64-bit)
+新加的交叉编译器
+aarch64-linux-android-4.9
+arm-linux-androideabi-4.9
+
+r10 (64-bit)
+GCC 编译器到： 4.8
+
+版本历史
+Android NDK, Revision 10d (December 2014)
+Android NDK, Revision 10c (October 2014)
+Android NDK, Revision 10b (September 2014)
+Android NDK, Revision 10 (July 2014)
+Android NDK, Revision 9d (March 2014)

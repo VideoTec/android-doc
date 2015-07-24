@@ -1,0 +1,75 @@
+绘制二维图形
+
+primitive[英][ˈprɪmətɪv] [美][ˈprɪmɪtɪv] adj.原始的；发展水平低的；落后的；[生物学]原生的
+imaginable[英][ɪˈmædʒɪnəbl] [美][ɪˈmædʒənəbəl] adj.可想像的；可能的
+whereas[英][ˌweərˈæz] [美][ˌwerˈæz] conj.鉴于；然而；反之
+
+When you want to dynamically draw some two-dimensional graphics, 
+a ShapeDrawable object will probably suit your needs. 
+With a ShapeDrawable, you can programmatically draw primitive shapes and style them in any way imaginable.
+
+A ShapeDrawable is an extension of Drawable, 
+so you can use one where ever a Drawable is expected — perhaps for the background of a View, 
+set with setBackgroundDrawable(). 
+
+Of course, you can also draw your shape as its own custom View, 
+to be added to your layout however you please. 
+Because the ShapeDrawable has its own draw() method, 
+you can create a subclass of View that draws the ShapeDrawable during the View.onDraw() method. 
+Here's a basic extension of the View class that does just this, to draw a ShapeDrawable as a View:
+
+      public class CustomDrawableView extends View {
+      private ShapeDrawable mDrawable;
+
+      public CustomDrawableView(Context context) {
+      super(context);
+
+      int x = 10;
+      int y = 10;
+      int width = 300;
+      int height = 50;
+
+      mDrawable = new ShapeDrawable(new OvalShape());
+      mDrawable.getPaint().setColor(0xff74AC23);
+      mDrawable.setBounds(x, y, x + width, y + height);
+      }
+
+      protected void onDraw(Canvas canvas) {
+      mDrawable.draw(canvas);
+      }
+      }
+    
+In the constructor, a ShapeDrawable is defines as an OvalShape. 
+It's then given a color and the bounds of the shape are set. 
+If you do not set the bounds, then the shape will not be drawn, whereas 
+if you don't set the color, it will default to black.
+
+With the custom View defined, it can be drawn any way you like. 
+With the sample above, we can draw the shape programmatically in an Activity:
+
+      CustomDrawableView mCustomDrawableView;
+
+      protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      mCustomDrawableView = new CustomDrawableView(this);
+
+      setContentView(mCustomDrawableView);
+      }
+    
+If you'd like to draw this custom drawable from the XML layout instead of from the Activity, 
+then the CustomDrawable class must override the View(Context, AttributeSet) constructor, 
+which is called when instantiating a View via inflation from XML. 
+
+Then add a CustomDrawable element to the XML, like so:
+
+      <com.example.shapedrawable.CustomDrawableView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
+  
+The ShapeDrawable class (like many other Drawable types in the android.graphics.drawable package) 
+allows you to define various properties of the drawable with public methods. 
+Some properties you might want to adjust include alpha transparency, color filter, dither, opacity and color.
+
+You can also define primitive drawable shapes using XML. 
+For more information, see the section about Shape Drawables in the Drawable Resources document.

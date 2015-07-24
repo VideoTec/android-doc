@@ -1,0 +1,54 @@
+标准 intent category
+被执行动作的附加信息。
+
+例如
+LAUNCHER_CATEGORY     表示Intent 的接受者应该在Launcher中作为顶级应用出现；
+ALTERNATIVE_CATEGORY  表示当前的Intent是一系列的可选动作中的一个，这些动作可以在同一块数据上执行
+
+These are the current standard categories that can be used to further clarify an Intent via addCategory(String).
+
+CATEGORY_DEFAULT
+CATEGORY_BROWSABLE
+CATEGORY_TAB
+CATEGORY_ALTERNATIVE
+CATEGORY_SELECTED_ALTERNATIVE
+CATEGORY_LAUNCHER
+CATEGORY_INFO
+CATEGORY_HOME
+CATEGORY_PREFERENCE
+CATEGORY_TEST
+CATEGORY_CAR_DOCK
+CATEGORY_DESK_DOCK
+CATEGORY_LE_DESK_DOCK
+CATEGORY_HE_DESK_DOCK
+CATEGORY_CAR_MODE
+CATEGORY_APP_MARKET
+
+
+示例：
+
+<activity
+            android:name=".activity.StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StartWinTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="about" />
+                <data android:scheme="javascript" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="intent.action.start.mvclip" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+</activity>

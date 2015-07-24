@@ -1,0 +1,32 @@
+在代码中访问资源
+在XML 中访问资源
+
+There are two ways you can access a resource:
+
+--------------------------------------------------------------------------
+In code: Using a static integer from a sub-class of your R class, such as:
+--------------------------------------------------------------------------
+R.string.hello
+string is the resource type and hello is the resource name. 
+There are many Android APIs that can access your resources when you provide a resource ID in this format. 
+See Accessing Resources in Code.
+
+[<package_name>.]R.<resource_type>.<resource_name>
+示例：
+ImageView imageView = (ImageView) findViewById(R.id.myimageview);
+imageView.setImageResource(R.drawable.myimage);
+
+--------------------------------------------------------------------------
+In XML: Using a special XML syntax that also corresponds to the resource ID defined in your R class, such as:
+--------------------------------------------------------------------------
+@string/hello
+string is the resource type and hello is the resource name. 
+You can use this syntax in an XML resource any place where a value is expected that you provide in a resource. 
+See Accessing Resources from XML.
+
+@[<package_name>:]<resource_type>/<resource_name>
+示例：
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/submit" />

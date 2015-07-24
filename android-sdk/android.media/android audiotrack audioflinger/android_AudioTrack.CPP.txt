@@ -1,0 +1,113 @@
+java:    /frameworks/base/media/java/android/media/AudioTrack.java         mNativeTrackInJavaObj
+jni:     /frameworks/base/core/jni/android_media_AudioTrack.cpp            AudioTrack*
+c++ obj  /frameworks/av/media/libmedia/AudioTrack.cpp                      sp<IAudioTrack>         mAudioTrack;
+
+/frameworks/av/include/media/IAudioTrack.h
+/frameworks/av/media/libmedia/IAudioTrack.cpp
+
+/frameworks/av/include/media/IAudioFlinger.h
+/frameworks/av/media/libmedia/IAudioFlinger.cpp
+
+/frameworks/av/include/media/AudioSystem.h
+                            class AudioFlingerClient: public IBinder::DeathRecipient, public BnAudioFlingerClient
+                            class AudioPolicyServiceClient: public IBinder::DeathRecipient, public BnAudioPolicyServiceClient
+                            static sp<IAudioFlinger> gAudioFlinger;
+                            static sp<IAudioPolicyService> gAudioPolicyService;
+                            static sp<AudioFlingerClient> gAudioFlingerClient;
+                            static sp<AudioPolicyServiceClient> gAudioPolicyServiceClient;
+                            static sp<AudioPortCallback> gAudioPortCallback;
+/frameworks/av/media/libmedia/AudioSystem.cpp
+                            binder = sm->getService(String16("media.audio_flinger"));
+                            gAudioFlinger = interface_cast<IAudioFlinger>(binder);
+
+C++ obj 和 java obj 关联的方法，在 jni/android_media_AudioTrack.cpp
+#define JAVA_NATIVETRACKINJAVAOBJ_FIELD_NAME            "mNativeTrackInJavaObj"
+struct audio_track_fields_t {
+    // these fields provide access from C++ to the...
+    jmethodID postNativeEventInJava; //... event post callback method
+    jfieldID  nativeTrackInJavaObj;  // stores in Java the native AudioTrack object
+    jfieldID  jniData;      // stores in Java additional resources used by the native AudioTrack
+    jfieldID  fieldStreamType; // ... mStreamType field in the AudioTrack Java object
+};
+struct audio_attributes_fields_t {
+    jfieldID  fieldUsage;        // AudioAttributes.mUsage
+    jfieldID  fieldContentType;  // AudioAttributes.mContentType
+    jfieldID  fieldFlags;        // AudioAttributes.mFlags
+    jfieldID  fieldFormattedTags;// AudioAttributes.mFormattedTags
+};
+static audio_track_fields_t      javaAudioTrackFields;
+static audio_attributes_fields_t javaAudioAttrFields;
+
+通过java obj获取，C++ obj
+AudioTrack* const at = (AudioTrack*)env->GetLongField(thiz, javaAudioTrackFields.nativeTrackInJavaObj);
+
+C++ obj /frameworks/av/media/libmedia/AudioTrack.cpp
+const sp<IAudioFlinger>& audioFlinger = AudioSystem::get_audio_flinger();
+sp<IAudioTrack> track = audioFlinger->createTrack(mStreamType,
+                                                      mSampleRate,
+                                                      // AudioFlinger only sees 16-bit PCM
+                                                      mFormat == AUDIO_FORMAT_PCM_8_BIT &&
+                                                          !(mFlags & AUDIO_OUTPUT_FLAG_DIRECT) ?
+                                                              AUDIO_FORMAT_PCM_16_BIT : mFormat,
+                                                      mChannelMask,
+                                                      &temp,
+                                                      &trackFlags,
+                                                      mSharedBuffer,
+                                                      output,
+                                                      tid,
+                                                      &mSessionId,
+                                                      mClientUid,
+                                                      &status);
+
+JNI 接口分析：
+#define LOG_TAG "AudioTrack-JNI"
+
+注册，JNI，方法：
+int register_android_media_AudioTrack(JNIEnv *env);
+调用方法：见 - E:\doc\Computer software\Android平台\android-base-core-jni\AndroidRuntime.cpp
+          REG_JNI(register_android_media_AudioTrack)
+
+static JNINativeMethod gMethods[] = {
+    // name,              signature,     funcPtr
+    {"native_start",         "()V",      (void *)android_media_AudioTrack_start},
+    {"native_stop",          "()V",      (void *)android_media_AudioTrack_stop},
+    {"native_pause",         "()V",      (void *)android_media_AudioTrack_pause},
+    {"native_flush",         "()V",      (void *)android_media_AudioTrack_flush},
+    {"native_setup",     "(Ljava/lang/Object;Ljava/lang/Object;IIIII[I)I",
+                                         (void *)android_media_AudioTrack_setup},
+    {"native_finalize",      "()V",      (void *)android_media_AudioTrack_finalize},
+    {"native_release",       "()V",      (void *)android_media_AudioTrack_release},
+    {"native_write_byte",    "([BIIIZ)I",(void *)android_media_AudioTrack_write_byte},
+    {"native_write_native_bytes",
+                             "(Ljava/lang/Object;IIIZ)I",
+                                         (void *)android_media_AudioTrack_write_native_bytes},
+    {"native_write_short",   "([SIII)I", (void *)android_media_AudioTrack_write_short},
+    {"native_write_float",   "([FIIIZ)I",(void *)android_media_AudioTrack_write_float},
+    {"native_setVolume",     "(FF)V",    (void *)android_media_AudioTrack_set_volume},
+    {"native_get_native_frame_count",
+                             "()I",      (void *)android_media_AudioTrack_get_native_frame_count},
+    {"native_set_playback_rate",
+                             "(I)I",     (void *)android_media_AudioTrack_set_playback_rate},
+    {"native_get_playback_rate",
+                             "()I",      (void *)android_media_AudioTrack_get_playback_rate},
+    {"native_set_marker_pos","(I)I",     (void *)android_media_AudioTrack_set_marker_pos},
+    {"native_get_marker_pos","()I",      (void *)android_media_AudioTrack_get_marker_pos},
+    {"native_set_pos_update_period",
+                             "(I)I",     (void *)android_media_AudioTrack_set_pos_update_period},
+    {"native_get_pos_update_period",
+                             "()I",      (void *)android_media_AudioTrack_get_pos_update_period},
+    {"native_set_position",  "(I)I",     (void *)android_media_AudioTrack_set_position},
+    {"native_get_position",  "()I",      (void *)android_media_AudioTrack_get_position},
+    {"native_get_latency",   "()I",      (void *)android_media_AudioTrack_get_latency},
+    {"native_get_timestamp", "([J)I",    (void *)android_media_AudioTrack_get_timestamp},
+    {"native_set_loop",      "(III)I",   (void *)android_media_AudioTrack_set_loop},
+    {"native_reload_static", "()I",      (void *)android_media_AudioTrack_reload},
+    {"native_get_output_sample_rate",
+                             "(I)I",      (void *)android_media_AudioTrack_get_output_sample_rate},
+    {"native_get_min_buff_size",
+                             "(III)I",   (void *)android_media_AudioTrack_get_min_buff_size},
+    {"native_setAuxEffectSendLevel",
+                             "(F)I",     (void *)android_media_AudioTrack_setAuxEffectSendLevel},
+    {"native_attachAuxEffect",
+                             "(I)I",     (void *)android_media_AudioTrack_attachAuxEffect},
+};

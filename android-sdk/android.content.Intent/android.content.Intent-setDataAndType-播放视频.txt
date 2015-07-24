@@ -1,0 +1,26 @@
+Android中除了利用VideoView、Mediaplayer播放视频文件外，还可以用发送Intent来调用视频播放模块。
+ 
+方法如下：
+ 
+1.播放本地视频
+ 
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type = "video/mp4";
+        Uri uri = Uri.parse("file:///sdcard/test.mp4");
+        intent.setDataAndType(uri, type);
+        startActivity(intent);   
+ 
+2.播放网络视频
+ 
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type = "video/* ";
+   Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
+        intent.setDataAndType(uri, type);
+        startActivity(intent);   
+ 
+     注意红色部分，如果不设置type的话，这样写：
+       Intent intent = new Intent(Intent.ACTION_VIEW);
+  Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
+       intent.setData (uri);
+       startActivity(intent);  
+这样会默认用浏览器打开这个URL！

@@ -1,0 +1,87 @@
+什么是 Android Support Library
+
+在 Android SDK Manager 工具的列表的最下面
+Extra 栏里有
+Android Support Repository
+Android Support Library
+
+------------------------------
+官网
+------------------------------
+backward-compatible[英]['bækwədkəmp'ætəbl] [美]['bækwədkəmp'ætəbl]
+反向兼容 - 新版本的机器上，可以使用，旧版本的
+
+https://developer.android.com/tools/support-library/index.html
+The Android Support Library package is a set of code libraries that 
+provide backward-compatible versions of Android framework APIs 
+as well as features that are only available through the library APIs. 
+
+Each Support Library is backward-compatible to a specific Android API level. 
+This design means that your applications 
+can use the libraries' features and 
+still be compatible with devices running Android 1.6 (API level 4) and up.
+
+This guide provides information about what features are enabled by the Support Libraries, 
+how to use them in your development environment and information about library releases.
+
+Including the Support Libraries in your Android project is considered 
+a best practice for application developers, 
+depending on the range of platform versions your app is targeting and the APIs that it uses. 
+
+Using the features the libraries provide can help you improve the look of your application, 
+increase performance and broaden the reach of your application to more users. 
+If you use the Android code template tools, 
+you will notice that all the Android application templates 
+include one or more of the Support Libraries by default.
+
+The Support Libraries each target a base Android API level and each provides a different set of features. 
+In order to effectively use the libraries, 
+it is important to consider what features you want to support and 
+understand what features are supported by each library at what Android API level. 
+
+To get started, review the Support Library Features guide. 
+
+After that, go to the Support Library Setup topic to learn 
+how to incorporate the Support Libraries into your application. 
+
+For more details about Support Library APIs, see the android.support packages in the API reference.
+
+------------------------------
+在工程文件里
+------------------------------
+C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\build.gradle
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.+'
+}
+
+------------------------------
+在SDK的安装目录里
+------------------------------
+D:\android-sdk-windows\extras\android\m2repository\com\android\support
+
+第一类：v7 Support Libraries  used with Android 2.1 (API level 7) and higher.
+appcompat-v7               这里面有 18.0.0 -> 22.1.1 （带资源的）
+cardview-v7
+gridlayout-v7
+leanback-v17
+mediarouter-v7
+palette-v7
+recyclerview-v7
+
+第二类：v4 Support Library   used with Android 1.6 (API level 4) and higher.
+support-v4                   这里面有 18.0.0 -> 22.1.1 （不带资源的）
+
+第三类：v13 Support Library  for Android 3.2 (API level 13) and higher.
+support-v13                  这里面有 18.0.0 -> 22.1.1 （不带资源的）
+
+multidex
+This library provides support for building apps with multiple Dalvik Executable (DEX) files. 
+multidex-instrumentation
+support-annotations
+
+--------------------------------------
+添加 Support Library
+--------------------------------------
+在添加一个Support Library到你的项目之前，想好你要包含哪些功能，
+以及你要支持的最低Android版本是多少

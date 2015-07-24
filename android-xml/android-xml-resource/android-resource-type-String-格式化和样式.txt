@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------------
+<string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+--------------------------------------------------------------------------------------
+解释
+%1$s is a string and %2$d is a decimal number.
+
+Resources res = getResources();
+String text = String.format(res.getString(R.string.welcome_messages), username, mailCount);
+
+--------------------------------------------------------------------------------------
+Styling with HTML markup
+--------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Welcome to <b>Android</b>!</string>
+</resources>
+
+支持下列HTML标签
+<b> for bold text.
+<i> for italic text.
+<u> for underline text.
+
+--------------------------------------------------------------------------------------
+引号问题  Escaping apostrophes and quotes
+--------------------------------------------------------------------------------------
+<string name="good_example">"This'll work"</string>
+<string name="good_example_2">This\'ll also work</string>
+<string name="bad_example">This doesn't work</string>
+<string name="bad_example_2">XML encodings don&apos;t work</string>

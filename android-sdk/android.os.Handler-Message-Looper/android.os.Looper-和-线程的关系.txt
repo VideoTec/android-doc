@@ -1,0 +1,29 @@
+第一点，理解 Handler 的构造函数
+public Handler ()
+Default constructor associates this handler with the Looper for the current thread. 
+If this thread does not have a looper, this handler won't be able to receive messages so an exception is thrown.
+
+说明每个线程，都可以有一个，Looper
+
+第二点，Looper 文档
+Class used to run a message loop for a thread. 
+Threads by default do not have a message loop associated with them; 
+to create one, 
+call prepare() in the thread that is to run the loop, and 
+then loop() to have it process messages until the loop is stopped.
+
+  class LooperThread extends Thread {
+      public Handler mHandler;
+
+      public void run() {
+          Looper.prepare();
+
+          mHandler = new Handler() {  Handler 默认构造函数 associates this handler with the Looper for the current thread
+              public void handleMessage(Message msg) {
+                  // process incoming messages here
+              }
+          };
+
+          Looper.loop();
+      }
+  }

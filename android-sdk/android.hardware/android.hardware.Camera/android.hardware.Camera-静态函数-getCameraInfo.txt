@@ -1,0 +1,12 @@
+    /**
+     * Returns the information about a particular camera.
+     * If {@link #getNumberOfCameras()} returns N, the valid id is 0 to N-1.
+     */
+    public static void getCameraInfo(int cameraId, CameraInfo cameraInfo)
+
+注意使用方法：
+        for(int i = 0; i < numCameras; i++) {
+            Camera camera = Camera.open(i);
+            CameraInfo cameraInfo = new CameraInfo();  注意这里的 new
+            Camera.getCameraInfo(i, cameraInfo);       cameraInfo 不能为空
+        }

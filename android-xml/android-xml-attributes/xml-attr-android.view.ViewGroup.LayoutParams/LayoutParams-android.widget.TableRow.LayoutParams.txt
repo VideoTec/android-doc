@@ -1,0 +1,11 @@
+继承关系
+
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.ViewGroup.MarginLayoutParams
+ 	 	   ↳	android.widget.LinearLayout.LayoutParams
+ 	 	 	   ↳	android.widget.TableRow.LayoutParams
+
+
+android:layout_column		The index of the column in which this child should be. 
+android:layout_span		    Defines how many columns this child should span. 

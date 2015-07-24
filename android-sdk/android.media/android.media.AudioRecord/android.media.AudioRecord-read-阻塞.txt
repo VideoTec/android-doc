@@ -1,0 +1,16 @@
+https://code.google.com/p/android/issues/detail?id=53996
+
+read() blocks, waiting till there are enough samples
+
+read() and write() sometimes block 20~40ms, 
+so I try to use OnRecordPositionUpdateListener in order to avoid useless blocking.
+but listener didn't work as what I read in the doc
+
+http://www.cnblogs.com/ct2011/p/4080193.html
+录音的读取其实和UDP差不多，需要不断的读取数据。
+既然是不断，那么我们当然需要循环读取，意味着我们需要一个线程来单独读取录音，避免阻塞主线程。
+还和UDP差不多的是，如果不及时读取，数据超过缓冲区大小，会造成这段录音数据的丢失。
+上面提到过，我们想要实现的是边录边转。
+那么问题来了，如果我们读取完数据后接着将数据传给Lame进行MP3编码，Lame的编码时间是不确定的，是不是有可能造成数据的丢失呢？
+答案当然是有可能，所以我们不能巧合编程。
+我们需要另外一个线程，即数据编码线程来专门进行MP3编码，而当前的录音读取线程只负责读取录音PCM数据

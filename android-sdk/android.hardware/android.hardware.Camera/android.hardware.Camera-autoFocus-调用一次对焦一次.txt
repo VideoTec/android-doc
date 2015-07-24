@@ -1,0 +1,36 @@
+public final void autoFocus (Camera.AutoFocusCallback cb)
+
+Starts camera auto-focus and registers a callback function to run when the camera is focused. This method is only valid when preview is active (between startPreview() and before stopPreview()).
+
+Callers should check getFocusMode() to determine if this method should be called. If the camera does not support auto-focus, it is a no-op and onAutoFocus(boolean, Camera) callback will be called immediately.
+
+If your application should not be installed on devices without auto-focus, you must declare that your application uses auto-focus with the <uses-feature> manifest element.
+
+If the current flash mode is not FLASH_MODE_OFF, flash-闪光灯 may be fired during auto-focus, depending on the driver and camera hardware.
+
+Auto-exposure lock getAutoExposureLock() and auto-white balance locks getAutoWhiteBalanceLock() do not change during and after autofocus. But auto-focus routine may stop auto-exposure and auto-white balance transiently during focusing.
+
+Stopping preview with stopPreview(), or triggering still image capture with takePicture(Camera.ShutterCallback, Camera.PictureCallback, Camera.PictureCallback), will not change the the focus position. Applications must call cancelAutoFocus to reset the focus.
+
+If autofocus is successful, consider using MediaActionSound to properly play back an autofocus success sound to the user.
+
+Parameters
+cb	the callback to run
+
+See Also
+cancelAutoFocus()
+setAutoExposureLock(boolean)
+setAutoWhiteBalanceLock(boolean)
+MediaActionSound
+
+20:37 2015/7/17 使用三星手机测试，
+FOCUS_MODE_AUTO
+FOCUS_MODE_MACRO
+FOCUS_MODE_FIXED 都不影响 mCamera.autoFocus 调用
+
+FOCUS_MODE_CONTINUOUS_VIDEO
+FOCUS_MODE_CONTINUOUS_PICTURE
+也可以调用 mCamera.autoFocus, 但是
+The focus position is locked after autoFocus call. - 不会持续变焦了
+If applications want to resume the continuous focus, cancelAutoFocus must be called.
+cancelAutoFocus - 可恢复 持续变焦

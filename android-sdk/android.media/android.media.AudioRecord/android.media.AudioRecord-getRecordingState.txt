@@ -1,0 +1,14 @@
+public int getRecordingState ()
+
+Added in API level 3
+Returns the recording state of the AudioRecord instance.
+
+两种状态，正在录制，已经停止录制
+    /**
+     * indicates AudioRecord recording state is not recording
+     */
+    public static final int RECORDSTATE_STOPPED = 1;  // matches SL_RECORDSTATE_STOPPED
+    /**
+     * indicates AudioRecord recording state is recording
+     */
+    public static final int RECORDSTATE_RECORDING = 3;// matches SL_RECORDSTATE_RECORDING

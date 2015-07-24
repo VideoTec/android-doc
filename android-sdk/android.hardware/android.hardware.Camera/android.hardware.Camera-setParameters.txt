@@ -1,0 +1,20 @@
+public void setParameters (Camera.Parameters params)
+
+Changes the settings for this Camera service.
+
+Parameters
+params	the Parameters to use for this Camera service
+
+Throws
+RuntimeException	if any parameter is invalid or not supported.
+
+10:46 2015/7/20
+setParameters 必须在 startPreview 之前调用？
+修改 preview-size 必须 stopPreview-startPreivew ?
+
+不需要，可以在预览状态中，进行设置 camera.setParameters，并且会立即生效
+会出现很短暂的阻塞。
+
+根据系统相机的行为，可以判断，上面的说法是正确的。
+（只有在调整 preview size 有这种情况，它是来调整窗口长宽比时出现的情况）
+其它参数修改时，并没有停止 preview 现象

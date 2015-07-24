@@ -1,0 +1,79 @@
+ripple[英][ˈrɪpl] [美][ˈrɪpəl] n.涟漪，涟波；[物]涟波；涟波声，潺潺声；（头发等的）波浪形
+gradient[英][ˈgreɪdiənt] [美][ˈɡrediənt] n.[物]梯度，陡度；（温度、气压等）变化率，梯度变化曲线；<英>（道路的）倾斜度，坡度
+
+AnimatedStateListDrawable
+Drawable containing a set of Drawable keyframes where the currently displayed keyframe is chosen based on the current state set. 
+
+AnimatedVectorDrawable
+This class uses ObjectAnimator and AnimatorSet to animate the properties of a VectorDrawable to create an animated drawable. 
+
+AnimationDrawable
+An object used to create frame-by-frame animations, defined by a series of Drawable objects, which can be used as a View object's background.
+ 
+BitmapDrawable
+A Drawable that wraps a bitmap and can be tiled, stretched, or aligned. 
+
+ClipDrawable
+A Drawable that clips another Drawable based on this Drawable's current level value.
+ 
+ColorDrawable
+A specialized Drawable that fills the Canvas with a specified color. 
+
+Drawable
+A Drawable is a general abstraction for "something that can be drawn." 
+Most often you will deal with Drawable as the type of resource retrieved for drawing things to the screen; 
+the Drawable class provides a generic API for dealing with an underlying visual resource that may take a variety of forms.
+ 
+Drawable.ConstantState
+This abstract class is used by Drawables to store shared constant state and data between Drawables. 
+
+DrawableContainer
+A helper class that contains several Drawables and selects which one to use.
+ 
+DrawableContainer.DrawableContainerState
+A ConstantState that can contain several Drawables. 
+
+GradientDrawable
+A Drawable with a color gradient for buttons, backgrounds, etc.
+ 
+InsetDrawable
+A Drawable that insets another Drawable by a specified distance.
+ 
+LayerDrawable
+A Drawable that manages an array of other Drawables. 
+
+LevelListDrawable
+A resource that manages a number of alternate Drawables, each assigned a maximum numerical value.
+ 
+NinePatchDrawable
+A resizeable bitmap, with stretchable areas that you define. 
+
+PaintDrawable
+Drawable that draws its bounds in the given paint, with optional rounded corners.
+ 
+PictureDrawable
+Drawable subclass that wraps a Picture, allowing the picture to be used wherever a Drawable is supported. 
+
+RippleDrawable
+Drawable that shows a ripple effect in response to state changes. 
+
+RotateDrawable
+A Drawable that can rotate another Drawable based on the current level value. 
+
+ScaleDrawable
+A Drawable that changes the size of another Drawable based on its current level value.
+ 
+ShapeDrawable
+A Drawable object that draws primitive shapes. 
+
+ShapeDrawable.ShaderFactory
+Base class defines a factory object that is called each time the drawable is resized (has a new width or height). 
+
+StateListDrawable
+Lets you assign a number of graphic images to a single Drawable and swap out the visible item by a string ID value.
+ 
+TransitionDrawable
+An extension of LayerDrawable s that is intended to cross-fade between the first and second layer. 
+
+VectorDrawable
+This lets you create a drawable based on an XML vector graphic. 

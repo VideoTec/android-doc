@@ -1,0 +1,60 @@
+格式
+http://developer.android.com/guide/topics/manifest/activity-element.html
+
+CONTAINED IN:
+<application>
+
+CAN CONTAIN:
+<intent-filter> 
+<meta-data>
+
+参考
+H:\doc\Computer software\Android平台\android-sdk\android.app.Activity\activity-AndroidManifest.xml.txt
+
+<activity android:allowEmbedded=["true" | "false"]
+          android:allowTaskReparenting=["true" | "false"]
+          android:alwaysRetainTaskState=["true" | "false"]
+          android:autoRemoveFromRecents=["true" | "false"]
+          android:banner="drawable resource"
+          android:clearTaskOnLaunch=["true" | "false"]
+          android:configChanges=["mcc", "mnc", "locale",
+                                 "touchscreen", "keyboard", "keyboardHidden",
+                                 "navigation", "screenLayout", "fontScale", "uiMode",
+                                 "orientation", "screenSize", "smallestScreenSize"]
+          android:documentLaunchMode=["intoExisting", "always",
+                                  "none", "never"]
+          android:enabled=["true" | "false"]
+          android:excludeFromRecents=["true" | "false"]
+          android:exported=["true" | "false"]
+          android:finishOnTaskLaunch=["true" | "false"]
+          android:hardwareAccelerated=["true" | "false"]
+          android:icon="drawable resource"
+          android:label="string resource"
+          android:launchMode=["multiple" | "singleTop" |
+                              "singleTask" | "singleInstance"]
+          android:maxRecents="integer"
+          android:multiprocess=["true" | "false"]
+          android:name="string"
+          android:noHistory=["true" | "false"]  
+          android:parentActivityName="string" 
+          android:permission="string"
+          android:process="string"
+          android:relinquishTaskIdentity=["true" | "false"]
+          android:screenOrientation=["unspecified" | "behind" |
+                                     "landscape" | "portrait" |
+                                     "reverseLandscape" | "reversePortrait" |
+                                     "sensorLandscape" | "sensorPortrait" |
+                                     "userLandscape" | "userPortrait" |
+                                     "sensor" | "fullSensor" | "nosensor" |
+                                     "user" | "fullUser" | "locked"]
+          android:stateNotNeeded=["true" | "false"]
+          android:taskAffinity="string"
+          android:theme="resource or theme"
+          android:uiOptions=["none" | "splitActionBarWhenNarrow"]
+          android:windowSoftInputMode=["stateUnspecified",
+                                       "stateUnchanged", "stateHidden",
+                                       "stateAlwaysHidden", "stateVisible",
+                                       "stateAlwaysVisible", "adjustUnspecified",
+                                       "adjustResize", "adjustPan"] >   
+    . . .
+</activity>

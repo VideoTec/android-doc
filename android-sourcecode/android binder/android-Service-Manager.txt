@@ -1,0 +1,104 @@
+ServiceManager的功能
+1. MediaPlayerService向SM注册
+2. MediaPlayerClient查询当前注册在SM中的MediaPlayerService的信息
+3. 根据这个信息，MediaPlayerClient和MediaPlayerService交互
+另外，ServiceManager的handle标示是0，所以只要往handle是0的服务发送消息了，最终都会被传递到ServiceManager中去
+
+ServiceManager的功能，实现源文件：
+framework/base/cmds/servicemanger.c
+保存所有服务的列表：
+struct svcinfo
+{
+    struct svcinfo *next;
+    uint32_t handle;
+    struct binder_death death;
+    int allow_isolated;
+    size_t len;
+    uint16_t name[0];
+};
+struct svcinfo *svclist = NULL;
+把自己设置为管理
+int binder_become_context_manager(struct binder_state *bs)
+{
+    return ioctl(bs->fd, BINDER_SET_CONTEXT_MGR, 0);
+}
+循环读取，binde驱动，获取事件
+void binder_loop(struct binder_state *bs, binder_handler func)
+{
+    int res;
+    struct binder_write_read bwr;
+    uint32_t readbuf[32];
+
+    bwr.write_size = 0;
+    bwr.write_consumed = 0;
+    bwr.write_buffer = 0;
+
+    readbuf[0] = BC_ENTER_LOOPER;
+    binder_write(bs, readbuf, sizeof(uint32_t));
+
+    for (;;) {
+        bwr.read_size = sizeof(readbuf);
+        bwr.read_consumed = 0;
+        bwr.read_buffer = (uintptr_t) readbuf;
+
+        res = ioctl(bs->fd, BINDER_WRITE_READ, &bwr);
+
+        if (res < 0) {
+            ALOGE("binder_loop: ioctl failed (%s)\n", strerror(errno));
+            break;
+        }
+        //收到请求了，解析命令
+        res = binder_parse(bs, 0, (uintptr_t) readbuf, bwr.read_consumed, func);
+        if (res == 0) {
+            ALOGE("binder_loop: unexpected reply?!\n");
+            break;
+        }
+        if (res < 0) {
+            ALOGE("binder_loop: io error %d %s\n", res, strerror(errno));
+            break;
+        }
+    }
+}
+ServiceManager处理的命令有：
+SVC_MGR_GET_SERVICE
+SVC_MGR_CHECK_SERVICE
+SVC_MGR_ADD_SERVICE
+SVC_MGR_LIST_SERVICES
+
+应用进程：获取ServiceManager的步骤
+IServiceManager.cpp    sp<IServiceManager> defaultServiceManager()
+                       gDefaultServiceManager = interface_cast<IServiceManager>(ProcessState::self()->getContextObject(NULL));
+					   重要：ProcessState::self()->getContextObject(NULL)
+					   重要：interface_cast<IServiceManager>转换
+					   BpBinder::BpBinder 构造 IPCThreadState::self()->incWeakHandle(handle);
+
+ProcessState::self()->getContextObject(NULL) 步骤
+ProcessState.cpp
+            getStrongProxyForHandle(0); 返回一个sp<IBinder>指针： b = new BpBinder(handle);
+            Vector<handle_entry> mHandleToObject; 用于保存已经读取的 IBinder*指针
+            struct handle_entry {
+                IBinder* binder;
+                RefBase::weakref_type* refs;
+            };
+类型转换 interface_cast<IServiceManager>
+IBinder接口 转换成 IServiceManager 接口
+template<typename INTERFACE>
+inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj)
+{
+    return INTERFACE::asInterface(obj);
+}
+调用 IServiceManager 的静态函数 asInterface
+    android::sp<I##INTERFACE> I##INTERFACE::asInterface(                \
+            const android::sp<android::IBinder>& obj)                   \
+    {                                                                   \
+        android::sp<I##INTERFACE> intr;                                 \
+        if (obj != NULL) {                                              \
+            intr = static_cast<I##INTERFACE*>(                          \
+                obj->queryLocalInterface(                               \
+                        I##INTERFACE::descriptor).get());               \
+            if (intr == NULL) {                                         \
+                intr = new Bp##INTERFACE(obj);                          \
+            }                                                           \
+        }                                                               \
+        return intr;                                                    \
+    }

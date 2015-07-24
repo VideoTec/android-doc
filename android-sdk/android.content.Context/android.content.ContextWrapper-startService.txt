@@ -1,0 +1,32 @@
+public ComponentName startService (Intent service)
+
+Added in API level 1
+Request that a given application service be started. The Intent should contain either contain the complete class name of a specific service implementation to start or a specific package name to target. If the Intent is less specified, it log a warning about this and which of the multiple matching services it finds and uses will be undefined. If this service is not already running, it will be instantiated and started (creating a process for it if needed); if it is running then it remains running.
+
+Every call to this method will result in a corresponding call to the target service's onStartCommand(Intent, int, int) method, with the intent given here. This provides a convenient way to submit jobs to a service without having to bind and call on to its interface.
+
+Using startService() overrides the default service lifetime that is managed by bindService(Intent, ServiceConnection, int): it requires the service to remain running until stopService(Intent) is called, regardless of whether any clients are connected to it. Note that calls to startService() are not nesting: no matter how many times you call startService(), a single call to stopService(Intent) will stop it.
+
+The system attempts to keep running services around as much as possible. The only time they should be stopped is if the current foreground application is using so many resources that the service needs to be killed. If any errors happen in the service's process, it will automatically be restarted.
+
+This function will throw SecurityException if you do not have permission to start the given service.
+
+Parameters
+service  Identifies the service to be started. The Intent must be either fully explicit (supplying a component name) or specify a specific package name it is targetted to. Additional values may be included in the Intent extras to supply arguments along with this specific start call.
+Returns
+If the service is being started or is already running, the ComponentName of the actual service that was started is returned; else if the service does not exist null is returned.
+
+---------------------------
+例子
+---------------------------
+  private void getResizedImageData(final Context context, final Uri uri, final int quality, final int widthLimit, final int heightLimit) {
+    showLoadingDialog(R.string.activity_broadcastlist_progress_dialog_body);
+    Intent imageService = new Intent();
+    File cacheFile = ImageCache.getExternalCacheDir(ImageProcessorActivity.this);
+    File file = new File(cacheFile, "compress_" + System.currentTimeMillis() + ".jpg");
+    mCompressPath = file.getAbsolutePath();
+    imageService.putExtra("path", mRealPath);
+    imageService.putExtra("compress", mCompressPath);
+    imageService.setComponent(new ComponentName("cn.com.fetion", "com.feinno.beside.service.ImageService"));
+    startService(imageService);
+  }

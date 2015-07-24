@@ -1,0 +1,33 @@
+"pushing" the data to the AudioTrack object using one of the 
+write(float[] audioData, int offsetInFloats, int sizeInFloats, int writeMode)  Added in API level 21
+The implementation does not clip for sample values within the nominal range [-1.0f, 1.0f],
+
+write(ByteBuffer audioData, int sizeInBytes, int writeMode)                    Added in API level 21
+In static buffer mode, copies the data to the buffer starting at its 0 offset, and the write mode is ignored
+In streaming mode, the blocking behavior will depend on the write mode
+可以使用 direct-byte-buffer 吗？
+
+write(short[] audioData, int offsetInShorts, int sizeInShorts)                 Added in API level 3
+write(byte[] audioData, int offsetInBytes, int sizeInBytes)                    Added in API level 3
+In streaming mode, will block until all data has been written to the audio sink
+In static buffer mode, copies the data to the buffer starting at offset 0
+返回值：
+the number of shorts that were written or 
+ERROR_INVALID_OPERATION if the object wasn't properly initialized, or 
+ERROR_BAD_VALUE if the parameters don't resolve to valid data and indexes.
+ERROR_DEAD_OBJECT if the AudioTrack is not valid anymore and needs to be recreated.
+
+For the streaming mode, data will be written to the audio sink in chunks of sizes less than or equal to the total buffer size.
+These are blocking and return when the data has been transferred from the Java layer to the native layer and queued for playback.
+
+-----------------------------------------------------------------------------------
+写模式 android.AudioTrack.WRITE_BLOCKING 和 android.AudioTrack.WRITE_NON_BLOCKING
+-----------------------------------------------------------------------------------
+public static final int WRITE_BLOCKING  Added in API level 21
+The write mode indicating the write operation will block until all data has been written, to be used in write(ByteBuffer, int, int)
+Constant Value: 0 (0x00000000)
+
+public static final int WRITE_NON_BLOCKING Added in API level 21
+The write mode indicating the write operation will return immediately after queuing as much audio data for playback as possible without blocking, to be used in write(ByteBuffer, int, int).
+Constant Value: 1 (0x00000001)
+

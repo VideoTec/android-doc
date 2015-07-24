@@ -1,0 +1,36 @@
+https://ant.apache.org/manual/Tasks/jar.html
+
+示例
+<jar jarfile="pinkyandbrain.jar">
+  <fileset dir="classes"/>
+  <service type="javax.script.ScriptEngineFactory">
+    <provider classname="org.acme.PinkyLanguage"/>
+    <provider classname="org.acme.BrainLanguage"/>
+  </service>
+</jar>
+
+属性：
+basedir   the directory from which to jar the files.
+includes  comma- or space-separated list of patterns of files that must be included. All files are included when omitted.
+
+implicit[英][ɪmˈplɪsɪt] [美][ɪmˈplɪsɪt] adj.不言明[含蓄]的
+
+包含的子节点
+This task forms an implicit FileSet and supports most attributes of <fileset> (dir becomes basedir) 
+as well as the nested <include>, <exclude> and <patternset> elements.
+
+--------------------------------
+10:02 2015/6/2 自己写的 ant 脚本
+--------------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project">
+    <target name="copyJar" description="copyJar to lib folder">
+        <copy file="bin/animation-everfrost-engine.jar"
+              todir="../VideoEffectDemo/libs/"
+              overwrite="true" />
+    </target>
+    <target name="CreateJar" description="Create Jar file">
+        <jar jarfile="Test.jar" basedir="." includes="*.class" />
+    </target>
+</project>

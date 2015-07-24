@@ -1,0 +1,8 @@
+终于可以讲解点架构上的东西了。
+p是proxy即代理的意思，Bp就是BinderProxy，
+BpServiceManager，就是SM的Binder代理。
+既然是代理，那肯定希望对用户是透明的，那就是说头文件里边不会有这个Bp的定义
+BpServiceManager就在刚才的IServiceManager.cpp中定义
+
+class BpServiceManager : public BpInterface<IServiceManager>
+这种继承方式，表示同时继承BpInterface和IServiceManager

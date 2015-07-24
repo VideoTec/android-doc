@@ -1,0 +1,78 @@
+Creating from resource images
+
+preferred[英][prɪ'fəd] [美][prɪ'fɜ:d] adj.首选的
+snippet[英][ˈsnɪpɪt] [美][ˈsnɪpɪt] n.小片，片段；不知天高地厚的年轻人
+demonstrate[英][ˈdemənstreɪt] [美][ˈdɛmənˌstret] vt.证明，证实；论证；显示，展示；演示，说明
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt] 实例化
+
+A simple way to add graphics to your application is by referencing an image file from your project resources. 
+Supported file types are PNG (preferred), JPG (acceptable) and GIF (discouraged). 
+This technique would obviously be preferred for application icons, logos, or other graphics such as those used in a game.
+
+To use an image resource, 
+just add your file to the res/drawable/ directory of your project. 
+From there, you can reference it from your code or your XML layout. 
+Either way, it is referred using a resource ID, which is the file name without the file type extension 
+(E.g., my_image.png is referenced as my_image).
+
+Note: Image resources placed in res/drawable/ 
+may be automatically optimized with lossless image compression by the aapt tool during the build process. 
+For example, a true-color PNG that does not require more than 256 colors may be converted to an 8-bit PNG with a color palette. 
+This will result in an image of equal quality but which requires less memory. 
+So be aware that the image binaries placed in this directory can change during the build. 
+If you plan on reading an image as a bit stream in order to convert it to a bitmap, 
+put your images in the res/raw/ folder instead, where they will not be optimized.
+
+-----------------------------------------
+动态加载 drawable
+-----------------------------------------
+
+The following code snippet demonstrates how to build an ImageView that uses an image from drawable resources and add it to the layout.
+
+  LinearLayout mLinearLayout;
+
+  protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+
+  // Create a LinearLayout in which to add the ImageView
+  mLinearLayout = new LinearLayout(this);
+
+  // Instantiate an ImageView and define its properties
+  ImageView i = new ImageView(this);
+  i.setImageResource(R.drawable.my_image);
+  i.setAdjustViewBounds(true); // set the ImageView bounds to match the Drawable's dimensions
+  i.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT,
+  LayoutParams.WRAP_CONTENT));
+
+  // Add the ImageView to the layout and set the layout as the content view
+  mLinearLayout.addView(i);
+  setContentView(mLinearLayout);
+  }
+  
+In other cases, you may want to handle your image resource as a Drawable object. To do so, create a Drawable from the resource like so:
+
+    Resources res = mContext.getResources();
+    Drawable myImage = res.getDrawable(R.drawable.my_image);
+  
+Note: Each unique resource in your project can maintain only one state, 
+no matter how many different objects you may instantiate for it. 
+For example, if you instantiate two Drawable objects from the same image resource, 
+then change a property (such as the alpha) for one of the Drawables, then it will also affect the other. 
+So when dealing with multiple instances of an image resource, 
+instead of directly transforming the Drawable, you should perform a tween animation.
+
+-----------------------------------------
+XML 定义 drawable
+-----------------------------------------
+
+Example XML
+
+The XML snippet below shows how to add a resource Drawable to an ImageView in the XML layout (with some red tint just for fun).
+
+      <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:tint="#55ff0000"
+      android:src="@drawable/my_image"/>
+  
+For more information on using project resources, read about Resources and Assets.

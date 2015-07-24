@@ -1,0 +1,81 @@
+参考
+http://developer.android.com/guide/topics/ui/themes.html
+
+-------------------------------------
+定义 style
+-------------------------------------
+必须存放这个目录里：res/values/
+必须是 XML 后缀，文件
+The root node of the XML file must be <resources>.
+To create a set of styles, save an XML file in the res/values/ directory of your project.
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+</resources>
+
+-------------------------------------
+引用 style
+-------------------------------------
+@style/CodeFont
+
+-------------------------------------
+什么是 style
+-------------------------------------
+For example, by using a style, you can take this layout XML:
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#00FF00"
+    android:typeface="monospace"
+    android:text="@string/hello" />
+And turn it into this:
+
+<TextView
+    style="@style/CodeFont"
+    android:text="@string/hello" />
+
+All of the attributes related to style have been removed 
+from the layout XML and put into a style definition called CodeFont, 
+which is then applied with the style attribute. 
+
+A style is a collection of properties that specify the look and format for a View or window. 
+A style can specify properties such as height, padding, font color, font size, background color, and much more. 
+A style is defined in an XML resource that is separate from the XML that specifies the layout.
+
+类似 CSS
+Styles in Android share a similar philosophy 
+to cascading stylesheets in web design—they allow you to separate the design from the content.
+
+-------------------------------------
+什么是 theme
+-------------------------------------
+A theme is a style 
+applied to an entire Activity or application, 
+rather than an individual View (as in the example above). 
+
+When a style is applied as a theme, 
+every View in the Activity or application will apply each style property that it supports. 
+
+For example, you can apply the same CodeFont style as a theme for an Activity and 
+then all text inside that Activity will have green monospace font.
+
+-------------------------------------
+Apply a theme to an Activity or application
+-------------------------------------
+
+To set a theme for all the activities of your application, 
+open the AndroidManifest.xml file and edit the <application> tag to include the android:theme attribute with the style name. 
+
+For example:
+
+<application android:theme="@style/CustomTheme">
+
+If you want a theme applied to just one Activity in your application, t
+hen add the android:theme attribute to the <activity> tag instead.

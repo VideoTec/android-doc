@@ -1,0 +1,9 @@
+
+http://developer.android.com/reference/android/media/AudioRecord.html#startRecording()
+
+Upon creation, an AudioRecord object initializes 
+its associated audio buffer that it will fill with the new audio data.
+ 
+The size of this buffer, specified during the construction, 
+determines how long an AudioRecord can record before "over-running" data that has not been read yet. 
+Data should be read from the audio hardware in chunks of sizes inferior to the total recording buffer size.

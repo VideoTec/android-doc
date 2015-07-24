@@ -1,0 +1,22 @@
+public boolean compress (Bitmap.CompressFormat format, int quality, OutputStream stream)
+
+Added in API level 1
+Write a compressed version of the bitmap to the specified outputstream. If this returns true, the bitmap can be reconstructed by passing a corresponding inputstream to BitmapFactory.decodeStream(). Note: not all Formats support all bitmap configs directly, so it is possible that the returned bitmap from BitmapFactory could be in a different bitdepth, and/or may have lost per-pixel alpha (e.g. JPEG only supports opaque pixels).
+
+Parameters
+
+format
+The format of the compressed image
+
+quality
+Hint to the compressor, 0-100. 0 meaning compress for small size, 100 meaning compress for max quality. Some formats, like PNG which is lossless, will ignore the quality setting
+
+stream
+The outputstream to write the compressed data.
+
+Returns
+true if successfully compressed to the specified stream.
+
+Bitmap.CompressFormat 	JPEG 	 
+Bitmap.CompressFormat 	PNG 	 
+Bitmap.CompressFormat 	WEBP 	

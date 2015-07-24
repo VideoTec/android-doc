@@ -1,0 +1,30 @@
+        <!-- 监听SD卡拨出、挂载，拔出时提示用户视频图片不可用 -->
+        <receiver android:name="com.feinno.beside.receiver.SDCardMountReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE" />
+                <action android:name="android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.chinamobile.icloud.im.sync.receiver.ConnReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+package com.feinno.beside.receiver;  
+/**
+ * @author huhailong
+ * 监听SD卡拨出时提示用户视频图片不可用
+ */
+public class SDCardMountReceiver extends BroadcastReceiver{
+
+	public void onReceive(Context context, Intent intent) {
+		if(intent.getAction()==Intent.ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE){
+//			ToastUtils.showShortToast(context, R.string.toast_sdcard_unavailable_str);
+		}
+	}
+
+}

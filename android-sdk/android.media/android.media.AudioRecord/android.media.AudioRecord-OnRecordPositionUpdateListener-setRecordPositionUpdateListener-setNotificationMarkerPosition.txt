@@ -1,0 +1,30 @@
+   /**
+     * Sets the marker position at which the listener is called, if set with
+     * {@link #setRecordPositionUpdateListener(OnRecordPositionUpdateListener)} or
+     * {@link #setRecordPositionUpdateListener(OnRecordPositionUpdateListener, Handler)}.
+     * @param markerInFrames marker position expressed in frames
+     * @return error code or success, see {@link #SUCCESS}, {@link #ERROR_BAD_VALUE},
+     *  {@link #ERROR_INVALID_OPERATION}
+     */
+    public int setNotificationMarkerPosition(int markerInFrames) {
+        if (mState == STATE_UNINITIALIZED) {
+            return ERROR_INVALID_OPERATION;
+        }
+        return native_set_marker_pos(markerInFrames);
+    }
+
+
+    /**
+     * Sets the period at which the listener is called, if set with
+     * {@link #setRecordPositionUpdateListener(OnRecordPositionUpdateListener)} or
+     * {@link #setRecordPositionUpdateListener(OnRecordPositionUpdateListener, Handler)}.
+     * It is possible for notifications to be lost if the period is too small.
+     * @param periodInFrames update period expressed in frames
+     * @return error code or success, see {@link #SUCCESS}, {@link #ERROR_INVALID_OPERATION}
+     */
+    public int setPositionNotificationPeriod(int periodInFrames) {
+        if (mState == STATE_UNINITIALIZED) {
+            return ERROR_INVALID_OPERATION;
+        }
+        return native_set_pos_update_period(periodInFrames);
+    }

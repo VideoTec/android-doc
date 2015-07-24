@@ -1,0 +1,41 @@
+http://developer.android.com/guide/topics/manifest/intent-filter-element.html
+
+<intent-filter android:icon="drawable resource"
+               android:label="string resource"
+               android:priority="integer" >
+    . . .
+</intent-filter>
+
+必须包含在 <activity> 标签中。
+
+可以包含下面子标签：
+<category> 
+<data>
+
+------------------------------------
+说明
+------------------------------------
+Specifies the types of intents that an activity, service, or broadcast receiver can respond to. An intent filter declares the capabilities of its parent component — what an activity or service can do and what types of broadcasts a receiver can handle. It opens the component to receiving intents of the advertised type, while filtering out those that are not meaningful for the component.
+Most of the contents of the filter are described by its <action>, <category>, and <data> subelements.
+
+For a more detailed discussion of filters, see the separate Intents and Intent Filters document, as well as the Intents Filters section in the introduction.
+
+------------------------------------
+例
+------------------------------------
+        <activity
+            android:name="com.feinno.beside.ui.fragment.MainFragment"
+            android:label="@string/find_navigation_title_prompt"
+            android:process=":beside"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.fetion.beside.find.navigation" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>

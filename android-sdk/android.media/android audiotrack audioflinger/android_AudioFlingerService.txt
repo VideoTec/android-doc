@@ -1,0 +1,5 @@
+/frameworks/av/services/audioflinger/AudioFlinger.h
+/frameworks/av/services/audioflinger/AudioFlinger.cpp
+
+Flinger [美][f'lɪnɡər] 投掷的人
+AudioFlinger is flinging audio data to the appropriate[美][əˈproʊpriət]合适的 recipient[美][rɪˈsɪpiənt]接收者. They're just "cute" words..:)

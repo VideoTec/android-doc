@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/content/ContentResolver.html
+
+resolver[英][rɪ'zɒlvə] [美][rɪ'zɒlvə] 解析器
+n.下决心者，解决[答]问题者；溶媒；求解仪
+
+java.lang.Object
+   ↳	android.content.ContentResolver
+
+Known Direct Subclasses
+MockContentResolver
+
+This class provides applications access to the content model.
+ContentProvider 对外共享数据，并提供对内数据的，增删查改功能（使用ContentResolver操作）

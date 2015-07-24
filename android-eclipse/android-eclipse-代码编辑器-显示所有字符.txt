@@ -1,0 +1,21 @@
+Window->Preferences->General->Editors->Text Editors->Show whitespace characters
+
+carriage return       \r
+line feed             \n
+
+carriage[英][ˈkærɪdʒ] [美][ˈkærɪdʒ] n.运输，输送；（旧时载客的）四轮马车；〈英〉火车客车车厢；运费
+carriage return[英][ˈkæridʒ riˈtə:n] [美][ˈkærɪdʒ rɪˈtɚn] 回车
+
+line feed[英][lain fi:d] [美][laɪn fid] 换行，移行，线路馈电
+
+Ideographic space 
+ideographic[英][ˌɪdɪəʊ'græfɪk] [美][ˌɪdɪr'græfɪk] adj.表意的
+Ideographic Space 表意空格
+在表意文字中，U+3000（IDEOGRAPHIC SPACE）
+即表意空格则由于其宽度与其他表意文字等宽而被广泛使用
+
+Leading  行头的空格
+Encosed  字符间的空格
+
+Trailing 行尾的空格 - 和换行回车符相连的空格
+trailing[英]['treɪlɪŋ] [美]['treɪlɪŋ] adj.拖尾的；曳尾的；被拖动的；蔓延的

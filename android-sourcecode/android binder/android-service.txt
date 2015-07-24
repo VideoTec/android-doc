@@ -1,0 +1,44 @@
+service 你可以理解成没有的界面的activity，它是跑在后台的程序，所谓后台是相对于可以被看得到的程序的，后台程序是不能直接交互的程序
+
+与linux service的区别：
+我們在第十七章就曾經談過『服務』這東西！ 當時的說明是『常駐在記體體中的程序，且可以提供一些系統或網路功能，那就是服務』。而服務一般的英文說法是『 service 』
+
+Android Service 相关源码
+/frameworks/base/services/java/com/android/server/SystemServer.java
+/frameworks/base/core/java/android/os/ServiceManager.java
+/frameworks/base/tools/layoutlib/bridge/src/android/os/ServiceManager.java
+/frameworks/base/media/java/android/media/AudioService.java
+
+/frameworks/base/services/core/jni/com_android_server_SystemServer.cpp
+
+/frameworks/native/include/binder/IInterface.h
+                     #define DECLARE_META_INTERFACE(INTERFACE)
+                     #define IMPLEMENT_META_INTERFACE(INTERFACE, NAME) 
+                     定义了一个成员变量，两个成员函数，构造及析构函数
+                     static const android::String16 descriptor;
+                     static android::sp<I##INTERFACE> asInterface(const android::sp<android::IBinder>& obj);
+                     virtual const android::String16& getInterfaceDescriptor() const;
+/frameworks/native/cmds/servicemanager/service_manager.c
+/frameworks/native/libs/binder/Static.cpp
+                     sp<IServiceManager> gDefaultServiceManager;
+                     sp<ProcessState> gProcess;
+/frameworks/native/libs/binder/IServiceManager.cpp
+                     gDefaultServiceManager = ProcessState::self()->getContextObject(NULL)
+/frameworks/native/libs/binder/ProcessState.cpp
+ProcessState是与进程相关对象，在一个进程中只会存在一个ProcessState对象 gProcess
+
+/system/core/include/sysutils/ServiceManager.h
+/system/core/libsysutils/src/ServiceManager.cpp
+
+Android系统的service包括C/C++实现的服务和Java实现的服务。
+用C/C++编写的service，如audioflinger、camera、sensorservice和surfaceflinger，
+有的则是Java编写，见java目录下面,详细见目录frameworks/base/services/java/com/android/server下面的各service。
+
+runtime->callStatic(“com/android/server/SystemServer”, “init2″);//执行Java中的init2，启动Java编写的service
+
+添加Service
+defaultServiceManager()->addService(String16("media.player"), new MediaPlayerService());
+查找Service
+sp<IServiceManager> sm = defaultServiceManager();
+sp<IBinder> binder = sm->getService(String16("media.player"));
+sp<IMediaPlayerService> service = interface_cast<IMediaPlayerService>(binder);

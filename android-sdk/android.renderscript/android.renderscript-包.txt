@@ -1,0 +1,41 @@
+参考
+http://zh.wikipedia.org/wiki/Renderscript
+http://blog.csdn.net/feiyangxiaomi/article/details/10214707
+
+Android视图框架对于创建复杂布局非常方便。然而，这种便利是以性能为代价的。
+当性能至关重要的时候，Android提供了几种更强大的图形处理能力，当然难度也是随之上升了。在本节中，我将介绍：
+（1）SurfaceView使用标准的Canvas对象并与单独的渲染进程结合，得到更好的性能；
+（2）新得RenderScript框架可以被用于创建独立结构的图形渲染；
+（3）OpenGL可用于一些严格的图形工作和游戏。
+
+RenderScript创建独立结构的图形渲染
+    RenderScript是用来在Android上编写的高性能代码的一种语言，API。RenderScript由Android 3.0引进，它包括图形API和与CUDA或者OpenGL类似的运算API。它是独立与构架的，所以不需要为不同的CPU或者GPU处理器定制代码。RenderScript通过选择合适的处理器和内核数目来优化运行代码。如果没有合适的GPU，RenderScript会在CPU上运行所有的操作作为备用，是非常灵活的。
+注意：RenderScript依赖于OpenGL，部android设备，模拟器是不可用的。
+ RenderScript使用的语法基于C编程语言的C99标准。学习过C语言开发的人可以很快的上手。
+注意：renderscript 在多字节的目标代码页中，没有此 Unicode 字符可以映射到的字符，是因为路径中有中文。
+注意：RSSurfaceView ： The type RSSurfaceView is deprecated 在API 16之后，网上的例子大部分都是使用RSSurfaceView的。
+
+http://www.cnblogs.com/TerryBlog/archive/2012/03/01/2375450.html
+http://www.cnblogs.com/TerryBlog/archive/2012/03/02/2377251.html
+RenderScript 采用了c99语法（标准C来自1999年，最新标准是C11，来自2011年），新的应用编程接口（API）最终编译成原生代码。
+这意味着做为Android 图形开发者就不得不再系统的学习一套API，
+因为它的API并非人人都清楚，而Google 对于RenderScript  这方面的文档又少之又少。
+
+RenderScript 无法从其他C应用程序移植过来，不过它在Android 设备上比NDK 更常见。
+相比于NDK的可移植性要弱一些，记得以前移植过一个C程序叫Cadaver的webdav客户端 就是使用的NDK，
+所以这点来说RenderScript 的移植性可以说有待改善。
+
+RenderScript 在机器上进行第一遍编译，然后在目标设备上进行最后一遍编译（Just-In-Time Compiling），
+因而带来更高效的原生二进制代码。
+这也就是意味着，凡是支持RenderScript 的设备都可以运行你的代码。不用管什么架构。
+
+目前 ，RenderScript 带来的代码只能在主处理器上运行，它会自动生成可利用多个核心的代码（如果设备上有多个核心）。
+就因此，编译出来的程序是针对该机器的最佳优化，
+这解决了Device Fragmentation,也就是说开发者再也不必担心使用者的手机、平板够不够好、有没有GPU...等等问题，
+全都交给RenderScript 去担心就好。
+没有GPU,RenderScript 写好的程序就交由CPU来处理（背后的编译技术其实是使用的LLVM）。
+
+RenderScript 有类似于CUDA的Compute API用于计算，配置和设置相对比较容易。
+最终的运行速度实际上要比胜过于NDK 的实现方式， 需要编写的代码比较少。
+而RenderScript 最适合用于做3D的用户界面或高性能计算任务。
+而上面的编译和调试所说的一样，随着最后一遍的编译可以通过硬件直接或得性能的提升。

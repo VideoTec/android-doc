@@ -1,0 +1,9 @@
+Android NDK: ERROR:E:/android/ndk/sources/cxx-stl/gnu-libstdc++/Android.mk:gnustl_static: LOCAL_SRC_FILES points to a missing file
+Android NDK: Check that E:/android/ndk/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/thumb/libgnustl_static.a exists  or that its path is correct
+E:/android/ndk/build/core/prebuilt-library.mk:45: *** Android NDK: Aborting    .  Stop.
+D:\CoreSDK\Android\libs\armeabi-v7a\libconvert.so
+
+原因是 application.mk 添加了下面一行
+
+NDK_TOOLCHAIN_VERSION := 4.9
+本地用的NDK r10 gcc 最高版本是 4.8, 所以出上面的错误

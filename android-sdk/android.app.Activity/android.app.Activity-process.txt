@@ -1,0 +1,61 @@
+For those methods that are not marked as being killable, the activity's process will not be killed by the system starting from the time the method is called and continuing after it returns. Thus an activity is in the killable state, for example, between after onPause() to the start of onResume().
+
+独立于activity生命期运行的任务：
+Sometimes an Activity may need to do a long-running operation that exists independently of the activity lifecycle itself. An example may be a camera application that allows you to upload a picture to a web site. The upload may take a long time, and the application should allow the user to leave the application will it is executing. To accomplish this, your Activity should start a Service in which the upload takes place. This allows the system to properly prioritize your process (considering it to be more important than other non-visible applications) for the duration of the upload, independent of whether the original activity is paused, stopped, or finished.
+
+前景activity的进程　前台进程
+The foreground activity (the activity at the top of the screen that the user is currently interacting with) is considered the most important. Its process will only be killed as a last resort, if it uses more memory than is available on the device. Generally at this point the device has reached a memory paging state, so this is required in order to keep the user interface responsive.
+
+可见activity的进程　　可见进程
+A visible activity (an activity that is visible to the user but not in the foreground, such as one sitting behind a foreground dialog) is considered extremely important and will not be killed unless that is required to keep the foreground activity running.
+
+服务进程
+运行着一个通过startService() 方法启动的service，这个service不属于上面提到的2种更高重要性的。
+service所在的进程虽然对用户不是直接可见的，
+但是他们执行了用户非常关注的任务（比如播放mp3，从网络下载数据）。
+只要前台进程和可见进程有足够的内存，系统不会回收他们
+
+背景activity的进程　后台进程
+A background activity (an activity that is not visible to the user and has been paused) is no longer critical, so the system may safely kill its process to reclaim memory for other foreground or visible processes. If its process needs to be killed, when the user navigates back to the activity (making it visible on the screen again), its onCreate(Bundle) method will be called with the savedInstanceState it had previously supplied in onSaveInstanceState(Bundle) so that it can restart itself in the same state as the user last left it.
+
+空进程，没有activity的进程　　空进程
+An empty process is one hosting no activities or other application components (such as Service or BroadcastReceiver classes). These are killed very quickly by the system as memory becomes low. For this reason, any background operation you do outside of an activity must be executed in the context of an activity BroadcastReceiver or Service to ensure that the system knows it needs to keep your process around.
+
+如果想让某个Activity运行在独立的进程中，
+则需要在Androidmanifest.xml中对Activity的属性Android:process =”value“ 进行配置,
+value的值就是此Activity所在的进程的进程名。
+如果进程名以“：”开头，则为私有进程；
+如果进程名以小写字母开头，则为全局进程
+
+
+我们可以将一些组件运行在其他进程中，并且可以为任意的进程添加线程。
+组件运行在哪个进程中是在manifest文件里设置的，
+其中
+<Activity>，
+<Service>，
+<receiver>和
+<provider>
+都有一个process属性来指定该组件运行在哪个进程之中。
+我们可以设置这个属性，使得每个组件
+运行在它们自己的进程中，或是
+几个组件共同享用一个进程，或是
+不共同享用。
+<application>元素也有一个process属性，用来指定所有的组件的默认属性
+
+一个要进行耗时工作的activity最好启动一个service来做这个工作，而不是开启一个子进程
+特别是这个操作需要的时间比activity存在的时间还要长的时候
+
+Process.myPid(); 会告诉你你的代码所在的进程，activity和自己的service不但在同一个进程，还在同一个线程
+
+AndroidManifest.xml 配置 进程属性：
+if attribute android:process is not defined for Application/Activity tags in the manifest, 
+by default all the activities will run in single process 
+(process name will be name of the package defined in manifest)
+如下面：
+USER      PID   PPID  VSIZE  RSS     WCHAN    PC         NAME
+app_131   14904 31602 319900 41728 ffffffff 00000000 S com.example.opensltest
+注释：PPID Parent process ID as a decimal value
+注释：31602 zygote
+
+默认情况下，同一个应用程序中的所有组件（activity、service、receiver、provider）运行在同一个进程中，而且绝大多数的应用程序也都是这样的。
+但是，如果我们想要控制让某个特定的组件属于某个进程，我们可以在manifest文件中进行配置

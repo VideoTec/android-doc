@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--(1). 生成用于主应用的R.java;
+    (2). 生成用于库应用的R.java(如果有库应用);
+    (3). 编译所有java文件为class文件;
+    (4). 打包class文件和jar包为classes.dex;
+    (5). 打包assets和res资源为资源压缩包(如res.zip，名字可以自己定义);
+    (6). 组合classes.dex和res.zip生成未签名的APK;
+    (7). 生成有签名的APK;-->
+<project default="debug-version-package" basedir=".">
+	
+	<property file="local.properties"/>
+    <property file="project.properties"/>
+	
+	<tstamp>
+        <format property="date" pattern="yyyy-MM-dd" locale="zh,CN" />
+		<format property="time" pattern="HH-mm-ss" locale="zh,CN" />
+    </tstamp>
+	
+	<!-- 目录 -->
+	<property name="bin-dir" value="videobin"/>
+	<property name="bin-classes-dir" value="${bin-dir}/classes"/>
+	<property name="bin-proguard-classes-dir" value="${bin-dir}/proguard-classes"/>
+	
+	<property name="gen-dir" value="gen"/>
+	<property name="core-gen-dir" value="../sea-monster-core/gen"/>
+	<property name="video-gen-dir" value="../sea-monster-video/gen"/>
+	
+	<property name="src-dir" value="src"/>
+	<property name="core-src-dir" value="../sea-monster-core/src"/>
+	<property name="video-src-dir" value="../sea-monster-video/src"/>
+	
+	<property name="res-dir" value="res"/>
+	<property name="core-res-dir" value="../sea-monster-core/res"/>
+    <property name="video-res-dir" value="../sea-monster-video/res"/>
+	
+	<property name="libs-dir" value="libs"/>
+	<property name="core-libs-dir" value="../sea-monster-core/libs"/>
+	<property name="video-libs-dir" value="../sea-monster-video/libs"/>
+	
+	<property name="out-dir" value="out"/>
+	
+	<!-- 命令文件路径  -->
+	<property name="sdk.dir" location="../build/android-sdk"/>
+	<property name="jdk.dir" location="../build/jdk-tools"/>
+	<property name="ant.dir" location="../build/apache-ant-1.9.4"/>
+	
+	<property name="key.store" location="../build/keystore/android_market"/>
+	
+    <property name="aidl" location="${sdk.dir}\build-tools\aidl.exe" />
+    <property name="aapt" location="${sdk.dir}\build-tools\aapt.exe" />
+	<property name="dx" location="${sdk.dir}\build-tools\dx.bat" />
+	
+	<property name="proguard" location="${sdk.dir}\tools\proguard\lib\proguard.jar" />
+	<property name="proguard-property" location="${sdk.dir}\tools\proguard\ant\task.properties" />
+    
+	<property name="apkbuilder" location="${sdk.dir}\tools\lib\sdklib.jar" />
+	<property name="android-jar" value="${sdk.dir}\platform\android-19\android.jar"/>
+	
+	<property name="jarsigner" value="${jdk.dir}\bin\jarsigner.exe" />
+	<property name="xmltask-jar" value="${ant.dir}\extra-lib\xmltask.jar" />
+	
+	<property name="anttask-jar" value="${sdk.dir}\tools\lib\ant-tasks.jar" />
+	
+	<!-- 文件路径  -->
+	<property name="manifest-dir" value="AndroidManifest.xml"/>
+	<property name="core-manifest-dir" value="../sea-monster-core/AndroidManifest.xml"/>
+	<property name="video-manifest-dir" value="../sea-monster-video/AndroidManifest.xml"/>
+	
+	<property name="proguard-dir" value="proguard.cfg"/>
+	
+	<!-- 临时文件  -->
+	<property name="out-original-dir" value="${bin-dir}\temp-original.jar"/>
+	<property name="out-proguard-dir" value="${bin-dir}\temp-proguard.jar"/>
+	<property name="out-classes-dir" value="${bin-dir}\classes.dex"/>
+	<property name="out-res-dir" value="${bin-dir}\res.zip"/>
+	<property name="out-unsign-apk-dir" value="${bin-dir}\unsigned.apk"/>
+	
+	
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath location="../build/apache-ant-1.9.4/lib/ant-contrib-1.0b2.jar"/>
+	</taskdef>
+	
+	<!-- 初始化进入文件夹  -->
+	<target name="-init">
+		<echo>init start...</echo>
+		
+		<mkdir dir="${out-dir}"/>
+		
+		<delete dir="${gen-dir}" />
+		<mkdir dir="${gen-dir}"/>
+		
+		<delete dir="${bin-dir}" />
+		<mkdir dir="${bin-dir}"/>
+		
+		<delete dir="${bin-classes-dir}" />
+		<mkdir dir="${bin-classes-dir}"/>
+		
+		<delete dir="${bin-proguard-classes-dir}" />
+		<mkdir dir="${bin-proguard-classes-dir}"/>
+		
+		<echo>init finish...</echo>
+	</target>
+	
+	<!-- 替换config.xml -->
+	<target name="-replace">
+		
+		<taskdef name="xpath" classname="com.android.ant.XPathTask" classpath="${anttask-jar}"/>
+		<echo>anttask path = ${sdk.dir}</echo>
+		<xpath input="${manifest-dir}" expression="/manifest/@android:versionName" output="manifest.versionName"/>
+		
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask" classpath="${xmltask-jar}"/>
+		<xmltask source="${basedir}/res/values/config.xml" dest="${basedir}/res/values/config.xml" encoding="utf-8">
+			<replace path="/resources/string[@name='test_version']/text()" withText="V${manifest.versionName}_${date}_${time}"/>
+		</xmltask>
+	</target>
+	
+	<!-- 生成R.java -->
+	<target name="-aapt" depends="-init">
+		<echo>aapt start: project R.java...</echo>
+		<exec executable="${aapt}">
+			<arg value="package" />
+	        <arg value="-m" />
+	        <arg value="-J" />
+	        <arg value="${gen-dir}" />
+	        <arg value="-M" />
+	        <arg value="${manifest-dir}" />
+	        <arg value="-S" />
+	        <arg value="${res-dir}" />
+			<arg value="-S" />
+	        <arg value="${core-res-dir}" />
+	    	<arg value="-S" />
+	        <arg value="${video-res-dir}" />
+	        <arg value="-I" />
+	        <arg value="${android-jar}" />
+			<arg value="--auto-add-overlay" />
+		</exec>
+		
+		<echo>aapt start: core R.java ... </echo>
+        <exec executable="${aapt}">
+        	<arg value="package" />
+            <arg value="-m" />
+            <arg value="--auto-add-overlay" />
+            <arg value="-J" />
+            <arg value="${gen-dir}" />
+            <arg value="-M" />
+            <arg value="${core-manifest-dir}" />
+        	<arg value="-S" />
+        	<arg value="${res-dir}" />
+        	<arg value="-S" />
+	        <arg value="${core-res-dir}" />
+	    	<arg value="-S" />
+	        <arg value="${video-res-dir}" />
+            <arg value="-I" />
+            <arg value="${android-jar}" />
+        </exec>
+    	
+    	<echo>aapt start: video R.java ... </echo>
+        <exec executable="${aapt}">
+        	<arg value="package" />
+            <arg value="-m" />
+            <arg value="--auto-add-overlay" />
+            <arg value="-J" />
+            <arg value="${gen-dir}" />
+            <arg value="-M" />
+            <arg value="${video-manifest-dir}" />
+        	<arg value="-S" />
+        	<arg value="${res-dir}" />
+        	<arg value="-S" />
+	        <arg value="${core-res-dir}" />
+	    	<arg value="-S" />
+	        <arg value="${video-res-dir}" />
+            <arg value="-I" />
+            <arg value="${android-jar}" />
+        </exec>
+		
+		<echo>aapt end: R.java</echo>
+		
+	</target>
+	
+	<!-- 编译所有java文件为class文件 -->
+	<target name="-javac">
+		<echo>javac start...</echo>
+		
+		<!--
+		<path id="project.libs">
+			<fileset dir="${libs-dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		
+		<path id="lib.libs">
+			<fileset dir="${lib-libs-dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		
+		<path id="core.libs">
+			<fileset dir="${core-libs-dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		
+		<path id="video.libs">
+			<fileset dir="${video-libs-dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		
+		<javac destdir="${bin-classes-dir}" bootclasspath="${android-jar}">
+			<src path="${src-dir}"/>
+			<src path="${core-src-dir}"/>
+			<src path="${video-src-dir}"/>
+			<src path="${gen-dir}"/>
+			<classpath refid="project.libs"/>
+			<classpath refid="lib.libs"/>
+			<classpath refid="core.libs"/>
+			<classpath refid="video.libs"/>
+		</javac> -->
+		
+		<!--
+		<javac encoding="UTF-8" destdir="${bin-classes-dir}" bootclasspath="${android-jar}">
+			<src path="${gen-dir}" />
+			<classpath>
+				<fileset dir="${lib-libs-dir}" includes="*.jar" />
+			</classpath>
+		</javac>-->
+
+		<javac encoding="UTF-8" destdir="${bin-classes-dir}" bootclasspath="${android-jar}" includeantruntime="on">
+			<src path="${core-src-dir}" />
+			<src path="${gen-dir}" />
+			<classpath>
+				<fileset dir="${core-libs-dir}" includes="*.jar" />
+			</classpath>
+		</javac>
+		
+		<javac encoding="UTF-8" destdir="${bin-classes-dir}" bootclasspath="${android-jar}" includeantruntime="on">
+			<src path="${video-src-dir}" />
+			<src path="${gen-dir}" />
+			<classpath>
+				<fileset dir="${video-libs-dir}" includes="*.jar" />
+			</classpath>
+		</javac> 
+
+		<javac encoding="utf-8" destdir="${bin-classes-dir}" bootclasspath="${android-jar}" includeantruntime="on">
+			<src path="${src-dir}" />
+			<src path="${gen-dir}" />
+			<classpath>
+				<fileset dir="${libs-dir}" includes="*.jar" />
+				<fileset dir="${core-libs-dir}" includes="*.jar" />
+				<fileset dir="${video-libs-dir}" includes="*.jar" />
+			</classpath>
+		</javac>
+		
+		<echo>javac end...</echo>
+	</target>
+	
+	<!-- 混淆 -->
+	<target name="-optimize">
+		<echo>proguard start...</echo>
+		
+		<java jar="${proguard}" fork="true" failonerror="true">
+			<jvmarg value="-Dmaximum.inlined.code.length=32" />
+			<arg value="-injars ${bin-classes-dir}" />
+            <arg value="-outjars ${bin-proguard-classes-dir}" />
+            <arg value="-libraryjars ${android-jar}" />
+			<arg value="-libraryjars ${libs-dir}" />
+			<arg value="-libraryjars ${core-libs-dir}" />
+			<arg value="-libraryjars ${video-libs-dir}" />
+			<arg value="@proguard.cfg"/>
+		</java>
+		
+		<echo>proguard end...</echo>
+	</target>
+	
+	<!-- 打包class文件和jar包为classes.dex -->
+	<target name="-dx">
+		<echo>dx start: package class files to classes.dex...</echo>
+		<exec executable="${dx}">
+			<arg value="--dex" />
+            <arg value="--output=${out-classes-dir}" />
+            <arg value="${bin-proguard-classes-dir}" />
+			<arg value="${libs-dir}"/>
+			<arg value="${core-libs-dir}"/>
+			<arg value="${video-libs-dir}"/>
+		</exec>
+		<echo>dx end: ...</echo>
+		
+		<echo>delete class file</echo>
+		<!-- 删除临时目录  -->
+		<delete dir="${bin-classes-dir}" />
+		<delete dir="${bin-proguard-classes-dir}"/>
+	</target>
+	
+	<!-- 打包assets和res资源为资源压缩包 -->
+	<target name="-package-res">
+		<echo>packaging resource start....</echo>
+		<exec executable="${aapt}">
+			<arg value="package" />
+            <arg value="-f" />
+			<arg value="-S" />
+	        <arg value="${res-dir}" />
+			<arg value="-S" />
+	        <arg value="${core-res-dir}" />
+	    	<arg value="-S" />
+	        <arg value="${video-res-dir}" />
+            <arg value="-A" />
+            <arg value="assets" />
+			<arg value="-M" />
+            <arg value="${manifest-dir}" />
+            <arg value="-I" />
+            <arg value="${android-jar}" />
+            <arg value="-F" />
+            <arg value="${out-res-dir}" />
+            <arg value="--auto-add-overlay" />
+		</exec>
+		<echo>packaging resource end....</echo>
+	</target>
+	
+	<!-- 组合classes.dex和res.zip生成未签名的APK -->
+	<target name="-unsigner-apk">
+		<echo>building unsigned.apk start... </echo>
+        <java classpath="${apkbuilder}" classname="com.android.sdklib.build.ApkBuilderMain">
+            <arg value="${out-unsign-apk-dir}" />
+            <arg value="-u" />
+            <arg value="-z" />
+            <arg value="${out-res-dir}" />
+            <arg value="-f" />
+            <arg value="${out-classes-dir}" />
+        	<arg value="-rj" />
+        	<arg value="${libs-dir}" />
+    		<arg value="-rj" />
+        	<arg value="${core-libs-dir}" />
+    		<arg value="-rj" />
+        	<arg value="${video-libs-dir}" />
+        	<arg value="-nf" />
+        	<arg value="${libs-dir}" />
+        	<arg value="-nf" />
+        	<arg value="${core-libs-dir}" />
+        	<arg value="-nf" />
+        	<arg value="${video-libs-dir}" />
+        </java>
+		<echo>building unsigned.apk end... </echo>
+		
+	</target>
+	
+	<!-- 签名Apk -->
+	<target name="-signer-apk">
+		<echo>signing the unsigned apk to final product apk start... </echo>
+		<taskdef name="xpath" classname="com.android.ant.XPathTask" classpath="${anttask-jar}"/>
+		<xpath input="${manifest-dir}" expression="/manifest/@android:versionName" output="manifest.versionName"/>
+		<xpath input="./res/values/config.xml" expression="/resources/string[@name='sys_channel']/text()" output="channel"/>
+		<property name="out-sign-apk-dir" location="${out-dir}\feitionvideo_V${manifest.versionName}_${date}_${time}_${channel}_release.apk"/>
+        <exec executable="${jarsigner}">
+        	<!--jdk1.7需要添加此命令 start-->
+        	<arg value="-digestalg" />  
+	        <arg value="SHA1" />  
+	        <arg value="-sigalg" />  
+	        <arg value="MD5withRSA" />
+        	<!--jdk1.7需要添加此命令 end-->
+            <arg value="-keystore" />
+            <arg value="${key.store}" />
+            <arg value="-storepass" />
+	    	<arg value="${key.store.password}" />
+            <arg value="-keypass" />
+	    	<arg value="${key.alias.password}" />
+            <arg value="-signedjar" />
+            <arg value="${out-sign-apk-dir}" />
+            <arg value="${out-unsign-apk-dir}" />
+	    	<arg value="${key.alias}" />
+        </exec>
+		
+		<!-- 删除临时文件 -->
+		<delete file="${out-res-dir}" />
+		<delete file="${out-classes-dir}" />
+		<delete file="${out-unsign-apk-dir}" />
+		<echo>signing the unsigned apk to final product apk end... </echo>
+	</target>
+	
+	<target name="-package" depends="-replace, -aapt, -javac, -optimize, -dx, -package-res, -unsigner-apk, -signer-apk"/>
+	
+	<!-- 关于页面显示打包时间等信息  -->
+	<target name="debug-version-package">
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask" classpath="${xmltask-jar}"/>
+		<xmltask source="${basedir}/res/values/config.xml" dest="${basedir}/res/values/config.xml" encoding="utf-8">
+			<replace path="/resources/bool[@name='show_test_version']/text()" withText="true"/>
+		</xmltask>
+		<antcall target="-package"/>
+	</target>
+	
+	<!-- 关于页面不显示打包时间等信息  -->
+	<target name="release-version-package">
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask" classpath="${xmltask-jar}"/>
+		<xmltask source="${basedir}/res/values/config.xml" dest="${basedir}/res/values/config.xml" encoding="utf-8">
+			<replace path="/resources/bool[@name='show_test_version']/text()" withText="false"/>
+		</xmltask>
+		<antcall target="-package"/>
+	</target>
+	
+	<!-- 循环打渠道包 -->
+	<target name="channels-package">
+		<foreach
+            delimiter=","
+            list="${market_channels}"
+            param="channel"
+            target="modify_channel" >
+        </foreach>
+	</target>
+	
+	<!-- 修改渠道号 -->
+	<target name="modify_channel">
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask" classpath="${xmltask-jar}"/>
+		<xmltask source="${basedir}/res/values/config.xml" dest="${basedir}/res/values/config.xml" encoding="utf-8">
+			<replace path="/resources/string[@name='sys_channel']/text()" withText="${channel}"/>
+		</xmltask>
+		<antcall target="release-version-package"/>
+	</target>
+</project>

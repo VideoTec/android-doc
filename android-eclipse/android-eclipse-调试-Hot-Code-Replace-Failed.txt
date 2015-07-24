@@ -1,0 +1,19 @@
+eclipse 点调试按钮，运行app里，提示
+
+Hot Code Replace Failed
+
+Some code changes cannot be hot swapped into a running virtual machine, such as changing names or introducing errors into code.
+
+The current target virtual machine
+
+Reason:
+The target VM does not support hot code replace
+
+
+Continue / Disconnect
+
+
+http://stackoverflow.com/questions/2056628/hot-code-replace-failed-eclipse
+Possibly, you have a test which is still running (in debug mode). 
+Try finishing all tests (you can see them in the debug view: window->show view->debug) 
+and try again...

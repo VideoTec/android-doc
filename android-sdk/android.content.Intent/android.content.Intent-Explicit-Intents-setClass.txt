@@ -1,0 +1,23 @@
+public Intent setClass (Context packageContext, Class<?> cls)
+
+Added in API level 1
+Convenience for calling setComponent(ComponentName) with the name returned by a Class object.
+
+Parameters
+
+packageContext
+A Context of the application package implementing this class.
+
+cls
+The class name to set, equivalent to setClassName(context, cls.getName()).
+
+Returns
+Returns the same Intent object, for chaining multiple calls into a single statement.
+
+---------------------------
+例子
+---------------------------
+				Intent intent = new Intent();
+				intent.putExtra(PersonalPageActivity.EXTRA_USERID, Long.valueOf(v.getTag().toString()));
+				intent.setClass(BroadcastDetailActivity.this, PersonalPageActivity.class);
+				startActivity(intent);

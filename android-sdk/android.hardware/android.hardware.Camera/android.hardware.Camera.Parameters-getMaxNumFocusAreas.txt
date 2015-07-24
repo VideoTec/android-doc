@@ -1,0 +1,12 @@
+public int getMaxNumFocusAreas ()
+
+Added in API level 14
+
+Gets the maximum number of focus areas supported. 
+This is the maximum length of the list in setFocusAreas(List) and getFocusAreas().
+
+Returns
+the maximum number of focus areas supported by the camera.
+
+See Also
+getFocusAreas()

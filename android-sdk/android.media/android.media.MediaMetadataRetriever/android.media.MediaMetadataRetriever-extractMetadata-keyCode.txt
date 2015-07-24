@@ -1,0 +1,152 @@
+文档：
+retriever[英][rɪˈtri:və(r)] [美][rɪˈtrivɚ] 寻猎物犬
+
+public String extractMetadata (int keyCode)
+MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+try {
+  retriever.setDataSource(videoPath);
+  mVideo_duration = (Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION))) / 1000;
+  mVideoWidth = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
+  mVideoHeight = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
+
+} catch (IllegalArgumentException ex) {
+  // Assume this is a corrupt video file
+  ex.printStackTrace();
+} catch (RuntimeException ex) {
+  // Assume this is a corrupt video file.
+  ex.printStackTrace();
+} finally {
+try {
+  retriever.release();
+} catch (RuntimeException ex) {
+  ex.printStackTrace();
+}
+}
+
+    /*
+     * Do not change these metadata key values without updating their
+     * counterparts in include/media/mediametadataretriever.h!
+     */
+    /**
+     * The metadata key to retrieve the numeric string describing the
+     * order of the audio data source on its original recording.
+     */
+    public static final int METADATA_KEY_CD_TRACK_NUMBER = 0;
+    /**
+     * The metadata key to retrieve the information about the album title
+     * of the data source.
+     */
+    public static final int METADATA_KEY_ALBUM           = 1;
+    /**
+     * The metadata key to retrieve the information about the artist of
+     * the data source.
+     */
+    public static final int METADATA_KEY_ARTIST          = 2;
+    /**
+     * The metadata key to retrieve the information about the author of
+     * the data source.
+     */
+    public static final int METADATA_KEY_AUTHOR          = 3;
+    /**
+     * The metadata key to retrieve the information about the composer of
+     * the data source.
+     */
+    public static final int METADATA_KEY_COMPOSER        = 4;
+    /**
+     * The metadata key to retrieve the date when the data source was created
+     * or modified.
+     */
+    public static final int METADATA_KEY_DATE            = 5;
+    /**
+     * The metadata key to retrieve the content type or genre of the data
+     * source.
+     */
+    public static final int METADATA_KEY_GENRE           = 6;
+    /**
+     * The metadata key to retrieve the data source title.
+     */
+    public static final int METADATA_KEY_TITLE           = 7;
+    /**
+     * The metadata key to retrieve the year when the data source was created
+     * or modified.
+     */
+    public static final int METADATA_KEY_YEAR            = 8;
+    /**
+     * The metadata key to retrieve the playback duration of the data source.
+     */
+    public static final int METADATA_KEY_DURATION        = 9;
+    /**
+     * The metadata key to retrieve the number of tracks, such as audio, video,
+     * text, in the data source, such as a mp4 or 3gpp file.
+     */
+    public static final int METADATA_KEY_NUM_TRACKS      = 10;
+    /**
+     * The metadata key to retrieve the information of the writer (such as
+     * lyricist) of the data source.
+     */
+    public static final int METADATA_KEY_WRITER          = 11;
+    /**
+     * The metadata key to retrieve the mime type of the data source. Some
+     * example mime types include: "video/mp4", "audio/mp4", "audio/amr-wb",
+     * etc.
+     */
+    public static final int METADATA_KEY_MIMETYPE        = 12;
+    /**
+     * The metadata key to retrieve the information about the performers or
+     * artist associated with the data source.
+     */
+    public static final int METADATA_KEY_ALBUMARTIST     = 13;
+    /**
+     * The metadata key to retrieve the numberic string that describes which
+     * part of a set the audio data source comes from.
+     */
+    public static final int METADATA_KEY_DISC_NUMBER     = 14;
+    /**
+     * The metadata key to retrieve the music album compilation status.
+     */
+    public static final int METADATA_KEY_COMPILATION     = 15;
+    /**
+     * If this key exists the media contains audio content.
+     */
+    public static final int METADATA_KEY_HAS_AUDIO       = 16;
+    /**
+     * If this key exists the media contains video content.
+     */
+    public static final int METADATA_KEY_HAS_VIDEO       = 17;
+    /**
+     * If the media contains video, this key retrieves its width.
+     */
+    public static final int METADATA_KEY_VIDEO_WIDTH     = 18;
+    /**
+     * If the media contains video, this key retrieves its height.
+     */
+    public static final int METADATA_KEY_VIDEO_HEIGHT    = 19;
+    /**
+     * This key retrieves the average bitrate (in bits/sec), if available.
+     */
+    public static final int METADATA_KEY_BITRATE         = 20;
+    /**
+     * This key retrieves the language code of text tracks, if available.
+     * If multiple text tracks present, the return value will look like:
+     * "eng:chi"
+     * @hide
+     */
+    public static final int METADATA_KEY_TIMED_TEXT_LANGUAGES      = 21;
+    /**
+     * If this key exists the media is drm-protected.
+     * @hide
+     */
+    public static final int METADATA_KEY_IS_DRM          = 22;
+    /**
+     * This key retrieves the location information, if available.
+     * The location should be specified according to ISO-6709 standard, under
+     * a mp4/3gp box "@xyz". Location with longitude of -90 degrees and latitude
+     * of 180 degrees will be retrieved as "-90.0000+180.0000", for instance.
+     */
+    public static final int METADATA_KEY_LOCATION        = 23;
+    /**
+     * This key retrieves the video rotation angle in degrees, if available.
+     * The video rotation angle may be 0, 90, 180, or 270 degrees.
+     */
+    public static final int METADATA_KEY_VIDEO_ROTATION = 24;
+    // Add more here...

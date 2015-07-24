@@ -1,0 +1,37 @@
+Architecture	Bitwidth	Cores designed by ARM Holdings		Cores designed by third parties				Cortex profile		References	
+ARMv1			32/26		ARM1				
+ARMv2			32/26		ARM2,ARM3							Amber, STORM Open Soft Core[27]			
+ARMv3			32/26		ARM6,ARM7				
+ARMv4			32/26		ARM8								StrongARM, FA526			
+ARMv4T			32			ARM7TDMI,ARM9TDMI				
+ARMv5			32			ARM7EJ,ARM9E,ARM10E					XScale, FA626TE, Feroceon, PJ1/Mohawk			
+
+ARMv6			32			ARM11				
+ARMv6-M			32			ARM Cortex-M0,ARM Cortex-M0+,ARM Cortex-M1										Microcontroller		
+
+ARMv7-M			32			ARM Cortex-M3																	Microcontroller		
+ARMv7E-M		32			ARM Cortex-M4,ARM Cortex-M7														Microcontroller		
+ARMv7-R			32			ARM Cortex-R4,ARM Cortex-R5,ARM Cortex-R7										Real-time		
+
+ARMv7-A			32			ARM Cortex-A5,ARM Cortex-A7,ARM Cortex-A8,ARM Cortex-A9,ARM Cortex-A12,ARM Cortex-A15,ARM Cortex-A17	
+																Krait,Scorpion, PJ4/Sheeva, AppleA6/A6X		Application		
+
+ARMv8-A			64/32		ARM Cortex-A53,ARM Cortex-A57,ARM Cortex-A72	
+																X-Gene,Nvidia Project Denver,AMD K12, AppleA7/A8,CaviumThunder X[30][31][32]	
+																											Application	[33][34]	
+
+ARMv8.1-A		64/32		No announcements yet															Application		
+ARMv8-R			32			No announcements yet															Real-time	[35][36]	
+
+从1995年开始，《ARM体系结构参考手册》是ARM文档的主要来源，
+提供了关于ARM处理器
+架构和
+指令集，
+区分接口，
+所有的ARM处理器的支持（如指令语义）的实现细节可能会有所不同。
+该体系结构随着时间的演变，并与Cortex系列的核心开始，存在三个“配置”的定义如下：
+
+"应用"配置: Cortex-A 系列
+"嵌入式"配置: Cortex-R 系列
+"微处理器"配置: Cortex-M 系列.
+每个配置允许有其子集的架构。例如，用于ARMv6-M配置（所使用的Cortex M0 / M0+/ M1）的一个子集ARMv7-M架构（支持较少的指令）

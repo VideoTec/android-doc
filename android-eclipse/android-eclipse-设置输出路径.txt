@@ -1,0 +1,9 @@
+新的输出路径 - 只能在当前工程所在目录下修改。
+
+First Create a new source folder call it something like res, 
+you can use this folder to store your data files. 
+
+Next open the Java Build Path section of the project properties (from the context menu of the project). 
+Select the Source tab. 
+In this tab you can control the output folders of each of the source folders. 
+By default eclipse copies all the non-java files int the source folder to output directory during the build.

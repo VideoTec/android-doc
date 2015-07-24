@@ -1,0 +1,17 @@
+android.mk 指定 LOCAL_ARM_MODE := arm 默认是 thumb 模式
+
+ARM target binaries are generated in 'thumb' mode, where each instruction are 16-bit wide, and linked with /thumb STL libraries
+You can define this variable to 'arm' if you want to force the generation of the module's object files in 'arm' (32-bit instructions) mode
+
+32 位ARM 指令、
+16 位Thumb 指令、
+16/32 位Thumb-2 混合指令
+
+Thumb指令可以看做是ARM指令压缩形式的子集，是针对代码密度的问题而提出的，它具有16为的代码密度。
+Thumb不是一个完整的体系结构，不能指望处理程序只执行Thumb指令而不支持ARM指令集。
+因此，Thumb指令只需要支持通用功能，必要时，可借助完善的ARM指令集，例如：所有异常自动进入ARM状态
+
+gcc compile flag
+Select between generating code that executes in ARM and Thumb states
+-mthumb
+-marm

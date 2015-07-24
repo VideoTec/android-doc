@@ -1,0 +1,8 @@
+ctrl - f
+
+选中 Regular expressions 选项。
+
+在 Find 框中，输入 \t
+
+16:45 2015/7/14 没有 Regular expressions 选项
+原因是，搜索对话框太小了，拉大些，就看到了

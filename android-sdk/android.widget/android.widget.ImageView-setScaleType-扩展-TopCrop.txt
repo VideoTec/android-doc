@@ -1,0 +1,3 @@
+http://blog.csdn.net/zjmdp/article/details/7707287
+http://stackoverflow.com/questions/6330084/imageview-scaling-top-crop
+https://gist.github.com/arriolac/3843346

@@ -1,0 +1,36 @@
+http://developer.android.com/reference/android/media/AudioRecord.html
+
+构造函数的异常处理和验证工作。
+Class constructor. Though some invalid parameters will result in an IllegalArgumentException exception, other errors do not. Thus you should call getState() immediately after construction to confirm that the object is usable.
+
+首先来看看 AudioRecord 的构造函数：
+public AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
+
+第一个参数是音源，
+可以是从MicroPhone( MediaRecorder.AudioSource.MIC),也
+可以是通话的话音
+( 
+MediaRecorder.AudioSource.VOICE_CALL,
+MediaRecorder.AudioSource.VOICE_DOWNLINK即对方声音，
+MediaRecorder.AudioSource.VOICE_UPLINK即本方声音 
+)
+第一参数指定录制电话通话时，有的手机可以，有的手机不行。
+不行的原因是因为平台没有实现这个功能。
+我试过 Nexus-s不行，HTC Desire HD 可以，和“通话录音CallRecorder_1.29.apk”这个程序的测试结果一致。
+
+第二个参数是期望录音的采样频率，比如8000，16000，44100等
+44100 is the only sample rate guaranteed to be supported on all devices.
+
+第三个参数是期望录音的声道数，可以是AudioFormat.CHANNEL_IN_MONO 和 AudioFormat.CHANNEL_STEREO.
+
+第四个参数是期望录音的比特数，可以是AudioFormat.ENCODING_PCM_16BIT和AudioFormat.ENCODING_PCM_8BIT.
+
+第五个参数是期望录音时系统为其提供的缓冲区大小，
+必须大于使用AudioRecord.getMinBufferSize() 得出的大小，
+这个参数指定的数值愈大，可以有更长的缓冲时间，
+也就是可以间隔较长的时间调用 AudioRecord.read 函数从底层取得数据也不会溢出。
+
+
+startRecording()之后就可以不断调用 read函数取得声音数据。这个函数是阻塞试的，下层没有足够的数据会停在它里面。
+
+一般来说，在一个独立线程里处理录音的数据采集比较好

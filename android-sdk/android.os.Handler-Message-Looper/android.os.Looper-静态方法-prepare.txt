@@ -1,0 +1,9 @@
+    private static void prepare(boolean quitAllowed) {
+        if (sThreadLocal.get() != null) {
+            throw new RuntimeException("Only one Looper may be created per thread");
+        }
+        sThreadLocal.set(new Looper(quitAllowed));
+    }
+    
+   其中 sThreadLocal 定义
+   static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();

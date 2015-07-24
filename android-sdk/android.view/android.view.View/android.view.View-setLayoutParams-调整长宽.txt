@@ -1,0 +1,5 @@
+第一种方法：
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.height = mVideoHeight;
+        p.width = mVideoWidth;
+        mSurfaceview.setLayoutParams(p);

@@ -1,0 +1,75 @@
+c++ 的标准库情况
+
+To select the runtime you want to use, define APP_STL inside your Application.mk to one of the following values
+system          -> Use the default minimal system C++ runtime library.  默认选项
+gabi++_static   -> Use the GAbi++ runtime as a static library.
+gabi++_shared   -> Use the GAbi++ runtime as a shared library.
+stlport_static  -> Use the STLport runtime as a static library.
+stlport_shared  -> Use the STLport runtime as a shared library.
+gnustl_static   -> Use the GNU STL as a static library.
+gnustl_shared   -> Use the GNU STL as a shared library.
+c++_static      -> Use the LLVM libc++ as a static library.
+c++_shared      -> Use the LLVM libc++ as a shared library.
+
+示例，下面两个设置
+android.mk LOCAL_CPPFLAGS := -std=gnu++11 这是什么意思？
+application.mk APP_STL := gnustl_static
+
+-std=gnu++11 这是什么意思？ 参考：
+http://stackoverflow.com/questions/10613126/what-are-the-differences-between-std-c11-and-std-gnu11
+What are the differences between -std=c++11 and -std=gnu++11?
+
+If you are not using the NDK build system, you can still use STLport, libc++ or GNU STL via "make-standalone-toolchain.sh --stl=".
+
+ C++       C++   Standard
+              Exceptions  RTTI    Library
+
+    system        no       no        no
+    gabi++       yes      yes        no
+    stlport      yes      yes       yes
+    gnustl       yes      yes       yes
+    libc++       yes      yes       yes
+
+---------------------------------------------
+需要按 “顺序” 加载动态运行时库 及 动态库
+---------------------------------------------
+You will need to load the libraries in reverse dependency order, as in:
+static {
+      System.loadLibrary("stlport_shared");
+      System.loadLibrary("bar");
+      System.loadLibrary("foo");
+    }
+
+
+---------------------------------------------
+链接 静态运行时库的问题
+---------------------------------------------
+In other words, if your project requires several shared library modules, 
+then use the shared library variant of your C++ runtime
+
+APP需要链接多个动态库，这些动态库都应该链接，动态运行时库
+否则会出现下的情况：
+memory allocated in one library, and freed in the other would leak or even corrupt the heap.
+exceptions raised in libfoo.so cannot be caught in libbar.so (and may simply crash the program).
+the buffering of std::cout not working properly
+关于这个问题，另参考
+http://programmers.stackexchange.com/questions/262195/whats-wrong-with-statically-linking-the-stl-into-multiple-shared-libraries
+Let's think about this very carefully. libA.so is statically linked with the STL. However, the STL does not exist in isolation, it requires the C runtime (CRT). They both reside in the libstdc++.a static library. This means that libA.so and libB.so have separate CRT data structures. In particular, the heap used by libA.so is different from the heap used by libB.so. Allocating a string from libA's runtime heap and attempting to free from libB's runtime will simply not work because libB's runtime has no records of allocating the string. The only way to correctly destruct the string is by calling the destructor within libA.so.
+
+One might ask: but libB.so receives a copy of the string, right? Yes that's right but who has allocated this copy? It has been allocated using the copy constructor within the context of the libA's runtime.
+
+That said, you can still use the string from libB.so. You just cannot destruct it from there.
+
+You can also let libB receive a pointer to the string and then creating a copy of it within the context of the libB's runtime. That copy can be destructed by libB.
+
+And that's why static linking is sometimes bad.
+
+---------------------------------------------
+链接 静态运行时还是动态运行 的编译选项 和 链接选项
+---------------------------------------------
+gcc 在编译时不需要特别 option
+gcc 在链接时 指定 -static 选项就会链接到静态运行时
+
+-static
+On systems that support dynamic linking, 
+this prevents linking with the shared libraries. On other systems, this option has no effect.

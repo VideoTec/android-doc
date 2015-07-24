@@ -1,0 +1,28 @@
+--------------------------------------------------------------------------------
+public int read (short[] audioData, int offsetInShorts, int sizeInShorts)
+--------------------------------------------------------------------------------
+
+Added in API level 3
+Reads audio data from the audio hardware for recording into a buffer.
+
+Parameters
+audioData	the array to which the recorded audio data is written.
+offsetInShorts	index in audioData from which the data is written expressed in shorts.
+sizeInShorts	the number of requested shorts.
+Returns
+the number of shorts that were read or or ERROR_INVALID_OPERATION if the object wasn't properly initialized, or ERROR_BAD_VALUE if the parameters don't resolve to valid data and indexes. The number of shorts will not exceed sizeInShorts.
+
+明确第一点：
+AudioRecord 录制出的PCM数据是：it's in little endian order
+明确第二点：
+java 的 short 等等类型的字节序：
+JAVA编写的程序则唯一采用big endian方式来存储数据
+
+http://stackoverflow.com/questions/18393947/how-exactly-does-the-audiorecord-class-work
+The underlying native code always uses the byte version. 
+The short version is simply a wrapper around the byte version. 会把小端，转成，大端
+So yes, a pair of bytes will be used for each sample in this case.
+As for the endianness; it would be little-endian on the vast majority of Android devices out there.
+
+最终的结论：
+The short version read，会把小端的 short 转成大端 short。

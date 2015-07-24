@@ -1,0 +1,12 @@
+File->Settings->Editor->General->in Appearance->toggle Show whitespaces on
+
+carriage return[英][ˈkæridʒ riˈtə:n] [美][ˈkærɪdʒ rɪˈtɚn] 回车
+
+这里有三个选项，但是没有 
+carriage return       \r
+line feed             \n
+
+
+how to show Line Separators
+修改和查看文件的行结束符
+View the Status bar: the current line endings style is denoted by the dedicated icon with the specified style,

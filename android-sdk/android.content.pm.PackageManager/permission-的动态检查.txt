@@ -1,0 +1,16 @@
+http://www.cnblogs.com/gnagwang/archive/2011/03/21/1990507.html
+
+这里的动态检查是指是 package 在程序运行过程中进行某些操作或者数据访问时才进行的 check ，
+与之对应的是应用程序安装或者升级时 PackageManagerService 通过扫描包中的静态权限信息相对应。
+
+系统与权限 检查 相关的机制的实现主要集中在 PackageManagerService 和 ActivityManagerService 中。 
+ActivityManagerService 主要负责的是底层的 uid 层次的身份检查； 
+PackageManagerService 则维护了 uid 到自己拥有的和被授予的权限的一张表。
+在通过 ActivityManagerService 的身份检查后， 
+PackageManagerService 根据请求者的 uid 来查看这张表，判断其是否具有相应的权限。
+
+除此之外， 
+per-URI permission 机制的实现也需要一张表，
+它维护在 ActivityManagerService 中，它建立了
+从 content URI 到被授权访问这个 URI 的 component 之间的映射。
+但是它也需要借助 PackageManagerService 的机制来辅助实现

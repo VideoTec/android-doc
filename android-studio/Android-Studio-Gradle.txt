@@ -1,0 +1,10 @@
+参考
+http://www.jcodecraeer.com/a/anzhuokaifa/Android_Studio/2015/0126/2361.html
+
+Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含
+application module（com.android.application），与
+library module（com.android.library）两种module。
+
+在Gradle 的project 中需要使用，基本上全都使用.gradle 文件来配置，
+是一个脚本化的工程构建，而非原先ADT中那种eclipse 的可视化构建。
+gradle的依赖管理能力极其强大，几乎所有的开源项目都可以简单的通过一条compile指令完成依赖的配置。

@@ -1,0 +1,18 @@
+22:37 2015/5/14
+从 OpenslTest Eclipse 工程里直接复制过来的图片，出现在下面的错误
+
+"cannot resolve symbol drawable mipmap"
+
+android:src="@drawable/btn_local_video"
+
+需要改为
+
+android:src="@mipmap/btn_local_video"
+
+造成这个问题的根源是， android studio 默认生成的工程的res目录下是
+mipmap-hdpi
+
+应该创建 drawable-hdpi 再复制进来
+
+参考：
+http://stackoverflow.com/questions/28065267/mipmap-vs-drawable-folders

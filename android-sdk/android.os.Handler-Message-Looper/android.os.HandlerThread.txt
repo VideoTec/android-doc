@@ -1,0 +1,38 @@
+
+java.lang.Object
+   ↳	java.lang.Thread
+ 	   ↳	android.os.HandlerThread
+
+Handy class for starting a new thread that has a looper. 
+The looper can then be used to create handler classes. Note that start() must still be called.
+
+handy[英][ˈhændi] [美][ˈhændi] adj.方便的；手边的，附近的；便于使用的；手巧的
+still[英][stɪl] [美][stɪl] adv.仍，仍然；更，还要；静静地；〈诗〉常，不断地
+
+-----------------------------------
+用法示例：
+-----------------------------------
+http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/5.1.0_r1/com/android/camera/CameraHolder.java?av=f
+
+HandlerThread ht = new HandlerThread("CameraHolder");
+ht.start();
+mHandler = new MyHandler(ht.getLooper());
+
+-----------------------------------
+参考 android.os.Looper
+-----------------------------------
+  class LooperThread extends Thread {
+      public Handler mHandler;
+
+      public void run() {
+          Looper.prepare();
+
+          mHandler = new Handler() {
+              public void handleMessage(Message msg) {
+                  // process incoming messages here
+              }
+          };
+
+          Looper.loop();
+      }
+  }

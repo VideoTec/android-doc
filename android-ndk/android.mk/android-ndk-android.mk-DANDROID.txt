@@ -1,0 +1,5 @@
+E:/android/ndk/toolchains/arm-linux-androideabi-4.8/prebuilt/windows-x86_64/bin/arm-linux-androideabi-gcc -MMD -MP -MF ./obj/local/armeabi-v7a/objs/helloworld/jni_entry.o.d -fpic -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=softfp -mthumb -Os -g -DNDEBUG -fomit-frame-pointer -fno-strict-aliasing -finline-limit=64 -Ijni/include/ -IE:/android/ndk/sources/cxx-stl/system/include -Ijni -DANDROID -std=c99 -D__STDC_CONSTANT_MACROS -Wl,--no-undefined -Wa,--noexecstack -Wformat -Werror=format-security -std=c99   -IE:/android/ndk/platforms/android-14/arch-arm/usr/include -c jni/jni_entry.c-o./obj/local/armeabi-v7a/objs/helloworld/jni_entry.o
+
+[armeabi-v7a] Compile++ thumb: helloworld <= opengl_es.cpp
+
+注意宏： -DANDROID

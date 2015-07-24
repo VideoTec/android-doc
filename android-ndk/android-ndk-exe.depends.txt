@@ -1,0 +1,6 @@
+C:\Users\wangxiangfx>E:\android\ndk\ndk-depends.exe D:\fvideo\Android\feinnovideo\OpenSLTest\libs\armeabi\libopensl.so
+libopensl.so
+liblog.so
+libdl.so
+libc.so
+libOpenSLES.so

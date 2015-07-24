@@ -1,0 +1,21 @@
+Android ships with a debugging tool called the Dalvik Debug Monitor Server (DDMS), 
+which provides 
+port-forwarding services, 
+screen capture on the device, 
+thread and heap information on the device, 
+logcat, process, and radio state information, incoming call and SMS spoofing, 
+location data spoofing, and more. 
+
+This page provides a modest discussion of DDMS features; 
+it is not an exhaustive exploration of all the features and capabilities.
+
+From the command line: Type ddms (or ./ddms on Mac/Linux) from the tools/ directory
+
+双击批处理器打开
+
+E:\android\adt\sdk\tools\ddms.bat 
+出现下面提示
+The standalone version of DDMS is deprecated.
+Please use Android Device Monitor (monitor.bat) instead.
+
+E:\android\adt\sdk\tools\monitor.bat

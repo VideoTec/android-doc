@@ -1,0 +1,5 @@
+http://developer.android.com/reference/android/support/v4/app/FragmentManager.html
+
+Static library support version of the framework's FragmentManager. Used to write apps that run on platforms prior to Android 3.0. When running on Android 3.0 or above, this implementation is still used; it does not try to switch to the framework's implementation. See the framework FragmentManager documentation for a class overview.
+
+Your activity must derive from FragmentActivity to use this. From such an activity, you can acquire the FragmentManager by calling getSupportFragmentManager().

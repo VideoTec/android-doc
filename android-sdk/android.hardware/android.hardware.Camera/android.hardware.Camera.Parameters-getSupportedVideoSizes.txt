@@ -1,0 +1,36 @@
+public List<Camera.Size> getSupportedVideoSizes ()
+
+Added in API level 11
+Gets the supported video frame sizes that can be used by MediaRecorder.
+
+If the returned list is not null, 
+the returned list will contain at least one Size and one of the sizes in the returned list must be passed to MediaRecorder.setVideoSize() for camcorder application if camera is used as the video source. 
+
+In this case, the size of the preview can be different from the resolution of the recorded video during video recording.
+
+Returns
+a list of Size object if camera has separate preview and video output; 
+otherwise, null is returned.
+
+See Also
+getPreferredPreviewSizeForVideo()
+
+GT-I9308 前置摄像头的 supported video sizes 列表
+1280x720 = 1.777777777777778  16:9
+960x720  = 1.333333333333333  4:3
+720x480  = 1.5                3:2
+640x480  = 1.333333333333333  4:3
+352x288  = 1.222222222222222  11:9
+320x320 - 独有
+320x240  = 1.333333333333333  4:3
+176x144  = 1.222222222222222  11:9
+
+GT-I9308 后置摄像头的 supported video sizes 列表
+1280x720
+1920x1080 - 独有 = 1.777777777777778
+960x720
+720x480
+640x480
+352x288
+320x240
+176x144

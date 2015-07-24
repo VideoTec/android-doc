@@ -1,0 +1,40 @@
+http://developer.android.com/reference/android/content/pm/PackageManager.html#getSystemAvailableFeatures()
+
+public abstract FeatureInfo[] getSystemAvailableFeatures ()
+
+Added in API level 5
+Get a list of features that are available on the system.
+
+Returns
+An array of FeatureInfo classes describing the features that are available on the system, or null if there are none(!!).
+
+Android定义了功能标识(feature IDs). 
+每个功能Android平台都定义了一个相应的功能编号(feature ID). 
+例如, 
+罗盘           的feature ID"android.hardware.sensor.compass"，而
+Live Wallpapers的feature ID"android.software.live_wallpapers".
+
+这些ID也有一个相应的Java-语言的常数, 可以在运行时使查询是否支持这些功能
+
+---------------------------------------------
+android.content.pm.FeatureInfo
+---------------------------------------------
+A single feature that can be requested by an application. 
+This corresponds to information collected from the AndroidManifest.xml's tag.
+
+---------------------------------------------
+应用示例
+---------------------------------------------
+private boolean isSupportCameraLight(){
+		
+		PackageManager pm = getPackageManager();
+		FeatureInfo[]  features = pm.getSystemAvailableFeatures();
+		if(features != null){
+			for(FeatureInfo f : features){
+				 if(PackageManager.FEATURE_CAMERA_FLASH.equals(f.name)){
+					 return true;
+				 }
+			}
+		}
+		return false;
+	}

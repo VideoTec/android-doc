@@ -1,0 +1,25 @@
+继承关系
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.ViewGroup.MarginLayoutParams
+
+定义
+Per-child layout information for layouts that support margins.
+
+android:layout_marginBottom    setMargins(int,int,int,int)    
+Specifies extra space on the bottom side of this view. 
+
+android:layout_marginEnd       setMarginEnd(int)              
+Specifies extra space on the end side of this view. 
+
+android:layout_marginLeft      setMargins(int,int,int,int)    
+Specifies extra space on the left side of this view. 
+
+android:layout_marginRight     setMargins(int,int,int,int)    
+Specifies extra space on the right side of this view. 
+
+android:layout_marginStart     setMarginStart(int)            
+Specifies extra space on the start side of this view. 
+
+android:layout_marginTop       setMargins(int,int,int,int)    
+Specifies extra space on the top side of this view. 

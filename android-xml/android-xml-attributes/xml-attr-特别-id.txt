@@ -1,0 +1,21 @@
+每个 控件 都有一个 id
+
+android:id
+
+Supply an identifier name for this view, to later retrieve it with View.findViewById() or Activity.findViewById().
+ 
+This must be a resource reference; 
+typically you set this using the @+ syntax to create a new ID resources. 
+
+For example: 
+android:id="@+id/my_id" 
+which allows you to later retrieve the view with findViewById(R.id.my_id).
+
+Must be a reference to another resource, 
+in the form "@[+][package:]type:name" or 
+to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol id. 关联到 全局的资源 ID，即，R.id.
+
+Related Methods
+setId(int)

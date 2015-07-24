@@ -1,0 +1,3 @@
+.so 文件应该放到 jniLibs 目录下
+
+MyApplication\app\src\main\jniLibs

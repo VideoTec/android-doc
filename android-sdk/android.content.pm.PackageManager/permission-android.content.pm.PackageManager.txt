@@ -1,0 +1,56 @@
+http://developer.android.com/reference/android/content/pm/PackageManager.html
+android.content.pm.PackageManager
+
+permission[英][pəˈmɪʃn] [美][pərˈmɪʃn] n.允许；批准，正式认可，认可
+denied[英][dɪ'naɪəd] [美][dɪ'naɪəd] adj.拒签
+granted[英][ˈgrɑ:ntɪd] [美][ˈgræntɪd] v.（退一步）承认( grant的过去式和过去分词 )；（尤指正式地或法律上）同意；准许；让渡
+
+--------------------------
+相关常量
+--------------------------
+GET_PERMISSIONS
+PackageInfo flag: return information about permissions in the package in permissions.
+
+PERMISSION_DENIED
+Permission check result: 
+this is returned by checkPermission(String, String) 
+if the permission has not been granted to the given package.
+
+PERMISSION_GRANTED
+Permission check result: 
+this is returned by checkPermission(String, String) 
+if the permission has been granted to the given package.
+
+--------------------------
+相关函数
+--------------------------
+如果你有另一个应用程序的包名，可以对该包名对应进程进行检查，
+来确定该包是否已经拥有了相应的权限 
+int	checkPermission(String permName, String pkgName)
+Check whether a particular package has been granted a particular permission.
+注意： pkgName = context.getPackageName()
+       permName = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+abstract boolean	addPermission(PermissionInfo info)
+Add a new dynamic permission to the system.
+
+abstract void	removePermission(String name)
+Removes a permission that was previously added with addPermission(PermissionInfo).
+
+abstract boolean	addPermissionAsync(PermissionInfo info)
+Like addPermission(PermissionInfo) but asynchronously persists the package manager state after returning from the call, allowing it to return quicker and batch a series of adds at the expense of no guarantee the added permission will be retained if the device is rebooted before it is written.
+
+abstract List<PermissionGroupInfo>	getAllPermissionGroups(int flags)
+Retrieve all of the known permission groups in the system.
+
+abstract List<PackageInfo>	getPackagesHoldingPermissions(String[] permissions, int flags)
+Return a List of all installed packages that are currently holding any of the given permissions.
+
+abstract PermissionGroupInfo	getPermissionGroupInfo(String name, int flags)
+Retrieve all of the information we know about a particular group of permissions.
+
+abstract PermissionInfo	getPermissionInfo(String name, int flags)
+Retrieve all of the information we know about a particular permission.
+
+abstract List<PermissionInfo>	queryPermissionsByGroup(String group, int flags)
+Query for all of the permissions associated with a particular group.

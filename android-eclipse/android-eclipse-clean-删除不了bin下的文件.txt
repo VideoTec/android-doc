@@ -1,0 +1,20 @@
+10:30 2015/5/13
+
+clean 工程时出现下面的错误
+
+Errors occurred during the build.
+Errors running builder 'Android Package Builder' on project 'sea-monster-video'.
+Problems encountered while deleting resources.
+Could not delete 'D:\03Android\sea-monster-video\bin\sea-monster-video.jar'.
+Problems encountered while deleting files.
+Could not delete: D:\03Android\sea-monster-video\bin\sea-monster-video.jar.
+Problems encountered while deleting resources.
+Could not delete 'D:\03Android\sea-monster-video\bin\sea-monster-video.jar'.
+Problems encountered while deleting files.
+Could not delete: D:\03Android\sea-monster-video\bin\sea-monster-video.jar.
+
+从文件里删除，也删除不了，提示有应用占用着
+D:\03Android\sea-monster-video\bin\sea-monster-video.jar
+使用 process explorer 查看是那个进程在占用这个文件：
+正在 被 javaw 占用着， 为什么被占用？
+利用 process explorer 关闭这个文件句柄。

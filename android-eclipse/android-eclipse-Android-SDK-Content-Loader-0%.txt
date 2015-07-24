@@ -1,0 +1,44 @@
+eclipse 工程打开后-出现许多错误 发现下面的进度不走，总是零
+Android SDK Content Loader 进度为零
+关闭 eclipse 中止 javaw.exe 进程  
+启动 eclipse
+
+中止 javaw.exe 进程 还可解决因 Android SDK Content Loader 关闭不了eclipse的情况
+
+16:25 2015/4/23
+方法三是有效的
+http://stackoverflow.com/questions/13489141/eclipse-hangs-at-the-android-sdk-content-loader
+Delete the folder cache which is located inside .android folder
+Delete the file ddms.cfg which is located inside .android folder
+
+
+参考
+http://jingyan.baidu.com/article/8cdccae99a6d4b315413cd97.html
+方法一（关闭后重启）：
+    遇到Eclipse右下角一直显示“Android sdk content loader 0%”的情况时，直接关掉Eclipse，
+	有ADB进程在运行时通过进程管理器结束进程，然后重启Eclipse。
+	通过这种方法多数情况下问题会得到解决。
+2
+方法二（关闭后，拔网线再重启）：
+    如果用最省事的方法一不能解决问题时，拔掉网线后再重启Eclipse看看。有时候也能够得到解决。
+3
+方法三（删掉.android）：
+    关闭Eclipse，删掉C:\Users\用户名\.android文件夹下的所有内容，再重启Eclipse。
+
+Open %USERPROFILE%/ on Windows or simply ~ on Linux/OS X (You can locate this folder from the Desktop)
+Go to .android folder (This may be a hidden folder)
+Delete the folder cache which is located inside .android folder
+Delete the file ddms.cfg which is located inside .android folder
+
+4
+方法四（删掉Work Space下的.metadata\.plugins\org.eclipse.core.resources\.projects）：
+    关闭Eclipse，删掉Eclipse WorkSpace下.metadata\.plugins\org.eclipse.core.resources\.projects文件夹下的所有内容，再重启Eclipse。
+	
+参考
+http://stackoverflow.com/questions/15056987/android-sdk-content-loader-at-0-and-nothing-works
+http://stackoverflow.com/questions/13489141/eclipse-hangs-at-the-android-sdk-content-loader
+
+通过查看 .metadata\.log 得到下面信息 这段信息没有意义
+!ENTRY org.eclipse.osgi 2 0 2015-04-23 15:50:45.790
+!MESSAGE While loading class "com.android.ide.eclipse.adt.internal.sdk.Sdk$3$1", thread "Thread[Worker-6,5,main]" timed out waiting (5007ms) for thread "Thread[Worker-1,5,main]" to finish starting bundle "com.android.ide.eclipse.adt_23.0.2.1259578 [2]". To avoid deadlock, thread "Thread[Worker-6,5,main]" is proceeding but "com.android.ide.eclipse.adt.internal.sdk.Sdk$3$1" may not be fully initialized.
+!STACK 0

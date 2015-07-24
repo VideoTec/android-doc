@@ -1,0 +1,111 @@
+http://blog.csdn.net/universus/article/details/6211589
+源文件列表：
+/frameworks/native/cmds/servicemanager/ servicemanager
+LOCAL_SRC_FILES := service_manager.c binder.c
+
+/frameworks/native/libs/binder/ libbinder
+sources := \
+    AppOpsManager.cpp \
+    Binder.cpp \
+    BpBinder.cpp \
+    BufferedTextOutput.cpp \
+    Debug.cpp \
+    IAppOpsCallback.cpp \
+    IAppOpsService.cpp \
+    IBatteryStats.cpp \
+    IInterface.cpp \
+    IMemory.cpp \
+    IPCThreadState.cpp \
+    IPermissionController.cpp \
+    IServiceManager.cpp \
+    MemoryDealer.cpp \
+    MemoryBase.cpp \
+    MemoryHeapBase.cpp \
+    Parcel.cpp \
+    PermissionCache.cpp \
+    ProcessState.cpp \
+    Static.cpp \
+    TextOutput.cpp \
+
+Android系统中，为了向应用开发者提供丰富多样的功能，这种通信方式更是无处不在，诸如
+媒体播放，
+视音频频捕获，
+到各种让手机更智能的传感器（加速度，方位，温度，光亮度等）
+由不同的Server负责管理，
+应用程序只需做为Client与这些Server建立连接便可以使用这些服务
+
+首先传统IPC的接收方无法获得对方进程可靠的UID/PID（用户ID/进程ID），从而无法鉴别对方身份
+Android为每个安装好的应用程序分配了自己的UID，故进程的UID是鉴别进程身份的重要标志
+身份标记只有由IPC机制本身在内核中添加
+
+传统IPC访问接入点是开放的，无法建立私有通道。
+比如命名管道的名称，
+system V的键值，
+socket的ip地址或文件名都是开放的，
+只要知道这些接入点的程序都可以和对端建立连接，
+不管怎样都无法阻止恶意程序通过猜测接收方地址获得连接
+
+Binder基于Client-Server通信模式，
+传输过程只需一次拷贝，
+为发送发添加UID/PID身份，
+既支持实名Binder也支持匿名Binder，安全性高
+
+Binder 对象：
+应用程序中的Binder实体 - 服务器端
+内核中的Binder实体
+内核中的Binder引用
+应用程序中的Binder引用 - 客户端
+
+binder-communicate.gif Binder通信示例图
+
+Binder协议基本格式是（命令+数据），
+使用ioctl(fd, cmd, arg)函数实现交互。
+命令由参数cmd承载，数据由参数arg承载，随cmd不同而不同
+
+Client通过Binder的引用访问Server
+在Client看来:
+通过Binder‘指针’调用其提供的方法和通过指针调用其它任何本地对象的方法并无区别
+
+Binder对象是一个可以跨进程引用的对象，
+它的实体位于一个进程中，
+而它的引用却遍布于系统的各个进程之中
+
+Server Binder的‘代理’
+Binder驱动为面向对象的进程间通信提供底层支持
+Binder驱动的代码位于linux目录的drivers/misc/binder.c中
+Binder驱动负责
+1. 进程之间Binder通信的建立，
+2. Binder在进程之间的传递， 
+   Client就可以通过名字获得该Binder的引用了
+   Client也利用保留的0号引用向SMgr请求访问某个Binder
+3. Binder引用计数管理，
+4. 数据包在进程之间的传递和交互
+5. Binder驱动创建SMgr的Binder实体
+驱动和应用程序之间定义了一套接口协议，主要功能由ioctl()接口实现
+
+SMgr的作用是将字符形式的Binder名字转化成Client中对该Binder的引用
+注册了名字的Binder叫实名Binder
+
+匿名 Binder ，Binder没有向SMgr注册名字，所以是个匿名Binder
+1. Server端可以通过已经建立的Binder连接将创建的Binder实体传给Client
+2. Client将会收到这个匿名Binder的引用，通过这个引用向位于Server中的实体发送请求
+2. 别的进程就无法通过穷举或猜测等任何方式获得该Binder的引用，向该Binder发送请求
+
+SMgr提供的Binder比较特殊，它没有名字也不需要注册，
+当一个进程使用BINDER_SET_CONTEXT_MGR命令将自己注册成SMgr时
+Binder驱动会自动为它创建Binder实体
+SMgr的Binder的引用在所有Client中都固定为0
+
+Server创建了Binder实体，为其取一个字符形式，可读易记的名字，
+将这个Binder连同名字以数据包的形式通过Binder驱动发送给SMgr
+
+Binder框架定义了四个角色：Server，Client，ServiceManager-SMgr以及Binder驱动
+这四个角色的关系和互联网类似：Server是服务器，Client是客户终端，SMgr是域名服务器（DNS），驱动是路由器
+
+Binder模糊了进程边界，淡化了进程间通信过程，
+整个系统仿佛运行于同一个面向对象的程序之中
+
+Android设计者在Linux内核中设计了一个叫做Binder的设备文件，专门用来进行Android的数据交换
+从数据流来看Java对象
+从Java的VM空间进入到C++空间进行了一次转换，
+并利用C++空间的函数将转换过的对象通过driver/binder设备传递到服务进程，从而完成进程间的IPC

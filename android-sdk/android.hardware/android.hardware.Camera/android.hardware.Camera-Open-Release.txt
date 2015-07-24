@@ -1,0 +1,28 @@
+Camera 没有构造函数，使用下面的静态方法创建 Camera 对象
+
+static Camera	open(int cameraId)
+Creates a new Camera object to access a particular hardware camera.
+static Camera	open()
+Creates a new Camera object to access the first back-facing camera on the device.
+
+static Camera	open(int cameraId)
+Creates a new Camera object to access a particular hardware camera.
+cameraId < getNumberOfCameras
+
+static Camera	open()
+Creates a new Camera object to access the first back-facing camera on the device.
+
+Open RuntimeException异常
+if opening the camera fails (for example, if the camera is in use by another process or device policy manager has disabled the camera).
+
+回调 - 线程
+Callbacks from other methods are delivered to the event loop of the thread which called open(). 
+If this thread has no event loop, then callbacks are delivered to the main application event loop. 
+If there is no main application event loop, callbacks are not delivered.
+
+阻塞
+On some devices, this method may take a long time to complete. 
+It is best to call this method from a worker thread (possibly using AsyncTask) to avoid blocking the main application UI thread.
+
+Release
+You must call release() when you are done using the camera, otherwise it will remain locked and be unavailable to other applications.

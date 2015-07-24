@@ -1,0 +1,16 @@
+Surface 接口
+
+android.view.SurfaceHolder
+
+Abstract interface to someone holding a display surface. Allows you to control the surface size and format, edit the pixels in the surface, and monitor changes to the surface. This interface is typically available through the SurfaceView class.
+
+When using this interface from a thread other than the one running its SurfaceView, you will want to carefully read the methods lockCanvas() and Callback.surfaceCreated().
+
+Surface的描述是这样的：“Handle onto a raw buffer that is being managed by the screen compositor”，
+翻译成中文就是“由屏幕显示内容合成器(screen compositor)所管理的原生缓冲器的句柄”，这句话包括下面两个意思：
+1.      通过Surface（因为Surface是句柄）就可以获得原生缓冲器以及其中的内容。就像在C语言中，可以通过一个文件的句柄，就可以获得文件的内容一样；
+2.      原生缓冲器（rawbuffer）是用于保存当前窗口的像素数据的
+
+SurfaceHolder是一个接口，其作用就像一个关于Surface的监听器。提供访问和控制SurfaceView背后的Surface 相关的方法 
+它通过三个回调方法，让我们可以感知到Surface的创建、销毁或者改变
+在SurfaceView中有一个方法getHolder，可以很方便地获得SurfaceView所对应的Surface所对应的SurfaceHolder

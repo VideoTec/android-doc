@@ -1,0 +1,42 @@
+示例一：
+
+代码中加载和应用
+curListView.setAnimation(AnimationUtils.loadAnimation(this, R.anim.video_beautify_button_exit));
+curListView.setVisibility(View.GONE);
+
+XML 定义
+anim/video_beautify_button_exit.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+ 	<translate
+        android:fromYDelta="0"
+        android:toYDelta="105%p" 
+        android:duration="200"
+        android:interpolator="@android:anim/linear_interpolator"
+        />
+ 	<alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0" 
+        android:duration="200"
+        /> 	
+</set>
+
+
+示例二： 自己添加测试 动画 XML
+
+eclipse 右键添加 android xml 文件，选择 tween animation
+
+test1.xml
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromAlpha="1"
+    android:toAlpha="0"
+    android:duration="3000" />
+
+调用代码：
+    public void btnAnimation(View v) {
+        Animation alphaAnimation = AnimationUtils.loadAnimation(this, R.anim.test1);
+        mView.startAnimation(alphaAnimation);
+    }

@@ -1,0 +1,39 @@
+扩展名				.apk
+互联网媒体类型		application/vnd.android.package-archive
+格式				包管理器 存档文件
+专门属				软件包
+延伸自				JAR 和 ZIP
+
+Android 应用程序包文件 (APK) 是一种Android操作系统上的应用程序安装文件格式，
+其英文全称为 “application package file” 。
+一个Android应用程序的代码想要在Android设备上运行，
+必须先进行编译，
+然后被打包成为一个被Android系统所能识别的文件才可以被运行，
+而这种能被Android系统识别并运行的文件格式便是“APK”。 
+
+一个APK文件内包含
+被编译的代码文件(.dex 文件)，
+文件资源（resources）， 
+assets，
+证书（certificates），和
+清单文件（manifest file）
+
+-------------------------------
+META-INF 文件夹:
+-------------------------------
+MANIFEST.MF: 清单信息（Manifest file）
+CERT.RSA: 保存着该应用程序的证书和授权信息。
+CERT.SF: 保存着 SHA-1 信息资源列表，比如：
+
+-------------------------------
+其它文件夹及文件:
+-------------------------------
+res: APK所需要的资源文件夹。
+
+AndroidManifest.xml: 
+一个传统的Android清单文件，用于描述该应用程序的名字、版本号、所需权限、注册的服务、链接的其他应用程序。
+该文件使用XML文件格式，可以编译为二进制的XML，使用的工具为 AXMLPrinter2 或apktool.
+
+classes.dex: classes文件通过DEX编译后的文件格式，用于在Dalvik虚拟机上运行的主要代码部分。
+
+resources.arsc

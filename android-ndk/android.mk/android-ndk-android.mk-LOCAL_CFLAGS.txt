@@ -1,0 +1,27 @@
+LOCAL_CFLAGS
+
+LOCAL_CFLAGS to specify flags for both C and C++ sources
+An optional set of compiler flags that will be passed when building C and C++ source files.
+
+怎么区分 c c++ 的编译选项？
+
+LOCAL_CFLAGS := -Werror
+LOCAL_CONLYFLAGS := -std=gnu99    文档中找不到说明，但是可以使用
+LOCAL_CPPFLAGS := -std=c++0x      只传递给C++编译器的参数，会放到 LOCAL_CFLAGS 编译选项后
+
+--------------------------------
+LOCAL_CPPFLAGS 的使用示例：
+--------------------------------
+C++ Exceptions support 三种方法
+The NDK toolchain supports C++ exceptions, since NDK r5, 
+默认选项是 -fno-exceptions 即未启动异常机制
+第一种：LOCAL_CPP_FEATURES += exceptions
+第二种：LOCAL_CPPFLAGS += -fexceptions
+第三种：Application.mk -> APP_CPPFLAGS += -fexceptions
+
+RTTI support
+the NDK toolchain supports C++ RTTI (RunTime Type Information) since NDK r5
+默认选项是 -fno-rtti 即未启动运行时检测
+第一种：LOCAL_CPP_FEATURES += rtti
+第二种：LOCAL_CPPFLAGS += -frtti
+第三种：Application.mk -> APP_CPPFLAGS += -frtti

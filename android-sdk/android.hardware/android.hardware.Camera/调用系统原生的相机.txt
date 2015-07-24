@@ -1,0 +1,10 @@
+http://blog.csdn.net/hfahe/article/details/6595459
+
+    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+          
+    intent.putExtra("camerasensortype", 2); // 调用前置摄像头
+    intent.putExtra("autofocus", true); // 自动对焦
+    intent.putExtra("fullScreen", false); // 全屏
+    intent.putExtra("showActionIcons", false);
+ 
+    startActivityForResult(intent, PICK_FROM_CAMERA);

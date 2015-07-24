@@ -1,0 +1,136 @@
+/frameworks/base/media/java/android/media/MediaPlayer.java
+/frameworks/base/media/jni/android_media_MediaPlayer.cpp
+
+private native void nativeSetDataSource(
+    IBinder httpServiceBinder, String path, String[] keys, String[] values)
+    throws IOException, IllegalArgumentException, SecurityException, IllegalStateException;
+
+static JNINativeMethod gMethods[] = {
+    {
+        "nativeSetDataSource",
+        "(Landroid/os/IBinder;Ljava/lang/String;[Ljava/lang/String;"
+        "[Ljava/lang/String;)V",
+        (void *)android_media_MediaPlayer_setDataSourceAndHeaders
+    }
+
+调用setDataSource出错：
+01-06 12:06:12.338: I/AwesomePlayer(124): setDataSource_l('/sdcard/dream.m4a')
+01-06 12:06:12.338: E/MediaPlayer(28590): attachNewPlayer called in state 128
+查看源代码 /frameworks/av/media/libmedia/mediaplayer.cpp
+if ( !( (mCurrentState & MEDIA_PLAYER_IDLE) ||
+                (mCurrentState == MEDIA_PLAYER_STATE_ERROR ) ) ) {
+            ALOGE("attachNewPlayer called in state %d", mCurrentState);
+            return INVALID_OPERATION;
+        }
+MediaPlayer的所有状态：
+enum media_player_states {
+    MEDIA_PLAYER_STATE_ERROR        = 0,
+    MEDIA_PLAYER_IDLE               = 1 << 0,
+    MEDIA_PLAYER_INITIALIZED        = 1 << 1,
+    MEDIA_PLAYER_PREPARING          = 1 << 2,
+    MEDIA_PLAYER_PREPARED           = 1 << 3,
+    MEDIA_PLAYER_STARTED            = 1 << 4,
+    MEDIA_PLAYER_PAUSED             = 1 << 5,
+    MEDIA_PLAYER_STOPPED            = 1 << 6,
+    MEDIA_PLAYER_PLAYBACK_COMPLETE  = 1 << 7
+};
+解决方法：调用 reset
+
+警告：暂时找不到原因
+01-06 14:35:39.136: W/MediaPlayer(3626): info/warning (1, 902)
+查看源码：/frameworks/av/media/libmedia/mediaplayer.cpp
+void MediaPlayer::notify(int msg, int ext1, int ext2, const Parcel *obj)
+    case MEDIA_INFO:
+        // ext1: Media framework error code.
+        // ext2: Implementation dependant error code.
+        if (ext1 != MEDIA_INFO_VIDEO_TRACK_LAGGING) {
+            ALOGW("info/warning (%d, %d)", ext1, ext2);
+        }
+        break;
+Media 事件
+enum media_event_type {
+    MEDIA_NOP               = 0, // interface test message
+    MEDIA_PREPARED          = 1,
+    MEDIA_PLAYBACK_COMPLETE = 2,
+    MEDIA_BUFFERING_UPDATE  = 3,
+    MEDIA_SEEK_COMPLETE     = 4,
+    MEDIA_SET_VIDEO_SIZE    = 5,
+    MEDIA_STARTED           = 6,
+    MEDIA_PAUSED            = 7,
+    MEDIA_STOPPED           = 8,
+    MEDIA_SKIPPED           = 9,
+    MEDIA_TIMED_TEXT        = 99,
+    MEDIA_ERROR             = 100,
+    MEDIA_INFO              = 200,
+    MEDIA_SUBTITLE_DATA     = 201,
+};
+//   'msg' is set to MEDIA_INFO.
+//   'ext1' should be a value from the enum media_info_type.
+//   'ext2' contains an implementation dependant info code to provide
+//          more details. Should default to 0 when not used.
+enum media_info_type {
+    // 0xx
+    MEDIA_INFO_UNKNOWN = 1,
+    // The player was started because it was used as the next player for another
+    // player, which just completed playback
+    MEDIA_INFO_STARTED_AS_NEXT = 2,
+    // The player just pushed the very first video frame for rendering
+    MEDIA_INFO_RENDERING_START = 3,
+    // 7xx
+    // The video is too complex for the decoder: it can't decode frames fast
+    // enough. Possibly only the audio plays fine at this stage.
+    MEDIA_INFO_VIDEO_TRACK_LAGGING = 700,
+    // MediaPlayer is temporarily pausing playback internally in order to
+    // buffer more data.
+    MEDIA_INFO_BUFFERING_START = 701,
+    // MediaPlayer is resuming playback after filling buffers.
+    MEDIA_INFO_BUFFERING_END = 702,
+    // Bandwidth in recent past
+    MEDIA_INFO_NETWORK_BANDWIDTH = 703,
+
+    // 8xx
+    // Bad interleaving means that a media has been improperly interleaved or not
+    // interleaved at all, e.g has all the video samples first then all the audio
+    // ones. Video is playing but a lot of disk seek may be happening.
+    MEDIA_INFO_BAD_INTERLEAVING = 800,
+    // The media is not seekable (e.g live stream).
+    MEDIA_INFO_NOT_SEEKABLE = 801,
+    // New media metadata is available.
+    MEDIA_INFO_METADATA_UPDATE = 802,
+
+    //9xx
+    MEDIA_INFO_TIMED_TEXT_ERROR = 900,
+};
+
+播放MP3文件时，出错
+01-06 16:44:16.495: I/AwesomePlayer(124): setDataSource_l('/sdcard/dream3.mp3')
+01-06 16:44:16.495: E/MediaPlayer(4104): error (1, -2147483648)
+01-06 16:44:16.505: W/System.err(4104): java.io.IOException: Prepare failed.: status=0x1
+01-06 16:44:16.515: W/System.err(4104): 	at android.media.MediaPlayer.prepare(Native Method)
+01-06 16:44:16.515: W/System.err(4104): 	at com.example.opensltest.MainActivity$1.onClick(MainActivity.java:33)
+01-06 16:44:16.525: W/System.err(4104): 	at android.view.View.performClick(View.java:3549)
+01-06 16:44:16.525: W/System.err(4104): 	at android.view.View$PerformClick.run(View.java:14400)
+01-06 16:44:16.535: W/System.err(4104): 	at android.os.Handler.handleCallback(Handler.java:605)
+01-06 16:44:16.535: W/System.err(4104): 	at android.os.Handler.dispatchMessage(Handler.java:92)
+01-06 16:44:16.545: W/System.err(4104): 	at android.os.Looper.loop(Looper.java:154)
+01-06 16:44:16.545: W/System.err(4104): 	at android.app.ActivityThread.main(ActivityThread.java:4895)
+01-06 16:44:16.555: W/System.err(4104): 	at java.lang.reflect.Method.invokeNative(Native Method)
+01-06 16:44:16.555: W/System.err(4104): 	at java.lang.reflect.Method.invoke(Method.java:511)
+01-06 16:44:16.565: W/System.err(4104): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+01-06 16:44:16.565: W/System.err(4104): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:551)
+01-06 16:44:16.575: W/System.err(4104): 	at dalvik.system.NativeStart.main(Native Method)
+解决思路
+01-06 17:02:36.858: D/MediaPlayer(6397): setDataSource(Context context, file:///mnt/sdcard/dream.m4a, Map<String, String> headers) in
+01-06 17:02:36.858: I/AwesomePlayer(124): setDataSource_l('/mnt/sdcard/dream.m4a')
+解释：
+headers，应该是HTTP，请求用的
+最终原因是：
+/sdcard/dream3.mp3 文件不存在
+prepare 的执行路径：
+MediaPlayer.java                prepare()
+android_media_MediaPlayer.cpp  {"_prepare", "()V", (void *)android_media_MediaPlayer_prepare}
+mediaplayer.cpp                prepare() -> prepareAsync_l()
+IMediaPlayer.cpp               prepareAsync() -> remote()->transact(PREPARE_ASYNC, data, &reply)
+StagefrightPlayer.cpp          prepare()
+AwesomePlayer.cpp              prepare() -> prepare_l() -> prepareAsync_l -> postEvent(mAsyncPrepareEvent) -> 
+                               onPrepareAsyncEvent -> beginPrepareAsync_l() -> finishSetDataSource_l()

@@ -1,0 +1,43 @@
+plural[英][ˈplʊərəl] [美][ˈplʊrəl] n.复数；复数形式；复数词
+
+中文没有复数语法，所以当语言是中文时，将总是获得quantity为other的字符串。
+
+http://blog.csdn.net/ff313976/article/details/7439676
+不同的语言对数量进行描述的语法规则也不同。比如在英语里，数量1是个特殊情况，我们写成“1 book”，但其他任何数量都要写成“n books”。
+这种单复数之间的区别是很普遍的，不过其他语言会有更好的区分方式。
+Android支持的全集包括zero、one、 two、few、many和other。
+决定选择和使用某种语言和复数的规则是非常复杂的，所以Android提供了诸如getQuantityString()的方法来选择合适的资源。
+
+int count = getNumberOfsongsAvailable();
+Resources res = getResources();
+String songsFound = res.getQuantityString(R.plurals.numberOfSongsAvailable, count, count);
+
+R.plurals.numberOfSongsAvailable 定义了复数字符串资源
+
+英语的复数
+XML file saved at res/values/strings.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfSongsAvailable">
+        <!--
+             As a developer, you should always supply "one" and "other"
+             strings. Your translators will know which strings are actually
+             needed for their language. Always include %d in "one" because
+             translators will need to use %d for languages where "one"
+             doesn't mean 1 (as explained above).
+          -->
+        <item quantity="one">%d song found.</item>
+        <item quantity="other">%d songs found.</item>
+    </plurals>
+</resources>
+
+波兰语的复数
+XML file saved at res/values-pl/strings.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfSongsAvailable">
+        <item quantity="one">Znaleziono %d piosenkę.</item>
+        <item quantity="few">Znaleziono %d piosenki.</item>
+        <item quantity="other">Znaleziono %d piosenek.</item>
+    </plurals>
+</resources>

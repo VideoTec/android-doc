@@ -1,0 +1,20 @@
+static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
+
+每个线程，的 Looper 字段，对应一个对象
+
+向 sThreadLocal 添加 Looper
+    private static void prepare(boolean quitAllowed) {
+        if (sThreadLocal.get() != null) {
+            throw new RuntimeException("Only one Looper may be created per thread");
+        }
+        sThreadLocal.set(new Looper(quitAllowed));
+    }
+
+查询自身的 Looper
+    /**
+     * Return the Looper object associated with the current thread.  Returns
+     * null if the calling thread is not associated with a Looper.
+     */
+    public static Looper myLooper() {
+        return sThreadLocal.get();
+    }

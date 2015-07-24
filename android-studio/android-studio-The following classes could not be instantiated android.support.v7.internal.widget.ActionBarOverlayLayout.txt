@@ -1,0 +1,25 @@
+出错：
+instantiated  实例化
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt] 实例化
+
+The following classes could not be instantiated android.support.v7.internal.widget.ActionBarOverlayLayout
+
+http://stackoverflow.com/questions/29887722/error-rendering-problems-the-following-classes-could-not-be-found-android-suppo
+
+通过修改 res/values/sytles.xml 解决这个问题
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+       <!-- Customize your theme here. -->
+    </style>
+
+</resources>
+
+另一种解决方法：
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.1.1'  原来就是这个，为什么不出错了？
+}
+

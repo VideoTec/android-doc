@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/6068803/how-to-turn-on-camera-flash-light-programmatically-in-android

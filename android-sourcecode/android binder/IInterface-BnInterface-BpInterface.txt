@@ -1,0 +1,112 @@
+把IBinder接口，转换成，IInterface接口
+template<typename INTERFACE>
+inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj)
+{
+    return INTERFACE::asInterface(obj);
+}
+
+Bn 是Binder Native的含义，是和
+Bp 是Binder proxy 的意思，那么另一端一定有一个和代理打交道的东西，这个就是Bn
+例如：
+BpMeidaPlayerService 对应 BnMediaPlayerService
+BpServiceManager     对应 BnServiceManager - 但是没有这个，有个 framework/base/cmds/servicemanger.c
+
+IInterface 列表：
+
+/frameworks/av/include/media/
+struct IMediaHTTPService : public IInterface
+struct ICrypto : public IInterface
+struct IMediaHTTPConnection : public IInterface
+class IDrmClient: public IInterface
+class IMediaLogService: public IInterface
+class IMediaPlayerClient: public IInterface
+class IMediaRecorderClient: public IInterface
+class IEffect: public IInterface
+class IEffectClient: public IInterface
+class IMediaCodecList: public IInterface
+class IMediaMetadataRetriever: public IInterface
+class IRemoteDisplay : public IInterface
+struct IStreamSource : public IInterface
+struct IStreamListener : public IInterface
+class IAudioFlingerClient : public IInterface
+class IAudioPolicyServiceClient : public IInterface
+class IMediaRecorder: public IInterface
+class IRemoteDisplayClient : public IInterface
+class IAudioRecord : public IInterface
+struct IDrm : public IInterface
+class IMediaPlayerService: public IInterface
+struct IHDCPObserver : public IInterface
+struct IHDCP : public IInterface
+class IOMX : public IInterface
+class IOMXObserver : public IInterface
+class IAudioPolicyService : public IInterface
+class IAudioTrack : public IInterface
+class IMediaPlayer: public IInterface
+class IAudioFlinger : public IInterface
+
+/frameworks/av/include/soundtrigger/
+class ISoundTrigger : public IInterface
+class ISoundTriggerClient : public IInterface
+class ISoundTriggerHwService : public IInterface
+
+/frameworks/av/services/audioflinger/
+class ISchedulingPolicyService : public IInterface
+
+/frameworks/av/drm/libdrmframework/include/
+class IDrmServiceListener : public IInterface
+class IDrmManagerService : public IInterface
+
+/frameworks/av/include/camera/
+class ICamera: public IInterface
+class ICameraRecordingProxy: public IInterface
+class ICameraService : public IInterface
+class ICameraRecordingProxyListener: public IInterface
+class ICameraClient: public IInterface
+class IProCameraCallbacks : public IInterface
+class ICameraServiceListener : public IInterface
+class IProCameraUser: public IInterface
+
+/frameworks/av/include/camera/camera2/
+class ICameraDeviceCallbacks : public IInterface
+class ICameraDeviceUser : public IInterface
+
+/frameworks/base/include/storage/
+class IMountServiceListener: public IInterface
+class IMountShutdownObserver: public IInterface
+class IObbActionListener: public IInterface
+class IMountService: public IInterface
+
+/frameworks/native/include/batteryservice/
+class IBatteryPropertiesRegistrar : public IInterface
+class IBatteryPropertiesListener : public IInterface
+
+/frameworks/native/include/binder
+class IAppOpsService : public IInterface
+class IServiceManager : public IInterface
+
+/frameworks/av/include/common_time/
+class ICommonClockListener : public IInterface
+class ICommonClock : public IInterface
+class ICommonTimeConfig : public IInterface
+
+/frameworks/native/include/gui/
+class IProducerListener : public ProducerListener, public IInterface
+class IGraphicBufferAlloc : public IInterface
+class ISensorEventConnection : public IInterface
+class ISensorServer : public IInterface
+class IConsumerListener : public ConsumerListener, public IInterface
+class IDisplayEventConnection : public IInterface
+class ISurfaceComposerClient : public IInterface
+class ISurfaceComposer: public IInterface
+class IGraphicBufferConsumer : public IInterface
+class IGraphicBufferProducer : public IInterface
+
+/frameworks/native/include/binder/
+class IMemoryHeap : public IInterface
+class IMemory : public IInterface
+class IAppOpsCallback : public IInterface
+class IBatteryStats : public IInterface
+class IPermissionController : public IInterface
+
+/frameworks/native/include/powermanager/
+class IPowerManager : public IInterface

@@ -1,0 +1,14 @@
+19:34 2015/7/7
+Invalid project description.
+  E:\feinnobeside overlaps the workspace location: E:\feinnobeside
+
+http://www.cnblogs.com/yc-755909659/archive/2013/03/20/2971557.html
+
+因为我把要导入的工程文件夹放到了Eclipse 的Android默认目录下，
+而当Eclipse导入工程时候，在默认目录下要创建新文件加（或者拷贝）。
+这时，创建的文件夹名与被导入的文件夹名在同一目录下，而且重复，出现如此错误
+
+19:39 2015/7/7
+不是默认目录，应该是，当前目录
+open-workspace.bat 应该放在工程目录的上一级目录
+E:\doc\Computer software\Android平台\android-eclipse\android-eclipse-工程文件-.metadata文件夹.txt

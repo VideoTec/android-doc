@@ -1,0 +1,15 @@
+Camera.Parameters
+public List<String> getSupportedFocusModes ()
+public String getFocusMode ()
+public void setFocusMode (String value)
+
+FOCUS_MODE_AUTO
+FOCUS_MODE_INFINITY
+FOCUS_MODE_MACRO
+FOCUS_MODE_FIXED
+FOCUS_MODE_EDOF
+FOCUS_MODE_CONTINUOUS_VIDEO
+FOCUS_MODE_CONTINUOUS_PICTURE
+
+改变对焦模式的流程：
+stopPreview setParameters startPreview

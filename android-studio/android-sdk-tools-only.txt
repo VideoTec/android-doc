@@ -1,0 +1,13 @@
+SDK Tools Only
+
+If you prefer to use a different IDE or run the tools from the command line or with build scripts, 
+you can instead download the stand-alone Android SDK Tools. 
+
+These packages provide the basic SDK tools for app development, without an IDE. 
+
+Also see the SDK tools release notes.
+
+这个包里，没有 sdk
+sdk 需要单独下载
+使用 SDK Manager 工具进行下载管理
+E:\android-sdk-windows\SDK Manager.exe

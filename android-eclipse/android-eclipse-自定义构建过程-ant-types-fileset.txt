@@ -1,0 +1,51 @@
+https://ant.apache.org/manual/Types/fileset.html
+
+------------------------------------
+定义
+------------------------------------
+A FileSet is a group of files. These files can be found in a directory tree starting in a base directory and are matched by patterns taken from a number of PatternSets and Selectors.
+
+PatternSets can be specified as nested <patternset> elements. In addition, FileSet holds an implicit PatternSet and supports the nested <include>, <includesfile>, <exclude> and <excludesfile> elements of PatternSet directly, as well as PatternSet's attributes.
+
+Selectors are available as nested elements within the FileSet. If any of the selectors within the FileSet do not select the file, the file is not considered part of the FileSet. This makes a FileSet equivalent to an <and> selector container.
+
+------------------------------------
+Examples
+------------------------------------
+
+<fileset dir="${server.src}" casesensitive="yes">
+  <include name="**/*.java"/>
+  <exclude name="**/*Test*"/>
+</fileset>
+Groups all files in directory ${server.src} that are Java source files and don't have the text Test in their name.
+
+<fileset dir="${server.src}" casesensitive="yes">
+  <patternset id="non.test.sources">
+    <include name="**/*.java"/>
+    <exclude name="**/*Test*"/>
+  </patternset>
+</fileset>
+Groups the same files as the above example, but also establishes a PatternSet that can be referenced in other <fileset> elements, rooted at a different directory.
+
+<fileset dir="${client.src}" >
+  <patternset refid="non.test.sources"/>
+</fileset>
+Groups all files in directory ${client.src}, using the same patterns as the above example.
+
+<fileset dir="${server.src}" casesensitive="yes">
+  <filename name="**/*.java"/>
+  <filename name="**/*Test*" negate="true"/>
+</fileset>
+Groups the same files as the top example, but using the <filename> selector.
+
+<fileset dir="${server.src}" casesensitive="yes">
+  <filename name="**/*.java"/>
+  <not>
+    <filename name="**/*Test*"/>
+  </not>
+</fileset>
+
+Groups the same files as the previous example using a combination of the <filename> selector and the <not> selector container.
+
+<fileset dir="src" includes="main/" />
+Selects all files in src/main (e.g. src/main/Foo.java or src/main/application/Bar.java).

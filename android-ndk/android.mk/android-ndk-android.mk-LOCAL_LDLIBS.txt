@@ -1,0 +1,14 @@
+代码：
+LOCAL_LDLIBS    := -lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb -ljnigraphics -lz -llog
+
+文档：
+The list of additional linker flags to be used when building your shared library or executable. 
+This is useful to pass the name of specific system libraries with the '-l' prefix. 
+For example, the following will tell the linker to generate a module that links to /system/lib/libz.so at load time
+
+LOCAL_LDLIBS := -lz
+
+See Android NDK Stable APIs for the list of exposed system libraries you can linked against with this NDK release.
+
+生成静态库的模块，会忽略这个变量 LOCAL_LDLIBS：
+NOTE: This is ignored for static libraries, and ndk-build will print a warning if you define it in such a module.

@@ -1,0 +1,29 @@
+http://developer.android.com/reference/android/os/Looper.html
+
+interaction[英][ˌɪntər'ækʃn] [美][ˌɪntɚˈækʃən] 一起活动；合作；互相影响；互动
+
+java.lang.Object
+   ↳	android.os.Looper
+
+Class Overview
+Class used to run a message loop for a thread. Threads by default do not have a message loop associated with them; to create one, call prepare() in the thread that is to run the loop, and then loop() to have it process messages until the loop is stopped.
+
+Most interaction with a message loop is through the Handler class.
+
+This is a typical example of the implementation of a Looper thread, using the separation of prepare() and loop() to create an initial Handler to communicate with the Looper.
+
+  class LooperThread extends Thread {
+      public Handler mHandler;
+
+      public void run() {
+          Looper.prepare();
+
+          mHandler = new Handler() {
+              public void handleMessage(Message msg) {
+                  // process incoming messages here
+              }
+          };
+
+          Looper.loop();
+      }
+  }

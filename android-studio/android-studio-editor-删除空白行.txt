@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/26354301/how-do-i-auto-remove-trailing-whitespace-in-android-studio
+
+在保存文件时，自动删除行尾的空格
+File->Settings->Editor 右侧： others -> strip trailing spaces on Save
+
+后面选择ALL

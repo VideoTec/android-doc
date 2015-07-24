@@ -1,0 +1,14 @@
+参考
+http://www.race604.com/android-studio-with-ndk/
+
+.so 文件应该放到 jniLibs 目录下
+
+MyApplication\app\src\main\jniLibs
+
+直接调用
+public class HelloWorld {
+    static {
+        System.loadLibrary("helloworld");
+    }
+    public native void say_hello(String s);
+}

@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/3988712/problem-with-android-mediarecorder-setvideosize
+setVideoSize() is called before setVideoEncoder().

@@ -1,0 +1,10 @@
+Parameters
+
+public List<Camera.Area> getFocusAreas ()
+Gets the current focus areas. Camera driver uses the areas to decide focus.
+
+public void setFocusAreas (List<Camera.Area> focusAreas)
+Sets focus areas. See getFocusAreas() for documentation.
+
+public int getMaxNumFocusAreas ()
+Gets the maximum number of focus areas supported.

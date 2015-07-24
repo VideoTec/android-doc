@@ -1,0 +1,114 @@
+--------------------------------------------------------------------
+接口： android.view.View.OnClickListener
+--------------------------------------------------------------------
+Interface definition for a callback to be invoked when a view is clicked.
+
+public abstract void onClick (View v)
+
+Added in API level 1
+Called when a view has been clicked.
+
+Parameters
+v  The view that was clicked.
+
+--------------------------------------------------------------------
+接口 android.view.View.OnClickListener 相关的, View 方法：
+--------------------------------------------------------------------
+boolean callOnClick()         Directly call any attached OnClickListener.
+Directly call any attached OnClickListener. Unlike performClick(), 
+this only calls the listener, and does not do any associated clicking actions like reporting an accessibility event
+True there was an assigned OnClickListener that was called, false otherwise is returned.
+
+boolean hasOnClickListeners() Return whether this view has an attached OnClickListener.
+Return whether this view has an attached OnClickListener. Returns true if there is a listener, false if there is none.
+
+boolean performClick()        Call this view's OnClickListener, if it is defined.
+Call this view's OnClickListener, if it is defined. 
+Performs all normal actions associated with clicking: reporting accessibility event, playing a sound, etc.
+True there was an assigned OnClickListener that was called, false otherwise is returned.
+
+void    setOnClickListener(View.OnClickListener l)  Register a callback to be invoked when this view is clicked.
+Register a callback to be invoked when this view is clicked. If this view is not clickable, it becomes clickable
+
+--------------------------------------------------------------------
+接口 android.view.View.OnClickListener 用法一： implements OnClickListener + setOnClickListener(this)
+--------------------------------------------------------------------
+
+public class AddSubtitleActivity extends BaseActivity implements OnClickListener {
+...
+@Override
+  public void onClick(View v) {
+
+    if (v.getId() == R.id.video_beautify_subtitle_back) {
+      destroyActivity();
+    } else if (v.getId() == R.id.video_beautify_submit) {
+      getImage();
+      setinputState();
+      saveState();
+      destroyActivity();
+    } else if (v.getId() == R.id.video_beautify_subtitle_bubble) {
+      showView(TableType.TABLE_TYPE_BUBBLE);
+    } else if (v.getId() == R.id.video_beautify_subtitle_type) {
+      showView(TableType.TABLE_TYPE_FONT);
+    } else if (v.getId() == R.id.video_beautify_subtitle_style) {
+      showView(TableType.TABLE_TYPE_STYLE);
+    } else if (v.getId() == R.id.video_beautify_subtitle_bold_normal) {
+      showBold(TYPE_FONT_BOLD);
+    } else if (v.getId() == R.id.video_beautify_subtitle_bold_selected) {
+      showBold(TYPE_FONT_BOLD_NORMAL);
+    } else if (v.getId() == R.id.video_beautify_subtitle_shadow_normal) {
+      showShadow(TYPE_FONT_SHADOW);
+    } else if (v.getId() == R.id.video_beautify_subtitle_shadow_selected) {
+      showShadow(TYPE_FONT_SHADOW_NORMAL);
+    } else if (v.getId() == R.id.subtitleview) {
+      InputMethodManager imm = (InputMethodManager) getApplication()
+          .getSystemService(Context.INPUT_METHOD_SERVICE);
+      imm.hideSoftInputFromWindow(mInputEdit.getmView().getWindowToken(),
+          0);
+    }
+  }
+...
+}
+
+mBackBtn.setOnClickListener(this);
+mSubmitBtn.setOnClickListener(this);
+mBuddleBtn.setOnClickListener(this);
+mTypeBtn.setOnClickListener(this);
+mStyleBtn.setOnClickListener(this);
+mBoldNormal.setOnClickListener(this);
+mBoldSelected.setOnClickListener(this);
+mShadowNormal.setOnClickListener(this);
+mShadowSelected.setOnClickListener(this);
+bgImage.setOnClickListener(this);
+
+--------------------------------------------------------------------
+接口 android.view.View.OnClickListener 用法二： setOnClickListener(new new View.OnClickListener() { public void onClick(View v) {} })
+--------------------------------------------------------------------
+mMediaPlayerBtn = this.findViewById(R.id.btn_media_player);
+mMediaPlayerBtn.setOnClickListener(new View.OnClickListener(){  
+  public void onClick(View v) {
+  }});
+
+--------------------------------------------------------------------
+接口 android.view.View.OnClickListener 用法三： <Button  android:onClick="xxxx">
+--------------------------------------------------------------------
+一般是用在一个button在很多地方都用到的时候，比如界面左上角的一个返回按钮，很多界面都需要，
+定义一个#界面基类#，里面定义一个返回操作的方法，然后把这个button单独写在一个layout里面
+用的时候直接把这个layout include到布局里面就可以了
+
+    <Button
+        android:id="@+id/btn_audio1"
+        android:onClick="onAudio1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_media_stop"
+        android:layout_below="@+id/btn_media_stop"
+        android:layout_marginTop="62dp"
+        android:text="auudio1" />
+
+    void onAudio1(View v) {          必须是 public 否则会出现异常
+      Log.v(TAG, "on audio1 button");
+    }
+	点击按钮后，出现异常： 
+	java.lang.IllegalStateException: Could not find a method onAudio1(View) in the activity class com.example.opensltest.MainActivity for onClick handler on view class android.widget.Button with id 'btn_audio1'
+	异常原因：方法的权限限定符，应该为 public

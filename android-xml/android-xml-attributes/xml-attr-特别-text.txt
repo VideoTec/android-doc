@@ -1,0 +1,18 @@
+示例：
+
+        <TextView
+            android:id="@+id/camera_delay_count_down"
+            android:text="@string/hello_world"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:shadowColor="@color/video_record_delay_text_color"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="8"
+            android:textColor="@color/video_record_delay_text_color"
+            android:textSize="@dimen/px_to_dip_150"
+            android:textStyle="bold"
+            android:visibility="visible" />  

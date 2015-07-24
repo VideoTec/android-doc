@@ -1,0 +1,16 @@
+http://blog.csdn.net/luoshengyang/article/details/6744448
+
+ActivityManagerService是如何得到广播并把它分发出去的呢？
+这就是本文要介绍的广播发送过程了
+
+广播的发送过程比广播接收器的注册过程要复杂得多了，
+不过这个过程仍然是以ActivityManagerService为中心。
+广播的发送者将广播发送到ActivityManagerService，
+ActivityManagerService接收到这个广播以后，
+就会在自己的注册中心查看有哪些广播接收器订阅了该广播，
+然后把这个广播逐一发送到这些广播接收器中，
+但是ActivityManagerService并不等待广播接收器处理这些广播就返回了，
+因此，广播的发送和处理是异步的。
+概括来说，广播的发送路径就是从发送者到ActivityManagerService，
+再从ActivityManagerService到接收者，
+这中间的两个过程都是通过Binder进程间通信机制来完成的

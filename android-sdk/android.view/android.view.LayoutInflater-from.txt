@@ -1,0 +1,3 @@
+static LayoutInflater from(Context context)
+
+Obtains the LayoutInflater from the given context.

@@ -1,0 +1,17 @@
+public abstract View getDropDownView (int position, View convertView, ViewGroup parent)
+
+Added in API level 1
+Get a View that displays in the drop down popup the data at the specified position in the data set.
+
+Parameters
+position
+index of the item whose view we want.
+
+convertView
+the old view to reuse, if possible. Note: You should check that this view is non-null and of an appropriate type before using. If it is not possible to convert this view to display the correct data, this method can create a new view.
+
+parent
+the parent that this view will eventually be attached to
+
+Returns
+a View corresponding to the data at the specified position.

@@ -1,0 +1,47 @@
+"pushing" the data to the AudioTrack object using one of the 
+write(float[] audioData, int offsetInFloats, int sizeInFloats, int writeMode)   Added in API level 21
+write(ByteBuffer audioData, int sizeInBytes, int writeMode)                     Added in API level 21
+write(short[] audioData, int offsetInShorts, int sizeInShorts)
+write(byte[] audioData, int offsetInBytes, int sizeInBytes)
+writeMode
+With WRITE_BLOCKING, the write will block until all data has been written to the audio sink. 
+With WRITE_NON_BLOCKING, the write will return immediately after queuing as much audio data for playback as possible without blocking.
+
+两种模式：
+stream static
+
+三种构造：
+AudioTrack(int streamType, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes, int mode)
+AudioTrack(int streamType, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes, int mode, int sessionId)
+AudioTrack(AudioAttributes attributes, AudioFormat format, int bufferSizeInBytes, int mode, int sessionId)
+
+STREAM TYPE: 流的类型 AudioManager.STREAM_MUSIC
+STREAM_VOICE_CALL
+STREAM_SYSTEM
+STREAM_RING
+STREAM_MUSIC
+STREAM_ALARM
+STREAM_NOTIFICATION
+
+MODE: 模式
+MODE_STATIC and MODE_STREAM
+
+audioFormat 声音格式
+ENCODING_PCM_16BIT   Added in API level 3
+ENCODING_PCM_8BIT    Added in API level 3
+ENCODING_PCM_FLOAT   Added in API level 21
+
+channelConfig 声道配置
+CHANNEL_OUT_MONO
+CHANNEL_OUT_STEREO
+
+bufferSizeInBytes >= getMinBufferSize(int, int, int)
+If track's creation mode is MODE_STREAM, 
+you can write data into this buffer in chunks less than or equal to this size, 
+and it is typical to use chunks of 1/2 of the total size to permit double-buffering
+If the track's creation mode is MODE_STATIC,
+this is the maximum length sample, or audio clip, that can be played by this instance
+
+获取 buffer-size 最小值
+public static int getMinBufferSize (int sampleRateInHz, int channelConfig, int audioFormat)
+Returns the minimum buffer size required for the successful creation of an AudioTrack object to be created in the MODE_STREAM mode.

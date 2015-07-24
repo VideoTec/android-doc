@@ -1,0 +1,25 @@
+android.os.Binder getCallingPid
+Return the ID of the process that sent you the current transaction that is being processed.
+android.os.Binder getCallingUid()
+Return the Linux uid assigned to the process that sent you the current transaction that is being processed.
+
+Binder与传统IPC 
+
+Android为每个安装好的应用程序分配了自己的UID，故进程的UID是鉴别进程身份的重要标志
+ 
+可靠的身份标识由Binder机制在内核中添加 
+
+通过调用Binder.getCallingPid()/ Binder.getCallingUid()函数可得到与自己通信的调用者的UID/PID 
+
+Android Binder基于Client-Server通信模式，传输过程只需一次拷贝，为进程添加UID/PID身份，既支持实名Binder也支持匿名Binder，传输性能稳和安全性高 
+
+
+
+传统IPC的接收方无法获得对方进程可靠的UID/PID（用户ID/进程ID），从而无法鉴别对方身份 
+
+传统IPC没有任何安全措施，完全依赖上层协议来确保 
+
+使用传统IPC只能由用户在数据包里填入UID/PID，但这样不可靠，容易被恶意程序利用 
+
+传统IPC访问接入点是开放的，无法建立私有通道 
+命名管道的名称、System V的键值、Socket的IP地址或文件名都是开放的，只要知道这些接入点的程序都可以和对端建立连接，无法阻止恶意程序通过猜测接收方地址获得连接 

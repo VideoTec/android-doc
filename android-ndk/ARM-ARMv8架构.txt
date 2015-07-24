@@ -1,0 +1,19 @@
+Architecture	Bitwidth	Cores designed by ARM Holdings		Cores designed by third parties				Cortex profile		References
+ARMv8-A			64/32		ARM Cortex-A53,ARM Cortex-A57,ARM Cortex-A72	
+																X-Gene,Nvidia Project Denver,AMD K12, AppleA7/A8,CaviumThunder X[30][31][32]	
+																											Application	[33][34]	
+
+ARMv8.1-A		64/32		No announcements yet															Application		
+ARMv8-R			32			No announcements yet
+
+arm 开发的 Cores  (处理器内核)
+ARM Cortex-A53,
+ARM Cortex-A57,
+ARM Cortex-A72
+
+第三方开发的 Cores  (处理器内核)
+X-Gene,
+Nvidia Project Denver,
+AMD K12, 
+Apple A7/A8,
+CaviumThunder X

@@ -1,0 +1,16 @@
+application.mk 里设置
+NDK_TOOLCHAIN_VERSION := 4.9
+
+NDK_TOOLCHAIN_VERSION 可以是下面的值
+Define this variable to either 4.6, 4.7 or 4.8 to select version of the GCC compiler. 4.6 is the default
+
+和 NDK_TOOLCHAIN_VERSION 相关的 NDK 路径有
+E:\android\ndk\sources\cxx-stl\gnu-libstdc++
+E:\android\ndk\sources\cxx-stl\gnu-libstdc++\4.6
+E:\android\ndk\sources\cxx-stl\gnu-libstdc++\4.8
+
+E:\android\ndk\toolchains
+E:\android\ndk\toolchains\arm-linux-androideabi-4.6
+E:\android\ndk\toolchains\arm-linux-androideabi-4.8
+
+下载 NDK 

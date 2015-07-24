@@ -1,0 +1,20 @@
+https://www.jetbrains.com/phpstorm/help/configuring-line-separators.html
+
+Settings -> editor -> code-style 右侧：
+
+设置
+line separator(for new file) 选择行结束符
+
+修改和查看文件的行结束符
+View the Status bar: the current line endings style is denoted by the dedicated icon with the specified style,
+
+-------------------------------
+修改 文件或者目录 的行结束符 - project view
+-------------------------------
+https://www.jetbrains.com/phpstorm/help/configuring-line-separators.html
+To change line separator for a file or directory, selected in the project view
+
+Select a file or directory in the Project tool window.
+Note that if a directory is selected, the line ending style applies to all nested files recursively.
+
+Choose File | Line Separatorson the main menu, and then select the desired line ending style from the sub-menu.

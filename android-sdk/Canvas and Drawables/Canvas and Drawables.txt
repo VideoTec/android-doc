@@ -1,0 +1,26 @@
+文档
+file:///E:/android-sdk-windows/docs/guide/topics/graphics/2d-graphics.html
+
+The Android framework APIs provides a set of 2D-drawing APIs that allow you to render your own custom graphics onto a canvas or to modify existing Views to customize their look and feel. When drawing 2D graphics, you'll typically do so in one of two ways:
+
+绘制2D图形的 第一种方式：
+Draw your graphics or animations into a View object from your layout. In this manner, the drawing of your graphics is handled by the system's normal View hierarchy drawing process — you simply define the graphics to go inside the View.
+
+绘制2D图形的 第二种方式：
+Draw your graphics directly to a Canvas. This way, you personally call the appropriate class's onDraw() method (passing it your Canvas), or one of the Canvas draw...() methods (like drawPicture()). In doing so, you are also in control of any animation.
+
+Option "a," drawing to a View, is your best choice when you want to draw simple graphics that do not need to change dynamically and are not part of a performance-intensive game. For example, you should draw your graphics into a View when you want to display a static graphic or predefined animation, within an otherwise static application. Read Drawables for more information.
+
+Option "b," drawing to a Canvas, is better when your application needs to regularly re-draw itself. 
+Applications such as video games should be drawing to the Canvas on its own. 
+However, there's more than one way to do this:
+
+自定义绘制方法一： onDraw() callback
+In the same thread as your UI Activity, 
+wherein you create a custom View component in your layout, 
+call invalidate() and then handle the onDraw() callback.
+
+自定义绘制方法二： SurfaceView
+Or, in a separate thread, wherein you manage a SurfaceView and 
+perform draws to the Canvas as fast as your thread is capable 
+(you do not need to request invalidate()).

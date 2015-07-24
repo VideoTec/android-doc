@@ -1,0 +1,48 @@
+//---------------------------------------------------------
+    // Interface definitions
+    //--------------------
+    /**
+     * Interface definition for a callback to be invoked when an AudioRecord has
+     * reached a notification marker set by {@link AudioRecord#setNotificationMarkerPosition(int)}
+     * or for periodic updates on the progress of the record head, as set by
+     * {@link AudioRecord#setPositionNotificationPeriod(int)}.
+     */
+    public interface OnRecordPositionUpdateListener  {
+        /**
+         * Called on the listener to notify it that the previously set marker has been reached
+         * by the recording head.
+         */
+        void onMarkerReached(AudioRecord recorder);
+
+        /**
+         * Called on the listener to periodically notify it that the record head has reached
+         * a multiple of the notification period.
+         */
+        void onPeriodicNotification(AudioRecord recorder);
+    }
+
+--------------------------------------
+正确理解回调：
+--------------------------------------
+tight[英][taɪt] [美][taɪt] adj.紧的，牢固的；绷紧的；不漏的；密集的，紧凑的
+
+http://stackoverflow.com/questions/2266181/android-audiorecord-class-problem-callback-is-never-called
+I believe the problem is that you still need to do the read loop. 
+If you setup callbacks, they will fire when you've read the number of frames that you specify for the callbacks. 
+But you still need to do the reads.
+ 
+I've tried this and the callbacks get called just fine. 
+Setting up a marker causes a callback when that number of frames has been read since the start of recording. 
+In other words, you could set the marker far into the future, after many of your reads, and it will fire then. 
+
+You can set the period to some bigger number of frames and that callback will fire every time that number of frames has been read. 
+
+I think they do this so you can do low-level processing of the raw data in a tight loop, 
+then every so often your callback can do summary-level processing. 
+You could use the marker to make it easier to decide when to stop recording (instead of counting in the read loop).
+
+每读取 n 个声音样后，通知一下。
+读到和 n 个声音样后，通知一下。
+
+https://code.google.com/p/android/issues/detail?id=53996
+AudioRecord.OnRecordPositionUpdateListener - Incomplete or wrong?

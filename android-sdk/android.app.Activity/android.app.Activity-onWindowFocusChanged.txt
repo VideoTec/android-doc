@@ -1,0 +1,21 @@
+void	onWindowFocusChanged(boolean hasFocus)
+Called when the current Window of the activity gains or loses focus.
+
+Parameters
+hasFocus	Whether the window of this activity has focus.
+
+Called when the current Window of the activity gains or loses focus. 
+This is the best indicator of whether this activity is visible to the user. 
+The default implementation clears the key tracking state, so should always be called.
+
+Note that this provides information about global focus state, 
+which is managed independently of activity lifecycles. 
+As such, while focus changes will generally have some relation to lifecycle changes 
+(an activity that is stopped will not generally get window focus), 
+you should not rely on any particular order between the callbacks here and those in the other lifecycle methods such as onResume().
+
+As a general rule, however, a resumed activity will have window focus... 
+unless it has displayed other dialogs or popups that take input focus, 
+in which case the activity itself will not have focus when the other windows have it. 
+Likewise, the system may display system-level windows (such as the status bar notification panel or a system alert) 
+which will temporarily take window input focus without pausing the foreground activity.

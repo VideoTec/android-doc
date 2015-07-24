@@ -1,0 +1,66 @@
+An interpolator is an animation modifier defined in XML that affects the rate of change in an animation. 
+This allows your existing animation effects to be accelerated, decelerated, repeated, bounced, etc.
+
+interpolator[英][ɪn'tɜ:pəʊleɪtə] [美][ɪn'tɜ:poʊleɪtə]  插补器
+
+-----------------------------------
+android.jar 内置的 interpolator
+-----------------------------------
+AccelerateDecelerateInterpolator	@android:anim/accelerate_decelerate_interpolator
+AccelerateInterpolator				@android:anim/accelerate_interpolator
+AnticipateInterpolator				@android:anim/anticipate_interpolator
+AnticipateOvershootInterpolator		@android:anim/anticipate_overshoot_interpolator
+BounceInterpolator					@android:anim/bounce_interpolator
+CycleInterpolator					@android:anim/cycle_interpolator
+DecelerateInterpolator				@android:anim/decelerate_interpolator
+LinearInterpolator					@android:anim/linear_interpolator
+OvershootInterpolator				@android:anim/overshoot_interpolator
+
+XML 示例：
+<set android:interpolator="@android:anim/accelerate_interpolator">
+    ...
+</set>
+
+-----------------------------------
+用户自定义 interpolator
+If you're not satisfied[英][ˈsætɪsfaɪd] [美][ˈsætɪsˌfaɪd]使满意 with the interpolators provided by the platform (listed in the table above), 
+you can create a custom interpolator resource with modified attributes. 
+For example, you can 
+adjust the rate of acceleration for the AnticipateInterpolator, or 
+adjust the number of cycles for the CycleInterpolator.
+In order to do so, you need to create your own interpolator resource in an XML file.
+-----------------------------------
+FILE LOCATION:
+res/anim/filename.xml
+The filename will be used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to the corresponding interpolator object.
+
+RESOURCE REFERENCE:
+In XML: @[package:]anim/filename
+
+<?xml version="1.0" encoding="utf-8"?>
+<InterpolatorName xmlns:android="http://schemas.android.com/apk/res/android"
+    android:attribute_name="value"
+    />
+If you don't apply any attributes, then your interpolator will function exactly the same as those provided by the platform (listed in the table above).
+
+--------------------------------
+示例
+--------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<overshootInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tension="7.0"
+    />
+
+应用 android:interpolator="@anim/my_overshoot_interpolator"
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@anim/my_overshoot_interpolator"
+    android:fromXScale="1.0"
+    android:toXScale="3.0"
+    android:fromYScale="1.0"
+    android:toYScale="3.0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:duration="700" />

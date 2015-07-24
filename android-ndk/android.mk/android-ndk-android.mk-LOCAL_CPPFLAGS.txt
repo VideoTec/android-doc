@@ -1,0 +1,8 @@
+LOCAL_CPPFLAGS  说明
+
+An optional set of compiler flags that will be passed when building C++ source files only. 
+They will appear after the LOCAL_CFLAGS on the compiler's command-line.
+
+NOTE: In android-ndk-1.5_r1, the corresponding flags applied to both C and C++ sources. 
+This has been corrected to match the full Android build system. 
+(You can use LOCAL_CFLAGS to specify flags for both C and C++ sources now).

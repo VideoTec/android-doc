@@ -1,0 +1,33 @@
+XML 格式
+
+参考
+http://developer.android.com/guide/topics/resources/animation-resource.html
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@[package:]anim/interpolator_resource"
+    android:shareInterpolator=["true" | "false"] >
+    <alpha
+        android:fromAlpha="float"
+        android:toAlpha="float" />
+    <scale
+        android:fromXScale="float"
+        android:toXScale="float"
+        android:fromYScale="float"
+        android:toYScale="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <translate
+        android:fromXDelta="float"
+        android:toXDelta="float"
+        android:fromYDelta="float"
+        android:toYDelta="float" />
+    <rotate
+        android:fromDegrees="float"
+        android:toDegrees="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <set>
+        ...
+    </set>
+</set>

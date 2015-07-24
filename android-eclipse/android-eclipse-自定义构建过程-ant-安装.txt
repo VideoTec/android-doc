@@ -1,0 +1,53 @@
+http://www.cnblogs.com/sw926/p/3238512.html
+
+--------------------------------------
+下载 并 配置环境变量
+--------------------------------------
+http://ant.apache.org/bindownload.cgi
+在windows上应该选择zip压缩包，将zip压缩包解压到一个目录。
+打开系统环境变量，
+在系统变量栏点击新建，变量名输入“ANT_HOME”，变量值为Ant的根目录，如“D:\Android\apache-ant-1.9.0”，注意不要带双引号。
+在系统变量中找到Path变量，点击编辑，在变量值的最后添加“%ANT_HOME%\bin”，注意不要带双引号，并且要使用“;”和之前的变量值隔开
+
+配置完成后检测
+打开一个cmd窗口，输入“ant”，
+如果显示一下信息，说明Ant的环境配置成功，
+如果显示：'ant' 不是内部或外部命令，也不是可运行的程序或批处理文件。
+则要检查一下路径是否有问题
+
+10:46 2015/6/1 不用单独下载
+谷歌提供的Android集成开发工具ADT，内置集成了Ant的
+E:\android\adt\eclipse\plugins\org.apache.ant_1.8.3.v201301120609
+但是集成不到，eclipse 界面里，不知道为什么？不知道为什么，重启就可以了
+
+--------------------------------------
+在Eclipse中配置Ant
+--------------------------------------
+为 build.xml 关联 ant editor。
+
+打开Windows - Preferences，依次展开General，Editors，选中File Associations，点击Add...，
+在Add File Type对话框中输入build.xml，点击Ok
+
+接下来
+在File type：栏选中build.xml，
+在Associated Editor：栏选中Ant Editor，点击Default，build.xml的图标变成了一个小蚂蚁，配置完毕
+
+10:33 2015/6/1 问题，在Associated Editor：栏，没有 "Ant Editor" 选项。
+下载了谷歌提供的Android集成开发工具ADT，里面封装了Eclipse，但是很奇怪的是竟然没有Ant插件在里面
+标准的Eclipse一般都是内置集成了Ant的。
+然后到eclipse的plugins目录下查看了,其实是有安装ant插件的，但是没有在界面体现出来。
+要让Eclipse在界面显示Ant的相关配置，可在命令行下作如下操作：
+
+ $ cd <your eclipse install folder>
+ $ ./eclipse -application org.eclipse.equinox.p2.director -repository http://download.eclipse.org/releases/juno -installIU org.eclipse.ant.ui
+    Installing org.eclipse.ant.ui 3.5.400.v20130514-1341.
+运行完成后，启动eclipse， 此是时发现ant能正常在菜单中显示出来了
+
+windows 版命令
+ $ cd <your eclipse install folder>
+ $ eclipse -application org.eclipse.equinox.p2.director -repository http://download.eclipse.org/releases/juno -installIU org.eclipse.ant.ui
+    Installing org.eclipse.ant.ui 3.5.400.v20130514-1341.
+	
+我按上面的方法，运行了，没有效果，不知道后来什么原因，在
+help -> about eclipse -> Eclipse Installation Details 里看到 ant ui 已经安装了。
+一切就好了，至于是什么时候安装的，怎么出弄出来的，已经不可考了。

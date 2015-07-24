@@ -1,0 +1,29 @@
+http://www.ifanr.com/530697
+新的权限控制系统适用于 Google 自己的应用。就是说，用户也可以拒绝 Google 应用对位置、通讯录或其它个人信息的请求。“这是 Android 的 ，我们不会把优先权给予 Google 应用，每个人都在公平的场地上竞赛，” Lockheimer 说，“Android 是一个操作系统，Google 是第三方开发者。它的应用，比如 Gmail 也要遵循统一的规则。”
+
+http://weimenglee.blogspot.com/2013/08/android-tip-launching-app-ops.html
+android 4.3 的情况下
+startActivity(new Intent("android.settings.APP_OPS_SETTINGS"));
+
+http://www.williamlong.info/archives/2993.html
+保护你的隐私，五种控制Android应用的权限的方法
+
+http://www.androidpolice.com/2013/07/25/app-ops-android-4-3s-hidden-app-permission-manager-control-permissions-for-individual-apps/
+Android 4.3 has a hidden feature! It's called "App Ops" and it lets you selectively disable some permissions for your apps.
+
+http://www.zhihu.com/question/19865201
+http://www.leiphone.com/news/201406/app-ops.html
+Android 4.3隐藏权限控制功能
+先安装一个NOVA启动器（也能使用一些其他能调用 Activity组件的工具）
+
+Android 4.3以后内置一个隐藏的AppOps可以实现此功能
+按照这里的说法，App Ops的Activity已经在AOSP代码库8月份的一次Commit里被注释掉了，
+也就是说在可见的未来里，App Ops应该不会出现。
+很有可能三星/HTC的4.3更新中，App Ops已经消失了
+
+https://play.google.com/store/apps/details?id=com.schurich.android.tools.appopsstarter
+"App Ops" is the Android 4.3's and 4.4 Hidden App Permission Manager.
+It lets you selectively disable some permissions for your apps!
+This little tool makes it easier to access this hidden Permission Manager.
+Update: Google has removed all possibilities to start the "App Ops" on non-rooted Android 4.4.2 devices. 
+Until today no backdoor was found to give you easy access to this feature.

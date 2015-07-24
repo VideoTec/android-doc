@@ -1,0 +1,38 @@
+import android.media.MediaPlayer;
+
+	public static void playSrcAudio(Uri srcAudio) {
+	srcAudioPlayer = MediaPlayer.create(null, srcAudio);
+	if (isSrcMute) {
+		//这句出异常，版本：4.0.3 内核：3.0.8，修改成下面的代码就可以了
+		//原因是，前面代码中，创建过MediaPlayer
+		//srcAudioPlayer 是静态变量 private static MediaPlayer srcAudioPlayer = new MediaPlayer();
+		srcAudioPlayer.setVolume(0.0f, 0.0f);
+	} else {
+		srcAudioPlayer.setVolume(1.0f, 1.0f);
+	}
+	srcAudioPlayer.start();
+
+	}
+
+player = new MediaPlayer();
+player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+player.prepare();
+player.start();
+
+不同异常了，但是，不能播放声音了。
+前面创建mediaplayer的地方：
+
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setOnPreparedListener(mPreparedListener);
+            mMediaPlayer.setOnVideoSizeChangedListener(mSizeChangedListener);
+            mDuration = -1;
+            mMediaPlayer.setOnCompletionListener(mCompletionListener);
+            mMediaPlayer.setOnErrorListener(mErrorListener);
+            mMediaPlayer.setOnBufferingUpdateListener(mBufferingUpdateListener);
+            mCurrentBufferPercentage = 0;
+//            mMediaPlayer.setDataSource(mContext, mUri);
+            mMediaPlayer.setDataSource(mUri.getPath());
+//            mMediaPlayer.setDisplay(mSurfaceHolder);
+            mMediaPlayer.setSurface(new Surface(mSurfaceTexture));
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mMediaPlayer.prepare();

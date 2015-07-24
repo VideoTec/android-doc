@@ -1,0 +1,62 @@
+--------------------------------------------------------------------
+To take pictures with this class, use the following steps:
+--------------------------------------------------------------------
+
+第1步
+Obtain an instance of Camera from open(int).
+
+第2步
+Get existing (default) settings with getParameters().
+
+第3步
+If necessary, modify the returned Camera.Parameters object and call setParameters(Camera.Parameters).
+
+第4步
+If desired, call setDisplayOrientation(int).
+
+第5步
+Important: Pass a fully initialized SurfaceHolder to setPreviewDisplay(SurfaceHolder). Without a surface, the camera will be unable to start the preview.
+
+第6步
+Important: Call startPreview() to start updating the preview surface. Preview must be started before you can take a picture.
+
+第7步
+When you want, call takePicture(Camera.ShutterCallback, Camera.PictureCallback, Camera.PictureCallback, Camera.PictureCallback) to capture a photo. Wait for the callbacks to provide the actual image data.
+
+第8步
+After taking a picture, preview display will have stopped. To take more photos, call startPreview() again first.
+
+第9步
+Call stopPreview() to stop updating the preview surface.
+
+第10步
+Important: Call release() to release the camera for use by other applications. Applications should release the camera immediately in onPause() (and re-open() it in onResume()).
+
+--------------------------------------------------------------------
+To quickly switch to video recording mode, use these steps:
+--------------------------------------------------------------------
+第1步
+Obtain and initialize a Camera and start preview as described above.
+
+第2步
+Call unlock() to allow the media process to access the camera.
+
+第3步
+Pass the camera to setCamera(Camera). See MediaRecorder information about video recording.
+
+第4步
+When finished recording, call reconnect() to re-acquire and re-lock the camera.
+
+第5步
+If desired, restart preview and take more photos or videos.
+
+第6步
+Call stopPreview() and release() as described above.
+
+This class is not thread-safe, and is meant for use from one event thread. 
+Most long-running operations (preview, focus, photo capture, etc) 
+happen asynchronously and invoke callbacks as necessary. 
+Callbacks will be invoked on the event thread open(int) was called from. 
+This class's methods must never be called from multiple threads at once.
+
+Caution: Different Android-powered devices may have different hardware specifications, such as megapixel ratings and auto-focus capabilities. In order for your application to be compatible with more devices, you should not make assumptions about the device camera specifications.

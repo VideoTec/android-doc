@@ -1,0 +1,22 @@
+参考
+file:///E:/android-sdk-windows/docs/reference/android/view/View.html#onTouchEvent(android.view.MotionEvent)
+
+public boolean onTouchEvent (MotionEvent event)
+
+Added in API level 1
+Implement this method to handle touch screen motion events.
+
+If this method is used to detect click actions, 
+it is recommended that the actions be performed by implementing and calling performClick(). 
+This will ensure consistent system behavior, including:
+
+obeying click sound preferences
+dispatching OnClickListener calls
+handling ACTION_CLICK when accessibility features are enabled
+
+Parameters
+event   The motion event.
+
+Returns
+True if the event was handled, false otherwise.
+返回 true 之后的点击事件都不会发生

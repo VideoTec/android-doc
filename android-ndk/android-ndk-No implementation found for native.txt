@@ -1,0 +1,39 @@
+
+-------------------------------
+1:33 2015/5/24
+-------------------------------
+错误
+candidate[英][ˈkændɪdət] [美][ˈkændɪˌdet, -dɪt]
+n.报考者；申请求职者；攻读学位者；最后命运或结局如何已显然可见者
+
+05-24 01:25:07.490    7631-7631/com.example.wangxiang.myapplication E/dalvikvm﹕ ERROR: couldn't find native method
+05-24 01:25:07.490    7631-7631/com.example.wangxiang.myapplication E/dalvikvm﹕ Requested: Lcom/example/jni/HelloWorld;.initOpenGLES:(Landroid.view.SurfaceView;)V
+05-24 01:25:07.490    7631-7631/com.example.wangxiang.myapplication E/dalvikvm﹕ Candidate: Lcom/example/jni/HelloWorld;.initOpenGLES:(Landroid/view/SurfaceView;)V
+
+源码：
+JNIEXPORT void JNICALL init_opengles(JNIEnv *env, jobject clazz, jobject surface);
+JNINativeMethod g_helloworld_methods[] = {
+    {"say_hello", "(Ljava/lang/String;)V", (void *)helloworld},
+    {"hello", "()V", (void *)hello},
+    {"initOpenGLES", "(Landroid.view.SurfaceView;)V", (void *)init_opengles}  错误在这里
+};
+
+-------------------------------
+23:18 2015/5/22
+-------------------------------
+
+下面的 g_helloworld_methods 会引发错误
+
+JNINativeMethod g_helloworld_methods[] = {
+    {"say_hello", "(Ljava/lang/String;)V", (void *)helloworld},
+    {"hello", "(V)V", (void *)hello}
+};
+
+错误
+
+05-22 23:14:34.540  31294-31294/com.example.wangxiang.myapplication E/JNILog﹕ register natives failed for class: com/example/jni/HelloWorld
+05-22 23:14:34.540  31294-31294/com.example.wangxiang.myapplication I/JNILog﹕ say hello world
+05-22 23:14:34.540  31294-31294/com.example.wangxiang.myapplication W/dalvikvm﹕ No implementation found for native Lcom/example/jni/HelloWorld;.hello:()V
+05-22 23:14:34.545  31294-31294/com.example.wangxiang.myapplication D/AndroidRuntime﹕ Shutting down VM
+
+原因是？ {"hello", "(V)V", (void *)hello}  正确写法 {"hello", "()V", (void *)hello}

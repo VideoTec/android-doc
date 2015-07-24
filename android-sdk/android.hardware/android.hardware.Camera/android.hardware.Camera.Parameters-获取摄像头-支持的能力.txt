@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/3988712/problem-with-android-mediarecorder-setvideosize
+List<String> anti = params.getSupportedAntibanding(); 
+List<String> color = params.getSupportedColorEffects();
+List<String> focus = params.getSupportedFocusModes(); 
+List<String> flash = params.getSupportedFlashModes();
+List<Size> previewSize = params.getSupportedPreviewSizes();  Gets the supported preview sizes.
+List<Size> sizes = params.getSupportedPictureSizes();        Gets the supported picture sizes
+List<Integer> frameRates = params.getSupportedPreviewFrameRates();
+List<Integer> pictureFormats = params.getSupportedPictureFormats();
+List<String> scene = params.getSupportedSceneModes(); 
+List<String> white = params.getSupportedWhiteBalance();
+
+This will tell you all of the Camera's supported parameters. Second Make sure that you initialize your MediaRecorder properly see the google documentation for the order in which you need to set the MediaRecorder. Also, if your Camera.setPreviewSize and MediaRecorder.setVideoSize are different it can cause odd behavior.

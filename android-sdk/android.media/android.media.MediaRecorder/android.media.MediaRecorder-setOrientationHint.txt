@@ -1,0 +1,16 @@
+http://developer.android.com/reference/android/media/MediaRecorder.html#setOrientationHint(int)
+
+public void setOrientationHint (int degrees)
+
+Added in API level 9
+Sets the orientation hint for output video playback. This method should be called before prepare(). This method will not trigger the source video frame to rotate during video recording, but to add a composition matrix containing the rotation angle in the output video if the output format is OutputFormat.THREE_GPP or OutputFormat.MPEG_4 so that a video player can choose the proper orientation for playback. Note that some video players may choose to ignore the compostion matrix in a video during playback.
+
+Parameters
+
+degrees
+the angle to be rotated clockwise in degrees. 
+The supported angles are 0, 90, 180, and 270 degrees.
+
+Throws
+IllegalArgumentException
+if the angle is not supported.

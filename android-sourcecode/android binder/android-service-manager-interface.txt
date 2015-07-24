@@ -1,0 +1,36 @@
+/frameworks/native/libs/binder/IServiceManager.cpp
+
+添加Service
+defaultServiceManager()->addService(String16("media.player"), new MediaPlayerService());
+查找Service
+sp<IServiceManager> sm = defaultServiceManager();
+sp<IBinder> binder = sm->getService(String16("media.player"));
+sp<IMediaPlayerService> service = interface_cast<IMediaPlayerService>(binder);
+
+virtual sp<IBinder> checkService( const String16& name) const
+{
+    Parcel data, reply;
+    data.writeInterfaceToken(IServiceManager::getInterfaceDescriptor());
+    data.writeString16(name);
+    remote()->transact(CHECK_SERVICE_TRANSACTION, data, &reply);
+    return reply.readStrongBinder();
+}
+
+添加，查找，枚举
+/frameworks/native/include/binder/IServiceManager.h
+enum {
+      GET_SERVICE_TRANSACTION = IBinder::FIRST_CALL_TRANSACTION,
+      CHECK_SERVICE_TRANSACTION,
+      ADD_SERVICE_TRANSACTION,
+      LIST_SERVICES_TRANSACTION,
+};
+
+/frameworks/native/cmds/servicemanager/binder.h
+enum {
+    /* Must match definitions in IBinder.h and IServiceManager.h */
+    PING_TRANSACTION  = B_PACK_CHARS('_','P','N','G'),
+    SVC_MGR_GET_SERVICE = 1,
+    SVC_MGR_CHECK_SERVICE,
+    SVC_MGR_ADD_SERVICE,
+    SVC_MGR_LIST_SERVICES,
+};

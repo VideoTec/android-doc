@@ -1,0 +1,16 @@
+android.view.Surface
+
+父类：
+java.lang.Object
+
+Handle onto a raw buffer that is being managed by the screen compositor.
+
+Surface的描述是这样的：“Handle onto a raw buffer that is being managed by the screen compositor”，
+翻译成中文就是“由屏幕显示内容合成器(screen compositor)所管理的原生缓冲器的句柄”，这句话包括下面两个意思：
+1.      通过Surface（因为Surface是句柄）就可以获得原生缓冲器以及其中的内容。就像在C语言中，可以通过一个文件的句柄，就可以获得文件的内容一样；
+2.      原生缓冲器（rawbuffer）是用于保存当前窗口的像素数据的
+
+Surface中有一个Canvas成员，专门用于画图的
+Surface本身的作用类似一个句柄，得到了这个句柄就可以得到其中的Canvas、原生缓冲器以及其它方面的内容
+
+Surface就是管理数据的地方，SurfaceView就是展示数据的地方

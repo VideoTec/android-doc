@@ -1,0 +1,47 @@
+resources.arsc: a file containing precompiled resources, such as binary XML for example
+                是二进制XML文件，该二进制XML文件的格式，见源码 ResourceTypes.h
+                由 aapt 工具生成
+				将XML资源文件从文本格式编译成二进制格式解决了空间占用以及解析效率的问题
+				理解源码：资源项索引表resources.arsc的生成过程
+				理解源码：资源项索引表resources.arsc的二进制格式
+				翻译为：资源项索引表 
+
+和资源文件夹的 (res) 的关系
+res: the directory containing resources not compiled into resources.arsc (see below).
+
+resources.arsc contains the resources names and identifiers mapped to entries in R.java
+http://stackoverflow.com/questions/6517151/how-does-the-mapping-between-android-resources-and-resources-id-work/6646113#6646113
+
+Once the resources are compiled and identifiers assigned, 
+aapt generates 
+the R.java file for your source code and 
+a binary file called "resources.arsc" that contains all of the resource names, identifiers, and values 
+(for resources that come from separate file, their value is the path to that file in the .apk), 
+in a format that can easily mmapped and parsed on the device at runtime.
+
+查看 resources.arsc 文件摘要
+You can get a summary of the resources.arsc file in an apk with the command "aapt dump resources <path-to-apk>".
+
+The format of the binary resource table is documented in the header file for the resource data structures here:
+
+https://github.com/android/platform_frameworks_base/blob/master/include/androidfw/ResourceTypes.h
+
+The full implementation for reading the resource table on the device is here:
+
+https://github.com/android/platform_frameworks_base/blob/master/libs/androidfw/ResourceTypes.cpp
+
+在一个APK文件中，除了有代码文件之外，还有很多资源文件。
+这些资源文件是通过Android资源打包工具aapt（Android Asset Package Tool）打包到APK文件里面的。
+在打包之前，大部分文本格式的XML资源文件还会被编译成二进制格式的XML资源文件
+
+参考
+http://blog.csdn.net/luoshengyang/article/details/8806798
+
+资源ID与资源名称的对应关系 打包在APK里面的resources.arsc文件中
+
+APK包里面的resources.arsc文件是在编译应用程序资源的时候生成的，
+然后连同其它被编译的以及原生的资源一起打包在一个APK包里面
+
+源码： frameworks/base/libs/utils/AssetManager.cpp
+AssetManager类的成员函数getResources的实现看起来比较复杂，
+但是它要做的事情就是解析当前应用程序所使用的资源包里面的resources.arsc文件

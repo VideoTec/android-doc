@@ -1,0 +1,26 @@
+http://developer.android.com/guide/topics/manifest/service-element.html
+
+<service android:enabled=["true" | "false"]
+         android:exported=["true" | "false"]
+         android:icon="drawable resource"
+         android:isolatedProcess=["true" | "false"]
+         android:label="string resource"
+         android:name="string"
+         android:permission="string"
+         android:process="string" >
+    . . .
+</service>
+
+CONTAINED IN:
+<application>
+
+CAN CONTAIN:
+<intent-filter> 
+<meta-data>
+
+-------------------------------------------------------------------
+概述
+-------------------------------------------------------------------
+
+Declares a service (a Service subclass) as one of the application's components. Unlike activities, services lack a visual user interface. They're used to implement long-running background operations or a rich communications API that can be called by other applications.
+All services must be represented by <service> elements in the manifest file. Any that are not declared there will not be seen by the system and will never be run.

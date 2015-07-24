@@ -1,0 +1,66 @@
+三种构造：
+AudioTrack(int streamType, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes, int mode)
+AudioTrack(int streamType, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes, int mode, int sessionId)
+AudioTrack(AudioAttributes attributes, AudioFormat format, int bufferSizeInBytes, int mode, int sessionId)
+
+STREAM TYPE: 流的类型  android.media.AudioManager
+STREAM_VOICE_CALL
+STREAM_SYSTEM           系统
+STREAM_RING             铃声
+STREAM_MUSIC            媒体
+STREAM_ALARM           
+STREAM_NOTIFICATION     通知
+不同的系统音量控制
+
+MODE: 模式  android.media.AudioTrack
+MODE_STATIC
+MODE_STREAM
+
+audioFormat 声音格式  android.media.AudioFormat
+ENCODING_PCM_16BIT
+ENCODING_PCM_8BIT
+ENCODING_PCM_FLOAT
+
+channelConfig 声道配置  android.media.AudioFormat
+CHANNEL_OUT_MONO
+CHANNEL_OUT_STEREO
+
+关于 bufferSizeInBytes 参数的说明
+1. 
+bufferSizeInBytes >= getMinBufferSize(int, int, int)
+
+2. 
+If track's creation mode is MODE_STREAM, 
+you can write data into this buffer in chunks less than or equal to this size, 
+and it is typical to use chunks of 1/2 of the total size to permit double-buffering
+
+3. bufferSizeInBytes 是最大声音片段的字节数
+If the track's creation mode is MODE_STATIC,
+this is the maximum length sample, or audio clip, that can be played by this instance
+
+获取 buffer-size 最小值
+public static int getMinBufferSize (int sampleRateInHz, int channelConfig, int audioFormat)
+Returns the minimum buffer size required for the successful creation of an AudioTrack object to be created in the MODE_STREAM mode.
+
+示例代码：
+	AudioTrack mTrack;
+	int sampleRate = 44100;
+	int channelConfig = AudioFormat.CHANNEL_OUT_STEREO;
+	int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+	int sizeInBytes = 1024 * 2 * 2;
+	
+	mTrack = new AudioTrack(
+		AudioManager.STREAM_MUSIC, 
+		sampleRate, channelConfig, audioFormat, sizeInBytes, 
+		AudioTrack.MODE_STREAM);
+		错误：
+		01-25 16:09:04.826: E/AudioTrack(16787): Invalid buffer size: minFrameCount 2400, frameCount 1024
+		01-25 16:09:04.826: E/AudioTrack-JNI(16787): Error initializing AudioTrack
+		01-25 16:09:04.836: E/AudioTrack-Java(16787): [ android.media.AudioTrack ] Error code -20 when initializing AudioTrack.
+		
+		E:\android-src\platform\frameworks\av\media\libmedia\AudioTrack.cpp
+		status_t AudioTrack::getMinFrameCount(size_t* frameCount, audio_stream_type_t streamType, uint32_t sampleRate)
+		
+		失败的原因，构造时指定的 bufferSizeInBytes < getMinBufferSize，造成这个结果
+
+

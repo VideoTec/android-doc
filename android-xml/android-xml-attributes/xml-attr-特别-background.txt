@@ -1,0 +1,23 @@
+参考
+http://developer.android.com/reference/android/R.attr.html#background
+
+A drawable to use as the background. This can be either 
+a reference to a full drawable resource (such as a PNG image, 9-patch, XML state list description, etc), or 
+a solid color such as "#ff000000" (black).
+
+May be a reference 
+to another resource, in the form "@[+][package:]type:name" or 
+to a theme attribute in the form "?[package:][type:]name".
+
+May be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+Constant Value: 16842964 (0x010100d4)
+
+示例：
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:video="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:background="@android:color/black"  也可写成 "#333"
+    android:orientation="horizontal" >

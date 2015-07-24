@@ -1,0 +1,46 @@
+android.view.SurfaceView
+
+父类：
+android.view.View
+
+派生类：
+GLSurfaceView, VideoView
+
+SurfaceView中的View有两个含义：
+1.      视口（viewport）的意思
+2.      SurfaceView是View的派生类
+
+SurfaceView就是用来展示Surface中的数据的
+Surface就是管理数据的地方，SurfaceView就是展示数据的地方
+
+SurfaceView有以下三个特点：
+
+        A. 具有独立的绘图表面；
+
+        B. 需要在宿主窗口上挖一个洞来显示自己；
+
+        C. 它的UI绘制可以在独立的线程中进行，这样就可以进行复杂的UI绘制，并且不会影响应用程序的主线程响应用户输入
+
+SurfaceView，它拥有独立的绘图表面，即它不与其宿主窗口共享同一个绘图表面。
+由于拥有独立的绘图表面，因此SurfaceView的UI就可以在一个独立的线程中进行绘制。
+
+由于不会占用主线程资源，SurfaceView
+一方面可以实现复杂而高效的UI，另
+一方面又不会导致用户输入得不到及时响应
+
+普通的Android控件，例如TextView、Button和CheckBox等，
+它们都是将自己的UI绘制在宿主窗口的绘图表面之上，
+这意味着它们的UI是在应用程序的主线程中进行绘制的
+
+SurfaceView的Layer或者LayerBuffer的Z轴位置是小于用来其宿主Activity窗口的Layer的Z轴
+SurfaceView在其宿主Activity窗口上所挖的“洞”只不过是在其宿主Activity窗口上设置了一块透明区域
+SurfaceView的窗口类型一般都是TYPE_APPLICATION_MEDIA或者TYPE_APPLICATION_MEDIA_OVERLAY，也就是说，它的Z轴位置是小于其宿主窗口的Z位置的。
+为了保证SurfaceView的UI是可见的，SurfaceView就需要在其宿主窗口的上面挖一个洞出来，实际上就是在其宿主窗口的绘图表面上设置一块透明区域，以便可以将自己显示出来
+
+SurfaceView类的成员函数onAttachedToWindow做了两件重要的事
+第一件事情是通知父视图，当前正在处理的SurfaceView需要在宿主窗口的绘图表面上挖一个洞，即需要在宿主窗口的绘图表面上设置一块透明区域
+第二件事情是调用从父类View继承下来的成员函数getWindowSession来获得一个实现了IWindowSession接口的Binder代理对象，并且将该Binder代理对象保存在SurfaceView类的成员变量mSession中
+
+SurfaceView类的成员变量mRequestedType描述的是SurfaceView的绘图表面的类型
+SURFACE_TYPE_NORMAL的时候，就表示该SurfaceView的绘图表面所使用的内存是一块普通的内存。一般来说，这块内存是由SurfaceFlinger服务来分配的，我们可以在应用程序内部自由地访问它，即可以在它上面填充任意的UI数据，然后交给SurfaceFlinger服务来合成，并且显示在屏幕上。在这种情况下，SurfaceFlinger服务使用一个Layer对象来描述该SurfaceView的绘图表面。
+SURFACE_TYPE_PUSH_BUFFERS的时候，就表示该SurfaceView的绘图表面所使用的内存不是由SurfaceFlinger服务分配的，因而我们不能够在应用程序内部对它进行操作。例如，当一个SurfaceView是用来显示摄像头预览或者视频播放的时候，我们就会将它的绘图表面的类型设置为SURFACE_TYPE_PUSH_BUFFERS，这样摄像头服务或者视频播放服务就会为该SurfaceView绘图表面创建一块内存，并且将采集的预览图像数据或者视频帧数据源源不断地填充到该内存中去。注意，这块内存有可能是来自专用的硬件的，例如，它可能是来自视频卡的。在这种情况下，SurfaceFlinger服务使用一个LayerBuffer对象来描述该SurfaceView的绘图表面

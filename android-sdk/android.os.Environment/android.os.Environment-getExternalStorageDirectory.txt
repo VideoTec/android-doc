@@ -1,0 +1,63 @@
+public static File getExternalStorageDirectory ()
+
+例子
+public String getRoot() {
+  File sd = Environment.getExternalStorageDirectory();
+  return sd.getPath() + "/fetion_video";
+}
+
+Added in API level 1
+Return the primary external storage directory. This directory may not currently be accessible if it has been mounted by the user on their computer, has been removed from the device, or some other problem has happened. You can determine its current state with getExternalStorageState().
+
+Note: don't be confused by the word "external" here. This directory can better be thought as media/shared storage. It is a filesystem that can hold a relatively large amount of data and that is shared across all applications (does not enforce permissions). Traditionally this is an SD card, but it may also be implemented as built-in storage in a device that is distinct from the protected internal storage and can be mounted as a filesystem on a computer.
+
+On devices with multiple users (as described by UserManager), each user has their own isolated external storage. Applications only have access to the external storage for the user they're running as.
+
+In devices with multiple "external" storage directories, this directory represents the "primary" external storage that the user will interact with. Access to secondary storage is available through
+
+Applications should not directly use this top-level directory, in order to avoid polluting the user's root namespace. Any files that are private to the application should be placed in a directory returned by Context.getExternalFilesDir, which the system will take care of deleting if the application is uninstalled. Other shared files should be placed in one of the directories returned by getExternalStoragePublicDirectory(String).
+
+Writing to this path requires the WRITE_EXTERNAL_STORAGE permission, and starting in read access requires the READ_EXTERNAL_STORAGE permission, which is automatically granted if you hold the write permission.
+
+Starting in KITKAT, if your application only needs to store internal data, consider using getExternalFilesDir(String) or getExternalCacheDir(), which require no permissions to read or write.
+
+This path may change between platform versions, so applications should only persist relative paths.
+
+Here is an example of typical code to monitor the state of external storage:
+
+BroadcastReceiver mExternalStorageReceiver;
+boolean mExternalStorageAvailable = false;
+boolean mExternalStorageWriteable = false;
+
+void updateExternalStorageState() {
+    String state = Environment.getExternalStorageState();
+    if (Environment.MEDIA_MOUNTED.equals(state)) {
+        mExternalStorageAvailable = mExternalStorageWriteable = true;
+    } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+        mExternalStorageAvailable = true;
+        mExternalStorageWriteable = false;
+    } else {
+        mExternalStorageAvailable = mExternalStorageWriteable = false;
+    }
+    handleExternalStorageState(mExternalStorageAvailable,
+            mExternalStorageWriteable);
+}
+
+void startWatchingExternalStorage() {
+    mExternalStorageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i("test", "Storage: " + intent.getData());
+            updateExternalStorageState();
+        }
+    };
+    IntentFilter filter = new IntentFilter();
+    filter.addAction(Intent.ACTION_MEDIA_MOUNTED);
+    filter.addAction(Intent.ACTION_MEDIA_REMOVED);
+    registerReceiver(mExternalStorageReceiver, filter);
+    updateExternalStorageState();
+}
+
+void stopWatchingExternalStorage() {
+    unregisterReceiver(mExternalStorageReceiver);
+}

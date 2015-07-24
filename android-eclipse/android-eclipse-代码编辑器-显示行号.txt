@@ -1,0 +1,1 @@
+Window->Preferences->General->Editors->Text Editors->Show line numbers

@@ -1,0 +1,11 @@
+public void setAdapter (ListAdapter adapter)
+
+Added in API level 1
+Sets the data behind this ListView. The adapter passed to this method may be wrapped by a WrapperListAdapter, depending on the ListView features currently in use. For instance, adding headers and/or footers will cause the adapter to be wrapped.
+
+Parameters
+adapter
+The ListAdapter which is responsible for maintaining the data backing this list and for producing a view to represent an item in that data set.
+
+See Also
+getAdapter()

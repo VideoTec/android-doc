@@ -1,0 +1,4 @@
+android debug briage ?
+
+路径：
+E:\android\adt\sdk\platform-tools\adb.exe

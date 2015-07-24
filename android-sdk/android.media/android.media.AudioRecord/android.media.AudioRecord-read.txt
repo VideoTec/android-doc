@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------
+public int read (short[] audioData, int offsetInShorts, int sizeInShorts)
+--------------------------------------------------------------------------------
+
+Added in API level 3
+Reads audio data from the audio hardware for recording into a buffer.
+
+Parameters
+audioData	the array to which the recorded audio data is written.
+offsetInShorts	index in audioData from which the data is written expressed in shorts.
+sizeInShorts	the number of requested shorts.
+Returns
+the number of shorts that were read or or ERROR_INVALID_OPERATION if the object wasn't properly initialized, or ERROR_BAD_VALUE if the parameters don't resolve to valid data and indexes. The number of shorts will not exceed sizeInShorts.
+
+--------------------------------------------------------------------------------
+public int read (byte[] audioData, int offsetInBytes, int sizeInBytes)
+--------------------------------------------------------------------------------
+
+Added in API level 3
+Reads audio data from the audio hardware for recording into a buffer.
+
+Parameters
+audioData	the array to which the recorded audio data is written.
+offsetInBytes	index in audioData from which the data is written expressed in bytes.
+sizeInBytes	the number of requested bytes.
+Returns
+the number of bytes that were read or or ERROR_INVALID_OPERATION if the object wasn't properly initialized, or ERROR_BAD_VALUE if the parameters don't resolve to valid data and indexes. The number of bytes will not exceed sizeInBytes.
+
+--------------------------------------------------------------------------------
+public int read (ByteBuffer audioBuffer, int sizeInBytes)
+--------------------------------------------------------------------------------
+
+Added in API level 3
+Reads audio data from the audio hardware for recording into a direct buffer. If this buffer is not a direct buffer, this method will always return 0. Note that the value returned by position() on this buffer is unchanged after a call to this method.
+
+Parameters
+audioBuffer	the direct buffer to which the recorded audio data is written.
+sizeInBytes	the number of requested bytes.
+Returns
+the number of bytes that were read or or ERROR_INVALID_OPERATION if the object wasn't properly initialized, or ERROR_BAD_VALUE if the parameters don't resolve to valid data and indexes. The number of bytes will not exceed sizeInBytes

@@ -1,0 +1,39 @@
+摘自
+E:\android\ndk\platforms\android-15\arch-arm\usr\include\EGL\eglplatform.h
+
+#elif defined(__ANDROID__) || defined(ANDROID)
+
+这两个宏，在那里定义的？
+http://olsr.org/bugs/view.php?id=27
+The gcc in the Android NDK automatically provides __ANDROID__ and 
+this is now the standard macro for detecting Android (this wasn't always the case)
+
+https://groups.google.com/forum/#!topic/android-ndk/yTsM7cam_dk
+The ndk-build script defines ANDROID. That's what I've been using.
+The __ANDROID__ macro should be defined automatically by the compiler
+Also, the NDK build system uses -DANDROID when building C and C++ sources files for idiotic historical reasons
+So in the end, as soon as r5 will be released, please only test against __ANDROID__, and forget about ANDROID.
+
+https://annoyingtechnicaldetails.wordpress.com/2012/02/01/which-macros-does-the-android-ndk-gcc-define/
+ __APPLE__ and _WIN32
+ __gnu_linux__ for the OS
+ __linux__ for the kernel
+ 
+ int main(void)
+{
+#ifdef __ANDROID__
+    printf("__ANDROID__\n");       android 会输出
+#endif
+#ifdef ANDROID
+    printf("ANDROID\n");
+#endif
+#ifdef android
+    printf("android\n");
+#endif
+#ifdef __linux__
+    printf("__linux__\n");         android 会输出
+#endif
+#ifdef __gnu_linux__
+    printf("__gnu_linux__\n");
+#endif
+}

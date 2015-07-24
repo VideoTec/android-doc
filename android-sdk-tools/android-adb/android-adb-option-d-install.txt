@@ -1,0 +1,5 @@
+安装 APK 文件
+adb -d install path/to/your/app.apk
+
+可以去掉 -d 选项
+The -d flag specifies that you want to use the attached device (in case you also have an emulator running).

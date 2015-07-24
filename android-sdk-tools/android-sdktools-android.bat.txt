@@ -1,0 +1,51 @@
+命令行： E:\android-sdk-windows\tools\android.bat
+
+android sdk tools 
+
+If you prefer to use a different IDE or run the tools from the command line or with build scripts, 
+you can instead download the stand-alone Android SDK Tools. 
+
+These packages provide the basic SDK tools for app development, without an IDE. 
+
+可以独立用于 app 的开发，不需要任何 IDE 的配合
+
+-------------------------------------------
+android.bat 最终会调用 swt.jar
+-------------------------------------------
+call "%java_exe% %REMOTE_DEBUG%" "-Dcom.android.sdkmanager.toolsdir=%tools_dir%" "-Dcom.android.sdkmanager.workdir=%work_dir%" -classpath "%jar_path%;%swt_path%\swt.jar" com.android.sdkmanager.Main %*
+
+------------------------------
+通过命令行管理 app 工程
+http://developer.android.com/tools/projects/projects-cmdline.html
+------------------------------
+Managing Projects from the Command Line
+分成下面几部分：
+Creating an Android Project
+Updating a Project
+Setting up a Library Project
+  Creating the manifest file
+  Updating a library project
+Referencing a Library Project
+  Declaring library components in the manifest file
+  Building a dependent application
+
+概述：
+The android tool provides you with commands to create all three types of projects. 那三种工程？
+An Android project contains all of the files and resources 
+that are needed to build a project into an .apk file for installation.
+
+第一种工程：应用工程
+eventually[英][ɪˈventʃuəli] [美][ɪˈvɛntʃuəli] 总归
+An Android project contains all of the files and resources 
+that are needed to build a project into an .apk file for installation. 
+You need to create an Android project for any application 
+that you want to eventually install on a device.
+
+第二种工程：库工程
+You can also designate an Android project as a library project, 
+which allows it to be shared with other projects that depend on it. 
+Once an Android project is designated as a library project, it cannot be installed onto a device.
+
+第三种工程：测试工程
+Test projects extend JUnit test functionality to include Android specific functionality. 
+For more information on creating a test project, see Testing from other IDEs.

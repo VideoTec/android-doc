@@ -1,0 +1,24 @@
+/frameworks/av/include/media/stagefright/foundation/
+AAtomizer.h  [美][ˈætəˌmaɪzɚ]喷雾器 static AAtomizer gAtomizer; Vector<List<AString> > mAtoms; [美][ˈætəm]原子
+ABase.h                      bool isSafeArraySize(S size)
+ABitReader.h                 NALBitReader : public ABitReader 
+ABuffer.h
+ADebug.h
+AHandler.h                   virtual void onMessageReceived(const sp<AMessage> &msg) = 0;
+AHandlerReflector.h          [美][rɪˈflɛktɚ] 反射
+AHierarchicalStateMachine.h  sp<AState> mState;
+ALooper.h                    List<Event> mEventQueue;
+                             looper循环，在start后它启动一个线程不断去检查mEventQueue队列上是否有event事件以及是否达到执行时间
+ALooperRoster.h              KeyedVector<ALooper::handler_id, HandlerInfo> mHandlers;
+AMessage.h                   ALooper::handler_id mTarget
+ANetworkSession.h            KeyedVector<int32_t, sp<Session> > mSessions;
+AString.h
+AUtils.h
+base64.h                    sp<ABuffer> decodeBase64(const AString &s);
+                            void encodeBase64(const void *data, size_t size, AString *out);
+                            Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一
+hexdump.h                   void hexdump(const void *_data, size_t size, size_t indent = 0, AString *appendTo = NULL);
+                            
+MediaBufferBase.h           virtual void release() = 0;
+                            virtual void add_ref() = 0;
+ParsedMessage.h             KeyedVector<AString, AString> mDict;

@@ -1,0 +1,37 @@
+------------------------
+androidmanifest.xml
+------------------------
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
+
+http://blog.csdn.net/zhangjg_blog/article/details/17142395
+
+------------------------
+android:minSdkVersion
+------------------------
+指明应用程序运行所需的最小API level。如果不指明的话，默认是1。也就是说该应用兼容所有的android版本
+
+------------------------
+android:targetSdkVersion
+------------------------
+标明应用程序目标API Level的一个整数。如果不设置，默认值和minSdkVersion相同
+如果平台的API Level高于你的应用程序中的targetSdkVersion属性指定的值，
+系统会开启兼容行为来确保你的应用程序继续以期望的形式来运行
+
+举例来说，
+设置这个值为11或更高，当你的应用运行在Android3.0或更高的系统上时，
+系统会为你的应用使用新的默认主题（Holo主题），
+并且当运行在大屏幕的设备上时会禁用屏幕兼容模式（screen compatibility mode），
+因为支持了 API level 11就暗示了支持大屏幕
+
+为了让你的应用程序支持每个Android版本，
+你应当提高targetSdkVersion的值到最新的API level，然后在对应的平台上彻底的测试你的应用
+
+targetSdkVersion这个属性是在程序运行时期起作用的，系统根据这个属性决定要不要以兼容模式运行这个程序
+
+------------------------
+android:maxSdkVersion
+------------------------
+maxSdkVersion这个属性本来是在程序安装时和系统升级后起作用的。但是根据官方文档中的说明， 已经不再推荐使用这个属性。

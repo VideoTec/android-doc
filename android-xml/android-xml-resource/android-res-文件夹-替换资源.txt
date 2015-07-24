@@ -1,0 +1,82 @@
+qualifier[英][ˈkwɒlɪfaɪə(r)] [美][ˈkwɑ:lɪfaɪə(r)] [语]修饰语
+dash[英][dæʃ] [美][dæʃ] n.少量，些许；猛冲；破折号；短跑
+中文破折号源自英文的 EM DASH；但由于直排时易与丨混淆，故改为占两个字位
+
+参考
+http://developer.android.com/guide/topics/resources/providing-resources.html
+Providing Alternative Resources
+
+Almost every application should provide alternative resources to support specific device configurations. 
+For instance, you should include 
+alternative drawable resources for different screen densities and 
+alternative string resources for different languages.
+ 
+At runtime, Android 
+detects the current device configuration and 
+loads the appropriate resources for your application.
+
+To specify configuration-specific alternatives for a set of resources:
+
+第一步，创建相应的文件夹，文件夹的格式
+Create a new directory in res/ named in the form 
+<resources_name>-<config_qualifier>.
+<resources_name> is the directory name of the corresponding default resources (defined in table 1).
+<qualifier> is a name that specifies an individual configuration for which these resources are to be used (defined in table 2).
+You can append more than one <qualifier>. Separate each one with a dash.
+Caution: When appending multiple qualifiers, you must place them in the same order in which they are listed in table 2. If the qualifiers are ordered wrong, the resources are ignored.
+
+第二步，把替换资源保存到对应的文件夹里 - 文件名需要和默认文件一致
+Save the respective alternative resources in this new directory. 
+The resource files must be named exactly the same as the default resource files.
+
+-----------------------------------------------
+<resources_name>-<config_qualifier>.
+格式解析
+-----------------------------------------------
+
+
+示例
+drawable/
+drawable-en/
+drawable-fr-rCA/
+drawable-en-port/
+drawable-en-notouch-12key/
+drawable-port-ldpi/
+drawable-port-notouch-12key/
+
+-----------------------------------------------
+<resources_name>- 列表
+-----------------------------------------------
+animator     XML files that define property animations
+anim         XML files that define tween animations.
+color        XML files that define a state list of colors. See Color State List Resource
+drawable
+mipmap 
+layout       XML files that define a user interface layout.
+menu         XML files that define application menus, such as an Options Menu, Context Menu, or Sub Menu
+raw 
+values       XML files that contain simple values, such as strings, integers, and colors
+xml          Arbitrary XML files that can be read at runtime by calling Resources.getXML().
+
+-----------------------------------------------
+<config_qualifier>- 列表
+-----------------------------------------------
+分下面几类 修饰符：可同时包含多个修饰符，用中划线分开，但顺序必须按照下面的列表
+MCC and MNC                The mobile country code / mobile network code (MNC) from the SIM card in the device
+Language and region
+Layout Direction
+smallestWidth
+Available width
+Available height
+Screen size
+Screen aspect
+Screen orientation
+UI mode
+Night mode
+Screen pixel density (dpi)
+Touchscreen type
+Keyboard availability
+Primary text input method
+Navigation key availability
+Primary non-touch navigation method
+Platform Version (API level)

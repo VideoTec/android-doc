@@ -1,0 +1,14 @@
+分析源码：
+/frameworks/av/services/medialog/MediaLogService.cpp
+E:\doc\Computer software\Android平台\android binder\main_mediaserver.cpp
+
+    char value[PROPERTY_VALUE_MAX];
+    bool doLog = (property_get("ro.test_harness", value, "0") > 0) && (atoi(value) == 1);
+
+文档：https://source.android.com/devices/audio/debugging.html#mediaLog
+启用 media.log
+adb root
+adb shell
+echo ro.test_harness=1 > /data/local.prop
+chmod 644 /data/local.prop
+reboot

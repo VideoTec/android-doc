@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/16761227/how-to-make-intellij-idea-insert-a-new-line-at-every-end-of-file
+
+Settings→Editor→Other→Ensure line feed at file end on save.

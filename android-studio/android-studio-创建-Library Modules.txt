@@ -1,0 +1,168 @@
+创建 android 库模块
+参考
+conflict[英][ˈkɒnflɪkt] [美][ˈkɑ:nflɪkt] n.冲突；战斗；相互干扰；矛盾
+consistent[英][kənˈsɪstənt] [美][kənˈsɪstənt] adj.一致的；连续的；不矛盾的；坚持的
+
+https://developer.android.com/tools/projects/index.html
+E:\doc\Computer software\Android平台\Sharing Android Source Code and Resources Using Library Projects.txt
+
+Library Modules
+These modules contain shareable Android source code and resources that you can reference in Android projects. 
+This is useful when you have common code that you want to reuse. 
+Library modules cannot be installed onto a device, however, 
+they are pulled into the .apk file at build time.
+
+An Android library module is a development module that holds 
+shared Android source code and resources. 
+Other Android application modules can reference the library module and, at build time, 
+include its compiled sources in their .apk files. 
+Multiple application modules can reference the same library module and 
+any single application module can reference multiple library modules.
+
+Note: You need SDK Tools r14 or newer to use the new library module feature 
+that generates each library module into its own JAR file. 
+You can download the tools and platforms using the Android SDK Manager, 
+as described in SDK tools help.
+
+If you have source code and resources 
+that are common to multiple Android projects, 
+you can move them to a library module so that 
+it is easier to maintain across applications and versions. 
+Here are some common scenarios in which you could make use of library modules:
+
+If you are developing multiple related applications 
+that use some of the same components, 
+you move the redundant components out of their respective application module and 
+create a single, reusable set of the same components in a library module.
+
+If you are creating an application that exists in both free and paid versions. 
+You move the part of the application that is common to both versions into a library module. 
+The two dependent modules, 
+with their different package names, 
+will reference the library module and 
+provide only the difference between the two application versions.
+
+Structurally, 
+a library module is similar to a standard Android application module. 
+For example, it includes a manifest file at the module root, 
+as well as src/, res/ and similar directories. 
+The module can contain 
+the same types of source code and 
+resources as a standard Android module, stored in the same way. 
+For example, source code in the library module 
+can access its own resources through its R class.
+
+However, 
+a library module differs from a standard Android application module 
+in that you cannot compile it directly to its own .apk and 
+run it on an Android device. 
+Similarly, you cannot export the library module to a self-contained JAR file, 
+as you would do for a true library. 
+Instead, you must compile the library indirectly, 
+by referencing the library in the dependent application and building that application.
+
+When you build an application that depends on a library module, 
+the SDK tools compile the library into a temporary JAR file and 
+use it in the main module, 
+then uses the result to generate the .apk. 
+
+In cases where a resource ID is defined in both the application and the library, 
+the tools ensure that the resource declared in the application 
+gets priority and that the resource in the library module 
+is not compiled into the application .apk. 
+This gives your application the flexibility to either use or 
+redefine any resource behaviors or values that are defined in any library.
+
+To organize your code further, 
+your application can add references to multiple library modules, 
+then specify the relative priority of the resources in each library. 
+
+This lets you build up the resources actually used 
+in your application in a cumulative manner. 
+When two libraries referenced from an application define the same resource ID, 
+the tools select the resource from the library 
+with higher priority and discard the other.
+
+Once you have added references to library modules 
+to your Android application module, 
+you can set their relative priority. 
+At build time, the libraries are merged with the application one at a time, 
+starting from the lowest priority to the highest.
+
+Library modules can reference other library modules and 
+can import an external library (JAR) in the normal way.
+
+Development considerations
+
+As you develop your library modules and dependent applications, 
+keep the points listed below in mind:
+
+Resource conflicts
+Since the tools merge the resources of a library module with those of a dependent application module, 
+a given resource ID might be defined in both modules. 
+In this case, the tools select the resource from the application, or the library with highest priority, 
+and discard the other resource. 
+
+As you develop your applications, 
+be aware that common resource IDs are likely to be defined in more than one project and will be merged, 
+with the resource from the application or highest-priority library taking precedence.
+
+Use prefixes to avoid resource conflicts
+To avoid resource conflicts for common resource IDs, 
+consider using a prefix or other consistent naming scheme 
+that is unique to the module (or is unique across all project modules).
+
+You cannot export a library module to a JAR file
+A library cannot be distributed as a binary file (such as a JAR file). 
+This will be added in a future version of the SDK Tools.
+
+A library module can include a JAR library
+You can develop a library module 
+that itself includes a JAR library; 
+however you need to manually edit the dependent application modules's build path and add a path to the JAR file.
+
+A library module can depend on an external JAR library
+You can develop a library module 
+that depends on an external library (for example, the Maps external library). 
+In this case, the dependent application must build against a target 
+that includes the external library (for example, the Google APIs Add-On). 
+Note also that both the library module and the dependent application 
+must declare the external library in their manifest files, in a <uses-library> element.
+
+Library modules cannot include raw assets
+The tools do not support the use of raw asset files 
+(saved in the assets/ directory) in a library module. 
+Any asset resources used by an application must be stored in the assets/ directory of the application module itself. 
+However, resource files saved in the res/ directory are supported.
+
+Platform version must be lower than or equal to the Android module
+A library is compiled as part of the dependent application module, 
+so the API used in the library module must be compatible with 
+the version of the Android library used to compile the application module. 
+In general, the library module should use an API level that is the same as — or lower than — that used by the application. 
+If the library module uses an API level that is higher than that of the application, 
+the application module will not compile. 
+It is perfectly acceptable to have a library that uses the Android 1.5 API (API level 3) and 
+that is used in an Android 1.6 (API level 4) or Android 2.1 (API level 7) module, for instance.
+
+restriction [英][rɪˈstrɪkʃn] [美][rɪˈstrɪkʃən]  n.限制，限定；拘束，束缚；管制
+No restriction on library module names
+There is no requirement for the package name of a library to be the same as that of applications that use it.
+
+Each library module creates its own R class
+When you build the dependent application modules, library modules are compiled and merged with the application module. 
+Each library has its own R class, named according to the library's package name. 
+The R class generated from main module and the library module is created in all the packages 
+that are needed including the main module's package and the libraries' packages.
+
+Library module storage location
+There are no specific requirements on where you should store a library module, 
+relative to a dependent application module, 
+as long as the application module can reference the library module by a relative link. 
+What is important is that the main module can reference the library module through a relative link.
+
+Testing a Library Module
+There are two recommended ways of setting up testing on code and resources in a library module:
+
+You can set up a test module that instruments an application module that depends on the library module. You can then add tests to the module for library-specific features.
+You can set up a standard application module that depends on the library and put the instrumentation in that module. This lets you create a self-contained module that contains both the tests/instrumentations and the code to test.

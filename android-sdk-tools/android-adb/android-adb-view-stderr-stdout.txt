@@ -1,0 +1,9 @@
+Viewing stdout and stderr
+By default, the Android system sends stdout and stderr (System.out and System.err) output to /dev/null. In processes that run the Dalvik VM, you can have the system write a copy of the output to the log file. In this case, the system writes the messages to the log using the log tags stdout and stderr, both with priority I.
+
+To route the output in this way, you stop a running emulator/device instance and then use the shell command setprop to enable the redirection of output. Here's how you do it:
+
+$ adb shell stop
+$ adb shell setprop log.redirect-stdio true
+$ adb shell start
+The system retains this setting until you terminate the emulator/device instance. To use the setting as a default on the emulator/device instance, you can add an entry to /data/local.prop on the device.

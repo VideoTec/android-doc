@@ -1,0 +1,27 @@
+vocabulary[英][vəˈkæbjələri] [美][vəˈkæbjəleri] 
+n.（某一语言的）词汇；（尤指外语教科书中附有释义的）词汇表
+
+http://developer.android.com/guide/topics/ui/declaring-layout.html#attributes
+
+Using Android's XML vocabulary, you can quickly design UI layouts and the screen elements they contain, in the same way you create web pages in HTML — with a series of nested elements.
+
+Each layout file must contain exactly one root element, which must be a View or ViewGroup object. Once you've defined the root element, you can add additional layout objects or widgets as child elements to gradually build a View hierarchy that defines your layout. For example, here's an XML layout that uses a vertical LinearLayout to hold a TextView and a Button:
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical" >
+    <TextView android:id="@+id/text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Hello, I am a TextView" />
+    <Button android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello, I am a Button" />
+</LinearLayout>
+
+After you've declared your layout in XML, save the file with the .xml extension, in your Android project's res/layout/ directory, so it will properly compile.
+
+More information about the syntax for a layout XML file is available in the Layout Resources document.

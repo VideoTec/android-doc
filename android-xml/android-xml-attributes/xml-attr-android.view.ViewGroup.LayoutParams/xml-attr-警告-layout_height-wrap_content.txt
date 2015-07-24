@@ -1,0 +1,17 @@
+        <SurfaceView
+            android:id="@+id/beside_video_record_video_view"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"/>
+
+Use a layout_height of 0dp instead of wrap_content for better performance
+
+http://stackoverflow.com/questions/12016781/why-is-0dp-considered-a-performance-enhancement
+
+here are 3 general layout attributes that work with width and height
+android:layout_height
+android:layout_width
+android:layout_weight 决定（垂直或者水平）剩余空间的分配
+
+The reason to want to ignore the attribute is that if you didn't ignore it, 
+it would be used to calculate the layout which uses more CPU time.

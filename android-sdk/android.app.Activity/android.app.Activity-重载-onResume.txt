@@ -1,0 +1,28 @@
+    @Override
+    protected void onResume() {
+        mCamera = Camera.open();
+        mCamera.setParameters(mCamera.getParameters());
+    }
+
+没有调用，super.onResume() 需要添加在函数的开头
+造成下面的错误
+
+06-17 16:57:26.200: E/AndroidRuntime(25678): FATAL EXCEPTION: main
+06-17 16:57:26.200: E/AndroidRuntime(25678): java.lang.RuntimeException: Unable to resume activity {com.example.testdemo/com.example.testdemo.MainActivity}: android.app.SuperNotCalledException: Activity {com.example.testdemo/com.example.testdemo.MainActivity} did not call through to super.onResume()
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2945)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.handleResumeActivity(ActivityThread.java:2974)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2355)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.access$700(ActivityThread.java:160)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1317)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.os.Looper.loop(Looper.java:176)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.main(ActivityThread.java:5454)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at java.lang.reflect.Method.invokeNative(Native Method)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at java.lang.reflect.Method.invoke(Method.java:525)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at dalvik.system.NativeStart.main(Native Method)
+06-17 16:57:26.200: E/AndroidRuntime(25678): Caused by: android.app.SuperNotCalledException: Activity {com.example.testdemo/com.example.testdemo.MainActivity} did not call through to super.onResume()
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.Activity.performResume(Activity.java:5452)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	at android.app.ActivityThread.performResumeActivity(ActivityThread.java:2935)
+06-17 16:57:26.200: E/AndroidRuntime(25678): 	... 12 more

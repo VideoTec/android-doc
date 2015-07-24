@@ -1,0 +1,2 @@
+隐藏标题栏需要使用预定义样式：android:theme=”@android:style/Theme.NoTitleBar”.
+隐藏状态栏：                  android:theme=”@android:style/Theme.NoTitleBar.Fullscreen”.

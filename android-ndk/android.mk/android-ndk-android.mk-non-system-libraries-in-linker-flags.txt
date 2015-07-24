@@ -1,0 +1,9 @@
+警告：
+Android NDK: WARNING:jni/Android.mk:fvideo: non-system libraries in linker flags
+: -lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb
+
+代码：
+LOCAL_LDLIBS    := -lavformat -lavcodec -lavresample -lswscale -lavutil -lx264 -lvo-aacenc -lopencore-amrnb -lopencore-amrwb -ljnigraphics -lz -llog
+
+原因：
+用于指定链接的 system libraries

@@ -1,0 +1,27 @@
+http://developer.android.com/reference/android/hardware/Camera.Parameters.html#setRotation(int)
+
+public void setRotation (int rotation)
+
+Added in API level 5
+Sets the clockwise rotation angle in degrees relative to the orientation of the camera. This affects the pictures returned from JPEG Camera.PictureCallback. The camera driver may set orientation in the EXIF header without rotating the picture. Or the driver may rotate the picture and the EXIF thumbnail. If the Jpeg picture is rotated, the orientation in the EXIF header will be missing or 1 (row #0 is top and column #0 is left side).
+
+If applications want to rotate the picture to match the orientation of what users see, apps should use OrientationEventListener and Camera.CameraInfo. The value from OrientationEventListener is relative to the natural orientation of the device. CameraInfo.orientation is the angle between camera orientation and natural device orientation. The sum of the two is the rotation angle for back-facing camera. The difference of the two is the rotation angle for front-facing camera. Note that the JPEG pictures of front-facing cameras are not mirrored as in preview display.
+
+For example, suppose the natural orientation of the device is portrait. The device is rotated 270 degrees clockwise, so the device orientation is 270. Suppose a back-facing camera sensor is mounted in landscape and the top side of the camera sensor is aligned with the right edge of the display in natural orientation. So the camera orientation is 90. The rotation should be set to 0 (270 + 90).
+
+The reference code is as follows.
+
+ public void onOrientationChanged(int orientation) {
+     if (orientation == ORIENTATION_UNKNOWN) return;
+     android.hardware.Camera.CameraInfo info =
+            new android.hardware.Camera.CameraInfo();
+     android.hardware.Camera.getCameraInfo(cameraId, info);
+     orientation = (orientation + 45) / 90 * 90;
+     int rotation = 0;
+     if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
+         rotation = (info.orientation - orientation + 360) % 360;
+     } else {  // back-facing camera
+         rotation = (info.orientation + orientation) % 360;
+     }
+     mParameters.setRotation(rotation);
+ }

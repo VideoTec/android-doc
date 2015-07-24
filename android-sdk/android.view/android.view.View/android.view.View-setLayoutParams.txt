@@ -1,0 +1,22 @@
+http://developer.android.com/reference/android/view/View.html#setLayoutParams(android.view.ViewGroup.LayoutParams)
+
+public void setLayoutParams (ViewGroup.LayoutParams params)
+
+Added in API level 1
+Set the layout parameters associated with this view. These supply parameters to the parent of this view specifying how it should be arranged. There are many subclasses of ViewGroup.LayoutParams, and these correspond to the different subclasses of ViewGroup that are responsible for arranging their children.
+
+Parameters
+params	The layout parameters for this view, cannot be null
+
+
+第一种方法：
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.height = mVideoHeight;
+        p.width = mVideoWidth;
+        mSurfaceview.setLayoutParams(p);
+
+http://stackoverflow.com/questions/5715612/how-to-set-setlayoutparams-for-linear-layout-elements
+imageview1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 50));  
+textview1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 50));
+listview01.setLayoutParams(new
+       LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));

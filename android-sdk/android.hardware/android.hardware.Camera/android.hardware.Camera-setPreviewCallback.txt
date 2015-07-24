@@ -1,0 +1,17 @@
+自动分配图片缓存
+------------------------------------------------------------------------
+public final void setPreviewCallback (Camera.PreviewCallback cb)
+startPreview 前后调用都有效
+------------------------------------------------------------------------
+
+Added in API level 1
+Installs a callback to be invoked for every preview frame in addition to displaying them on the screen. 
+The callback will be repeatedly called for as long as preview is active. 
+This method can be called at any time, even while preview is live. 
+Any other preview callbacks are overridden.
+
+If you are using the preview data to create video or still images, 
+strongly consider using MediaActionSound to properly indicate image capture or recording start/stop to the user.
+
+Parameters
+cb	a callback object that receives a copy of each preview frame, or null to stop receiving callbacks.

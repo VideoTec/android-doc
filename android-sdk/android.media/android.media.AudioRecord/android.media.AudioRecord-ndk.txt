@@ -1,0 +1,12 @@
+The C++ libmedia library is not part of the public API. Some people use it, but this is highly discouraged because it might break on some devices and/or in a future Android release.
+
+I developed an audio recording app, and trust me, audio support is very inconsistent across devices, it's very tricky, so IMO using libmedia directly is a bad idea.
+
+The only way to capture raw audio with the public API is to use the Java AudioRecord class. It will gives you PCM data, which you can then choose to pass to your C optimized routines.
+
+Alternatively, although that's a bit harder, you could write a C/C++ wrapper around the Java AudioRecord class, as it is possible to instantiate Java objects and call methods through JNI.
+
+----------------------
+libMedia 的用法 - 未公开的接口
+----------------------
+https://code.google.com/p/andless/source/browse/trunk/jni/std_audio.cpp

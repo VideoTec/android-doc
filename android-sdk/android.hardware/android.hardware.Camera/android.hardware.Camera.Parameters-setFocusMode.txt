@@ -1,0 +1,15 @@
+public void setFocusMode (String value)
+
+Added in API level 5
+Sets the focus mode.
+
+Parameters
+value	focus mode.
+
+FOCUS_MODE_AUTO
+FOCUS_MODE_INFINITY
+FOCUS_MODE_MACRO
+FOCUS_MODE_FIXED
+FOCUS_MODE_EDOF
+FOCUS_MODE_CONTINUOUS_VIDEO
+FOCUS_MODE_CONTINUOUS_PICTURE

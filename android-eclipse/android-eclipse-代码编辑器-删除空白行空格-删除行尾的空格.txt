@@ -1,0 +1,5 @@
+Trailing 行尾的空格 - 和换行回车符相连的空格
+
+Eclipse 提供了这样的功能，但是没有设置默认快捷键
+Window-Perferenes-General-Keys
+		Remove Trailing Whitespace

@@ -1,0 +1,5 @@
+application.mk
+APP_ABI := armeabi-v7a x86
+
+android.mk  变量 TARGET_ARCH_ABI
+LOCAL_SRC_FILES := $(TARGET_ARCH_ABI)/libopencore-amr/lib/libopencore-amrnb.a

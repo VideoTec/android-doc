@@ -1,0 +1,18 @@
+setBackgroundDrawable(Drawable background)
+This method was deprecated in API level 16. use setBackground(Drawable) instead
+
+其中有几个概念要理解：
+Drawable
+background
+padding  -  background has padding, View's padding
+
+setBackground(Drawable background)
+Set the background to a given Drawable, or remove the background.
+
+background	The Drawable to use as the background, or null to remove the background
+Set the background to a given Drawable, or 
+remove the background
+
+If the background has padding, this View's padding is set to the background's padding. 
+However, when a background is removed, this View's padding isn't touched. 
+If setting the padding is desired, please use setPadding(int, int, int, int).

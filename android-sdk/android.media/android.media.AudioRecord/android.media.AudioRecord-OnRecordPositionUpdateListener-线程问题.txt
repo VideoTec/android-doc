@@ -1,0 +1,110 @@
+根据源码分析
+
+    构造函数时，指定 Looper，
+	如果当前线程，有looper，就在当前线程，调用回调
+	如果当前线程，没有looper，就在主线程，调用回调
+
+    public AudioRecord(AudioAttributes attributes, AudioFormat format, int bufferSizeInBytes,
+            int sessionId) throws IllegalArgumentException {
+        mRecordingState = RECORDSTATE_STOPPED;
+
+        if (attributes == null) {
+            throw new IllegalArgumentException("Illegal null AudioAttributes");
+        }
+        if (format == null) {
+            throw new IllegalArgumentException("Illegal null AudioFormat");
+        }
+
+        // remember which looper is associated with the AudioRecord instanciation
+        if ((mInitializationLooper = Looper.myLooper()) == null) {
+            mInitializationLooper = Looper.getMainLooper();
+        }
+
+    发送消息
+    //---------------------------------------------------------
+    // Java methods called from the native side
+    //--------------------
+    @SuppressWarnings("unused")
+    private static void postEventFromNative(Object audiorecord_ref,
+            int what, int arg1, int arg2, Object obj) {
+        //logd("Event posted from the native side: event="+ what + " args="+ arg1+" "+arg2);
+        AudioRecord recorder = (AudioRecord)((WeakReference)audiorecord_ref).get();
+        if (recorder == null) {
+            return;
+        }
+
+        if (recorder.mEventHandler != null) {
+            Message m =
+                recorder.mEventHandler.obtainMessage(what, arg1, arg2, obj);
+            recorder.mEventHandler.sendMessage(m);
+        }
+
+    }
+
+    创建消息处理器对象
+    /**
+     * Sets the listener the AudioRecord notifies when a previously set marker is reached or
+     * for each periodic record head position update.
+     * Use this method to receive AudioRecord events in the Handler associated with another
+     * thread than the one in which you created the AudioTrack instance.
+     * @param listener
+     * @param handler the Handler that will receive the event notification messages.
+     */
+    public void setRecordPositionUpdateListener(OnRecordPositionUpdateListener listener,
+                                                    Handler handler) {
+        synchronized (mPositionListenerLock) {
+
+            mPositionListener = listener;
+
+            if (listener != null) {
+                if (handler != null) {
+                    mEventHandler = new NativeEventHandler(this, handler.getLooper());
+                } else {
+                    // no given handler, use the looper the AudioRecord was created in
+                    mEventHandler = new NativeEventHandler(this, mInitializationLooper);
+                }
+            } else {
+                mEventHandler = null;
+            }
+        }
+
+    }
+
+	定义消息处理器类
+    /**
+     * Helper class to handle the forwarding of native events to the appropriate listener
+     * (potentially) handled in a different thread
+     */
+    private class NativeEventHandler extends Handler {
+
+        private final AudioRecord mAudioRecord;
+
+        NativeEventHandler(AudioRecord recorder, Looper looper) {
+            super(looper);
+            mAudioRecord = recorder;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            OnRecordPositionUpdateListener listener = null;
+            synchronized (mPositionListenerLock) {
+                listener = mAudioRecord.mPositionListener;
+            }
+
+            switch (msg.what) {
+            case NATIVE_EVENT_MARKER:
+                if (listener != null) {
+                    listener.onMarkerReached(mAudioRecord);
+                }
+                break;
+            case NATIVE_EVENT_NEW_POS:
+                if (listener != null) {
+                    listener.onPeriodicNotification(mAudioRecord);
+                }
+                break;
+            default:
+                loge("Unknown native event type: " + msg.what);
+                break;
+            }
+        }
+    };

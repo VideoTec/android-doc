@@ -1,0 +1,16 @@
+file | settings | keymap
+
+main menu -> build -> 
+
+Make Project
+Make Module(s)
+Compile
+------------------
+Rebuild Project
+Clean Projecgt
+------------------
+Generate Ant Build...
+------------------
+Build Artifacts...
+Generate Signed APK...
+Deploy Module to App Engine...

@@ -1,0 +1,18 @@
+Android AudioTracck 通知事件 接口
+
+Interface definition for a callback to be invoked when 
+
+第一种情况：the playback head position of an AudioTrack has reached a notification marker or 
+第二种情况：has increased by a certain period.
+
+接口一：
+abstract void onMarkerReached(AudioTrack track)
+Called on the listener to notify it that 
+the previously set marker has been reached by the playback head.
+Called on the listener to notify it that the previously set marker has been reached by the playback head.
+
+接口二：
+abstract void onPeriodicNotification(AudioTrack track)
+Called on the listener to periodically notify it that 
+the playback head has reached a multiple of the notification period.
+Called on the listener to periodically notify it that the playback head has reached a multiple of the notification period.
