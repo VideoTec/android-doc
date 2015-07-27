@@ -1,0 +1,28 @@
+public Bitmap decodeRegion (Rect rect, BitmapFactory.Options options)
+
+Added in API level 10
+Decodes a rectangle region in the image specified by rect.
+
+Parameters
+rect
+The rectangle that specified the region to be decode.
+
+options
+null-ok; Options that control downsampling(下采样). inPurgeable is not supported.
+
+Returns
+The decoded bitmap, or null if the image data could not be decoded.
+
+例子：
+    private Bitmap cropBitmap(byte[] buff, int[] srcSize, int[] desSize) {
+        try {
+            // 超长or超宽or超大图.
+            BitmapRegionDecoder decoder = BitmapRegionDecoder.newInstance(buff, 0, buff.length, true);
+            Rect rect = new Rect(0, 0, desSize[0], desSize[1]);
+            return decoder.decodeRegion(rect, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }

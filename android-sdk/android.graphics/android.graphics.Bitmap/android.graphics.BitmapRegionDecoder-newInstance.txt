@@ -1,0 +1,105 @@
+public static BitmapRegionDecoder newInstance (String pathName, boolean isShareable)
+public static BitmapRegionDecoder newInstance (InputStream is, boolean isShareable)
+public static BitmapRegionDecoder newInstance (FileDescriptor fd, boolean isShareable)
+public static BitmapRegionDecoder newInstance (byte[] data, int offset, int length, boolean isShareable)
+
+----------------------------------------------------------------------------------------
+public static BitmapRegionDecoder newInstance (String pathName, boolean isShareable)
+----------------------------------------------------------------------------------------
+
+Added in API level 10
+Create a BitmapRegionDecoder from a file path. Currently only the JPEG and PNG formats are supported.
+
+Parameters
+
+pathName
+complete path name for the file to be decoded.
+
+isShareable
+If this is true, then the BitmapRegionDecoder may keep a shallow reference to the input. If this is false, then the BitmapRegionDecoder will explicitly make a copy of the input data, and keep that. Even if sharing is allowed, the implementation may still decide to make a deep copy of the input data. If an image is progressively encoded, allowing sharing may degrade the decoding speed.
+
+Returns
+BitmapRegionDecoder, or null if the image data could not be decoded.
+
+Throws
+
+IOException
+if the image format is not supported or can not be decoded.
+
+----------------------------------------------------------------------------------------
+public static BitmapRegionDecoder newInstance (InputStream is, boolean isShareable)
+----------------------------------------------------------------------------------------
+
+Added in API level 10
+
+Create a BitmapRegionDecoder from an input stream. The stream's position will be where ever it was after the encoded data was read. Currently only the JPEG and PNG formats are supported.
+
+Parameters
+
+is
+The input stream that holds the raw data to be decoded into a BitmapRegionDecoder.
+
+isShareable
+If this is true, then the BitmapRegionDecoder may keep a shallow reference to the input. If this is false, then the BitmapRegionDecoder will explicitly make a copy of the input data, and keep that. Even if sharing is allowed, the implementation may still decide to make a deep copy of the input data. If an image is progressively encoded, allowing sharing may degrade the decoding speed.
+
+Returns
+BitmapRegionDecoder, or null if the image data could not be decoded.
+
+Throws
+IOException
+if the image format is not supported or can not be decoded.
+Prior to KITKAT, if is.markSupported() returns true, is.mark(1024) would be called. As of KITKAT, this is no longer the case.
+
+----------------------------------------------------------------------------------------
+public static BitmapRegionDecoder newInstance (FileDescriptor fd, boolean isShareable)
+----------------------------------------------------------------------------------------
+
+Added in API level 10
+
+Create a BitmapRegionDecoder from the file descriptor. The position within the descriptor will not be changed when this returns, so the descriptor can be used again as is. Currently only the JPEG and PNG formats are supported.
+
+Parameters
+
+fd
+The file descriptor containing the data to decode
+
+isShareable
+If this is true, then the BitmapRegionDecoder may keep a shallow reference to the input. If this is false, then the BitmapRegionDecoder will explicitly make a copy of the input data, and keep that. Even if sharing is allowed, the implementation may still decide to make a deep copy of the input data. If an image is progressively encoded, allowing sharing may degrade the decoding speed.
+
+Returns
+BitmapRegionDecoder, or null if the image data could not be decoded.
+
+Throws
+
+IOException
+if the image format is not supported or can not be decoded.
+
+----------------------------------------------------------------------------------------
+public static BitmapRegionDecoder newInstance (byte[] data, int offset, int length, boolean isShareable)
+----------------------------------------------------------------------------------------
+
+Added in API level 10
+
+Create a BitmapRegionDecoder from the specified byte array. Currently only the JPEG and PNG formats are supported.
+
+Parameters
+
+data
+byte array of compressed image data.
+
+offset
+offset into data for where the decoder should begin parsing.
+
+length
+the number of bytes, beginning at offset, to parse
+
+isShareable
+If this is true, then the BitmapRegionDecoder may keep a shallow reference to the input. If this is false, then the BitmapRegionDecoder will explicitly make a copy of the input data, and keep that. Even if sharing is allowed, the implementation may still decide to make a deep copy of the input data. If an image is progressively encoded, allowing sharing may degrade the decoding speed.
+
+Returns
+BitmapRegionDecoder, or null if the image data could not be decoded.
+
+Throws
+
+IOException
+if the image format is not supported or can not be decoded.
