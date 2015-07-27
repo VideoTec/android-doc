@@ -1,0 +1,12 @@
+public abstract Object getItem (int position)
+
+Added in API level 1
+Get the data item associated with the specified position in the data set.
+
+Parameters
+position
+Position of the item whose data we want within the adapter's data set.
+ListView 这个 position 从 0 开始，对应 list-item-index
+
+Returns
+The data at the specified position.

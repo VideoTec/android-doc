@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/541966/lazy-load-of-images-in-listview/3068012#3068012
+https://github.com/thest1/LazyList
+I made a simple demo of a lazy list (located at GitHub) with images. It may be helpful to somebody. It downloads images in the background thread. Images are being cached on an SD card and in memory. The cache implementation is very simple and is just enough for the demo. I decode images with inSampleSize to reduce memory consumption. I also try to handle recycled views correctly

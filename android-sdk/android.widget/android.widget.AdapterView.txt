@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/widget/AdapterView.html
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.AdapterView<T extends android.widget.Adapter>
+
+Known Direct Subclasses
+AbsListView, AbsSpinner, AdapterViewAnimator
+
+Known Indirect Subclasses
+AdapterViewFlipper, 
+AppCompatSpinner, 
+ExpandableListView, 
+Gallery, GridView, 
+ListView, Spinner, StackView
+
+An AdapterView is a view whose children are determined by an Adapter.
+
+See ListView, GridView, Spinner and Gallery for commonly used subclasses of AdapterView.

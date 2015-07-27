@@ -1,0 +1,34 @@
+http://developer.android.com/reference/android/view/ViewGroup.html
+
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+
+Known Direct Subclasses
+AbsoluteLayout, AdapterView<T extends Adapter>, 
+CoordinatorLayout, DrawerLayout, 
+FragmentBreadCrumbs, FrameLayout, 
+GridLayout, LinearLayout, LinearLayoutCompat, 
+PagerTitleStrip, 
+RecyclerView, RelativeLayout, 
+ShadowOverlayContainer, SlidingDrawer, 
+SlidingPaneLayout, SwipeRefreshLayout, 
+Toolbar, TvView, ViewPager
+
+Known Indirect Subclasses
+AbsListView, AbsSpinner, 
+ActionMenuView, AdapterViewAnimator, 
+AdapterViewFlipper, AppBarLayout, 
+AppCompatSpinner, AppWidgetHostView, 
+BaseCardView, BrowseFrameLayout, and 41 others.
+
+serve[英][sɜ:v] [美][sɜ:rv]
+vt.& vi.（为…）服务；任（职）；提供；端上
+
+A ViewGroup is a special view that can contain other views (called children.) 
+The view group is the base class for layouts and views containers. 
+This class also defines the ViewGroup.LayoutParams class 
+which serves as the base class for layouts parameters.
+
+Also see ViewGroup.LayoutParams for layout attributes.

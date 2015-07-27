@@ -6,12 +6,38 @@ Get a View that displays the data at the specified position in the data set. You
 Parameters
 position
 The position of the item within the adapter's data set of the item whose view we want.
+ListView 这个 position 从 0 开始，对应 list-item-index
 
 convertView
 The old view to reuse, if possible. Note: You should check that this view is non-null and of an appropriate type before using. If it is not possible to convert this view to display the correct data, this method can create a new view. Heterogeneous lists can specify their number of view types, so that this View is always of the right type (see getViewTypeCount() and getItemViewType(int)).
+
+appropriate[英][əˈprəʊpriət] [美][əˈproʊpriət]
+adj.适当的；恰当的；合适的
+heterogeneous[英][ˌhetərəˈdʒi:niəs] [美][ˌhɛtərəˈdʒiniəs, -ˈdʒinjəs]
+adj.各种各样的；成分混杂的
 
 parent
 The parent that this view will eventually be attached to
 
 Returns
 A View corresponding to the data at the specified position.
+注意：返回的 view，其父窗口变成 (GridView, ListView...)
+When the View is inflated, the parent View (GridView, ListView...) 
+will apply default layout parameters
+
+----------------------------
+例子：
+注意 convertView 只创建了一次
+注意 convertView 中的数据，并不一定是之前设置的，或者，是之前的 view
+----------------------------
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View vi=convertView;
+        if(convertView==null)
+            vi = inflater.inflate(R.layout.item, null);
+
+        TextView text=(TextView)vi.findViewById(R.id.text);;
+        ImageView image=(ImageView)vi.findViewById(R.id.image);
+        text.setText("item "+position);
+        imageLoader.DisplayImage(data[position], image);
+        return vi;
+    }

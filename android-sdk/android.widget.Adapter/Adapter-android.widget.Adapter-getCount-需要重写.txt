@@ -1,0 +1,9 @@
+public abstract int getCount ()
+
+Added in API level 1
+How many items are in the data set represented by this Adapter.
+
+Returns
+Count of items.
+
+ListView 返回列表中的行数

@@ -1,0 +1,8 @@
+http://developer.android.com/reference/android/net/Uri.html
+
+java.lang.Object
+   ↳	android.net.Uri
+
+Immutable URI reference. A URI reference includes a URI and a fragment, the component of the URI following a '#'. Builds and parses URI references which conform to RFC 2396.
+
+In the interest of performance, this class performs little to no validation. Behavior is undefined for invalid input. This class is very forgiving--in the face of invalid input, it will return garbage rather than throw an exception unless otherwise specified.

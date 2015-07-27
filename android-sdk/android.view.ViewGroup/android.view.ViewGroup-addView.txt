@@ -1,0 +1,73 @@
+public void addView (View child, int index, ViewGroup.LayoutParams params)
+public void addView (View child, ViewGroup.LayoutParams params)
+public void addView (View child, int index)
+public void addView (View child)
+public void addView (View child, int width, int height)
+
+-----------------------------------------------------------------------------
+public void addView (View child, int index, ViewGroup.LayoutParams params)
+-----------------------------------------------------------------------------
+
+Added in API level 1
+Adds a child view with the specified layout parameters.
+
+Note: do not invoke this method from draw(android.graphics.Canvas), onDraw(android.graphics.Canvas), dispatchDraw(android.graphics.Canvas) or any related method.
+
+Parameters
+child	the child view to add
+index	the position at which to add the child
+params	the layout parameters to set on the child
+
+-----------------------------------------------------------------------------
+public void addView (View child, ViewGroup.LayoutParams params)
+-----------------------------------------------------------------------------
+
+Added in API level 1
+Adds a child view with the specified layout parameters.
+
+Note: do not invoke this method from draw(android.graphics.Canvas), onDraw(android.graphics.Canvas), dispatchDraw(android.graphics.Canvas) or any related method.
+
+Parameters
+child	the child view to add
+params	the layout parameters to set on the child
+
+-----------------------------------------------------------------------------
+public void addView (View child, int index)
+-----------------------------------------------------------------------------
+
+Added in API level 1
+Adds a child view. If no layout parameters are already set on the child, the default parameters for this ViewGroup are set on the child.
+
+Note: do not invoke this method from draw(android.graphics.Canvas), onDraw(android.graphics.Canvas), dispatchDraw(android.graphics.Canvas) or any related method.
+
+Parameters
+child	the child view to add
+index	the position at which to add the child
+See Also
+generateDefaultLayoutParams()
+
+-----------------------------------------------------------------------------
+public void addView (View child)
+-----------------------------------------------------------------------------
+
+Added in API level 1
+Adds a child view. If no layout parameters are already set on the child, the default parameters for this ViewGroup are set on the child.
+
+Note: do not invoke this method from draw(android.graphics.Canvas), onDraw(android.graphics.Canvas), dispatchDraw(android.graphics.Canvas) or any related method.
+
+Parameters
+child	the child view to add
+See Also
+generateDefaultLayoutParams()
+
+-----------------------------------------------------------------------------
+public void addView (View child, int width, int height)
+-----------------------------------------------------------------------------
+
+Added in API level 1
+Adds a child view with this ViewGroup's default layout parameters and the specified width and height.
+
+Note: do not invoke this method from draw(android.graphics.Canvas), onDraw(android.graphics.Canvas), dispatchDraw(android.graphics.Canvas) or any related method.
+
+Parameters
+child	the child view to add

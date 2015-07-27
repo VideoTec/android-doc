@@ -1,0 +1,9 @@
+例子：
+
+Bitmap bmp = bmpRegion.decodeRegion(new Rect(0, top, bmpWidth, top + cutHeight),  null);
+FileOutputStream ofs = new FileOutputStream("sdcard/cut-" + index + ".jpg");
+bmp.compress(CompressFormat.JPEG, 50, ofs);
+
+需要调用下面函数吗？不调用也可以正常运行。
+ofs.flush();
+ofs.close();

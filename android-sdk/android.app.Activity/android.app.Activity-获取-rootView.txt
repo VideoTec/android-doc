@@ -1,0 +1,23 @@
+http://stackoverflow.com/questions/4486034/get-root-view-from-current-activity
+
+This is what I use to get the root view as found in the XML file assigned with setContentView:
+
+final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
+            .findViewById(android.R.id.content)).getChildAt(0);
+
+------------------------------------------------------
+I tested this in android 4.0.3, only:
+
+getWindow().getDecorView().getRootView()
+give the same view what we get from
+
+anyview.getRootView();
+
+com.android.internal.policy.impl.PhoneWindow$DecorView@#########
+and
+
+getWindow().getDecorView().findViewById(android.R.id.content)
+giving child of its
+
+android.widget.FrameLayout@#######
+Please confirm.

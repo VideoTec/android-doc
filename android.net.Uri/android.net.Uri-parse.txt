@@ -1,0 +1,30 @@
+public static Uri parse (String uriString)
+
+Added in API level 1
+Creates a Uri which parses the given encoded URI string.
+
+Parameters
+uriString
+an RFC 2396-compliant, encoded URI
+
+Returns
+Uri for this given uri string
+
+Throws
+NullPointerException
+if uriString is null
+
+-------------------------
+示例：
+-------------------------
+Uri imgUri=Uri.parse("file:///data/data/MYFOLDER/myimage.png");
+
+public View getView(int position, View convertView, ViewGroup parent) {
+    ImageView t = new ImageView(mCtx);
+    t.setImageURI(Uri.parse("file:///sdcard/cut-" + position + ".jpg"));
+    return t;
+}
+
+picUrl = new URL(getIntent().getExtras().getString("map_url"));  
+Bitmap pngBM = BitmapFactory.decodeStream(picUrl.openStream());   
+mapIMG.setImageBitmap(pngBM);

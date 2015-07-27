@@ -19,3 +19,20 @@ To access the DisplayMetrics members, initialize an object like this:
 
  DisplayMetrics metrics = new DisplayMetrics();
  getWindowManager().getDefaultDisplay().getMetrics(metrics);
+ 
+-------------------------------------
+例子
+-------------------------------------
+  	/**
+	 * 获取屏幕宽高
+	 * @param activity
+	 * @return
+	 */
+	public static int[] getScreenWH(Activity activity) {
+		int[] wh = new int[2];
+		DisplayMetrics dm = new DisplayMetrics();
+		activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+		wh[0] = dm.widthPixels;
+		wh[1] = dm.heightPixels;
+		return wh;
+	}

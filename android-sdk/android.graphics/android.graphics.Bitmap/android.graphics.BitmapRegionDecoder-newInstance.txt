@@ -93,6 +93,12 @@ offset into data for where the decoder should begin parsing.
 length
 the number of bytes, beginning at offset, to parse
 
+shallow[英][ˈʃæləʊ] [美][ˈʃæloʊ]
+adj.浅的，肤浅的；表面的，皮毛的；（水，器物等）浅的；（呼吸）浅的
+
+progressively[英][prəˈgresɪvli] [美][prəˈɡrɛsɪvlɪ]
+adv.前进地，日益增加地；逐步
+
 isShareable
 If this is true, then the BitmapRegionDecoder may keep a shallow reference to the input. If this is false, then the BitmapRegionDecoder will explicitly make a copy of the input data, and keep that. Even if sharing is allowed, the implementation may still decide to make a deep copy of the input data. If an image is progressively encoded, allowing sharing may degrade the decoding speed.
 

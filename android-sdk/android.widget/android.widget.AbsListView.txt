@@ -1,0 +1,22 @@
+http://developer.android.com/reference/android/widget/AbsListView.html
+
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.AdapterView<android.widget.ListAdapter>
+ 	 	 	   ↳	android.widget.AbsListView
+
+Known Direct Subclasses
+GridView, ListView
+
+Known Indirect Subclasses
+ExpandableListView
+
+spatial[英][ˈspeɪʃl] [美][ˈspeʃəl]
+adj.空间的；存在于空间的；受空间条件限制的；占大篇幅的
+
+carousel[英][ˌkærəˈsel] [美][ˌkærəˈsɛl, -ˈzɛl]
+n.旋转木马
+
+Base class that can be used to implement virtualized lists of items. A list does not have a spatial definition here. For instance, subclases of this class can display the content of the list in a grid, in a carousel, as stack, etc.

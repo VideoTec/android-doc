@@ -1,0 +1,3 @@
+http://www.vogella.com/tutorials/AndroidListView/article.html
+
+This tutorial describes how to use the ListView view together with activities and fragments in Android. The tutorial is based on Android 5.0.

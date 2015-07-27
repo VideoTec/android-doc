@@ -1,0 +1,13 @@
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="list view item" />
+    </ListView>
+    
+    在 inflate 时会出错：不能这样写，必须用 adapter
+07-27 16:49:04.545: E/AndroidRuntime(11208): FATAL EXCEPTION: main
+07-27 16:49:04.545: E/AndroidRuntime(11208): java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.cameraapp/com.example.cameraapp.TestActivity}: java.lang.UnsupportedOperationException: addView(View, LayoutParams) is not supported in AdapterView

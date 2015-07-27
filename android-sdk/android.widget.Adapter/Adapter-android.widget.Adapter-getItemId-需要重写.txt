@@ -1,0 +1,13 @@
+public abstract long getItemId (int position)
+
+Added in API level 1
+Get the row id associated with the specified position in the list.
+
+Parameters
+
+position
+The position of the item within the adapter's data set whose row id we want.
+ListView 这个 position 从 0 开始，对应 list-item-index
+
+Returns
+The id of the item at the specified position.

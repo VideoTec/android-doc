@@ -1,0 +1,28 @@
+public void setImageURI (Uri uri)
+
+Added in API level 1
+Sets the content of this ImageView to the specified Uri.
+
+This does Bitmap reading and decoding on the UI thread, which can cause a latency hiccup. If that's a concern, consider using setImageDrawable(android.graphics.drawable.Drawable) or setImageBitmap(android.graphics.Bitmap) and BitmapFactory instead.
+
+Parameters
+
+uri
+The Uri of an image
+
+-------------------------
+示例：
+-------------------------
+Uri imgUri=Uri.parse("file:///data/data/MYFOLDER/myimage.png");
+imgbt.setImageUri(imgUri);
+
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
+    ImageView t = new ImageView(mCtx);
+    t.setImageURI(Uri.parse("file:///sdcard/cut-" + position + ".jpg"));
+    return t;
+}
+
+picUrl = new URL(getIntent().getExtras().getString("map_url"));  
+Bitmap pngBM = BitmapFactory.decodeStream(picUrl.openStream());   
+mapIMG.setImageBitmap(pngBM);

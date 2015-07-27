@@ -1,0 +1,57 @@
+
+public class BroadcastImageAdapter extends BaseAdapter {
+
+    @Override
+    public int getCount() {
+        return atts.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.beside_broadcast_image_attachment_item, null);
+            holder.image = (ImageView) convertView.findViewById(R.id.beside_broadcast_attachment_thumb_id);
+            holder.gif_image_logo = (ImageView) convertView.findViewById(R.id.beside_broadcast_attachment_type_gif_id);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+        //
+        if (numOfCol != 1) {
+            updateView(holder.image, null, false);
+        }
+        // 下载图片
+        downloadImage(holder.image, position);
+
+        if (atts.get(position).type == Attachment.TYPE_ATTCHMENT_GIF) {
+            holder.gif_image_logo.setVisibility(View.VISIBLE);
+        } else {
+            holder.gif_image_logo.setVisibility(View.GONE);
+        }
+        holder.image.setTag(atts.get(position));
+        holder.image.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ArrayList<Attachment> list = new ArrayList<Attachment>();
+                list.addAll(atts);
+                AttarchmentManager.attachmentViewClick(context, position, list, false, false,
+                        DynamicDB.DYNAMIC_BELONG_LIST_ALL);
+            }
+        });
+        return convertView;
+    }
+    
+}

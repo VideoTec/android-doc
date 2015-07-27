@@ -1,0 +1,57 @@
+Documentation says listViewObj.addView() method is not supported. 
+I want to add view to the end of the list without refreshing it. 
+How this can be done?
+
+    /**
+     * This method is not supported and throws an UnsupportedOperationException when called.
+     *
+     * @param child Ignored.
+     *
+     * @throws UnsupportedOperationException Every time this method is invoked.
+     */
+    @Override
+    public void addView(View child) {
+        throw new UnsupportedOperationException("addView(View) is not supported in AdapterView");
+    }
+
+    /**
+     * This method is not supported and throws an UnsupportedOperationException when called.
+     *
+     * @param child Ignored.
+     * @param index Ignored.
+     *
+     * @throws UnsupportedOperationException Every time this method is invoked.
+     */
+    @Override
+    public void addView(View child, int index) {
+        throw new UnsupportedOperationException("addView(View, int) is not supported in AdapterView");
+    }
+
+    /**
+     * This method is not supported and throws an UnsupportedOperationException when called.
+     *
+     * @param child Ignored.
+     * @param params Ignored.
+     *
+     * @throws UnsupportedOperationException Every time this method is invoked.
+     */
+    @Override
+    public void addView(View child, LayoutParams params) {
+        throw new UnsupportedOperationException("addView(View, LayoutParams) "
+                + "is not supported in AdapterView");
+    }
+
+    /**
+     * This method is not supported and throws an UnsupportedOperationException when called.
+     *
+     * @param child Ignored.
+     * @param index Ignored.
+     * @param params Ignored.
+     *
+     * @throws UnsupportedOperationException Every time this method is invoked.
+     */
+    @Override
+    public void addView(View child, int index, LayoutParams params) {
+        throw new UnsupportedOperationException("addView(View, int, LayoutParams) "
+                + "is not supported in AdapterView");
+    }
