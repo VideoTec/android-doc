@@ -1,0 +1,6 @@
+Alt + Enter
+can be used for Quick Fixes in Android Studio, It will give you drop down for possible fixes same like in Eclipse
+
+Ctrl + Q to show the quick javadoc of current caret location.
+
+没有找到合适的方式

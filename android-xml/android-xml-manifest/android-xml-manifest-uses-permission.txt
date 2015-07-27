@@ -16,6 +16,8 @@ Put your user-permission tag just below the user-sdk and above the application t
 
 录制声音
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
+0:12 2015/7/28
+小写 record_audio 造成错误
 
 写 sdcard
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
