@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/2951923/whats-the-default-scaletype-of-imageview
+
+FIT_CENTER
+
+Be careful!! For an of ImageView the default ScaleType value is FIT_CENTER, 
+but for a Button is "fitXY"

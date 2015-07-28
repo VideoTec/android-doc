@@ -1,0 +1,20 @@
+    public void onBtn2(View v) {
+        TextView tView = new TextView(this);
+        tView.setText("insert line");
+        mListView.addView(tView);
+    }
+
+android.widget.AdapterView<T extends android.widget.Adapter>
+    /**
+     * This method is not supported and throws an UnsupportedOperationException when called.
+     *
+     * @param child Ignored.
+     *
+     * @throws UnsupportedOperationException Every time this method is invoked.
+     */
+    @Override
+    public void addView(View child) {
+        throw new UnsupportedOperationException("addView(View) is not supported in AdapterView");
+    }
+
+java.lang.UnsupportedOperationException: addView(View) is not supported in AdapterView

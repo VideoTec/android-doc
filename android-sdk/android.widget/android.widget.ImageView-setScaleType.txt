@@ -14,10 +14,10 @@ scaleType    The desired scaling mode.
 android:scaleType="center"
 android:scaleType="centerCrop"
 android:scaleType="centerInside"
-android:scaleType="fitCenter"
+android:scaleType="fitCenter"       默认值
 android:scaleType="fitEnd"
 android:scaleType="fitStart"
-android:scaleType="fitXY"
+android:scaleType="fitXY"           button 默认值
 android:scaleType="matrix"
 ------------------------------------------
 ImageView.ScaleType     CENTER 

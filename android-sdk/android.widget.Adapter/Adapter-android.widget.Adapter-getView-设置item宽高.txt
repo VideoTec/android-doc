@@ -1,0 +1,10 @@
+public View getView(int position, View convertView, ViewGroup parent) {
+。。。
+    AbsListView.LayoutParams params = new AbsListView.LayoutParams(mScreenWidth, listItemHeight);
+    imageView.setLayoutParams(params);
+    return imageView;
+}
+
+注意：AbsListView.LayoutParams
+参考：
+E:\doc\android\android-sdk\android.view\android.view.View\android.view.View-setLayoutParams-异常.txt

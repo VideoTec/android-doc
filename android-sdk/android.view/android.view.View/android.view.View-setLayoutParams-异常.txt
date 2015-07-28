@@ -1,0 +1,28 @@
+
+-----------------------------------
+Adapter getView 新建的 ImageView 
+setLayoutParams 会引发后续的异常
+java.lang.ClassCastException: android.view.ViewGroup$LayoutParams cannot be cast to android.widget.AbsListView$LayoutParams
+-----------------------------------
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ImageView t = new ImageView(mCtx);
+            t.setImageURI(Uri.parse("file:///sdcard/cut-" + position + ".jpg"));
+            LayoutParams params = new LayoutParams(mScreenWidth, mScreenHeight);
+            t.setLayoutParams(params);
+            return t;
+        }
+        
+        解决方法一：在 ImageView 上层，增加一个 FrameLayout 层，返回 FrameLayout 就好了。
+        解决方法二：AbsListView.LayoutParams p = new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        
+http://blog.sina.com.cn/s/blog_6261f86901019h9g.html
+今天写一个ListView，用的是指定义的布局，这个ListView的headerView也是自定义布局，运行报错：
+java.lang.ClassCastException: android.widget.RelativeLayout$LayoutParams cannot be cast to android.widget.AbsListView$LayoutParams 
+
+网上查询，然后通过同事帮助才明白：如果你要将一个view添加到另一个布局中，你必须设定该View的布局参数为其父类所使用的布局参数类型。即要在代码中动态改变某组件的高度，其布局参数类型应该是其父类所使用的布局参数类型。
+
+参考我的代码，因为ListView的headerView的LayoutParams参数没有改为和ListView一致； 
+改为 
+ListView.LayoutParams LP=new ListView.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+后正常显示。
