@@ -1,0 +1,21 @@
+http://developer.android.com/reference/android/graphics/drawable/ColorDrawable.html
+
+
+java.lang.Object
+   ↳	android.graphics.drawable.Drawable
+ 	   ↳	android.graphics.drawable.ColorDrawable
+       
+A specialized Drawable that fills the Canvas with a specified color. Note that a ColorDrawable ignores the ColorFilter.
+
+It can be defined in an XML file with the <color> element.
+
+ColorDrawable()
+Creates a new black ColorDrawable.
+
+ColorDrawable(int color)
+Creates a new ColorDrawable with the specified color.
+
+例子
+        mListView.setBackgroundColor(Color.BLUE);
+        mListView.setDivider(new ColorDrawable(Color.GREEN));
+        mListView.setDividerHeight(10);

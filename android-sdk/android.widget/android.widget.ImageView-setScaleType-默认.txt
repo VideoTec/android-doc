@@ -4,3 +4,9 @@ FIT_CENTER
 
 Be careful!! For an of ImageView the default ScaleType value is FIT_CENTER, 
 but for a Button is "fitXY"
+
+ImageView.ScaleType     FIT_CENTER 
+Scale the image using CENTER. 
+
+ImageView.ScaleType     CENTER 
+Center the image in the view, but perform no scaling.

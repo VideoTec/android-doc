@@ -1,0 +1,89 @@
+android:divider
+Drawable or color to draw between list items. 
+
+android:dividerHeight
+Height of the divider. 
+
+android:footerDividersEnabled
+When set to false, the ListView will not draw the divider before each footer view. 
+
+android:headerDividersEnabled
+When set to false, the ListView will not draw the divider after each header view. 
+
+-----------------------------------
+http://stackoverflow.com/questions/1914477/how-to-remove-line-inbetween-two-listviews-in-android
+-----------------------------------
+To remove the separator between items in the same ListView, here is the solution:
+
+getListView().setDivider(null);
+getListView().setDividerHeight(0);
+
+developer.android.com # ListView
+
+Or, if you want to do it in XML:
+
+android:divider="@null"
+android:dividerHeight="0dp"  只需要设置，这个高度，就可以隐藏 divider
+
+--------------------------------------------------
+divider 是没了，但，行之间，还是有缝隙，为什么？
+--------------------------------------------------
+最后找到原因：不是 list-item 之间有空隙，
+而是因为，ImageView，中的图像没有充满控件
+默认使用，FIX_CENTER，缩放模式。
+改成，FIX_XY，就可以充满窗口了。
+
+-----------------------------------
+android:divider  setDivider
+-----------------------------------
+
+Drawable or color to draw between list items.
+
+May be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+May be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+This corresponds to the global attribute resource symbol divider.
+
+-----------------------------------
+android:dividerHeight setDividerHeight
+-----------------------------------
+
+intrinsic[英][ɪnˈtrɪnsɪk] [美][ɪnˈtrɪnzɪk, -sɪk]
+adj.固有的，内在的，本质的；[解剖]体内的；本征；先天性
+
+Height of the divider. Will use the intrinsic height of the divider if this is not specified.
+
+Must be a dimension value, which is a floating point number appended with a unit such as "14.5sp". Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), mm (millimeters).
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol dividerHeight.
+
+-----------------------------------
+android:footerDividersEnabled
+-----------------------------------
+
+When set to false, the ListView will not draw the divider before each footer view. The default value is true.
+
+Must be a boolean value, either "true" or "false".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol footerDividersEnabled.
+
+Related Methods
+
+-----------------------------------
+android:headerDividersEnabled
+-----------------------------------
+
+When set to false, the ListView will not draw the divider after each header view. The default value is true.
+
+Must be a boolean value, either "true" or "false".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol headerDividersEnabled.
+
+Related Methods
