@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/9891360/getting-activity-from-context-in-android
+
+ust pass in this as the Context for you layout:
+
+ProfileView pv = new ProfileView(this, null, temp, tempPd);
+
+Afterwards you will have the context in the Layout, but you will know it is actually the activity there and you can cast it so that you have what you need available:
+
+Activity activity = (Activity) context;

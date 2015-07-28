@@ -1,3 +1,9 @@
 http://stackoverflow.com/questions/541966/lazy-load-of-images-in-listview/3068012#3068012
 https://github.com/thest1/LazyList
 I made a simple demo of a lazy list (located at GitHub) with images. It may be helpful to somebody. It downloads images in the background thread. Images are being cached on an SD card and in memory. The cache implementation is very simple and is just enough for the demo. I decode images with inSampleSize to reduce memory consumption. I also try to handle recycled views correctly
+
+https://github.com/ened/Android-Tiling-ScrollView
+http://stackoverflow.com/questions/6518215/display-huge-images-in-android
+tiling[英][ˈtaɪlɪŋ] [美][ˈtaɪlɪŋ] n.盖瓦；贴瓷砖；（总称）瓦；瓦工
+
+This Android widget aims to provide a scalable way to display large images (like Metro maps, paintings) while keeping the memory consumption as low as possible.
