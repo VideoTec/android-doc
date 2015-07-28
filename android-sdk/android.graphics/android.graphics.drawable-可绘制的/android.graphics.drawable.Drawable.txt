@@ -1,0 +1,34 @@
+http://developer.android.com/reference/android/graphics/drawable/Drawable.html
+
+ava.lang.Object
+   ↳	android.graphics.drawable.Drawable
+
+Known Direct Subclasses
+AnimatedVectorDrawable, BitmapDrawable, ClipDrawable, ColorDrawable, DrawableContainer, GradientDrawable, InsetDrawable, LayerDrawable, NinePatchDrawable, PictureDrawable, RotateDrawable, RoundedBitmapDrawable, ScaleDrawable, ShapeDrawable, VectorDrawable
+
+Known Indirect Subclasses
+AnimatedStateListDrawable, AnimationDrawable, LevelListDrawable, PaintDrawable, RippleDrawable, StateListDrawable, TransitionDrawable
+
+A Drawable is a general abstraction for "something that can be drawn." Most often you will deal with Drawable as the type of resource retrieved for drawing things to the screen; the Drawable class provides a generic API for dealing with an underlying visual resource that may take a variety of forms. Unlike a View, a Drawable does not have any facility to receive events or otherwise interact with the user.
+
+In addition to simple drawing, Drawable provides a number of generic mechanisms for its client to interact with what is being drawn:
+
+1）The setBounds(Rect) method must be called to tell the Drawable where it is drawn and how large it should be. All Drawables should respect the requested size, often simply by scaling their imagery. A client can find the preferred size for some Drawables with the getIntrinsicHeight() and getIntrinsicWidth() methods.
+
+2）The getPadding(Rect) method can return from some Drawables information about how to frame content that is placed inside of them. For example, a Drawable that is intended to be the frame for a button widget would need to return padding that correctly places the label inside of itself.
+
+3）The setState(int[]) method allows the client to tell the Drawable in which state it is to be drawn, such as "focused", "selected", etc. Some drawables may modify their imagery based on the selected state.
+
+4）The setLevel(int) method allows the client to supply a single continuous controller that can modify the Drawable is displayed, such as a battery level or progress level. Some drawables may modify their imagery based on the current level.
+
+5）A Drawable can perform animations by calling back to its client through the Drawable.Callback interface. All clients should support this interface (via setCallback(Drawable.Callback)) so that animations will work. A simple way to do this is through the system facilities such as setBackground(Drawable) and ImageView.
+
+Though usually not visible to the application, Drawables may take a variety of forms:
+
+1）Bitmap: the simplest Drawable, a PNG or JPEG image.
+2）Nine Patch: an extension to the PNG format allows it to specify information about how to stretch it and place things inside of it.
+3）Shape: contains simple drawing commands instead of a raw bitmap, allowing it to resize better in some cases.
+4）Layers: a compound drawable, which draws multiple underlying drawables on top of each other.
+5）States: a compound drawable that selects one of a set of drawables based on its state.
+6）Levels: a compound drawable that selects one of a set of drawables based on its level.
+7）Scale: a compound drawable with a single child drawable, whose overall size is modified based on the current level.

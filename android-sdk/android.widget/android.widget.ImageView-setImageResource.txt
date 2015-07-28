@@ -1,0 +1,13 @@
+public void setImageResource (int resId)
+
+Added in API level 1
+Sets a drawable as the content of this ImageView.
+
+This does Bitmap reading and decoding on the UI thread, which can cause a latency hiccup. If that's a concern, consider using setImageDrawable(android.graphics.drawable.Drawable) or setImageBitmap(android.graphics.Bitmap) and BitmapFactory instead.
+
+Related XML Attributes
+android:src
+
+Parameters
+resId
+the resource identifier of the drawable

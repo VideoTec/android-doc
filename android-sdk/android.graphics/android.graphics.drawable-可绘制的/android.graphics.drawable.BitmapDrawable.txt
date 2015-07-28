@@ -1,0 +1,18 @@
+http://developer.android.com/reference/android/graphics/drawable/BitmapDrawable.html
+
+java.lang.Object
+   ↳	android.graphics.drawable.Drawable
+ 	   ↳	android.graphics.drawable.BitmapDrawable
+       
+A Drawable that wraps a bitmap and can be tiled, stretched, or aligned. You can create a BitmapDrawable from a file path, an input stream, through XML inflation, or from a Bitmap object.
+
+It can be defined in an XML file with the <bitmap> element. For more information, see the guide to Drawable Resources.
+
+Also see the Bitmap class, which handles the management and transformation of raw bitmap graphics, and should be used when drawing to a Canvas.
+
+例子
+    public void setImageBitmap(Bitmap bm) {
+        // if this is used frequently, may handle bitmaps explicitly
+        // to reduce the intermediate drawable object
+        setImageDrawable(new BitmapDrawable(mContext.getResources(), bm));
+    }

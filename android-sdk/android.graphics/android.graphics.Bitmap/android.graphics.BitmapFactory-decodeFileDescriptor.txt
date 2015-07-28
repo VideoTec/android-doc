@@ -1,0 +1,20 @@
+public static Bitmap decodeFileDescriptor (FileDescriptor fd)
+
+Added in API level 1
+Decode a bitmap from the file descriptor. If the bitmap cannot be decoded return null. The position within the descriptor will not be changed when this returns, so the descriptor can be used again as is.
+
+Parameters
+fd	The file descriptor containing the bitmap data to decode
+Returns
+the decoded bitmap, or null
+public static Bitmap decodeFileDescriptor (FileDescriptor fd, Rect outPadding, BitmapFactory.Options opts)
+
+Added in API level 1
+Decode a bitmap from the file descriptor. If the bitmap cannot be decoded return null. The position within the descriptor will not be changed when this returns, so the descriptor can be used again as-is.
+
+Parameters
+fd	The file descriptor containing the bitmap data to decode
+outPadding	If not null, return the padding rect for the bitmap if it exists, otherwise set padding to [-1,-1,-1,-1]. If no bitmap is returned (null) then padding is unchanged.
+opts	null-ok; Options that control downsampling and whether the image should be completely decoded, or just its size returned.
+Returns
+the decoded bitmap, or null

@@ -1,0 +1,9 @@
+public void setImageBitmap (Bitmap bm)
+
+Added in API level 1
+Sets a Bitmap as the content of this ImageView.
+
+Parameters
+
+bm
+The bitmap to set

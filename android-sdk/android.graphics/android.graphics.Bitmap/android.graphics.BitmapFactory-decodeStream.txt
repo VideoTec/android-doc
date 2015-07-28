@@ -1,0 +1,21 @@
+public static Bitmap decodeStream (InputStream is)
+
+Added in API level 1
+Decode an input stream into a bitmap. If the input stream is null, or cannot be used to decode a bitmap, the function returns null. The stream's position will be where ever it was after the encoded data was read.
+
+Parameters
+is	The input stream that holds the raw data to be decoded into a bitmap.
+Returns
+The decoded bitmap, or null if the image data could not be decoded.
+public static Bitmap decodeStream (InputStream is, Rect outPadding, BitmapFactory.Options opts)
+
+Added in API level 1
+Decode an input stream into a bitmap. If the input stream is null, or cannot be used to decode a bitmap, the function returns null. The stream's position will be where ever it was after the encoded data was read.
+
+Parameters
+is	The input stream that holds the raw data to be decoded into a bitmap.
+outPadding	If not null, return the padding rect for the bitmap if it exists, otherwise set padding to [-1,-1,-1,-1]. If no bitmap is returned (null) then padding is unchanged.
+opts	null-ok; Options that control downsampling and whether the image should be completely decoded, or just is size returned.
+Returns
+The decoded bitmap, or null if the image data could not be decoded, or, if opts is non-null, if opts requested only the size be returned (in opts.outWidth and opts.outHeight)
+Prior to KITKAT, if is.markSupported() returns true, is.mark(1024) would be called. As of KITKAT, this is no longer the case

@@ -1,0 +1,4 @@
+public static Bitmap decodeResourceStream (Resources res, TypedValue value, InputStream is, Rect pad, BitmapFactory.Options opts)
+
+Added in API level 4
+Decode a new Bitmap from an InputStream. This InputStream was obtained from resources, which we pass to be able to scale the bitmap accordingly.

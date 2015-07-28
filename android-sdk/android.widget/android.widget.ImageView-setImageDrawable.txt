@@ -1,0 +1,20 @@
+public void setImageDrawable (Drawable drawable)
+
+Added in API level 1
+Sets a drawable as the content of this ImageView.
+
+Parameters
+drawable	The drawable to set
+
+例子：
+    /**
+     * Sets a Bitmap as the content of this ImageView.
+     * 
+     * @param bm The bitmap to set
+     */
+    @android.view.RemotableViewMethod
+    public void setImageBitmap(Bitmap bm) {
+        // if this is used frequently, may handle bitmaps explicitly
+        // to reduce the intermediate drawable object
+        setImageDrawable(new BitmapDrawable(mContext.getResources(), bm));
+    }

@@ -29,6 +29,7 @@ will apply default layout parameters
 例子：
 注意 convertView 只创建了一次
 注意 convertView 中的数据，并不一定是之前设置的，或者，是之前的 view
+注意 convertView 不同position，可能会重复传递相同的 view-obj
 ----------------------------
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
@@ -40,4 +41,25 @@ will apply default layout parameters
         text.setText("item "+position);
         imageLoader.DisplayImage(data[position], image);
         return vi;
+    }
+    
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Log.v(TAG, position + ": " + convertView);  同position，可能会重复传递相同的 view-obj
+        ImageView imageView;
+        if(convertView == null) {
+            imageView = new ImageView(mCtx);
+        } else {
+            imageView = (ImageView)convertView;
+        }
+
+        if(mBitmaps[position] == null) {
+            int top = mClipHeight * position;
+            int bottom = top + mClipHeight;
+            if(bottom > mBMPHeight) {
+                bottom = mBMPHeight;
+            }
+            mBitmaps[position] = mBMPRegion.decodeRegion(new Rect(0, top, mBMPWidth, bottom), null);
+        }
+        imageView.setImageBitmap(mBitmaps[position]);
+        return imageView;
     }

@@ -1,0 +1,19 @@
+public static Bitmap decodeFile (String pathName)
+
+Added in API level 1
+Decode a file path into a bitmap. If the specified file name is null, or cannot be decoded into a bitmap, the function returns null.
+
+Parameters
+pathName	complete path name for the file to be decoded.
+Returns
+the resulting decoded bitmap, or null if it could not be decoded.
+public static Bitmap decodeFile (String pathName, BitmapFactory.Options opts)
+
+Added in API level 1
+Decode a file path into a bitmap. If the specified file name is null, or cannot be decoded into a bitmap, the function returns null.
+
+Parameters
+pathName	complete path name for the file to be decoded.
+opts	null-ok; Options that control downsampling and whether the image should be completely decoded, or just is size returned.
+Returns
+The decoded bitmap, or null if the image data could not be decoded, or, if opts is non-null, if opts requested only the size be returned (in opts.outWidth and opts.outHeight)

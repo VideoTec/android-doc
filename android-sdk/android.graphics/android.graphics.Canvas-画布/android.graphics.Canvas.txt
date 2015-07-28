@@ -1,4 +1,6 @@
-继承关系
+
+canvas[英][ˈkænvəs] [美][ˈkænvəs]
+n.帆布；油画（布）
 
 java.lang.Object
    ↳  android.graphics.Canvas

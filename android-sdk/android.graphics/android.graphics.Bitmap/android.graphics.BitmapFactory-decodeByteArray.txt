@@ -1,0 +1,23 @@
+public static Bitmap decodeByteArray (byte[] data, int offset, int length, BitmapFactory.Options opts)
+
+Added in API level 1
+Decode an immutable bitmap from the specified byte array.
+
+Parameters
+data	byte array of compressed image data
+offset	offset into imageData for where the decoder should begin parsing.
+length	the number of bytes, beginning at offset, to parse
+opts	null-ok; Options that control downsampling and whether the image should be completely decoded, or just is size returned.
+Returns
+The decoded bitmap, or null if the image data could not be decoded, or, if opts is non-null, if opts requested only the size be returned (in opts.outWidth and opts.outHeight)
+public static Bitmap decodeByteArray (byte[] data, int offset, int length)
+
+Added in API level 1
+Decode an immutable bitmap from the specified byte array.
+
+Parameters
+data	byte array of compressed image data
+offset	offset into imageData for where the decoder should begin parsing.
+length	the number of bytes, beginning at offset, to parse
+Returns
+The decoded bitmap, or null if the image could not be decoded
