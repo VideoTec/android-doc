@@ -1,0 +1,4 @@
+主要是 ListView 的高度理解
+
+ListView 控件的高度，不是，ListView 中所有 item 的高度之和。
+这是两个没有关系的概念

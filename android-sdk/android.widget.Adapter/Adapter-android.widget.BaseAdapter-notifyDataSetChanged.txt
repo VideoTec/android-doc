@@ -1,0 +1,10 @@
+
+public void notifyDataSetChanged ()
+
+Added in API level 1
+
+Notifies the attached observers that the underlying data has been changed and any View reflecting the data set should refresh itself.
+
+参考
+E:\doc\android\android-sdk\android.widget.Adapter\Adapter-android.widget.Adapter-getView-重绘.txt
+调用 adapter 的 notifyDataSetChanged - 会触发 getView - 并且只影响显示的 项

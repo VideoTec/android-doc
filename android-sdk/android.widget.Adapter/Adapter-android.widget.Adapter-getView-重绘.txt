@@ -1,0 +1,13 @@
+ListView.invalidate 不会重绘 list-item
+
+两种方法：
+1）调用 adapter 的 notifyDataSetChanged - 会触发 getView - 并且只影响显示的 项
+2）获取显示的 list-item-vide-obj 然后，更新。（注意：invalidate 不会触发 getView）
+
+http://stackoverflow.com/questions/2123083/android-listview-refresh-single-row
+
+After I have gotten the data for a single row of a ListView, I want to update that single row.
+
+Currently I am using notifyDataSetChanged(); but that makes the View react very slowly. Are there any other solutions?
+
+One option is to manipulate the ListView directly. First check if the index of the updated row is between getFirstVisiblePosition() and getLastVisiblePosition(), these two give you the first and last positions in the adapter that are visible on the screen. Then you can get the row View with getChildAt(int index) and change it.

@@ -1,0 +1,17 @@
+public void offsetLeftAndRight (int offset)
+
+Added in API level 1
+Offset this view's horizontal location by the specified amount of pixels.
+
+Parameters
+offset	the number of pixels to offset the view by
+
+public void offsetTopAndBottom (int offset)
+
+Added in API level 1
+Offset this view's vertical location by the specified number of pixels.
+
+Parameters
+offset	the number of pixels to offset the view by
+
+http://bbs.csdn.net/topics/350235484

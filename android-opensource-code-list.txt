@@ -7,3 +7,11 @@ http://stackoverflow.com/questions/6518215/display-huge-images-in-android
 tiling[英][ˈtaɪlɪŋ] [美][ˈtaɪlɪŋ] n.盖瓦；贴瓷砖；（总称）瓦；瓦工
 
 This Android widget aims to provide a scalable way to display large images (like Metro maps, paintings) while keeping the memory consumption as low as possible.
+
+https://github.com/jasonpolites/gesture-imageview
+http://www.cnblogs.com/joylee/p/android-gestureimageview.html
+gesture[英][ˈdʒestʃə(r)] [美][ˈdʒɛstʃɚ]
+n.手势，姿势；举止，动作；〔古语〕仪态；[计算机]光笔指令
+
+This is a simple Android View class which provides basic pinch and zoom capability for images.
+Can be used as a replacement for a standard ImageView when you want to include pinch and zoom.

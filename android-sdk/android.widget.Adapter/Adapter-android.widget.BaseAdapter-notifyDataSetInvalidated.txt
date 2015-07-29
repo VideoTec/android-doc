@@ -1,0 +1,5 @@
+public void notifyDataSetInvalidated ()
+
+Added in API level 1
+
+Notifies the attached observers that the underlying data is no longer valid or available. Once invoked this adapter is no longer valid and should not report further data set changes.

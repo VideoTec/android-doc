@@ -1,0 +1,25 @@
+------------------------------------------------
+public final void setLeft (int left)
+------------------------------------------------
+
+Added in API level 11
+Sets the left position of this view relative to its parent. This method is meant to be called by the layout system and should not generally be called otherwise, because the property may be changed at any time by the layout.
+
+不应该在 layout-system 之外调用。不会起作用。
+
+Parameters
+
+left
+The left of this view, in pixels.
+
+------------------------------------------------
+public final void setRight (int right)
+------------------------------------------------
+
+Added in API level 11
+Sets the right position of this view relative to its parent. This method is meant to be called by the layout system and should not generally be called otherwise, because the property may be changed at any time by the layout.
+
+Parameters
+
+right
+The right of this view, in pixels.
