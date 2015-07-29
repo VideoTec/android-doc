@@ -1,0 +1,41 @@
+int getScrollBarDefaultDelayBeforeFade()
+Returns the delay before scrollbars fade.
+
+int getScrollBarFadeDuration()
+Returns the scrollbar fade duration.
+
+int getScrollBarSize()
+Returns the scrollbar size.
+
+int getScrollBarStyle()
+Returns the current scrollbar style.
+
+int getVerticalScrollbarPosition()
+int getVerticalScrollbarWidth()
+Returns the width of the vertical scrollbar.
+
+boolean isHorizontalScrollBarEnabled()
+Indicate whether the horizontal scrollbar should be drawn or not.
+
+boolean	isVerticalScrollBarEnabled()
+Indicate whether the vertical scrollbar should be drawn or not.
+
+void	setHorizontalScrollBarEnabled(boolean horizontalScrollBarEnabled)
+Define whether the horizontal scrollbar should be drawn or not.
+
+void	setScrollBarDefaultDelayBeforeFade(int scrollBarDefaultDelayBeforeFade)
+Define the delay before scrollbars fade.
+void	setScrollBarFadeDuration(int scrollBarFadeDuration)
+Define the scrollbar fade duration.
+void	setScrollBarSize(int scrollBarSize)
+Define the scrollbar size.
+void	setScrollBarStyle(int style)
+Specify the style of the scrollbars.
+
+void	setScrollbarFadingEnabled(boolean fadeScrollbars)
+Define whether scrollbars will fade when the view is not scrolling.
+
+void	setVerticalScrollBarEnabled(boolean verticalScrollBarEnabled)
+Define whether the vertical scrollbar should be drawn or not.
+void	setVerticalScrollbarPosition(int position)
+Set the position of the vertical scroll bar.

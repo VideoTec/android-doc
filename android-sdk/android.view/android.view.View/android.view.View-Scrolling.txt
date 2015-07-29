@@ -1,0 +1,92 @@
+Scrolling
+
+The framework provides basic support for views that wish to internally scroll their content. 
+This includes keeping track of the X and Y scroll offset 
+as well as mechanisms for drawing scrollbars. 
+
+See 
+scrollBy(int, int), 
+scrollTo(int, int), and 
+awakenScrollBars() for more details.
+
+理解：view.java 中的成员：
+protected int mScrollX;
+protected int mScrollY;
+private int mVerticalScrollbarPosition;
+
+-----------------------
+相关函数：
+-----------------------
+boolean canScrollHorizontally(int direction)
+Check if this view can be scrolled horizontally in a certain direction.
+boolean canScrollVertically(int direction)
+Check if this view can be scrolled vertically in a certain direction.
+
+void computeScroll()
+Called by a parent to request that a child update its values for mScrollX and mScrollY if necessary.
+
+int getOverScrollMode() Returns the over-scroll mode for this view.
+void setOverScrollMode(int overScrollMode) Set the over-scroll mode for this view.
+
+void scrollBy(int x, int y) Move the scrolled position of your view.
+void scrollTo(int x, int y) Set the scrolled position of your view.
+final int getScrollX() Return the scrolled left position of this view.
+final int getScrollY() Return the scrolled top position of this view.
+void setScrollX(int value) Set the horizontal scrolled position of your view.
+void setScrollY(int value) Set the vertical scrolled position of your view.
+
+boolean isScrollContainer()
+Indicates whether this view is one of the set of scrollable containers in its window.
+void setScrollContainer(boolean isScrollContainer)
+Change whether this view is one of the set of scrollable containers in its window.
+
+boolean isHorizontalFadingEdgeEnabled()
+Indicate whether the horizontal edges are faded when the view is scrolled horizontally.
+
+boolean requestRectangleOnScreen(Rect rectangle)
+Request that a rectangle of this view be visible on the screen, scrolling if necessary just enough.
+boolean requestRectangleOnScreen(Rect rectangle, boolean immediate)
+Request that a rectangle of this view be visible on the screen, scrolling if necessary just enough.
+
+boolean dispatchNestedFling(float velocityX, float velocityY, boolean consumed)
+Dispatch a fling to a nested scrolling parent.
+boolean dispatchNestedPreFling(float velocityX, float velocityY)
+Dispatch a fling to a nested scrolling parent before it is processed by this view.
+boolean dispatchNestedPreScroll(int dx, int dy, int[] consumed, int[] offsetInWindow)
+Dispatch one step of a nested scroll in progress before this view consumes any portion of it.
+boolean dispatchNestedScroll(int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int[] offsetInWindow)
+Dispatch one step of a nested scroll in progress.
+boolean hasNestedScrollingParent()
+Returns true if this view has a nested scrolling parent.
+boolean isNestedScrollingEnabled()
+Returns true if nested scrolling is enabled for this view.
+boolean startNestedScroll(int axes)
+Begin a nestable scroll operation along the given axes.
+void stopNestedScroll()
+Stop a nested scroll in progress.
+void setNestedScrollingEnabled(boolean enabled)
+Enable or disable nested scrolling for this view.
+
+-----------------------
+相关XMLAttribute:
+-----------------------
+
+android:scrollX		The initial horizontal scroll offset, in pixels. 
+android:scrollY		The initial vertical scroll offset, in pixels. 
+
+-----------------------
+相关常量：
+-----------------------
+axis[英][ˈæksɪs] [美][ˈæksɪs]
+n.轴，轴线；[政]轴心；轴心国；[植]茎轴
+
+int	OVER_SCROLL_ALWAYS
+Always allow a user to over-scroll this view, provided it is a view that can scroll.
+int	OVER_SCROLL_NEVER
+Never allow a user to over-scroll this view.
+int	OVER_SCROLL_IF_CONTENT_SCROLLS
+Allow a user to over-scroll this view only if the content is large enough to meaningfully scroll, provided it is a view that can scroll.
+
+int	SCROLL_AXIS_HORIZONTAL  Indicates scrolling along the horizontal axis.
+int	SCROLL_AXIS_NON         Indicates no axis of view scrolling.
+int	SCROLL_AXIS_VERTICAL    Indicates scrolling along the vertical axis.

@@ -1,0 +1,13 @@
+android:fadeScrollbars	setScrollbarFadingEnabled(boolean)	Defines whether to fade out scrollbars when they are not in use. 
+
+android:scrollbarAlwaysDrawHorizontalTrack		Defines whether the horizontal scrollbar track should always be drawn. 
+android:scrollbarAlwaysDrawVerticalTrack		Defines whether the vertical scrollbar track should always be drawn. 
+android:scrollbarDefaultDelayBeforeFade	setScrollBarDefaultDelayBeforeFade(int)	Defines the delay in milliseconds that a scrollbar waits before fade out. 
+android:scrollbarFadeDuration	setScrollBarFadeDuration(int)	Defines the delay in milliseconds that a scrollbar takes to fade out. 
+android:scrollbarSize	setScrollBarSize(int)	Sets the width of vertical scrollbars and height of horizontal scrollbars. 
+android:scrollbarStyle	setScrollBarStyle(int)	Controls the scrollbar style and position. 
+android:scrollbarThumbHorizontal		Defines the horizontal scrollbar thumb drawable. 
+android:scrollbarThumbVertical		Defines the vertical scrollbar thumb drawable. 
+android:scrollbarTrackHorizontal		Defines the horizontal scrollbar track drawable. 
+android:scrollbarTrackVertical		Defines the vertical scrollbar track drawable. 
+android:scrollbars		Defines which scrollbars should be displayed on scrolling or not. 
