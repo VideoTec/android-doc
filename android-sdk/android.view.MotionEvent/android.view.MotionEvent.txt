@@ -1,0 +1,7 @@
+http://developer.android.com/reference/android/view/MotionEvent.html
+
+java.lang.Object
+   ↳	android.view.InputEvent
+ 	   ↳	android.view.MotionEvent
+
+Object used to report movement (mouse, pen, finger, trackball) events. Motion events may hold either absolute or relative movements and other data, depending on the type of device.

@@ -1,0 +1,8 @@
+http://developer.android.com/reference/android/view/GestureDetector.SimpleOnGestureListener.html
+
+implements GestureDetector.OnGestureListener GestureDetector.OnDoubleTapListener
+
+java.lang.Object
+   ↳	android.view.GestureDetector.SimpleOnGestureListener
+   
+A convenience class to extend when you only want to listen for a subset of all the gestures. This implements all methods in the GestureDetector.OnGestureListener and GestureDetector.OnDoubleTapListener but does nothing and return false for all applicable methods.

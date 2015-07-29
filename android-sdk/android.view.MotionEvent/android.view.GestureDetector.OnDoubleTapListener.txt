@@ -1,0 +1,17 @@
+http://developer.android.com/reference/android/view/GestureDetector.OnDoubleTapListener.html
+
+android.view.GestureDetector.OnDoubleTapListener
+
+Known Indirect Subclasses
+GestureDetector.SimpleOnGestureListener
+
+Class Overview
+The listener that is used to notify when a double-tap or a confirmed single-tap occur.
+
+double-tap 双击
+single tap 是按一下,就一下,按了就拿起来 press就是按,可以按一会,按一下,按很久
+
+tap[英][tæp] [美][tæp]
+doubletap 和 doubleclick有什么区别
+tap:拍,打,拍打
+click: 点击 double click特指电脑鼠标的双击

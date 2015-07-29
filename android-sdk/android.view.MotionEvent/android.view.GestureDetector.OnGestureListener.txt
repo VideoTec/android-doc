@@ -1,0 +1,14 @@
+http://developer.android.com/reference/android/view/GestureDetector.OnGestureListener.html
+
+
+android.view.GestureDetector.OnGestureListener
+
+gallery[英][ˈgæləri] [美][ˈɡæləri]
+n.画廊，走廊；（教堂，议院等的）边座；旁听席；大批观众
+
+Known Indirect Subclasses
+Gallery, 
+GestureDetector.SimpleOnGestureListener
+
+Class Overview
+The listener that is used to notify when gestures occur. If you want to listen for all the different gestures then implement this interface. If you only want to listen for a subset it might be easier to extend GestureDetector.SimpleOnGestureListener.

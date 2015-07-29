@@ -1,0 +1,14 @@
+    /**
+     * For {@link #ACTION_POINTER_DOWN} or {@link #ACTION_POINTER_UP}
+     * as returned by {@link #getActionMasked}, this returns the associated
+     * pointer index.
+     * The index may be used with {@link #getPointerId(int)},
+     * {@link #getX(int)}, {@link #getY(int)}, {@link #getPressure(int)},
+     * and {@link #getSize(int)} to get information about the pointer that has
+     * gone down or up.
+     * @return The index associated with the action.
+     */
+    public final int getActionIndex() {
+        return (nativeGetAction(mNativePtr) & ACTION_POINTER_INDEX_MASK)
+                >> ACTION_POINTER_INDEX_SHIFT;
+    }

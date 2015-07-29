@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------------------------
+GestureDetector(Context context, GestureDetector.OnGestureListener listener)
+-------------------------------------------------------------------------------------------------
+Creates a GestureDetector with the supplied listener.
+
+-------------------------------------------------------------------------------------------------
+GestureDetector(Context context, GestureDetector.OnGestureListener listener, Handler handler)
+-------------------------------------------------------------------------------------------------
+Creates a GestureDetector with the supplied listener that runs deferred events on the thread associated with the supplied Handler.
+
+-------------------------------------------------------------------------------------------------
+GestureDetector(Context context, GestureDetector.OnGestureListener listener, Handler handler, boolean unused)
+-------------------------------------------------------------------------------------------------
+Creates a GestureDetector with the supplied listener that runs deferred events on the thread associated with the supplied Handler.

@@ -1,0 +1,2 @@
+void	setOnDoubleTapListener(GestureDetector.OnDoubleTapListener onDoubleTapListener)
+Sets the listener which will be called for double-tap and related gestures.

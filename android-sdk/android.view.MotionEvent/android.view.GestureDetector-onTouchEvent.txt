@@ -1,0 +1,10 @@
+public boolean onTouchEvent (MotionEvent ev)
+
+Added in API level 1
+Analyzes the given motion event and if applicable triggers the appropriate callbacks on the GestureDetector.OnGestureListener supplied.
+
+Parameters
+ev	The current motion event.
+
+Returns
+true if the GestureDetector.OnGestureListener consumed the event, else false.

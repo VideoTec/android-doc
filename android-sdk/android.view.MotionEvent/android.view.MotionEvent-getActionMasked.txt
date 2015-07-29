@@ -1,0 +1,11 @@
+    /**
+     * Return the masked action being performed, without pointer index information.
+     * Use {@link #getActionIndex} to return the index associated with pointer actions.
+     * @return The action, such as {@link #ACTION_DOWN} or {@link #ACTION_POINTER_DOWN}.
+     */
+    public final int getActionMasked() {
+        return nativeGetAction(mNativePtr) & ACTION_MASK;
+    }
+    
+    android2.2之后加入多点触控支持之后使用 getActionMasked()方法 替代 getAction
+    

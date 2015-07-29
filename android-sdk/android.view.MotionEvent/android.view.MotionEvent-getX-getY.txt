@@ -1,0 +1,105 @@
+public final float getX (int pointerIndex)
+public final float getX ()
+public final float getXPrecision ()
+
+public final float getY (int pointerIndex)
+public final float getY ()
+public final float getYPrecision ()
+
+得到的是在当前窗口中的x,y坐标值。
+
+如果要获取设备的坐标值，需要使用
+public final float getRawX ()
+public final float getRawY ()
+
+-------------------------------------------------
+public final float getX (int pointerIndex)
+-------------------------------------------------
+
+Added in API level 5
+Returns the X coordinate of this event for the given pointer index (use getPointerId(int) to find the pointer identifier for this index). Whole numbers are pixels; the value may have a fraction for input devices that are sub-pixel precise.
+
+Parameters
+pointerIndex	Raw index of pointer to retrieve. Value may be from 0 
+(the first pointer that is down) to getPointerCount()-1.
+
+See Also
+AXIS_X
+
+-------------------------------------------------
+public final float getX ()
+-------------------------------------------------
+
+Added in API level 1
+getX(int) for the first pointer index (may be an arbitrary pointer identifier).
+
+See Also
+AXIS_X
+
+-------------------------------------------------
+public final float getXPrecision ()
+-------------------------------------------------
+
+Added in API level 1
+Return the precision of the X coordinates being reported. You can multiply this number with getX() to find the actual hardware value of the X coordinate.
+
+Returns
+Returns the precision of X coordinates being reported.
+See Also
+AXIS_X
+
+-------------------------------------------------
+public final float getY (int pointerIndex)
+-------------------------------------------------
+
+Added in API level 5
+Returns the Y coordinate of this event for the given pointer index (use getPointerId(int) to find the pointer identifier for this index). Whole numbers are pixels; the value may have a fraction for input devices that are sub-pixel precise.
+
+Parameters
+pointerIndex	Raw index of pointer to retrieve. Value may be from 0 (the first pointer that is down) to getPointerCount()-1.
+See Also
+AXIS_Y
+
+-------------------------------------------------
+public final float getY ()
+-------------------------------------------------
+
+Added in API level 1
+getY(int) for the first pointer index (may be an arbitrary pointer identifier).
+
+See Also
+AXIS_Y
+
+-------------------------------------------------
+public final float getYPrecision ()
+-------------------------------------------------
+
+Added in API level 1
+Return the precision of the Y coordinates being reported. You can multiply this number with getY() to find the actual hardware value of the Y coordinate.
+
+Returns
+Returns the precision of Y coordinates being reported.
+See Also
+AXIS_Y
+
+-------------------------------------------------
+public final float getRawX ()
+-------------------------------------------------
+
+Added in API level 1
+Returns the original raw X coordinate of this event. For touch events on the screen, this is the original location of the event on the screen, before it had been adjusted for the containing window and views.
+
+See Also
+getX(int)
+AXIS_X
+
+-------------------------------------------------
+public final float getRawY ()
+-------------------------------------------------
+
+Added in API level 1
+Returns the original raw Y coordinate of this event. For touch events on the screen, this is the original location of the event on the screen, before it had been adjusted for the containing window and views.
+
+See Also
+getY(int)
+AXIS_Y

@@ -10,9 +10,19 @@ scrollTo(int, int), and
 awakenScrollBars() for more details.
 
 理解：view.java 中的成员：
+
+The offset, in pixels, by which the content of this view is scrolled horizontally.
 protected int mScrollX;
 protected int mScrollY;
+
 private int mVerticalScrollbarPosition;
+
+15:30 2015/7/29
+必须要理解：是， view's content， 的位置量
+背景应该不动？需要确认
+
+16:46 2015/7/29
+ListView 调用 scrollBy(0, 30); 这里 view's content 是什么？只是当前显示的 list-items ?
 
 -----------------------
 相关函数：

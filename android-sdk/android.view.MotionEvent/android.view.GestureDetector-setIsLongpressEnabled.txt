@@ -1,0 +1,3 @@
+void	setIsLongpressEnabled(boolean isLongpressEnabled)
+
+Set whether longpress is enabled, if this is enabled when a user presses and holds down you get a longpress event and nothing further.

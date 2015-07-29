@@ -1,0 +1,23 @@
+http://developer.android.com/reference/android/view/View.OnTouchListener.html
+
+android.view.View.OnTouchListener
+
+Known Indirect Subclasses
+AutoScrollHelper, ListViewAutoScrollHelper, ZoomButtonsController
+
+Interface definition for a callback to be invoked when a touch event is dispatched to this view. The callback will be invoked before the touch event is given to the view
+
+public abstract boolean onTouch (View v, MotionEvent event)
+
+Added in API level 1
+Called when a touch event is dispatched to a view. This allows listeners to get a chance to respond before the target view.
+
+Parameters
+v	The view the touch event has been dispatched to.
+event	The MotionEvent object containing full information about the event.
+
+Returns
+consumed[英][kən'sju:md] [美][kən'su:md]
+v.消耗( consume的过去式和过去分词 )；烧毁；大吃；使充满（强烈的感情）
+
+True if the listener has consumed the event, false otherwise.
