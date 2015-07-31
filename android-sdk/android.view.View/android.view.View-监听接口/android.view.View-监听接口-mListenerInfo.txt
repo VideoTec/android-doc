@@ -1,0 +1,56 @@
+
+    static class ListenerInfo {
+        /**
+         * Listener used to dispatch focus change events.
+         * This field should be made private, so it is hidden from the SDK.
+         * {@hide}
+         */
+        protected OnFocusChangeListener mOnFocusChangeListener;
+
+        /**
+         * Listeners for layout change events.
+         */
+        private ArrayList<OnLayoutChangeListener> mOnLayoutChangeListeners;
+
+        /**
+         * Listeners for attach events.
+         */
+        private CopyOnWriteArrayList<OnAttachStateChangeListener> mOnAttachStateChangeListeners;
+
+        /**
+         * Listener used to dispatch click events.
+         * This field should be made private, so it is hidden from the SDK.
+         * {@hide}
+         */
+        public OnClickListener mOnClickListener;
+
+        /**
+         * Listener used to dispatch long click events.
+         * This field should be made private, so it is hidden from the SDK.
+         * {@hide}
+         */
+        protected OnLongClickListener mOnLongClickListener;
+
+        /**
+         * Listener used to build the context menu.
+         * This field should be made private, so it is hidden from the SDK.
+         * {@hide}
+         */
+        protected OnCreateContextMenuListener mOnCreateContextMenuListener;
+
+        private OnKeyListener mOnKeyListener;
+
+        private OnTouchListener mOnTouchListener;
+
+        private OnHoverListener mOnHoverListener;
+
+        private OnGenericMotionListener mOnGenericMotionListener;
+
+        private OnDragListener mOnDragListener;
+
+        private OnSystemUiVisibilityChangeListener mOnSystemUiVisibilityChangeListener;
+
+        OnApplyWindowInsetsListener mOnApplyWindowInsetsListener;
+    }
+
+    ListenerInfo mListenerInfo;

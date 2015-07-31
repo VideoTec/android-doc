@@ -1,0 +1,26 @@
+must be called by {@link #onMeasure(int, int)} 用于保存 measured长宽 的结果
+ 
+    /**
+     * <p>This method must be called by {@link #onMeasure(int, int)} to store the
+     * measured width and measured height. Failing to do so will trigger an
+     * exception at measurement time.</p>
+     *
+     * @param measuredWidth The measured width of this view.  May be a complex
+     * bit mask as defined by {@link #MEASURED_SIZE_MASK} and
+     * {@link #MEASURED_STATE_TOO_SMALL}.
+     * @param measuredHeight The measured height of this view.  May be a complex
+     * bit mask as defined by {@link #MEASURED_SIZE_MASK} and
+     * {@link #MEASURED_STATE_TOO_SMALL}.
+     */
+    protected final void setMeasuredDimension(int measuredWidth, int measuredHeight) {
+        boolean optical = isLayoutModeOptical(this);
+        if (optical != isLayoutModeOptical(mParent)) {
+            Insets insets = getOpticalInsets();
+            int opticalWidth  = insets.left + insets.right;
+            int opticalHeight = insets.top  + insets.bottom;
+
+            measuredWidth  += optical ? opticalWidth  : -opticalWidth;
+            measuredHeight += optical ? opticalHeight : -opticalHeight;
+        }
+        setMeasuredDimensionRaw(measuredWidth, measuredHeight);
+    }

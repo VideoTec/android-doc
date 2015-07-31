@@ -1,0 +1,31 @@
+    /**
+     * Set the layout parameters associated with this view. These supply
+     * parameters to the <i>parent</i> of this view specifying how it should be
+     * arranged. There are many subclasses of ViewGroup.LayoutParams, and these
+     * correspond to the different subclasses of ViewGroup that are responsible
+     * for arranging their children.
+     *
+     * @param params The layout parameters for this view, cannot be null
+     */
+    public void setLayoutParams(ViewGroup.LayoutParams params) {
+        if (params == null) {
+            throw new NullPointerException("Layout parameters cannot be null");
+        }
+        mLayoutParams = params;
+        resolveLayoutParams();
+        if (mParent instanceof ViewGroup) {
+            ((ViewGroup) mParent).onSetLayoutParams(this, params);
+        }
+        requestLayout();
+    }
+    
+    /**
+     * Resolve the layout parameters depending on the resolved layout direction
+     *
+     * @hide
+     */
+    public void resolveLayoutParams() {
+        if (mLayoutParams != null) {
+            mLayoutParams.resolveLayoutDirection(getLayoutDirection());
+        }
+    }

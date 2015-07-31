@@ -1,6 +1,0 @@
-定义
-java.lang.Object
-   ↳	android.view.InputEvent
- 	   ↳	android.view.MotionEvent
-
-说明

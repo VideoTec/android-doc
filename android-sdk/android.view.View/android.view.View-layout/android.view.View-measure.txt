@@ -1,0 +1,79 @@
+measure[英][ˈmeʒə(r)] [美][ˈmɛʒɚ]
+n.测量，测度；措施；程度；尺寸
+
+optical[英][ˈɒptɪkl] [美][ˈɑ:ptɪkl]
+adj.视觉的，视力的；眼睛的；光学的
+
+    /**
+     * <p>
+     * This is called to find out how big a view should be. The parent
+     * supplies constraint information in the width and height parameters.
+     * </p>
+     *
+     * <p>
+     * The actual measurement work of a view is performed in
+     * {@link #onMeasure(int, int)}, called by this method. Therefore, only
+     * {@link #onMeasure(int, int)} can and must be overridden by subclasses.
+     * </p>
+     *
+     *
+     * @param widthMeasureSpec Horizontal space requirements as imposed by the
+     *        parent
+     * @param heightMeasureSpec Vertical space requirements as imposed by the
+     *        parent
+     *
+     * @see #onMeasure(int, int)
+     */
+    public final void measure(int widthMeasureSpec, int heightMeasureSpec) {
+        boolean optical = isLayoutModeOptical(this);
+        if (optical != isLayoutModeOptical(mParent)) {
+            Insets insets = getOpticalInsets();
+            int oWidth  = insets.left + insets.right;
+            int oHeight = insets.top  + insets.bottom;
+            widthMeasureSpec  = MeasureSpec.adjust(widthMeasureSpec,  optical ? -oWidth  : oWidth);
+            heightMeasureSpec = MeasureSpec.adjust(heightMeasureSpec, optical ? -oHeight : oHeight);
+        }
+
+        // Suppress sign extension for the low bytes
+        long key = (long) widthMeasureSpec << 32 | (long) heightMeasureSpec & 0xffffffffL;
+        if (mMeasureCache == null) mMeasureCache = new LongSparseLongArray(2);
+
+        if ((mPrivateFlags & PFLAG_FORCE_LAYOUT) == PFLAG_FORCE_LAYOUT ||
+                widthMeasureSpec != mOldWidthMeasureSpec ||
+                heightMeasureSpec != mOldHeightMeasureSpec) {
+
+            // first clears the measured dimension flag
+            mPrivateFlags &= ~PFLAG_MEASURED_DIMENSION_SET;
+
+            resolveRtlPropertiesIfNeeded();
+
+            int cacheIndex = (mPrivateFlags & PFLAG_FORCE_LAYOUT) == PFLAG_FORCE_LAYOUT ? -1 :
+                    mMeasureCache.indexOfKey(key);
+            if (cacheIndex < 0 || sIgnoreMeasureCache) {
+                // measure ourselves, this should set the measured dimension flag back
+                onMeasure(widthMeasureSpec, heightMeasureSpec);
+                mPrivateFlags3 &= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+            } else {
+                long value = mMeasureCache.valueAt(cacheIndex);
+                // Casting a long to int drops the high 32 bits, no mask needed
+                setMeasuredDimensionRaw((int) (value >> 32), (int) value);
+                mPrivateFlags3 |= PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+            }
+
+            // flag not set, setMeasuredDimension() was not invoked, we raise
+            // an exception to warn the developer
+            if ((mPrivateFlags & PFLAG_MEASURED_DIMENSION_SET) != PFLAG_MEASURED_DIMENSION_SET) {
+                throw new IllegalStateException("onMeasure() did not set the"
+                        + " measured dimension by calling"
+                        + " setMeasuredDimension()");
+            }
+
+            mPrivateFlags |= PFLAG_LAYOUT_REQUIRED;
+        }
+
+        mOldWidthMeasureSpec = widthMeasureSpec;
+        mOldHeightMeasureSpec = heightMeasureSpec;
+
+        mMeasureCache.put(key, ((long) mMeasuredWidth) << 32 |
+                (long) mMeasuredHeight & 0xffffffffL); // suppress sign extension
+    }

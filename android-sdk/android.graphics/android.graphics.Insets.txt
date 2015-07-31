@@ -1,0 +1,27 @@
+---------------------------------------------
+View.java 有到了这个类型
+---------------------------------------------
+
+    /**
+     * The layout insets in pixels, that is the distance in pixels between the
+     * visible edges of this view its bounds.
+     */
+    private Insets mLayoutInsets;
+    private Drawable mBackground;
+    
+    Insets computeOpticalInsets() {
+        return (mBackground == null) ? Insets.NONE : mBackground.getOpticalInsets();
+    }
+
+---------------------------------------------
+View.java 有到了这个类型
+---------------------------------------------
+    /**
+     * Return in insets the layout insets suggested by this Drawable for use with alignment
+     * operations during layout.
+     *
+     * @hide
+     */
+    public Insets getOpticalInsets() {
+        return Insets.NONE;
+    }

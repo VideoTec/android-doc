@@ -1,0 +1,323 @@
+    @Override
+    protected void layoutChildren() {
+        final boolean blockLayoutRequests = mBlockLayoutRequests;
+        if (blockLayoutRequests) {
+            return;
+        }
+
+        mBlockLayoutRequests = true;
+
+        try {
+            super.layoutChildren();
+
+            invalidate();
+
+            if (mAdapter == null) {
+                resetList();
+                invokeOnItemScrollListener();
+                return;
+            }
+
+            final int childrenTop = mListPadding.top;
+            final int childrenBottom = mBottom - mTop - mListPadding.bottom;
+            final int childCount = getChildCount();
+
+            int index = 0;
+            int delta = 0;
+
+            View sel;
+            View oldSel = null;
+            View oldFirst = null;
+            View newSel = null;
+
+            // Remember stuff we will need down below
+            switch (mLayoutMode) {
+            case LAYOUT_SET_SELECTION:
+                index = mNextSelectedPosition - mFirstPosition;
+                if (index >= 0 && index < childCount) {
+                    newSel = getChildAt(index);
+                }
+                break;
+            case LAYOUT_FORCE_TOP:
+            case LAYOUT_FORCE_BOTTOM:
+            case LAYOUT_SPECIFIC:
+            case LAYOUT_SYNC:
+                break;
+            case LAYOUT_MOVE_SELECTION:
+            default:
+                // Remember the previously selected view
+                index = mSelectedPosition - mFirstPosition;
+                if (index >= 0 && index < childCount) {
+                    oldSel = getChildAt(index);
+                }
+
+                // Remember the previous first child
+                oldFirst = getChildAt(0);
+
+                if (mNextSelectedPosition >= 0) {
+                    delta = mNextSelectedPosition - mSelectedPosition;
+                }
+
+                // Caution: newSel might be null
+                newSel = getChildAt(index + delta);
+            }
+
+
+            boolean dataChanged = mDataChanged;
+            if (dataChanged) {
+                handleDataChanged();
+            }
+
+            // Handle the empty set by removing all views that are visible
+            // and calling it a day
+            if (mItemCount == 0) {
+                resetList();
+                invokeOnItemScrollListener();
+                return;
+            } else if (mItemCount != mAdapter.getCount()) {
+                throw new IllegalStateException("The content of the adapter has changed but "
+                        + "ListView did not receive a notification. Make sure the content of "
+                        + "your adapter is not modified from a background thread, but only from "
+                        + "the UI thread. Make sure your adapter calls notifyDataSetChanged() "
+                        + "when its content changes. [in ListView(" + getId() + ", " + getClass()
+                        + ") with Adapter(" + mAdapter.getClass() + ")]");
+            }
+
+            setSelectedPositionInt(mNextSelectedPosition);
+
+            AccessibilityNodeInfo accessibilityFocusLayoutRestoreNode = null;
+            View accessibilityFocusLayoutRestoreView = null;
+            int accessibilityFocusPosition = INVALID_POSITION;
+
+            // Remember which child, if any, had accessibility focus. This must
+            // occur before recycling any views, since that will clear
+            // accessibility focus.
+            final ViewRootImpl viewRootImpl = getViewRootImpl();
+            if (viewRootImpl != null) {
+                final View focusHost = viewRootImpl.getAccessibilityFocusedHost();
+                if (focusHost != null) {
+                    final View focusChild = getAccessibilityFocusedChild(focusHost);
+                    if (focusChild != null) {
+                        if (!dataChanged || isDirectChildHeaderOrFooter(focusChild)
+                                || focusChild.hasTransientState() || mAdapterHasStableIds) {
+                            // The views won't be changing, so try to maintain
+                            // focus on the current host and virtual view.
+                            accessibilityFocusLayoutRestoreView = focusHost;
+                            accessibilityFocusLayoutRestoreNode = viewRootImpl
+                                    .getAccessibilityFocusedVirtualView();
+                        }
+
+                        // If all else fails, maintain focus at the same
+                        // position.
+                        accessibilityFocusPosition = getPositionForView(focusChild);
+                    }
+                }
+            }
+
+            View focusLayoutRestoreDirectChild = null;
+            View focusLayoutRestoreView = null;
+
+            // Take focus back to us temporarily to avoid the eventual call to
+            // clear focus when removing the focused child below from messing
+            // things up when ViewAncestor assigns focus back to someone else.
+            final View focusedChild = getFocusedChild();
+            if (focusedChild != null) {
+                // TODO: in some cases focusedChild.getParent() == null
+
+                // We can remember the focused view to restore after re-layout
+                // if the data hasn't changed, or if the focused position is a
+                // header or footer.
+                if (!dataChanged || isDirectChildHeaderOrFooter(focusedChild)) {
+                    focusLayoutRestoreDirectChild = focusedChild;
+                    // Remember the specific view that had focus.
+                    focusLayoutRestoreView = findFocus();
+                    if (focusLayoutRestoreView != null) {
+                        // Tell it we are going to mess with it.
+                        focusLayoutRestoreView.onStartTemporaryDetach();
+                    }
+                }
+                requestFocus();
+            }
+
+            // Pull all children into the RecycleBin.
+            // These views will be reused if possible
+            final int firstPosition = mFirstPosition;
+            final RecycleBin recycleBin = mRecycler;
+            if (dataChanged) {
+                for (int i = 0; i < childCount; i++) {
+                    recycleBin.addScrapView(getChildAt(i), firstPosition+i);
+                }
+            } else {
+                recycleBin.fillActiveViews(childCount, firstPosition);
+            }
+
+            // Clear out old views
+            detachAllViewsFromParent();
+            recycleBin.removeSkippedScrap();
+
+            switch (mLayoutMode) {
+            case LAYOUT_SET_SELECTION:
+                if (newSel != null) {
+                    sel = fillFromSelection(newSel.getTop(), childrenTop, childrenBottom);
+                } else {
+                    sel = fillFromMiddle(childrenTop, childrenBottom);
+                }
+                break;
+            case LAYOUT_SYNC:
+                sel = fillSpecific(mSyncPosition, mSpecificTop);
+                break;
+            case LAYOUT_FORCE_BOTTOM:
+                sel = fillUp(mItemCount - 1, childrenBottom);
+                adjustViewsUpOrDown();
+                break;
+            case LAYOUT_FORCE_TOP:
+                mFirstPosition = 0;
+                sel = fillFromTop(childrenTop);
+                adjustViewsUpOrDown();
+                break;
+            case LAYOUT_SPECIFIC:
+                sel = fillSpecific(reconcileSelectedPosition(), mSpecificTop);
+                break;
+            case LAYOUT_MOVE_SELECTION:
+                sel = moveSelection(oldSel, newSel, delta, childrenTop, childrenBottom);
+                break;
+            default:
+                if (childCount == 0) {
+                    if (!mStackFromBottom) {
+                        final int position = lookForSelectablePosition(0, true);
+                        setSelectedPositionInt(position);
+                        sel = fillFromTop(childrenTop);
+                    } else {
+                        final int position = lookForSelectablePosition(mItemCount - 1, false);
+                        setSelectedPositionInt(position);
+                        sel = fillUp(mItemCount - 1, childrenBottom);
+                    }
+                } else {
+                    if (mSelectedPosition >= 0 && mSelectedPosition < mItemCount) {
+                        sel = fillSpecific(mSelectedPosition,
+                                oldSel == null ? childrenTop : oldSel.getTop());
+                    } else if (mFirstPosition < mItemCount) {
+                        sel = fillSpecific(mFirstPosition,
+                                oldFirst == null ? childrenTop : oldFirst.getTop());
+                    } else {
+                        sel = fillSpecific(0, childrenTop);
+                    }
+                }
+                break;
+            }
+
+            // Flush any cached views that did not get reused above
+            recycleBin.scrapActiveViews();
+
+            if (sel != null) {
+                // The current selected item should get focus if items are
+                // focusable.
+                if (mItemsCanFocus && hasFocus() && !sel.hasFocus()) {
+                    final boolean focusWasTaken = (sel == focusLayoutRestoreDirectChild &&
+                            focusLayoutRestoreView != null &&
+                            focusLayoutRestoreView.requestFocus()) || sel.requestFocus();
+                    if (!focusWasTaken) {
+                        // Selected item didn't take focus, but we still want to
+                        // make sure something else outside of the selected view
+                        // has focus.
+                        final View focused = getFocusedChild();
+                        if (focused != null) {
+                            focused.clearFocus();
+                        }
+                        positionSelector(INVALID_POSITION, sel);
+                    } else {
+                        sel.setSelected(false);
+                        mSelectorRect.setEmpty();
+                    }
+                } else {
+                    positionSelector(INVALID_POSITION, sel);
+                }
+                mSelectedTop = sel.getTop();
+            } else {
+                final boolean inTouchMode = mTouchMode == TOUCH_MODE_TAP
+                        || mTouchMode == TOUCH_MODE_DONE_WAITING;
+                if (inTouchMode) {
+                    // If the user's finger is down, select the motion position.
+                    final View child = getChildAt(mMotionPosition - mFirstPosition);
+                    if (child != null) {
+                        positionSelector(mMotionPosition, child);
+                    }
+                } else if (mSelectorPosition != INVALID_POSITION) {
+                    // If we had previously positioned the selector somewhere,
+                    // put it back there. It might not match up with the data,
+                    // but it's transitioning out so it's not a big deal.
+                    final View child = getChildAt(mSelectorPosition - mFirstPosition);
+                    if (child != null) {
+                        positionSelector(mSelectorPosition, child);
+                    }
+                } else {
+                    // Otherwise, clear selection.
+                    mSelectedTop = 0;
+                    mSelectorRect.setEmpty();
+                }
+
+                // Even if there is not selected position, we may need to
+                // restore focus (i.e. something focusable in touch mode).
+                if (hasFocus() && focusLayoutRestoreView != null) {
+                    focusLayoutRestoreView.requestFocus();
+                }
+            }
+
+            // Attempt to restore accessibility focus, if necessary.
+            if (viewRootImpl != null) {
+                final View newAccessibilityFocusedView = viewRootImpl.getAccessibilityFocusedHost();
+                if (newAccessibilityFocusedView == null) {
+                    if (accessibilityFocusLayoutRestoreView != null
+                            && accessibilityFocusLayoutRestoreView.isAttachedToWindow()) {
+                        final AccessibilityNodeProvider provider =
+                                accessibilityFocusLayoutRestoreView.getAccessibilityNodeProvider();
+                        if (accessibilityFocusLayoutRestoreNode != null && provider != null) {
+                            final int virtualViewId = AccessibilityNodeInfo.getVirtualDescendantId(
+                                    accessibilityFocusLayoutRestoreNode.getSourceNodeId());
+                            provider.performAction(virtualViewId,
+                                    AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS, null);
+                        } else {
+                            accessibilityFocusLayoutRestoreView.requestAccessibilityFocus();
+                        }
+                    } else if (accessibilityFocusPosition != INVALID_POSITION) {
+                        // Bound the position within the visible children.
+                        final int position = MathUtils.constrain(
+                                accessibilityFocusPosition - mFirstPosition, 0,
+                                getChildCount() - 1);
+                        final View restoreView = getChildAt(position);
+                        if (restoreView != null) {
+                            restoreView.requestAccessibilityFocus();
+                        }
+                    }
+                }
+            }
+
+            // Tell focus view we are done mucking with it, if it is still in
+            // our view hierarchy.
+            if (focusLayoutRestoreView != null
+                    && focusLayoutRestoreView.getWindowToken() != null) {
+                focusLayoutRestoreView.onFinishTemporaryDetach();
+            }
+            
+            mLayoutMode = LAYOUT_NORMAL;
+            mDataChanged = false;
+            if (mPositionScrollAfterLayout != null) {
+                post(mPositionScrollAfterLayout);
+                mPositionScrollAfterLayout = null;
+            }
+            mNeedSync = false;
+            setNextSelectedPositionInt(mSelectedPosition);
+
+            updateScrollIndicators();
+
+            if (mItemCount > 0) {
+                checkSelectionChanged();
+            }
+
+            invokeOnItemScrollListener();
+        } finally {
+            if (!blockLayoutRequests) {
+                mBlockLayoutRequests = false;
+            }
+        }
+    }

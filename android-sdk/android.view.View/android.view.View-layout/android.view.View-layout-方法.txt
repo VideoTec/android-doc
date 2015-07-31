@@ -1,0 +1,56 @@
+optical[英][ˈɒptɪkl] [美][ˈɑ:ptɪkl]
+adj.视觉的，视力的；眼睛的；光学的
+
+    /**
+     * Assign a size and position to a view and all of its
+     * descendants
+     *
+     * <p>This is the second phase of the layout mechanism.
+     * (The first is measuring). In this phase, each parent calls
+     * layout on all of its children to position them.
+     * This is typically done using the child measurements
+     * that were stored in the measure pass().</p>
+     *
+     * <p>Derived classes should not override this method.
+     * Derived classes with children should override
+     * onLayout. In that method, they should
+     * call layout on each of their children.</p>
+     *
+     * @param l Left position, relative to parent
+     * @param t Top position, relative to parent
+     * @param r Right position, relative to parent
+     * @param b Bottom position, relative to parent
+     */
+    @SuppressWarnings({"unchecked"})
+    public void layout(int l, int t, int r, int b) {
+        if ((mPrivateFlags3 & PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT) != 0) {
+            onMeasure(mOldWidthMeasureSpec, mOldHeightMeasureSpec);
+            mPrivateFlags3 &= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+        }
+
+        int oldL = mLeft;
+        int oldT = mTop;
+        int oldB = mBottom;
+        int oldR = mRight;
+
+        boolean changed = isLayoutModeOptical(mParent) ?
+                setOpticalFrame(l, t, r, b) : setFrame(l, t, r, b);
+
+        if (changed || (mPrivateFlags & PFLAG_LAYOUT_REQUIRED) == PFLAG_LAYOUT_REQUIRED) {
+            onLayout(changed, l, t, r, b);
+            mPrivateFlags &= ~PFLAG_LAYOUT_REQUIRED;
+
+            ListenerInfo li = mListenerInfo;
+            if (li != null && li.mOnLayoutChangeListeners != null) {
+                ArrayList<OnLayoutChangeListener> listenersCopy =
+                        (ArrayList<OnLayoutChangeListener>)li.mOnLayoutChangeListeners.clone();
+                int numListeners = listenersCopy.size();
+                for (int i = 0; i < numListeners; ++i) {
+                    listenersCopy.get(i).onLayoutChange(this, l, t, r, b, oldL, oldT, oldR, oldB);
+                }
+            }
+        }
+
+        mPrivateFlags &= ~PFLAG_FORCE_LAYOUT;
+        mPrivateFlags3 |= PFLAG3_IS_LAID_OUT;
+    }

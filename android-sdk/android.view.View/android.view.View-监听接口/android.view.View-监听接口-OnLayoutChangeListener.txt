@@ -1,0 +1,11 @@
+http://developer.android.com/reference/android/view/View.OnLayoutChangeListener.html
+
+public static interface
+View.OnLayoutChangeListener
+
+Interface definition for a callback to be invoked when the layout bounds of a view changes due to layout processing.
+
+abstract void
+onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom)
+
+Called when the layout bounds of a view changes due to layout processing.

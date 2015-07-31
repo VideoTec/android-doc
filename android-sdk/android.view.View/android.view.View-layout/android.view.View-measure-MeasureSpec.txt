@@ -1,0 +1,41 @@
+http://developer.android.com/reference/android/view/View.MeasureSpec.html
+
+regardless[英][rɪˈgɑ:dləs] [美][rɪˈgɑ:rdləs]
+adv.不顾后果地；不管怎样，无论如何；不惜费用地
+adj.不重视的，不尊敬的；不顾虑的，不关心的；不受注意的，毫无价值的
+
+impose[英][ɪmˈpəʊz] [美][ɪmˈpoʊz]
+vt.强加；征税；以…欺骗
+
+java.lang.Object
+   ↳	android.view.View.MeasureSpec
+
+Class Overview
+
+A MeasureSpec encapsulates the layout requirements passed from parent to child. Each MeasureSpec represents a requirement for either the width or the height. A MeasureSpec is comprised of a size and a mode. There are three possible modes:
+
+UNSPECIFIED 0 (0x00000000)
+The parent has not imposed any constraint on the child. It can be whatever size it wants.
+
+EXACTLY 1073741824 (0x40000000)
+The parent has determined an exact size for the child. The child is going to be given those bounds regardless of how big it wants to be.
+
+AT_MOST -2147483648 (0x80000000)
+The child can be as large as it wants up to the specified size.
+
+MeasureSpecs are implemented as ints to reduce object allocation. This class is provided to pack and unpack the <size, mode> tuple into the int.
+
+------------------------------------------------
+方法列表：全是静态方法
+------------------------------------------------
+static int getMode(int measureSpec)
+Extracts the mode from the supplied measure specification.
+
+static int getSize(int measureSpec)
+Extracts the size from the supplied measure specification.
+
+static int makeMeasureSpec(int size, int mode)
+Creates a measure specification based on the supplied size and mode.
+
+static String toString(int measureSpec)
+Returns a String representation of the specified measure specification.

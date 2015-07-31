@@ -1,0 +1,49 @@
+
+    /**
+     * Call this when something has changed which has invalidated the
+     * layout of this view. This will schedule a layout pass of the view
+     * tree. This should not be called while the view hierarchy is currently in a layout
+     * pass ({@link #isInLayout()}. If layout is happening, the request may be honored at the
+     * end of the current layout pass (and then layout will run again) or after the current
+     * frame is drawn and the next layout occurs.
+     *
+     * <p>Subclasses which override this method should call the superclass method to
+     * handle possible request-during-layout errors correctly.</p>
+     */
+    public void requestLayout() {
+        if (mMeasureCache != null) mMeasureCache.clear();
+
+        if (mAttachInfo != null && mAttachInfo.mViewRequestingLayout == null) {
+            // Only trigger request-during-layout logic if this is the view requesting it,
+            // not the views in its parent hierarchy
+            ViewRootImpl viewRoot = getViewRootImpl();
+            if (viewRoot != null && viewRoot.isInLayout()) {
+                if (!viewRoot.requestLayoutDuringLayout(this)) {
+                    return;
+                }
+            }
+            mAttachInfo.mViewRequestingLayout = this;
+        }
+
+        mPrivateFlags |= PFLAG_FORCE_LAYOUT;
+        mPrivateFlags |= PFLAG_INVALIDATED;
+
+        if (mParent != null && !mParent.isLayoutRequested()) {
+            mParent.requestLayout();
+        }
+        if (mAttachInfo != null && mAttachInfo.mViewRequestingLayout == this) {
+            mAttachInfo.mViewRequestingLayout = null;
+        }
+    }
+    
+    /**
+     * Forces this view to be laid out during the next layout pass.
+     * This method does not call requestLayout() or forceLayout()
+     * on the parent.
+     */
+    public void forceLayout() {
+        if (mMeasureCache != null) mMeasureCache.clear();
+
+        mPrivateFlags |= PFLAG_FORCE_LAYOUT;
+        mPrivateFlags |= PFLAG_INVALIDATED;
+    }

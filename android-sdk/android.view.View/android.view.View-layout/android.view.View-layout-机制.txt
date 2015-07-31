@@ -1,0 +1,40 @@
+measure[英][ˈmeʒə(r)] [美][ˈmɛʒɚ]
+n.测量，测度；措施；程度；尺寸
+
+layout[英][ˈleɪaʊt] [美][ˈleˌaʊt]
+n.布局，安排，设计；布置图，规划图
+
+----------------------------------------------------------------------
+http://blog.csdn.net/ff20081528/article/details/17784911
+
+Layout过程其实就是父视图按照子视图的大小及布局参数将子视图放在窗口的合适的位置上。
+
+视图的布局过程是从ViewRoot对象调调用根视图的layout()方法开始，
+接着layout()方法调用根视图的onLayout()方法，
+onLayout()方法会对所包含的子视图逐一执行layout操作，
+如果子视图是ViewGroup子类对象，则继续调用子视图的layout()，重复这一过程。
+如果子视图是View子类对象，则在子视图重载的onLayout()内部只需要将自己布局到视图中，
+不需要对子视图(view还有子视图吗？)进行layout操作，这样一次layout过程结束
+
+-------------------------------------------------------------------
+http://www.cnblogs.com/XP-Lee/p/3443442.html 有点混乱，不知所云
+
+Android中View的layout mechanism主要分为两个阶段： measure 阶段和 layout 阶段。
+layout mechanism按照一定的顺序进行，总体上来讲是先measure然后layout。
+
+-----------------------------
+measure阶段
+-----------------------------
+以父容器提供的宽高参数作为限制条件，计算本身的大小（宽高）。
+这个过程需要调用final方法measure(int, int)完成。
+根据源码，我们可以知道实际的measure过程却是由回调方法onMeasure(int, int)来进行。
+因此我们常常可以看到在View的子类中，会根据需要，有重写方法onMeasure(int, int)
+
+-----------------------------
+layout阶段
+-----------------------------
+为View进行layout(int, int, int, int)：
+分配大小和指定位置
+（假设这个View是一个ViewGroup，
+它的子节点控件也进行layout，
+这个过程通常是回调重写的 onLayout(boolean, int, int, int, int)来执行）

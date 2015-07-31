@@ -1,0 +1,7 @@
+public void smoothScrollByOffset (int offset)
+
+Added in API level 11
+Smoothly scroll to the specified adapter position offset. The view will scroll such that the indicated position is displayed.
+
+Parameters
+offset	The amount to offset from the adapter position to scroll to.

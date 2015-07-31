@@ -1,3 +1,45 @@
+http://developer.android.com/reference/android/view/View.OnClickListener.html
+
+public static interface
+android.view.View.OnClickListener
+
+Known Indirect Subclasses
+CharacterPickerDialog, KeyboardView, QuickContactBadge, SearchOrbView, SpeechOrbView
+
+Interface definition for a callback to be invoked when a view is clicked.
+
+只有一个方法：
+abstract void onClick(View v)
+Called when a view has been clicked.
+
+-----------------------------------------------
+click事件 - view发送，相关源码
+-----------------------------------------------
+
+    public boolean performClick() {
+        final boolean result;
+        final ListenerInfo li = mListenerInfo;
+        if (li != null && li.mOnClickListener != null) {
+            playSoundEffect(SoundEffectConstants.CLICK);
+            li.mOnClickListener.onClick(this);
+            result = true;
+        } else {
+            result = false;
+        }
+
+        sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_CLICKED);
+        return result;
+    }
+    
+    public boolean callOnClick() {
+        ListenerInfo li = mListenerInfo;
+        if (li != null && li.mOnClickListener != null) {
+            li.mOnClickListener.onClick(this);
+            return true;
+        }
+        return false;
+    }
+
 --------------------------------------------------------------------
 接口： android.view.View.OnClickListener
 --------------------------------------------------------------------

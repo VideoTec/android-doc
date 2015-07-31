@@ -1,0 +1,7 @@
+public void smoothScrollToPosition (int position)
+
+Added in API level 8
+Smoothly scroll to the specified adapter position. The view will scroll such that the indicated position is displayed.
+
+Parameters
+position	Scroll to this adapter position.

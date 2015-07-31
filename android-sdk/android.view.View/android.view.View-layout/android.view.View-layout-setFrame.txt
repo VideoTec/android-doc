@@ -1,0 +1,100 @@
+
+    /**
+     * Assign a size and position to this view.
+     *
+     * This is called from layout.
+     *
+     * @param left Left position, relative to parent
+     * @param top Top position, relative to parent
+     * @param right Right position, relative to parent
+     * @param bottom Bottom position, relative to parent
+     * @return true if the new size and position are different than the
+     *         previous ones
+     * {@hide}
+     */
+    protected boolean setFrame(int left, int top, int right, int bottom) {
+        boolean changed = false;
+
+        if (DBG) {
+            Log.d("View", this + " View.setFrame(" + left + "," + top + ","
+                    + right + "," + bottom + ")");
+        }
+
+        if (mLeft != left || mRight != right || mTop != top || mBottom != bottom) {
+            changed = true;
+
+            // Remember our drawn bit
+            int drawn = mPrivateFlags & PFLAG_DRAWN;
+
+            int oldWidth = mRight - mLeft;
+            int oldHeight = mBottom - mTop;
+            int newWidth = right - left;
+            int newHeight = bottom - top;
+            boolean sizeChanged = (newWidth != oldWidth) || (newHeight != oldHeight);
+
+            // Invalidate our old position
+            invalidate(sizeChanged);
+
+            mLeft = left;
+            mTop = top;
+            mRight = right;
+            mBottom = bottom;
+            if (mDisplayList != null) {
+                mDisplayList.setLeftTopRightBottom(mLeft, mTop, mRight, mBottom);
+            }
+
+            mPrivateFlags |= PFLAG_HAS_BOUNDS;
+
+
+            if (sizeChanged) {
+                if ((mPrivateFlags & PFLAG_PIVOT_EXPLICITLY_SET) == 0) {
+                    // A change in dimension means an auto-centered pivot point changes, too
+                    if (mTransformationInfo != null) {
+                        mTransformationInfo.mMatrixDirty = true;
+                    }
+                }
+                sizeChange(newWidth, newHeight, oldWidth, oldHeight);
+            }
+
+            if ((mViewFlags & VISIBILITY_MASK) == VISIBLE) {
+                // If we are visible, force the DRAWN bit to on so that
+                // this invalidate will go through (at least to our parent).
+                // This is because someone may have invalidated this view
+                // before this call to setFrame came in, thereby clearing
+                // the DRAWN bit.
+                mPrivateFlags |= PFLAG_DRAWN;
+                invalidate(sizeChanged);
+                // parent display list may need to be recreated based on a change in the bounds
+                // of any child
+                invalidateParentCaches();
+            }
+
+            // Reset drawn bit to original value (invalidate turns it off)
+            mPrivateFlags |= drawn;
+
+            mBackgroundSizeChanged = true;
+
+            notifySubtreeAccessibilityStateChangedIfNeeded();
+        }
+        return changed;
+    }
+
+
+    /**
+     * Return true if o is a ViewGroup that is laying out using optical bounds.
+     * @hide
+     */
+    public static boolean isLayoutModeOptical(Object o) {
+        return o instanceof ViewGroup && ((ViewGroup) o).isLayoutModeOptical();
+    }
+
+    private boolean setOpticalFrame(int left, int top, int right, int bottom) {
+        Insets parentInsets = mParent instanceof View ?
+                ((View) mParent).getOpticalInsets() : Insets.NONE;
+        Insets childInsets = getOpticalInsets();
+        return setFrame(
+                left   + parentInsets.left - childInsets.left,
+                top    + parentInsets.top  - childInsets.top,
+                right  + parentInsets.left + childInsets.right,
+                bottom + parentInsets.top  + childInsets.bottom);
+    }

@@ -1,0 +1,27 @@
+public final int getTop ()
+
+Added in API level 1
+
+Top position of this view relative to its parent.
+
+Returns
+The top of this view, in pixels.
+
+使用方法：
+ListView().getChildAt(0).getTop();
+会返回，列表中，第一个可见 item-view 的顶端，和 ListView 的偏移量
+
+问题：这个值 和 mScrollX/Y 之间的关系？
+    public final int getTop() {
+        return mTop;
+    }
+
+---------------------------------
+Position
+---------------------------------
+
+The geometry of a view is that of a rectangle. A view has a location, expressed as a pair of left and top coordinates, and two dimensions, expressed as a width and a height. The unit for location and dimensions is the pixel.
+
+It is possible to retrieve the location of a view by invoking the methods getLeft() and getTop(). The former returns the left, or X, coordinate of the rectangle representing the view. The latter returns the top, or Y, coordinate of the rectangle representing the view. These methods both return the location of the view relative to its parent. For instance, when getLeft() returns 20, that means the view is located 20 pixels to the right of the left edge of its direct parent.
+
+In addition, several convenience methods are offered to avoid unnecessary computations, namely getRight() and getBottom(). These methods return the coordinates of the right and bottom edges of the rectangle representing the view. For instance, calling getRight() is similar to the following computation: getLeft() + getWidth() (see Size for more information about the width.)

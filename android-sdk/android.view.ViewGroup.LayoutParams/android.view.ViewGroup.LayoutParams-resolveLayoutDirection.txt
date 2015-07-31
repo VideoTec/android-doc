@@ -1,0 +1,12 @@
+        /**
+         * Resolve layout parameters depending on the layout direction. Subclasses that care about
+         * layoutDirection changes should override this method. The default implementation does
+         * nothing.
+         *
+         * @param layoutDirection the direction of the layout
+         *
+         * {@link View#LAYOUT_DIRECTION_LTR}
+         * {@link View#LAYOUT_DIRECTION_RTL}
+         */
+        public void resolveLayoutDirection(int layoutDirection) {
+        }

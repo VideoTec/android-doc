@@ -1,0 +1,21 @@
+    /**
+     * Called from layout when this view should
+     * assign a size and position to each of its children.
+     *
+     * Derived classes with children should override
+     * this method and call layout on each of
+     * their children.
+     * @param changed This is a new size or position for this view
+     * @param left Left position, relative to parent
+     * @param top Top position, relative to parent
+     * @param right Right position, relative to parent
+     * @param bottom Bottom position, relative to parent
+     */
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+    }
+
+
+    注意 
+    ViewGroup   的 onLayout    是空的，继承类需要实现。
+    AbsListView 的 onLayout
+    ...

@@ -1,0 +1,12 @@
+    /**
+     * This is called during layout when the size of this view has changed. If
+     * you were just added to the view hierarchy, you're called with the old
+     * values of 0.
+     *
+     * @param w Current width of this view.
+     * @param h Current height of this view.
+     * @param oldw Old width of this view.
+     * @param oldh Old height of this view.
+     */
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    }

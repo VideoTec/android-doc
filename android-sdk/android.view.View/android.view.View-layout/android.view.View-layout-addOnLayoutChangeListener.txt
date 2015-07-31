@@ -1,0 +1,32 @@
+view.java 源码：
+
+private ArrayList<OnLayoutChangeListener> mOnLayoutChangeListeners;
+
+    /**
+     * Add a listener that will be called when the bounds of the view change due to
+     * layout processing.
+     *
+     * @param listener The listener that will be called when layout bounds change.
+     */
+    public void addOnLayoutChangeListener(OnLayoutChangeListener listener) {
+        ListenerInfo li = getListenerInfo();
+        if (li.mOnLayoutChangeListeners == null) {
+            li.mOnLayoutChangeListeners = new ArrayList<OnLayoutChangeListener>();
+        }
+        if (!li.mOnLayoutChangeListeners.contains(listener)) {
+            li.mOnLayoutChangeListeners.add(listener);
+        }
+    }
+
+    /**
+     * Remove a listener for layout changes.
+     *
+     * @param listener The listener for layout bounds change.
+     */
+    public void removeOnLayoutChangeListener(OnLayoutChangeListener listener) {
+        ListenerInfo li = mListenerInfo;
+        if (li == null || li.mOnLayoutChangeListeners == null) {
+            return;
+        }
+        li.mOnLayoutChangeListeners.remove(listener);
+    }

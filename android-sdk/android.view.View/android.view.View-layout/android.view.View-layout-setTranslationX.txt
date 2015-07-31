@@ -1,0 +1,99 @@
+public float getTranslationX()
+public void setTranslationX(float translationX) 
+
+public float getTranslationY()
+public void setTranslationY(float translationY)
+
+public float getTranslationZ()
+public void setTranslationZ(float translationZ) 
+    
+    /**
+     * The horizontal location of this view relative to its {@link #getLeft() left} position.
+     * This position is post-layout, in addition to wherever the object's
+     * layout placed it.
+     *
+     * @return The horizontal position of this view relative to its left position, in pixels.
+     */
+    @ViewDebug.ExportedProperty(category = "drawing")
+    public float getTranslationX() {
+        return mRenderNode.getTranslationX();
+    }
+
+    /**
+     * Sets the horizontal location of this view relative to its {@link #getLeft() left} position.
+     * This effectively positions the object post-layout, in addition to wherever the object's
+     * layout placed it.
+     *
+     * @param translationX The horizontal position of this view relative to its left position,
+     * in pixels.
+     *
+     * @attr ref android.R.styleable#View_translationX
+     */
+    public void setTranslationX(float translationX) {
+        if (translationX != getTranslationX()) {
+            invalidateViewProperty(true, false);
+            mRenderNode.setTranslationX(translationX);
+            invalidateViewProperty(false, true);
+
+            invalidateParentIfNeededAndWasQuickRejected();
+            notifySubtreeAccessibilityStateChangedIfNeeded();
+        }
+    }
+
+    /**
+     * The vertical location of this view relative to its {@link #getTop() top} position.
+     * This position is post-layout, in addition to wherever the object's
+     * layout placed it.
+     *
+     * @return The vertical position of this view relative to its top position,
+     * in pixels.
+     */
+    @ViewDebug.ExportedProperty(category = "drawing")
+    public float getTranslationY() {
+        return mRenderNode.getTranslationY();
+    }
+
+    /**
+     * Sets the vertical location of this view relative to its {@link #getTop() top} position.
+     * This effectively positions the object post-layout, in addition to wherever the object's
+     * layout placed it.
+     *
+     * @param translationY The vertical position of this view relative to its top position,
+     * in pixels.
+     *
+     * @attr ref android.R.styleable#View_translationY
+     */
+    public void setTranslationY(float translationY) {
+        if (translationY != getTranslationY()) {
+            invalidateViewProperty(true, false);
+            mRenderNode.setTranslationY(translationY);
+            invalidateViewProperty(false, true);
+
+            invalidateParentIfNeededAndWasQuickRejected();
+        }
+    }
+
+    /**
+     * The depth location of this view relative to its {@link #getElevation() elevation}.
+     *
+     * @return The depth of this view relative to its elevation.
+     */
+    @ViewDebug.ExportedProperty(category = "drawing")
+    public float getTranslationZ() {
+        return mRenderNode.getTranslationZ();
+    }
+
+    /**
+     * Sets the depth location of this view relative to its {@link #getElevation() elevation}.
+     *
+     * @attr ref android.R.styleable#View_translationZ
+     */
+    public void setTranslationZ(float translationZ) {
+        if (translationZ != getTranslationZ()) {
+            invalidateViewProperty(true, false);
+            mRenderNode.setTranslationZ(translationZ);
+            invalidateViewProperty(false, true);
+
+            invalidateParentIfNeededAndWasQuickRejected();
+        }
+    }

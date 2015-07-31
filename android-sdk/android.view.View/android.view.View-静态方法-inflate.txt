@@ -1,0 +1,14 @@
+    /**
+     * Inflate a view from an XML resource.  This convenience method wraps the {@link
+     * LayoutInflater} class, which provides a full range of options for view inflation.
+     *
+     * @param context The Context object for your activity or application.
+     * @param resource The resource ID to inflate
+     * @param root A view group that will be the parent.  Used to properly inflate the
+     * layout_* parameters.
+     * @see LayoutInflater
+     */
+    public static View inflate(Context context, int resource, ViewGroup root) {
+        LayoutInflater factory = LayoutInflater.from(context);
+        return factory.inflate(resource, root);
+    }
