@@ -15,3 +15,6 @@ n.手势，姿势；举止，动作；〔古语〕仪态；[计算机]光笔指�
 
 This is a simple Android View class which provides basic pinch and zoom capability for images.
 Can be used as a replacement for a standard ImageView when you want to include pinch and zoom.
+
+https://github.com/devunwired/custom-touch-examples
+This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".

@@ -1,0 +1,11 @@
+垂直滚动 ListView 不会改变 getScrollY
+
+参考：
+http://stackoverflow.com/questions/12727594/android-listview-current-scroll-location-y-pixels
+There is no notion of Y scroll for a ListView in Android simply because the total height of the content is unknown. Only the height of the displayed content is known.
+
+However it is possible to get the current position/Y scroll of a visible item using the following hack:
+
+getListView().getChildAt(0).getTop();
+
+getChildAt 是 ViewGroup 的方法。

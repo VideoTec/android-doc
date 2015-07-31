@@ -4,10 +4,12 @@ android.view.GestureDetector 只分析出一个 onDown 手势。
 先说下，造成这种情况的原因：
 如果View没有对ACTION_DOWN进行消费，之后的其他事件不会传递过来
 
-使用 GestureDetector 的 View 的 onTouch 事件写法
+使用 GestureDetector 的 View 的 OnTouchListener.onTouch 事件写法
             public boolean onTouch(View v, MotionEvent event) {
                 mGestureDetector.onTouchEvent(event);
                 if(event.getActionMasked() == MotionEvent.ACTION_DOWN)
                     return true; 如果不添加这个判断，就会出现上面的情况
                 return false;
             }
+10:33 2015/7/30 
+奇怪，今天去掉 MotionEvent.ACTION_DOWN return true ，也可正常处理。

@@ -1,0 +1,18 @@
+http://developer.android.com/reference/android/view/ScaleGestureDetector.SimpleOnScaleGestureListener.html
+
+implements ScaleGestureDetector.OnScaleGestureListener
+java.lang.Object
+   ↳	android.view.ScaleGestureDetector.SimpleOnScaleGestureListener
+
+Class Overview
+
+A convenience class to extend when you only want to listen for a subset of scaling-related events. 
+
+This implements all methods in ScaleGestureDetector.OnScaleGestureListener but does nothing. 
+
+accumulated[英][ək'ju:mjʊleɪtɪd] [美][ək'ju:mjʊleɪtɪd]
+adj.[医]蓄积的，累积的
+onScale(ScaleGestureDetector) returns false so that a subclass can retrieve 
+the accumulated scale factor in an overridden onScaleEnd. 
+
+onScaleBegin(ScaleGestureDetector) returns true.

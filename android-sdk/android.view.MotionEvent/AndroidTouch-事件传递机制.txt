@@ -15,6 +15,7 @@ http://www.trinea.cn/android/touch-event-delivery-mechanism/
 (3) 如果事件从上往下传递过程中一直没有被停止，且最底层子View没有消费事件，事件会反向往上传递，这时父View(ViewGroup)可以进行消费，如果还是没有被消费的话，最后会到Activity的onTouchEvent()函数。
  
 (4) 如果View没有对ACTION_DOWN进行消费，之后的其他事件不会传递过来。
+    这条的意思是什么？源代码在那里？
  
 (5) OnTouchListener优先于onTouchEvent()对事件进行消费。
  

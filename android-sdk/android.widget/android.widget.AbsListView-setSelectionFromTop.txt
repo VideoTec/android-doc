@@ -1,0 +1,22 @@
+appropriately[英][ə'prəʊprɪətlɪ] [美][ə'proʊprɪrtlɪ]
+adv.适当地
+
+public void setSelectionFromTop (int position, int y)  AbsListView 的方法
+
+Added in API level 1
+Sets the selected item and positions the selection y pixels from the top edge of the ListView. (If in touch mode, the item will not be selected but it will still be positioned appropriately.)
+
+Parameters
+
+position
+Index (starting at 0) of the data item to be selected.
+
+y
+The distance from the top edge of the ListView (plus padding) that the item will be positioned.
+
+-----------------------------
+使用方法：
+-----------------------------
+mListView.setSelectionFromTop(0, -200);
+
+会向下滚动到恰当的的像素点

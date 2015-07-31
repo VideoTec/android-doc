@@ -1,0 +1,13 @@
+http://developer.android.com/reference/android/view/ScaleGestureDetector.html
+
+java.lang.Object
+   ↳	android.view.ScaleGestureDetector
+
+Class Overview
+
+Detects scaling transformation gestures using the supplied MotionEvents. The ScaleGestureDetector.OnScaleGestureListener callback will notify users when a particular gesture event has occurred. This class should only be used with MotionEvents reported via touch. 
+
+To use this class:
+
+第一步：Create an instance of the ScaleGestureDetector for your View
+第二步：In the onTouchEvent(MotionEvent) method ensure you call onTouchEvent(MotionEvent). The methods defined in your callback will be executed when the events occur.

@@ -1,0 +1,84 @@
+span[英][spæn] [美][spæn] N-COUNT 宽度；宽幅
+
+public float getPreviousSpan ()
+public float getPreviousSpanX ()
+public float getPreviousSpanY ()
+
+public float getCurrentSpan ()
+public float getCurrentSpanX ()
+public float getCurrentSpanY ()
+
+根据定义，是什么之间的距离？
+the average distance between each of the pointers forming the gesture in progress through the focal point
+
+实际测试结果：
+1）pre-span 的值不变
+2）pre-span 的值，始终等于 onScaleBegin 时的值
+
+实测值：onScale 时接收到的 detector 的值
+
+scale gesture begin: 1.0; cur-span: 244.02594; pre-span: 244.02594
+scale gesture: 0.9938296; cur-span: 242.5202; pre-span: 244.02594
+scale gesture: 0.98769057; cur-span: 241.02213; pre-span: 244.02594
+scale gesture: 0.9830614; cur-span: 239.89249; pre-span: 244.02594
+scale gesture: 0.99326676; cur-span: 242.38284; pre-span: 244.02594
+
+-------------------------------------------
+public float getPreviousSpan ()
+-------------------------------------------
+
+Added in API level 8
+Return the previous average distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Previous distance between pointers in pixels.
+
+-------------------------------------------
+public float getPreviousSpanX ()
+-------------------------------------------
+
+Added in API level 11
+Return the previous average X distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Previous distance between pointers in pixels.
+
+-------------------------------------------
+public float getPreviousSpanY ()
+-------------------------------------------
+
+Added in API level 11
+Return the previous average Y distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Previous distance between pointers in pixels
+
+-------------------------------------------
+public float getCurrentSpan ()
+-------------------------------------------
+
+Added in API level 8
+Return the average distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Distance between pointers in pixels.
+
+-------------------------------------------
+public float getCurrentSpanX ()
+-------------------------------------------
+
+Added in API level 11
+Return the average X distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Distance between pointers in pixels.
+
+-------------------------------------------
+public float getCurrentSpanY ()
+-------------------------------------------
+
+Added in API level 11
+Return the average Y distance between each of the pointers forming the gesture in progress through the focal point.
+
+Returns
+Distance between pointers in pixels

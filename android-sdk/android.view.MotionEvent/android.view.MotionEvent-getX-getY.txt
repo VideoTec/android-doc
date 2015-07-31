@@ -6,7 +6,8 @@ public final float getY (int pointerIndex)
 public final float getY ()
 public final float getYPrecision ()
 
-得到的是在当前窗口中的x,y坐标值。
+得到的是在当前监听VIEW中的x,y坐标值。
+理解相关代码：ViewGroup.dispatchTransformedTouchEvent
 
 如果要获取设备的坐标值，需要使用
 public final float getRawX ()

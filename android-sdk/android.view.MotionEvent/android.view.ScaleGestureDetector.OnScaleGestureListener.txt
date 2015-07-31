@@ -1,0 +1,18 @@
+http://developer.android.com/reference/android/view/ScaleGestureDetector.OnScaleGestureListener.html
+
+android.view.ScaleGestureDetector.OnScaleGestureListener
+
+Known Indirect Subclasses
+ScaleGestureDetector.SimpleOnScaleGestureListener
+
+Class Overview
+
+The listener for receiving notifications when gestures occur. If you want to listen for all the different gestures then implement this interface. 
+
+If you only want to listen for a subset it might be easier to extend ScaleGestureDetector.SimpleOnScaleGestureListener. 
+
+An application will receive events in the following order:
+
+1）One onScaleBegin(ScaleGestureDetector)
+2）Zero or more onScale(ScaleGestureDetector)
+3）One onScaleEnd(ScaleGestureDetector)

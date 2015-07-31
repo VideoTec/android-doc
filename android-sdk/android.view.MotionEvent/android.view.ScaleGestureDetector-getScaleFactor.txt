@@ -1,0 +1,58 @@
+public float getScaleFactor ()
+
+Added in API level 8
+Return the scaling factor from the previous scale event to the current event. This value is defined as (getCurrentSpan() / getPreviousSpan()).
+
+Returns
+The current scaling factor.
+
+1）递减 或者 递增，并不两次scale之间的比值
+2）pre-span 的值不变
+3）pre-span 的值，始终等于 onScaleBegin 时的值
+
+实测值：onScale 时接收到的 detector 的值
+
+scale gesture begin: 1.0; cur-span: 244.02594; pre-span: 244.02594
+scale gesture: 0.9938296; cur-span: 242.5202; pre-span: 244.02594
+scale gesture: 0.98769057; cur-span: 241.02213; pre-span: 244.02594
+scale gesture: 0.9830614; cur-span: 239.89249; pre-span: 244.02594
+scale gesture: 0.99326676; cur-span: 242.38284; pre-span: 244.02594
+
+
+实测值：onScale 时接收到的 detector 的值
+scale gesture: 1.0080127; cur-span: 178.16878; pre-span: 176.75252
+scale gesture: 1.0195353; cur-span: 180.20544; pre-span: 176.75252
+scale gesture: 1.0309504; cur-span: 182.22308; pre-span: 176.75252
+scale gesture: 1.0343461; cur-span: 182.82327; pre-span: 176.75252
+scale gesture: 1.0419142; cur-span: 184.16095; pre-span: 176.75252
+scale gesture: 1.0545273; cur-span: 186.39034; pre-span: 176.75252
+scale gesture: 1.0725197; cur-span: 189.57054; pre-span: 176.75252
+scale gesture: 1.0888069; cur-span: 192.44937; pre-span: 176.75252
+scale gesture: 1.1172318; cur-span: 197.47354; pre-span: 176.75252
+scale gesture: 1.1331079; cur-span: 200.27968; pre-span: 176.75252
+scale gesture: 1.1416818; cur-span: 201.79512; pre-span: 176.75252
+scale gesture: 1.172731; cur-span: 207.28316; pre-span: 176.75252
+scale gesture: 1.1915575; cur-span: 210.6108; pre-span: 176.75252
+scale gesture: 1.2290658; cur-span: 217.24046; pre-span: 176.75252
+scale gesture: 1.2476711; cur-span: 220.52902; pre-span: 176.75252
+scale gesture: 1.2610792; cur-span: 222.89891; pre-span: 176.75252
+scale gesture: 1.2848748; cur-span: 227.10486; pre-span: 176.75252
+scale gesture: 1.2943854; cur-span: 228.78587; pre-span: 176.75252
+scale gesture: 1.2997698; cur-span: 229.73756; pre-span: 176.75252
+scale gesture: 1.3080964; cur-span: 231.20932; pre-span: 176.75252
+scale gesture: 1.3240143; cur-span: 234.02286; pre-span: 176.75252
+scale gesture: 1.3358943; cur-span: 236.12268; pre-span: 176.75252
+scale gesture: 1.3478376; cur-span: 238.23367; pre-span: 176.75252
+scale gesture: 1.3640954; cur-span: 241.1073; pre-span: 176.75252
+scale gesture: 1.3740888; cur-span: 242.87364; pre-span: 176.75252
+scale gesture: 1.3804642; cur-span: 244.00052; pre-span: 176.75252
+scale gesture: 1.3820105; cur-span: 244.27382; pre-span: 176.75252
+scale gesture: 1.3926803; cur-span: 246.15974; pre-span: 176.75252
+scale gesture: 1.3993926; cur-span: 247.34616; pre-span: 176.75252
+scale gesture: 1.4047474; cur-span: 248.29263; pre-span: 176.75252
+scale gesture: 1.4077123; cur-span: 248.8167; pre-span: 176.75252
+scale gesture: 1.4111645; cur-span: 249.42688; pre-span: 176.75252
+scale gesture: 1.4178343; cur-span: 250.60576; pre-span: 176.75252
+scale gesture: 1.4214984; cur-span: 251.25342; pre-span: 176.75252
+scale gesture: 1.4477473; cur-span: 255.893; pre-span: 176.75252
+scale gesture: 1.498161; cur-span: 264.8037; pre-span: 176.75252

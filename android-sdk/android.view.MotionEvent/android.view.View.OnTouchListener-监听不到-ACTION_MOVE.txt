@@ -1,0 +1,6 @@
+事件从Activity.dispatchTouchEvent()开始传递
+由父View(ViewGroup)传递给子View
+
+特定view的touchEvent是相对于view窗口来实现的：怎么理解呢？
+监听 listview-item-view 的触摸事件，当 listview-item-view 随指头上下移动时，
+其接收不到 ACTION_MOVE 动作，因为：相对 VIEW 是静止，没有 MOVE

@@ -1,0 +1,23 @@
+focus[英][ˈfəʊkəs] [美][ˈfoʊkəs]
+
+n.焦点；影象的清晰度；（活动、注意力、兴趣等的）中心；
+
+-----------------------------------
+public float getFocusX ()
+-----------------------------------
+
+Added in API level 8
+Get the X coordinate of the current gesture's focal point. If a gesture is in progress, the focal point is between each of the pointers forming the gesture. If isInProgress() would return false, the result of this function is undefined.
+
+Returns
+X coordinate of the focal point in pixels.
+
+-----------------------------------
+public float getFocusY ()
+-----------------------------------
+
+Added in API level 8
+Get the Y coordinate of the current gesture's focal point. If a gesture is in progress, the focal point is between each of the pointers forming the gesture. If isInProgress() would return false, the result of this function is undefined.
+
+Returns
+Y coordinate of the focal point in pixels
