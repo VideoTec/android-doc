@@ -18,3 +18,19 @@ Can be used as a replacement for a standard ImageView when you want to include p
 
 https://github.com/devunwired/custom-touch-examples
 This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".
+
+https://github.com/diegocarloslima/ByakuGallery
+ByakuGallery is an open source Android library that allows 
+the visualization of large images with gesture capabilities. 
+
+https://github.com/penkzhou/iogallery
+如何在Android开发中让你的代码更有效率
+
+https://github.com/lucasr/android-layout-samples
+Explorations around Android custom layouts, including off main thread View measure/layout passes.
+
+Sample code for:
+Composite View
+Custom Composite View
+Flat Custom View
+Async Custom View
