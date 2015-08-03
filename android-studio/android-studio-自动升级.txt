@@ -5,3 +5,8 @@ Current version 1.2.0 build-141.1890965
 new version        1.2.1 build-141.1903250
 
 patch size 11mb
+
+22:18 2015/8/3
+卡在 Dowloading Patch File 对话框。
+猜测，是因为，hosts，文件里某个域名，没有正确设置。
+103.7.200.79    dl.google.com 修改这个域名的IP
