@@ -1,0 +1,42 @@
+http://baike.baidu.com/view/9916271.htm
+gradle提供了什么
+一种可切换的，像maven一样的基于约定的构建框架，却又从不锁住你（约定优于配置）
+
+maven[英][ˈmeɪvn] [美][ˈmevən]
+n.<美口>专家，内行
+
+http://www.ibm.com/developerworks/cn/java/j-maven/
+目前，绝大多数开发人员都把 Ant 当作 Java 编程项目的标准构建工具。
+遗憾的是，Ant 的项目管理工具（作为 make 的替代工具）不能满足绝大多数开发人员的需要。
+通过检查 Ant 构建文件，很难发现项目的相关性信息和其它元信息
+（如开发人员／拥有者、版本或站点主页）。
+
+Maven 除了以程序构建能力为特色之外，还提供 Ant 所缺少的高级项目管理工具。
+由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目，
+而使用 Ant 则需要十几行。
+事实上，由于 Maven 的面向项目的方法，
+许多 Apache Jakarta 项目现在使用 Maven，而且公司项目采用 Maven 的比例在持续增长
+
+https://zh.wikipedia.org/zh-cn/Apache_Maven
+Apache Maven ，
+是一个软件项目管理及自动构建工具（特别是Java软件），
+由Apache软件基金会所提供。
+基于项目对象模型（缩写：POM）概念，
+Maven利用一个中央信息片断能管理一个项目的构建、报告和文档等步骤。
+曾是Jakarta项目的子项目，现为独立Apache项目
+
+Maven项目使用称为项目对象模型（Project Object Model，POM）来配置的。
+项目对象模型存储在命名为 pom.xml 的文件中
+
+http://baike.baidu.com/view/336103.htm
+Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。
+Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。
+由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。
+由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用 Maven 的比例在持续增长。
+Maven这个单词来自于意第绪语，意为知识的积累，
+最早在Jakata Turbine项目中它开始被用来试图简化构建过程。
+当时有很多项目，它们的Ant build文件仅有细微的差别，而JAR文件都由CVS来维护。
+
+于是Maven创始者开始了Maven这个项目，该项目的清晰定义包括，
+一种很方便的发布项目信息的方式，以及
+一种在多个项目中共享JAR的方式

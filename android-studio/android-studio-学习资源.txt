@@ -1,1 +1,18 @@
 http://www.developerphil.com/android-studio-tips-of-the-day-roundup-6/
+快捷键
+
+http://stormzhang.com/devtools/2014/11/25/android-studio-tutorial1/
+Android Studio系列教程
+
+https://zh.wikipedia.org/wiki/Android_Studio
+Android Studio是一个为Android平台开发程序的集成开发环境。
+2013年5月16日由Google产品经理Ellie Powers在Google I/O上发布，可供开发者免费使用。
+
+特性	        Android Studio	    Eclipse ADT
+编译系统	            Gradle	        Ant
+基于Maven的构建依赖	        是	        否
+构建变体和多APK生成	        是	        否
+高级的Android代码完成和重构	是	        否
+图形布局编辑器	            是	        是
+APK签名和密钥库管理	        是	        是
+NDK支持	                    Beta	    是

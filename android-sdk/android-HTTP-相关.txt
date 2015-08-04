@@ -1,0 +1,4 @@
+1）android.app.DownloadManager
+2）http://loopj.com/android-async-http/
+3）http://square.github.io/okhttp/
+4）https://developer.android.com/training/volley/index.html

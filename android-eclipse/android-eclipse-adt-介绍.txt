@@ -1,0 +1,2 @@
+Eclipse开源，市场份额大，所以Google最开始和Eclipse合作，出了ADT傻瓜包。
+ADT说白了就是SDK+Eclipse+Android Plugin for Eclipse

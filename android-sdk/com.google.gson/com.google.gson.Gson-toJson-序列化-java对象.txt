@@ -1,0 +1,27 @@
+Examples example1 = new Examples();
+Gson gson = new Gson();
+String json = gson.toJson(example1);
+
+json is {"answer1":100,"answer2":"Hello world!"}
+
+附
+class Examples {
+    private int answer1 = 100;
+    private String answer2 = "Hello world!";
+    Examples(){
+    }     // default constructor
+  }
+  
+-----------------------------
+示例2
+-----------------------------
+    Attachment a[] = data.images.toArray(new Attachment[data.images.size()]);
+    Gson json = new GsonBuilder().disableHtmlEscaping().create();
+    String s = json.toJson(a);
+    
+    public void toJson() {
+        Gson gson = new Gson();
+        BroadCastNewsConverter t = new BroadCastNewsConverter();
+        t.data = broadcastData;
+        json_broadcast = gson.toJson(t);
+    }

@@ -1,0 +1,9 @@
+http://www.zhihu.com/question/21534929
+Android Studio 比 Eclipse 好用在哪里？
+
+http://blog.jobbole.com/40852/
+是时候抛弃 Eclipse 转向 IntelliJ IDEA了
+ADT            = SDK + Eclipse + Android Plugin for Eclipse
+Android Studio = SDK + Intellij + Android Plugin For IntelliJ
+
+IntelliJ 号称是最好用的Java开发环境了

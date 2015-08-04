@@ -34,3 +34,6 @@ Composite View
 Custom Composite View
 Flat Custom View
 Async Custom View
+
+https://github.com/MostafaGazar/CustomShapeImageView
+Custom shape ImageView using PorterDuffXfermode with paint shapes and SVGs

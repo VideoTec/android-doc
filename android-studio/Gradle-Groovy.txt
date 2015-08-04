@@ -1,0 +1,29 @@
+groovy[英][ˈgru:vi] [美][ˈɡruvi]
+adj.绝妙的；槽的，沟的；流行的；最佳状态的
+
+http://baike.baidu.com/view/707298.htm
+Groovy是一种基于JVM（Java虚拟机）的敏捷开发语言，它结合了Python、Ruby和Smalltalk的许多强大的特性，Groovy 代码能够与 Java 代码很好地结合，也能用于扩展现有代码。由于其运行在 JVM 上的特性，Groovy 可以使用其他 Java 语言编写的库
+
+Groovy 是 用于Java虚拟机的一种敏捷的动态语言，
+它是一种成熟的面向对象编程语言，既
+
+可以用于面向对象编程，又
+可以用作纯粹的脚本语言。
+
+使用该种语言不必编写过多的代码，同时又具有闭包和动态语言中的其他特性。
+
+Groovy是JVM的一个替代语言（替代是指可以用 Groovy 在Java平台上进行 Java 编程），
+使用方式基本与使用 Java代码的方式相同，
+该语言特别适合与Spring的动态语言支持一起使用，
+设计时充分考虑了Java集成，这使 Groovy 与 Java 代码的互操作很容易。
+注意：不是指Groovy替代java，而是指Groovy和java很好的结合编程
+
+Groovy 语法与Java 语言的语法很相似，
+虽然 Groovy 的语法源于Smalltalk和Ruby这类语言的理念，
+但是可以将它想像成 Java 语言的一种更加简单、表达能力更强的变体。
+
+（在这点上，Ruby与 Groovy 不同，因为它的语法与 Java 语法差异很大。）
+
+许多 Java 开发人员喜欢 Groovy 代码和 Java 代码的相似性。
+从学习的角度看，如果知道如何编写 Java 代码，那就已经了解 Groovy 了。
+Groovy 和 Java 语言的主要区别是：完成同样的任务所需的 Groovy 代码比 Java 代码更少

@@ -1,0 +1,87 @@
+----------------------------------------------------------------------
+public int saveLayer (RectF bounds, Paint paint, int saveFlags)
+public int saveLayer (RectF bounds, Paint paint)
+public int saveLayer (float left, float top, float right, float bottom, Paint paint)
+public int saveLayer (float left, float top, float right, float bottom, Paint paint, int saveFlags)
+----------------------------------------------------------------------
+
+Added in API level 1
+This behaves the same as save(), but in addition it allocates and redirects drawing to an offscreen bitmap.
+
+Note: this method is very expensive, incurring more than double rendering cost for contained content. Avoid using this method, especially if the bounds provided are large, or if the CLIP_TO_LAYER_SAVE_FLAG is omitted from the saveFlags parameter. It is recommended to use a hardware layer on a View to apply an xfermode, color filter, or alpha, as it will perform much better than this method.
+
+All drawing calls are directed to a newly allocated offscreen bitmap. Only when the balancing call to restore() is made, is that offscreen buffer drawn back to the current target of the Canvas (either the screen, it's target Bitmap, or the previous layer).
+
+Attributes of the Paint - alpha, Xfermode (android.graphics.Xfermode), and ColorFilter are applied when the offscreen bitmap is drawn back when restore() is called.
+
+Parameters
+bounds	May be null. The maximum size the offscreen bitmap needs to be (in local coordinates)
+paint	This is copied, and is applied to the offscreen when restore() is called.
+saveFlags	see _SAVE_FLAG constants, generally ALL_SAVE_FLAG is recommended for performance reasons.
+
+Returns
+value to pass to restoreToCount() to balance this save()
+
+----------------------------------------------------------------------
+public int saveLayer (RectF bounds, Paint paint)
+----------------------------------------------------------------------
+
+Added in API level 21
+Convenience for saveLayer(bounds, paint, ALL_SAVE_FLAG)
+
+----------------------------------------------------------------------
+public int saveLayer (float left, float top, float right, float bottom, Paint paint)
+----------------------------------------------------------------------
+
+Added in API level 21
+Convenience for saveLayer(left, top, right, bottom, paint, ALL_SAVE_FLAG)
+
+----------------------------------------------------------------------
+public int saveLayer (float left, float top, float right, float bottom, Paint paint, int saveFlags)
+----------------------------------------------------------------------
+
+Added in API level 1
+Helper version of saveLayer() that takes 4 values rather than a RectF.
+
+----------------------------------------------------------------------
+public int saveLayerAlpha (RectF bounds, int alpha, int saveFlags)
+public int saveLayerAlpha (RectF bounds, int alpha)
+public int saveLayerAlpha (float left, float top, float right, float bottom, int alpha, int saveFlags)
+public int saveLayerAlpha (float left, float top, float right, float bottom, int alpha)
+----------------------------------------------------------------------
+
+Added in API level 1
+This behaves the same as save(), but in addition it allocates and redirects drawing to an offscreen bitmap.
+
+Note: this method is very expensive, incurring more than double rendering cost for contained content. Avoid using this method, especially if the bounds provided are large, or if the CLIP_TO_LAYER_SAVE_FLAG is omitted from the saveFlags parameter. It is recommended to use a hardware layer on a View to apply an xfermode, color filter, or alpha, as it will perform much better than this method.
+
+All drawing calls are directed to a newly allocated offscreen bitmap. Only when the balancing call to restore() is made, is that offscreen buffer drawn back to the current target of the Canvas (either the screen, it's target Bitmap, or the previous layer).
+
+The alpha parameter is applied when the offscreen bitmap is drawn back when restore() is called.
+
+Parameters
+bounds	The maximum size the offscreen bitmap needs to be (in local coordinates)
+alpha	The alpha to apply to the offscreen when when it is drawn during restore()
+saveFlags	see _SAVE_FLAG constants, generally ALL_SAVE_FLAG is recommended for performance reasons.
+Returns
+value to pass to restoreToCount() to balance this call
+----------------------------------------------------------------------
+public int saveLayerAlpha (RectF bounds, int alpha)
+----------------------------------------------------------------------
+
+Added in API level 21
+Convenience for saveLayerAlpha(bounds, alpha, ALL_SAVE_FLAG)
+
+----------------------------------------------------------------------
+public int saveLayerAlpha (float left, float top, float right, float bottom, int alpha, int saveFlags)
+----------------------------------------------------------------------
+
+Added in API level 1
+Helper for saveLayerAlpha() that takes 4 values instead of a RectF.
+
+----------------------------------------------------------------------
+public int saveLayerAlpha (float left, float top, float right, float bottom, int alpha)
+----------------------------------------------------------------------
+
+Added in API level 21
+Helper for saveLayerAlpha(left, top, right, bottom, alpha, ALL_SAVE_FLAG)

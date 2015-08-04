@@ -1,0 +1,30 @@
+http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
+
+Gradle构建脚本会自动找同级目录下的gradle.properties文件，在这个文件中可以定义一些property，以供构建脚本使用。例如，我们要使用的Repository需要提供用户名和密码，就可以将其配置在gradle.properties中。这样，每个团队成员都可以修改该配置文件，却不用上传到代码库中对团队其他成员造成影响。可以使用如下的代码定义：
+
+username=user
+password=password
+
+在构建脚本中使用"${username} "就可以访问该文件中定义的相关值
+
+------------------------
+设置代理
+------------------------
+## Project-wide Gradle settings.
+#
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+#
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+# Default value: -Xmx10248m -XX:MaxPermSize=256m
+# org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+#
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. More details, visit
+# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+# org.gradle.parallel=true
+#Mon Aug 03 11:29:51 CST 2015
+
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=8087

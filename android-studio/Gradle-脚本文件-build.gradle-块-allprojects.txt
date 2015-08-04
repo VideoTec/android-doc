@@ -1,0 +1,23 @@
+allprojects是父Project的一个属性，该属性会返回该Project对象以及其所有子项目
+在父项目的build.gradle脚本里，可以通过给allprojects传一个包含配置信息的闭包，
+来配置所有项目（包括父项目）的共同设置。
+通常可以在这里配置IDE的插件，group和version等信息
+
+----------------
+
+allprojects {
+    version = VERSION_NAME
+    group = GROUP
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+----------------
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}

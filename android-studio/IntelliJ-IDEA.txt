@@ -1,0 +1,6 @@
+https://www.jetbrains.com/idea/help/intellij-idea.html
+官方文档
+
+http://baike.baidu.com/view/1654125.htm
+IntelliJ是一款综合的Java 编程环境，被许多开发人员和行业专家誉为市场上最好的IDE。
+它提供了一系列最实用的的工具组合：智能编码辅助和自动控制，支持J2EE，Ant，JUnit和CVS集成，非平行的编码检查和创新的GUI设计器。IDEA把Java开发人员从一些耗时的常规工作中解放出来，显著地提高了开发效率。具有运行更快速，生成更好的代码；持续的重新设计和日常编码变得更加简易，与其它工具的完美集成；很高的性价比等特点。在4.0版本中支持Generics，BEA WebLogic集成，改良的CVS集成以及GUI设计器

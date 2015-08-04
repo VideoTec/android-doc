@@ -1,0 +1,14 @@
+https://bxbxbai.github.io/2014/09/14/android-working-with-volley/
+
+Android Volley 是Google开发的一个网络lib，可以让你更加简单并且快速的访问网络数据。
+Volley库的网络请求都是异步的，你不必担心异步处理问题。
+
+Volley的优点：
+
+请求队列和请求优先级
+请求Cache和内存管理
+扩展性性强
+可以取消请求
+
+使用volley时，必须要创建一个请求队列RequestQueue，
+使用请求队列的最佳方式就是将它做成一个单例，整个app使用这么一个请求队列

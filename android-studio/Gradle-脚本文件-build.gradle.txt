@@ -1,0 +1,52 @@
+-------------------------
+每个工程独立的配置
+-------------------------
+http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
+
+第一种方法：每个工程的子文件夹，都可以有自己独立的 build.gradle
+第二种方法：根目录下的 build.gradle 文件里配置每个子工程
+
+project(‘:core’) {
+      ext{
+            hibernateVersion = ‘4.2.1.Final’
+      }
+      dependencies { 
+            compile “org.hibernate:hibernate-core:${hibernateVersion}”
+      }
+}
+
+-------------------------
+所有工程共享的配置
+http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
+-------------------------
+
+配置所有项目（包括父项目）的共同设置
+allprojects {
+    apply plugin: 'idea'
+}
+
+配置所有子项目共有的设置，比如共同的插件、repositories、依赖版本以及依赖配置
+subprojects {
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+    }
+    ext {
+          guavaVersion = ’14.0.1’
+          junitVersion = ‘4.10’ 
+   } 
+
+    dependencies {
+        compile(
+                “com.google.guava:guava:${guavaVersion}”
+        )
+        testCompile(
+                “junit:junit:${junitVersion}”
+        )
+    }
+}
+
+部分子项目具有相同的配置
+configure(subprojects.findAll {it.name.contains('war')}) {
+    apply plugin: 'war'
+}

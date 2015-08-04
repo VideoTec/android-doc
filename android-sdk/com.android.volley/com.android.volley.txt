@@ -1,0 +1,25 @@
+https://developer.android.com/training/volley/index.html
+
+git clone https://android.googlesource.com/platform/frameworks/volley
+
+另编译好的： https://github.com/mcxiaoke/android-volley
+
+volley[英][ˈvɒli] [美][ˈvɑ:li]
+n.（箭、子弹、抢、炮、等）群射，齐射；（质问，咒骂等的）迸发
+
+Volley is an HTTP library that makes networking for Android apps easier and most importantly, faster. Volley is available through the open AOSP repository.
+
+Volley offers the following benefits:
+
+1）Automatic scheduling of network requests.
+2）Multiple concurrent network connections.
+3）Transparent disk and memory response caching with standard HTTP cache coherence.
+4）Support for request prioritization.
+5）Cancellation request API. You can cancel a single request, or you can set blocks or scopes of requests to cancel.
+6）Ease of customization, for example, for retry and backoff.
+7）Strong ordering that makes it easy to correctly populate your UI with data fetched asynchronously from the network.
+8）Debugging and tracing tools.
+
+Volley excels at RPC-type operations used to populate a UI, such as fetching a page of search results as structured data. It integrates easily with any protocol and comes out of the box with support for raw strings, images, and JSON. By providing built-in support for the features you need, Volley frees you from writing boilerplate code and allows you to concentrate on the logic that is specific to your app.
+
+Volley is not suitable for large download or streaming operations, since Volley holds all responses in memory during parsing. For large download operations, consider using an alternative like DownloadManager.

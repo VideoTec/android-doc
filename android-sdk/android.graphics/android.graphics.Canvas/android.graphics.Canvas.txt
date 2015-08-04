@@ -1,6 +1,11 @@
+http://developer.android.com/reference/android/graphics/Canvas.html
 
 canvas[英][ˈkænvəs] [美][ˈkænvəs]
 n.帆布；油画（布）
+
+primitive[英][ˈprɪmətɪv] [美][ˈprɪmɪtɪv]
+adj.原始的；发展水平低的；落后的；[生物学]原生的
+n.原始人；早期的艺术家（作品）；单纯的人：不世故的人；自学的艺术家
 
 java.lang.Object
    ↳  android.graphics.Canvas

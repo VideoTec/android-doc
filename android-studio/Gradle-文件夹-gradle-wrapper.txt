@@ -1,0 +1,19 @@
+使用Wrapper指定Gradle的版本
+
+为了统一项目中Gradle的版本，可以在构建脚本中通过定义一个wrapper的Task，
+并在该Task中指定Gradle的版本以及存放Gradle的位置。
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+    archiveBase = 'PROJECT'
+    archivePath = 'gradle/dists'
+}
+
+运行gradle wrapper， 就会在根项目目录下创建一个wrapper的文件夹，
+会包含wrapper的Jar包和properties文件。
+
+之后就可以使用gradlew来运行task。
+第一次使用gradlew执行task的时候，
+会在项目根目录下的gradle/dists下下载你指定的Gradle版本 。
+这样在项目构建的时候，就会使用该目录下的Gradle，
+保证整个团队使用了相同的Gradle版本。

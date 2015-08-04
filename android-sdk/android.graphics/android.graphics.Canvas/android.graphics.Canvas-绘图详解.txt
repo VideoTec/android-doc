@@ -1,0 +1,25 @@
+http://blog.csdn.net/qinjuning/article/details/6936783
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2012/1212/703.html
+
+Canvas 提供的绘制图形的方法都是以draw开头API
+Canvas 可以绘制的对象有：
+弧线(arcs)、
+填充颜色(argb和color)、 
+位图(Bitmap)、
+圆(circle和oval)、
+点(point)、
+线(line)、
+矩形(Rect)、
+图片(Picture)、
+圆角矩形 (RoundRect)、
+文本(text)、
+顶点(Vertices)、
+路径(path)
+
+Canvas位置转换的方法：
+rorate、scale、translate、skew(扭曲)等，
+而且它允许你通过获得它的转换矩阵对象(getMatrix方法)直接操作它。
+这些操作就像是虽然你的笔还是原来的地方画，但是画纸旋转或者移动了，所以你画的东西的方位就产生变化。
+为了方便一些转换操作，Canvas 还提供了保存和回滚属性的方法(save和restore)，
+比如你可以先保存目前画纸的位置(save)，然后旋转90度，向下移动100像素后画一些图形，
+画完后调用restore方法返回到刚才保存的位置

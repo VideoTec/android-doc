@@ -1,0 +1,25 @@
+json is {"answer1":100,"answer2":"Hello world!"}
+
+Examples example2 = gson.fromJson(json,Examples.class);
+
+附
+class Examples {
+    private int answer1 = 100;
+    private String answer2 = "Hello world!";
+    Examples(){
+    }     // default constructor
+  }
+
+-----------------------------
+示例2
+-----------------------------
+GenericResponse res = new Gson().fromJson(response, GenericResponse.class);
+
+附
+public class GenericResponse {
+    // status code
+    public int status;
+    // error descr
+    public String errormsg;
+    public JsonElement error;
+}

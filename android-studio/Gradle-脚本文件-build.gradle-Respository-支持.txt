@@ -1,0 +1,42 @@
+几乎每个Java项目都会用到开源框架。
+同时，对于具有多个子模块的项目来说，项目之间也会有所依赖。
+所以，管理项目中对开源框架和其他模块的依赖是每个项目必须面对的问题。
+同时，Gradle也使用Repository来管理依赖
+
+compile、runtime、testCompile和testRuntime分别对应项目不同阶段的依赖
+这里分别指定group、name以及version，但是Gradle提供了一种更简单的方式来指定依赖
+实际上这里的compile和testCompile是Groovy为Gradle提供的方法，可以为其传入多个参数
+dependencies {
+    compile project(':ByakuGallery') 引用工程中的子项目
+    compile 'com.android.support:support-v4:21.0.3'
+}
+当在Respository无法找到Jar包时（如数据库的driver），
+就可以将这些Jar包放在项目的一个子目录中，然后让项目管理依赖。
+例如，我们可以在项目的根目录下创建一个lib文件夹，用以存放这些Jar包
+dependencies {
+    compile(
+       'org.hibernate:hibernate-core:3.6.7.Final',
+            'org.springframework:spring-context:3.1.4.RELEASE',
+       fileTree(dir: "${rootProject.projectDir}/lib", include: '*.jar')
+    )
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':mylibrary')
+    compile 'com.android.support:appcompat-v7:22.1.1'
+}
+
+
+构建脚本的依赖
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}

@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+在Gradle中，使用buildscript块为构建脚本配置依赖
+项目需要依赖之外，构建脚本本身也可以有自己的依赖
+使用一个非Gradle官方提供的插件时，就需要在构建脚本里指定其依赖，
+当然还需要指定该插件的Repository
+
+http://stackoverflow.com/questions/25137263/what-is-included-in-jcenter-repository-in-gradle
+jcenter() is similar to mavenCentral(). 
+Have a look at https://bintray.com/bintray/jcenter for more details. 
+The jCenter guys claim that they have a better performance than Maven Central.
+
+http://zhengxiaopeng.com/2015/02/02/%E4%BD%BF%E7%94%A8Gradle%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0JCenter%E4%BB%93%E5%BA%93/
+
+这篇文章介绍通过Gradle把开源项目发布到公共仓库JCenter中，
+方便你我他的事情，我们都是很懒的嘛。
+JCenter现在是Android Studio中repositories的默认节点了，
+之前是Maven的，不过JCenter是兼容Maven的，所以放心使用。
+步骤基本是按Publishing Gradle Android Library to jCenter Repository这里来的，
+英文能看的直接看这篇也行。
+下面我的步骤正式开始，发布到JCenter仓库的是我的项目：BounceProgressBar。
+
+成功后就可以在其它项目里方便的使用你发布的项目了
+
+dependencies {
+    compile 'org.rocko.bpb:library:1.0.0'
+}

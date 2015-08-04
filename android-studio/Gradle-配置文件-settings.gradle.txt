@@ -1,0 +1,28 @@
+http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
+
+在多模块的项目中，Gradle遵循惯例优于配置 （Convention Over Configuration）原则
+
+在父项目的根目录下寻找 settings.gradle 文件，在该文件中设置想要包括到项目构建中的子项目。
+
+在构建的初始化阶段（Initialization），
+Gradle会根据settings.gradle 文件来判断有哪些子项目被include到了构建中，
+并为每一个子项目初始化一个Project对象，
+在构建脚本中通过project(‘:sub-project-name’)来引用子项目对应的Project对象。
+
+通常，多模块项目的目录结构要求将子模块放在父项目的根目录下，
+但是如果有特殊的目录结构，可以在settings.gradle文件中配置。
+
+我所在的项目包括：
+
+一个描述核心业务的core模块
+一个遗留的Enterprise Java Bean（enterprise-beans）模块
+
+两个提供不同服务的Web项目（cis-war和admin-war）
+一个通过schema生成jaxb对象的jaxb项目以及一个用来用来打ear包的ear项目
+一个用于存放项目配置文件相关的config子目录。它不是子模块，所以 config不应该被加到项目的构建中去。
+
+它们都放置在根项目目录下。我们通过如下的settings.gradle来设置项目中的子项目：
+
+include 'core', 'enterprise-beans', 'cis-war', 'admin-war', 'jaxb', 'ear'
+
+我们将需要加入到项目构建中的子项目配置在 settings.gradle 文件中，而没有加入不需要的config子目录。

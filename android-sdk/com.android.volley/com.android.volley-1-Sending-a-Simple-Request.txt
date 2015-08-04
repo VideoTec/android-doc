@@ -1,0 +1,38 @@
+Learn how to send a simple request using the default behaviors of Volley, 
+and how to cancel a request.
+
+https://developer.android.com/training/volley/simple.html
+
+At a high level, you use Volley by creating a RequestQueue and passing it Request objects. The RequestQueue manages worker threads for running the network operations, reading from and writing to the cache, and parsing responses. Requests do the parsing of raw responses and Volley takes care of dispatching the parsed response back to the main thread for delivery.
+
+com.android.volley.toolbox.Volley-newRequestQueue
+
+This lesson describes how to send a request using the Volley.newRequestQueue convenience method, which sets up a RequestQueue for you. See the next lesson, Setting Up a RequestQueue, for information on how to set up a RequestQueue yourself.
+
+This lesson also describes how to add a request to a RequestQueue and cancel a request.
+
+代码：
+
+final TextView mTextView = (TextView) findViewById(R.id.text);
+...
+
+// Instantiate the RequestQueue.
+RequestQueue queue = Volley.newRequestQueue(this);
+String url ="http://www.google.com";
+
+// Request a string response from the provided URL.
+StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+            new Response.Listener<String>() {
+    @Override
+    public void onResponse(String response) {
+        // Display the first 500 characters of the response string.
+        mTextView.setText("Response is: "+ response.substring(0,500));
+    }
+}, new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        mTextView.setText("That didn't work!");
+    }
+});
+// Add the request to the RequestQueue.
+queue.add(stringRequest);

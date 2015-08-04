@@ -1,0 +1,20 @@
+https://github.com/mcxiaoke/android-volley
+
+repository[英][rɪˈpɒzətri] [美][rɪˈpɑ:zətɔ:ri]
+n.仓库；贮藏室；博物馆；亲信
+
+-------------------
+第一步：
+-------------------
+add this to repositories section in build.gradle
+
+repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+-------------------
+第二步：
+-------------------
+add this to dependencies section in build.gradle
+
+compile 'com.mcxiaoke.volley:library:1.0.18-SNAPSHOT'

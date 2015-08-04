@@ -1,0 +1,15 @@
+http://baike.baidu.com/view/9916271.htm
+Gradle 是以 Groovy 语言为基础，面向Java应用为主。基于DSL（领域特定语言）语法的自动化构建工具
+
+https://zh.wikipedia.org/zh-cn/Gradle
+Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。
+它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。[2]
+
+当前其支持的语言限于Java、Groovy和Scala[3]，计划未来将支持更多的语言
+
+http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
+在Java构建工具的世界里，先有了Ant，然后有了Maven。Maven的CoC[1]、依赖管理以及项目构建规则重用性等特点，让Maven几乎成为Java构建工具的事实标准。然而，冗余的依赖管理配置、复杂并且难以扩展的构建生命周期，都成为使用Maven的困扰。
+
+Gradle作为新的构建工具，获得了2010 Springy大奖，并入围了2011的Jax最佳Java技术发明奖。它是基于Groovy语言的构建工具，既保持了Maven的优点，又通过使用Groovy定义的DSL[2]，克服了 Maven中使用XML繁冗以及不灵活等缺点
+
+Maven不支持多module的构建。在Micro-Service[3]架构风格流行的今天，在一个项目里面包含多个Module已成为一种趋势。Gradle天然支持多module，并且提供了很多手段来简化构建脚本。在Gradle中，一个模块就是它的一个子项目（subproject）
