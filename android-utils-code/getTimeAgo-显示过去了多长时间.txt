@@ -1,0 +1,71 @@
+    /**
+     * 根据时间返回时间显示规则规定的String
+     * 
+     * @param time
+     *            毫秒数
+     * @param ctx
+     * @return
+     */
+     
+    <!-- 时间显示规则相关 -->
+    <string name="time_justnow">"刚刚"</string>
+    <string name="time_hour_in">"%1$s分钟前"</string>
+    <string name="time_hour_out">"今天 %1$s:%2$s"</string>
+    <string name="time_yesterday">"昨天%1$s:%2$s"</string>
+    <string name="time_day_before_yesterday">"前天 %1$s:%2$s"</string>
+    
+    public static String getTimeAgo(long time, Context ctx) {
+        TimeZone.setDefault(CONFERENCE_TIME_ZONE);
+        if (time < 1000000000000L) {
+            // if timestamp given in seconds, convert to millis
+            time *= 1000;
+        }
+
+        long now = System.currentTimeMillis();
+
+        if (time <= 0) {
+            return null;
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        if (isSameDay(now, time)) {// 是同一天
+            final long diff = now - time;
+            if (diff < MINUTE_MILLIS) {// 一分钟内
+                return ctx.getString(R.string.time_justnow);
+            }
+            if (diff < 60 * MINUTE_MILLIS) {// 1小时内
+                return String.format(ctx.getString(R.string.time_hour_in), diff / MINUTE_MILLIS);
+            } else {// 超过一小时
+                return String.format(ctx.getString(R.string.time_hour_out), cal.get(Calendar.HOUR_OF_DAY),
+                        changeOnedigitToTwoDigit(cal.get(Calendar.MINUTE)));
+            }
+
+        } else {// 不是同一天
+            String dateString = null;
+            switch (getDifferentDayNumber(now, time)) {
+            case 1:
+                dateString = String.format(ctx.getString(R.string.time_yesterday), cal.get(Calendar.HOUR_OF_DAY),
+                        changeOnedigitToTwoDigit(cal.get(Calendar.MINUTE)));
+                break;
+            case 2:
+                dateString = String.format(ctx.getString(R.string.time_day_before_yesterday),
+                        cal.get(Calendar.HOUR_OF_DAY), changeOnedigitToTwoDigit(cal.get(Calendar.MINUTE)));
+                break;
+            default:
+                Calendar c = Calendar.getInstance();
+                c.setTime(new Date(time));
+                int year = c.get(Calendar.YEAR);
+                c.setTime(new Date());
+                int nowYear = c.get(Calendar.YEAR);
+                if (nowYear <= year) {
+                    dateString = new SimpleDateFormat("MM月dd日 HH:mm").format(new Date(time));
+                } else {
+                    dateString = new SimpleDateFormat("yyyy年MM月dd日 HH:mm").format(new Date(time));
+                }
+                break;
+
+            }
+            return dateString;
+        }
+
+    }

@@ -1,0 +1,50 @@
+http://2711082222.blog.163.com/blog/static/106302249201231145120562/
+
+1.TextView设置：
+
+autoLink：一共有几种值：web，phone, map, email, all, none.分别是url连接。
+电话号码提取拨号，地图地址。
+电子邮件，全部解释就是能支持的超级连接全部起作用，none就是默认情况，没有超链接。
+
+android:autoLink="web" //是将文本的web网址解释成超链接
+
+textView01.setAutoLinkMask(Linkify.ALL)； 
+
+2.
+setMovementMethod，
+此方法在需要响应用户事件时使用，如点击一个电话号码就跳转到拨号页面。
+如果不执行这个方法是不会响应事件的，即便文本看着已经是下划线蓝色字了
+
+http://www.cnblogs.com/plokmju/p/android_ui_textview.html
+
+仅仅是展示文本，那么TextView的作用就太小了，
+所以它还预定义了一些类似于HTML的标签，
+通过这些标签可以使TextView控件显示不同的颜色、大小、字体、图片、链接。
+这些HTML标签都需要android.text.Html类的支持，但是并不包括所有的HTML标签
+
+常用的可以再TextView中设定的标签有：
+
+<font>：设置颜色和字体。
+<big>：设置字体大号
+<small>：设置字体小号
+<i>\<b>：斜体\粗体
+<a>：连接网址
+<img>：图片
+
+使用这些标签可以用Html.fromHtml方法将这些标签的字符串转换成CharSequence接口，
+然后在TextView.setText()中进行设置。
+如果需要响应设置的HTML标签进行响应，
+需要设置TextView.setMovementMethod(LinkMovementMethod.getInstance())
+
+----------------------------
+用法示例：
+----------------------------
+tvRunLamp = (TextView) findViewById(R.id.tvRunLamp);
+
+String html = "之前讲解Android布局的时候，就已经说明，所有<a href='http://www.cnblogs.com/plokmju/p/androidUI_Layout.html'>Layout</a>都是View的子类或者间接子类。而TextView也一样，是View的直接子类。它是一个文本显示控件，提供了基本的显示文本的功能，并且是大部分UI控件的父类，因为大部分UI控件都需要展示信息。";
+
+CharSequence cs = Html.fromHtml(html);
+tvRunLamp.setText(cs);
+
+/因为文本中设定了一个<a>标签，这里设置响应。
+tvRunLamp.setMovementMethod(LinkMovementMethod.getInstance());

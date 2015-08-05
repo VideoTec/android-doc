@@ -1,0 +1,57 @@
+android:ellipsize
+
+ellipsis[英][ɪˈlɪpsɪs] [美][ɪˈlɪpsɪs]
+n.（语法结构上的）省略
+
+If set, causes words that are longer than the view is wide to be ellipsized instead of broken in the middle. You will often also want to set scrollHorizontally or singleLine as well so that the text as a whole is also constrained to a single line instead of still allowed to be broken onto multiple lines.
+
+Must be one of the following constant values.
+
+Constant    Value    Description
+none        0    
+start       1    
+middle      2    
+end         3    
+marquee     4  
+
+marquee[英][mɑ:ˈki:] [美][mɑ:rˈki:]
+n.大帐篷；大天幕；选取框；门罩  
+
+This corresponds to the global attribute resource symbol ellipsize.
+
+Related Methods
+setEllipsize(TextUtils.TruncateAt)
+
+http://www.cnblogs.com/plokmju/p/android_ui_textview.html
+说到文本显示，最常见的效果就是跑马灯效果，这里以一个例子展示跑马灯的效果
+
+android:elipsize: 
+如果文本长度大于TextView的显示长度，则隐藏那一部分，可赋值为：
+none(不隐藏)、
+start（隐藏开始）、
+middle（隐藏中间）、
+end（隐藏结束）、
+marquee（滚动效果）
+
+android:marqueRepeatLimit：
+设定需要重复动画的次数，传递一个int值，-1为无限循环。
+
+android:focusable：
+是否允许获得焦点，传递一个bool值。
+
+android:focusableInTouchMode：
+是否在获得焦点时对控件有联系，传递一个bool值。
+
+    <TextView 
+        android:id="@+id/tvRunLamp" android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="#FFF"
+        android:textColor="#000"
+        android:textSize="20dp" 
+        android:layout_margin="10dp"
+        android:padding="10dp"/>

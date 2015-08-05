@@ -1,0 +1,84 @@
+如果不指定 layout_width layout_height 会出异常
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                        <TextView 
+                            android:id="@+id/reply_floor_user_name"
+                            android:layout_alignParentLeft="true"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+                        <TextView 
+                            android:id="@+id/reply_floor_publish_time"
+                            android:layout_alignParentRight="true"
+                            android:textColor="#333333"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+
+08-05 17:53:01.359: E/CrashHandler(9493): java.lang.RuntimeException: Binary XML file line #197: You must supply a layout_width attribute.
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.content.res.TypedArray.getLayoutDimension(TypedArray.java:492)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup$LayoutParams.setBaseAttributes(ViewGroup.java:6056)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup$MarginLayoutParams.<init>(ViewGroup.java:6225)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.RelativeLayout$LayoutParams.<init>(RelativeLayout.java:1246)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.RelativeLayout.generateLayoutParams(RelativeLayout.java:1083)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.RelativeLayout.generateLayoutParams(RelativeLayout.java:84)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:768)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:769)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:498)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:398)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.LayoutInflater.inflate(LayoutInflater.java:354)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at com.feinno.beside.ui.adapter.BesideHelpReplyAdapter.getView(BesideHelpReplyAdapter.java:111)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.HeaderViewListAdapter.getView(HeaderViewListAdapter.java:230)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.AbsListView.obtainView(AbsListView.java:2627)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.ListView.makeAndAddView(ListView.java:1852)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.ListView.fillDown(ListView.java:682)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.ListView.fillSpecific(ListView.java:1345)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.ListView.layoutChildren(ListView.java:1645)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.AbsListView.onLayout(AbsListView.java:2447)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1677)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1531)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.LinearLayout.onLayout(LinearLayout.java:1440)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.widget.FrameLayout.onLayout(FrameLayout.java:448)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.View.layout(View.java:15204)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewGroup.layout(ViewGroup.java:4793)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2260)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2007)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1249)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6364)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.Choreographer$CallbackRecord.run(Choreographer.java:791)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.Choreographer.doCallbacks(Choreographer.java:591)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at android.view.Choreographer.doFrame(Choreographer.java:561)
+08-05 17:53:01.359: E/CrashHandler(9493): 	at andro
+08-05 17:53:04.379: I/AndroidRuntime(9493): VM exiting with result code 0, cleanup skipped.
+08-05 17:53:04.624: D/FetionBesideChannel(9714): getBesideInitUtilInstance ,bind service...
+08-05 17:53:04.629: D/BesideInitUtil(9714): initBeside.....................process = cn.com.fetion:beside   

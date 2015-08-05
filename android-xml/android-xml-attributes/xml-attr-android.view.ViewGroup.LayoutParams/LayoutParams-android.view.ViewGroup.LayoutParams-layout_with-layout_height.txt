@@ -13,3 +13,6 @@ fill_parent	-1	The view should be as big as its parent (minus padding). This con
 match_parent	-1	The view should be as big as its parent (minus padding). Introduced in API Level 8.
 wrap_content	-2	The view should be only big enough to enclose its content (plus padding).
 This corresponds to the global attribute resource symbol layout_height.
+
+如果不指定，这两个参数，会出异常：
+E:\doc\android\android-xml\android-xml-layout-error\You must supply a layout_width attribute.txt

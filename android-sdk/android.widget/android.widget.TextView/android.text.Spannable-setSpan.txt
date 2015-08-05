@@ -1,0 +1,5 @@
+public abstract void setSpan (Object what, int start, int end, int flags)
+
+Added in API level 1
+
+Attach the specified markup object to the range start…end of the text, or move the object to that range if it was already attached elsewhere. See Spanned for an explanation of what the flags mean. The object can be one that has meaning only within your application, or it can be one that the text system will use to affect text display or behavior. Some noteworthy ones are the subclasses of CharacterStyle and ParagraphStyle, and TextWatcher and SpanWatcher

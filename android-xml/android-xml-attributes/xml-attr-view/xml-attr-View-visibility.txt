@@ -1,0 +1,15 @@
+android:visibility
+
+Controls the initial visibility of the view.
+
+Must be one of the following constant values.
+
+Constant    Value    Description
+visible       0       Visible on screen; the default value.
+invisible     1       Not displayed, but taken into account during layout (space is left for it).
+gone          2       Completely hidden, as if the view had not been added.
+
+This corresponds to the global attribute resource symbol visibility.
+
+Related Methods
+setVisibility(int)

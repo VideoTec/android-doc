@@ -1,0 +1,33 @@
+http://developer.android.com/reference/android/text/Spannable.html
+
+span[英][spæn] [美][spæn]
+n.共轭（马、骡）；跨度，墩距；一段时间；[航] 跨绳
+  宽度；宽幅
+  
+public interface
+Spannable
+
+implements Spanned
+android.text.Spannable
+
+Known Indirect Subclasses
+Editable, SpannableString, SpannableStringBuilder
+
+Class Overview
+This is the interface for text to which markup objects can be attached and detached. Not all Spannable classes have mutable text; see Editable for that.
+
+-----------------------------------------------------------------------
+http://developer.android.com/reference/android/text/Spanned.html
+-----------------------------------------------------------------------
+public interface
+Spanned
+
+implements CharSequence
+android.text.Spanned
+
+Known Indirect Subclasses
+Editable, Spannable, SpannableString, SpannableStringBuilder, SpannedString
+
+Class Overview
+
+This is the interface for text that has markup objects attached to ranges of it. Not all text classes have mutable markup or text; see Spannable for mutable markup and Editable for mutable text.

@@ -1,0 +1,14 @@
+public class
+LinkMovementMethod
+
+extends ScrollingMovementMethod
+
+java.lang.Object
+   ↳	android.text.method.BaseMovementMethod
+ 	   ↳	android.text.method.ScrollingMovementMethod
+ 	 	   ↳	android.text.method.LinkMovementMethod
+
+Class Overview
+
+A movement method that traverses links in the text buffer and scrolls if necessary. 
+Supports clicking on links with DPad Center or Enter.

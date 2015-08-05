@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/text/method/MovementMethod.html
+
+public interface
+MovementMethod
+
+android.text.method.MovementMethod
+
+Known Indirect Subclasses
+ArrowKeyMovementMethod, 
+BaseMovementMethod, 
+LinkMovementMethod, 
+ScrollingMovementMethod
+
+Class Overview
+
+Provides cursor positioning, scrolling and text selection functionality in a TextView.
+
+The TextView delegates handling of key events, trackball motions and touches to the movement method for purposes of content navigation. The framework automatically selects an appropriate movement method based on the content of the TextView.
+
+This interface is intended for use by the framework; it should not be implemented directly by applications.

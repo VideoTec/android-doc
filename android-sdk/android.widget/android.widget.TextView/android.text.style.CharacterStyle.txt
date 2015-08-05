@@ -1,0 +1,36 @@
+http://developer.android.com/reference/android/text/style/CharacterStyle.html
+
+java.lang.Object
+   ↳	android.text.style.CharacterStyle
+   
+Known Direct Subclasses
+BackgroundColorSpan, 
+ClickableSpan, 
+ForegroundColorSpan, 
+MaskFilterSpan, 
+MetricAffectingSpan, 
+RasterizerSpan, 
+StrikethroughSpan, 
+SuggestionSpan, 
+UnderlineSpan
+
+Known Indirect Subclasses
+AbsoluteSizeSpan, 
+DynamicDrawableSpan, 
+ImageSpan, 
+LocaleSpan, 
+RelativeSizeSpan, 
+ReplacementSpan, 
+ScaleXSpan, 
+StyleSpan, 
+SubscriptSpan, 
+SuperscriptSpan, 
+TextAppearanceSpan, 
+TypefaceSpan, 
+URLSpan
+
+Class Overview
+
+The classes that affect character-level text formatting extend this class. 
+Most extend its subclass MetricAffectingSpan, 
+but simple ones may just implement UpdateAppearance.

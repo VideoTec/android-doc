@@ -1,0 +1,17 @@
+http://developer.android.com/reference/android/text/style/ClickableSpan.html
+
+public abstract class
+ClickableSpan
+
+extends CharacterStyle
+implements UpdateAppearance
+
+java.lang.Object
+   ↳	android.text.style.CharacterStyle
+ 	   ↳	android.text.style.ClickableSpan
+       
+Known Direct Subclasses
+URLSpan
+
+Class Overview
+If an object of this type is attached to the text of a TextView with a movement method of LinkMovementMethod, the affected spans of text can be selected. If clicked, the onClick(View) method will be called.

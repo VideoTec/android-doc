@@ -1,0 +1,16 @@
+public final void setMovementMethod (MovementMethod movement)
+
+Added in API level 1
+
+Sets the movement method (arrow key handler) to be used for this TextView. This can be null to disallow using the arrow keys to move the cursor or scroll the view.
+
+Be warned that if you want a TextView with a key listener or movement method not to be focusable, or if you want a TextView without a key listener or movement method to be focusable, you must call setFocusable(boolean) again after calling this to get the focusability back the way you want it.
+
+使用setMovementMethod才能使TextView里面的元素自动拥有点击功能，支持ClickSpan
+
+setMovementMethod，
+此方法在需要响应用户事件时使用，如点击一个电话号码就跳转到拨号页面。
+如果不执行这个方法是不会响应事件的，即便文本看着已经是下划线蓝色字了
+
+垂直滚动
+setMovementMethod(ScrollingMovementMethod.getInstance()); 

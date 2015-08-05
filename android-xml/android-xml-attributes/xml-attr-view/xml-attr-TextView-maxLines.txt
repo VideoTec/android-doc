@@ -1,0 +1,24 @@
+android:maxLines
+
+Makes the TextView be at most this many lines tall. When used on an editable text, the inputType attribute's value must be combined with the textMultiLine flag for the maxLines attribute to apply.
+
+Must be an integer value, such as "100".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol maxLines.
+
+Related Methods
+setMaxLines(int)
+
+例如：
+<TextView
+    android:id="@+id/textview_item_help_question_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="12dp"
+    android:ellipsize="end"
+    android:maxLines="5"
+    android:text="求助，本人dell笔记本一台，需要重装Win7系统，有意者请联系"
+    android:textColor="#333333"
+    android:textSize="15dp" />

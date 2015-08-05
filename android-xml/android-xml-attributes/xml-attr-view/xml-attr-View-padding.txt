@@ -1,0 +1,12 @@
+android:padding
+
+Sets the padding, in pixels, of all four edges. Padding is defined as space between the edges of the view and the view's content. A views size will include it's padding. If a background is provided, the padding will initially be set to that (0 if the drawable does not have padding). Explicitly setting a padding value will override the corresponding padding found in the background.
+
+Must be a dimension value, which is a floating point number appended with a unit such as "14.5sp". Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), mm (millimeters).
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol padding.
+
+Related Methods
+setPaddingRelative(int,int,int,int)

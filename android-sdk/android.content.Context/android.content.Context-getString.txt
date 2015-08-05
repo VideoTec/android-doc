@@ -1,0 +1,30 @@
+mActivity.getString(R.string.beside_help_reply_somebody_format)
+
+--------------------------------------------------
+public final String getString (int resId)
+--------------------------------------------------
+
+Added in API level 1
+
+Return a localized string from the application's package's default string table.
+
+Parameters
+
+resId
+Resource id for the string
+
+--------------------------------------------------
+public final String getString (int resId, Object... formatArgs)
+--------------------------------------------------
+
+Added in API level 1
+
+Return a localized formatted string from the application's package's default string table, substituting the format arguments as defined in Formatter and format(String, Object...).
+
+Parameters
+
+resId
+Resource id for the format string
+
+formatArgs
+The format arguments that will be used for substitution.

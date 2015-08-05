@@ -1,0 +1,3 @@
+http://www.cnblogs.com/tianzhijiexian/p/4222393.html
+
+通过Spannable对象设置textview的样式
