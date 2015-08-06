@@ -1,0 +1,23 @@
+http://developer.android.com/reference/android/app/Dialog.html
+
+implements DialogInterface Window.Callback KeyEvent.Callback View.OnCreateContextMenuListener
+
+java.lang.Object
+   ↳	android.app.Dialog
+   
+Known Direct Subclasses
+AlertDialog, AppCompatDialog, CharacterPickerDialog, MediaRouteChooserDialog, MediaRouteControllerDialog, Presentation
+
+Known Indirect Subclasses
+AlertDialog, DatePickerDialog, ProgressDialog, TimePickerDialog
+
+Class Overview
+
+Base class for Dialogs.
+
+Note: Activities provide a facility to manage the creation, saving and restoring of dialogs. See onCreateDialog(int), onPrepareDialog(int, Dialog), showDialog(int), and dismissDialog(int). If these methods are used, getOwnerActivity() will return the Activity that managed this dialog.
+
+Often you will want to have a Dialog display on top of the current input method, because there is no reason for it to accept text. You can do this by setting the WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM window flag (assuming your Dialog takes input focus, as it the default) with the following code:
+
+ getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
+         WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);

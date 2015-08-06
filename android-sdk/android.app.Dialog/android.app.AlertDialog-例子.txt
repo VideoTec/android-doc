@@ -1,0 +1,67 @@
+
+        logo.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout layout = new LinearLayout(mContext);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                final EditText uid = new EditText(mContext);
+                // uid.setHint("uid"); // 服务器保留输入格式，本地保留默认账号
+                String uidstr = mSharedPreferences.getString("testuid", null);
+                if (null != uidstr) {
+                    uid.setText(uidstr);
+                } else {
+                    uid.setHint("uid");
+                }
+                // uid.setText("201269267");
+                // uid.setText("202810756");
+                uid.setInputType(InputType.TYPE_CLASS_PHONE);
+                final EditText fid = new EditText(mContext);
+
+                String fidstr = mSharedPreferences.getString("testfid", null);
+                if (null != fidstr) {
+                    fid.setText(fidstr);
+                } else {
+                    fid.setHint("fid");
+                }
+                // fid.setText("250989071");
+                // fid.setText("561124275");
+                fid.setInputType(InputType.TYPE_CLASS_PHONE);
+                final EditText pool = new EditText(mContext);
+                String poolstr = mSharedPreferences.getString("testlogicpool", null);
+                if (null != poolstr) {
+                    pool.setText(poolstr);
+                } else {
+                    pool.setHint("logicpool");
+                }
+                // pool.setText("1456");
+                // pool.setText("44");
+                pool.setInputType(InputType.TYPE_CLASS_PHONE);
+                layout.addView(uid);
+                layout.addView(fid);
+                layout.addView(pool);
+                layout.setBackgroundColor(Color.WHITE);
+                new AlertDialog.Builder(mContext).setView(layout)
+                        .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String us = uid.getText().toString();
+                                String fs = fid.getText().toString();
+                                String ps = pool.getText().toString();
+                                SharedPreferences.Editor editor = mSharedPreferences.edit();
+                                editor.putString("testuid", us);
+                                editor.putString("testfid", fs);
+                                editor.putString("testlogicpool", ps);
+                                editor.commit();
+                                Account.setCkey("uidfidlogicpool=" + us + "=" + fs + "=" + ps + "=112233");
+                                Account.setUserId(Long.parseLong(us));
+                                // 测试通知数据
+                                // BesideInterfaceImple b = new
+                                // BesideInterfaceImple();
+                                // b.testInsertPersonOrGroupNotice(mContext);
+                                // b.testInsertTopicNotice(mContext);
+                                ToastUtils.showLongToast(mContext, Account.getCredential());
+                            }
+                        }).show();
+            }
+        });
