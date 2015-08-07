@@ -1,0 +1,14 @@
+[2015-08-07 15:53:23 - beside] D:\work\beside\res\values\beside_styles.xml:95: Originally defined here.
+[2015-08-07 15:53:23 - beside]     (new resource id beside_anim_broadcast_plus_out from D:\work\beside\res\anim\beside_anim_broadcast_plus_out.xml)
+[2015-08-07 15:53:23 - beside] D:\work\beside\res\values\useless_res.xml:76: error: Resource entry FetionThemeDialogTextView already has bag item android:shadowDy.
+[2015-08-07 15:53:23 - beside]     (new resource id beside_anim_default_broadcast_in from D:\work\beside\res\anim\beside_anim_default_broadcast_in.xml)
+[2015-08-07 15:53:23 - beside] D:\work\beside\res\values\beside_styles.xml:96: Originally defined here.
+[2015-08-07 15:53:23 - beside]     (new resource id beside_anim_default_broadcast_out from D:\work\beside\res\anim\beside_anim_default_broadcast_out.xml)
+[2015-08-07 15:53:23 - beside] D:\work\beside\res\values\useless_res.xml:77: error: Resource entry FetionThemeDialogTextView already has bag item android:shadowRadius.
+[2015-08-07 15:53:23 - beside]     (new resource id beside_anim_photo_broadcast_in from D:\work\beside\res\anim\beside_anim_photo_broadcast_in.xml)
+[2015-08-07 15:53:23 - beside] D:\work\beside\res\values\beside_styles.xml:97: Originally defined here.
+
+[2015-08-07 15:53:23 - beside] 'aapt' error. Pre Compiler Build aborted.
+
+最后查名原因： 
+useless_res.xml 和 beside_styles.xml 有重复定义的 style 且 有相同的 属性

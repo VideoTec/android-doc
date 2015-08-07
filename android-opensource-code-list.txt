@@ -37,3 +37,13 @@ Async Custom View
 
 https://github.com/MostafaGazar/CustomShapeImageView
 Custom shape ImageView using PorterDuffXfermode with paint shapes and SVGs
+
+https://github.com/guardianproject/android-ffmpeg-java
+https://github.com/surespot/android/tree/master/src/org/ffmpeg/android
+https://dev.guardianproject.info/projects/android-ffmpeg-java
+
+This project is a Java wrapper around an ffmpeg command line binary for use in Android applications. 
+It depends on the android-ffmpeg project to provide the ffmpeg binary.
+
+For ease of developer use, we've included the FFMPEG and Sox binaries in the project, 
+however, we strongly recommend you compile them yourselves using the steps below.

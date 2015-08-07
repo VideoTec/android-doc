@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/12588537/how-to-change-jdk-version-for-an-eclipse-project
+
+Click on Add Library button, it brings you screen to point to JAVA location.
+
+Select "Directory" button right beside JRE home and point to installed folder location.
+
+Even though you want to just 1.5 compiler project, you can achieve it by changing compiler settings in eclipse instead of removing 1.6 JRE and add 1.5 JRE.
+
+GOTO -->JAVA--Compiler---> and change compiler level to `1.5` instead of `1.6`
+EDIT: As davidfmatheson suggested,
+
+Just be careful, especially if you're setting this up for a team of people to work on. If anyone uses anything that is new or changed in 1.6, it will compile, but not run in an environment with JRE 1.5.

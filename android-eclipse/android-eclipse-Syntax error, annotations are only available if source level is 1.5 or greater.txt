@@ -1,0 +1,67 @@
+eclipse magic: … Syntax error, varargs are only available if source level is 1.5 or greater
+
+------------------------------------------
+16:27 2015/8/7 产生这个错误的原因：
+------------------------------------------
+从 git 远程库中 clone 下，远程库没有这个文件
+ProjectDir\.settings\org.eclipse.jdt.core.prefs
+这个文件定义了，使用的 Compiler compliance level
+如果没有这个文件，会默认设置成 1.4 就造成了这个错误
+
+所以，版本控制一定要，包含 .settings 目录。
+
+------------------------------------------
+http://stackoverflow.com/questions/1736730/eclipse-magic-syntax-error-varargs-are-only-available-if-source-level-is-1
+------------------------------------------
+
+compliance[英][kəmˈplaɪəns] [美][kəmˈplaɪəns]
+n.服从，听从；承诺；柔软度；顺度
+
+Check whether this works:
+
+Go to your project's Properties
+On the Properties dialog choose the Java Compiler node in the left tree.
+Finally set the Compiler compliance level to 1.5 or more.
+Rebuild the project.
+
+--------------------------------------------------------------
+http://stackoverflow.com/questions/17869069/which-jdk-version-language-level-is-required-for-android-studio
+http://stackoverflow.com/questions/14487682/diamond-operator-is-not-supported
+--------------------------------------------------------------
+Android needs java source compliance 5.0 or 6.0 (Java5/6). Java7 is not supported out of the box. 
+
+--------------------------------------------------------------
+14:25 2015/8/7 如果这个值调太低，会下面的提示
+--------------------------------------------------------------
+Android requires compiler compliance level 5.0 or 6.0. Found '1.4' instead. 
+Please use Android Tools > Fix Project Properties.
+
+--------------------------------------------------------------
+14:28 2015/8/7 如果调整成 1.5 下面的代码会出错
+--------------------------------------------------------------
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+Multiple markers at this line
+	- implements android.widget.Adapter.getItem
+	- The method getItem(int) of type BigImageView.MyListAdapter must override a superclass 
+	 method
+
+--------------------------------------------------------------
+http://blog.sina.com.cn/s/blog_5673f78b0100cl1w.html
+--------------------------------------------------------------
+Eclipse中Compiler compliance level的含义说明
+
+compiler compliance level的含义说明：
+设置编译级别既 Eclipse compiler compliance level为较低版本，
+只是让编译器相信你的代码是兼容较低版本的，在编译时生成的bytecode(class)兼容较低版本。
+
+这样设置与你写代码时引用的JDK是没关系的，也就是说你在写代码时仍可以引用较高版本的API.
+（这样就可能导致错误）设置compiler compliance level为较低版本，
+这样的好处是当别人使用了较低版本的Jdk时也可以引用你写的编译后的代码。
+它可以保证编译后的class文件的版本一致性。
+但是，如果你的代码里面(java source)里面调用了较高版本jdk的API.
+那么即使设置了compiler compliance level为较低版本，
+在较低版本的JDK上运行你的代码也会报错。
+所以建议在写代码时引用的JDK，要跟你compiler compliance level设置的版本，是一致

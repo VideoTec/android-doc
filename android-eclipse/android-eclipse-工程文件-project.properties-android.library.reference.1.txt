@@ -1,0 +1,45 @@
+project.properties 文件里
+
+android.library.reference.1=..\\FFmpegLibPro
+
+------------------------------------------------------------
+http://blog.csdn.net/xpwang168/article/details/6718010
+------------------------------------------------------------
+
+工程属性 | Android | Library -- 引用的别的工程
+
+Java Build Path | Projects -- 依赖工程
+
+这样做的好处是：我们可以用外部项目的源码进行联调
+
+------------------------------------------------------------
+http://blog.csdn.net/lonely_fireworks/article/details/8613493
+------------------------------------------------------------
+
+解决windows下eclipse中android项目关联android library project失败问题
+
+近日，在做一个人人的第三方小项目。
+打算直接使用renren 的sdk 进行开发。
+因为renren的sdk是以android library project 形式发布的
+（关于这种project的内容可以参考android library project）。
+
+整个导入流程严格按照guide的内容操作，但是始终无法导入，
+设置导入后项目中不出现相关的Library project。
+在设置完library之后重新打开始始终显示关联错误，
+就是reference那里是个红叉。
+
+Eclipse也没有任何出错提示。
+在stackoverflow上也找过相应问题，
+找到了解决问题的方案（StackOverFlow上的解答）。
+虽然有效的解决了问题，但是解释并不是很完善。
+
+我发现其实只要项目中project.properties的引用android.library.reference.1=这里的值为相对路径，
+则没有引用问题，
+因为相同的project博主用git同步到ubuntu下关联就没有问题。
+
+所以很大的可能这是ADT的一个bug，即：
+在windows系统下，
+library project必须和project处于相同的盘符中，
+因为如果在不同盘符，
+project.properties中的android.library.reference.1值变成绝对路径，
+而ADT推荐是在ubuntu下使用的，对windows绝对路径有支持bug。

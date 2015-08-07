@@ -1,0 +1,36 @@
+
+-----------------------------------------
+Window | Preferences | General | Workspace 
+
+-> Text File Encoding
+-> New text file line delimiter
+-----------------------------------------
+http://blog.csdn.net/jianw2007/article/details/3930915
+
+修改后：
+新建立工程其属性对话框中的Text file encoding即为UTF-8
+
+http://stackoverflow.com/questions/3751791/how-to-change-default-text-file-encoding-in-eclipse
+Window -> Preferences -> General -> Workspace : Text file encoding
+
+-----------------------------------------
+设置新建文件的编码类型
+http://rebecca.iteye.com/blog/654953
+-----------------------------------------
+
+指定各类型文件的字符编码方式：
+
+window|preferences->General|Content Types
+在下面的Default encoding输入框中输入UTF-8，
+点Update，则设置Java文件编码为UTF-8
+
+-----------------------------------------
+工程属性|Resource -> Text File Encoding
+-----------------------------------------
+Eclipse工作 空间(workspace)的缺省字符编码是操作系统缺省的编码，
+
+简体中文操作系统 (Windows XP、Windows2000简体中文)的缺省编码是GB18030，
+在此工作空间中建立的工程编码是GB18030，
+工程中建立的java件也是GB18030。
+
+如果要使新建立工程、java文件直接使UTF-8则需要做上面的工作，不容忽略

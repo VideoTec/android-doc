@@ -7,6 +7,7 @@ delimiter[英][dɪ'lɪmɪtə] [美][dɪ'lɪmɪtə] n.定界符，分隔符
 
 设置新建文件的换行符：
 修改eclipse设置 windows>General> workspace  下 new text file line delimiter 选择Unix
+工程属性 | Resource -> New text file line delimiter 设置为 unix
 
 修改已存在文件的换行符：
 选择文件或文件夹 -> File -> Convert Line Delimiter To
