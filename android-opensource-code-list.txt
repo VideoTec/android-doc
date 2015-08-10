@@ -1,27 +1,6 @@
-http://stackoverflow.com/questions/541966/lazy-load-of-images-in-listview/3068012#3068012
-https://github.com/thest1/LazyList
-I made a simple demo of a lazy list (located at GitHub) with images. It may be helpful to somebody. It downloads images in the background thread. Images are being cached on an SD card and in memory. The cache implementation is very simple and is just enough for the demo. I decode images with inSampleSize to reduce memory consumption. I also try to handle recycled views correctly
-
-https://github.com/ened/Android-Tiling-ScrollView
-http://stackoverflow.com/questions/6518215/display-huge-images-in-android
-tiling[英][ˈtaɪlɪŋ] [美][ˈtaɪlɪŋ] n.盖瓦；贴瓷砖；（总称）瓦；瓦工
-
-This Android widget aims to provide a scalable way to display large images (like Metro maps, paintings) while keeping the memory consumption as low as possible.
-
-https://github.com/jasonpolites/gesture-imageview
-http://www.cnblogs.com/joylee/p/android-gestureimageview.html
-gesture[英][ˈdʒestʃə(r)] [美][ˈdʒɛstʃɚ]
-n.手势，姿势；举止，动作；〔古语〕仪态；[计算机]光笔指令
-
-This is a simple Android View class which provides basic pinch and zoom capability for images.
-Can be used as a replacement for a standard ImageView when you want to include pinch and zoom.
 
 https://github.com/devunwired/custom-touch-examples
 This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".
-
-https://github.com/diegocarloslima/ByakuGallery
-ByakuGallery is an open source Android library that allows 
-the visualization of large images with gesture capabilities. 
 
 https://github.com/penkzhou/iogallery
 如何在Android开发中让你的代码更有效率
@@ -41,9 +20,6 @@ Custom Composite View
 Flat Custom View
 Async Custom View
 
-https://github.com/MostafaGazar/CustomShapeImageView
-Custom shape ImageView using PorterDuffXfermode with paint shapes and SVGs
-
 https://github.com/guardianproject/android-ffmpeg-java
 https://github.com/surespot/android/tree/master/src/org/ffmpeg/android
 https://dev.guardianproject.info/projects/android-ffmpeg-java
@@ -53,13 +29,6 @@ It depends on the android-ffmpeg project to provide the ffmpeg binary.
 
 For ease of developer use, we've included the FFMPEG and Sox binaries in the project, 
 however, we strongly recommend you compile them yourselves using the steps below.
-
-https://github.com/chrisbanes/Android-PullToRefresh
-http://blog.csdn.net/wwhh393/article/details/9722199
-https://developer.android.com/reference/android/support/v4/widget/SwipeRefreshLayout.html
-This project aims to provide a reusable Pull to Refresh widget for Android. 
-It was originally based on Johan Nilsson's library 
-(mainly for graphics, strings and animations), but these have been replaced since.
 
 https://github.com/j256/ormlite-android
 https://github.com/j256/ormlite-core
