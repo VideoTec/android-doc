@@ -1,0 +1,8 @@
+http://www.vogella.com/tutorials/AndroidLibraryProjects/article.html#androidlibraryprojects
+
+The Android team introduced a new binary distribution format called Android ARchive(AAR). The .aar bundle is the binary distribution of an Android Library Project.
+
+An AAR is similar to a JAR file, but it can contain resources as well as compiled byte-code. This allows that an AAR file is included in the build process of an Android application similar to a JAR file
+
+Warning This AAR format is currently directly support by the Eclipse IDE. Stare on the following issue so that Google solves this issue: Allows Eclipse ADT plugin to work with .AAR files .
+Tip It is still possible to use AAR files with Eclipse. You can either convert them to Android library projects as described in Consuming AARs from Eclipse blog post about it. or use the Android Maven plug-in for your build.

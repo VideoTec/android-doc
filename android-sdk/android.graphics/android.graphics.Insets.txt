@@ -1,5 +1,8 @@
+inset[英][ˈɪnset] [美][ˈɪnˌsɛt, ɪnˈsɛt]
+n.插入物，插进
+
 ---------------------------------------------
-View.java 有到了这个类型
+View.java 用到了这个类型
 ---------------------------------------------
 
     /**
@@ -14,7 +17,7 @@ View.java 有到了这个类型
     }
 
 ---------------------------------------------
-View.java 有到了这个类型
+View.java 用到了这个类型
 ---------------------------------------------
     /**
      * Return in insets the layout insets suggested by this Drawable for use with alignment

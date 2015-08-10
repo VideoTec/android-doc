@@ -1,0 +1,12 @@
+https://zh.wikipedia.org/wiki/Java%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5
+
+Java 数据库连接，（Java Database Connectivity，简称JDBC）
+是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，
+提供了诸如查询和更新数据库中数据的方法。JDBC也是Sun Microsystems的商标[1]。
+JDBC是面向关系型数据库的。
+
+在J2SE中，提供了一个称之为JDBC-ODBC桥（JDBC-ODBC Bridge[2]）的API。
+通过ODBC，JDBC-ODBC桥驱动程序可以访问所有支持ODBC的关系型数据库。
+与JDBC API不同的是，
+这个驱动程序并不是由Java代码而是由机器码（native code）编写，
+并且不是开放源代码的

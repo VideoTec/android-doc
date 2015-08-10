@@ -1,0 +1,24 @@
+public void translate (float dx, float dy)
+
+Added in API level 1
+Preconcat the current matrix with the specified translation
+
+Parameters
+dx	The distance to translate in X
+dy	The distance to translate in Y
+
+http://stackoverflow.com/questions/2695537/what-does-it-mean-to-preconcat-a-matrix-in-android
+
+concatenation[英][kənˌkætəˈneɪʃn]
+一系列互相关联的事物
+
+multiplication[英][ˌmʌltɪplɪˈkeɪʃn] [美][ˌmʌltəplɪˈkeʃən]
+n.增加，增殖，倍增；[数]乘法，乘法运算
+
+as opposed to[英][æz əˈpəuzd tu:] [美][æz əˈpoʊzd tu]
+与。。。相对
+
+When working with matrices, the word concatenation refers to multiplication.
+
+Since matrix multiplication is not commutative, there is a separate word for backwards multiplication.
+Pre-concatenating a to b means setting a = b × a. (As opposed to a = a × b, which will give a different matrix)

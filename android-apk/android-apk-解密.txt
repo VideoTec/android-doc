@@ -1,0 +1,18 @@
+http://blog.sina.com.cn/s/blog_5da93c8f0101ldsv.html
+
+---------------------------------------
+获取xml文件信息
+---------------------------------------
+https://code.google.com/p/android-apktool （已经转移到下面的地址）
+http://ibotpeaches.github.io/Apktool/
+
+E:\tools>java -jar apktool_2.0.1.jar d -f C:\Users\wangxiangfx\Desktop\Fetion_Android_V5.4.2_20150810_release_sanxing.apk -o d:/apk
+
+注意：
+在java中，运行可执行jar包的命令是
+java -jar jar包名.jar
+
+---------------------------------------
+反编译dex获取Java源代码
+---------------------------------------
+http://code.google.com/p/dex2jar

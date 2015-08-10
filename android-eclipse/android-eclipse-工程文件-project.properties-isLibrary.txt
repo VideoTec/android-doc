@@ -1,0 +1,10 @@
+http://wenzongliang.iteye.com/blog/2183907
+
+android工程可以 在工程属性android选项卡 
+勾选该工程是一个库 isLibrary。
+勾选之后工程编译不在生成apk而是生成jar并且打进jar包的文件也做了选择只有class文件
+
+https://devmaze.wordpress.com/2011/05/22/android-application-android-libraries-and-jar-libraries/
+
+Android Application, Android Libraries and Jar Libraries
+THIS POST IS OUTDATED AS OF SDK r14

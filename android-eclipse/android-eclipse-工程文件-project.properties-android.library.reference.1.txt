@@ -2,6 +2,8 @@ project.properties 文件里
 
 android.library.reference.1=..\\FFmpegLibPro
 
+其中的 1 是引用的第几个工程的意思。
+
 ------------------------------------------------------------
 http://blog.csdn.net/xpwang168/article/details/6718010
 ------------------------------------------------------------

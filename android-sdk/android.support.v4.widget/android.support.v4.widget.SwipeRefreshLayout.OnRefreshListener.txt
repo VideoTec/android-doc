@@ -1,0 +1,3 @@
+Classes that wish to be notified when the swipe gesture correctly triggers a refresh should implement this interface.
+
+public abstract void onRefresh ()

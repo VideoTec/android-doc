@@ -1,0 +1,9 @@
+http://blog.csdn.net/qjyong/article/details/9098213
+使用Eclipse构建Maven项目 (step-by-step)
+
+http://stackoverflow.com/questions/14725316/what-is-the-use-of-pom-xml-in-maven
+In short the pom.xml will have all information to build your project.
+
+For example you want to build a project and you have only the pom.xml sent to you via mail. If there are enough entries in the pom.xml then that is all you need! You can import it to Eclipse, Maven will download your source code from CVS, download various dependency jars (like Spring, Apache Commons), run your test cases, build the jar/war, deploy to your jboss/app server, generate a report of your code quality (using Sonar, maybe). Each task you want to do will be mentioned as a goal.
+
+The links already provided are good enough for reference.
