@@ -1,0 +1,26 @@
+android-sdk-windows\tools
+
+SDK Tools 列表：
+
+ant/
+apps/
+lib/
+proguard/
+support/
+templates/
+
+android.bat
+ddms.bat
+hierarchyviewer.bat
+jobb.bat
+lint.bat
+monitor.bat
+monkeyrunner.bat
+traceview.bat
+uiatuomatorviewer.bat
+
+draw9patch.bat
+emulator-arm.exe
+emulator-mips.exe
+emulator-x86.exe
+mksdcard.exe

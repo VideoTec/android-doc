@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/28712025/how-to-disable-gradle-offline-modei-in-android-studio
+
+Gradle is in offline mode, which means that it won't go to the network to resolve dependencies.
+Go to Preferences > Gradle and uncheck "Offline work".
+
+http://www.cnblogs.com/xzhang/p/3596128.html
+File->Settings...->Gradle
+把Global Gradle setting里的Offline work勾选上，
+看英文意思应该知道这是离线工作用的了

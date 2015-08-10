@@ -1,0 +1,51 @@
+http://android-developers.blogspot.com/2014/12/hello-world-meet-our-new-experimental.html
+http://www.codingpark.net/blog/?p=97 （中文翻译）
+
+Jack (Java Android Compiler Kit) and 
+Jill (Jack Intermediate Library Linker)
+
+.jack 文件
+Jill会将你所有依赖的库转换为新的Jack类型库文件(.jack)
+Android Gradle和Jack集合所有的.jack库文件和你的源码文件到一起, 然后将它们编译为dex文件集合
+
+We've been working on a new toolchain for Android that’s designed to improve build times and simplify development by reducing dependencies on other tools. Today, we’re introducing you to Jack (Java Android Compiler Kit) and Jill (Jack Intermediate Library Linker), the two tools at the core of the new toolchain.
+
+We are making an early, experimental version of Jack and Jill available for testing with non-production versions of your apps. This post describes how the toolchain works, how to configure it, and how to let us know of your feature requests and any bugs you find.
+
+-------------------------------
+So how does it work?
+-------------------------------
+
+When the new tool chain is enabled, Jill will translate any libraries you are referencing to a new Jack library file (.jack). This prepares them to be quickly merged with other .jack files. The Android Gradle plugin and Jack collect any .jack library files, along with your source code, and compiles them into a set of dex files. During the process, Jack also handles any requested code minification. The output is then assembled into an APK file as normal. We also include support for multiple dex files, if you have enabled that support.
+
+-------------------------------
+How do I use it?
+-------------------------------
+
+Jack and Jill are already available in the 21.1.1+ Build Tools for Android Studio. Complementary Gradle support is also currently available in the Android 1.0.0+ Gradle plugin. To get started, all you need to do is make sure you're using these versions of the tooling and then add a single line in your build.gradle file. Perform a build of your application to receive a newly built APK.
+
+android {
+    ...
+    buildToolsRevision '21.1.1'
+    defaultConfig {
+      // Enable the experimental Jack build tools.
+      useJack = true
+    }
+    ...
+}
+If you want to build your app with both toolchains, Product Flavors are a great way to do this. Your build.gradle file might look something like the snippet below.
+android {
+    ...
+    productFlavors {
+        dev {
+            ...
+        }
+        experimental {
+            useJack = true
+        }
+        prod {
+            ...
+        }
+    }
+    ...
+}

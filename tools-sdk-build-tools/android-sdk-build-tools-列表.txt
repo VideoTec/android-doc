@@ -1,0 +1,18 @@
+android sdk build tools 列表：
+
+aapt.exe
+aidl.exe
+dexdump.exe
+llvm-rs-cc.exe
+split-select.exe
+zipalign.exe
+
+dx.bat
+mainDexClasses.bat
+
+jack.jar
+jill.jar
+
+arm-linux-androideabi-ld.exe
+i686-linux-android-ld.exe
+mipsel-linux-android-ld.exe

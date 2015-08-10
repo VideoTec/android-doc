@@ -1,0 +1,11 @@
+android platform tools 列表：
+
+api/
+systrace/
+
+adb.exe
+sqlite.exe
+dmtracedump.exe
+etc1tool.exe
+fastboot.exe
+hprof-conv.exe

@@ -3,6 +3,7 @@ https://github.com/devunwired/custom-touch-examples
 This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".
 
 https://github.com/penkzhou/iogallery
+http://greenrobot.me/devpost/doing-more-with-less-being-a-good-android-citizen/
 如何在Android开发中让你的代码更有效率
 
 https://github.com/lucasr/android-layout-samples
