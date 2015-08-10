@@ -1,24 +1,9 @@
 
-https://github.com/devunwired/custom-touch-examples
-This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".
-
-https://github.com/penkzhou/iogallery
-如何在Android开发中让你的代码更有效率
-
 https://github.com/nostra13/Android-Universal-Image-Loader
 Android library #1 on GitHub. 
 UIL aims to provide a powerful, flexible and highly customizable instrument for 
 image loading, caching and displaying. 
 It provides a lot of configuration options and good control over the image loading and caching process.
-
-https://github.com/lucasr/android-layout-samples
-Explorations around Android custom layouts, including off main thread View measure/layout passes.
-
-Sample code for:
-Composite View
-Custom Composite View
-Flat Custom View
-Async Custom View
 
 https://github.com/guardianproject/android-ffmpeg-java
 https://github.com/surespot/android/tree/master/src/org/ffmpeg/android
@@ -29,19 +14,3 @@ It depends on the android-ffmpeg project to provide the ffmpeg binary.
 
 For ease of developer use, we've included the FFMPEG and Sox binaries in the project, 
 however, we strongly recommend you compile them yourselves using the steps below.
-
-https://github.com/j256/ormlite-android
-https://github.com/j256/ormlite-core
-数据库相关
-
-j256/ormlite-core
-This package provides the core functionality for the JDBC and Android packages.  Users
-that are connecting to SQL databases via JDBC will need to download the ormlite-jdbc
-package as well. Android users should download the ormlite-android package as well as
-this core package
-
-j256/ormlite-android
-This package provides the Android specific functionality.  You will also need to
-download the ormlite-core package as well.  Users that are connecting to SQL
-databases via JDBC connections should download the ormlite-jdbc package instead of
-this Android one.

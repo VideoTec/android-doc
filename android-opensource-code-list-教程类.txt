@@ -1,0 +1,19 @@
+
+https://github.com/devunwired/custom-touch-examples
+This repository contains a sample application demonstrating many of the techniques for doing custom touch event handling discussed in "Mastering the Android Touch System".
+
+https://github.com/penkzhou/iogallery
+如何在Android开发中让你的代码更有效率
+
+https://github.com/lucasr/android-layout-samples
+
+exploration[英][ˌekspləˈreɪʃn] [美][ˌɛkspləˈreʃən]
+n.探测，勘探，探险；搜索，研究；[医]探查术
+
+Explorations around Android custom layouts, including off main thread View measure/layout passes.
+
+Sample code for:
+Composite View
+Custom Composite View
+Flat Custom View
+Async Custom View
