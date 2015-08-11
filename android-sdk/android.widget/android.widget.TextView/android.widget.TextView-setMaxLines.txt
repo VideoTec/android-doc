@@ -1,0 +1,7 @@
+public void setMaxLines (int maxlines)
+
+Added in API level 1
+Makes the TextView at most this many lines tall. Setting this value overrides any other (maximum) height setting.
+
+Related XML Attributes
+android:maxLines

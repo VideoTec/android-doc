@@ -1,0 +1,11 @@
+private final AbstractHttpClient client;
+
+HttpResponse response = client.execute(request, context);
+
+异常：
+org.apache.http.conn.HttpHostConnectException: Connection to http://192.192.3.21:8888 refused
+
+注：传递的地址是 221.176.31.206
+
+最后找到原因是：
+手机使用了代理 IP 地址：http://192.192.3.21:8888 

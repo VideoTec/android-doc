@@ -1,0 +1,38 @@
+org.apache.http.client.methods.HttpGet;
+com.loopj.android.http.RequestParams
+
+HttpUriRequest request = new HttpGet(getUrlWithQueryString(url, params));
+
+    public static String getUrlWithQueryString(String url, RequestParams params) {
+        if(params != null) {
+            String paramString = params.getParamString();
+            if (url.indexOf("?") == -1) {
+                url += "?" + paramString;
+            } else {
+                url += "&" + paramString;
+            }
+        }
+
+        return url;
+    }
+    
+    com.loopj.android.http.RequestParams
+    protected String getParamString() {
+        return URLEncodedUtils.format(getParamsList(), ENCODING);
+    }
+    protected List<BasicNameValuePair> getParamsList() {
+        List<BasicNameValuePair> lparams = new LinkedList<BasicNameValuePair>();
+
+        for(ConcurrentHashMap.Entry<String, String> entry : urlParams.entrySet()) {
+            lparams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+        }
+
+        for(ConcurrentHashMap.Entry<String, ArrayList<String>> entry : urlParamsWithArray.entrySet()) {
+            ArrayList<String> values = entry.getValue();
+            for (String value : values) {
+                lparams.add(new BasicNameValuePair(entry.getKey(), value));
+            }
+        }
+
+        return lparams;
+    }

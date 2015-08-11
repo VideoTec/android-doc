@@ -1,0 +1,11 @@
+成员
+private final AbstractHttpClient client;
+private final HttpContext context;
+private final HttpUriRequest request;
+
+构造 AsyncHttpRequest 时赋值
+AsyncHttpRequest syncRequest = new AsyncHttpRequest(client, httpContext, uriRequest, responseHandler);
+
+使用
+HttpProtocolParams.setUseExpectContinue(client.getParams(),false);
+HttpResponse response = client.execute(request, context);

@@ -5,6 +5,20 @@ Android SDK Content Loader 进度为零
 
 中止 javaw.exe 进程 还可解决因 Android SDK Content Loader 关闭不了eclipse的情况
 
+13:43 2015/8/11
+http://stackoverflow.com/questions/13489141/eclipse-hangs-at-the-android-sdk-content-loader
+删除 eclipse 启动目录的中的文件（有效）
+Go to your workspace directory 
+\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects and 
+delete all the projects in there.
+
+Note: You are not going to lose your projects
+（重启后，所有的工程都在）
+
+12:04 2015/8/11
+删除那两个文件夹再重启，还是不行
+.android，所有内容全部删除，重启，也不行。
+
 16:25 2015/4/23
 方法三是有效的
 http://stackoverflow.com/questions/13489141/eclipse-hangs-at-the-android-sdk-content-loader

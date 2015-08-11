@@ -1,0 +1,33 @@
+ellipsis[英][ɪˈlɪpsɪs] [美][ɪˈlɪpsɪs]
+n.（语法结构上的）省略
+
+--------------------------------------
+public void setEllipsize (TextUtils.TruncateAt where)
+--------------------------------------
+
+Added in API level 1
+Causes words in the text that are longer than the view is wide to be ellipsized instead of broken in the middle. You may also want to setSingleLine() or setHorizontallyScrolling(boolean) to constrain the text to a single line. Use null to turn off ellipsizing. If setMaxLines(int) has been used to set two or more lines, only END and MARQUEE are supported (other ellipsizing types will not do anything).
+
+Related XML Attributes
+android:ellipsize
+
+TextUtils.TruncateAt 	END 	 
+TextUtils.TruncateAt 	MARQUEE 	 
+TextUtils.TruncateAt 	MIDDLE 	 
+TextUtils.TruncateAt 	START 	 
+
+--------------------------------------
+android:ellipsize
+--------------------------------------
+
+If set, causes words that are longer than the view is wide to be ellipsized instead of broken in the middle. You will often also want to set scrollHorizontally or singleLine as well so that the text as a whole is also constrained to a single line instead of still allowed to be broken onto multiple lines.
+
+Must be one of the following constant values.
+
+Constant	Value	Description
+none	    0	
+start	    1	
+middle	    2	
+end	        3	
+marquee	    4	
+This corresponds to the global attribute resource symbol ellipsize.

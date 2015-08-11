@@ -4,3 +4,8 @@ https://github.com/mcxiaoke/android-volley
 This is an unofficial mirror (with some minor bugfix, see Changelog for details.) 
 for android volley library, 
 the source code will synchronize periodically with the official volley repository.
+
+https://github.com/loopj/android-async-http
+http://loopj.com/android-async-http/
+An asynchronous, 
+callback-based Http client for Android built on top of Apache's HttpClient libraries.
