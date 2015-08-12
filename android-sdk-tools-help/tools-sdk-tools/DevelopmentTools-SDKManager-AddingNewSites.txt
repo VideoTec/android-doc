@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/tools/help/sdk-manager.html#AddingSites
+
+Adding New Sites
+
+The SDK Update Sites tab displays the sites that Android Studio checks for Android SDK and third-party updates. You can add other sites that host their own Android SDK add-ons, then download the SDK add-ons from those sites.
+
+For example, a mobile carrier or device manufacturer might offer additional API libraries that are supported by their own Android-powered devices. In order to develop using their libraries, you must install their Android SDK add-on, if it's not already available as a third-party add-on.
+
+If a carrier or device manufacturer has hosted an SDK add-on repository file on their website, follow these steps to add their site to the Android SDK Manager:
+
+Click the SDK Update Sites tab.
+Click the Add icon in the tools area and enter the name and URL of the add-on site.
+Click OK.
+Make sure the checkbox is checked in the Enabled column.
+Click OK or Apply.
+Any SDK packages available from the site appear in the SDK Platforms or SDK Tools tabs.

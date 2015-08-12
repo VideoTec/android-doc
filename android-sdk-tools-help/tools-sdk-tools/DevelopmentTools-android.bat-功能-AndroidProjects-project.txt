@@ -1,0 +1,54 @@
+http://developer.android.com/intl/zh-cn/tools/help/android.html
+
+Create and update Android projects
+
+Project actions and options
+android [global options] action [action options]
+
+Global Options
+
+-s
+Silent mode: only errors are printed out
+
+-h
+Usage help
+
+-v
+Verbose mode: errors, warnings and informational messages are printed.
+
+--------------------------------------
+create project
+--------------------------------------
+-n <name>
+The name for the project
+
+-t <targetID>
+Target ID of the system image to use with the new AVD. 
+To obtain a list of available targets, use android list targets
+
+-k <path>|<size>[K|M]
+Package namespace
+
+-a
+Name for the default Activity class
+
+-p <path>
+Location of your project directory
+
+--------------------------------------
+update project
+--------------------------------------
+-n <name>
+The name of the project to update
+
+-p <path>
+Location path of the project
+
+-l <library path>
+Location path of an Android Library to add, relative to the main project
+
+-s <subprojects>
+Update any projects in subfolders such as test projects
+
+-t <targetID>
+Target id to set for the project

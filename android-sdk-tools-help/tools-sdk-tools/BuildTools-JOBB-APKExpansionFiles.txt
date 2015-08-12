@@ -1,0 +1,3 @@
+http://developer.android.com/intl/zh-cn/google/play/expansion-files.html
+
+Google Play currently requires that your APK file be no more than 50MB. For most applications, this is plenty of space for all the application's code and assets. However, some apps need more space for high-fidelity graphics, media files, or other large assets. Previously, if your app exceeded 50MB, you had to host and download the additional resources yourself when the user opens the app. Hosting and serving the extra files can be costly, and the user experience is often less than ideal. To make this process easier for you and more pleasant for users, Google Play allows you to attach two large expansion files that supplement your APK.

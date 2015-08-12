@@ -1,0 +1,5 @@
+http://developer.android.com/intl/zh-cn/tools/help/jobb.html
+
+E:\android-sdk-windows\tools\jobb.bat
+
+The jobb tool allows you to build encrypted and unencrypted APK expansion files in Opaque Binary Blob (OBB) format. You can download and mount these expansion files in your application using StorageManager on devices with Android 2.3 (API Level 9) or higher. OBB files are used to provide additional file assets for Android applications (such as graphics, sounds and video), separate from an application's APK file. For more information on using expansion files, see APK Expansion Files.

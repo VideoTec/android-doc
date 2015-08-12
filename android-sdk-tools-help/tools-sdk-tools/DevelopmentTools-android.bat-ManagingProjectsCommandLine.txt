@@ -1,0 +1,14 @@
+http://developer.android.com/intl/zh-cn/tools/projects/projects-cmdline.html
+
+Managing Projects from the Command Line
+
+1）Creating an Android Project
+2）Updating a Project
+
+3）Setting up a Library Project
+Creating the manifest file
+Updating a library project
+
+4）Referencing a Library Project
+Declaring library components in the manifest file
+Building a dependent application

@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/tools/help/emulator.html
+
+E:\android-sdk-windows\tools\emulator.exe
+
+The Android SDK includes a mobile device emulator — a virtual mobile device that runs on your computer. The emulator lets you develop and test Android applications without using a physical device.
+
+This document is a reference to the available command line options and the keyboard mapping to device keys. For a complete guide to using the Android Emulator, see Using the Android Emulator.

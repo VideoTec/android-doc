@@ -1,0 +1,44 @@
+http://developer.android.com/intl/zh-cn/tools/help/android.html
+
+Create and update Android projects
+
+Project actions and options
+android [global options] action [action options]
+
+Global Options
+
+-s
+Silent mode: only errors are printed out
+
+-h
+Usage help
+
+-v
+Verbose mode: errors, warnings and informational messages are printed.
+
+--------------------------------------
+create lib-project
+--------------------------------------
+-k <packageName>
+(Required) Package name of the library project
+
+-p <path>
+Location path of the project
+
+-t <targetID>
+Target ID of the library project
+
+-n <name>
+The name of the project
+
+--------------------------------------
+update lib-project
+--------------------------------------
+-p <path>
+Location path of the project
+
+-l <libraryPath>
+Location path of an Android Library to add, relative to the main project
+
+-t <name>
+Target ID of the library project

@@ -1,0 +1,45 @@
+http://developer.android.com/intl/zh-cn/tools/help/sdk-manager.html#Recommended
+
+Recommended Packages
+Here's an outline of the packages required and those we recommend you use:
+
+--------------------------------------
+SDK Tools
+--------------------------------------
+Required. Your new SDK installation installs the latest version. Be sure to respond to the Android Studio update prompts to keep your SDK Tools up-to-date.
+
+--------------------------------------
+SDK Platform-tools
+--------------------------------------
+Required. Your new SDK installation installs the latest stable version. Be sure to respond to the Android Studio update prompts to keep your SDK Platform-tools up-to-date.
+
+--------------------------------------
+SDK Platform
+--------------------------------------
+Required. At least one platform is required in your environment so you're able to compile your application. In order to provide the best user experience on the latest devices, we recommend that you use the latest platform version as your build target. You'll still be able to run your app on older versions, but you must build against the latest version in order to use new features when running on devices with the latest version of Android.
+The SDK Manager downloads the latest Android version. It also downloads the earliest version of Android (Android 2.2 (API level 8)) that we recommend that your app support.
+
+--------------------------------------
+System Image
+--------------------------------------
+Recommended. Although you might have one or more Android-powered devices on which to test your app, it's unlikely you have a device for every version of Android your app supports. It's a good practice to download system images for all versions of Android your app supports and test your app running on them with the Android emulator. Each SDK platform package contains the supported system images. Click Show Package Details to display the available system images for each available platform. You can also download system images when creating Android Virtual Devices (AVDs) in the AVD Manager.
+
+--------------------------------------
+Android Support Library
+--------------------------------------
+Recommended. Includes a static library that allows you to use some of the latest Android APIs (such as fragments, plus others not included in the framework at all) on devices running a platform version as old as Android 1.6. All of the activity templates available when creating a new project with the ADT Plugin require this. For more information, read Support Library.
+
+--------------------------------------
+Android Support Repository
+--------------------------------------
+Recommended. Includes local Maven repository for Support libraries.
+
+--------------------------------------
+Google Play services
+--------------------------------------
+Recommended. Includes Google Play services client library and sample code.
+
+--------------------------------------
+Google Repository
+--------------------------------------
+Recommended. Includes local Maven repository for Google libraries

@@ -1,0 +1,10 @@
+http://developer.android.com/intl/zh-cn/tools/help/avd-manager.html
+
+The AVD Manager provides a graphical user interface in which you can create and manage Android Virtual Devices (AVDs), which are required by the Android Emulator.
+
+-------------------------------
+从命令行启动管理器：
+-------------------------------
+
+Navigate to your SDK's tools/ directory and execute 
+android avd.

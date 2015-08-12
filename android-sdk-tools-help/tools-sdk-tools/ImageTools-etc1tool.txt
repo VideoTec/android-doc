@@ -1,0 +1,29 @@
+http://developer.android.com/intl/zh-cn/tools/help/etc1tool.html
+
+https://en.wikipedia.org/wiki/Ericsson_Texture_Compression
+The original 'ETC1' compression scheme provides 6x compression of 24-bit RGB data. 
+It does not support the compression of images with Alpha components, 
+although there are work-arounds for this
+
+http://blog.csdn.net/ryfdizuo/article/details/17040089
+这么多现成的图像格式，为毛压缩纹理不采用呢？
+为何很多公司都推出自己的纹理压缩格式呢？
+原因很简单：jpeg、png这些压缩格式是为CPU解码设计的，不适合GPU的并行特性
+显卡厂商推出专为GPU设计的压缩纹理格式应用而生
+ETC (Ericsson Texture Compression)， ETC1，ETC2
+opengles and ETC:opengle3.0后支持etc2，gles1.1和gles2.0支持etc1
+Android and ETC：android sdk自带的etc1tool.exe，支持从png直接转化成etc的pkm文件
+
+http://it.zhaozhao.info/archives/44011
+ETC1格式是OpenGL ES图形标准的一部分，
+并且被所有的Andr​​oid设备所支持。
+扩展名为: 
+GL_OES_compressed_ETC1_RGB8_texture，
+不支持透明通道，所以仅能用于不透明纹理
+
+E:\android-sdk-windows\platform-tools\etc1tool.exe
+
+etc1tool is a command line utility that lets you 
+encode PNG images to the ETC1 compression standard and 
+decode ETC1 compressed images back to PNG.
+

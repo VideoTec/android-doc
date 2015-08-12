@@ -1,0 +1,29 @@
+http://developer.android.com/intl/zh-cn/tools/help/sqlite3.html
+
+http://www.sqlite.org/cli.html
+
+The SQLite project provides a simple command-line utility named sqlite3 (or sqlite3.exe on windows) 
+that allows the user to manually enter and execute SQL statements against an SQLite database.
+This document provides a brief introduction on how to use the sqlite3 program
+
+https://zh.wikipedia.org/wiki/SQLite
+
+SQLite （英语发音：/ˌɛskjuːɛlˈlaɪt/[2] or 英语发音：/ˈsiːkwəl.laɪt/[3]）
+是遵守ACID的关系数据库管理系统，它包含在一个相对小的C程序库中。
+与许多其它数据库管理系统不同，
+SQLite不是一个客户端/服务器结构的数据库引擎，而是被集成在用户程序中。
+
+SQLite遵守ACID，实现了大多数SQL标准。它使用动态的、弱类型的SQL语法。[4]
+它作为嵌入式数据库，是应用程序，如网页浏览器，在本地/客户端存储数据的常见选择。
+它可能是最广泛部署的数据库引擎，
+因为它正在被一些流行的浏览器、操作系统、嵌入式系统所使用[5]。
+同时，它有许多程序设计语言的语言绑定
+
+E:\android-sdk-windows\platform-tools\sqlite3.exe
+
+From a remote shell to your device or from your host machine, 
+you can use the sqlite3 command-line program to manage SQLite databases created by Android applications. 
+The sqlite3 tool includes many useful commands, 
+such as .dump to print out the contents of a table and .schema 
+to print the SQL CREATE statement for an existing table. 
+The tool also gives you the ability to execute SQLite commands on the fly.

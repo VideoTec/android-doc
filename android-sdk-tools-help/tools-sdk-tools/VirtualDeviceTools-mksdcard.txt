@@ -1,0 +1,5 @@
+http://developer.android.com/intl/zh-cn/tools/help/mksdcard.html
+
+E:\android-sdk-windows\tools\mksdcard.exe
+
+The mksdcard tool lets you quickly create a FAT32 disk image that you can load in the emulator, to simulate the presence of an SD card in the device. Because you can specify an SD card while creating an AVD in the AVD Manager, you usually use that feature to create an SD card. This tool creates an SD card that is not bundled with an AVD, so it is useful for situations where you need to share a virtual SD card between multiple emulators.

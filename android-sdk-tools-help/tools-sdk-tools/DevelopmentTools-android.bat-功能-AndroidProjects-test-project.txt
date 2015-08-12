@@ -1,0 +1,51 @@
+http://developer.android.com/intl/zh-cn/tools/help/android.html
+
+Create and update Android projects
+
+Project actions and options
+android [global options] action [action options]
+
+Global Options
+
+-s
+Silent mode: only errors are printed out
+
+-h
+Usage help
+
+-v
+Verbose mode: errors, warnings and informational messages are printed.
+
+--------------------------------------
+create test-project
+--------------------------------------
+-n <name>
+The name of the project
+
+-p <path>
+Location path of the project
+
+-m <main>
+The name of the project
+
+--------------------------------------
+update test-project
+--------------------------------------
+-p <path>
+Location path of the project to test, relative to the new project
+
+-m <main>
+The main class of the project to test
+
+
+--------------------------------------
+create uitest-project
+--------------------------------------
+-n <name>
+The name of the UI test project
+
+-t <name>
+Target ID of the UI test project
+
+-p <path>
+Location path of the UI test project

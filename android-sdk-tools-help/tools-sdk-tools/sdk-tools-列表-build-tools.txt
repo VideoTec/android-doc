@@ -1,7 +1,11 @@
-android sdk build tools 列表：
+E:\android-sdk-windows\build-tools\22.0.1
+
+lib\
+renderscript\
 
 aapt.exe
 aidl.exe
+bcc_compat.exe
 dexdump.exe
 llvm-rs-cc.exe
 split-select.exe

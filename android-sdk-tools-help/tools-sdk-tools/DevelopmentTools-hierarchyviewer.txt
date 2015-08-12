@@ -1,0 +1,34 @@
+http://developer.android.com/intl/zh-cn/tools/help/hierarchy-viewer.html
+
+E:\android-sdk-windows\tools\hierarchyviewer.bat
+
+hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki]
+n.[计]分层，层次；等级制度；统治集团；天使的级别或等级
+
+Hierarchy Viewer (hierarchyviewer)
+
+Provides a visual representation of the layout's View hierarchy 
+with performance information for each node in the layout, 
+and a magnified view of the display to closely examine the pixels in your layout.
+
+The Hierarchy Viewer allows you to debug and optimize your user interface. 
+It provides a visual representation of the layout's View hierarchy (the Layout View) and 
+a magnified inspector of the display (the Pixel Perfect View).
+
+To start the Hierarchy Viewer, do one of the following:
+
+1）
+打开方法 eclipse Windows | Open Perspective | Others | Hierarchy View
+
+[2015-08-12 19:49:45 - hierarchyviewer]Missing forwarded port for 01157df1546a960a
+[2015-08-12 19:49:45 - hierarchyviewer]Unable to get view server version from device 01157df1546a960a
+[2015-08-12 19:49:45 - hierarchyviewer]Missing forwarded port for 01157df1546a960a
+[2015-08-12 19:49:45 - hierarchyviewer]Unable to get view server protocol version from device 01157df1546a960a
+[2015-08-12 19:49:45 - ViewServerDevice]Unable to debug device: samsung-sm_g9208-01157df1546a960a
+
+
+From Android Studio, choose Tools > Android Device Monitor or click the Android Device Monitor icon . 
+Click the Open Perspectives icon  and select Hierarchy View.
+
+2）The command line version of Hierarchy Viewer has been deprecated.
+From the SDK tools/ directory, enter: monitor

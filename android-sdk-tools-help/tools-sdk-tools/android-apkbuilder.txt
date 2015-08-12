@@ -7,7 +7,7 @@
 6. 创建密匙
 7. 签名apk
 其中，1、2、3、4都可以顺利完成，第5步，生成apk的时候，
-通常使用的是apkbuilder.bat工具，该工具在3.0以后被废止了，新版本ADT如何打包apk，在网上还没有找到方法
+通常使用的是 apkbuilder.bat 工具，该工具在3.0以后被废止了，新版本ADT如何打包apk，在网上还没有找到方法
 
 The apkbuilder command line tool is deprecated, and is not maintained anymore.
 It is lacking recent build improvements such as support for Library Projects.

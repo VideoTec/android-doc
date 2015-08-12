@@ -1,8 +1,0 @@
-SDK Tools Only
-
-If you prefer to use a different IDE or run the tools from the command line or with build scripts, 
-you can instead download the stand-alone Android SDK Tools. 
-These packages provide the basic SDK tools for app development, without an IDE.
-
-总结： Android SDK Tools 是独立于开发环境的
-

@@ -1,0 +1,23 @@
+http://developer.android.com/intl/zh-cn/tools/help/android.html
+
+android is an important development tool that lets you:
+
+1）Create, delete, and view Android Virtual Devices (AVDs). 
+See Managing AVDs from the Command Line.
+
+2）Create and update Android projects. 
+See Managing Projects from the Command Line.
+
+3）Update your Android SDK with new platforms, add-ons, and documentation.
+See SDK Manager.
+
+If you are using Android Studio or Eclipse, 
+the android tool's features are integrated into the IDE, 
+so you should not need to use this tool directly.
+
+Note: 
+The documentation of options below is not exhaustive and may be out of date. 
+For the most current list of options, execute android --help.
+
+Syntax
+android [global options] action [action options]

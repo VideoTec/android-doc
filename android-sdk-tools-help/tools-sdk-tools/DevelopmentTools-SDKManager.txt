@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/tools/help/sdk-manager.html
+
+The Android SDK Manager separates the 
+SDK tools, 
+platforms, and 
+other components into packages for easy access and management. 
+
+You can also customize which sites 
+the SDK Manager checks for new or updated SDK packages and add-on tools. 
+
+For example, you can configure the SDK Manager to 
+automatically check for updates and notify you 
+when an installed SDK Tools package is updated. 
+
+When you receive such a notification, y
+ou can then quickly decide whether to download the changes.

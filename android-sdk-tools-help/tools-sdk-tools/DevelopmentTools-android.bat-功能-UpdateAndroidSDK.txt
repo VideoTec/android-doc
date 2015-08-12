@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/tools/help/android.html
+
+Update actions
+
+update adb
+Updates adb to support the USB devices declared in the SDK add-ons.
+
+update sdk
+Updates the SDK by suggesting new platforms to install if available.

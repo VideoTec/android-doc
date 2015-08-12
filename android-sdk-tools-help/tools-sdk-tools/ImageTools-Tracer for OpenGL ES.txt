@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/tools/help/gltracer.html
+
+E:\android-sdk-windows\tools\traceview.bat
+
+Tracer is a tool for analyzing OpenGL for Embedded Systems (ES) code in your Android application. 
+The tool allows you to capture OpenGL ES commands and frame by frame images to 
+help you understand how your graphics commands are being executed.

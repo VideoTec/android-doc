@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/tools/help/index.html#tools-platform
+
+Tools Help
+
+The Android SDK includes a variety of tools 
+that help you develop mobile applications for the Android platform. 
+
+The tools are classified into two groups: 
+SDK tools and 
+platform tools. 
+
+1)
+SDK tools are platform independent and are required no matter 
+which Android platform you are developing on. 
+
+2)
+Platform tools are customized to support the features of the latest Android platform.
