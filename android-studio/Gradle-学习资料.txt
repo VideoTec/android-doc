@@ -1,0 +1,2 @@
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/
+Gradle Plugin User Guide 中文版

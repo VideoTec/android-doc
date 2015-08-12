@@ -1,0 +1,11 @@
+dex选项
+
+android {
+    dexOptions {
+        incremental false
+        preDexLibraries = false
+        jumboMode = false
+    }
+}
+
+这将影响所有使用dex的task。

@@ -26,3 +26,14 @@ Gradle会根据settings.gradle 文件来判断有哪些子项目被include到了
 include 'core', 'enterprise-beans', 'cis-war', 'admin-war', 'jaxb', 'ear'
 
 我们将需要加入到项目构建中的子项目配置在 settings.gradle 文件中，而没有加入不需要的config子目录。
+
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/multi_project_setup.html
+在根目录下有一个setting.gradle文件用于声明所有项目
+
+setting.gradle的内容非常简单：
+include ':app', ':libraries:lib1', ':libraries:lib2'
+
+:app项目可能依赖于这些库，这是通过以下依赖配置声明的：
+dependencies {
+    compile project(':libraries:lib1')
+}

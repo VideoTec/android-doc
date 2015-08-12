@@ -15,6 +15,17 @@ buildscript {
 使用一个非Gradle官方提供的插件时，就需要在构建脚本里指定其依赖，
 当然还需要指定该插件的Repository
 
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/031_simple_build_files.html
+
+在这个例子中，他
+1）申明了使用Maven中央库，并且
+2）申明了一个Maven构件的依赖classpath。
+这个构件声明了Gradle的Android插件版本为0.11.1.
+
+注意：
+这里的配置只影响了构建过程的代码，而不是整个工程的代码.
+工程本身需要声明它自己的仓库和依赖.这个后面会提到.
+
 http://stackoverflow.com/questions/25137263/what-is-included-in-jcenter-repository-in-gradle
 jcenter() is similar to mavenCentral(). 
 Have a look at https://bintray.com/bintray/jcenter for more details. 

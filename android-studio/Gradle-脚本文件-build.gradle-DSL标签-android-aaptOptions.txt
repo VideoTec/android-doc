@@ -1,0 +1,10 @@
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/aapt_options.html
+
+android {
+    aaptOptions {
+        noCompress 'foo', 'bar'
+        ignoreAssetsPattern "!.svn:!.git:!.ds_store:!*.scc:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+}
+
+这将影响所有使用 aapt 的 task 。

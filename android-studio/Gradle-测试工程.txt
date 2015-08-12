@@ -1,0 +1,1 @@
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/testing.html

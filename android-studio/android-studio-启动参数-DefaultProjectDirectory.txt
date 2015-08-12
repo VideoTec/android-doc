@@ -1,0 +1,20 @@
+http://stackoverflow.com/questions/17800615/android-studio-default-project-directory
+
+At some point I too tried to do this, but the Android Studio doesn’t work quite like Eclipse does.
+
+It's simpler: if you create a project at, say /home/USER/Projects/AndroidStudio/MyApplication from there on all new projects will default to /home/USER/Projects/AndroidStudio.
+
+You can also edit ~/.AndroidStudioPreview/config/options/ide.general.xml (in linux) and change the line that reads
+ 
+<option name="lastProjectLocation" value="$USER_HOME$/AndroidStudioProjects" /> to 
+<option name="lastProjectLocation" value="$USER_HOME$/Projects/AndroidStudio" />, 
+
+but be aware that as soon as you create a project anywhere else this will change to that place and all new projects will default to it.
+
+Hope this helps, but the truth is there really isn't much more to it other than what I explained here.
+
+Let me know if you need anything else.
+
+http://stackoverflow.com/questions/27646010/android-studio-automatic-project-load
+The location of Reopen last project on startup was moved to 
+Settings => Appearance & Behavior => System Settings with new Android Studio, just uncheck it!

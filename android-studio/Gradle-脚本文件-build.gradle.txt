@@ -50,3 +50,10 @@ subprojects {
 configure(subprojects.findAll {it.name.contains('war')}) {
     apply plugin: 'war'
 }
+
+-------------------------------------
+http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/031_simple_build_files.html
+-------------------------------------
+解释 build.gradle 文件
+
+buildscript { ... } 配置了驱动构建的代码.
