@@ -1,0 +1,42 @@
+﻿Global Gradle settings:
+
+-----------------------------
+Offline Work
+Service directory path
+-----------------------------
+禁止下载 gradle 的方法：
+Global Gradle setting里的Offline work勾选上
+http://stackoverflow.com/questions/18158034/how-to-setup-android-studio-to-work-completely-offline
+
+Ok guys finally I overcome to this problem here is the solution.
+
+1: Download the gradle-1.6-bin.zip for offline use.
+   怎么查看 gradle-wrapper.jar 的版本号？
+2: Now paste it in the C:\Users\username\.gradle directory.
+
+https://www.jetbrains.com/idea/help/working-in-offline-mode.html
+Working in Offline Mode
+
+On each launch, Maven visits the remote repositories and checks for updates. Executing a Maven command can result in downloading new archives and changing Maven itself. When you switch to offline mode, Maven has to use those resources that are available locally, and report about the problems, if something is missing.
+
+The offline mode is helpful, when you need to work offline, or when your network connection is slow.
+
+http://blog.csdn.net/xushuaic/article/details/26097663#t11
+构建工程时遇到的问题
+
+http://stormzhang.com/devtools/2014/12/18/android-studio-tutorial4/
+在Android Studio系列教程一–
+下载与安装中新建项目成功后会下载Gradle，
+貌似这个过程不翻墙也是可以下载，但是访问特别慢，建议翻墙下载。
+那么下载的Gradle到什么地方呢？
+
+1）Mac上会默认下载到 **/Users/<用户名>/.gradle/wrapper/dists** 目录
+2）Win平台会默认下载到 C:\Documents and Settings<用户名>.gradle\wrapper\dists 目录
+
+---------------------------------------
+experimental[英][ɪkˌsperɪˈmentl] [美][ɪkˌspɛrəˈmɛntl] 试验性的东西
+Experimental
+---------------------------------------
+
+Allow Module selection on Project import
+Skip source generation on Gradle sync if a Project has more than xxx Modules

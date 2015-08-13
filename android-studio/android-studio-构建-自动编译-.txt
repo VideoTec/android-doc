@@ -1,0 +1,11 @@
+https://code.google.com/p/android/issues/detail?id=57831&thanks=57831&ts=1374268538
+
+停止启动时的，自动构建（initial build）
+
+I'd like to request what seems to be a missing feature on Android Studio: 
+the ability to disable/enable initial build upon opening a project. 
+For a large project, this can add quite a bit of time to the startup process. Thanks!
+
+Instead of a full compile on startup, we will be doing just code generation (e.g. R.java.) 
+This is to ensure that Studio has all the source code it needs for editing. 
+This step should be fast, since there is no dexing

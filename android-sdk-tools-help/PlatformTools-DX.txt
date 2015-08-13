@@ -1,0 +1,79 @@
+D:\android-sdk-windows\build-tools\22.0.1\dx.bat
+
+http://wing-linux.sourceforge.net/guide/developing/tools/othertools.html#dx
+http://darutk-oboegaki.blogspot.com/2011/03/usage-of-dx-dex-dx-dex.html
+Usage of dx --dex
+
+http://stackoverflow.com/questions/4163167/convert-class-file-to-dex-file
+
+dx --dex --output=<output-file> <input-file>
+
+http://stackoverflow.com/questions/8487268/android-dx-tool
+What is dx tool?
+The dx tool converts Java class files into a .dex (Dalvik Executable) file
+
+Where is it?
+The dx.jar was original located under android-sdk/platforms/android-X/tools/lib/ before (especially in android-3 and android-4), and moved to android-sdk/platform-tools/lib/ later.
+
+How does it fit in Android?
+The Java source files are converted to Java class files by the Java compiler.
+The dx tool converts Java class files into a .dex (Dalvik Executable) file. All class files of the application are placed in this .dex file. During this conversion process redundant information in the class files are optimized in the .dex file.
+
+http://developer.android.com/intl/zh-cn/tools/building/index.html
+The apk file for each app contains all of the information necessary 
+to run your application on a device or emulator, 
+such as 
+1）compiled .dex files (.class files converted to Dalvik byte code), 
+2）a binary version of the AndroidManifest.xml file, 
+3）compiled resources (resources.arsc) and 
+4）uncompiled resource files for your application
+
+http://baike.baidu.com/item/DEX
+
+Android平台上可执行文件的类型 - dx 文件
+对于Android DEX文件进行优化，
+需要注意的一点是DEX文件的结构是紧凑的，
+但是我们还是要想方设法的进行提高程序的运行速度，
+我们就仍然需要对DEX文件进行进一步优化。
+
+调整所有字段的字节序（LITTLE_ENDIAN）和对齐结构中的每一个域 验证DEX文件中的所有类 对一些特定的类进行优化，
+对方法里的操作码进行优化 。
+优化后的文件大小会有所增加，应该是原Android DEX文件的1-4倍。
+
+优化发生的时机有两个：
+
+1）对于预置应用，可以在系统编译后，生成优化文件，以ODEX结尾。
+这样在发布时除APK文件（不包含DEX）以外，
+还有一个相应的Android DEX文件；
+
+2）对于非预置应用，包含在APK文件里的DEX文件会在运行时被优化，优化后的文件将被保存在缓存中。
+
+每一个Android应用都运行在一个Dalvik虚拟机实例里，
+而每一个虚拟机实例都是一个独立的进程空间。
+
+虚拟机的线程机制，内存分配和管理，Mutex等等都是依赖底层操作系统而实现的。
+
+所有Android应用的线程都对应一个Linux线程，
+虚拟机因而可以更多的依赖操作系统的线程调度和管理机制。
+
+不同的应用在不同的进程空间里运行，
+加之对不同来源的应用都使用不同的Linux用户来运行，
+可以最大程度的保护应用的安全和独立运行。
+
+Zygote是一个虚拟机进程，
+同时也是一个虚拟机实例的孵化器，
+每当系统要求执行一个 Android应用程序，
+Zygote就会FORK出一个子进程来执行该应用程序。
+
+这样做的好处显而易见：
+Zygote进程是在系统启动时产生的，
+它会完成虚拟机的初始化，库的加载，
+预置类库的加载和初始化等等操作，而在系统需要一个新的虚拟机实例时。
+
+Zygote通过复制自身，最快速的提供个系统。
+另外，对于一些只读的系统库，所有虚拟机实例都和Zygote共享一块内存区域，大大节省了内存开销。
+Android应用开发和Dalvik虚拟机Android应用所使用的编程语言是Java语言，
+和Java SE一样，编译时使用Sun JDK将Java源程序编程（应该是：编译吧？）成标准的Java字节码文件（.class文件）。
+而后通过工具软件DX把所有的字节码文件转成Android DEX文件（classes.dex）。
+最后使用Android打包工具（aapt）将DEX文件，资源文件以及AndroidManifest.xml文件（二进制格式）组合成一个应用程序包（APK）。
+应用程序包可以被发布到手机上运行
