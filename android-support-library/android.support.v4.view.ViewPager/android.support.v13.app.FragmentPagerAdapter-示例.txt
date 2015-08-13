@@ -1,0 +1,33 @@
+    private class MyHelpFragmentAdapter extends FragmentPagerAdapter {
+
+        public MyHelpFragmentAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int arg0) {
+            android.support.v4.app.Fragment result = null;
+            if (arg0 == 0) {
+                if (mFriendHelpFragment == null) {
+                    mFriendHelpFragment = new AllHelpFragment();
+                    mHashMap.put("allhelp_fragment", mFriendHelpFragment);
+                }
+                if (index == 0) {
+                    mFriendHelpFragment.simulateRefresh();
+                }
+                result = mFriendHelpFragment;
+            } else if (arg0 == 1) {
+                if (mSelectedHelpFragment == null) {
+                    mSelectedHelpFragment = new SelectedHelpFragment();
+                    mHashMap.put("select_fragment", mSelectedHelpFragment);
+                }
+                result = mSelectedHelpFragment;
+            }
+            return result;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    }

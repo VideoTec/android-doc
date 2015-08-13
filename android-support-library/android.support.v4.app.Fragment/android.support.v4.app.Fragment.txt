@@ -1,0 +1,36 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/app/Fragment.html
+
+java.lang.Object
+   ↳	android.support.v4.app.Fragment
+
+------------------------------------
+Known Direct Subclasses
+------------------------------------
+BrowseSupportFragment, 
+DetailsSupportFragment, 
+DialogFragment, 
+ErrorSupportFragment, 
+HeadersSupportFragment, 
+ListFragment, 
+MediaRouteDiscoveryFragment, 
+RowsSupportFragment, 
+SearchSupportFragment, 
+VerticalGridSupportFragment
+
+------------------------------------
+Known Indirect Subclasses
+------------------------------------
+MediaRouteChooserDialogFragment, 
+MediaRouteControllerDialogFragment, 
+PlaybackOverlaySupportFragment
+
+------------------------------------
+Class Overview
+------------------------------------
+
+Static library support version of the framework's Fragment. Used to write apps that run on platforms prior to Android 3.0. When running on Android 3.0 or above, this implementation is still used; it does not try to switch to the framework's implementation. See the framework Fragment documentation for a class overview.
+
+The main differences when using this support version instead of the framework version are:
+
+1）Your activity must extend FragmentActivity
+2）You must call getSupportFragmentManager() to get the FragmentManager

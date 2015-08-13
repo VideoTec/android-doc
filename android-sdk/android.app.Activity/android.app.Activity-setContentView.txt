@@ -14,7 +14,7 @@ Added in API level 1
 Set the activity content to an explicit view. This view is placed directly into the activity's view hierarchy. It can itself be a complex view hierarchy. When calling this method, the layout parameters of the specified view are ignored. Both the width and the height of the view are set by default to MATCH_PARENT. To use your own layout parameters, invoke setContentView(android.view.View, android.view.ViewGroup.LayoutParams) instead.
 
 Parameters
-view	The desired content to display.
+view    The desired content to display.
 
 
 -----------------------------------------------
@@ -25,11 +25,44 @@ Added in API level 1
 Set the activity content from a layout resource. The resource will be inflated, adding all top-level views to the activity.
 
 Parameters
-layoutResID	Resource ID to be inflated.
+layoutResID    Resource ID to be inflated.
 
 示例：
-setContentView(R.layout.activity_video_record);
 
+第一：
+一般在 Activity.onCreate 时，设置 layout。
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.beside_help_main_layout);
+    }
+
+第二：
+子类, 重写，这个方法
+// 将子布局填充到父布局中
+    @Override
+    public void setContentView(int layoutResId) {
+        super.setContentView(R.layout.beside_activity_base);
+        getLayoutInflater().inflate(layoutResId, (ViewGroup) findViewById(R.id.beside_linearlayout_base)); // 将子布局填充到父布局中
+        mTitleBarView = findViewById(R.id.beside_layout_widget_title_bar);
+        mTitleRightView = (LinearLayout) mTitleBarView.findViewById(R.id.beside_view_title_right_id);
+        mTitleRightItemView = (ImageView) mTitleBarView.findViewById(R.id.beside_view_title_right_item_id);
+        mTitleBarView.setVisibility(mIsNoTitle ? View.GONE : View.VISIBLE);
+        mSharedPreferences = getSharedPreferences(Account.BESIDE_PERFERENCE, MODE_PRIVATE);
+        mIsFirstUsed = mSharedPreferences.getBoolean(FIRST_TIME_USE, true);
+        if (!mIsNoTitle) {
+            mTitleTextView = (TextView) findViewById(R.id.beside_textview_title);
+            mTitleTextLayout = (RelativeLayout) findViewById(R.id.beside_linearlayout_middle);
+            mTitleViewLeft = findViewById(R.id.beside_linearlayout_left);
+            mTitleViewLeft.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onTitleBackPressed();
+                }
+            });
+            mTitleViewLeft.setVisibility(View.VISIBLE);
+        }
+    }
 
 -----------------------------------------------
 public void setContentView (View view, ViewGroup.LayoutParams params)
@@ -39,5 +72,5 @@ Added in API level 1
 Set the activity content to an explicit view. This view is placed directly into the activity's view hierarchy. It can itself be a complex view hierarchy.
 
 Parameters
-view	The desired content to display.
-params	Layout parameters for the view.
+view    The desired content to display.
+params    Layout parameters for the view.

@@ -1,0 +1,21 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v13/app/FragmentPagerAdapter.html
+
+java.lang.Object
+   ↳	android.support.v4.view.PagerAdapter
+ 	   ↳	android.support.v13.app.FragmentPagerAdapter
+
+Class Overview
+
+persistently[英][pə'sɪstəntlɪ] [美][pɚˈsɪstəntlɪ]
+adv.坚持地；固执地；一个劲儿
+
+hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki]
+n.[计]分层，层次；等级制度；统治集团；天使的级别或等级
+
+Implementation of PagerAdapter that represents each page as a Fragment that is persistently kept in the fragment manager as long as the user can return to the page.
+
+This version of the pager is best for use when there are a handful of typically more static fragments to be paged through, such as a set of tabs. The fragment of each page the user visits will be kept in memory, though its view hierarchy may be destroyed when not visible. This can result in using a significant amount of memory since fragment instances can hold on to an arbitrary amount of state. For larger sets of pages, consider FragmentStatePagerAdapter.
+
+When using FragmentPagerAdapter the host ViewPager must have a valid ID set.
+
+Subclasses only need to implement getItem(int) and getCount() to have a working adapter.

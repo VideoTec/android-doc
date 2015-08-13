@@ -1,0 +1,90 @@
+-------------------------------------------------------
+android:fragmentAllowEnterTransitionOverlap
+-------------------------------------------------------
+
+Sets whether the enter and exit transitions should overlap when transitioning forward. Corresponds to setAllowEnterTransitionOverlap(boolean)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentAllowEnterTransitionOverlap.
+
+Related Methods
+setAllowEnterTransitionOverlap(boolean)
+
+-------------------------------------------------------
+android:fragmentAllowReturnTransitionOverlap
+-------------------------------------------------------
+
+Sets whether the enter and exit transitions should overlap when transitioning because of popping the back stack. Corresponds to setAllowReturnTransitionOverlap(boolean)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentAllowReturnTransitionOverlap.
+
+Related Methods
+setAllowReturnTransitionOverlap(boolean)
+
+-------------------------------------------------------
+android:fragmentEnterTransition
+-------------------------------------------------------
+
+The Transition that will be used to move Views into the initial scene. Corresponds to setEnterTransition(android.transition.Transition)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentEnterTransition.
+
+Related Methods
+setEnterTransition(Transition)
+
+-------------------------------------------------------
+android:fragmentExitTransition
+-------------------------------------------------------
+
+The Transition that will be used to move Views out of the scene when the fragment is removed, hidden, or detached when not popping the back stack. Corresponds to setExitTransition(android.transition.Transition)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentExitTransition.
+
+Related Methods
+setReturnTransition(Transition)
+
+-------------------------------------------------------
+android:fragmentReenterTransition
+-------------------------------------------------------
+
+The Transition that will be used to move Views in to the scene when returning due to popping a back stack. Corresponds to setReenterTransition(android.transition.Transition)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentReenterTransition.
+
+Related Methods
+setReenterTransition(Transition)
+
+-------------------------------------------------------
+android:fragmentSharedElementEnterTransition
+-------------------------------------------------------
+
+The Transition that will be used for shared elements transferred into the content Scene. Corresponds to setSharedElementEnterTransition(android.transition.Transition)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentSharedElementEnterTransition.
+
+Related Methods
+setSharedElementEnterTransition(Transition)
+
+-------------------------------------------------------
+android:fragmentSharedElementReturnTransition
+-------------------------------------------------------
+
+The Transition that will be used for shared elements transferred back during a pop of the back stack. This Transition acts in the leaving Fragment. Corresponds to setSharedElementReturnTransition(android.transition.Transition)
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol fragmentSharedElementReturnTransition.
+
+Related Methods
+setSharedElementReturnTransition(Transition)

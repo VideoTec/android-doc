@@ -1,0 +1,19 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/view/ViewPager.html
+
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.support.v4.view.ViewPager
+
+Class Overview
+
+Layout manager that allows the user to flip left and right through pages of data. You supply an implementation of a PagerAdapter to generate the pages that the view shows.
+
+Note this class is currently under early design and development. The API will likely change in later updates of the compatibility library, requiring changes to the source code of apps when they are compiled against the newer version.
+
+ViewPager is most often used in conjunction with Fragment, which is a convenient way to supply and manage the lifecycle of each page. There are standard adapters implemented for using fragments with the ViewPager, which cover the most common use cases. These are FragmentPagerAdapter and FragmentStatePagerAdapter; each of these classes have simple code showing how to build a full user interface with them.
+
+For more information about how to use ViewPager, read Creating Swipe Views with Tabs.
+
+Below is a more complicated example of ViewPager, using it in conjunction with ActionBar tabs. You can find other examples of using ViewPager in the API 4+ Support Demos and API 13+ Support Demos sample code.

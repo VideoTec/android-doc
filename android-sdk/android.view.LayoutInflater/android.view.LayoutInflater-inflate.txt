@@ -5,7 +5,8 @@ vt.& vi.使充气（于轮胎、气球等）；（使）膨胀；（使）通货
 public View inflate (int resource, ViewGroup root)
 
 Added in API level 1
-Inflate a new view hierarchy from the specified xml resource. Throws InflateException if there is an error.
+Inflate a new view hierarchy from the specified xml resource. 
+Throws InflateException if there is an error.
 
 Parameters
 resource
@@ -13,6 +14,15 @@ ID for an XML layout resource to load (e.g., R.layout.main_page)
 
 root
 Optional view to be the parent of the generated hierarchy.
+
+17:38 2015/8/13
+新生成的 View 会添加到 root 中。（ViewGroup.addView）
+见源码：LayoutInflate.java
+                    // We are supposed to attach all the views we found (int temp)
+                    // to root. Do that now.
+                    if (root != null && attachToRoot) {
+                        root.addView(temp, params);
+                    }
 
 Returns
 The root View of the inflated hierarchy. If root was supplied, this is the root View; otherwise it is the root of the inflated XML file.

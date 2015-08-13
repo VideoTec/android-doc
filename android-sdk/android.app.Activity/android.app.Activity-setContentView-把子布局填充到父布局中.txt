@@ -1,0 +1,24 @@
+public void setContentView (int layoutResID)
+
+    public void setContentView(int layoutResId) {
+        super.setContentView(R.layout.beside_activity_base);
+        getLayoutInflater().inflate(layoutResId, (ViewGroup) findViewById(R.id.beside_linearlayout_base)); // 将子布局填充到父布局中
+        mTitleBarView = findViewById(R.id.beside_layout_widget_title_bar);
+        mTitleRightView = (LinearLayout) mTitleBarView.findViewById(R.id.beside_view_title_right_id);
+        mTitleRightItemView = (ImageView) mTitleBarView.findViewById(R.id.beside_view_title_right_item_id);
+        mTitleBarView.setVisibility(mIsNoTitle ? View.GONE : View.VISIBLE);
+        mSharedPreferences = getSharedPreferences(Account.BESIDE_PERFERENCE, MODE_PRIVATE);
+        mIsFirstUsed = mSharedPreferences.getBoolean(FIRST_TIME_USE, true);
+        if (!mIsNoTitle) {
+            mTitleTextView = (TextView) findViewById(R.id.beside_textview_title);
+            mTitleTextLayout = (RelativeLayout) findViewById(R.id.beside_linearlayout_middle);
+            mTitleViewLeft = findViewById(R.id.beside_linearlayout_left);
+            mTitleViewLeft.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onTitleBackPressed();
+                }
+            });
+            mTitleViewLeft.setVisibility(View.VISIBLE);
+        }
+    }
