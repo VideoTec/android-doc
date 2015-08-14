@@ -1,3 +1,12 @@
+include ':app', ':mylibrary', ':3rdLibrary/gson'
+
+23:29 2015/8/14
+注意：模块名相对路径名
+':3rdLibrary/gson'
+
+注意：这个工程名称是相对路径 ':../gson' 也可以
+注意：<没有这个必要>必须是子目录，'../gson'，这种形式不行。<这个是不对的，错误的原因是 路径前没加冒号>
+
 http://www.infoq.com/cn/articles/Gradle-application-in-large-Java-projects
 
 在多模块的项目中，Gradle遵循惯例优于配置 （Convention Over Configuration）原则

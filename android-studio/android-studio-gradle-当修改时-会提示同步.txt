@@ -1,0 +1,2 @@
+Gradle files have changed since last project sync.
+A project sync may be necessary for the IDE to work properly.

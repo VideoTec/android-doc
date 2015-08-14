@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/19932793/syncing-android-studio-project-with-gradle-files
+
+Clicking the button 'Sync Project With Gradle Files' should do the trick:
+
+Tools -> Android -> Sync Project with Gradle Files
+
+If that fails, try running 'Rebuild project':
+
+Build -> Rebuild Project

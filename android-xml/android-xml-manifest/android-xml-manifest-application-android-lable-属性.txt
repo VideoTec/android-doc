@@ -1,0 +1,11 @@
+android:label
+
+A user-readable label for the application as a whole, and a default label for each of the application's components. 
+
+See the individual label attributes for 
+<activity>, <activity-alias>, <service>, <receiver>, and <provider> elements.
+
+The label should be set as a reference to a string resource, 
+so that it can be localized like other strings in the user interface. 
+However, as a convenience while you're developing the application, 
+it can also be set as a raw string.

@@ -1,0 +1,16 @@
+Loading components for 'workspace'
+Loading Modules
+Initial Moduels
+Scanning files to index
+Building symbols
+Process running
+Gradle Build:
+Gradle: Initialize build
+Gradle: Compile script into cache
+Gradle: Initialize build
+Gradle: Compile script into cache
+Gradle: Configure projects
+Gradle: Resolve dependencies 'classpath'
+Gradle: Configure project :app
+Gradle: Configure project :mylibrary
+Gradle: Configure project :gson
