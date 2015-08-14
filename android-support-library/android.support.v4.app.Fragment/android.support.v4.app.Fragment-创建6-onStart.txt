@@ -1,0 +1,6 @@
+public void onStart ()
+
+tied to 系于
+
+Called when the Fragment is visible to the user. 
+This is generally tied to Activity.onStart of the containing Activity's lifecycle.

@@ -1,0 +1,4 @@
+public void onAttach (Activity activity)
+
+Called when a fragment is first attached to its activity. 
+onCreate(Bundle) will be called after this.

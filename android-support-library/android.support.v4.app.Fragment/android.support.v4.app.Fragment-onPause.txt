@@ -1,0 +1,5 @@
+public void onPause ()
+
+Called when the Fragment is no longer resumed. 
+
+This is generally tied to Activity.onPause of the containing Activity's lifecycle.

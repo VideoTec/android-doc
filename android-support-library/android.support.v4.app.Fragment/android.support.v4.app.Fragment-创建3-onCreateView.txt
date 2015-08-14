@@ -1,0 +1,34 @@
+﻿public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt]
+1. 实例化
+
+Called to have the fragment instantiate its user interface view. 
+
+This is optional, and non-graphical fragments can return null 
+(which is the default implementation). 
+
+This will be called between 
+
+1）onCreate(Bundle) and 
+2）onActivityCreated(Bundle).
+
+If you return a View from here, 
+you will later be called in onDestroyView() when the view is being released.
+
+Parameters
+
+inflater
+The LayoutInflater object that can be used to inflate any views in the fragment,
+
+container
+If non-null, this is the parent view that the fragment's UI should be attached to. 
+The fragment should not add the view itself, 
+but this can be used to generate the LayoutParams of the view.
+
+savedInstanceState
+If non-null, 
+this fragment is being re-constructed from a previous saved state as given here.
+
+Returns
+Return the View for the fragment's UI, or null.

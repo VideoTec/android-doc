@@ -1,0 +1,20 @@
+public void onActivityCreated (Bundle savedInstanceState)
+
+Called 
+1）when the fragment's activity has been created and 
+2）when this fragment's view hierarchy instantiated. 
+
+It can be used to do final initialization once these pieces are in place, 
+such as retrieving views or restoring state. 
+
+It is also useful for fragments that use setRetainInstance(boolean) to retain their instance, 
+as this callback tells the fragment when it is fully associated with the new activity instance. 
+
+This is called 
+1）after onCreateView(LayoutInflater, ViewGroup, Bundle) and 
+2）before onViewStateRestored(Bundle).
+
+Parameters
+
+savedInstanceState
+If the fragment is being re-created from a previous saved state, this is the state.

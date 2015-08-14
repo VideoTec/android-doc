@@ -1,0 +1,5 @@
+public void onResume ()
+
+Called when the fragment is visible to the user and actively running. 
+
+This is generally tied to Activity.onResume of the containing Activity's lifecycle.

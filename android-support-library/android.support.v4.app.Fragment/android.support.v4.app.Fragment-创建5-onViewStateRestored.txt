@@ -1,0 +1,17 @@
+public void onViewStateRestored (Bundle savedInstanceState)
+
+Called when all saved state has been restored into the view hierarchy of the fragment. 
+
+This can be used to do initialization based on saved state 
+that you are letting the view hierarchy track itself, 
+such as whether check box widgets are currently checked. 
+
+This is called 
+
+1）after onActivityCreated(Bundle) and 
+2）before onStart().
+
+Parameters
+
+savedInstanceState
+If the fragment is being re-created from a previous saved state, this is the state.

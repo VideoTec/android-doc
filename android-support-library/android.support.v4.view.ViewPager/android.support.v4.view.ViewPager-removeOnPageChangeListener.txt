@@ -1,0 +1,6 @@
+public void removeOnPageChangeListener (ViewPager.OnPageChangeListener listener)
+
+Remove a listener that was previously added via addOnPageChangeListener(OnPageChangeListener).
+
+Parameters
+listener	listener to remove

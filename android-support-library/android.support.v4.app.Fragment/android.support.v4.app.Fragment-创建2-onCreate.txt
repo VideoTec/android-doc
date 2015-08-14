@@ -1,0 +1,14 @@
+public void onCreate (Bundle savedInstanceState)
+
+Called to do initial creation of a fragment. This is called 
+
+1）after onAttach(Activity) and 
+2）before onCreateView(LayoutInflater, ViewGroup, Bundle).
+
+Note that this can be called while the fragment's activity is still in the process of being created. As such, you can not rely on things like the activity's content view hierarchy being initialized at this point. If you want to do work once the activity itself is created, 
+see onActivityCreated(Bundle).
+
+Parameters
+
+savedInstanceState
+If the fragment is being re-created from a previous saved state, this is the state.

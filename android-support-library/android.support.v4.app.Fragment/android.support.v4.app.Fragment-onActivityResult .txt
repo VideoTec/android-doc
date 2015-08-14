@@ -1,0 +1,17 @@
+public void onActivityResult (int requestCode, int resultCode, Intent data)
+
+Receive the result from a previous call to startActivityForResult(Intent, int). 
+This follows the related Activity API as described there in onActivityResult(int, int, Intent).
+
+Parameters
+
+requestCode
+The integer request code originally supplied to startActivityForResult(), 
+allowing you to identify who this result came from.
+
+resultCode
+The integer result code returned by the child activity through its setResult().
+
+data
+An Intent, which can return result data to the caller 
+(various data can be attached to Intent "extras").

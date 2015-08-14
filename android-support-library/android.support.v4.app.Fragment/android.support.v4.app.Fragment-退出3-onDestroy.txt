@@ -1,0 +1,7 @@
+public void onDestroy ()
+
+Called when the fragment is no longer in use. 
+
+This is called 
+1）after onStop() and 
+2）before onDetach().
