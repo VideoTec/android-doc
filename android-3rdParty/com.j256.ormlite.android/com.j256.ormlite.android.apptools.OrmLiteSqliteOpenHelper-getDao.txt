@@ -1,0 +1,15 @@
+	/**
+	 * Get a DAO for our class. This uses the {@link DaoManager} to cache the DAO for future gets.
+	 * 
+	 * <p>
+	 * NOTE: This routing does not return Dao&lt;T, ID&gt; because of casting issues if we are assigning it to a custom DAO.
+	 * Grumble.
+	 * </p>
+	 */
+	public <D extends Dao<T, ?>, T> D getDao(Class<T> clazz) throws SQLException {
+		// special reflection fu is now handled internally by create dao calling the database type
+		Dao<T, ?> dao = DaoManager.createDao(getConnectionSource(), clazz);
+		@SuppressWarnings("unchecked")
+		D castDao = (D) dao;
+		return castDao;
+	}

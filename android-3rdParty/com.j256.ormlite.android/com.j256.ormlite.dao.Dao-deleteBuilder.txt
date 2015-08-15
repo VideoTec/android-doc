@@ -1,0 +1,7 @@
+deleteBuilder
+
+DeleteBuilder<T,ID> deleteBuilder()
+
+Like queryBuilder() but allows you to build an DELETE statement. 
+You can then call call DeleteBuilder.prepare() and 
+pass the returned PreparedDelete to delete(PreparedDelete).

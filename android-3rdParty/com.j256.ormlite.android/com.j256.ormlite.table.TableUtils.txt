@@ -1,0 +1,9 @@
+http://ormlite.com/javadoc/ormlite-core/com/j256/ormlite/table/TableUtils.html
+
+java.lang.Object
+  extended by com.j256.ormlite.table.TableUtils
+
+public class TableUtils
+extends Object
+
+Couple utility methods for the creating, dropping, and maintenance of tables.

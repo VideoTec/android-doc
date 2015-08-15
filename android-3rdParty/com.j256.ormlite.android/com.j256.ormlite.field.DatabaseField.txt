@@ -1,0 +1,24 @@
+http://ormlite.com/javadoc/ormlite-core/com/j256/ormlite/field/DatabaseField.html
+
+@Target(value=FIELD)
+@Retention(value=RUNTIME)
+public @interface DatabaseField
+
+Annotation that identifies a field in a class that corresponds to a column in the database and will be persisted. Fields that are not to be persisted such as transient or other temporary fields probably should be ignored. For example:
+
+ @DatabaseField(id = true)
+ private String name;
+ 
+ @DatabaseField(columnName = "passwd", canBeNull = false)
+ private String password;
+
+----------------------------------
+示例：
+----------------------------------
+public class HelpItemData extends BaseData implements Cloneable {
+	private static final long serialVersionUID = 1L;
+	private static final String TAG = HelpItemData.class.getSimpleName();
+	@DatabaseField()
+	public int type;// 数据类型
+	@DatabaseField()
+	public int belong;

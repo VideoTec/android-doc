@@ -1,0 +1,8 @@
+hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki]
+
+n.[计]分层，层次；等级制度；统治集团；天使的级别或等级
+
+http://blog.csdn.net/xyz_lmn/article/details/14222975
+Android UI 优化——使用HierarchyViewer工具
+
+http://www.techotopia.com/index.php/Understanding_Android_Views,_View_Groups_and_Layouts

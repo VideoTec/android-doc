@@ -1,0 +1,11 @@
+--------------------------------------------
+public View findViewById (int id)
+--------------------------------------------
+
+Added in API level 1
+
+Finds a view that was identified by the id attribute from the XML 
+that was processed in onCreate(Bundle).
+
+Returns
+The view if found or null otherwise.

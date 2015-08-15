@@ -1,5 +1,19 @@
 http://developer.android.com/reference/android/view/Window.html
 
-Abstract base class for a top-level window look and behavior policy. An instance of this class should be used as the top-level view added to the window manager. It provides standard UI policies such as a background, title area, default key processing, etc.
+policy[英][ˈpɒləsi] [美][ˈpɑ:ləsi]
+n.政策；策略；保险单；策略性
 
-The only existing implementation of this abstract class is android.policy.PhoneWindow, which you should instantiate when needing a Window. Eventually that class will be refactored and a factory method added for creating Window instances without knowing about a particular implementation.
+eventually[英][ɪˈventʃuəli] [美][ɪˈvɛntʃuəli]
+adv.终于，最后；竟；总归；终究
+
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt]
+1. 实例化
+
+java.lang.Object
+   ↳	android.view.Window
+
+Abstract base class for a top-level window look and behavior policy. An instance of this class should be used as the top-level view added to the window manager. 
+It provides standard UI policies such as a background, title area, default key processing, etc.
+
+The only existing implementation of this abstract class is android.policy.PhoneWindow, which you should instantiate when needing a Window. 
+Eventually that class will be refactored（重构） and a factory method added for creating Window instances without knowing about a particular implementation.

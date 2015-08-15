@@ -1,0 +1,46 @@
+Activity其实不是显示视图，View才是真正的显示视图
+
+http://www.cnblogs.com/loulijun/archive/2012/02/09/2344681.html
+
+Android系统中的所有UI类都是建立在View和ViewGroup这两个类的基础上的。
+所有View的子类成为”Widget”，
+所有ViewGroup的子类成为”Layout”。
+View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体”同等对待。
+ViewGroup作为布局容器类的最上层，布局容器里面又可以有View和ViewGroup。
+
+LayoutInflater是一个用来实例化XML布局文件为View对象的类
+LayoutInflater.infalte(R.layout.test,null)用来从指定的XML资源中填充一个新的View
+
+而当我们运行程序的时候，有一个setContentView()方法，
+Activity其实不是显示视图（直观上感觉是它），
+实际上Activity调用了PhoneWindow的setContentView()方法，
+然后加载视图，将视图放到这个Window上，而
+Activity其实构造的时候初始化的是Window（PhoneWindow），
+Activity其实是个控制单元，即可视的人机交互界面。
+
+打个比喻：
+
+1）Activity是一个工人，它来控制Window；
+2）Window是一面显示屏，用来显示信息；
+3）View就是要显示在显示屏上的信息，
+   这些View都是层层重叠在一起（通过infalte()和addView()）放到Window显示屏上的。
+4）而LayoutInfalter就是用来生成View的一个工具，XML布局文件就是用来生成View的原料
+
+--------------------------------------------------------------------------
+再来说说代码中具体的执行流程 《12:06 2015/8/15 下面的解释不要看了，太乱了》
+--------------------------------------------------------------------------
+
+setContentView(R.layout.main)其实就是下面内容。（注释掉本行执行下面的代码可以更直观）
+getWindow().setContentView(LayoutInflater.from(this).inflate(R.layout.main, null))
+
+即运行程序后，Activity会调用 PhoneWindow 的setContentView()来生成一个Window，而此时的
+setContentView就是那个最底层的View。
+然后通过LayoutInflater.infalte()方法加载布局生成View对象并通过 addView() 方法添加到Window上，
+（一层一层的叠加到Window上）
+
+Activity其实不是显示视图，View才是真正的显示视图
+
+注：
+一个Activity构造的时候只能初始化一个Window(PhoneWindow)，另外这个
+PhoneWindow有一个”ViewRoot”，这个”ViewRoot”是一个View活ViewGroup，是最初始的根视图，然后
+通过addView方法将View一个个层叠到ViewRoot上，这些层叠的View最终放在Window这个载体上面

@@ -1,0 +1,21 @@
+public abstract void setContentView (View view, ViewGroup.LayoutParams params)
+
+Added in API level 1
+
+hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki]
+n.[计]分层，层次；等级制度；统治集团；天使的级别或等
+
+Set the screen content to an explicit view. This view is placed directly into the screen's view hierarchy. It can itself be a complex view hierarchy.
+
+Note that calling this function "locks in" various characteristics of the window that can not, from this point forward, be changed: the features that have been requested with requestFeature(int), and certain window flags as described in setFlags(int, int).
+
+If FEATURE_CONTENT_TRANSITIONS is set, the window's TransitionManager will be used to animate content from the current content View to view.
+
+Parameters
+
+view	The desired content to display.
+params	Layout parameters for the view.
+
+See Also
+getTransitionManager()
+setTransitionManager(android.transition.TransitionManager)

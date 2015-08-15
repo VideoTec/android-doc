@@ -1,0 +1,5 @@
+	interface Tables {
+		String Notice = "notice";
+    }
+
+db.execSQL("DROP TABLE IF EXISTS " + Tables.Notice);

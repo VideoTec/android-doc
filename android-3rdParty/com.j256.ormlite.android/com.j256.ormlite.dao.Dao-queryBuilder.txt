@@ -1,0 +1,12 @@
+queryBuilder
+
+QueryBuilder<T,ID> queryBuilder()
+
+Create and return a new query builder object 
+which allows you to build a custom SELECT statement. 
+
+You call methods on the builder 
+to construct your statement and then call QueryBuilder.prepare() once you are ready to build. 
+
+This returns a PreparedQuery object 
+which gets passed to query(PreparedQuery) or iterator(PreparedQuery).

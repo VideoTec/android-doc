@@ -1,0 +1,9 @@
+delete
+
+public int delete()
+           throws SQLException
+
+A short cut to Dao.delete(PreparedDelete).
+
+Throws:
+SQLException

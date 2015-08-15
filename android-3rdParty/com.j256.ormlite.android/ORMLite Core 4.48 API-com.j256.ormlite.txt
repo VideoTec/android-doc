@@ -1,0 +1,14 @@
+http://ormlite.com/javadoc/ormlite-core/overview-summary.html
+
+This package provides the core functionality for 
+the lightweight Object Relational Mapping between Java classes and SQL databases.
+
+This package provides the core functionality for the lightweight Object Relational Mapping between Java classes and SQL databases. There are certainly some much more mature packages which provide this functionality, however, we wanted a simple wrapper around the JDBC functionality and other implementations are significantly more complicated. 
+
+The package supports natively a number of JDBC database types and also 
+has an package which uses direct Android database calls. 
+Contact the author if your database type is not supported.
+
+See the documentation for more information. 
+There is also a PDF version of the documentation. 
+The change log file shows the various features and bug fixes in each version.

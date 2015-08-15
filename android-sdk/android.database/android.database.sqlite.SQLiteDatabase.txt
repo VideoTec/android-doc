@@ -1,0 +1,31 @@
+http://developer.android.com/intl/zh-cn/reference/android/database/sqlite/SQLiteDatabase.html
+
+java.lang.Object
+   ↳	android.database.sqlite.SQLiteClosable
+ 	   ↳	android.database.sqlite.SQLiteDatabase
+
+Class Overview
+
+Exposes methods to manage a SQLite database.
+
+SQLiteDatabase has methods to 
+1）create, delete, execute SQL commands, and 
+2）perform other common database management tasks.
+
+See the Notepad sample application in the SDK for an example of creating and managing a database.
+
+Database names must be unique within an application, not across all applications.
+
+Localized Collation - ORDER BY
+
+collator[英][kɒ'leɪtə] [美][kɒ'leɪtə]
+n.校对者，整理者
+
+tailor[英][ˈteɪlə(r)] [美][ˈtelɚ]
+vt.调整使适应；为…裁制衣服；为…做衣服；剪裁，制作
+
+In addition to SQLite's default BINARY collator, 
+
+Android supplies two more, 
+1）LOCALIZED, which changes with the system's current locale, and 
+2）UNICODE, which is the Unicode Collation Algorithm and not tailored to the current locale.

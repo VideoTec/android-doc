@@ -1,0 +1,19 @@
+http://ormlite.com/javadoc/ormlite-core/com/j256/ormlite/stmt/QueryBuilder.html
+
+com.j256.ormlite.stmt 
+Class QueryBuilder<T,ID>
+
+java.lang.Object
+  extended by com.j256.ormlite.stmt.StatementBuilder<T,ID>
+      extended by com.j256.ormlite.stmt.QueryBuilder<T,ID>
+
+Type Parameters:
+T - The class that the code will be operating on.
+ID - The class of the ID column associated with the class. The T class does not require an ID field. The class needs an ID parameter however so you can use Void or Object to satisfy the compiler.
+
+public class QueryBuilder<T,ID>
+extends StatementBuilder<T,ID>
+
+Assists in building sql query (SELECT) statements for a particular table in a particular database.
+
+Here is a good tutorial of SQL commands.

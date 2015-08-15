@@ -1,0 +1,25 @@
+---------------------------------------------------------------------------
+public void addFooterView (View v)
+---------------------------------------------------------------------------
+
+Added in API level 1
+Add a fixed view to appear at the bottom of the list. If addFooterView is called more than once, the views will appear in the order they were added. Views added using this call can take focus if they want.
+
+Note: When first introduced, this method could only be called before setting the adapter with setAdapter(ListAdapter). Starting with KITKAT, this method may be called at any time. If the ListView's adapter does not extend HeaderViewListAdapter, it will be wrapped with a supporting instance of WrapperListAdapter.
+
+Parameters
+v	The view to add.
+
+---------------------------------------------------------------------------
+public void addFooterView (View v, Object data, boolean isSelectable)
+---------------------------------------------------------------------------
+
+Added in API level 1
+Add a fixed view to appear at the bottom of the list. If addFooterView is called more than once, the views will appear in the order they were added. Views added using this call can take focus if they want.
+
+Note: When first introduced, this method could only be called before setting the adapter with setAdapter(ListAdapter). Starting with KITKAT, this method may be called at any time. If the ListView's adapter does not extend HeaderViewListAdapter, it will be wrapped with a supporting instance of WrapperListAdapter.
+
+Parameters
+v	The view to add.
+data	Data to associate with this view
+isSelectable	true if the footer view can be selected

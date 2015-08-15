@@ -1,0 +1,6 @@
+where
+
+protected Where<T,ID> where
+
+返回一个
+com.j256.ormlite.stmt.Where

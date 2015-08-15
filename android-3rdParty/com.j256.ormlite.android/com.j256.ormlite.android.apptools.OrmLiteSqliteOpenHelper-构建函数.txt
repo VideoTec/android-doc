@@ -1,0 +1,38 @@
+import android.database.sqlite.SQLiteOpenHelper;
+
+/**
+ * SQLite database open helper which can be extended by your application to help manage when the application needs to
+ * create or upgrade its database.
+ * 
+ * @author kevingalligan, graywatson
+ */
+public abstract class OrmLiteSqliteOpenHelper extends SQLiteOpenHelper {
+	/**
+	 * @param context
+	 *            Associated content from the application. This is needed to locate the database.
+	 * @param databaseName
+	 *            Name of the database we are opening.
+	 * @param factory
+	 *            Cursor factory or null if none.
+	 * @param databaseVersion
+	 *            Version of the database we are opening. This causes {@link #onUpgrade(SQLiteDatabase, int, int)} to be
+	 *            called if the stored database is a different version.
+	 */
+	public OrmLiteSqliteOpenHelper(Context context, String databaseName, CursorFactory factory, int databaseVersion) {
+		super(context, databaseName, factory, databaseVersion);
+		logger.trace("{}: constructed connectionSource {}", this, connectionSource);
+	}
+}
+
+示例：
+
+private static final String DATABASE_NAME = "beside.db";
+private static final int DATABASE_VERSION = 27;
+
+public class BesideDatabase extends OrmLiteSqliteOpenHelper {
+
+	public BesideDatabase(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	}
+
+}

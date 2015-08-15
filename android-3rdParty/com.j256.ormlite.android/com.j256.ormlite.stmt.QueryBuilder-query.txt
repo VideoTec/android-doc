@@ -1,0 +1,8 @@
+query
+
+public List<T> query()
+              throws SQLException
+A short cut to Dao.query(PreparedQuery).
+
+Throws:
+SQLException

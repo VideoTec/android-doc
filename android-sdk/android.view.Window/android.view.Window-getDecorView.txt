@@ -1,0 +1,31 @@
+public abstract View getDecorView ()
+
+Added in API level 1
+Retrieve the top-level window decor view (containing the standard window frame/decorations and the client's content inside of that), which can be added as a window to the window manager.
+
+Note that calling this function for the first time "locks in" various window characteristics as described in setContentView(View, android.view.ViewGroup.LayoutParams).
+
+Returns
+Returns the top-level window decor view.
+
+-------------------------------------------------
+源码
+-------------------------------------------------
+decor[英][ˈdeɪkɔ:(r)] [美][deɪˈkɔ:r]
+n.布置，装饰；布景；装饰风格
+
+decoration[英][ˌdekəˈreɪʃn] [美][ˌdɛkəˈreʃən]
+n.装饰，装潢；装饰品；装饰图案，装饰风格；奖章
+
+    /**
+     * Retrieve the top-level window decor view (containing the standard
+     * window frame/decorations and the client's content inside of that), which
+     * can be added as a window to the window manager.
+     *
+     * <p><em>Note that calling this function for the first time "locks in"
+     * various window characteristics as described in
+     * {@link #setContentView(View, android.view.ViewGroup.LayoutParams)}.</em></p>
+     *
+     * @return Returns the top-level window decor view.
+     */
+    public abstract View getDecorView();

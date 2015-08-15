@@ -1,0 +1,36 @@
+http://developer.android.com/intl/zh-cn/reference/android/database/sqlite/SQLiteOpenHelper.html
+
+java.lang.Object
+   ↳	android.database.sqlite.SQLiteOpenHelper
+
+Class Overview
+A helper class to manage database creation and version management.
+
+You create a subclass implementing 
+onCreate(SQLiteDatabase), 
+onUpgrade(SQLiteDatabase, int, int) and optionally 
+onOpen(SQLiteDatabase), 
+
+and this class takes care of 
+1）opening the database if it exists, 
+2）creating it if it does not, and 
+3）upgrading it as necessary. 
+
+transaction[英][trænˈzækʃn] [美][trænˈsækʃən, -ˈzæk-]
+n.交易，业务，事务；办理，处理；（一笔）交易，（一项）事务；（学会等的）会议记录，学报
+
+sensible[英][ˈsensəbl] [美][ˈsɛnsəbəl]
+adj.明智的；合乎情理的；通情达理的；意识到的，能感觉到的
+
+defer[英][dɪˈfɜ:(r)] [美][dɪˈfɚ]
+vt.使推迟；使延期；拖延，推迟；[军]使延期入伍
+
+Transactions are used to make sure the database is always in a sensible state.
+
+This class makes it easy for ContentProvider implementations 
+to defer opening and upgrading the database until first use, 
+to avoid blocking application startup with long-running database upgrades.
+
+For an example, 
+see the NotePadProvider class in the NotePad sample application, 
+in the samples/ directory of the SDK.

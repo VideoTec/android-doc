@@ -1,5 +1,8 @@
 http://developer.android.com/intl/zh-cn/tools/help/hierarchy-viewer.html
 
+http://blog.csdn.net/xyz_lmn/article/details/14222975 
+《Android UI 优化——使用HierarchyViewer工具》
+
 E:\android-sdk-windows\tools\hierarchyviewer.bat
 
 hierarchy[英][ˈhaɪərɑ:ki] [美][ˈhaɪərɑ:rki]

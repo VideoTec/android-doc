@@ -1,0 +1,48 @@
+onCreate(Bundle) is where you initialize your activity. 
+Most importantly, here you will usually 
+
+1）call setContentView(int) with a layout resource defining your UI, and 
+2）using findViewById(int) to retrieve the widgets in that UI that you need to interact with programmatically.
+
+--------------------------------------------
+public View findViewById (int id)
+--------------------------------------------
+
+Added in API level 1
+
+Finds a view that was identified by the id attribute from the XML 
+that was processed in onCreate(Bundle).
+
+每个 Activity 关联一个 rootView
+最终调用：
+Window -> getDecorView().findViewById(id);
+
+--------------------------------------------
+源码
+--------------------------------------------
+Returns
+The view if found or null otherwise.
+
+    /**
+     * Finds a view that was identified by the id attribute from the XML that
+     * was processed in {@link #onCreate}.
+     *
+     * @return The view if found or null otherwise.
+     */
+    public View findViewById(int id) {
+        return getWindow().findViewById(id);
+    }
+    
+    private Window mWindow;
+    
+     /**
+     * Retrieve the current {@link android.view.Window} for the activity.
+     * This can be used to directly access parts of the Window API that
+     * are not available through Activity/Screen.
+     *
+     * @return Window The current window, or null if the activity is not
+     *         visual.
+     */
+    public Window getWindow() {
+        return mWindow;
+    }

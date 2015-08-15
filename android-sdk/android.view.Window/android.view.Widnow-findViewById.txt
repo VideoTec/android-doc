@@ -1,0 +1,24 @@
+public View findViewById (int id)
+
+Added in API level 1
+
+Finds a view that was identified by the id attribute from the XML that was processed in onCreate(Bundle). This will implicitly call getDecorView() for you, with all of the associated side-effects.
+
+Returns
+The view if found or null otherwise.
+
+-------------------------------------
+源码
+-------------------------------------
+
+    /**
+     * Finds a view that was identified by the id attribute from the XML that
+     * was processed in {@link android.app.Activity#onCreate}.  This will
+     * implicitly call {@link #getDecorView} for you, with all of the
+     * associated side-effects.
+     *
+     * @return The view if found or null otherwise.
+     */
+    public View findViewById(int id) {
+        return getDecorView().findViewById(id);
+    }

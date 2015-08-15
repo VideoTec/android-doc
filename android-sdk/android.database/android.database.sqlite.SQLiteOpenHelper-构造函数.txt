@@ -1,0 +1,27 @@
+public SQLiteOpenHelper (Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+
+Added in API level 1
+
+Create a helper object to create, open, and/or manage a database. 
+This method always returns very quickly.
+
+The database is not actually created or opened 
+until one of getWritableDatabase() or getReadableDatabase() is called.
+
+Parameters
+
+context
+to use to open or create the database
+
+name
+of the database file, or null for an in-memory database
+
+factory
+to use for creating cursor objects, or null for the default
+
+version
+number of the database (starting at 1); 
+1）if the database is older, 
+onUpgrade(SQLiteDatabase, int, int) will be used to upgrade the database; 
+2）if the database is newer, 
+onDowngrade(SQLiteDatabase, int, int) will be used to downgrade the database

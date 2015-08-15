@@ -1,0 +1,5 @@
+com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper.connectionSource
+
+import com.j256.ormlite.android.AndroidConnectionSource;
+
+protected AndroidConnectionSource connectionSource = new AndroidConnectionSource(this);

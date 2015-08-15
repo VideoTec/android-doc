@@ -1,0 +1,15 @@
+create
+
+int create(T data)
+           throws SQLException
+
+Create a new row in the database from an object. If the object being created uses DatabaseField.generatedId() then the data parameter will be modified and set with the corresponding id from the database.
+
+Parameters:
+data - The data item that we are creating in the database.
+
+Returns:
+The number of rows updated in the database. This should be 1.
+
+Throws:
+SQLException

@@ -1,0 +1,17 @@
+eq
+
+public Where<T,ID> eq(String columnName,
+                      Object value)
+               throws SQLException
+Add a '=' clause so the column must be equal to the value.
+
+Throws:
+SQLException
+
+---------------------------
+举例：
+---------------------------
+Dao<BannerInfo, Integer> dao = mDBHelper.getDao(BannerInfo.class);
+DeleteBuilder<BannerInfo, Integer> delete = dao.deleteBuilder();
+delete.where().eq("login_user_id", Account.getUserId());
+delete.delete();

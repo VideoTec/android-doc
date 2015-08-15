@@ -1,0 +1,19 @@
+query
+
+public List<T> query()
+              throws SQLException
+A short-cut for calling QueryBuilder.query().
+Throws:
+SQLException
+
+---------------------------
+示例：
+---------------------------
+
+			Dao<BannerInfo, Integer> dao = mDBHelper.getDao(BannerInfo.class);
+			List<BannerInfo> list = 
+dao.queryBuilder().where().eq("login_user_id", Account.getUserId()).and().eq("id", info.id).query();
+			for (BannerInfo b : list) {
+				b.isRead = 1;
+				dao.update(b);
+			}

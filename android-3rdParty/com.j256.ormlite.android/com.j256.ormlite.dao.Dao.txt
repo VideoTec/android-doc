@@ -1,0 +1,20 @@
+Dao<HelpItemData, Integer> dao = mDBHelper.getDao(HelpItemData.class);
+
+http://ormlite.com/javadoc/ormlite-core/com/j256/ormlite/dao/Dao.html
+
+com.j256.ormlite.dao 
+Interface Dao<T,ID>
+
+Type Parameters:
+
+T - The class that the code will be operating on.
+
+ID - 
+The class of the ID column associated with the class. 
+The T class does not require an ID field. 
+The class needs an ID parameter however so you can use Void or Object to satisfy the compiler.
+
+public interface Dao<T,ID>
+extends CloseableIterable<T>
+
+The definition of the Database Access Objects that handle the reading and writing a class from the database. Kudos to Robert A. for the general concept of this hierarchy.
