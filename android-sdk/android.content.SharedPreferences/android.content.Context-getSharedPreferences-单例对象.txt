@@ -1,0 +1,15 @@
+http://blog.jobbole.com/66109/
+
+SharedPreferences是单例对象，
+你可以很容易获取你想要的引用。
+只在你第一次调用 getSharedPreferences 方法时打开文件时，创建一个实例对象。
+
+// There are 1000 String values in preferences
+SharedPreferences first = context.getSharedPreferences("com.example.app", Context.MODE_PRIVATE);
+// call time = 4 milliseconds
+   
+SharedPreferences second = context.getSharedPreferences("com.example.app", Context.MODE_PRIVATE);
+// call time = 0 milliseconds
+   
+SharedPreferences third = context.getSharedPreferences("com.example.app", Context.MODE_PRIVATE);
+// call time = 0 milliseconds

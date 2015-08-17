@@ -1,0 +1,23 @@
+public abstract SharedPreferences.Editor edit ()
+
+Added in API level 1
+
+Create a new Editor for these preferences, 
+through which you can make modifications to the data in the preferences and atomically commit those changes back to the SharedPreferences object.
+
+Note that you must call commit() to have any changes you perform in the Editor actually show up in the SharedPreferences.
+
+Returns
+
+Returns a new instance of the SharedPreferences.Editor interface, 
+allowing you to modify the values in this SharedPreferences object.
+
+------------------------------
+例子：
+------------------------------
+private void saveNav2Cache(String content) {
+    SharedPreferences preferences = mContext.getSharedPreferences("nav_dis", Context.MODE_PRIVATE);
+    Editor edit = preferences.edit();
+    edit.putString("content", content);
+    edit.commit();
+}

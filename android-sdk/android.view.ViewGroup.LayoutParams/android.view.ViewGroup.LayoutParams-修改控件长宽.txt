@@ -1,0 +1,10 @@
+ListView 的 adapter 
+public View getView(int position, View convertView, ViewGroup parent) {
+    convertView.setLayoutParams(new LayoutParams(mListItemWidth, mListItemHeight));
+}
+
+出下面的错误 ：
+java.lang.ClassCastException: android.view.ViewGroup$LayoutParams cannot be cast to android.widget.AbsListView$LayoutParams
+
+解决方法：
+convertView.setLayoutParams(new AbsListView.LayoutParams(mListItemWidth, mListItemHeight));

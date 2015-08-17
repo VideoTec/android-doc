@@ -1,0 +1,12 @@
+public abstract boolean commit ()
+
+Added in API level 1
+
+Commit your preferences changes back from this Editor to the SharedPreferences object it is editing. This atomically performs the requested modifications, replacing whatever is currently in the SharedPreferences.
+
+Note that when two editors are modifying preferences at the same time, the last one to call commit wins.
+
+If you don't care about the return value and you're using this from your application's main thread, consider using apply() instead.
+
+Returns
+Returns true if the new values were successfully written to persistent storage.

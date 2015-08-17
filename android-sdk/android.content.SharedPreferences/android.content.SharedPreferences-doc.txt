@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/SharedPreferences.html
+
+android.content.SharedPreferences
+
+preference[英][ˈprefrəns] [美][ˈprɛfərəns, ˈprɛfrəns]
+n.偏爱；优先权；偏爱的事物；（债权人）受优先偿还的权利
+
+Class Overview
+
+Interface for accessing and modifying preference data returned by 
+getSharedPreferences(String, int). 
+
+For any particular set of preferences, 
+there is a single instance of this class that all clients share. 
+
+Modifications to the preferences must go through an SharedPreferences.Editor object to ensure the preference values remain in a consistent state and control when they are committed to storage. Objects that are returned from the various get methods must be treated as immutable by the application.
+
+Note: 
+currently this class does not support use across multiple processes. 
+This will be added later.
+
+Developer Guides
+
+For more information about using SharedPreferences, read the Data Storage developer guide.

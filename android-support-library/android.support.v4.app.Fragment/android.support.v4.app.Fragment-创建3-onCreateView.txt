@@ -20,6 +20,8 @@ Parameters
 
 inflater
 The LayoutInflater object that can be used to inflate any views in the fragment,
+19:36 2015/8/17
+问题：这个参数 inflater 和 LayoutInflater.from(mActivity) 获得的填充器，一样吗？
 
 container
 If non-null, this is the parent view that the fragment's UI should be attached to. 

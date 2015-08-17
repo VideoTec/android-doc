@@ -11,3 +11,9 @@ ListView 这个 position 从 0 开始，对应 list-item-index
 
 Returns
 The id of the item at the specified position.
+
+应该返回什么？
+http://stackoverflow.com/questions/6711592/what-is-the-intent-of-the-methods-getitem-and-getitemid-in-the-android-class-bas
+
+The getItemId method is largely designed to work with Cursors that are backed by SQLite databases. 
+It will return the underlying cursor's id field for the item in position 1.

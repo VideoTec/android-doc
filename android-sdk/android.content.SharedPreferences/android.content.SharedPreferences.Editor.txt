@@ -1,0 +1,10 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/SharedPreferences.Editor.html
+
+android.content.SharedPreferences.Editor
+
+Class Overview
+
+Interface used for modifying values in a SharedPreferences object. 
+All changes you make in an editor are batched, 
+and not copied back to the original SharedPreferences 
+until you call commit() or apply()

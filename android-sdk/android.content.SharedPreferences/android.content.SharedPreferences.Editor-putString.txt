@@ -1,0 +1,14 @@
+public abstract SharedPreferences.Editor putString (String key, String value)
+
+Added in API level 1
+
+Set a String value in the preferences editor, to be written back once commit() or apply() are called.
+
+Parameters
+
+key	The name of the preference to modify.
+value	The new value for the preference.
+
+Returns
+
+Returns a reference to the same Editor object, so you can chain put calls together.
