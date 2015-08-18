@@ -1,0 +1,44 @@
+http://developer.android.com/intl/zh-cn/reference/android/util/TypedValue.html
+
+Container for a dynamically typed data value. Primarily used with Resources for holding resource values.
+
+int	COMPLEX_MANTISSA_MASK	Complex data: mask to extract mantissa information (after shifting by COMPLEX_MANTISSA_SHIFT).
+int	COMPLEX_MANTISSA_SHIFT	Complex data: bit location of mantissa information.
+int	COMPLEX_RADIX_0p23	Complex data: the mantissa magnitude is 0 bits -- i.e, 0x0.nnnnnn
+int	COMPLEX_RADIX_16p7	Complex data: the mantissa magnitude is 16 bits -- i.e, 0xnnnn.nn
+int	COMPLEX_RADIX_23p0	Complex data: the mantissa is an integral number -- i.e., 0xnnnnnn.0
+int	COMPLEX_RADIX_8p15	Complex data: the mantissa magnitude is 8 bits -- i.e, 0xnn.nnnn
+int	COMPLEX_RADIX_MASK	Complex data: mask to extract radix information (after shifting by COMPLEX_RADIX_SHIFT).
+int	COMPLEX_RADIX_SHIFT	Complex data: where the radix information is, telling where the decimal place appears in the mantissa.
+int	COMPLEX_UNIT_DIP	TYPE_DIMENSION complex unit: Value is Device Independent Pixels.
+int	COMPLEX_UNIT_FRACTION	TYPE_FRACTION complex unit: A basic fraction of the overall size.
+int	COMPLEX_UNIT_FRACTION_PARENT	TYPE_FRACTION complex unit: A fraction of the parent size.
+int	COMPLEX_UNIT_IN	TYPE_DIMENSION complex unit: Value is in inches.
+int	COMPLEX_UNIT_MASK	Complex data: mask to extract unit information (after shifting by COMPLEX_UNIT_SHIFT).
+int	COMPLEX_UNIT_MM	TYPE_DIMENSION complex unit: Value is in millimeters.
+int	COMPLEX_UNIT_PT	TYPE_DIMENSION complex unit: Value is in points.
+int	COMPLEX_UNIT_PX	TYPE_DIMENSION complex unit: Value is raw pixels.
+int	COMPLEX_UNIT_SHIFT	Complex data: bit location of unit information.
+int	COMPLEX_UNIT_SP	TYPE_DIMENSION complex unit: Value is a scaled pixel.
+int	DATA_NULL_EMPTY	TYPE_NULL data indicating the value was explicitly set to null.
+int	DATA_NULL_UNDEFINED	TYPE_NULL data indicating the value was not specified.
+int	DENSITY_DEFAULT	If density is equal to this value, then the density should be treated as the system's default density value: DENSITY_DEFAULT.
+int	DENSITY_NONE	If density is equal to this value, then there is no density associated with the resource and it should not be scaled.
+int	TYPE_ATTRIBUTE	The data field holds an attribute resource identifier (referencing an attribute in the current theme style, not a resource entry).
+int	TYPE_DIMENSION	The data field holds a complex number encoding a dimension value.
+int	TYPE_FIRST_COLOR_INT	Identifies the start of integer values that were specified as color constants (starting with '#').
+int	TYPE_FIRST_INT	Identifies the start of plain integer values.
+int	TYPE_FLOAT	The data field holds an IEEE 754 floating point number.
+int	TYPE_FRACTION	The data field holds a complex number encoding a fraction of a container.
+int	TYPE_INT_BOOLEAN	The data field holds 0 or 1 that was originally specified as "false" or "true".
+int	TYPE_INT_COLOR_ARGB4	The data field holds a color that was originally specified as #argb.
+int	TYPE_INT_COLOR_ARGB8	The data field holds a color that was originally specified as #aarrggbb.
+int	TYPE_INT_COLOR_RGB4	The data field holds a color that was originally specified as #rgb.
+int	TYPE_INT_COLOR_RGB8	The data field holds a color that was originally specified as #rrggbb.
+int	TYPE_INT_DEC	The data field holds a number that was originally specified in decimal.
+int	TYPE_INT_HEX	The data field holds a number that was originally specified in hexadecimal (0xn).
+int	TYPE_LAST_COLOR_INT	Identifies the end of integer values that were specified as color constants.
+int	TYPE_LAST_INT	Identifies the end of plain integer values.
+int	TYPE_NULL	The value contains no data.
+int	TYPE_REFERENCE	The data field holds a resource identifier.
+int	TYPE_STRING	The string field holds string data

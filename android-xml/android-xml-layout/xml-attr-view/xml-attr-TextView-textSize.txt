@@ -1,0 +1,27 @@
+android:textSize
+
+Size of the text. Recommended dimension type for text is "sp" for scaled-pixels (example: 15sp).
+
+Must be a dimension value, which is a floating point number appended with a unit such as "14.5sp". Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), mm (millimeters).
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol textSize.
+
+Related Methods
+setTextSize(int,float)
+
+-----------------------------------------------------
+public void setTextSize (int unit, float size)
+-----------------------------------------------------
+
+Added in API level 1
+
+Set the default text size to a given unit and value. See TypedValue for the possible dimension units.
+
+Related XML Attributes
+android:textSize
+
+Parameters
+unit	The desired dimension unit.  android.util.TypedValue.COMPLEX_UNIT_SP
+size	The desired size in the given units.

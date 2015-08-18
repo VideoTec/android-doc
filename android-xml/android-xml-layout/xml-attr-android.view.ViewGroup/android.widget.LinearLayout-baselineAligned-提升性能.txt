@@ -1,0 +1,14 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/LinearLayout.html
+
+android:baselineAligned
+
+setBaselineAligned(boolean)
+When set to false, prevents the layout from aligning its children's baselines. 
+
+http://stackoverflow.com/questions/9319916/how-does-setting-baselinealigned-to-false-improve-performance-in-linearlayout
+
+By setting android:baselineAligned="false" , 
+you're preventing the extra work your app's layout has to do 
+in order to Align its children's baselines; 
+which can obviously increase the performance. 
+(Less unnecessary operations on UI => Better performance)

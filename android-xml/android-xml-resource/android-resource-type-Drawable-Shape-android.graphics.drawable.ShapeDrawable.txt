@@ -1,0 +1,271 @@
+http://developer.android.com/intl/zh-cn/guide/topics/resources/drawable-resource.html#Shape
+http://developer.android.com/intl/zh-cn/reference/android/graphics/drawable/ShapeDrawable.html
+android.graphics.drawable.ShapeDrawable
+
+Shape Drawable
+This is a generic shape defined in XML.
+
+FILE LOCATION:
+res/drawable/filename.xml
+The filename is used as the resource ID.
+
+COMPILED RESOURCE DATATYPE:
+Resource pointer to a GradientDrawable.
+
+RESOURCE REFERENCE:
+In Java: R.drawable.filename
+In XML: @[package:]drawable/filename
+
+SYNTAX:
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape=["rectangle" | "oval" | "line" | "ring"] >
+    <corners
+        android:radius="integer"
+        android:topLeftRadius="integer"
+        android:topRightRadius="integer"
+        android:bottomLeftRadius="integer"
+        android:bottomRightRadius="integer" />
+    <gradient
+        android:angle="integer"
+        android:centerX="integer"
+        android:centerY="integer"
+        android:centerColor="integer"
+        android:endColor="color"
+        android:gradientRadius="integer"
+        android:startColor="color"
+        android:type=["linear" | "radial" | "sweep"]
+        android:useLevel=["true" | "false"] />
+    <padding
+        android:left="integer"
+        android:top="integer"
+        android:right="integer"
+        android:bottom="integer" />
+    <size
+        android:width="integer"
+        android:height="integer" />
+    <solid
+        android:color="color" />
+    <stroke
+        android:width="integer"
+        android:color="color"
+        android:dashWidth="integer"
+        android:dashGap="integer" />
+</shape>
+
+ELEMENTS:
+
+stroke[英][strəʊk] [美][stroʊk]
+（铅笔、刷子的）一笔，一挥，笔画
+
+---------------------------
+<shape>
+---------------------------
+The shape drawable. This must be the root element.
+attributes:
+
+1） xmlns:android
+String. Required. Defines the XML namespace, 
+which must be "http://schemas.android.com/apk/res/android".
+
+2） android:shape
+Keyword. Defines the type of shape. Valid values are:
+
+Value           Desciption
+"rectangle"     A rectangle that fills the containing View. This is the default shape.
+"oval"          An oval shape that fits the dimensions of the containing View.
+"line"          A horizontal line that spans the width of the containing View. 
+                This shape requires the <stroke> element to define the width of the line.
+"ring"          A ring shape.
+
+The following attributes are used only when android:shape="ring":
+
+3） android:innerRadius Dimension. 
+The radius for the inner part of the ring (the hole in the middle), 
+as a dimension value or dimension resource.
+
+4） android:innerRadiusRatio Float. 
+The radius for the inner part of the ring, 
+expressed as a ratio of the ring's width. 
+
+For instance, if android:innerRadiusRatio="5", 
+then the inner radius equals the ring's width divided by 5. 
+This value is overridden by android:innerRadius. Default value is 9.
+
+5） android:thickness Dimension. 
+The thickness of the ring, as a dimension value or dimension resource.
+
+6） android:thicknessRatio Float. 
+The thickness of the ring, expressed as a ratio of the ring's width. 
+For instance, if android:thicknessRatio="2", 
+then the thickness equals the ring's width divided by 2. 
+This value is overridden by android:innerRadius. Default value is 3.
+
+7） android:useLevel Boolean. 
+"true" if this is used as a LevelListDrawable. 
+This should normally be "false" or your shape may not appear.
+
+---------------------------
+<corners>
+---------------------------
+
+Creates rounded corners for the shape. 
+Applies only when the shape is a rectangle.
+
+attributes:
+
+android:radius
+Dimension. The radius for all corners, as a dimension value or dimension resource. This is overridden for each corner by the following attributes.
+android:topLeftRadius
+Dimension. The radius for the top-left corner, as a dimension value or dimension resource.
+android:topRightRadius
+Dimension. The radius for the top-right corner, as a dimension value or dimension resource.
+android:bottomLeftRadius
+Dimension. The radius for the bottom-left corner, as a dimension value or dimension resource.
+android:bottomRightRadius
+Dimension. The radius for the bottom-right corner, as a dimension value or dimension resource.
+
+Note: Every corner must (initially) be provided a corner radius greater than 1, or else no corners are rounded. If you want specific corners to not be rounded, a work-around is to use android:radius to set a default corner radius greater than 1, but then override each and every corner with the values you really want, providing zero ("0dp") where you don't want rounded corners.
+
+---------------------------
+<gradient>
+gradient[英][ˈgreɪdiənt] [美][ˈɡrediənt]
+n.[物]梯度，陡度；（温度、气压等）变化率，梯度变化曲线；<英>（道路的）倾斜度，坡度
+这里是： 渐变色
+---------------------------
+
+Specifies a gradient color for the shape.
+
+attributes:
+
+android:angle
+Integer. The angle for the gradient, in degrees. 0 is left to right, 90 is bottom to top. It must be a multiple of 45. Default is 0.
+
+android:centerX
+Float. The relative X-position for the center of the gradient (0 - 1.0).
+
+android:centerY
+Float. The relative Y-position for the center of the gradient (0 - 1.0).
+
+android:centerColor
+Color. Optional color that comes between the start and end colors, as a hexadecimal value or color resource.
+
+android:endColor
+Color. The ending color, as a hexadecimal value or color resource.
+
+android:gradientRadius
+Float. The radius for the gradient. 
+Only applied when android:type="radial".
+
+android:startColor
+Color. The starting color, as a hexadecimal value or color resource.
+
+android:type
+Keyword. The type of gradient pattern to apply. Valid values are:
+Value    Description
+"linear"    A linear gradient. This is the default.
+"radial"    A radial gradient. The start color is the center color.
+"sweep"    A sweeping line gradient.
+
+android:useLevel
+Boolean. "true" if this is used as a LevelListDrawable.
+
+---------------------------
+<padding>
+---------------------------
+
+Padding to apply to the containing View element 
+(this pads the position of the View content, not the shape).
+
+attributes:
+
+android:left
+Dimension. Left padding, as a dimension value or dimension resource.
+android:top
+Dimension. Top padding, as a dimension value or dimension resource.
+android:right
+Dimension. Right padding, as a dimension value or dimension resource.
+android:bottom
+Dimension. Bottom padding, as a dimension value or dimension resource.
+
+---------------------------
+<size>
+---------------------------
+The size of the shape.
+attributes:
+
+android:height
+Dimension. The height of the shape, as a dimension value or dimension resource.
+android:width
+Dimension. The width of the shape, as a dimension value or dimension resource.
+Note: The shape scales to the size of the container View proportionate to the dimensions defined here, by default. When you use the shape in an ImageView, you can restrict scaling by setting the android:scaleType to "center".
+
+---------------------------
+<solid>
+---------------------------
+A solid color to fill the shape.
+attributes:
+
+android:color
+Color. The color to apply to the shape, as a hexadecimal value or color resource.
+
+---------------------------
+<stroke>
+---------------------------
+
+A stroke line for the shape.
+attributes:
+
+android:width
+Dimension. The thickness of the line, as a dimension value or dimension resource.
+
+android:color
+Color. The color of the line, as a hexadecimal value or color resource.
+
+dash[英][dæʃ] [美][dæʃ]
+n.少量，些许；猛冲；破折号；短跑
+这里是虚线的意思
+
+android:dashGap
+Dimension. The distance between line dashes, as a dimension value or dimension resource. Only valid if android:dashWidth is set.
+
+android:dashWidth
+Dimension. The size of each dash line, as a dimension value or dimension resource. Only valid if android:dashGap is set.
+
+---------------------------
+EXAMPLE:
+---------------------------
+XML file saved at res/drawable/gradient_box.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#FFFF0000"
+        android:endColor="#80FF00FF"
+        android:angle="45"/>
+    <padding android:left="7dp"
+        android:top="7dp"
+        android:right="7dp"
+        android:bottom="7dp" />
+    <corners android:radius="8dp" />
+</shape>
+
+This layout XML applies the shape drawable to a View:
+
+<TextView
+    android:background="@drawable/gradient_box"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content" />
+    
+This application code gets the shape drawable and applies it to a View:
+
+Resources res = getResources();
+Drawable shape = res. getDrawable(R.drawable.gradient_box);
+
+TextView tv = (TextView)findViewByID(R.id.textview);
+tv.setBackground(shape);
+
+SEE ALSO:
+ShapeDrawable

@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/3496269/how-to-put-a-border-around-an-android-textview
+
+You can set a shape drawable (a rectangle) as background for the view.
+
+<TextView android:text="Some text" android:background="@drawable/back"/>
+
+And rectangle drawable back.xml (put into res/drawable folder):
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
+   <solid android:color="#ffffff" />
+   <stroke android:width="1dip" android:color="#4fa5d5"/>
+</shape>
+
+You can use #00000000 for the solid color to have a transparent background. You can also use padding to separate the text from the border. for more information see: http://developer.android.com/guide/topics/resources/drawable-resource.html

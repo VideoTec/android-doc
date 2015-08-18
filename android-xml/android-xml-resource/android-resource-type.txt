@@ -1,3 +1,5 @@
+http://developer.android.com/intl/zh-cn/guide/topics/resources/available-resources.html
+
 Animation
 Color State List
 Drawable

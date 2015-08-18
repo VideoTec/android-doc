@@ -3,9 +3,6 @@ android:orientation
 horizontal[英][ˌhɒrɪˈzɒntl] [美][ˌhɔ:rəˈzɑ:ntl]
 n.水平线；水平面；水平位置；水平的物体
 
-orientation[英][ˌɔ:riənˈteɪʃn] [美][ˌɔriɛnˈteʃən, -ən-, ˌor-]
-n.方向，定位，取向，排列方向；任职培训；（外交等的）方针[态度]的确定；环境判定
-
 Should the layout be a column or a row? Use "horizontal" for a row, "vertical" for a column. The default is horizontal.
 
 Must be one of the following constant values.

@@ -1,0 +1,16 @@
+public View getView(int position, View convertView, ViewGroup parent) {
+
+ViewGroup.LayoutParams p = convertView.getLayoutParams();
+
+}
+
+这里有可能返回空，怎么办？
+
+解决方法
+            p = convertView.getLayoutParams();
+            if(p == null) {
+                p = new AbsListView.LayoutParams(mListItemWidth, mListItemHeight);
+            }
+            p.height = mListItemHeight;
+            p.width = mListItemWidth;
+            convertView.setLayoutParams(p);

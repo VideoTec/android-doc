@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/FrameLayout.LayoutParams.html
+
+继承关系
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.ViewGroup.MarginLayoutParams
+ 	 	   ↳	android.widget.FrameLayout.LayoutParams
+
+文档
+android:layout_gravity		Standard gravity constant that a child supplies to its parent. 
+
+继承了 MarginLayoutParams XML属性

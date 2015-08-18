@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/1598119/is-there-an-easy-way-to-add-a-border-to-the-top-and-bottom-of-an-android-view/27089946#27089946
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="#000000" >
+</View>

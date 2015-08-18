@@ -1,0 +1,17 @@
+public void setVisibility (int visibility)
+
+Added in API level 1
+
+Set the enabled state of this view.
+
+Related XML Attributes
+android:visibility
+
+Parameters
+visibility	One of VISIBLE, INVISIBLE, or GONE.
+
+-----------------------------------------------------
+例子
+-----------------------------------------------------
+                btnPublish.setVisibility(View.VISIBLE);
+                btnPublish.setVisibility(View.INVISIBLE);

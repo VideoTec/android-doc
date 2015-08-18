@@ -1,0 +1,20 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/FrameLayout.html
+
+FrameLayout
+extends ViewGroup
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.FrameLayout
+           
+Known Direct Subclasses
+AppWidgetHostView, BaseCardView, BrowseFrameLayout, CalendarView, CardView, CollapsingToolbarLayout, DatePicker, GestureOverlayView, HorizontalScrollView, MediaController, NavigationView, NestedScrollView, PercentFrameLayout, ScrollView, SearchOrbView, TabHost, TimePicker, TitleView, ViewAnimator
+
+Known Indirect Subclasses
+FragmentTabHost, ImageCardView, ImageSwitcher, SpeechOrbView, TabLayout, TextSwitcher, ViewFlipper, ViewSwitcher
+
+Class Overview
+
+FrameLayout is designed to block out an area on the screen to display a single item. Generally, FrameLayout should be used to hold a single child view, because it can be difficult to organize child views in a way that's scalable to different screen sizes without the children overlapping each other. You can, however, add multiple children to a FrameLayout and control their position within the FrameLayout by assigning gravity to each child, using the android:layout_gravity attribute.
+
+Child views are drawn in a stack, with the most recently added child on top. The size of the FrameLayout is the size of its largest child (plus padding), visible or not (if the FrameLayout's parent permits). Views that are GONE are used for sizing only if setConsiderGoneChildrenWhenMeasuring() is set to true

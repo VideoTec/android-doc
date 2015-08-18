@@ -1,0 +1,72 @@
+android:textAlignment
+
+heuristic[英][hjuˈrɪstɪk] [美][hjʊˈrɪstɪk]
+adj.启发式的；探试的，探索的
+
+paragraph[英][ˈpærəgrɑ:f] [美][ˈpærəgræf]
+n.段落；分段符号
+
+Defines the alignment of the text. A heuristic is used to determine the resolved text alignment.
+
+May be an integer value, such as "100".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+May be one of the following constant values.
+
+Constant    Value    Description
+inherit     0    Default
+
+gravity     1    
+Default for the root view. The gravity determines the alignment, 
+ALIGN_NORMAL, 
+ALIGN_CENTER, or 
+ALIGN_OPPOSITE, which are relative to each paragraph’s text direction
+
+textStart       2    Align to the start of the paragraph, e.g. ALIGN_NORMAL.
+textEnd         3    Align to the end of the paragraph, e.g. ALIGN_OPPOSITE.
+center          4    Center the paragraph, e.g. ALIGN_CENTER.
+
+viewStart       5    
+Align to the start of the view, 
+which is ALIGN_LEFT if the view’s resolved layoutDirection is LTR, and ALIGN_RIGHT otherwise.
+
+viewEnd         6    
+Align to the end of the view, 
+which is ALIGN_RIGHT if the view’s resolved layoutDirection is LTR, and ALIGN_LEFT otherwise
+
+This corresponds to the global attribute resource symbol textAlignment.
+
+correspond[英][ˌkɒrəˈspɒnd] [美][ˌkɔ:rəˈspɑ:nd]
+vi.符合，一致；相应；通信
+
+Related Methods
+setTextAlignment(int)
+
+--------------------------------------------------------
+public void setTextAlignment (int textAlignment)
+--------------------------------------------------------
+
+Added in API level 17
+Set the text alignment.
+
+Related XML Attributes
+android:textAlignment
+
+Parameters
+
+textAlignment
+The text alignment to set. Should be one of 
+
+TEXT_ALIGNMENT_INHERIT, 
+TEXT_ALIGNMENT_GRAVITY, 
+TEXT_ALIGNMENT_CENTER, 
+TEXT_ALIGNMENT_TEXT_START, 
+TEXT_ALIGNMENT_TEXT_END, 
+TEXT_ALIGNMENT_VIEW_START, 
+TEXT_ALIGNMENT_VIEW_END 
+
+Resolution will be done if the value is set to TEXT_ALIGNMENT_INHERIT. 
+
+The resolution proceeds up the parent chain of the view to get the value. 
+If there is no parent, then it will return the default TEXT_ALIGNMENT_GRAVITY.

@@ -1,0 +1,15 @@
+android:textColor
+
+Text color.
+
+May be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+May be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+This corresponds to the global attribute resource symbol textColor.
+
+Related Methods
+setTextColor(int)
+
+示例：
+android:textColor="#fff"

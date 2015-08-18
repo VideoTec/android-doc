@@ -1,0 +1,11 @@
+public int getBaseline ()
+
+Added in API level 1
+
+Return the offset of the widget's text baseline from the widget's top boundary. 
+If this widget does not support baseline alignment, this method returns -1.
+
+Returns
+
+the offset of the baseline within the widget's bounds or 
+-1 if baseline alignment is not supported

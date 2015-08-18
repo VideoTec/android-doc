@@ -1,0 +1,11 @@
+<FrameLayout ...> 
+ <TextView 
+        android:id="@+id/help_subject_name_zh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"     会相对中间点，再偏移
+        android:layout_marginBottom="50dp"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:gravity="center" />
+</FrameLayout ...> 

@@ -1,0 +1,6 @@
+ListView 中的所有 item 的布局属性类型是：
+
+AbsListView.LayoutParams 类型：
+
+参考：
+E:\doc\android\android-sdk\android.view.View\android.view.View-getLayoutParams-返加空-Adapter-getView.txt

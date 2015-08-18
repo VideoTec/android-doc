@@ -1,0 +1,27 @@
+android:layout_alignBaseline
+
+Positions the baseline of this view on the baseline of the given anchor view ID.
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol layout_alignBaseline.
+
+-------------------------------------
+http://stackoverflow.com/questions/26822876/aligning-baseline-of-two-text-views-in-android
+http://stackoverflow.com/questions/13010933/using-layout-alignbaseline-and-layout-alignbottom-in-relativelayout-together
+-------------------------------------
+Use RelativeLayout as a container for TextViews and add the attribute
+
+android:layout_alignBaseline="+@id/title"
+to id/language TextView
+
+--------------------------------------
+http://stackoverflow.com/questions/6447361/what-is-the-baseline-in-relativelayout
+https://en.wikipedia.org/wiki/Baseline_%28typography%29
+--------------------------------------
+The term baseline comes from typography. It's the invisible line letters in text sit on.
+
+scoot[英][sku:t] [美][skut]
+v.溜走
+
+For example, imagine you put two TextView elements next to each other. You give the second TextView a big padding (say 20dp). If you add layout_alignBaseline to the second element, the text will "scoot up" to align with the baseline of the first element. The text from both elements will appear as if they were written on the same invisible line.

@@ -1,0 +1,5 @@
+public void loadImage(String url,ImageView imageView,int resId)
+
+用法：
+ImageFetcher fetcher = ImageFetcher.getFetcherInstance(mActivity);
+fetcher.loadImage(info.imgurl, mBanner, R.drawable.beside_help_banner_image);

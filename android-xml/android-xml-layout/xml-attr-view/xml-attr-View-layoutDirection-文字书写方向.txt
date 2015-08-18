@@ -1,0 +1,52 @@
+android:layoutDirection
+
+Defines the direction of layout drawing. 
+This typically is associated with writing direction of the language script used. 
+
+The possible values are 
+1）"ltr" for Left-to-Right, 
+2）"rtl" for Right-to-Left, 
+3）"locale" and "inherit" from parent view. 
+
+If there is nothing to inherit, "locale" is used. 
+"locale" falls back to "en-US". 
+"ltr" is the direction used in "en-US". 
+The default for this attribute is "inherit".
+
+Must be one of the following constant values.
+
+Constant    Value    Description
+ltr             0    Left-to-Right
+rtl             1    Right-to-Left
+inherit         2    Inherit from parent
+locale          3    Locale
+This corresponds to the global attribute resource symbol layoutDirection.
+
+Related Methods
+setLayoutDirection(int)
+
+-----------------------------------------------------------
+public void setLayoutDirection (int layoutDirection)
+-----------------------------------------------------------
+
+Added in API level 17
+
+Set the layout direction for this view. 
+This will propagate a reset of layout direction resolution to the view's children and resolve layout direction for this view.
+
+Related XML Attributes
+android:layoutDirection
+
+Parameters
+
+layoutDirection
+the layout direction to set. Should be one of: 
+
+LAYOUT_DIRECTION_LTR, 
+LAYOUT_DIRECTION_RTL, 
+LAYOUT_DIRECTION_INHERIT, 
+LAYOUT_DIRECTION_LOCALE. 
+
+Resolution will be done if the value is set to LAYOUT_DIRECTION_INHERIT. 
+The resolution proceeds up the parent chain of the view to get the value.
+If there is no parent, then it will return the default LAYOUT_DIRECTION_LTR.

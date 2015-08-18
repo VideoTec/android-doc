@@ -1,0 +1,20 @@
+android:descendantFocusability
+
+Defines the relationship between the ViewGroup and its descendants when looking for a View to take focus.
+
+Must be one of the following constant values.
+
+descendant[英][dɪˈsendənt] [美][dɪˈsɛndənt]
+n.后代；后裔；（由过去类似物发展来的）派生物；弟子
+
+Constant	Value	Description
+beforeDescendants	0	The ViewGroup will get focus before any of its descendants.
+afterDescendants	1	The ViewGroup will get focus only if none of its descendants want it.
+blocksDescendants	2	The ViewGroup will block its descendants from receiving focus.
+This corresponds to the global attribute resource symbol descendantFocusability.
+
+http://www.cnblogs.com/eyu8874521/archive/2012/10/17/2727882.html
+开发中很常见的一个问题，项目中的listview不仅仅是简单的文字，
+常常需要自己定义listview，自己的Adapter去继承BaseAdapter，
+在adapter中按照需求进行编写，问题就出现了，
+可能会发生点击每一个item的时候没有反应，无法获取的焦点

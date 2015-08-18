@@ -1,8 +1,17 @@
-继承关系
+http://developer.android.com/intl/zh-cn/reference/android/widget/RelativeLayout.LayoutParams.html
+         
+RelativeLayout.LayoutParams
+extends ViewGroup.MarginLayoutParams
 java.lang.Object
-   ↳  android.view.ViewGroup.LayoutParams
-      ↳  android.view.ViewGroup.MarginLayoutParams
-         ↳  android.widget.RelativeLayout.LayoutParams
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.ViewGroup.MarginLayoutParams
+ 	 	   ↳	android.widget.RelativeLayout.LayoutParams
+           
+Known Direct Subclasses
+PercentRelativeLayout.LayoutParams
+
+Class Overview
+Per-child layout information associated with RelativeLayout.
 
 属性
 anchor[英][ˈæŋkə(r)] [美][ˈæŋkɚ] n.锚；锚状物；靠山；压阵队员

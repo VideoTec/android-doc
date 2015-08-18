@@ -1,0 +1,42 @@
+http://developer.android.com/reference/android/widget/LinearLayout.html
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.LinearLayout
+
+------------------------
+内部类
+------------------------
+LinearLayout.LayoutParams
+
+------------------------
+XML Attributes
+------------------------
+android:baselineAligned
+setBaselineAligned(boolean)
+When set to false, prevents the layout from aligning its children's baselines. 
+
+android:baselineAlignedChildIndex
+setBaselineAlignedChildIndex(int)
+When a linear layout is part of another layout that is baseline aligned, it can specify which of its children to baseline align to (that is, which child TextView). 
+
+android:divider
+setDividerDrawable(Drawable)
+Drawable to use as a vertical divider between buttons.
+ 
+android:gravity
+setGravity(int)
+Specifies how an object should position its content, on both the X and Y axes, within its own bounds. 
+
+android:measureWithLargestChild
+setMeasureWithLargestChildEnabled(boolean)
+When set to true, all children with a weight will be considered having the minimum size of the largest child. 
+
+android:orientation
+setOrientation(int)
+Should the layout be a column or a row? 
+Use "horizontal" for a row, "vertical" for a column. 
+
+android:weightSum
+Defines the maximum weight sum. 

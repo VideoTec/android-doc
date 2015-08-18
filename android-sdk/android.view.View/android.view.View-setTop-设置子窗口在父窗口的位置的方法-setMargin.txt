@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/20630544/settop-alternative-for-api-under-11
+
+For anything below Honeycomb (API Level 11) you'll have to use setLayoutParams(...). you can dynamically set the position of view in Android. for example if you have an ImageView in LinearLayout of your xml file.So you can set its position through LayoutParams.But make sure to take LayoutParams according to the layout taken in your xml file.There are different LayoutParams according to the layout taken.
+
+Here is the code to set:
+
+ FrameLayout.LayoutParams layoutParams=new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+    layoutParams.setMargins(int left, int top, int right, int bottom);
+    imageView.setLayoutParams(layoutParams);

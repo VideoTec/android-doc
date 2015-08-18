@@ -1,0 +1,43 @@
+To measure its dimensions, a view takes into account its padding. 
+
+The padding is expressed in pixels for the left, top, right and bottom parts of the view.
+
+Padding can be used to offset the content of the view by a specific amount of pixels. 
+
+For instance, 
+a left padding of 2 will push the view's content by 2 pixels to the right of the left edge. 
+
+1）Padding can be set using the 
+setPadding(int, int, int, int) or 
+setPaddingRelative(int, int, int, int) method and 
+
+2）queried by calling 
+getPaddingLeft(), 
+getPaddingTop(), 
+getPaddingRight(), 
+getPaddingBottom(), 
+getPaddingStart(), 
+getPaddingEnd().
+
+Even though a view can define a padding, 
+it does not provide any support for margins. 
+However, view groups provide such a support. 
+Refer to ViewGroup and ViewGroup.MarginLayoutParams for further information.
+
+-------------------------------------
+setPadding setPaddingRelative 的区别
+-------------------------------------
+http://stackoverflow.com/questions/15379643/android-view-setpadding-vs-setpaddingrelative
+
+setPaddingRelative has this code inside:
+
+switch(getResolvedLayoutDirection()) {
+        case LAYOUT_DIRECTION_RTL:
+            setPadding(end, top, start, bottom);
+            break;
+        case LAYOUT_DIRECTION_LTR:
+        default:
+            setPadding(start, top, end, bottom);
+}
+
+So when you set padding with setPaddingRelative it changes left and right padding values depending on user's layout direction.

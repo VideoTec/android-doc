@@ -1,0 +1,9 @@
+public final void setTop (int top)
+
+Added in API level 11
+
+Sets the top position of this view relative to its parent. This method is meant to be called by the layout system and should not generally be called otherwise, because the property may be changed at any time by the layout.
+
+Parameters
+
+top	The top of this view, in pixels.

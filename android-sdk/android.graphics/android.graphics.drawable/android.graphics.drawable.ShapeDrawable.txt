@@ -1,0 +1,23 @@
+http://developer.android.com/intl/zh-cn/reference/android/graphics/drawable/ShapeDrawable.html
+
+参考：
+E:\doc\android\android-xml\android-xml-resource\android-resource-type-Drawable-Shape-android.graphics.drawable.ShapeDrawable.txt
+
+ShapeDrawable
+extends Drawable
+java.lang.Object
+   ↳	android.graphics.drawable.Drawable
+ 	   ↳	android.graphics.drawable.ShapeDrawable
+
+Known Direct Subclasses
+PaintDrawable
+
+Class Overview
+
+A Drawable object that draws primitive shapes. A ShapeDrawable takes a Shape object and manages its presence on the screen. If no Shape is given, then the ShapeDrawable will default to a RectShape.
+
+This object can be defined in an XML file with the <shape> element.
+
+Developer Guides
+
+For more information about how to use ShapeDrawable, read the Canvas and Drawables document. For more information about defining a ShapeDrawable in XML, read the Drawable Resources document.
