@@ -1,0 +1,2 @@
+https://github.com/aws/aws-sdk-android
+git@github.com:VideoTec/aws-sdk-android.git
