@@ -1,0 +1,66 @@
+----------------------------------------------------------
+public void setUserVisibleHint (boolean isVisibleToUser)
+----------------------------------------------------------
+
+prioritize[英][praɪˈɒrətaɪz] [美][praɪˈɔ:rətaɪz]
+vt.按重要性排列，划分优先顺序；优先处理
+
+Set a hint to the system about whether this fragment's UI is currently visible to the user. This hint defaults to true and is persistent across fragment instance state save and restore.
+
+An app may set this to false to indicate that the fragment's UI is scrolled out of visibility or is otherwise not directly visible to the user. This may be used by the system to prioritize operations such as fragment lifecycle updates or loader ordering behavior.
+
+Parameters
+
+isVisibleToUser
+true if this fragment's UI is currently visible to the user (default), false if it is not.
+
+----------------------------------------------------------
+http://stackoverflow.com/questions/18375288/fragment-lifecycle-which-method-is-called-upon-show-hide
+----------------------------------------------------------
+Some fragment containers can keep invisible fragments started. 
+To handle this situation you can override Fragment.onHiddenChanged(boolean hidden). 
+According to the documentation, 
+a fragment must be both started and visible (not hidden), to be visible to the user.
+
+----------------------------------------------------------
+http://stackoverflow.com/questions/10024739/how-to-determine-when-fragment-becomes-visible-in-viewpager
+----------------------------------------------------------
+UPDATE: 
+Android Support Library (rev 11) finally fixed the user visible hint issue, 
+now if you use support library for fragments, 
+then you can safely 
+use getUserVisibleHint() or 
+override setUserVisibleHint() to capture the changes as described by gorn's answer.
+
+"How to determine when Fragment becomes visible in ViewPager. Anyone?" – user1103561
+This may be a bit late answer, but you can do the following by overriding setUserVisibleHint in your Fragment:
+
+public class MyFragment extends Fragment {
+  @Override
+  public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if (isVisibleToUser) { }
+    else {  }
+  }
+}
+
+----------------------------------------------------------
+http://www.cnblogs.com/over140/p/3392164.html
+----------------------------------------------------------
+Fragment虽然有onResume和onPause的，
+但是这两个方法是Activity的方法，调用时机也是与Activity相同，
+和ViewPager搭配使用这个方法就很鸡肋了，根本不是你想要的效果，这里介绍一种方法
+
+通过阅读ViewPager和PageAdapter相关的代码，
+切换Fragment实际上就是通过设置setUserVisibleHint和setMenuVisibility来实现的，
+调用这个方法时并不会释放掉Fragment（即不会执行onDestoryView）
+
+----------------------------------------------------------
+http://stackoverflow.com/questions/21733355/detect-when-fragment-becomes-visible
+----------------------------------------------------------
+As pointed out in the comments, 
+setUserVisbileHint() does not get called automatically, 
+but by the FragmentPageAdapter when used in a ViewPager.
+
+For the scenario described in the question, onHiddenChanged(boolean hidden) http://developer.android.com/reference/android/app/Fragment.html#onHiddenChanged(boolean) is suitable.
+As stated in the documentation, the method gets called every time the Fragments hidden state changes, but not on the initial setup of the Fragment.

@@ -1,0 +1,21 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/view/ViewPager.html#setCurrentItem(int)
+
+---------------------------------------------------------------
+public void setCurrentItem (int item, boolean smoothScroll)
+---------------------------------------------------------------
+
+Set the currently selected page.
+
+Parameters
+item	Item index to select
+smoothScroll	True to smoothly scroll to the new item, false to transition immediately
+
+---------------------------------------------------------------
+public void setCurrentItem (int item)
+---------------------------------------------------------------
+Set the currently selected page. 
+If the ViewPager has already been through its first layout with its current adapter 
+there will be a smooth animated transition between the current item and the specified item.
+
+Parameters
+item	Item index to select

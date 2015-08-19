@@ -1,0 +1,9 @@
+http://www.pocketdigi.com/20141006/1385.html
+切换Fragment有两种方式，
+
+一种是add新的，并把旧的hide,
+用这种方法切换，
+Fragment在隐藏时并不会走onDestoryView，
+所以显示时也不会走onCreateView，所有View都一直保存在内存中
+
+一种是replace.

@@ -1,0 +1,10 @@
+java.lang.NullPointerException: Attempt to write to field 'android.support.v4.app.FragmentManagerImpl android.support.v4.app.Fragment.mFragmentManager' on a null object reference
+
+-----------------------------------------------
+原因是：FragmentPagerAdapter getItem 返回空 的问题
+-----------------------------------------------
+private class MyHelpFragmentAdapter extends FragmentPagerAdapter {
+  public android.support.v4.app.Fragment getItem(int arg0) {
+    这里下个，page ，返回的是空，造成，当转到当前页时，出异常
+  }
+}

@@ -12,8 +12,33 @@ Layout manager that allows the user to flip left and right through pages of data
 
 Note this class is currently under early design and development. The API will likely change in later updates of the compatibility library, requiring changes to the source code of apps when they are compiled against the newer version.
 
-ViewPager is most often used in conjunction with Fragment, which is a convenient way to supply and manage the lifecycle of each page. There are standard adapters implemented for using fragments with the ViewPager, which cover the most common use cases. These are FragmentPagerAdapter and FragmentStatePagerAdapter; each of these classes have simple code showing how to build a full user interface with them.
+conjunction[英][kənˈdʒʌŋkʃn] [美][kənˈdʒʌŋkʃən]
+n.连词；连接；联合，结合物；（恒星、行星等的）合
+
+convenient[英][kənˈvi:niənt] [美][kənˈvinjənt]
+adj.方便的；[废语]适当的；[口语]近便的；实用的
+
+swipe[英][swaɪp] [美][swaɪp] 滑动
+n.重击；尖锐的评论；柄，握杆
+vt.重击；刷（磁卡）；偷窃
+vi.猛打
+
+ViewPager is most often used in conjunction with Fragment, 
+which is a convenient way to supply and manage the lifecycle of each page. 
+
+There are standard adapters implemented for using fragments with the ViewPager, 
+which cover the most common use cases.
+ 
+These are 
+1）FragmentPagerAdapter and 
+2）FragmentStatePagerAdapter; 
+each of these classes have simple code showing how to build a full user interface with them.
 
 For more information about how to use ViewPager, read Creating Swipe Views with Tabs.
 
-Below is a more complicated example of ViewPager, using it in conjunction with ActionBar tabs. You can find other examples of using ViewPager in the API 4+ Support Demos and API 13+ Support Demos sample code.
+Below is a more complicated example of ViewPager, 
+using it in conjunction with ActionBar tabs. 
+
+You can find other examples of using ViewPager in the 
+1）API 4+ Support Demos and 
+2）API 13+ Support Demos sample code.

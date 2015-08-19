@@ -1,0 +1,14 @@
+public void onHiddenChanged (boolean hidden)
+
+Called when the hidden state (as returned by isHidden() of the fragment has changed. Fragments start out not hidden; this will be called whenever the fragment changes state from that.
+
+Parameters
+hidden	True if the fragment is now hidden, false if it is not visible.
+
+http://www.pocketdigi.com/20141006/1385.html
+onHiddenChanged也能实现，但第一次载入显示，以及销毁时不会走onHiddenChanged方法
+
+http://stackoverflow.com/questions/10024739/how-to-determine-when-fragment-becomes-visible-in-viewpager
+I'm using API level 19 and can confirm that while this is not deprecated, 
+it does not work as advertised. 
+onHiddenChanged is not called when the fragment is hidden by another fragment, for example
