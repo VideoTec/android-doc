@@ -1,0 +1,30 @@
+        <activity
+            android:name="com.feinno.beside.ui.fragment.MainFragment"
+            android:label="@string/find_navigation_title_prompt"
+            android:process=":beside"
+             android:exported="false"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.fetion.beside.find.navigation" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+[2015-08-20 20:56:27 - beside] Android Launch!
+[2015-08-20 20:56:27 - beside] adb is running normally.
+[2015-08-20 20:56:27 - beside] No Launcher activity found!
+[2015-08-20 20:56:27 - beside] The launch will only sync the application package on the device!
+
+http://stackoverflow.com/questions/4801371/what-does-it-mean-no-launcher-activity-found
+
+As has been pointed out, 
+this error is likely caused by a missing or incorrect intent-filter.
+
+I would just like to add that this error also shows up 
+if you set android:exported="false" on your launcher activity (in the manifest).

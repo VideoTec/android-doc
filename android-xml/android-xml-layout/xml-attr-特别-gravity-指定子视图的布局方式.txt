@@ -10,6 +10,7 @@ when the text is smaller than the view.
 Must be one or more (separated by '|') of the following constant values.
 
 http://developer.android.com/reference/android/widget/RelativeLayout.html#attr_android:gravity
+http://developer.android.com/intl/zh-cn/reference/android/widget/LinearLayout.html
 
 android:gravity
 Specifies how an object should position its content, on both the X and Y axes, within its own bounds.

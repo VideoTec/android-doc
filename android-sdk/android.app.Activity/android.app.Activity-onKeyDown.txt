@@ -1,0 +1,38 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#onKeyDown(int, android.view.KeyEvent)
+
+public boolean onKeyDown (int keyCode, KeyEvent event)
+
+Added in API level 1
+
+Called when a key was pressed down and not handled by any of the views inside of the activity. So, for example, key presses while the cursor is inside a TextView will not trigger the event (unless it is a navigation to another object) because TextView handles its own key presses.
+
+If the focused view didn't want this event, this method is called.
+
+The default implementation takes care of KEYCODE_BACK by calling onBackPressed(), 
+though the behavior varies based on the application compatibility mode:
+ 
+1）for ECLAIR or later applications, 
+it will set up the dispatch to call onKeyUp(int, KeyEvent) 
+where the action will be performed; 
+
+2）for earlier applications, 
+it will perform the action immediately in on-down, as those versions of the platform behaved.
+
+Other additional default key handling may be performed 
+if configured with setDefaultKeyMode(int).
+
+Parameters
+keyCode	The value in event.getKeyCode().
+event	Description of the key event.
+
+Returns
+
+propagate[英][ˈprɒpəgeɪt] [美][ˈprɑ:pəgeɪt]
+vt.繁衍，增殖；使遗传；扩散；使蔓延
+
+true to prevent this event from being propagated further, or 
+false to indicate that you have not handled this event and it should continue to be propagated.
+
+See Also
+onKeyUp(int, KeyEvent)
+KeyEvent

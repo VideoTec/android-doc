@@ -1,0 +1,5 @@
+android:foregroundGravity
+
+Defines the gravity to apply to the foreground drawable. The gravity defaults to fill.
+
+Must be one or more (separated by '|') of the following constant values.

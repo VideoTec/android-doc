@@ -1,0 +1,47 @@
+android:exported
+
+Whether or not the activity can be launched by components of other applications — 
+"true" if it can be, and "false" if not. 
+
+If "false", the activity can be launched only 
+by components of the same application or applications with the same user ID.
+
+The default value depends on whether the activity contains intent filters. 
+
+absence[英][ˈæbsəns] [美][ˈæbsəns]
+缺席，缺勤；缺乏，缺少，无；心不在焉，不注意
+
+The absence of any filters means that 
+the activity can be invoked only by specifying its exact class name. 
+This implies that the activity is intended only for application-internal use 
+(since others would not know the class name). 
+So in this case, the default value is "false". 
+
+On the other hand, 
+the presence of at least one filter implies that the activity is intended for external use, 
+so the default value is "true".
+
+This attribute is not the only way to limit an activity's exposure to other applications. 
+You can also use a permission to limit the external entities 
+that can invoke the activity (see the permission attribute).
+
+http://blog.csdn.net/watermusicyes/article/details/46460347
+android:exported属性，其实之前根本不知道这个属性，更不知道这个属性用来干嘛的
+
+android:exported 是Android中的四大组件 
+Activity，Service，Provider，Receiver 四大组件中都会有的一个属性
+
+总体来说它的主要作用是：是否支持其它应用调用当前组件
+在Activity中该属性用来标示：
+当前Activity是否可以被另一个Application的组件启动：
+true允许被启动；false不允许被启动
+
+默认值：<说反了吧？>
+如果包含有intent-filter 默认值为false; 
+没有intent-filter默认值为true
+
+没有任何的filter意味着这个Activity
+只有在详细的描述了他的class name后才能被唤醒 .
+这意味着这个Activity只能在应用内部使用，
+因为其它application并不知道这个class的存在。
+所以在这种情况下，它的默认值是false

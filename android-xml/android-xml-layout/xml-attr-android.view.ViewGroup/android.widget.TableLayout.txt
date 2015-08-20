@@ -1,0 +1,20 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/TableLayout.html
+
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.LinearLayout
+ 	 	 	   ↳	android.widget.TableLayout
+
+Class Overview
+
+A layout that arranges its children into rows and columns. A TableLayout consists of a number of TableRow objects, each defining a row (actually, you can have other children, which will be explained below). TableLayout containers do not display border lines for their rows, columns, or cells. Each row has zero or more cells; each cell can hold one View object. The table has as many columns as the row with the most cells. A table can leave cells empty. Cells can span columns, as they can in HTML.
+
+The width of a column is defined by the row with the widest cell in that column. However, a TableLayout can specify certain columns as shrinkable or stretchable by calling setColumnShrinkable() or setColumnStretchable(). If marked as shrinkable, the column width can be shrunk to fit the table into its parent object. If marked as stretchable, it can expand in width to fit any extra space. The total width of the table is defined by its parent container. It is important to remember that a column can be both shrinkable and stretchable. In such a situation, the column will change its size to always use up the available space, but never more. Finally, you can hide a column by calling setColumnCollapsed().
+
+The children of a TableLayout cannot specify the layout_width attribute. Width is always MATCH_PARENT. However, the layout_height attribute can be defined by a child; default value is WRAP_CONTENT. If the child is a TableRow, then the height is always WRAP_CONTENT.
+
+Cells must be added to a row in increasing column order, both in code and XML. Column numbers are zero-based. If you don't specify a column number for a child cell, it will autoincrement to the next available column. If you skip a column number, it will be considered an empty cell in that row. See the TableLayout examples in ApiDemos for examples of creating tables in XML.
+
+Although the typical child of a TableLayout is a TableRow, you can actually use any View subclass as a direct child of TableLayout. The View will be displayed as a single row that spans all the table columns.

@@ -7,6 +7,11 @@ android:layout_gravity
 
 
 包含这个属性的 布局参数类 有
+http://developer.android.com/intl/zh-cn/reference/android/widget/FrameLayout.LayoutParams.html
+http://developer.android.com/intl/zh-cn/reference/android/widget/LinearLayout.LayoutParams.html
+
+注意：
+RelativeLayout.LayoutParams 没有这个属性
 
 第一组
 android.widget.LinearLayout.LayoutParams

@@ -1,6 +1,14 @@
 eclipse magic: … Syntax error, varargs are only available if source level is 1.5 or greater
 
 ------------------------------------------
+16:40 2015/8/20 更详细错误信息
+------------------------------------------
+
+Description	Resource	Path	Location	Type
+Android requires compiler compliance level 5.0 or 6.0. Found '1.4' instead. Please use Android Tools > Fix Project Properties.	beside		line 1	Android ADT Problem
+
+
+------------------------------------------
 16:27 2015/8/7 产生这个错误的原因：
 ------------------------------------------
 从 git 远程库中 clone 下，远程库没有这个文件

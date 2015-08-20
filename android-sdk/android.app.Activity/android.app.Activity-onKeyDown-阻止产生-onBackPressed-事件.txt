@@ -1,0 +1,27 @@
+http://stackoverflow.com/questions/13185476/how-to-handle-back-button-using-view-pager
+
+@Override
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (keyCode == KeyEvent.KEYCODE_BACK) {
+        myViewPager.setCurrentItem(0, true);
+        return true;
+    } else {
+       return super.onKeyDown(keyCode, event);
+    }
+}
+
+This will capture the "back" button press event and send the user to the first item in the ViewPager.
+
+------------------------
+正确做法：
+------------------------
+As correctly stated in the comments by Jade Byfield, a slightly easier way to do this would be to use onBackPressed() in the Activity. This will only work in API levels 5+.
+
+@Override
+public void onBackPressed() {
+  if(i_dont_want_to_leave) {
+     myViewPager.setCurrentItem(0, true);
+  } else {
+    super.onBackPressed(); // This will pop the Activity from the stack.
+  }
+}

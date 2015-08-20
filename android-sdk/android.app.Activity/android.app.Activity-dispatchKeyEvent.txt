@@ -1,0 +1,17 @@
+    protected void onTitleBackPressed() {
+        dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
+        dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
+    }
+
+http://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#dispatchKeyEvent(android.view.KeyEvent)
+
+public boolean dispatchKeyEvent (KeyEvent event)
+
+Added in API level 1
+Called to process key events. You can override this to intercept all key events before they are dispatched to the window. Be sure to call this implementation for key events that should be handled normally.
+
+Parameters
+event	The key event.   android.view.KeyEvent
+
+Returns
+boolean Return true if this event was consumed.

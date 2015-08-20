@@ -1,0 +1,11 @@
+public static final int KEYCODE_BACK
+
+Added in API level 1
+Key code constant: Back key.
+
+Constant Value: 4 (0x00000004)
+
+http://blog.csdn.net/woshisap/article/details/6257633
+在开发android应用时，常常通过按返回键
+（即keyCode == KeyEvent.KEYCODE_BACK）
+就能关闭程序，其实大多情况下并没有关闭改应用

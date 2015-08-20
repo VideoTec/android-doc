@@ -1,0 +1,26 @@
+--------------------------------------------
+public static final int ACTION_DOWN
+--------------------------------------------
+
+Added in API level 1
+getAction() value: the key has been pressed down.
+
+Constant Value: 0 (0x00000000)
+
+--------------------------------------------
+public static final int ACTION_MULTIPLE
+--------------------------------------------
+
+Added in API level 1
+getAction() value: multiple duplicate key events have occurred in a row, or a complex string is being delivered. If the key code is not {#link KEYCODE_UNKNOWN then the {#link getRepeatCount() method returns the number of times the given key code should be executed. Otherwise, if the key code is KEYCODE_UNKNOWN, then this is a sequence of characters as returned by getCharacters().
+
+Constant Value: 2 (0x00000002)
+
+--------------------------------------------
+public static final int ACTION_UP
+--------------------------------------------
+
+Added in API level 1
+getAction() value: the key has been released.
+
+Constant Value: 1 (0x00000001)
