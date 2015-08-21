@@ -1,0 +1,14 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/package-tree.html
+
+com.baidu.mapapi.map
+类 InfoWindow
+
+java.lang.Object
+com.baidu.mapapi.map.InfoWindow
+
+public class InfoWindow
+extends java.lang.Object
+
+在地图中显示一个信息窗口，
+可以设置一个View作为该窗口的内容，
+也可以设置一个 BitmapDescriptor 作为该窗口的内容。

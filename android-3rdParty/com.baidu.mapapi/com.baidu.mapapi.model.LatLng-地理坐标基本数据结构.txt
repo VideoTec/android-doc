@@ -1,0 +1,19 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/model/LatLng.html
+
+com.baidu.mapapi.model
+类 LatLng
+
+java.lang.Object
+com.baidu.mapapi.model.LatLng
+
+public final class LatLng
+extends java.lang.Object
+地理坐标基本数据结构
+
+latitude[英][ˈlætɪtju:d] [美][ˈlætɪtu:d] n.纬度；范围；[天]黄纬
+longitude[英][ˈlɒŋgɪtju:d] [美][ˈlɑ:ndʒətu:d] n.经度，经线；[天]黄经
+
+double	latitude
+纬度
+double	longitude
+经度

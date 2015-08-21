@@ -1,0 +1,11 @@
+InfoWindow(View view, LatLng position, InfoWindow.OnInfoWindowClickListener listener)
+通过传入的 view 构造一个 InfoWindow, 此时只是利用该view生成一个Bitmap绘制在地图中。
+
+InfoWindow(BitmapDescriptor bd, LatLng position, InfoWindow.OnInfoWindowClickListener listener)
+通过传入的 bitmap descriptor 构造一个 InfoWindow。
+
+--------------------------
+例子
+--------------------------
+InfoWindow infoWindow = new InfoWindow(view, position, -47);
+mBaiduMap.showInfoWindow(infoWindow);

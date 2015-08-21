@@ -1,0 +1,12 @@
+http://developer.baidu.com/map/loc_refer/com/baidu/location/LocationClient.html
+
+com.baidu.location 
+类 LocationClient
+
+java.lang.Object
+  继承者 com.baidu.location.LocationClient
+  
+public final class LocationClient
+extends java.lang.Object
+
+定位服务的客户端。宿主程序在客户端声明此类，并调用

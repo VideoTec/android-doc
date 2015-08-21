@@ -1,0 +1,18 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/model/LatLngBounds.Builder.html
+
+com.baidu.mapapi.model
+类 LatLngBounds.Builder
+
+java.lang.Object
+com.baidu.mapapi.model.LatLngBounds.Builder
+
+封闭类:
+LatLngBounds
+
+public static final class LatLngBounds.Builder
+extends java.lang.Object
+地理范围构造器
+
+LatLngBounds.Builder()  构造函数
+LatLngBounds build()    创建地理范围对象
+LatLngBounds.Builder include(LatLng point)  让该地理范围包含一个地理位置坐标

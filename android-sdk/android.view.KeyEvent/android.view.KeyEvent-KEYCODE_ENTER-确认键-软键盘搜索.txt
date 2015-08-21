@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/4451374/use-enter-key-on-softkeyboard-instead-of-clicking-button
+
+may be you could add a attribute to your EditText like this:
+
+android:imeOptions="actionSearch"

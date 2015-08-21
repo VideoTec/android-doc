@@ -1,0 +1,10 @@
+https://developer.android.com/intl/zh-cn/training/keyboard-input/style.html
+
+设置输入，软键盘的样式
+
+<EditText
+    android:id="@+id/phone"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/phone_hint"
+    android:inputType="phone" />

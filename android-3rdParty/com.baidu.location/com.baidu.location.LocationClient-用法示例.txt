@@ -1,0 +1,43 @@
+public LocationClient mLocationClient = null;
+public MyLocationListener mMyLocationListener = new MyLocationListener();
+
+    /**
+     * 发起定位请求，需要重新获取经纬的的时候，调用此方法
+     */
+    protected void requestLocation() {
+        mLocationClient = new LocationClient(this);
+        mLocationClient.registerLocationListener(mMyLocationListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setAddrType("detail");
+        // option.setOpenGps(true);//打开gps
+        option.setCoorType("bd09ll");// 设置坐标类型,bd09,bd09ll,gcj02，
+        option.setScanSpan(5000);
+        mLocationClient.setLocOption(option);
+        mLocationClient.start();
+        mLocationClient.requestLocation();
+    }
+    
+    /**
+     * 获取到定位信息后的回调监听
+     * 
+     * @author huhailong
+     */
+    class MyLocationListener implements BDLocationListener {
+        public void onReceiveLocation(BDLocation location) {
+            if (location != null) {
+                if (mLocationClient.isStarted()) {
+                    mLocationClient.unRegisterLocationListener(mMyLocationListener);
+                    mLocationClient.stop();
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
+//                    derect = location.getDerect();
+                    radius = location.getRadius();
+                    useLocationDoSomething(longitude, latitude, derect, radius);
+                }
+            }
+        }
+
+//        @Override
+//        public void onReceivePoi(BDLocation arg0) {
+//        }
+    }

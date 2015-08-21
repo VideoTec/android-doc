@@ -1,0 +1,86 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/package-tree.html
+
+---------------------------
+枚举分层结构
+---------------------------
+
+java.lang.Object
+java.lang.Enum<E> (implements java.lang.Comparable<T>, java.io.Serializable)
+com.baidu.mapapi.map.MapViewLayoutParams.ELayoutMode
+com.baidu.mapapi.map.MyLocationConfiguration.LocationMode
+
+---------------------------
+接口分层结构
+---------------------------
+
+com.baidu.mapapi.map.BaiduMap.OnMapClickListener
+com.baidu.mapapi.map.BaiduMap.OnMapDoubleClickListener
+com.baidu.mapapi.map.BaiduMap.OnMapLoadedCallback
+com.baidu.mapapi.map.BaiduMap.OnMapLongClickListener
+com.baidu.mapapi.map.BaiduMap.OnMapStatusChangeListener
+com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener
+com.baidu.mapapi.map.BaiduMap.OnMarkerDragListener
+com.baidu.mapapi.map.BaiduMap.OnMyLocationClickListener
+com.baidu.mapapi.map.BaiduMap.SnapshotReadyCallback
+com.baidu.mapapi.map.InfoWindow.OnInfoWindowClickListener
+
+---------------------------
+类分层结构
+---------------------------
+
+java.lang.Object
+    com.baidu.mapapi.map.BaiduMap
+    com.baidu.mapapi.map.BaiduMapOptions
+    com.baidu.mapapi.map.BitmapDescriptor
+    com.baidu.mapapi.map.BitmapDescriptorFactory
+    
+Fragment
+    com.baidu.mapapi.map.SupportMapFragment
+    com.baidu.mapapi.map.MapFragment
+    
+com.baidu.mapapi.map.Gradient
+com.baidu.mapapi.map.HeatMap
+com.baidu.mapapi.map.HeatMap.Builder
+com.baidu.mapapi.map.InfoWindow
+    
+LayoutParams
+    com.baidu.mapapi.map.MapViewLayoutParams
+    
+com.baidu.mapapi.map.MapPoi
+com.baidu.mapapi.map.MapStatus
+com.baidu.mapapi.map.MapStatus.Builder
+com.baidu.mapapi.map.MapStatusUpdate
+com.baidu.mapapi.map.MapStatusUpdateFactory
+com.baidu.mapapi.map.MapViewLayoutParams.Builder
+com.baidu.mapapi.map.MyLocationConfiguration
+com.baidu.mapapi.map.MyLocationData
+com.baidu.mapapi.map.MyLocationData.Builder
+
+com.baidu.mapapi.map.Overlay
+    com.baidu.mapapi.map.Arc
+    com.baidu.mapapi.map.Circle
+    com.baidu.mapapi.map.Dot
+    com.baidu.mapapi.map.GroundOverlay
+    com.baidu.mapapi.map.Marker
+    com.baidu.mapapi.map.Polygon
+    com.baidu.mapapi.map.Polyline
+    com.baidu.mapapi.map.Text
+
+com.baidu.mapapi.map.OverlayOptions
+    com.baidu.mapapi.map.ArcOptions
+    com.baidu.mapapi.map.CircleOptions
+    com.baidu.mapapi.map.DotOptions
+    com.baidu.mapapi.map.GroundOverlayOptions
+    com.baidu.mapapi.map.MarkerOptions
+    com.baidu.mapapi.map.PolygonOptions
+    com.baidu.mapapi.map.PolylineOptions
+    com.baidu.mapapi.map.TextOptions
+    
+com.baidu.mapapi.map.Projection
+com.baidu.mapapi.map.Stroke
+com.baidu.mapapi.map.UiSettings
+
+ViewGroup
+    com.baidu.mapapi.map.MapView
+
+com.baidu.mapapi.map.WeightedLatLng

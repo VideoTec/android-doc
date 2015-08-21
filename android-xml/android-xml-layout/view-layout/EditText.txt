@@ -1,0 +1,21 @@
+            <EditText
+                android:id="@+id/txt_add_work_position_id"
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/beside_person_work_add_position"
+                android:maxLength="16"
+                android:singleLine="true" />
+                
+         <EditText
+            android:id="@+id/edittext_search"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:background="@android:color/transparent"
+            android:hint="@string/search_maker_hint"
+            android:imeOptions="actionSearch"      键盘上的 查找图标 替换 确定图标
+            android:maxLength="64"
+            android:singleLine="true"
+            android:textSize="14sp" />

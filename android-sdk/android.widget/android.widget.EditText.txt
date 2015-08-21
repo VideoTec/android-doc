@@ -1,0 +1,26 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/EditText.html
+
+EditText
+
+extends TextView
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.widget.TextView
+ 	 	   ↳	android.widget.EditText
+
+Known Direct Subclasses
+AppCompatEditText,
+AutoCompleteTextView,
+ExtractEditText, 
+SearchEditText
+
+Known Indirect Subclasses
+AppCompatAutoCompleteTextView, 
+AppCompatMultiAutoCompleteTextView, 
+MultiAutoCompleteTextView
+
+Class Overview
+
+EditText is a thin veneer over TextView that configures itself to be editable.
+
+See the Text Fields guide.

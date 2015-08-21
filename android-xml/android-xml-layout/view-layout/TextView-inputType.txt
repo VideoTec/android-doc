@@ -1,0 +1,16 @@
+android:inputType
+
+The type of data being placed in a text field, used to help an input method decide how to let the user enter text. The constants here correspond to those defined by InputType. Generally you can select a single value, though some can be combined together as indicated. Setting this attribute to anything besides none also implies that the text is editable.
+
+Must be one or more (separated by '|') of the following constant values.
+
+参考：
+https://developer.android.com/intl/zh-cn/training/keyboard-input/style.html
+
+1）Specify the Keyboard Type
+You should always declare the input method for your text fields 
+by adding the android:inputType attribute to the <EditText> element.
+
+2）Enable Spelling Suggestions and Other Behaviors
+The android:inputType attribute allows you to specify various behaviors for the input method. Most importantly, if your text field is intended for basic text input (such as for a text message), you should enable auto spelling correction with the "textAutoCorrect" value.
+

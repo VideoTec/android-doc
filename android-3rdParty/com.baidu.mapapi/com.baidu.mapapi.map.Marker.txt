@@ -1,0 +1,13 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/Marker.html
+
+com.baidu.mapapi.map
+类 Marker
+
+java.lang.Object
+com.baidu.mapapi.map.Overlay
+com.baidu.mapapi.map.Marker
+
+public final class Marker
+extends Overlay
+
+定义地图 Marker 覆盖物

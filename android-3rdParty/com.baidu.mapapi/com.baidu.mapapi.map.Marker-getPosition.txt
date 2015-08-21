@@ -1,0 +1,7 @@
+getPosition
+
+public LatLng getPosition()
+获取 Marker 覆盖物的位置坐标
+
+返回:
+Marker 覆盖物的位置坐标

@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/TextView.html#attr_android:imeOptions
+
+android:imeOptions
+
+Additional features you can enable in an IME associated with an editor 
+to improve the integration with your application. 
+The constants here correspond to those defined by imeOptions.
+
+Must be one or more (separated by '|') of the following constant values.

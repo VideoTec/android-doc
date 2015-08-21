@@ -1,0 +1,15 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/package-summary.html
+
+程序包 com.baidu.mapapi
+SDKInitializer 类，在使用地图SDK各组件之前，需调用 init 初始化
+请参阅: 说明
+
+类概要 
+类                说明
+SDKInitializer    初始化 SDK context 全局变量，指定 sdcard 路径
+VersionInfo       获取SDK版本信息
+
+程序包com.baidu.mapapi的说明
+
+SDKInitializer 类，
+在使用地图SDK各组件之前，需调用 init 初始化

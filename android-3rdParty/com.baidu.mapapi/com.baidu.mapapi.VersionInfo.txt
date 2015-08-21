@@ -1,0 +1,14 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/VersionInfo.html
+
+static java.lang.String	getApiVersion()
+获取当前API的版本号
+static java.lang.String	getVersionDesc()
+获取当前版本描述信息
+
+static java.lang.String	VERSION_DESC
+版本描述信息
+5.0
+
+static java.lang.String	VERSION_INFO
+版本号
+baidu_mapsdk_andr_3.2.0.15_com=map_search_cloud_util:so=d471020706cb84baab14b3089274b1e0

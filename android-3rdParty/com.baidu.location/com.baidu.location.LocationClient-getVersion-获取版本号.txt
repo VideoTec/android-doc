@@ -1,0 +1,5 @@
+getVersion
+
+public java.lang.String getVersion()
+
+获取定位sdk版本信息

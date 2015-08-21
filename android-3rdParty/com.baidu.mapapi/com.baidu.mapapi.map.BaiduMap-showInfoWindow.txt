@@ -1,0 +1,12 @@
+showInfoWindow
+public void showInfoWindow(InfoWindow infoWindow)
+
+显示 InfoWindow
+参数:
+infoWindow - 要显示的 InfoWindow 对象
+
+--------------------------
+例子
+--------------------------
+InfoWindow infoWindow = new InfoWindow(view, position, -47);
+mBaiduMap.showInfoWindow(infoWindow);

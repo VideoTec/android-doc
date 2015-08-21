@@ -2,7 +2,7 @@
             android:name="com.feinno.beside.ui.fragment.MainFragment"
             android:label="@string/find_navigation_title_prompt"
             android:process=":beside"
-             android:exported="false"
+            android:exported="false"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

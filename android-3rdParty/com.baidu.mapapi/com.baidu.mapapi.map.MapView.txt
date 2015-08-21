@@ -1,0 +1,24 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/MapView.html
+
+类 MapView
+
+java.lang.Object
+ViewGroup
+com.baidu.mapapi.map.MapView
+
+public final class MapView
+extends ViewGroup
+
+一个显示地图的视图（View）。
+它负责从服务端获取地图数据。
+它将会捕捉屏幕触控手势事件。
+
+使用这个类必须按照它的生命周期进行操控，
+你必须参照以下方法
+onCreate(Bundle)、 
+onResume()、
+onPause()、
+onDestroy()。等声明周期函数。
+
+在使用地图组件之前请确保已经调用了 
+SDKInitializer.initialize(Context) 函数以提供全局 Context 信息。

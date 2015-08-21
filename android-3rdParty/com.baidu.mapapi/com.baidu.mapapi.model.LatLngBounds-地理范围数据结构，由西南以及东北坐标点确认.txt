@@ -1,0 +1,26 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/model/LatLngBounds.html
+
+com.baidu.mapapi.model
+类 LatLngBounds
+
+java.lang.Object
+com.baidu.mapapi.model.LatLngBounds
+
+public final class LatLngBounds
+extends java.lang.Object
+
+地理范围数据结构，
+由西南以及东北坐标点确认
+
+-----------------------------------
+字段
+-----------------------------------
+LatLng    northeast 该地理范围东北坐标
+LatLng    southwest 该地理范围西南坐标
+
+-----------------------------------
+方法
+-----------------------------------
+boolean             contains(LatLng point) 判断该地理范围是否包含一个地理位置
+LatLng              getCenter() 获取该地理范围的中心地理坐标
+java.lang.String    toString() 

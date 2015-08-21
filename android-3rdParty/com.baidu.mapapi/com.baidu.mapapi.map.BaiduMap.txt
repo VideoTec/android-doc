@@ -1,0 +1,12 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/BaiduMap.html
+
+com.baidu.mapapi.map
+类 BaiduMap
+
+java.lang.Object
+com.baidu.mapapi.map.BaiduMap
+
+public class BaiduMap
+extends java.lang.Object
+
+定义 BaiduMap 地图对象的操作方法与接口

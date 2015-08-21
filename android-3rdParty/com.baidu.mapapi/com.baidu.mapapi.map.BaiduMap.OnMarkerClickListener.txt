@@ -1,0 +1,20 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/BaiduMap.OnMarkerClickListener.html
+
+com.baidu.mapapi.map
+接口 BaiduMap.OnMarkerClickListener
+
+所有已知实现类:
+BusLineOverlay, DrivingRouteOverlay, OverlayManager, PoiOverlay, TransitRouteOverlay, WalkingRouteOverlay
+
+封闭类:
+BaiduMap
+
+public static interface BaiduMap.OnMarkerClickListener
+
+地图 Marker 覆盖物点击事件监听接口
+
+boolean onMarkerClick(Marker marker)
+
+地图 Marker 覆盖物点击事件监听函数
+参数:
+marker - 被点击的 marker

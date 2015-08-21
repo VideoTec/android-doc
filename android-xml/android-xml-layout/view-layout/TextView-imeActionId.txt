@@ -1,0 +1,65 @@
+android:imeActionId
+
+Supply a value for EditorInfo.actionId used when an input method is connected to the text view.
+
+Must be an integer value, such as "100".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol imeActionId.
+
+Related Methods
+setImeActionLabel(CharSequence,int)
+
+²Î¿¼£ºandroid.view.inputmethod.EditorInfo
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/EditorInfo.html
+
+int    IME_ACTION_DONE    
+Bits of IME_MASK_ACTION: the action key performs a "done" operation, typically meaning there is nothing more to input and the IME will be closed.
+
+int    IME_ACTION_GO    
+Bits of IME_MASK_ACTION: the action key performs a "go" operation to take the user to the target of the text they typed.
+
+int    IME_ACTION_NEXT    
+Bits of IME_MASK_ACTION: the action key performs a "next" operation, taking the user to the next field that will accept text.
+
+int    IME_ACTION_NONE    
+Bits of IME_MASK_ACTION: there is no available action.
+
+int    IME_ACTION_PREVIOUS    
+Bits of IME_MASK_ACTION: like IME_ACTION_NEXT, but for moving to the previous field.
+
+int    IME_ACTION_SEARCH    
+Bits of IME_MASK_ACTION: the action key performs a "search" operation, taking the user to the results of searching for the text they have typed (in whatever context is appropriate).
+
+int    IME_ACTION_SEND    
+Bits of IME_MASK_ACTION: the action key performs a "send" operation, delivering the text to its target.
+
+int    IME_ACTION_UNSPECIFIED    
+Bits of IME_MASK_ACTION: no specific action has been associated with this editor, let the editor come up with its own if it can.
+
+int    IME_FLAG_FORCE_ASCII    
+Flag of imeOptions: used to request an IME that is capable of inputting ASCII characters.
+
+int    IME_FLAG_NAVIGATE_NEXT    
+Flag of imeOptions: used to specify that there is something interesting that a forward navigation can focus on.
+
+int    IME_FLAG_NAVIGATE_PREVIOUS    
+Flag of imeOptions: like IME_FLAG_NAVIGATE_NEXT, but specifies there is something interesting that a backward navigation can focus on.
+
+int    IME_FLAG_NO_ACCESSORY_ACTION    
+Flag of imeOptions: used in conjunction with one of the actions masked by IME_MASK_ACTION, this indicates that the action should not be available as an accessory button on the right of the extracted text when the input method is full-screen.
+
+int    IME_FLAG_NO_ENTER_ACTION    
+Flag of imeOptions: used in conjunction with one of the actions masked by IME_MASK_ACTION.
+
+int    IME_FLAG_NO_EXTRACT_UI    
+Flag of imeOptions: used to specify that the IME does not need to show its extracted text UI.
+
+int    IME_FLAG_NO_FULLSCREEN    
+Flag of imeOptions: used to request that the IME never go into fullscreen mode.
+
+int    IME_MASK_ACTION    
+Set of bits in imeOptions that provide alternative actions associated with the "enter" key.
+
+int    IME_NULL    Generic unspecified type for imeOptions.

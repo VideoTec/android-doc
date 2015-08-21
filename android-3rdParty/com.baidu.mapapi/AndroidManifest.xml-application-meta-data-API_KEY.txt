@@ -1,0 +1,11 @@
+申请 AK (application key) 访问应用（AK）
+
+http://lbsyun.baidu.com/apiconsole/key
+
+    <application
+        android:name="baidumapsdk.demo.DemoApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="sNTrcOqPr7zFX1C9lagZwtbE" />

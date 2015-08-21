@@ -11,6 +11,12 @@ The default value depends on whether the activity contains intent filters.
 absence[英][ˈæbsəns] [美][ˈæbsəns]
 缺席，缺勤；缺乏，缺少，无；心不在焉，不注意
 
+presence[英][ˈprezns] [美][ˈprɛzəns]
+n.出席；仪表；风度；鬼魂，神灵
+
+exposure[英][ɪkˈspəʊʒə(r)] [美][ɪkˈspoʊʒə(r)]
+n.暴露；揭发；公开；（商品等的）展出
+
 The absence of any filters means that 
 the activity can be invoked only by specifying its exact class name. 
 This implies that the activity is intended only for application-internal use 
