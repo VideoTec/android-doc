@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/26336709/android-studio-should-the-entire-idea-directory-be-in-git-ignore
+
+The .idea directory contains a set of configuration files (.xml). Each file contains only a portion of configuration data pertaining to a certain functional area which is reflected in the name of a file, for example, compiler.xml, encodings.xml, modules.xml.
+
+Almost all of the files contain information core to the project itself, such as names and locations of its component modules, compiler settings, etc. Thus, these files may (and should) be kept under version control.
