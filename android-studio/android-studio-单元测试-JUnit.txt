@@ -1,0 +1,45 @@
+https://zh.wikipedia.org/wiki/JUnit
+
+JUnit是一个Java语言的单元测试框架。
+它由肯特·贝克和埃里希·伽玛（Erich Gamma）建立，
+逐渐成为源于Kent Beck的sUnit的xUnit家族中为最成功的一个。 
+JUnit有它自己的JUnit扩展生态圈
+
+http://developer.51cto.com/art/200711/87637.htm
+JUnit和单元测试入门简介
+
+http://blog.csdn.net/coder_pig/article/details/17268981
+
+单元测试的一些规范:
+①单元测试方法需要声明为public类型
+②单元测试方法的返回值需要为void
+③按照JUnit3的规范,单元测试方法的方法名需要以test开头
+④单元测试方法需要声明向单元测试框架抛出异常
+
+建立JUnit测试的两种方法
+一. 直接在需要被测试的工程中新建测试类
+二. 专门创建一个用于测试的工程(!!推荐,这样可以降低代码的耦合度)
+
+http://www.cnblogs.com/plokmju/p/android_junit.html
+首先来了解一下什么是JUnit，
+JUnit测试是白盒测试，
+即主要是程序员自己对开发的方法进行功能性测试。
+JUnit是一套框架，Android中也沿用了这一套框架
+
+http://blog.csdn.net/xuguoli_beyondboy/article/details/46885715
+文章英文版来源：http://tools.android.com/tech-docs/unit-testing-support
+
+单元测试在你开发机上的当地JVM上运行，
+我们的 gradle ce 插件将会编译在src/test/java目录里的源码并用Gradle测试机制执行它，
+在运行时期，测试会针对你无最终修正版的android.jar的一个版本来执行
+
+http://www.jianshu.com/p/03118c11c199
+可能你已经注意到了Android Studio从来没有让你连接设备或者启动模拟器来运行测试。
+那是因为，位于src/tests目录下的测试是运行在本地电脑Java虚拟机上的单元测试。
+编写测试，实现功能使测试通过，
+然后再添加更多的测试...这种工作方式使快速迭代成为可能，我们称之为测试驱动开发。
+值得注意的是，
+当在本地运行测试时，Gradle为你在环境变量中提供了包含Android框架的android.jar包。
+但是它们功能不完整（所以，打个比方，你不能单纯调用Activity的方法并指望它们生效）。
+推荐使用Mockito等mocking框架来mock你需要使用的任何Android方法。
+对于运行在设备上，并充分利用Android框架的测试，请继续阅读本篇教程的下个部分

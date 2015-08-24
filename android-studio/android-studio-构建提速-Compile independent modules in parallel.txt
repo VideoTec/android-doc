@@ -1,0 +1,31 @@
+https://plus.google.com/+AndroidDevelopers/posts/ECrb9VQW9XP
+
+Parallel Project Execution. [3] 
+Parallel execution can make a significant difference 
+if you are building a very complex project with many sub-projects 
+(for example, Android library projects). 
+
+Gradle has an in-development Parallel Mode 
+which enables parallel execution of sub-projects that are decoupled. 
+
+“Decoupled” means that these projects do not access each other's project model. 
+Cross project configurations are a good example of this. 
+Any use of the allprojects {} and subprojects {} closures 
+will result in the projects being coupled. 
+
+Android Studio does not use Parallel Mode by default, 
+but you can enable it in Preferences > Compiler > Gradle.
+
+Again, if you are using the command line you need to explicitly tell Gradle 
+that you want to use Parallel Mode. 
+To enable it, add the parallel property to your gradle.properties file:
+
+org.gradle.parallel=true
+
+https://www.sundoginteractive.com/sunblog/posts/speed-up-gradle-in-android-studio
+Another helpful tip is to open preferences in Android Studio, 
+click on Compiler and check the “Compile independent modules in parallel” checkbox
+while also adding VM Options.  
+
+I have had confirmation from a fellow Android developer of a very large Android app 
+that took his compile time from 90 seconds down to 23 seconds.

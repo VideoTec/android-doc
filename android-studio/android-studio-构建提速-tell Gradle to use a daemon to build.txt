@@ -1,0 +1,16 @@
+https://www.timroes.de/2013/09/12/speed-up-gradle/
+
+https://plus.google.com/+AndroidDevelopers/posts/ECrb9VQW9XP
+
+The Gradle daemon is a great way to speed up your builds, 
+which is extremely useful when you have to build your application repeatedly. 
+The basic idea is to fork a “daemon” process [1] 
+which can be reused on subsequent builds, rather than launching a new JVM on every build.
+
+The good news is that Android Studio always keeps a Gradle daemon around for you. 
+However, if you build from the command line, 
+you need to tell gradle that you want to use the Gradle daemon. 
+You can use command line arguments [2] to interact with Gradle daemon, 
+but the easiest way is to add a daemon property to your gradle.properties file:
+
+org.gradle.daemon=true

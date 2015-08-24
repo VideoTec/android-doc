@@ -1,0 +1,24 @@
+解决Fetching android sdk component information加载过久问题
+　　安装完成后，如果直接启动，Android Studio会去获取 android sdk 组件信息，这个过程相当慢，还经常加载失败，导致Android Studio启动不起开。解决办法就是不去获取android sdk 组件信息。方法如下：
+
+　　1）进入刚安装的Android Studio目录下的bin目录。找到idea.properties文件，用文本编辑器打开。
+
+　　2）在idea.properties文件末尾添加一行：disable.android.first.run=true，然后保存文件。
+
+　　3）关闭Android Studio后重新启动，便可进入界面
+
+http://stackoverflow.com/questions/27085806/why-would-android-studio-1-0-rc-start-downloading-android-sdk-without-detecting
+RC2 is out now, I presume this issue is fixed there
+
+A bug in Android Studio 1.0 RC1 causes the Setup Wizard to show up and ask you to install an SDK on each startup. 
+To work around this, 
+you can edit the idea.properties file in the bin folder such that it has the below line as well:
+
+disable.android.first.run=true
+
+PLEASE NOTE: This will break patch updating to the next version. 
+We now check full binary checksums on the whole installation 
+to prevent various install corruption bugs as well as to preserve application signatures. 
+
+Therefore, make a copy of this file first, and before updating, put it back. 
+(Alternatively, just download the full image of RC2 when it is released.)

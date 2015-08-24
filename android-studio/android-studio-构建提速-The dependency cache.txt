@@ -1,0 +1,6 @@
+https://docs.gradle.org/current/userguide/dependency_management.html#sec:cache_command_line_options
+
+52.9. The dependency cache
+Gradle contains a highly sophisticated dependency caching mechanism, 
+which seeks to minimise the number of remote requests made in dependency resolution, 
+while striving to guarantee that the results of dependency resolution are correct and reproducible.

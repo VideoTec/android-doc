@@ -1,0 +1,4 @@
+http://developer.android.com/intl/zh-cn/tools/testing/testing_android.html
+
+fundamental[英][ˌfʌndəˈmentl] [美][ˌfʌndəˈmɛntl]
+n.原理，原则，基本，根本，基础；[乐]基音；[物]基频，基谐波

@@ -1,0 +1,11 @@
+https://code.google.com/p/android/issues/detail?id=172737
+
+When i click run my App,  Android Studio stuck in 'Scanning files to index...' step, 
+it's waste my time to wait it wakeup for a long time
+
+http://cateyes.logdown.com/tags/androidstudio
+Android Studio 在要把程式 Run 起來時，
+一直停在 Scanning files to index... 這邊。
+這次遇到的原因是 adb 當掉了。
+
+執行 adb kill-server 再執行 adb start-server 就好了。

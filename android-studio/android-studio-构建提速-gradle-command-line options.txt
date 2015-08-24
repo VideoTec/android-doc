@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/16775197/building-and-running-app-via-gradle-and-android-studio-is-slower-than-via-eclips/19500539#19500539
+
+https://docs.gradle.org/current/userguide/gradle_command_line.html
+
+The command-line options available for the gradle command are listed below:
+--offline
+Specifies that the build should operate without accessing network resources. 
+See Section 52.9.2, “Command line options to override caching”.
+
+52.9.2.1. Offline
+
+The --offline command line switch tells Gradle to always use dependency modules from the cache, 
+regardless if they are due to be checked again. 
+When running with offline, Gradle will never attempt to access the network to perform dependency resolution. 
+If required modules are not present in the dependency cache, build execution will fail.
+
