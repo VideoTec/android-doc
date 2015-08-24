@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/9412881/eclipse-search-with-the-exact-matching-string
+
+Check the "Regular expression" checkbox, and surround your word with \b at the beginning and end which matches beginning and end (boundaries) of a word, so your search term will be \bexch\b
+
+regular[英][ˈregjələ(r)] [美][ˈrɛɡjəlɚ]
+n.正规军；主力（或正式）队员；常客

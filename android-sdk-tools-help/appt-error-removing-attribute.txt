@@ -1,0 +1,18 @@
+[2015-08-24 16:53:49 - beside] D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml:2: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+
+[2015-08-24 16:53:49 - beside] D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_attachment_layout for configuration v11.
+
+
+https://code.google.com/p/android/issues/detail?id=164673
+http://stackoverflow.com/questions/29802168/upgraded-to-appcompat-v22-1-0-and-now-getting-removing-attribute-error
+
+See discussion on https://code.google.com/p/android/issues/detail?id=164673
+
+You have a couple of options:
+
+1£©Set Preferences > Android > Build > Build output to Normal or Silent. Verbose is causing the problem.
+2£©Force SDK Build Tools 21.1.2 for AppCompat project only in project.properties, see https://github.com/dandar3/android-support-v7-appcompat/blob/master/project.properties
+
+sdk.buildtools=19.1.0
+
+You can have as many SDK Build Tools installed, you can specify a version per project or otherwise it will pick up the latest.

@@ -1,0 +1,9 @@
+http://android-developers.blogspot.com/2009/03/android-layout-tricks-3-optimize-by.html
+
+The <merge /> tag is extremely useful and can do wonders in your code. 
+However, it suffers from a couple of limitation:
+
+1）<merge /> can only be used as the root tag of an XML layout
+2）When inflating a layout starting with a <merge />, 
+you must specify a parent ViewGroup and 
+you must set attachToRoot to true (see the documentation of the inflate() method)
