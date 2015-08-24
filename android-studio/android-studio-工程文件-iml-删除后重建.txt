@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/20844408/removing-referenced-libraries-from-project-android-studio
+
+第一种方法：
+Generally, clicking on the Sync Project with Gradle Files button should clear up problems, 
+
+第二种方法：
+persist[英][pəˈsɪst] [美][pərˈsɪst]
+v.坚持；固执；存留；继续存在
+
+but if they persist, you can close Android Studio, 
+delete all the .idea folders and .iml files in your project and re-import.

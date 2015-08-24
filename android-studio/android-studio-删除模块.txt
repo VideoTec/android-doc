@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/17073108/remove-project-from-android-studio
+
+Right click on the project on project bar and delete.

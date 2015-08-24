@@ -1,2 +1,20 @@
 android stuido 可以导入 gradle 文件，自动创建工程文件：
 *.iml 可以自动生成。
+
+8:13 2015/8/24
+新建了一个模块，但是没有生成， *.iml，为什么？
+
+--------------------------
+要不要加入版本控制系统中？
+可以自动生成，不用加入。
+--------------------------
+http://stackoverflow.com/questions/25504982/is-it-mandatory-to-save-iml-files-in-version-control
+
+agnostic[英][ægˈnɒstɪk] [美][ægˈnɑ:stɪk]
+n.不可知论者
+
+General best practice is to:
+
+make projects as IDE-agnostic as possible,
+do not commit generated files.
+So the answer is: it's better to make such files ignored for CVS.
