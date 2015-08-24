@@ -1,0 +1,19 @@
+更改 SDK 后的问题：
+
+--------------------------
+第一个问题：
+--------------------------
+layout.xml 中报错：
+note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+
+http://stackoverflow.com/questions/29802168/upgraded-to-appcompat-v22-1-0-and-now-getting-removing-attribute-error
+
+You can have as many SDK Build Tools installed, 
+you can specify a version per project or otherwise it will pick up the latest.
+
+E:\android-sdk-windows\build-tools\19.1.0
+E:\android-sdk-windows\build-tools\22.0.1
+E:\android-sdk-windows\build-tools\23.0.0
+
+可以在 project.properties 文件里指定使用的 sdk-build-tools
+sdk.buildtools=19.1.0

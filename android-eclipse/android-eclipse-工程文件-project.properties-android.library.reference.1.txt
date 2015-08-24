@@ -45,3 +45,9 @@ library project必须和project处于相同的盘符中，
 因为如果在不同盘符，
 project.properties中的android.library.reference.1值变成绝对路径，
 而ADT推荐是在ubuntu下使用的，对windows绝对路径有支持bug。
+
+------------------------------------------------------------
+依赖库不能，写绝对路径
+------------------------------------------------------------
+android.library.reference.3=D:/work/android-support-v7-appcompat
+http://stackoverflow.com/questions/7925747/how-do-you-set-the-android-library-absolute-path-in-ant-properties

@@ -1,0 +1,62 @@
+https://developer.android.com/intl/zh-cn/reference/android/support/v7/app/AppCompatActivity.html
+
+遇到的问题：
+http://stackoverflow.com/questions/24651232/the-import-android-support-v7-app-cannot-be-resolved
+
+import android.support.v7.app.AppCompatActivity; -- cannt be resolved
+
+解决方法见：
+http://stackoverflow.com/questions/23781675/android-support-v7-app-actionbaractivity-not-resolve
+
+导入 已经存在的工程（Existing Android Code）：
+Select File > Import.
+Select Existing Android Code Into Workspace and click Next.
+Browse to the SDK installation directory and then to the Support Library folder. 
+/extras/android/support/v7/appcompat/.
+
+编译 android-support-v7-appcompat 出下面的错误：
+
+最后发现错误的原因是：
+使用了自己下载的SDK中的 android-support-v7-appcompat
+但是 eclipse ，使用的是 ADT 自带的 SDK。
+
+具体原因仍然不明。真正的原因在这里：
+http://stackoverflow.com/questions/26530415/error-in-styles-base-xml-file-android-app-no-resource-found-that-matches-the
+I've just solved these exact errors myself. 
+The key it seems is that your project.properties file 
+in your appcompat library project 
+should use whatever the highest version of the API 
+that your particular appcompat project has been written for 
+(in your case it looks like v21). 
+Easiest way I've found to tell is to look for 
+the highest 'values-v**' folder inside the res folder (eg. values-v21).
+
+还有一个问题，依赖库不能，写绝对路径
+android.library.reference.3=D:/work/android-support-v7-appcompat
+http://stackoverflow.com/questions/7925747/how-do-you-set-the-android-library-absolute-path-in-ant-properties
+
+http://stackoverflow.com/questions/26431676/appcompat-v721-0-0-no-resource-found-that-matches-the-given-name-attr-andro/26431677#26431677
+
+----------------------
+错误
+----------------------
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:172: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:170: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:167: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:168: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:87: error: Error: No resource found that matches the given name: attr 'android:colorAccent'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:91: error: Error: No resource found that matches the given name: attr 'android:colorButtonNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:89: error: Error: No resource found that matches the given name: attr 'android:colorControlActivated'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:90: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:88: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:85: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:86: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:136: error: Error: No resource found that matches the given name: attr 'android:colorAccent'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:140: error: Error: No resource found that matches the given name: attr 'android:colorButtonNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:138: error: Error: No resource found that matches the given name: attr 'android:colorControlActivated'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:139: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:137: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:134: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:135: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:144: error: Error: No resource found that matches the given name: attr 'android:windowElevation'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:148: error: Error: No resource found that matches the given name: attr 'android:windowElevation'.

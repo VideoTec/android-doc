@@ -1,0 +1,39 @@
+参考：
+E:\doc\android\android-support-library\android.support.v7.app\android.support.v7.app.AppCompatActivity.txt
+
+android-support-v7-appcompat 工程编译，提示错误：
+
+真正的原因在这里：
+http://stackoverflow.com/questions/26530415/error-in-styles-base-xml-file-android-app-no-resource-found-that-matches-the
+I've just solved these exact errors myself. 
+The key it seems is that your project.properties file 
+in your appcompat library project 
+should use whatever the highest version of the API 
+that your particular appcompat project has been written for 
+(in your case it looks like v21). 
+Easiest way I've found to tell is to look for 
+the highest 'values-v**' folder inside the res folder (eg. values-v21).
+
+----------------------
+错误
+----------------------
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:172: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:170: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:167: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:168: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:87: error: Error: No resource found that matches the given name: attr 'android:colorAccent'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:91: error: Error: No resource found that matches the given name: attr 'android:colorButtonNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:89: error: Error: No resource found that matches the given name: attr 'android:colorControlActivated'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:90: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:88: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:85: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:86: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:136: error: Error: No resource found that matches the given name: attr 'android:colorAccent'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:140: error: Error: No resource found that matches the given name: attr 'android:colorButtonNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:138: error: Error: No resource found that matches the given name: attr 'android:colorControlActivated'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:139: error: Error: No resource found that matches the given name: attr 'android:colorControlHighlight'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:137: error: Error: No resource found that matches the given name: attr 'android:colorControlNormal'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:134: error: Error: No resource found that matches the given name: attr 'android:colorPrimary'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:135: error: Error: No resource found that matches the given name: attr 'android:colorPrimaryDark'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:144: error: Error: No resource found that matches the given name: attr 'android:windowElevation'.
+[2015-08-24 14:54:28 - android-support-v7-appcompat] D:\work\android-support-v7-appcompat\res\values-v21\themes_base.xml:148: error: Error: No resource found that matches the given name: attr 'android:windowElevation'.

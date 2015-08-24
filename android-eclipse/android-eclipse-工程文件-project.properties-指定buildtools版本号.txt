@@ -1,0 +1,9 @@
+参考：
+E:\doc\android\android-eclipse\android-eclipse-ADT-更换SDK目录.txt
+
+可以在 project.properties 文件里指定工程使用的 sdk-build-tools
+sdk.buildtools=21.1.2
+
+SDK 目录中的不同版本的 BUILD-TOOLS
+E:\android-sdk-windows\build-tools\19.1.0
+E:\android-sdk-windows\build-tools\22.0.1
