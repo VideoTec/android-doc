@@ -1,0 +1,3 @@
+第一个原因：
+E:\doc\android\android-xml\android-xml-layout\view-layout\View-layoutDirection-文字书写方向.txt
+根据 - 文字方向 - 决定 start / end 位置。

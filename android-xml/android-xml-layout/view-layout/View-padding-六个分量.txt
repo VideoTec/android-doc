@@ -1,0 +1,23 @@
+android:paddingBottom
+setPaddingRelative(int,int,int,int)
+Sets the padding, in pixels, of the bottom edge; see padding. 
+
+android:paddingEnd
+setPaddingRelative(int,int,int,int)
+Sets the padding, in pixels, of the end edge; see padding. 
+
+android:paddingLeft
+setPadding(int,int,int,int)
+Sets the padding, in pixels, of the left edge; see padding. 
+
+android:paddingRight
+setPadding(int,int,int,int)
+Sets the padding, in pixels, of the right edge; see padding. 
+
+android:paddingStart
+setPaddingRelative(int,int,int,int)
+Sets the padding, in pixels, of the start edge; see padding. 
+
+android:paddingTop
+setPaddingRelative(int,int,int,int)
+Sets the padding, in pixels, of the top edge; see padding. 

@@ -1,0 +1,4 @@
+public View onCreateView(
+    LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    同一对象，有可能重新进入这个函数，这个需要注意，对象成员的初始化
+}
