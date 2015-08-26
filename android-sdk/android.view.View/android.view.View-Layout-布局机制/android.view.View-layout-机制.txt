@@ -9,7 +9,7 @@ http://blog.csdn.net/ff20081528/article/details/17784911
 
 Layout过程其实就是父视图按照子视图的大小及布局参数将子视图放在窗口的合适的位置上。
 
-视图的布局过程是从ViewRoot对象调调用根视图的layout()方法开始，
+视图的布局过程是从ViewRoot对象调调用根视图的 layout()方法开始，
 接着layout()方法调用根视图的onLayout()方法，
 onLayout()方法会对所包含的子视图逐一执行layout操作，
 如果子视图是ViewGroup子类对象，则继续调用子视图的layout()，重复这一过程。

@@ -1,0 +1,23 @@
+都是 View 的属性。
+
+---------------------------------------
+layout_gravity 指定 View 在，父空口中的布局
+---------------------------------------
+
+Defines how the child view should be positioned, 
+on both the X and Y axes, within its enclosing layout
+
+---------------------------------------
+gravity 不同 VIEW 有不同意义：指定其内容的布局
+---------------------------------------
+
+TextView
+Specifies how to align the text by the view's x- and/or y-axis 
+when the text is smaller than the view
+
+RelativeLayout 和 LinearLayout
+Specifies how an object should position its content, 
+on both the X and Y axes, within its own bounds
+
+参考
+http://stackoverflow.com/questions/3482742/gravity-and-layout-gravity-on-android/26190050#26190050

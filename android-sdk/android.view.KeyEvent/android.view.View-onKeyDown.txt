@@ -1,0 +1,12 @@
+public boolean onKeyDown (int keyCode, KeyEvent event)
+
+Added in API level 1
+Default implementation of KeyEvent.Callback.onKeyDown(): perform press of the view when KEYCODE_DPAD_CENTER or KEYCODE_ENTER is released, if the view is enabled and clickable.
+
+Key presses in software keyboards will generally NOT trigger this listener, although some may elect to do so in some situations. Do not rely on this to catch software key presses.
+
+Parameters
+keyCode	A key code that represents the button pressed, from KeyEvent.
+event	The KeyEvent object that defines the button action.
+Returns
+If you handled the event, return true. If you want to allow the event to be handled by the next receiver, return false.

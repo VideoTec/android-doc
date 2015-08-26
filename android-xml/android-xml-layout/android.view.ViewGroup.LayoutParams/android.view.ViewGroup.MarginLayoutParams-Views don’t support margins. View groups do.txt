@@ -1,0 +1,5 @@
+http://www.101apps.co.za/index.php/articles/android-s-gravity-layout-gravity-padding-and-layout-margin-attributes.html
+
+Margins are the extra space surrounding the outside of a view, sort of like an invisible barrier around the view.
+
+Views don’t support margins. View groups do. It’s the ViewGroup that interprets the margin that you specify and then positions the view accordingly.

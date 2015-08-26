@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.OnKeyListener.html
+
+public static interface
+View.OnKeyListener
+
+android.view.View.OnKeyListener
+
+Known Indirect Subclasses
+MediaControllerGlue, PlaybackControlGlue
+
+Class Overview
+Interface definition for a callback to be invoked when a hardware key event is dispatched to this view. The callback will be invoked before the key event is given to the view. This is only useful for hardware keyboards; a software input method has no obligation to trigger this listener.
+
+Summary
+Public Methods
+abstract boolean	onKey(View v, int keyCode, KeyEvent event)
+Called when a hardware key is dispatched to a view.

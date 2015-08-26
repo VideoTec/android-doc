@@ -4,8 +4,24 @@ subjectImage.setLayoutParams(new ViewGroup.LayoutParams(mListItemWidth - 40, mLi
 造成下面的异常
 java.lang.ClassCastException: android.view.ViewGroup$LayoutParams cannot be cast to android.widget.FrameLayout$LayoutParams
 
-修改方法：            
+原因：
+setLayoutParams 
+接受LayoutParams的那个子类，取决于，父容器的类型。
+
+修改方法：
 ViewGroup.LayoutParams p = subjectImage.getLayoutParams();
 p.height = mListItemHeight - 40;
 p.width = mListItemWidth - 40;
 subjectImage.setLayoutParams(p);
+
+------------------------------------------------
+这里需要判断，getLayoutParams，返回是否为空
+------------------------------------------------
+例如： listview 的 adapter 的 getview 时：
+public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(mMainHelpActivity)
+                        .inflate(R.layout.beside_help_subject_list_item, null);
+                这个时候 convertView 的 layoutparams 就是空
+            }
+}

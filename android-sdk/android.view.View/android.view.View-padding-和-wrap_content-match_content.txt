@@ -1,0 +1,7 @@
+http://www.101apps.co.za/index.php/articles/android-s-gravity-layout-gravity-padding-and-layout-margin-attributes.html
+
+The size of a view includes the padding:
+
+for an exact size view, increasing the padding won’t affect the size of the view
+using wrap_content will increase the size of the view if you increase the size of the padding
+using match_parent the view will be as big as its parent, minus the padding
