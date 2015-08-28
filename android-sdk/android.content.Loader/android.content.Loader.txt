@@ -1,0 +1,30 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Loader.html
+
+public class
+Loader
+
+extends Object
+
+java.lang.Object
+   ↳	android.content.Loader<D>
+   
+Known Direct Subclasses
+AsyncTaskLoader<D>
+
+Known Indirect Subclasses
+CursorLoader
+
+Class Overview
+
+A class that performs asynchronous loading of data. While Loaders are active they should monitor the source of their data and deliver new results when the contents change. See LoaderManager for more detail.
+
+Note on threading: Clients of loaders should as a rule perform any calls on to a Loader from the main thread of their process (that is, the thread the Activity callbacks and other things occur on). Subclasses of Loader (such as AsyncTaskLoader) will often perform their work in a separate thread, but when delivering their results this too should be done on the main thread.
+
+Subclasses generally must implement at least onStartLoading(), onStopLoading(), onForceLoad(), and onReset().
+
+Most implementations should not derive directly from this class, but instead inherit from AsyncTaskLoader.
+
+一个执行异步数据加载的抽象类。
+它是加载器的基类。
+你可以使用典型的CursorLoader，但是你也可以实现你自己的子类。
+一旦装载器被激活，它们将监视它们的数据源并且在数据改变时发送新的结果。

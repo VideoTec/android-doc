@@ -1,0 +1,32 @@
+http://developer.android.com/intl/zh-cn/sdk/api_diff/23/changes.html （Top of Report）
+http://developer.android.com/intl/zh-cn/sdk/api_diff/23/changes.html （statics）
+
+http://stackoverflow.com/questions/32153318/httpclient-wont-import-in-android-studio
+HttpClient is not supported any more in sdk 23. 
+You have to use URLConnection or downgrade to sdk 22 
+(compile 'com.android.support:appcompat-v7:22.2.0')
+
+http://developer.android.com/intl/zh-cn/preview/behavior-changes.html#behavior-apache-http-client
+
+取消支持 Apache HTTP 客户端
+本预览版取消了对 Apache HTTP 客户端的支持。
+如果您的应用使用该客户端，并以 Android 2.3（API 级别 9）或更高版本为目标平台，
+请改用 HttpURLConnection 类。 
+此 API 效率更高，
+因为它可以通过透明压缩和响应缓存减少网络使用，并可最大限度降低耗电量。 
+
+如需继续使用 Apache HTTP API，
+您必须先在 build.gradle 文件中声明以下编译时依赖项：
+
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+
+Android 正在从使用 OpenSSL 库转向使用 BoringSSL 库。
+
+如果您要在应用中使用 Android NDK，
+请勿链接到并非 NDK API 组成部分的加密库，如 libcrypto.so 和 libssl.so。 
+这些库并非公共 API，
+可能会在不同版本和设备上毫无征兆地发生变化或出现故障。
+此外，您还可能让自己暴露在安全漏洞的风险之下。 
+请改为修改原生代码，以通过 JNI 调用 Java 加密 API，或静态链接到您选择的加密库。

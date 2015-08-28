@@ -1,0 +1,21 @@
+https://github.com/square/okhttp
+http://square.github.io/okhttp/
+
+HTTP is the way modern applications network. It’s how we exchange data & media. Doing HTTP efficiently makes your stuff load faster and saves bandwidth.
+
+OkHttp is an HTTP client that’s efficient by default:
+
+1）HTTP/2 and SPDY support allows all requests to the same host to share a socket.
+1）Connection pooling reduces request latency (if SPDY isn’t available).
+1）Transparent GZIP shrinks download sizes.
+1）Response caching avoids the network completely for repeat requests.
+
+OkHttp perseveres when the network is troublesome: it will silently recover from common connection problems. If your service has multiple IP addresses OkHttp will attempt alternate addresses if the first connect fails. This is necessary for IPv4+IPv6 and for services hosted in redundant data centers. OkHttp initiates new connections with modern TLS features (SNI, ALPN), and falls back to TLS 1.0 if the handshake fails.
+
+Using OkHttp is easy. Its 2.0 API is designed with fluent builders and immutability. It supports both synchronous blocking calls and async calls with callbacks.
+
+You can try out OkHttp without rewriting your network code. 
+The okhttp-urlconnection module implements the familiar java.net.HttpURLConnection API and 
+the okhttp-apache module implements the Apache HttpClient API.
+
+OkHttp supports Android 2.3 and above. For Java, the minimum requirement is 1.7.

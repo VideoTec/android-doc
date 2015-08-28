@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/CursorLoader.html
+
+public class
+CursorLoader
+
+extends AsyncTaskLoader<Cursor>
+
+java.lang.Object
+   ↳	android.content.Loader<android.database.Cursor>
+ 	   ↳	android.content.AsyncTaskLoader<android.database.Cursor>
+ 	 	   ↳	android.content.CursorLoader
+           
+Class Overview
+
+A loader that queries the ContentResolver and returns a Cursor. This class implements the Loader protocol in a standard way for querying cursors, building on AsyncTaskLoader to perform the cursor query on a background thread so that it does not block the application's UI.
+
+A CursorLoader must be built with the full information for the query to perform, either through the CursorLoader(Context, Uri, String[], String, String[], String) or creating an empty instance with CursorLoader(Context) and filling in the desired paramters with setUri(Uri), setSelection(String), setSelectionArgs(String[]), setSortOrder(String), and setProjection(String[])
+
+AsyncTaskLoader的子类，
+它查询ContentResolver然后返回一个Cursor。
+这个类为查询cursor以标准的方式实现了装载器的协议，
+它的游标查询是通过AsyncTaskLoader在后台线程中执行，从而不会阻塞界面。
+使用这个装载器是从一个ContentProvider异步加载数据的最好方式。
+相比之下，通过fragment或activity的API来执行一个被管理的查询就不行了。

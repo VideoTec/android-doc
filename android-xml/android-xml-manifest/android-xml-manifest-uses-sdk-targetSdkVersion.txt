@@ -1,0 +1,55 @@
+两者的区别
+
+AndroidManifest.xml 中的 android:targetSdkVersion="15"
+project.properties  中的 target=android-23
+
+http://stackoverflow.com/questions/10742981/relation-between-androidminsdkversion-androidtargetsdkversion-and-target
+
+To describe one at a time:
+
+android:minSdkVersion helps Google Play filter apps for the user based on their device. For instance, with minSdkVersion="7", someone browsing with a device that only supports 6 won't see your app on Google Play, and thus won't download it, find it doesn't work, and leave a bad review :)
+
+android:targetSdkVersion is a signal to the device about which version of the API your app was tested against. New behaviors are often available by default with new versions of the platform, for applications that target at least that version of the platform. For instance, by setting your targetSdkVersion to 11 or higher, you get an overflow menu in the ActionBar (for Honeycomb and up devices) instead of the "legacy menu button of shame".
+
+project.properties target is a signal to your local build system regarding which version of the platform you should be compiling your code against. Generally it's best to just set this to whatever you have set for the targetSdkVersion.
+
+What am I missing? If I'm building against 15, how is it running on android-7?
+
+Android maintains backwards compatibility for just this reason. When you use API's that were added in version 15 of the platform, obviously they won't be there on a device running an an older device.
+
+However, it's possible (and encouraged) to design your application in such a way as to take advantage of features added on new platforms, but "degrade gracefully" such that your application continues to run on older ones. There's an Android Training lesson on just this topic, called Supporting Different Platform Versions.
+
+http://blog.csdn.net/dai_zhenliang/article/details/8175781
+
+project.properties 中的 target 是指在编译的时候使用哪个版本的API进行编译
+
+minSdkVersion与maxSdkVersion比较容易理解，
+就是在安装程序的时候，
+如果目标设备的API版本小于minSdkVersion， 或者大于maxSdkVersion，
+程序将无法安装。
+一般来说没有必要设置maxSdkVersion
+
+targetSdkVersion相对复杂一些，
+如果设置了此属性，那么在程序执行时，
+如果目标设备的API版本正好等于此数值， 他会告诉Android平台：
+此程序在此版本已经经过充分测，没有问题。
+不必为此程序开启兼容性检查判断的工作了。 
+也就是说，如果targetSdkVersion与目标设备的API版本相同时，
+运行效率可能会高一些。
+
+但是，这个设置仅仅是一个声明、一个通知，不会有太实质的作用，
+比如说，使用了targetSdkVersion这个SDK版本中的一个特性，
+但是这个特性在低版本中是不支持的 ，
+那么在低版本的API设备上运行程序时，
+可能会报错：java.lang.VerifyError。
+也就是说，此属性不会帮你解决兼容性的测试问题。 
+你至少需要在minSdkVersion这个版本上将程序完整的跑一遍来确定兼容性是没有问题的
+
+target API level
+是在编译的时候起作用，用于指定使用哪个API版本(SDK版本)进行编译。 
+
+minSdkVersion和maxSdkVersion
+是在程序安装的时候起作用， 用于指定哪些版本的设备可以安装此应用。
+
+targetSdkVersion
+是在程序运行的时候起作用，用于提高指定版本的设备上程序运行体验

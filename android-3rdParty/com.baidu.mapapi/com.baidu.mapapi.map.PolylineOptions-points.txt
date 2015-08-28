@@ -1,0 +1,21 @@
+points
+public PolylineOptions points(java.util.List<LatLng> points)
+设置折线坐标点列表
+
+参数:
+points - 折线坐标点列表 数目[2,10000]，且不能包含 null
+返回:
+该折线选项对象
+
+示例：
+                    try {
+                        OverlayOptions ooPolyline = new PolylineOptions().width(10).color(0xAAFF0000).points(points);
+                        mBaiduMap.addOverlay(ooPolyline);
+                    } catch (Throwable th) {
+                        LogSystem.e(TAG, th.getMessage());
+                    }
+
+异常： 16:04 2015/8/28
+om.feinno.beside.ui.activity.personal.BesideFootPrintActivity$1.onSuccess
+com.baidu.mapapi.map.PolylineOptions.points(Unknown Source)
+java.lang.IllegalArgumentException: points count can not less than 2 or more than 10000

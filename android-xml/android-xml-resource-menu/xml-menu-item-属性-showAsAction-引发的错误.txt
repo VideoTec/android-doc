@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.xueyie.firstproject.MainActivity">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
+
+error: No resource identifier found for attribute 'showAsAction' in package 'com.xueyie.firstproject'
+
+注意：
+I know "showAsAction" was implemented in API 11, but I just cant find the issue here.
+
+http://stackoverflow.com/questions/5260686/no-resource-identifier-found-for-attribute-showasaction-in-package-android
+If you are building with Eclipse, make sure your project's build target is set to Honeycomb too.
+Honeycomb = API level 11 = Android 3.0.x
+
+最后删除这个就没问题了：
+remove android:showAsAction="never" from res/menu folder from every xml file.
+
+http://stackoverflow.com/questions/13677014/no-resource-identifier-found-for-attribute-showasaction-in-package-android
+
+I had this problem when I forgot to add appcompat-v7:+ to my project dependencies. 

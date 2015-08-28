@@ -1,0 +1,10 @@
+https://developer.android.com/intl/zh-cn/tools/support-library/features.html#v7-appcompat
+
+v7 Support Libraries
+    v7 appcompat library
+    v7 cardview library
+    v7 gridlayout library
+    v7 mediarouter library
+    v7 palette library
+    v7 recyclerview library
+    v7 preference library

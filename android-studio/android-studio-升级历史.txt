@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/tools/revisions/studio.html
+
+revision[英][rɪˈvɪʒn] [美][rɪˈvɪʒən]
+n.修订，修改；修订本；校对；复审，上诉
+
+Revisions
+The sections below provide notes about successive releases of Android Studio, as denoted by revision number.
+
+ Android Studio v1.3.2 (August 2015)

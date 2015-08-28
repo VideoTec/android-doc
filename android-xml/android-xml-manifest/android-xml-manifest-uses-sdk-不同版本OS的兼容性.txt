@@ -1,0 +1,5 @@
+http://developer.android.com/intl/zh-cn/training/basics/supporting-devices/platforms.html
+
+While the latest versions of Android often provide great APIs for your app, you should continue to support older versions of Android until more devices get updated. This lesson shows you how to take advantage of the latest APIs while continuing to support older versions as well.
+
+The dashboard for Platform Versions is updated regularly to show the distribution of active devices running each version of Android, based on the number of devices that visit the Google Play Store. Generally, it’s a good practice to support about 90% of the active devices, while targeting your app to the latest version.

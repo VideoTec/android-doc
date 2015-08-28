@@ -1,3 +1,5 @@
+
+
 http://stackoverflow.com/questions/5487683/renaming-the-package-that-r-java-is-generated-in
 第一种方法
 Right click your project, then Android Tools -> Rename Application Name:

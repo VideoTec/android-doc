@@ -1,0 +1,12 @@
+https://developer.android.com/intl/zh-cn/tools/support-library/features.html#v4
+
+This library is designed to be used with Android 1.6 (API level 4) and higher. 
+It includes the largest set of APIs compared to the other libraries, 
+
+including support for 
+1）application components, 
+2）user interface features, 
+3）accessibility, 
+4）data handling, 
+5）network connectivity, and 
+6）programming utilities

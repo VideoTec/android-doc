@@ -1,0 +1,15 @@
+http://bon-app-etit.blogspot.in/2013/04/the-dark-side-of-asynctask.html
+
+Do we need AsyncTasks?
+Not really. It is an easy way to implement background features in our app without having to write a lot of code, but as you can see, if we want it to work properly we have to keep a lot of things in mind. Another way of executing stuff in background is by using Loaders. They were introduced in Android 3.0 (Honeycomb) and are also available in the support library. Check out the developer guide for more information. I'll probably write a tutorial on how to use Loaders somewhere in the near future, so be sure to check out my blog later (or my website www.bon-app-etit.com if it's finished...)
+
+http://yanmingming.sinaapp.com/?p=1276
+弊端：
+1. 不支持环境改变；
+2. 不能取消网络请求；
+3. 没有简单的方法来做并发API调用；
+4. 每个时刻只能有一个AsyncTask任务可以运行；
+5. cancel()方法并不会起作用；
+6. Activity被销毁，还保持Activity的引用时，可能导致内存泄露；
+7. Activity reCreated时，可能导致AsyncTask的结果丢失；
+8. 串行或并行的不确定性，依赖API Level的不同而不同；

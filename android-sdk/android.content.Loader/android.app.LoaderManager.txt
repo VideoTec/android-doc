@@ -1,0 +1,33 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/LoaderManager.html
+
+public abstract class
+LoaderManager
+
+extends Object
+
+java.lang.Object
+   ↳	android.app.LoaderManager
+
+Class Overview
+
+Interface associated with an Activity or Fragment 
+for managing one or more Loader instances associated with it. 
+
+This helps an application manage 
+longer-running operations in conjunction with the Activity or Fragment lifecycle; 
+the most common use of this is with a CursorLoader, 
+however applications are free to write their own loaders for loading other types of data. 
+While the LoaderManager API was introduced in HONEYCOMB, 
+a version of the API at is also available for use on older platforms through FragmentActivity. 
+See the blog post Fragments For All for more details.
+
+As an example, here is the full implementation of a Fragment that 
+displays a ListView containing the results of a query against the contacts content provider. 
+It uses a CursorLoader to manage the query on the provider.
+
+一个抽像类，关联到一个Activity或Fragment，管理一个或多个装载器的实例。
+这帮助一个应用管理那些与Activity或Fragment的生命周期相关的长时间运行的的操作。
+最常见的方式是与一个CursorLoader一起使用，
+然而应用是可以随便写它们自己的装载器以加载其它类型的数据。
+每个activity或fragment只有一个LoaderManager。
+但是一个LoaderManager可以拥有多个装载器

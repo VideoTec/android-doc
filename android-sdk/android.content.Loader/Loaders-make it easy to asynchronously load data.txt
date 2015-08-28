@@ -1,0 +1,13 @@
+http://developer.android.com/intl/zh-cn/guide/components/loaders.html
+
+Introduced in Android 3.0, 
+loaders make it easy to asynchronously load data in an activity or fragment. 
+Loaders have these characteristics:
+
+1）They are available to every Activity and Fragment.
+2）They provide asynchronous loading of data.
+   他们提供了异步加载数据的能力
+3）They monitor the source of their data and deliver new results when the content changes.
+   它们监视数据源的一举一动并在内容改变时传送新的结果
+4）They automatically reconnect to the last loader's cursor when being recreated after a configuration change. Thus, they don't need to re-query their data.
+   当由于配置改变而被重新创建后，它们自动重连到上一个加载器的游标，所以不必重新查询数据

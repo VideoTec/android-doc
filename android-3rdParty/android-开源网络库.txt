@@ -1,0 +1,54 @@
+http://www.devtf.cn/?p=985
+http://yanmingming.sinaapp.com/?p=1276
+
+------------------------------------------------
+基本网络API
+------------------------------------------------
+1. Apache 的 HttpClient（Android2.3之前使用） - android-23 从 SDK 中移除了
+2. Android 简化扩展版 HttpUrlConnection       - 省流量，省电
+
+4. Git开源项目Okhttp (使用http+SPDY协议)      - 开源项目，非SDK中的库
+        okhttp-urlconnection module
+        okhttp-apache module
+        支持SPDY（请求头压缩、并行请求、强制SSL、服务端推送）
+
+------------------------------------------------
+构建在基本网络API，基础上的网络库
+------------------------------------------------
+3. Google 推出的 Volley
+  （在Android2.3之前使用HttpClient，之后使用HttpUrlConnection）
+
+6. Retrofit(默认使用Okhttp作为传输层)
+   http://square.github.io/retrofit/
+   A type-safe REST client for Android and Java
+   Retrofit是Square开发的一个Android和Java的REST客户端库
+   可以处理GET、POST、PUT、DELETE...等请求，还可以使用picasso加载图片
+   http://www.cnblogs.com/angeldevil/p/3757335.html
+   简单教程
+   对于Android，优先使用OKHttp，否则2.3以后使用HttpUrlConnection，2.3以前使用HttpClient
+   默认是用Gson解析，也就是说默认认为服务器返回的是Json数据，
+   可以通过指定不同的Convert使用不同的解析方法
+
+5. Android-async-http
+   https://github.com/loopj/android-async-http
+   An asynchronous, callback-based Http client for Android built 
+   on top of Apache's HttpClient libraries.
+   http://blog.csdn.net/ryantang03/article/details/8824081
+   在iOS开发中有大名鼎鼎的ASIHttpRequest库，用来处理网络请求操作
+   在Android上同样强大的网络请求库android-async-http
+   
+7. Android Query
+   https://github.com/androidquery/androidquery
+   Asynchronous Network
+   http://www.cnblogs.com/lee0oo0/archive/2012/10/25/2738299.html
+   开发Android使用Android-query框架能够快速的，比传统开发android所要编写的代码要少得很多
+   View view = inflater.inflate(getContainerView(), container, false);             
+   aq = new AQuery(getActivity(), view);
+   使用AQuery异步加载图片 aq.id(R.id.image1).image(“图片URL”); 
+   http://09572.iteye.com/blog/1621412
+   实现异步任务，缓存，获取网络数据，提交请求等需求
+
+------------------------------------------------
+其它
+------------------------------------------------   
+8. Android AsyncTask

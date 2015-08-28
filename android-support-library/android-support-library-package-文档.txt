@@ -1,0 +1,77 @@
+https://developer.android.com/intl/zh-cn/tools/support-library/index.html
+
+Each of these libraries supports 
+a specific range of Android platform versions and set of features.
+
+Each Support Library is backward-compatible to a specific Android API level. 
+This design means that your applications can use the libraries' features and 
+still be compatible with devices running Android 1.6 (API level 4) and up.
+
+Including the Support Libraries 
+in your Android project is considered a best practice for application developers, 
+depending on the range of platform versions your app is targeting and the APIs that it uses. 
+
+Using the features the libraries provide can help you 
+1）improve the look of your application, 
+2）increase performance and 
+3）broaden the reach of your application to more users. 
+
+If you use the Android code template tools, 
+you will notice that all the Android application templates 
+include one or more of the Support Libraries by default.
+
+The Support Libraries 
+1）each target a base Android API level and 
+2）each provides a different set of features. 
+
+In order to effectively use the libraries, 
+it is important to 
+consider what features you want to support and 
+understand what features are supported by each library at what Android API level. 
+
+To get started, review the Support Library Features guide. 
+After that, go to the Support Library Setup topic to learn 
+how to incorporate the Support Libraries into your application. 
+
+For more details about Support Library APIs,
+see the android.support packages in the API reference.
+
+http://stormzhang.com/android/2015/03/29/android-support-library/
+Android一些SDK比较分裂，
+为此google官方提供了Android Support Library package 
+系列的包来保证高版本sdk开发的向下兼容性,
+所以你可能经常看到v4，v7，v13这些数字，
+首先我们就来理清楚这些数字的含义，以及它们之间的区别
+
+需要注意的：
+gradle引用appcompat-v7包的时候就不需要引用v4了，
+因为v7里默认包含了v4包
+
+compile ‘com.android.support:appcompat-v7:21.0.3’ 
+中的21代表API level 21推出的兼容包，
+21之前的版本，则默认这些Theme.AppCompat.Light是Holo风格的，
+从21开始的版本默认是Material风格
+
+使用appcompat之后，
+你的所有的Activity应该继承自ActionBarActivity，
+而ActionBarActivity继承自FragmentActivity，
+所以放心的使用Fragment
+
+http://my.oschina.net/chengliqun/blog/148451
+
+google提供了Android Support Library package 系列的包来保证来高版本sdk开发的向下兼容性，
+即我们用4.x开发时，
+在1.6等版本上，可以使用高版本的有些特性，如fragement,ViewPager等
+
+Android Support v4: 
+这个包是为了照顾1.6及更高版本而设计的，
+这个包是使用最广泛的，eclipse新建工程时，都默认带有了。
+
+Android Support v7:  
+这个包是为了考虑照顾2.1及以上版本而设计的，
+但不包含更低，故如果不考虑1.6,我们可以采用再加上这个包，
+另外注意，v7是要依赖v4这个包的，即，两个得同时被包含。
+
+Android Support v13:
+这个包的设计是为了android 3.2及更高版本的，
+一般我们都不常用，平板开发中能用到

@@ -1,0 +1,20 @@
+http://developer.baidu.com/map/android_refer/com/baidu/mapapi/map/PolylineOptions.html
+
+com.baidu.mapapi.map
+类 PolylineOptions
+
+java.lang.Object
+com.baidu.mapapi.map.OverlayOptions
+com.baidu.mapapi.map.PolylineOptions
+
+public final class PolylineOptions
+extends OverlayOptions
+创建折线覆盖物选项类
+
+示例：
+                    try {
+                        OverlayOptions ooPolyline = new PolylineOptions().width(10).color(0xAAFF0000).points(points);
+                        mBaiduMap.addOverlay(ooPolyline);
+                    } catch (Throwable th) {
+                        LogSystem.e(TAG, th.getMessage());
+                    }

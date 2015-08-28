@@ -1,0 +1,27 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/AsyncTaskLoader.html
+
+public abstract class
+AsyncTaskLoader
+
+extends Loader<D>
+
+java.lang.Object
+   ↳	android.content.Loader<D>
+ 	   ↳	android.content.AsyncTaskLoader<D>
+       
+Known Direct Subclasses
+CursorLoader
+
+Class Overview
+
+Abstract Loader that provides an AsyncTask to do the work. 
+See Loader and LoaderManager for more details.
+提供一个AsyncTask来执行异步加载工作的抽象类。
+
+Here is an example implementation of an AsyncTaskLoader subclass that 
+loads the currently installed applications from the package manager. 
+This implementation takes care of 
+1）retrieving the application labels and 
+2）sorting its result set from them, 
+3）monitoring for changes to the installed applications, and 
+4）rebuilding the list when a change in configuration requires this (such as a locale change).

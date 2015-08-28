@@ -1,0 +1,31 @@
+android:showAsAction=["ifRoom" | "never" | "withText" | "always" | "collapseActionView"]
+
+android:showAsAction
+Keyword. When and how this item should appear as an action item in the Action Bar. 
+A menu item can appear as an action item only 
+when the activity includes an ActionBar (introduced in API Level 11).
+
+Valid values:
+
+ifRoom
+Only place this item in the Action Bar if there is room for it.
+
+withText
+Also include the title text (defined by android:title) with the action item. 
+You can include this value along with one of the others as a flag set, 
+by separating them with a pipe |.
+
+never
+Never place this item in the Action Bar.
+
+always
+Always place this item in the Action Bar. Avoid using this unless it's critical that the item always appear in the action bar. Setting multiple items to always appear as action items can result in them overlapping with other UI in the action bar.
+
+collapseActionView
+The action view associated with this action item 
+(as declared by android:actionLayout or android:actionViewClass) is collapsible.
+Introduced in API Level 14.
+
+See the Action Bar developer guide for more information.
+
+Introduced in API Level 11.

@@ -1,3 +1,9 @@
+Multiple annotations found at this line:
+	- Should set android:versionCode to specify the application version
+	- Should set android:versionName to specify the application version
+    
+如果不指定会出上面的警告
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.com.fetion"
     android:versionCode="20130528"
