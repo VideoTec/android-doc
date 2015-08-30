@@ -1,4 +1,4 @@
-File->Settings-> General 右侧： virtual sapce
+File->Settings-> Editor -> General 右侧： virtual sapce
 
 1) allow placement of caret after end of line
    启动后，会类似 eclipse 里，光标会固定在某一列，即使在行结束后，空白的地方

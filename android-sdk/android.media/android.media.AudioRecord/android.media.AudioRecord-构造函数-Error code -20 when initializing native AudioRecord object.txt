@@ -1,0 +1,6 @@
+08-29 22:13:52.887  20313-20313/com.xueyie.firstproject E/AudioRecord﹕ AudioFlinger could not create record track, status: -1
+08-29 22:13:52.887  20313-20313/com.xueyie.firstproject E/AudioRecord-JNI﹕ Error creating AudioRecord instance: initialization check failed.
+08-29 22:13:52.887  20313-20313/com.xueyie.firstproject E/AudioRecord-Java﹕ [ android.media.AudioRecord ] Error code -20 when initializing native AudioRecord object.
+
+原因是，应用，没有声明录音权限
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
