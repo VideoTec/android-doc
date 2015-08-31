@@ -1,0 +1,30 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/SystemClock.html
+
+public final class
+SystemClock
+extends Object
+
+java.lang.Object
+   ↳	android.os.SystemClock
+   
+Class Overview
+
+Core timekeeping facilities.
+
+Three different clocks are available, and they should not be confused:
+
+1）System.currentTimeMillis() is the standard "wall" clock (time and date) expressing milliseconds since the epoch. The wall clock can be set by the user or the phone network (see setCurrentTimeMillis(long)), so the time may jump backwards or forwards unpredictably. This clock should only be used when correspondence with real-world dates and times is important, such as in a calendar or alarm clock application. Interval or elapsed time measurements should use a different clock. If you are using System.currentTimeMillis(), consider listening to the ACTION_TIME_TICK, ACTION_TIME_CHANGED and ACTION_TIMEZONE_CHANGED Intent broadcasts to find out when the time changes.
+
+2）uptimeMillis() is counted in milliseconds since the system was booted. This clock stops when the system enters deep sleep (CPU off, display dark, device waiting for external input), but is not affected by clock scaling, idle, or other power saving mechanisms. This is the basis for most interval timing such as Thread.sleep(millls), Object.wait(millis), and System.nanoTime(). This clock is guaranteed to be monotonic, and is suitable for interval timing when the interval does not span device sleep. Most methods that accept a timestamp value currently expect the uptimeMillis() clock.
+
+3）elapsedRealtime() and elapsedRealtimeNanos() return the time since the system was booted, and include deep sleep. This clock is guaranteed to be monotonic, and continues to tick even when the CPU is in power saving modes, so is the recommend basis for general purpose interval timing.
+
+There are several mechanisms for controlling the timing of events:
+
+1）Standard functions like Thread.sleep(millis) and Object.wait(millis) are always available. These functions use the uptimeMillis() clock; if the device enters sleep, the remainder of the time will be postponed until the device wakes up. These synchronous functions may be interrupted with Thread.interrupt(), and you must handle InterruptedException.
+
+2）SystemClock.sleep(millis) is a utility function very similar to Thread.sleep(millis), but it ignores InterruptedException. Use this function for delays if you do not use Thread.interrupt(), as it will preserve the interrupted state of the thread.
+
+3）The Handler class can schedule asynchronous callbacks at an absolute or relative time. Handler objects also use the uptimeMillis() clock, and require an event loop (normally present in any GUI application).
+
+4）The AlarmManager can trigger one-time or recurring events which occur even when the device is in deep sleep or your application is not running. Events may be scheduled with your choice of currentTimeMillis() (RTC) or elapsedRealtime() (ELAPSED_REALTIME), and cause an Intent broadcast when they occur.

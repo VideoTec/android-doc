@@ -1,0 +1,8 @@
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:src="@drawable/audio_recording_anim"/>
+            
+只能用代码实现：
+((AnimationDrawable) imageview.getDrawable()).start();

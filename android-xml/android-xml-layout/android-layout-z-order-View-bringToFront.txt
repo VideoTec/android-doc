@@ -1,0 +1,15 @@
+public void bringToFront ()
+
+Added in API level 1
+
+Change the view's z order in the tree, so it's on top of other sibling views. This ordering change may affect layout, if the parent container uses an order-dependent layout scheme (e.g., LinearLayout). Prior to KITKAT this method should be followed by calls to requestLayout() and invalidate() on the view's parent to force the parent to redraw with the new child ordering.
+
+--------------------------------------------------
+18:31 2015/8/31
+--------------------------------------------------
+对 TextView 有效，但是对 Button 无效，
+Button 总是在最顶端，为什么？
+http://stackoverflow.com/questions/28105551/wrong-render-order-for-button-when-material-theme-is-applied
+最后找到原因：
+Android 5.0 Lollipop along with Material Design 
+introduced new property to specify the elevation (Z-index) of widgets.

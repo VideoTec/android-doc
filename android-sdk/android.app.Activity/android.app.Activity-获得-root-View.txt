@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/4486034/get-root-view-from-current-activity
+
+getWindow().getDecorView().findViewById(android.R.id.content)

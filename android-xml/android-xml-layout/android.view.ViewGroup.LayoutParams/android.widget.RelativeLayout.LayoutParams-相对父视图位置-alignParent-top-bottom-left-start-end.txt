@@ -1,0 +1,17 @@
+android:layout_alignParentTop    
+If true, makes the top edge of this view match the top edge of the parent. 
+
+android:layout_alignParentBottom    
+If true, makes the bottom edge of this view match the bottom edge of the parent. 
+
+android:layout_alignParentLeft    
+If true, makes the left edge of this view match the left edge of the parent. 
+
+android:layout_alignParentRight    
+If true, makes the right edge of this view match the right edge of the parent. 
+
+android:layout_alignParentStart    
+If true, makes the start edge of this view match the start edge of the parent. 
+
+android:layout_alignParentEnd    
+If true, makes the end edge of this view match the end edge of the parent. 

@@ -1,0 +1,43 @@
+http://developer.android.com/intl/zh-cn/reference/android/graphics/drawable/AnimationDrawable.html
+
+public class
+AnimationDrawable
+extends DrawableContainer
+implements Runnable Animatable
+java.lang.Object
+   ↳	android.graphics.drawable.Drawable
+ 	   ↳	android.graphics.drawable.DrawableContainer
+ 	 	   ↳	android.graphics.drawable.AnimationDrawable
+Class Overview
+
+An object used to create frame-by-frame animations, defined by a series of Drawable objects, which can be used as a View object's background.
+
+The simplest way to create a frame-by-frame animation is to define the animation in an XML file, placed in the res/drawable/ folder, and set it as the background to a View object. Then, call start() to run the animation.
+
+An AnimationDrawable defined in XML consists of a single <animation-list> element and a series of nested <item> tags. Each item defines a frame of the animation. See the example below.
+
+spin_animation.xml file in res/drawable/ folder:
+
+ <!-- Animation frames are wheel0.png through wheel5.png
+     files inside the res/drawable/ folder -->
+ <animation-list android:id="@+id/selected" android:oneshot="false">
+    <item android:drawable="@drawable/wheel0" android:duration="50" />
+    <item android:drawable="@drawable/wheel1" android:duration="50" />
+    <item android:drawable="@drawable/wheel2" android:duration="50" />
+    <item android:drawable="@drawable/wheel3" android:duration="50" />
+    <item android:drawable="@drawable/wheel4" android:duration="50" />
+    <item android:drawable="@drawable/wheel5" android:duration="50" />
+ </animation-list>
+ 
+Here is the code to load and play this animation.
+
+ // Load the ImageView that will host the animation and
+ // set its background to our AnimationDrawable XML resource.
+ ImageView img = (ImageView)findViewById(R.id.spinning_wheel_image);
+ img.setBackgroundResource(R.drawable.spin_animation);
+
+ // Get the background, which has been compiled to an AnimationDrawable object.
+ AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
+
+ // Start the animation (looped playback by default).
+ frameAnimation.start();

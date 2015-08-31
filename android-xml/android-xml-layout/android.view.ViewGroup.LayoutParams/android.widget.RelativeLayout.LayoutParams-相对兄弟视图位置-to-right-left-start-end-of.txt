@@ -1,0 +1,11 @@
+android:layout_toEndOf    
+Positions the start edge of this view to the end of the given anchor view ID. 
+
+android:layout_toStartOf    
+Positions the end edge of this view to the start of the given anchor view ID. 
+
+android:layout_toLeftOf    
+Positions the right edge of this view to the left of the given anchor view ID. 
+
+android:layout_toRightOf    
+Positions the left edge of this view to the right of the given anchor view ID. 

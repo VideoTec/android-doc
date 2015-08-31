@@ -1,0 +1,17 @@
+android:layout_alignTop    
+Makes the top edge of this view match the top edge of the given anchor view ID. 
+
+android:layout_alignBottom    
+Makes the bottom edge of this view match the bottom edge of the given anchor view ID.
+ 
+android:layout_alignLeft    
+Makes the left edge of this view match the left edge of the given anchor view ID. 
+
+android:layout_alignRight    
+Makes the right edge of this view match the right edge of the given anchor view ID. 
+
+android:layout_alignStart    
+Makes the start edge of this view match the start edge of the given anchor view ID. 
+
+android:layout_alignEnd    
+Makes the end edge of this view match the end edge of the given anchor view ID. 

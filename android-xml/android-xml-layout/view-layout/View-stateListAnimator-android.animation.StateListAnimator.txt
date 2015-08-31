@@ -1,0 +1,17 @@
+https://developer.android.com/intl/zh-cn/reference/android/animation/StateListAnimator.html
+
+public class
+StateListAnimator
+extends Object
+
+implements Cloneable
+
+java.lang.Object
+   ↳	android.animation.StateListAnimator
+   
+Class Overview
+
+Lets you define a number of Animators that will run on the attached View depending on the View's drawable state.
+
+It can be defined in an XML file with the <selector> element. 
+Each State Animator is defined in a nested <item> element.

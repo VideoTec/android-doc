@@ -1,0 +1,27 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#attr_android:stateListAnimator
+
+android:stateListAnimator
+
+Sets the state-based animator for the View.
+
+Must be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+This corresponds to the global attribute resource symbol stateListAnimator.
+
+http://stackoverflow.com/questions/27080338/android-5-0-androidelevation-works-for-view-but-not-button
+
+The default Button style under Material has a StateListAnimator that controls the android:elevation and android:translationZ properties. You can remove the existing animator or set your own using the android:stateListAnimator property.
+
+http://blog.csdn.net/ijust/article/details/41291315
+
+StateListAnimator
+
+当你触摸Material元素的时候，
+它也可以抬起（链接里的Lift on touch）以迎合你的手指，
+就像磁铁异性相吸一样。
+你可以通过translationZ属性动画来实现这种效果，
+translationZ属性与elevation相似，
+不过它的主要作用是做这些过渡效果。 
+Z = elevation + translationZ. 
+新的 stateListAnimator 属性轻松创建触摸时的Z轴动画(Buttons默认就有这效果):
+

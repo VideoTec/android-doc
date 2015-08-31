@@ -1,0 +1,8 @@
+android:layout_centerHorizontal    
+If true, centers this child horizontally within its parent. 
+
+android:layout_centerInParent    
+If true, centers this child horizontally and vertically within its parent. 
+
+android:layout_centerVertical    
+If true, centers this child vertically within its parent. 

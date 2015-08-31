@@ -1,0 +1,7 @@
+public void bringChildToFront (View child)
+
+Added in API level 1
+Change the z order of the child so it's on top of all other children. This ordering change may affect layout, if this container uses an order-dependent layout scheme (e.g., LinearLayout). Prior to KITKAT this method should be followed by calls to requestLayout() and invalidate() on this parent to force the parent to redraw with the new child ordering.
+
+Parameters
+child	The child to bring to the top of the z order

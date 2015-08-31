@@ -1,3 +1,5 @@
+http://developer.android.com/intl/zh-cn/guide/topics/resources/animation-resource.html#Frame
+
 XML 格式
 
 Frame animation
@@ -5,7 +7,7 @@ Frame animation
 An animation defined in XML that shows a sequence of images in order (like a film).
 
 FILE LOCATION:
-res/drawable/filename.xml
+res/drawable/filename.xml  应该在 res/anim 目录吧？
 The filename will be used as the resource ID.
 
 COMPILED RESOURCE DATATYPE:

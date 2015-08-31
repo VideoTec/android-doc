@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/7375329/z-order-in-xml-android
+
+In android is simpler 
+(that is in my opinion conception is simpler, but usage could be less easy) 
+since there is no explicit z index. 
+If you use xml layout z order is determined by order of declaration views declaration in xml 
+but if you prefer you can also change order from java code.
+
+http://stackoverflow.com/questions/2614393/defining-z-order-of-views-of-relativelayout-in-android
+The easiest way is simply to pay attention to 
+the order in which the Views are added to your XML file. 
+Lower down in the file means higher up in the Z-axis.
+
+http://stackoverflow.com/questions/4182486/placing-overlappingz-index-a-view-above-another-view-in-android
+In a FrameLayout, the z-index is defined by the order in which the items are added

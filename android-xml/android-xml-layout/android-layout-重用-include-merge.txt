@@ -1,0 +1,65 @@
+http://developer.android.com/intl/zh-cn/training/improving-layouts/reusing-layouts.html
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:text="@string/add"/>
+
+    <Button
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:text="@string/delete"/>
+
+</merge>
+
+----------------------------------------------------
+titlebar.xml
+----------------------------------------------------
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width=”match_parent”
+    android:layout_height="wrap_content"
+    android:background="@color/titlebar_bg">
+
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content" 
+               android:src="@drawable/gafricalogo" />
+</FrameLayout>
+
+----------------------------------------------------
+include(re-use) titlbar.xml
+----------------------------------------------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width=”match_parent”
+    android:layout_height=”match_parent”
+    android:background="@color/app_bg"
+    android:gravity="center_horizontal">
+
+    <include layout="@layout/titlebar"/>
+
+    <TextView android:layout_width=”match_parent”
+              android:layout_height="wrap_content"
+              android:text="@string/hello"
+              android:padding="10dp" />
+
+    ...
+
+</LinearLayout>
+
+----------------------------------------------------
+override all the layout parameters 
+(any android:layout_* attributes) of 
+the included layout's root view by specifying them in the <include/> tag
+----------------------------------------------------
+<include android:id=”@+id/news_title”
+         android:layout_width=”match_parent”
+         android:layout_height=”match_parent”
+         layout=”@layout/title”/>
+         
+如果要重写属性，必须指定，长宽属性
+However, if you want to override layout attributes using the <include> tag, 
+you must override both 
+android:layout_height and 
+android:layout_width in order for other layout attributes to take effect.

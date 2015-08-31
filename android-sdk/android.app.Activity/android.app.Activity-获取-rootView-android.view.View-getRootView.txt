@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#getRootView()
+
+public View getRootView ()
+
+Added in API level 1
+Finds the topmost view in the current view hierarchy.
+
+Returns
+the topmost view containing this view
