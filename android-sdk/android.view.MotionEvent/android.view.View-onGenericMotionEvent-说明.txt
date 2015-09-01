@@ -1,0 +1,28 @@
+http://abkabkabkyes.blogspot.com/2014/02/android-of-motionevent-studying.html
+
+onTouchEvent()
+onGenericMotionEvent()
+
+兩個都包在MotionEvent裡面, 但兩個差別在於, 
+一個事件是針對使用者的觸碰功能, 
+另外一個則是針對大多數的裝置（e.g. mouse, joystick..）,  
+所以針對你的應用看適合那一個,
+不過要特別注意的是優先序的問題, 其實兩個都有共同的觸發事件,
+例如你點螢幕一下, 跟滑鼠點左鍵一下, 其實都會進入到兩個事件, 所以在處理上來講要注意
+
+http://www.xiaoyunduo.org/article/233/
+onGenericMotionEvent 从字面上来看无法看出它的作用和使用场景，
+通过查看 ScrollView 和 ListView 中 onGenericMotionEvent 的重写代码，
+我认为是对 滚轮的处理，
+虽然现在滚轮在手机上不常见，但是大多数手机现在都可以接蓝牙鼠标
+
+http://www.2cto.com/kf/201403/282951.html
+android 处理鼠标滚轮事件
+
+publicboolean onGenericMotionEvent(MotionEvent event)；
+实现该方法来处理一般的MotionEvent；
+一般的motion events 描述，操纵杆的动作，鼠标honver、滚轮等
+输入源为可显示的指针设备，
+如：m
+ouse pointing device(鼠标指针),
+stylus pointing device(尖笔设备)

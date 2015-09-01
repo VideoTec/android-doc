@@ -1,0 +1,14 @@
+public static final int ACTION_DRAG_ENDED
+
+Added in API level 11
+Action constant returned by getAction(): Signals to a View that the drag and drop operation has concluded. A View that changed its appearance during the operation should return to its usual drawing state in response to this event.
+
+All views that received an ACTION_DRAG_STARTED event will receive the ACTION_DRAG_ENDED event even if they are not currently visible when the drag ends.
+
+The View object can call getResult() to see the result of the operation. If a View returned true in response to ACTION_DROP, then getResult() returns true, otherwise it returns false.
+
+-----------------------------------------
+http://developer.android.com/intl/zh-cn/guide/topics/ui/drag-drop.html
+-----------------------------------------
+
+After the user releases the drag shadow, and after the system sends out (if necessary) a drag event with action type ACTION_DROP, the system sends out a drag event with action type ACTION_DRAG_ENDED to indicate that the drag operation is over. This is done regardless of where the user released the drag shadow. The event is sent to every listener that is registered to receive drag events, even if the listener received the ACTION_DROP event.

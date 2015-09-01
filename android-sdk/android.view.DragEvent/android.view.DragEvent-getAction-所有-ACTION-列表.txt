@@ -1,0 +1,155 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/DragEvent.html#getAction()
+
+public int getAction ()
+
+Added in API level 11
+Inspect the action value of this event.
+
+Returns
+One of the following action constants, 
+in the order in which they usually occur during a drag and drop operation:
+
+ACTION_DRAG_STARTED
+所有可见 view-obj 都可以接收到这个事件
+the system sends a drag event with action type ACTION_DRAG_STARTED 
+to the drag event listeners for all the View objects in the current layout
+返回 true ，表示当前 view 对这个 drag 事件感兴趣。
+返回 false，当前 view 不会接收后续的 drag 事件 (entered,exited,drop)
+
+ACTION_DRAG_ENTERED
+当触点（触屏上手指下方的点）
+进入监听器View对象的边框时，
+View对象的拖拽监听器就会收到这个事件
+
+ACTION_DRAG_LOCATION
+一旦拖拽监听器收到一个ACTION_DRAG_ENTERED事件，
+并且在收到ACTION_DRAG_EXITED事件之前，
+每次移动触点时都会收到一个新的
+getX和getY()方法会返回触点的X和Y轴坐标
+
+ACTION_DROP
+当用户在应用中的一个View对象上释放了拖拽影子，
+并且这个View对象是之前报告的能够接收被拖拽内容的那个View对象
+系统就会给这个View对象发送一个ACTION_DROP类型的拖拽事件
+这个拖动事件包括调用startDrag()方法传给系统的数据
+会在用户在监听器被注册为接收拖动时事件的视图的
+边界框内释放这个拖动阴影的情况下才会发生
+
+ACTION_DRAG_EXITED
+在拖拽影子离开监听器View对象的边框之后，
+这个事件会发送给之前收到ACTION_DRAG_ENTERED事件的那个监听器
+
+ACTION_DRAG_ENDED    
+用户释放了拖拽影子后
+在用户释放拖动阴影并且系统发送出一个
+操作类型为ACTION_DROP的拖动事件（如果有必要的话）之后
+
+----------------------------------------------------------------------
+    /**
+     * Action constant returned by {@link #getAction()}: Signals the start of a
+     * drag and drop operation. The View should return {@code true} from its
+     * {@link View#onDragEvent(DragEvent) onDragEvent()} handler method or
+     * {@link View.View.OnDragListener#onDrag(View,DragEvent) OnDragListener.onDrag()} listener
+     * if it can accept a drop. The onDragEvent() or onDrag() methods usually inspect the metadata
+     * from {@link #getClipDescription()} to determine if they can accept the data contained in
+     * this drag. For an operation that doesn't represent data transfer, these methods may
+     * perform other actions to determine whether or not the View should accept the drag.
+     * If the View wants to indicate that it is a valid drop target, it can also react by
+     * changing its appearance.
+     * <p>
+     * A View only receives further drag events if it returns {@code true} in response to
+     * ACTION_DRAG_STARTED.
+     * </p>
+     * @see #ACTION_DRAG_ENDED
+     */
+    public static final int ACTION_DRAG_STARTED = 1;
+
+    /**
+     * Action constant returned by {@link #getAction()}: Sent to a View after
+     * {@link #ACTION_DRAG_ENTERED} if the drag shadow is still within the View object's bounding
+     * box. The {@link #getX()} and {@link #getY()} methods supply
+     * the X and Y position of of the drag point within the View object's bounding box.
+     * <p>
+     * A View receives an {@link #ACTION_DRAG_ENTERED} event before receiving any
+     * ACTION_DRAG_LOCATION events.
+     * </p>
+     * <p>
+     * The system stops sending ACTION_DRAG_LOCATION events to a View once the user moves the
+     * drag shadow out of the View object's bounding box. If the user moves the drag shadow back
+     * into the View object's bounding box, the View receives an ACTION_DRAG_ENTERED again before
+     * receiving any more ACTION_DRAG_LOCATION events.
+     * </p>
+     * @see #ACTION_DRAG_ENTERED
+     * @see #getX()
+     * @see #getY()
+     */
+    public static final int ACTION_DRAG_LOCATION = 2;
+
+    /**
+     * Action constant returned by {@link #getAction()}: Signals to a View that the user
+     * has released the drag shadow, and the drag point is within the bounding box of the View.
+     * The View should retrieve the data from the DragEvent by calling {@link #getClipData()}.
+     * The methods {@link #getX()} and {@link #getY()} return the X and Y position of the drop point
+     * within the View object's bounding box.
+     * <p>
+     * The View should return {@code true} from its {@link View#onDragEvent(DragEvent)}
+     * handler or {@link View.View.OnDragListener#onDrag(View,DragEvent) OnDragListener.onDrag()}
+     * listener if it accepted the drop, and {@code false} if it ignored the drop.
+     * </p>
+     * <p>
+     * The View can also react to this action by changing its appearance.
+     * </p>
+     * @see #getClipData()
+     * @see #getX()
+     * @see #getY()
+     */
+    public static final int ACTION_DROP = 3;
+
+    /**
+     * Action constant returned by {@link #getAction()}:  Signals to a View that the drag and drop
+     * operation has concluded.  A View that changed its appearance during the operation should
+     * return to its usual drawing state in response to this event.
+     * <p>
+     * All views that received an ACTION_DRAG_STARTED event will receive the
+     * ACTION_DRAG_ENDED event even if they are not currently visible when the drag ends.
+     * </p>
+     * <p>
+     *  The View object can call {@link #getResult()} to see the result of the operation.
+     *  If a View returned {@code true} in response to {@link #ACTION_DROP}, then
+     *  getResult() returns {@code true}, otherwise it returns {@code false}.
+     * </p>
+     * @see #ACTION_DRAG_STARTED
+     * @see #getResult()
+     */
+    public static final int ACTION_DRAG_ENDED = 4;
+
+    /**
+     * Action constant returned by {@link #getAction()}: Signals to a View that the drag point has
+     * entered the bounding box of the View.
+     * <p>
+     *  If the View can accept a drop, it can react to ACTION_DRAG_ENTERED
+     *  by changing its appearance in a way that tells the user that the View is the current
+     *  drop target.
+     * </p>
+     * The system stops sending ACTION_DRAG_LOCATION events to a View once the user moves the
+     * drag shadow out of the View object's bounding box. If the user moves the drag shadow back
+     * into the View object's bounding box, the View receives an ACTION_DRAG_ENTERED again before
+     * receiving any more ACTION_DRAG_LOCATION events.
+     * </p>
+     * @see #ACTION_DRAG_ENTERED
+     * @see #ACTION_DRAG_LOCATION
+     */
+    public static final int ACTION_DRAG_ENTERED = 5;
+
+    /**
+     * Action constant returned by {@link #getAction()}: Signals that the user has moved the
+     * drag shadow outside the bounding box of the View.
+     * The View can react by changing its appearance in a way that tells the user that
+     * View is no longer the immediate drop target.
+     * <p>
+     *  After the system sends an ACTION_DRAG_EXITED event to the View, the View receives no more
+     *  ACTION_DRAG_LOCATION events until the user drags the drag shadow back over the View.
+     * </p>
+     *
+     */
+     public static final int ACTION_DRAG_EXITED = 6;

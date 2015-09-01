@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/ClipData.html
+
+ClipData
+extends Object
+implements Parcelable
+
+java.lang.Object
+   ↳	android.content.ClipData
+   
+Class Overview
+
+Representation of a clipped data on the clipboard.
+
+ClippedData is a complex type containing one or Item instances, each of which can hold one or more representations of an item of data. For display to the user, it also has a label and iconic representation.
+
+A ClipData contains a ClipDescription, which describes important meta-data about the clip. In particular, its getDescription().getMimeType(int) must return correct MIME type(s) describing the data in the clip. For help in correctly constructing a clip with the correct MIME type, use newPlainText(CharSequence, CharSequence), newUri(ContentResolver, CharSequence, Uri), and newIntent(CharSequence, Intent).
+
+Each Item instance can be one of three main classes of data: a simple CharSequence of text, a single Intent object, or a Uri. See ClipData.Item for more details.

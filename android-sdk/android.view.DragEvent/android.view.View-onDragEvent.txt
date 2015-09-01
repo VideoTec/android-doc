@@ -1,0 +1,20 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#onDragEvent(android.view.DragEvent)
+
+public boolean onDragEvent (DragEvent event)
+
+Added in API level 11
+Handles drag events sent by the system following a call to startDrag().
+
+When the system calls this method, it passes a DragEvent object. A call to getAction() returns one of the action type constants defined in DragEvent. The method uses these to determine what is happening in the drag and drop operation.
+
+Parameters
+event	The DragEvent sent by the system. The getAction() method returns an action type constant defined in DragEvent, indicating the type of drag event represented by this object.
+Returns
+true if the method was successful, otherwise false.
+
+The method should return true in response to an action type of ACTION_DRAG_STARTED to receive drag events for the current operation.
+
+consumed[英][kən'sju:md] [美][kən'su:md]
+v.消耗( consume的过去式和过去分词 )；烧毁；大吃；使充满（强烈的感情）
+
+The method should also return true in response to an action type of ACTION_DROP if it consumed the drop, or false if it didn't.

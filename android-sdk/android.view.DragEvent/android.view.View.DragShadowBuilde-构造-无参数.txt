@@ -1,0 +1,15 @@
+public View.DragShadowBuilder ()
+
+Added in API level 11
+
+Construct a shadow builder object with no associated View. 
+This constructor variant is only useful when the 
+onProvideShadowMetrics(Point, Point) and 
+onDrawShadow(Canvas) 
+methods are also overridden 
+in order to supply the drag shadow's dimensions and 
+appearance without reference to any View object. 
+
+不可见的 drag-shadow
+If they are not overridden, 
+then the result is an invisible drag shadow.

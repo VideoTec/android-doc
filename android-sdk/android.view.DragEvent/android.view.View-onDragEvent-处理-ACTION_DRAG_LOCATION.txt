@@ -1,0 +1,7 @@
+public static final int ACTION_DRAG_LOCATION
+
+Action constant returned by getAction(): Sent to a View after ACTION_DRAG_ENTERED if the drag shadow is still within the View object's bounding box. The getX() and getY() methods supply the X and Y position of of the drag point within the View object's bounding box.
+
+A View receives an ACTION_DRAG_ENTERED event before receiving any ACTION_DRAG_LOCATION events.
+
+The system stops sending ACTION_DRAG_LOCATION events to a View once the user moves the drag shadow out of the View object's bounding box. If the user moves the drag shadow back into the View object's bounding box, the View receives an ACTION_DRAG_ENTERED again before receiving any more ACTION_DRAG_LOCATION events.

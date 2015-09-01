@@ -1,0 +1,22 @@
+react[英][riˈækt] [美][riˈækt]
+vi.反应，作出反应；影响；起反作用
+
+--------------------------------------------------
+public static final int ACTION_DRAG_ENTERED
+--------------------------------------------------
+
+Added in API level 11
+Action constant returned by getAction(): Signals to a View that the drag point has entered the bounding box of the View.
+
+If the View can accept a drop, it can react to ACTION_DRAG_ENTERED by changing its appearance in a way that tells the user that the View is the current drop target.
+
+The system stops sending ACTION_DRAG_LOCATION events to a View once the user moves the drag shadow out of the View object's bounding box. If the user moves the drag shadow back into the View object's bounding box, the View receives an ACTION_DRAG_ENTERED again before receiving any more ACTION_DRAG_LOCATION events.
+
+--------------------------------------------------
+public static final int ACTION_DRAG_EXITED
+--------------------------------------------------
+
+Added in API level 11
+Action constant returned by getAction(): Signals that the user has moved the drag shadow outside the bounding box of the View. The View can react by changing its appearance in a way that tells the user that View is no longer the immediate drop target.
+
+After the system sends an ACTION_DRAG_EXITED event to the View, the View receives no more ACTION_DRAG_LOCATION events until the user drags the drag shadow back over the View.

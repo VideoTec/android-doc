@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.DragShadowBuilder.html
+
+public static class
+View.DragShadowBuilder
+
+extends Object
+
+java.lang.Object
+   ↳	android.view.View.DragShadowBuilder
+
+Class Overview
+
+Creates an image that the system displays during the drag and drop operation. This is called a "drag shadow". The default implementation for a DragShadowBuilder based on a View returns an image that has exactly the same appearance as the given View. The default also positions the center of the drag shadow directly under the touch point. If no View is provided (the constructor with no parameters is used), and onProvideShadowMetrics() and onDrawShadow() are not overridden, then the default is an invisible drag shadow.
+
+You are not required to use the View you provide to the constructor as the basis of the drag shadow. The onDrawShadow() method allows you to draw anything you want as the drag shadow.
+
+You pass a DragShadowBuilder object to the system when you start the drag. The system calls onProvideShadowMetrics() to get the size and position of the drag shadow. It uses this data to construct a Canvas object, then it calls onDrawShadow() so that your application can draw the shadow image in the Canvas.

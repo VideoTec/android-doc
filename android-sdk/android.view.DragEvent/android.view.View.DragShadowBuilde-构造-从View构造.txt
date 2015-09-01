@@ -1,0 +1,7 @@
+public View.DragShadowBuilder (View view)
+
+Added in API level 11
+Constructs a shadow image builder based on a View. By default, the resulting drag shadow will have the same appearance and dimensions as the View, with the touch point over the center of the View.
+
+Parameters
+view	A View. Any View in scope can be used.

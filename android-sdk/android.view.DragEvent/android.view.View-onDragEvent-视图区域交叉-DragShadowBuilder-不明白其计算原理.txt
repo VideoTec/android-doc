@@ -1,0 +1,14 @@
+ACTION_DRAG_ENTERED
+the drag point has entered the bounding box of the View
+
+ACTION_DRAG_EXITED
+the user has moved the drag shadow outside the bounding box of the View
+
+实际的测试结果，好像并不准确，
+不了解，是按照什么计算这个条件的？
+
+向上，向左移动时，确定：
+shadow 的右下角 和 view 的左上角
+
+向下，向右移动时，就不确定了
+shadow 

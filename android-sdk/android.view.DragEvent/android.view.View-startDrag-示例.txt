@@ -1,0 +1,3 @@
+注意，按照下面的最简单的，参数，也可正常，产生 drag 事件。
+
+mAudioRecordButton.startDrag(null, new DragShadowBuilder(), null, 0);

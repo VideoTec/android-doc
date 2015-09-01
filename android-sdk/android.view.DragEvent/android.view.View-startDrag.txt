@@ -1,0 +1,37 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)
+
+public final boolean startDrag (ClipData data, View.DragShadowBuilder shadowBuilder, Object myLocalState, int flags)
+
+Added in API level 11
+
+Starts a drag and drop operation. When your application calls this method, it passes a View.DragShadowBuilder object to the system. The system calls this object's onProvideShadowMetrics(Point, Point) to get metrics for the drag shadow, and then calls the object's onDrawShadow(Canvas) to draw the drag shadow itself.
+
+Once the system has the drag shadow, it begins the drag and drop operation by sending drag events to all the View objects in your application that are currently visible. It does this either by calling the View object's drag listener (an implementation of onDrag() or by calling the View object's onDragEvent() method. Both are passed a DragEvent object that has a getAction() value of ACTION_DRAG_STARTED.
+
+Your application can invoke startDrag() on any attached View object. The View object does not need to be the one used in View.DragShadowBuilder, nor does it need to be related to the View the user selected for dragging.
+
+Parameters
+
+data
+A ClipData object pointing to the data to be transferred by the drag and drop operation.
+
+shadowBuilder
+A View.DragShadowBuilder object for building the drag shadow.
+
+myLocalState
+An Object containing local data about the drag and drop operation. This Object is put into every DragEvent object sent by the system during the current drag.
+myLocalState is a lightweight mechanism for the sending information from the dragged View to the target Views. For example, it can contain flags that differentiate between a a copy operation and a move operation.
+
+flags
+Flags that control the drag and drop operation. No flags are currently defined, so the parameter should be set to 0.
+
+Returns
+true if the method completes successfully, or false if it fails anywhere. Returning false means the system was unable to do a drag, and so no drag operation is in progress
+
+示例：
+http://blog.csdn.net/think_soft/article/details/7408439
+ v.startDrag(dragData,  // the data to be dragged
+                        myShadow,  // the drag shadow builder
+                        null,      // no need to use local data
+                        0          // flags (not currently used, set to 0)
+            );

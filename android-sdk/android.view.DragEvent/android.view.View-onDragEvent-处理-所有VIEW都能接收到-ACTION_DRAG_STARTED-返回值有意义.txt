@@ -1,0 +1,9 @@
+A View only receives further drag events 
+if it returns {@code true} in response to ACTION_DRAG_STARTED.
+
+In response to the user's gesture to begin a drag, your application calls startDrag() to tell the system to start a drag. The arguments startDrag() provide the data to be dragged, metadata for this data, and a callback for drawing the drag shadow.
+The system first responds by calling back to your application to get a drag shadow. It then displays the drag shadow on the device.
+
+Next, the system sends a drag event with action type ACTION_DRAG_STARTED to the drag event listeners for all the View objects in the current layout. To continue to receive drag events, including a possible drop event, a drag event listener must return true. This registers the listener with the system. Only registered listeners continue to receive drag events. At this point, listeners can also change the appearance of their View object to show that the listener can accept a drop event.
+
+If the drag event listener returns false, then it will not receive drag events for the current operation until the system sends a drag event with action type ACTION_DRAG_ENDED. By sending false, the listener tells the system that it is not interested in the drag operation and does not want to accept the dragged data.

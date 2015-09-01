@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#setOnDragListener(android.view.View.OnDragListener)
+
+public void setOnDragListener (View.OnDragListener l)
+
+Added in API level 11
+Register a drag event listener callback object for this View. The parameter is an implementation of View.OnDragListener. To send a drag event to a View, the system calls the onDrag(View, DragEvent) method.
+
+Parameters
+l	An implementation of View.OnDragListener.
