@@ -1,0 +1,29 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Intent.html#setData(android.net.Uri)
+
+public Intent setData (Uri data)
+
+Added in API level 1
+Set the data this intent is operating on. This method automatically clears any type that was previously set by setType(String) or setTypeAndNormalize(String).
+
+Note: scheme matching in the Android framework is case-sensitive, unlike the formal RFC. As a result, you should always write your Uri with a lower case scheme, or use normalizeScheme() or setDataAndNormalize(Uri) to ensure that the scheme is converted to lower case.
+
+Parameters
+data	The Uri of the data this intent is now targeting.
+
+Returns
+Returns the same Intent object, for chaining multiple calls into a single statement.
+
+See Also
+getData()
+setDataAndNormalize(Uri)
+normalizeScheme()
+
+-----------------------------------
+1.播放本地视频
+-----------------------------------
+ 
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type = "video/mp4";
+        Uri uri = Uri.parse("file:///sdcard/test.mp4");
+        intent.setDataAndType(uri, type);
+        startActivity(intent);

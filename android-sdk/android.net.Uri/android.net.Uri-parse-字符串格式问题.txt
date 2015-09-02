@@ -1,0 +1,2 @@
+Uri uri = Uri.parse("file:///sdcard/test.mp4");  可以返回正确的 Uri
+Uri uri = Uri.parse("/sdcard/test.mp4");  返回的 Uri 值不正确 23:37 2015/9/2 实际结果：也可返回正确值

@@ -1,0 +1,10 @@
+
+Intent(Context packageContext, Class<?> cls)
+Create an intent for a specific component.
+
+Intent(String action, Uri uri, Context packageContext, Class<?> cls)
+Create an intent for a specific component with a specified action and data.
+
+示例：
+        Intent intent = new Intent(MainActivity.this, VideoRecordActivity.class);
+        startActivity(intent);

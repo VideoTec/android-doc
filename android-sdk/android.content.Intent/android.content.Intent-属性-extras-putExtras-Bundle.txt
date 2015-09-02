@@ -1,0 +1,27 @@
+public Intent putExtras (Bundle extras)
+
+Added in API level 1
+Add a set of extended data to the intent. The keys must include a package prefix, for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
+
+Parameters
+extras	The Bundle of extras to add to this intent.
+
+See Also
+putExtra(String, Bundle)
+removeExtra(String)
+
+-------------------------------------------------------------------
+向下一个Activity传递数据（使用Bundle和Intent.putExtras）
+-------------------------------------------------------------------
+
+Intent it = new Intent(Activity.Main.this, Activity2.class);
+Bundle bundle = new Bundle();
+bundle.putString("name", "This is from MainActivity!");
+it.putExtras(bundle);         // it.putExtra(“test”, "shuju”);
+startActivity(it);            // startActivityForResult(it,REQUEST_CODE);
+ 
+
+对于数据的获取可以采用：
+
+Bundle bundle = getIntent().getExtras();
+String name = bundle.getString("name");

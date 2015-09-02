@@ -1,0 +1,460 @@
+public static final String EXTRA_TEMPLATE = "android.intent.extra.TEMPLATE";
+public static final String EXTRA_TEXT = "android.intent.extra.TEXT";
+public static final String EXTRA_HTML_TEXT = "android.intent.extra.HTML_TEXT";
+public static final String EXTRA_STREAM = "android.intent.extra.STREAM";
+public static final String EXTRA_EMAIL       = "android.intent.extra.EMAIL";
+public static final String EXTRA_CC       = "android.intent.extra.CC";
+public static final String EXTRA_BCC      = "android.intent.extra.BCC";
+public static final String EXTRA_SUBJECT  = "android.intent.extra.SUBJECT";
+public static final String EXTRA_INTENT = "android.intent.extra.INTENT";
+public static final String EXTRA_TITLE = "android.intent.extra.TITLE";
+public static final String EXTRA_INITIAL_INTENTS = "android.intent.extra.INITIAL_INTENTS";
+public static final String EXTRA_REPLACEMENT_EXTRAS = "android.intent.extra.REPLACEMENT_EXTRAS";
+public static final String EXTRA_CHOSEN_COMPONENT_INTENT_SENDER = "android.intent.extra.CHOSEN_COMPONENT_INTENT_SENDER";
+public static final String EXTRA_CHOSEN_COMPONENT = "android.intent.extra.CHOSEN_COMPONENT";
+public static final String EXTRA_KEY_EVENT = "android.intent.extra.KEY_EVENT";
+public static final String EXTRA_KEY_CONFIRM = "android.intent.extra.KEY_CONFIRM";
+public static final String EXTRA_DONT_KILL_APP = "android.intent.extra.DONT_KILL_APP";
+public static final String EXTRA_PHONE_NUMBER = "android.intent.extra.PHONE_NUMBER";
+public static final String EXTRA_UID = "android.intent.extra.UID";
+public static final String EXTRA_PACKAGES = "android.intent.extra.PACKAGES";
+public static final String EXTRA_DATA_REMOVED = "android.intent.extra.DATA_REMOVED";
+public static final String EXTRA_REMOVED_FOR_ALL_USERS = "android.intent.extra.REMOVED_FOR_ALL_USERS";
+public static final String EXTRA_REPLACING = "android.intent.extra.REPLACING";
+public static final String EXTRA_ALARM_COUNT = "android.intent.extra.ALARM_COUNT";
+public static final String EXTRA_DOCK_STATE = "android.intent.extra.DOCK_STATE";
+public static final String METADATA_DOCK_HOME = "android.dock_home";
+public static final String EXTRA_BUG_REPORT = "android.intent.extra.BUG_REPORT";
+public static final String EXTRA_REMOTE_INTENT_TOKEN = "android.intent.extra.remote_intent_token";
+@Deprecated public static final String EXTRA_CHANGED_COMPONENT_NAME = "android.intent.extra.changed_component_name";
+public static final String EXTRA_CHANGED_COMPONENT_NAME_LIST = "android.intent.extra.changed_component_name_list";
+public static final String EXTRA_CHANGED_PACKAGE_LIST = "android.intent.extra.changed_package_list";
+public static final String EXTRA_CHANGED_UID_LIST = "android.intent.extra.changed_uid_list";
+public static final String EXTRA_CLIENT_LABEL = "android.intent.extra.client_label";
+public static final String EXTRA_CLIENT_INTENT = "android.intent.extra.client_intent";
+public static final String EXTRA_LOCAL_ONLY = "android.intent.extra.LOCAL_ONLY";
+public static final String EXTRA_ALLOW_MULTIPLE = "android.intent.extra.ALLOW_MULTIPLE";
+public static final String EXTRA_USER_HANDLE = "android.intent.extra.user_handle";
+public static final String EXTRA_USER = "android.intent.extra.USER";
+public static final String EXTRA_RESTRICTIONS_LIST = "android.intent.extra.restrictions_list";
+public static final String EXTRA_RESTRICTIONS_BUNDLE = "android.intent.extra.restrictions_bundle";
+public static final String EXTRA_RESTRICTIONS_INTENT = "android.intent.extra.restrictions_intent";
+public static final String EXTRA_MIME_TYPES = "android.intent.extra.MIME_TYPES";
+public static final String EXTRA_SHUTDOWN_USERSPACE_ONLY = "android.intent.extra.SHUTDOWN_USERSPACE_ONLY";
+public static final String EXTRA_TIME_PREF_24_HOUR_FORMAT = "android.intent.extra.TIME_PREF_24_HOUR_FORMAT";
+public static final String EXTRA_REASON = "android.intent.extra.REASON";
+
+    // ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    // Standard extra data keys.
+
+    /**
+     * The initial data to place in a newly created record.  Use with
+     * {@link #ACTION_INSERT}.  The data here is a Map containing the same
+     * fields as would be given to the underlying ContentProvider.insert()
+     * call.
+     */
+    public static final String EXTRA_TEMPLATE = "android.intent.extra.TEMPLATE";
+
+    /**
+     * A constant CharSequence that is associated with the Intent, used with
+     * {@link #ACTION_SEND} to supply the literal data to be sent.  Note that
+     * this may be a styled CharSequence, so you must use
+     * {@link Bundle#getCharSequence(String) Bundle.getCharSequence()} to
+     * retrieve it.
+     */
+    public static final String EXTRA_TEXT = "android.intent.extra.TEXT";
+
+    /**
+     * A constant String that is associated with the Intent, used with
+     * {@link #ACTION_SEND} to supply an alternative to {@link #EXTRA_TEXT}
+     * as HTML formatted text.  Note that you <em>must</em> also supply
+     * {@link #EXTRA_TEXT}.
+     */
+    public static final String EXTRA_HTML_TEXT = "android.intent.extra.HTML_TEXT";
+
+    /**
+     * A content: URI holding a stream of data associated with the Intent,
+     * used with {@link #ACTION_SEND} to supply the data being sent.
+     */
+    public static final String EXTRA_STREAM = "android.intent.extra.STREAM";
+
+    /**
+     * A String[] holding e-mail addresses that should be delivered to.
+     */
+    public static final String EXTRA_EMAIL       = "android.intent.extra.EMAIL";
+
+    /**
+     * A String[] holding e-mail addresses that should be carbon copied.
+     */
+    public static final String EXTRA_CC       = "android.intent.extra.CC";
+
+    /**
+     * A String[] holding e-mail addresses that should be blind carbon copied.
+     */
+    public static final String EXTRA_BCC      = "android.intent.extra.BCC";
+
+    /**
+     * A constant string holding the desired subject line of a message.
+     */
+    public static final String EXTRA_SUBJECT  = "android.intent.extra.SUBJECT";
+
+    /**
+     * An Intent describing the choices you would like shown with
+     * {@link #ACTION_PICK_ACTIVITY}.
+     */
+    public static final String EXTRA_INTENT = "android.intent.extra.INTENT";
+
+    /**
+     * A CharSequence dialog title to provide to the user when used with a
+     * {@link #ACTION_CHOOSER}.
+     */
+    public static final String EXTRA_TITLE = "android.intent.extra.TITLE";
+
+    /**
+     * A Parcelable[] of {@link Intent} or
+     * {@link android.content.pm.LabeledIntent} objects as set with
+     * {@link #putExtra(String, Parcelable[])} of additional activities to place
+     * a the front of the list of choices, when shown to the user with a
+     * {@link #ACTION_CHOOSER}.
+     */
+    public static final String EXTRA_INITIAL_INTENTS = "android.intent.extra.INITIAL_INTENTS";
+
+    /**
+     * A Bundle forming a mapping of potential target package names to different extras Bundles
+     * to add to the default intent extras in {@link #EXTRA_INTENT} when used with
+     * {@link #ACTION_CHOOSER}. Each key should be a package name. The package need not
+     * be currently installed on the device.
+     *
+     * <p>An application may choose to provide alternate extras for the case where a user
+     * selects an activity from a predetermined set of target packages. If the activity
+     * the user selects from the chooser belongs to a package with its package name as
+     * a key in this bundle, the corresponding extras for that package will be merged with
+     * the extras already present in the intent at {@link #EXTRA_INTENT}. If a replacement
+     * extra has the same key as an extra already present in the intent it will overwrite
+     * the extra from the intent.</p>
+     *
+     * <p><em>Examples:</em>
+     * <ul>
+     *     <li>An application may offer different {@link #EXTRA_TEXT} to an application
+     *     when sharing with it via {@link #ACTION_SEND}, augmenting a link with additional query
+     *     parameters for that target.</li>
+     *     <li>An application may offer additional metadata for known targets of a given intent
+     *     to pass along information only relevant to that target such as account or content
+     *     identifiers already known to that application.</li>
+     * </ul></p>
+     */
+    public static final String EXTRA_REPLACEMENT_EXTRAS =
+            "android.intent.extra.REPLACEMENT_EXTRAS";
+
+    /**
+     * An {@link IntentSender} that will be notified if a user successfully chooses a target
+     * component to handle an action in an {@link #ACTION_CHOOSER} activity. The IntentSender
+     * will have the extra {@link #EXTRA_CHOSEN_COMPONENT} appended to it containing the
+     * {@link ComponentName} of the chosen component.
+     *
+     * <p>In some situations this callback may never come, for example if the user abandons
+     * the chooser, switches to another task or any number of other reasons. Apps should not
+     * be written assuming that this callback will always occur.</p>
+     */
+    public static final String EXTRA_CHOSEN_COMPONENT_INTENT_SENDER =
+            "android.intent.extra.CHOSEN_COMPONENT_INTENT_SENDER";
+
+    /**
+     * The {@link ComponentName} chosen by the user to complete an action.
+     *
+     * @see #EXTRA_CHOSEN_COMPONENT_INTENT_SENDER
+     */
+    public static final String EXTRA_CHOSEN_COMPONENT = "android.intent.extra.CHOSEN_COMPONENT";
+
+    /**
+     * A {@link android.view.KeyEvent} object containing the event that
+     * triggered the creation of the Intent it is in.
+     */
+    public static final String EXTRA_KEY_EVENT = "android.intent.extra.KEY_EVENT";
+
+    /**
+     * Set to true in {@link #ACTION_REQUEST_SHUTDOWN} to request confirmation from the user
+     * before shutting down.
+     *
+     * {@hide}
+     */
+    public static final String EXTRA_KEY_CONFIRM = "android.intent.extra.KEY_CONFIRM";
+
+    /**
+     * Used as a boolean extra field in {@link android.content.Intent#ACTION_PACKAGE_REMOVED} or
+     * {@link android.content.Intent#ACTION_PACKAGE_CHANGED} intents to override the default action
+     * of restarting the application.
+     */
+    public static final String EXTRA_DONT_KILL_APP = "android.intent.extra.DONT_KILL_APP";
+
+    /**
+     * A String holding the phone number originally entered in
+     * {@link android.content.Intent#ACTION_NEW_OUTGOING_CALL}, or the actual
+     * number to call in a {@link android.content.Intent#ACTION_CALL}.
+     */
+    public static final String EXTRA_PHONE_NUMBER = "android.intent.extra.PHONE_NUMBER";
+
+    /**
+     * Used as an int extra field in {@link android.content.Intent#ACTION_UID_REMOVED}
+     * intents to supply the uid the package had been assigned.  Also an optional
+     * extra in {@link android.content.Intent#ACTION_PACKAGE_REMOVED} or
+     * {@link android.content.Intent#ACTION_PACKAGE_CHANGED} for the same
+     * purpose.
+     */
+    public static final String EXTRA_UID = "android.intent.extra.UID";
+
+    /**
+     * @hide String array of package names.
+     */
+    public static final String EXTRA_PACKAGES = "android.intent.extra.PACKAGES";
+
+    /**
+     * Used as a boolean extra field in {@link android.content.Intent#ACTION_PACKAGE_REMOVED}
+     * intents to indicate whether this represents a full uninstall (removing
+     * both the code and its data) or a partial uninstall (leaving its data,
+     * implying that this is an update).
+     */
+    public static final String EXTRA_DATA_REMOVED = "android.intent.extra.DATA_REMOVED";
+
+    /**
+     * @hide
+     * Used as a boolean extra field in {@link android.content.Intent#ACTION_PACKAGE_REMOVED}
+     * intents to indicate that at this point the package has been removed for
+     * all users on the device.
+     */
+    public static final String EXTRA_REMOVED_FOR_ALL_USERS
+            = "android.intent.extra.REMOVED_FOR_ALL_USERS";
+
+    /**
+     * Used as a boolean extra field in {@link android.content.Intent#ACTION_PACKAGE_REMOVED}
+     * intents to indicate that this is a replacement of the package, so this
+     * broadcast will immediately be followed by an add broadcast for a
+     * different version of the same package.
+     */
+    public static final String EXTRA_REPLACING = "android.intent.extra.REPLACING";
+
+    /**
+     * Used as an int extra field in {@link android.app.AlarmManager} intents
+     * to tell the application being invoked how many pending alarms are being
+     * delievered with the intent.  For one-shot alarms this will always be 1.
+     * For recurring alarms, this might be greater than 1 if the device was
+     * asleep or powered off at the time an earlier alarm would have been
+     * delivered.
+     */
+    public static final String EXTRA_ALARM_COUNT = "android.intent.extra.ALARM_COUNT";
+
+    /**
+     * Used as an int extra field in {@link android.content.Intent#ACTION_DOCK_EVENT}
+     * intents to request the dock state.  Possible values are
+     * {@link android.content.Intent#EXTRA_DOCK_STATE_UNDOCKED},
+     * {@link android.content.Intent#EXTRA_DOCK_STATE_DESK}, or
+     * {@link android.content.Intent#EXTRA_DOCK_STATE_CAR}, or
+     * {@link android.content.Intent#EXTRA_DOCK_STATE_LE_DESK}, or
+     * {@link android.content.Intent#EXTRA_DOCK_STATE_HE_DESK}.
+     */
+    public static final String EXTRA_DOCK_STATE = "android.intent.extra.DOCK_STATE";
+
+    /**
+     * Used as an int value for {@link android.content.Intent#EXTRA_DOCK_STATE}
+     * to represent that the phone is not in any dock.
+     */
+    public static final int EXTRA_DOCK_STATE_UNDOCKED = 0;
+
+    /**
+     * Used as an int value for {@link android.content.Intent#EXTRA_DOCK_STATE}
+     * to represent that the phone is in a desk dock.
+     */
+    public static final int EXTRA_DOCK_STATE_DESK = 1;
+
+    /**
+     * Used as an int value for {@link android.content.Intent#EXTRA_DOCK_STATE}
+     * to represent that the phone is in a car dock.
+     */
+    public static final int EXTRA_DOCK_STATE_CAR = 2;
+
+    /**
+     * Used as an int value for {@link android.content.Intent#EXTRA_DOCK_STATE}
+     * to represent that the phone is in a analog (low end) dock.
+     */
+    public static final int EXTRA_DOCK_STATE_LE_DESK = 3;
+
+    /**
+     * Used as an int value for {@link android.content.Intent#EXTRA_DOCK_STATE}
+     * to represent that the phone is in a digital (high end) dock.
+     */
+    public static final int EXTRA_DOCK_STATE_HE_DESK = 4;
+
+    /**
+     * Boolean that can be supplied as meta-data with a dock activity, to
+     * indicate that the dock should take over the home key when it is active.
+     */
+    public static final String METADATA_DOCK_HOME = "android.dock_home";
+
+    /**
+     * Used as a parcelable extra field in {@link #ACTION_APP_ERROR}, containing
+     * the bug report.
+     */
+    public static final String EXTRA_BUG_REPORT = "android.intent.extra.BUG_REPORT";
+
+    /**
+     * Used in the extra field in the remote intent. It's astring token passed with the
+     * remote intent.
+     */
+    public static final String EXTRA_REMOTE_INTENT_TOKEN =
+            "android.intent.extra.remote_intent_token";
+
+    /**
+     * @deprecated See {@link #EXTRA_CHANGED_COMPONENT_NAME_LIST}; this field
+     * will contain only the first name in the list.
+     */
+    @Deprecated public static final String EXTRA_CHANGED_COMPONENT_NAME =
+            "android.intent.extra.changed_component_name";
+
+    /**
+     * This field is part of {@link android.content.Intent#ACTION_PACKAGE_CHANGED},
+     * and contains a string array of all of the components that have changed.  If
+     * the state of the overall package has changed, then it will contain an entry
+     * with the package name itself.
+     */
+    public static final String EXTRA_CHANGED_COMPONENT_NAME_LIST =
+            "android.intent.extra.changed_component_name_list";
+
+    /**
+     * This field is part of
+     * {@link android.content.Intent#ACTION_EXTERNAL_APPLICATIONS_AVAILABLE},
+     * {@link android.content.Intent#ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE}
+     * and contains a string array of all of the components that have changed.
+     */
+    public static final String EXTRA_CHANGED_PACKAGE_LIST =
+            "android.intent.extra.changed_package_list";
+
+    /**
+     * This field is part of
+     * {@link android.content.Intent#ACTION_EXTERNAL_APPLICATIONS_AVAILABLE},
+     * {@link android.content.Intent#ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE}
+     * and contains an integer array of uids of all of the components
+     * that have changed.
+     */
+    public static final String EXTRA_CHANGED_UID_LIST =
+            "android.intent.extra.changed_uid_list";
+
+    /**
+     * @hide
+     * Magic extra system code can use when binding, to give a label for
+     * who it is that has bound to a service.  This is an integer giving
+     * a framework string resource that can be displayed to the user.
+     */
+    public static final String EXTRA_CLIENT_LABEL =
+            "android.intent.extra.client_label";
+
+    /**
+     * @hide
+     * Magic extra system code can use when binding, to give a PendingIntent object
+     * that can be launched for the user to disable the system's use of this
+     * service.
+     */
+    public static final String EXTRA_CLIENT_INTENT =
+            "android.intent.extra.client_intent";
+
+    /**
+     * Extra used to indicate that an intent should only return data that is on
+     * the local device. This is a boolean extra; the default is false. If true,
+     * an implementation should only allow the user to select data that is
+     * already on the device, not requiring it be downloaded from a remote
+     * service when opened.
+     *
+     * @see #ACTION_GET_CONTENT
+     * @see #ACTION_OPEN_DOCUMENT
+     * @see #ACTION_OPEN_DOCUMENT_TREE
+     * @see #ACTION_CREATE_DOCUMENT
+     */
+    public static final String EXTRA_LOCAL_ONLY =
+            "android.intent.extra.LOCAL_ONLY";
+
+    /**
+     * Extra used to indicate that an intent can allow the user to select and
+     * return multiple items. This is a boolean extra; the default is false. If
+     * true, an implementation is allowed to present the user with a UI where
+     * they can pick multiple items that are all returned to the caller. When
+     * this happens, they should be returned as the {@link #getClipData()} part
+     * of the result Intent.
+     *
+     * @see #ACTION_GET_CONTENT
+     * @see #ACTION_OPEN_DOCUMENT
+     */
+    public static final String EXTRA_ALLOW_MULTIPLE =
+            "android.intent.extra.ALLOW_MULTIPLE";
+
+    /**
+     * The integer userHandle carried with broadcast intents related to addition, removal and
+     * switching of users and managed profiles - {@link #ACTION_USER_ADDED},
+     * {@link #ACTION_USER_REMOVED} and {@link #ACTION_USER_SWITCHED}.
+     *
+     * @hide
+     */
+    public static final String EXTRA_USER_HANDLE =
+            "android.intent.extra.user_handle";
+
+    /**
+     * The UserHandle carried with broadcasts intents related to addition and removal of managed
+     * profiles - {@link #ACTION_MANAGED_PROFILE_ADDED} and {@link #ACTION_MANAGED_PROFILE_REMOVED}.
+     */
+    public static final String EXTRA_USER =
+            "android.intent.extra.USER";
+
+    /**
+     * Extra used in the response from a BroadcastReceiver that handles
+     * {@link #ACTION_GET_RESTRICTION_ENTRIES}. The type of the extra is
+     * <code>ArrayList&lt;RestrictionEntry&gt;</code>.
+     */
+    public static final String EXTRA_RESTRICTIONS_LIST = "android.intent.extra.restrictions_list";
+
+    /**
+     * Extra sent in the intent to the BroadcastReceiver that handles
+     * {@link #ACTION_GET_RESTRICTION_ENTRIES}. The type of the extra is a Bundle containing
+     * the restrictions as key/value pairs.
+     */
+    public static final String EXTRA_RESTRICTIONS_BUNDLE =
+            "android.intent.extra.restrictions_bundle";
+
+    /**
+     * Extra used in the response from a BroadcastReceiver that handles
+     * {@link #ACTION_GET_RESTRICTION_ENTRIES}.
+     */
+    public static final String EXTRA_RESTRICTIONS_INTENT =
+            "android.intent.extra.restrictions_intent";
+
+    /**
+     * Extra used to communicate a set of acceptable MIME types. The type of the
+     * extra is {@code String[]}. Values may be a combination of concrete MIME
+     * types (such as "image/png") and/or partial MIME types (such as
+     * "audio/*").
+     *
+     * @see #ACTION_GET_CONTENT
+     * @see #ACTION_OPEN_DOCUMENT
+     */
+    public static final String EXTRA_MIME_TYPES = "android.intent.extra.MIME_TYPES";
+
+    /**
+     * Optional extra for {@link #ACTION_SHUTDOWN} that allows the sender to qualify that
+     * this shutdown is only for the user space of the system, not a complete shutdown.
+     * When this is true, hardware devices can use this information to determine that
+     * they shouldn't do a complete shutdown of their device since this is not a
+     * complete shutdown down to the kernel, but only user space restarting.
+     * The default if not supplied is false.
+     */
+    public static final String EXTRA_SHUTDOWN_USERSPACE_ONLY
+            = "android.intent.extra.SHUTDOWN_USERSPACE_ONLY";
+
+    /**
+     * Optional boolean extra for {@link #ACTION_TIME_CHANGED} that indicates the
+     * user has set their time format preferences to the 24 hour format.
+     *
+     * @hide for internal use only.
+     */
+    public static final String EXTRA_TIME_PREF_24_HOUR_FORMAT =
+            "android.intent.extra.TIME_PREF_24_HOUR_FORMAT";
+
+    /** {@hide} */
+    public static final String EXTRA_REASON = "android.intent.extra.REASON";

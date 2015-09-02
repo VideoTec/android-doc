@@ -1,0 +1,32 @@
+type -- 
+
+evaluation[英][ɪˌvæljʊ'eɪʃn] [美][ɪˌvæljʊˈeʃən]
+n.估价；<数>赋值；估计价值；[医学]诊断
+
+Specifies an explicit type (a MIME type) of the intent data. 
+Normally the type is inferred from the data itself. 
+By setting this attribute, you disable that evaluation and force an explicit type.
+
+--------------------------------
+示例：
+--------------------------------
+
+Intent intent = new Intent(Intent.ACTION_VIEW);
+String type = "video/mp4";
+Uri uri = Uri.parse("file:///sdcard/test.mp4");
+intent.setDataAndType(uri, type);
+startActivity(intent); 
+
+--------------------------------
+示例：
+--------------------------------
+         <activity class=".TitleEditor" android:label="@string/title_edit_title"
+                 android:theme="@android:style/Theme.Dialog">
+             <intent-filter android:label="@string/resolve_title">
+                 <action android:name="com.android.notepad.action.EDIT_TITLE" />
+                 <category android:name="android.intent.category.DEFAULT" />
+                 <category android:name="android.intent.category.ALTERNATIVE" />
+                 <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+                 <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
+             </intent-filter>
+         </activity>

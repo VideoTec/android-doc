@@ -1,0 +1,23 @@
+extras -- 
+
+This is a Bundle of any additional information. 
+This can be used to provide extended information to the component. 
+
+For example, if we have a action to send an e-mail message, 
+we could also include extra pieces of data here to supply a subject, body, etc.
+
+-------------------------------------------------------------------
+向下一个Activity传递数据（使用Bundle和Intent.putExtras）
+-------------------------------------------------------------------
+
+Intent it = new Intent(Activity.Main.this, Activity2.class);
+Bundle bundle=new Bundle();
+bundle.putString("name", "This is from MainActivity!");
+it.putExtras(bundle);       // it.putExtra(“test”, "shuju”);
+startActivity(it);            // startActivityForResult(it,REQUEST_CODE);
+ 
+
+对于数据的获取可以采用：
+
+Bundle bundle=getIntent().getExtras();
+String name=bundle.getString("name");

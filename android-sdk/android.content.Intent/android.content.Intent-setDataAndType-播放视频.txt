@@ -9,18 +9,28 @@ Android中除了利用VideoView、Mediaplayer播放视频文件外，还可以�
         Uri uri = Uri.parse("file:///sdcard/test.mp4");
         intent.setDataAndType(uri, type);
         startActivity(intent);   
+
+		问题？23:32 2015/9/2 为什么下面的代码，不能正确播放？
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("file:///sdcard/out.mp4"));
+		intent.setType("video/mp4");
+		startActivity(intent);
+		
+		注意，下面的，Uri，也可正确解析
+		    Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse("/sdcard/out.mp4"), "video/mp4");
+            startActivity(intent);
  
 2.播放网络视频
  
         Intent intent = new Intent(Intent.ACTION_VIEW);
         String type = "video/* ";
-   Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
+        Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
         intent.setDataAndType(uri, type);
         startActivity(intent);   
  
      注意红色部分，如果不设置type的话，这样写：
        Intent intent = new Intent(Intent.ACTION_VIEW);
-  Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
+       Uri uri = Uri.parse("http://forum.ea3w.com/coll_ea3w/attach/2008_10/12237832415.3gp");
        intent.setData (uri);
        startActivity(intent);  
 这样会默认用浏览器打开这个URL！

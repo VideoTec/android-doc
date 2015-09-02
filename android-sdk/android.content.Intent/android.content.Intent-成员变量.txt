@@ -1,0 +1,13 @@
+
+    private String mAction;
+    private Uri mData;
+    private String mType;
+    private String mPackage;
+    private ComponentName mComponent;
+    private int mFlags;
+    private ArraySet<String> mCategories;
+    private Bundle mExtras;
+    private Rect mSourceBounds;
+    private Intent mSelector;
+    private ClipData mClipData;
+    private int mContentUserHint = UserHandle.USER_CURRENT;

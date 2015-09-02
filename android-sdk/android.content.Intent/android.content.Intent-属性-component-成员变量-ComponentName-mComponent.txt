@@ -1,0 +1,13 @@
+component -- 
+
+Specifies an explicit name of a component class to use for the intent. 
+Normally this is determined by 
+looking at the other information in the intent (the action, data/type, and categories) and 
+matching that with a component that can handle it. 
+
+evaluation[英][ɪˌvæljʊ'eɪʃn] [美][ɪˌvæljʊˈeʃən]
+n.估价；<数>赋值；估计价值；[医学]诊断
+
+If this attribute is set then none of the evaluation is performed, and 
+this component is used exactly as is. 
+By specifying this attribute, all of the other Intent attributes become optional.

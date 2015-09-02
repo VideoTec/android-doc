@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Intent.html#putExtra(java.lang.String, android.os.Bundle)
+
+public Intent putExtra (String name, Bundle value)
+
+Added in API level 1
+Add extended data to the intent. The name must include a package prefix, for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
+
+Parameters
+name	The name of the extra data, with package prefix.
+value	The Bundle data value.
+
+Returns
+Returns the same Intent object, for chaining multiple calls into a single statement.
+
+See Also
+putExtras(Intent)
+removeExtra(String)
+getBundleExtra(String)

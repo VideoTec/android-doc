@@ -1,0 +1,10 @@
+public Intent putExtras (Intent src)
+
+Added in API level 1
+Copy all extras in 'src' in to this intent.
+
+Parameters
+src	Contains the extras to copy.
+
+See Also
+putExtra(String, Bundle)

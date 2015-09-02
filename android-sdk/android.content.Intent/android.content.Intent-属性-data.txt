@@ -1,3 +1,27 @@
+data -- 
+The data to operate on, 
+such as a person record in the contacts database, expressed as a Uri.
+Some examples of action/data pairs are:
+
+ACTION_VIEW 
+content://contacts/people/1 -- Display information about the person whose identifier is "1".
+
+ACTION_DIAL 
+content://contacts/people/1 -- Display the phone dialer with the person filled in.
+
+ACTION_VIEW 
+tel:123 -- Display the phone dialer with the given number filled in. Note how the VIEW action does what what is considered the most reasonable thing for a particular URI.
+
+ACTION_DIAL 
+tel:123 -- Display the phone dialer with the given number filled in.
+
+ACTION_EDIT 
+content://contacts/people/1 -- Edit information about the person whose identifier is "1".
+
+ACTION_VIEW 
+content://contacts/people/ -- Display a list of people, which the user can browse through. This example is a typical top-level entry into the Contacts application, showing you the list of people. Selecting a particular person to view would result in a new intent { ACTION_VIEW content://contacts/N } being used to start an activity to display that person.
+
+
 intent 数据传递
 
 1.无参数Activity跳转

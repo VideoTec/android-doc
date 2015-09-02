@@ -1,0 +1,34 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Intent.html#setType(java.lang.String)
+
+public Intent setType (String type)
+
+Added in API level 1
+Set an explicit MIME data type.
+
+This is used to create intents that only specify a type and not data, for example to indicate the type of data to return.
+
+This method automatically clears any data that was previously set (for example by setData(Uri)).
+
+Note: MIME type matching in the Android framework is case-sensitive, unlike formal RFC MIME types. As a result, you should always write your MIME types with lower case letters, or use normalizeMimeType(String) or setTypeAndNormalize(String) to ensure that it is converted to lower case.
+
+Parameters
+type	The MIME type of the data being handled by this intent.
+
+Returns
+Returns the same Intent object, for chaining multiple calls into a single statement.
+
+See Also
+getType()
+setTypeAndNormalize(String)
+setDataAndType(Uri, String)
+normalizeMimeType(String)
+
+---------------------------------------------
+1.播放本地视频
+---------------------------------------------
+ 
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String type = "video/mp4";
+        Uri uri = Uri.parse("file:///sdcard/test.mp4");
+        intent.setDataAndType(uri, type);
+        startActivity(intent); 

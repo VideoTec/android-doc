@@ -1,6 +1,12 @@
 标准 intent category
 被执行动作的附加信息。
 
+category -- 
+Gives additional information about the action to execute. 
+For example, 
+CATEGORY_LAUNCHER means it should appear in the Launcher as a top-level application, while 
+CATEGORY_ALTERNATIVE means it should be included in a list of alternative actions the user can perform on a piece of data.
+
 例如
 LAUNCHER_CATEGORY     表示Intent 的接受者应该在Launcher中作为顶级应用出现；
 ALTERNATIVE_CATEGORY  表示当前的Intent是一系列的可选动作中的一个，这些动作可以在同一块数据上执行
