@@ -20,9 +20,8 @@ theme attribute (in the form "?[package:][type:]name") containing a value of thi
 
 This corresponds to the global attribute resource symbol onClick.
 
-
 ------------------------------------
-实例
+实例- must be --  public --- void onBtnBack(View v)
 ------------------------------------
     <Button
         android:id="@+id/btn_back"
