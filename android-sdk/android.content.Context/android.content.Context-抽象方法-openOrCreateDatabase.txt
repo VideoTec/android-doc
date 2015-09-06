@@ -1,0 +1,28 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#openOrCreateDatabase(java.lang.String, int, android.database.sqlite.SQLiteDatabase.CursorFactory)
+
+public abstract SQLiteDatabase openOrCreateDatabase (String name, int mode, SQLiteDatabase.CursorFactory factory)
+
+Added in API level 1
+Open a new private SQLiteDatabase associated with this Context's application package. Create the database file if it doesn't exist.
+
+Parameters
+name	The name (unique in the application package) of the database.
+mode	Operating mode. Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE to control permissions. Use MODE_ENABLE_WRITE_AHEAD_LOGGING to enable write-ahead logging by default.
+factory	An optional factory class that is called to instantiate a cursor when query is called.
+Returns
+The contents of a newly created database with the given name.
+
+public abstract SQLiteDatabase openOrCreateDatabase (String name, int mode, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler)
+
+Added in API level 11
+Open a new private SQLiteDatabase associated with this Context's application package. Creates the database file if it doesn't exist.
+
+Accepts input param: a concrete instance of DatabaseErrorHandler to be used to handle corruption when sqlite reports database corruption.
+
+Parameters
+name	The name (unique in the application package) of the database.
+mode	Operating mode. Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE to control permissions. Use MODE_ENABLE_WRITE_AHEAD_LOGGING to enable write-ahead logging by default.
+factory	An optional factory class that is called to instantiate a cursor when query is called.
+errorHandler	the DatabaseErrorHandler to be used when sqlite reports database corruption. if null, DefaultDatabaseErrorHandler is assumed.
+Returns
+The contents of a newly created database with the given name.

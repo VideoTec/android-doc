@@ -1,0 +1,12 @@
+public abstract void onTick (long millisUntilFinished)
+
+Added in API level 1
+Callback fired on regular interval.
+
+Parameters
+millisUntilFinished	The amount of time until finished.
+
+------------------------------------
+根据源码判断，所在线程，应该是
+------------------------------------
+android.os.CountDownTimer 对象，初始化所在线程

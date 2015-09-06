@@ -1,0 +1,5 @@
+振动一下
+
+内部类，调用外部类的，this，指针
+Vibrator vibrator = (Vibrator) ChatRoomActivity.this.getSystemService(Service.VIBRATOR_SERVICE);
+vibrator.vibrate(100);

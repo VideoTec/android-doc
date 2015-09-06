@@ -56,7 +56,10 @@ the included layout's root view by specifying them in the <include/> tag
 <include android:id=”@+id/news_title”
          android:layout_width=”match_parent”
          android:layout_height=”match_parent”
-         layout=”@layout/title”/>
+         layout=”@layout/title”/> 特别注意： 不是 android:layout 是 layout
+
+13:55 2015/9/6
+特别注意： 不是 android:layout 是 layout
          
 如果要重写属性，必须指定，长宽属性
 However, if you want to override layout attributes using the <include> tag, 

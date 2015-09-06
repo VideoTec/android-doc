@@ -1,0 +1,10 @@
+android 工程，资源编译后的，R 类的包名？
+
+由 AndroidManifest.xml 里的 package 决定。
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.com.fetion" 
+    android:versionCode="20130528"
+    android:versionName="1.0" >
+
+一般情况下，不需要引用这个包，
+原因是：在同一个包里

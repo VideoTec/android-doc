@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/2699954/new-to-android-openorcreatedatabase-where-does-the-sqlite-file-go
+
+All databases, SQLite and others, are stored on the device in /data/data/package_name/databases.
+
+http://developer.android.com/guide/topics/data/data-storage.html

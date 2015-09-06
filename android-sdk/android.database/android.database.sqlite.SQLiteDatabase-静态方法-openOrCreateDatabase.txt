@@ -1,0 +1,14 @@
+public static SQLiteDatabase openOrCreateDatabase (String path, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler)
+
+Added in API level 11
+Equivalent to openDatabase(path, factory, CREATE_IF_NECESSARY, errorHandler).
+
+public static SQLiteDatabase openOrCreateDatabase (String path, SQLiteDatabase.CursorFactory factory)
+
+Added in API level 1
+Equivalent to openDatabase(path, factory, CREATE_IF_NECESSARY).
+
+public static SQLiteDatabase openOrCreateDatabase (File file, SQLiteDatabase.CursorFactory factory)
+
+Added in API level 1
+Equivalent to openDatabase(file.getPath(), factory, CREATE_IF_NECESSARY).

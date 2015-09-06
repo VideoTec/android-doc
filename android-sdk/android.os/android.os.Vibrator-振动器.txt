@@ -1,0 +1,19 @@
+vibrator[英][vaɪˈbreɪtə(r)] [美][ˈvaɪˌbretɚ]
+n.振动器，振荡器，（按摩）颤震器
+
+http://developer.android.com/intl/zh-cn/reference/android/os/Vibrator.html
+
+public abstract class
+Vibrator
+extends Object
+java.lang.Object
+   ↳	android.os.Vibrator
+   
+Class Overview
+
+Class that operates the vibrator on the device.
+
+If your process exits, any vibration you started will stop.
+
+To obtain an instance of the system vibrator, 
+call getSystemService(Class) with VIBRATOR_SERVICE as the argument.

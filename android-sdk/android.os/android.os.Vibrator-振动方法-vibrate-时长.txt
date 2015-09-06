@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------
+public void vibrate (long milliseconds)
+-------------------------------------------------------------------------
+
+Added in API level 1
+Vibrate constantly for the specified period of time.
+
+This method requires the caller to hold the permission VIBRATE.
+
+Parameters
+milliseconds	The number of milliseconds to vibrate.
+
+-------------------------------------------------------------------------
+public void vibrate (long milliseconds, AudioAttributes attributes)
+-------------------------------------------------------------------------
+
+Added in API level 21
+Vibrate constantly for the specified period of time.
+
+This method requires the caller to hold the permission VIBRATE.
+
+Parameters
+milliseconds	The number of milliseconds to vibrate.
+attributes	AudioAttributes corresponding to the vibration. For example, specify USAGE_ALARM for alarm vibrations or USAGE_NOTIFICATION_RINGTONE for vibrations associated with incoming calls.
