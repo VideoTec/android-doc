@@ -1,0 +1,17 @@
+https://www.zetetic.net/sqlcipher/sqlcipher-for-android/
+
+Obtaining binaries
+The source code for SQLCipher for Android is publicly maintained on Github.com, the current binary release can be found here. 
+
+https://s3.amazonaws.com/sqlcipher/SQLCipher+for+Android+v3.1.0.zip
+
+https://www.zetetic.net/sqlcipher/open-source/ 这个页面下载社区版本
+SQLCipher for Android Community Edition binaries are made available 
+as a free service to the community here:
+SQLCipher For Android
+https://s3.amazonaws.com/sqlcipher/3.3.1/sqlcipher-for-android-community-v3.3.1.zip
+
+https://www.zetetic.net/sqlcipher/verify/
+分两个版本
+Commercial Editions  商业版本
+Community Editions   社区版本

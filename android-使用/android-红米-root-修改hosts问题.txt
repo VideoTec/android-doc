@@ -1,0 +1,21 @@
+---------------------------
+第一个问题
+---------------------------
+Unable to chmod hosts: Read-only file system
+
+解决办法：
+mount -o rw,remount /system
+操作完后，再恢复回去
+mount -o ro,remount /system
+
+---------------------------
+第二个问题
+---------------------------
+http://www.zhihu.com/question/29064201
+android手机(小米)root后，修改hosts后，hosts不生效?
+
+我以前遇到过，我的问题原因是换行符：
+1) 在IP和域名之间保留一个空格 每行只能有一个域名，不能一个IP后面跟多个域名。
+   
+2) android上的换行符（也就是回车）是LF，也就是 \n，而windows上的换行符是CRLF，也就是\ r\ n
+所以在windows下用记事本之类的软件编辑了hosts文件，放到手机上肯定认不出来的！解决的办法就是用NotePad++之类的文本编辑器，再使用“查找替换”，将“\r\n”替换成“\n”（注意要在notepad++里把查找模式设置为扩展模式，才能识别转义字符\r\n）

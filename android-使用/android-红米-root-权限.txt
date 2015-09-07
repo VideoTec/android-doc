@@ -1,0 +1,35 @@
+-------------------------------------
+获得 root 权限管理的方法
+-------------------------------------
+http://www.miui.com/download-275.html 下载开发版
+http://www.miui.com/shuaji-329.html 刷机教程
+
+-------------------------------------
+应用获得 root 权限的代码
+-------------------------------------
+http://www.apkbus.com/blog-49315-39737.html
+
+要让Android应用获得Root权限，
+首先Android设备必须已经获得Root权限。
+可以切换到 root 用户，即 Runtime.getRuntime().exec("su")
+未 root 的设备，无法切换到 root 用户。
+
+应用获取Root权限的原理：
+让应用的代码执行目录获取最高权限。在Linux中通过chmod 777
+
+http://www.cnblogs.com/ycmoon/archive/2011/05/11/2042999.html
+String apkRoot="chmod 777 "+getPackageCodePath(); RootCommand(apkRoot);
+
+-------------------------------------
+adb shell
+-------------------------------------
+adb shell -> 进入手机的 shell 界面
+
+shell@zerofltechn:/system/etc $ ls -l 
+shell@lte26007:/ $ ls
+
+可以看到当前登录的用户名  shell@xx
+
+执行 su 后：
+root@lte26007:/ # cd /data 
+用户换成了 root

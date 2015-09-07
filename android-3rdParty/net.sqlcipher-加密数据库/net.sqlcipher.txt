@@ -1,0 +1,26 @@
+cipher[英]['saɪfə(r)] [美][ˈsaɪfɚ]
+n.密码；零；不重要的人；无价值的东西
+
+https://www.zetetic.net/sqlcipher/sqlcipher-for-android/
+https://github.com/sqlcipher/android-database-sqlcipher
+
+http://www.cnblogs.com/huangsheng/p/3343933.html
+关键一步是添加加密密匙，
+
+net.sqlcipher.database.SQLiteOpenHelper
+添加方法是实现 getWritableDatabase("thisismyencryptstringkey")，
+（这里解释的很扯，看下面的例子，是添加密码的方法）
+
+参数是字符串类型，如果为""的话表示不加密，
+这里要注意的是不能包含逗号否者也是实现不了加密的
+
+http://www.uml.org.cn/safe/201312055.asp
+
+例子：
+MyDatabaseHelper dbHelper = new MyDatabaseHelper(this, "demo.db", null, 1);
+db = dbHelper.getWritableDatabase("secret_key");
+        
+需要提醒的一点是，项目中引入了SQLCipher之后，
+会让你的程序体积骤然增加，
+打成APK后大概会变大好几M，是更侧重于文件大小，
+还是更侧重于程序安全，你应该根据具体的需求做出合适的判断

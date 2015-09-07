@@ -1,0 +1,26 @@
+09-07 14:04:45.911: E/AndroidRuntime(3473): FATAL EXCEPTION: main
+09-07 14:04:45.911: E/AndroidRuntime(3473): Process: cn.com.fetion, PID: 3473
+09-07 14:04:45.911: E/AndroidRuntime(3473): java.lang.IllegalArgumentException: Service Intent must be explicit: Intent { act=com.feinno.beside.proxy.service }
+
+源码：
+	private static final String BESIDE_SERVICE_PKG_NAME = "cn.com.fetion";
+	private static final String BESIDE_SERVICE_NAME = "com.feinno.beside.fetion.Fetion2BesideService";
+	private static final ComponentName COMPONENT = 
+        new ComponentName(BESIDE_SERVICE_PKG_NAME, BESIDE_SERVICE_NAME);
+    
+		Intent intent = new Intent();
+		intent.putExtra(FetionBesideConstant.EXTRA_KEY, FetionBesideConstant.EXTRA_SERVICE_INIT_BESIDE);
+		intent.setComponent(COMPONENT);
+		intent.setAction("com.feinno.beside.init.besideservice");
+		startService(intent);
+
+尝试解决方法：
+Intent intent = new Intent(ctx, com.feinno.beside.fetion.Fetion2BesideService.class);
+
+http://stackoverflow.com/questions/27842430/service-intent-must-be-explicit-intent
+
+any intent you make to a service, activity etc. in your app should always follow this format
+
+Intent serviceIntent = new Intent(context,MyService.class);
+context.startService(serviceIntent);
+implicit intents (what you have in your code currently) are considered a security risk
