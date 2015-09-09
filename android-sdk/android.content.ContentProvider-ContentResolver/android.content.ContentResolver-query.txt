@@ -1,0 +1,107 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)
+
+projection[英][prəˈdʒekʃn] [美][prəˈdʒɛkʃən]
+n.预测；规划，设计；[心]投射；突起物
+
+explicit[英][ɪkˈsplɪsɪt] [美][ɪkˈsplɪsɪt]
+adj.明确的，清楚的；直言的；详述的；不隐瞒的
+
+scheme[英][ski:m] [美][skim]
+n.计划；体系；阴谋
+
+inefficient[英][ˌɪnɪˈfɪʃnt] [美][ˌɪnɪˈfɪʃənt]
+adj.无效率的，无能的；不称职的；徒劳的
+
+----------------------------------------------------------
+public final Cursor query (
+    Uri uri, 
+    String[] projection, 
+    String selection, 
+    String[] selectionArgs, 
+    String sortOrder)
+----------------------------------------------------------
+
+Added in API level 1
+Query the given URI, returning a Cursor over the result set.
+
+For best performance, the caller should follow these guidelines:
+
+Provide an explicit projection, to prevent reading data from storage that aren't going to be used.
+Use question mark parameter markers such as 'phone=?' instead of explicit values in the selection parameter, so that queries that differ only by those values will be recognized as the same for caching purposes.
+
+Parameters
+
+uri
+The URI, using the content:// scheme, for the content to retrieve.
+
+projection
+A list of which columns to return. 
+Passing null will return all columns, which is inefficient.
+相当于 SQL 语句中的 select 如：
+select _id,name,get_group_portrait_hds,portrait_crc,uri
+
+selection
+A filter declaring which rows to return, 
+formatted as an SQL WHERE clause (excluding the WHERE itself). 
+Passing null will return all rows for the given URI.
+
+selectionArgs
+You may include ?s in selection, 
+which will be replaced by the values from selectionArgs, 
+in the order that they appear in the selection. 
+The values will be bound as Strings.
+
+sortOrder
+How to order the rows, 
+formatted as an SQL ORDER BY clause (excluding the ORDER BY itself). 
+Passing null will use the default sort order, which may be unordered.
+
+Returns
+A Cursor object, which is positioned before the first entry, or null
+
+See Also
+Cursor
+
+----------------------------------------------------------
+public final Cursor query (
+    Uri uri, 
+    String[] projection, 
+    String selection, 
+    String[] selectionArgs, 
+    String sortOrder, 
+    CancellationSignal cancellationSignal)
+----------------------------------------------------------
+
+Added in API level 16
+Query the given URI, returning a Cursor over the result set with optional support for cancellation.
+
+For best performance, the caller should follow these guidelines:
+
+Provide an explicit projection, to prevent reading data from storage that aren't going to be used.
+Use question mark parameter markers such as 'phone=?' instead of explicit values in the selection parameter, so that queries that differ only by those values will be recognized as the same for caching purposes.
+
+Parameters
+
+uri
+The URI, using the content:// scheme, for the content to retrieve.
+
+projection
+A list of which columns to return. Passing null will return all columns, which is inefficient.
+
+selection
+A filter declaring which rows to return, formatted as an SQL WHERE clause (excluding the WHERE itself). Passing null will return all rows for the given URI.
+
+selectionArgs
+You may include ?s in selection, which will be replaced by the values from selectionArgs, in the order that they appear in the selection. The values will be bound as Strings.
+
+sortOrder
+How to order the rows, formatted as an SQL ORDER BY clause (excluding the ORDER BY itself). Passing null will use the default sort order, which may be unordered.
+
+cancellationSignal
+A signal to cancel the operation in progress, or null if none. If the operation is canceled, then OperationCanceledException will be thrown when the query is executed.
+
+Returns
+A Cursor object, which is positioned before the first entry, or null
+
+See Also
+Cursor

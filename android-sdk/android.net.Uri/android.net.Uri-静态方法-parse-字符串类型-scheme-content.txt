@@ -1,0 +1,7 @@
+格式：
+content://
+
+例子：
+Uri AUTHORITY_URI = Uri.parse("content://cn.com.fetion.provider")；
+String GROUP_DIRECTORY ="pg_group"
+Uri.withAppendedPath(AUTHORITY_URI, GROUP_DIRECTORY);

@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/manifest-element.html#uidlabel
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="string"
+          android:sharedUserId="string"
+          android:sharedUserLabel="string resource" 
+          android:versionCode="integer"
+          android:versionName="string"
+          android:installLocation=["auto" | "internalOnly" | "preferExternal"] >
+    . . .
+</manifest>
+

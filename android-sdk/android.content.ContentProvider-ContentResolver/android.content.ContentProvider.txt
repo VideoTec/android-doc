@@ -29,3 +29,46 @@ getType(Uri) which returns the MIME type of data in the content provider
 Data access methods (such as insert(Uri, ContentValues) and update(Uri, ContentValues, String, String[])) may be called from many threads at once, and must be thread-safe. Other methods (such as onCreate()) are only called from the application main thread, and must avoid performing lengthy operations. See the method descriptions for their expected thread behavior.
 
 Requests to ContentResolver are automatically forwarded to the appropriate ContentProvider instance, so subclasses don't have to worry about the details of cross-process calls.
+
+
+-----------------------------------------
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-providers.html
+-----------------------------------------
+
+encapsulate[英][ɪnˈkæpsjuleɪt] [美][ɛnˈkæpsəˌlet]
+vt.封装；概述
+
+restriction[英][rɪˈstrɪkʃn] [美][rɪˈstrɪkʃən]
+n.限制，限定；拘束，束缚；管制
+
+Content providers 管理 结构化数据的访问
+Content providers manage access to a structured set of data. 
+They encapsulate the data, and provide mechanisms for defining data security.
+
+Content providers 进程间数据联系的标准接口 
+Content providers are the standard interface 
+that connects data in one process with code running in another process.
+
+ContentResolver 对象作为客户端访问 provider
+When you want to access data in a content provider, 
+you use the ContentResolver object in your application's Context 
+to communicate with the provider as a client. 
+The ContentResolver object communicates with the provider object, 
+an instance of a class that implements ContentProvider. 
+The provider object receives data requests from clients, 
+performs the requested action, and returns the results.
+
+Content providers 除进程间共享数据外的功能
+You don't need to develop your own provider 
+if you don't intend to share your data with other applications. 
+However, 
+you do need your own provider to 
+provide custom search suggestions in your own application. 
+You also need your own provider if you want to 
+copy and paste complex data or files from your application to other applications.
+
+Android 系统提供的 Content providers
+Android itself includes content providers that manage data 
+such as audio, video, images, and personal contact information. 
+You can see some of them listed in the reference documentation for the android.provider package. 
+With some restrictions, these providers are accessible to any Android application.

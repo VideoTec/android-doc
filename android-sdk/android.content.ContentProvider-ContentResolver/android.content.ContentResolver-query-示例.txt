@@ -1,0 +1,19 @@
+Uri AUTHORITY_URI = Uri.parse("content://cn.com.fetion.provider")；
+String GROUP_DIRECTORY ="pg_group"
+Cursor mCursor = 
+sContext.getApplicationContext().getContentResolver().query(
+    Uri.withAppendedPath(AUTHORITY_URI, GROUP_DIRECTORY), 
+    new String[] {"_id","name","get_group_portrait_hds","portrait_crc","uri" },
+    "ower_id=? and identity in (1,2,3)" , 
+    new String[] { Account.getUserId()}, 
+    null);
+
+直接访问数据的代码是
+
+    private Cursor getGroupListCursor() {
+        Cursor cursor = null;
+        SQLiteDatabase db = openOrCreateDatabase("fetion.db", Context.MODE_PRIVATE, null);
+        cursor = db.rawQuery("select _id,name,get_group_portrait_hds,portrait_crc,uri from pg_group where ower_id="
+                + Account.getUserId() + " and identity in (1,2,3)", null);
+        return cursor;
+    }

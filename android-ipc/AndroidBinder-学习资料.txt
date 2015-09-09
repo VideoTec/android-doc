@@ -1,0 +1,23 @@
+http://foocoder.com/blog/androidzhong-de-kua-jin-cheng-tong-xin-de-shi-xian-(%5B%3F%5D-)-yuan-cheng-diao-yong-guo-cheng-he-aidl.html/
+
+Android中的跨进程通信的实现（一）——远程调用过程和aidl
+
+In the Android platform, the binder is used for nearly everything 
+that happens across processes in the core platform. 
+
+四个层次
+
+1）最底层的是android的ashmen（Anonymous shared memoryy）机制，
+   它负责辅助实现内存的分配，以及跨进程所需要的内存共享
+   
+2）AIDL（android interface definition language）
+   对Binder的使用进行了封装，可以让开发者方便的进行方法的远程调用
+
+3）Intent是最高一层的抽象，方便开发者进行常用的跨进程调用
+
+AIDL（android接口定义语言的由来）
+android会将该aidl生成一个java文件（如果你使用eclipse，会自动生成。在gen目录下。）
+android工具将我们写的aidl文件生成了怎样的一个文件，它都做哪些工作
+1）继承了android.os.IInterface.它是所有由aidl文件生成的基类
+   接口里有一个内部类Stub，它继承自Binder并实现了这个生成的java接口ISecondary
+   没有实现我们定义的接口方法。而这些接口方法其实就是留给我们去实现的

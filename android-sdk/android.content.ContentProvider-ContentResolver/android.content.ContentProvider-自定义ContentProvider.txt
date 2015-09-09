@@ -1,6 +1,6 @@
 http://cthhqu.blog.51cto.com/7598297/1281217
 
-自定义ContentProvider来对其他程序提供访问我们数据的接口
+自定义 ContentProvider 来对其他程序提供访问我们数据的接口
 
 一般我们如果有数据想被跨进程共享，
 就可以定义个ContentProvider，

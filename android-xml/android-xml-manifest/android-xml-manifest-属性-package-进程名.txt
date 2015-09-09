@@ -1,0 +1,2 @@
+the default name for the application process 
+(see the <application> element's process process attribute)

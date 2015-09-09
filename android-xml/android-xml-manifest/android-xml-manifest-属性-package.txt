@@ -1,4 +1,16 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/manifest-element.html#uidlabel
 
+affinity[英][əˈfɪnəti] [美][əˈfɪnɪti]
+n.密切关系，姻亲关系；（男女之间的）吸引力，吸引人的异性；类同；类似，近似
+
+package
+
+A full Java-language-style package name for the application. The name should be unique. The name may contain uppercase or lowercase letters ('A' through 'Z'), numbers, and underscores ('_'). However, individual package name parts may only start with letters.
+To avoid conflicts with other developers, you should use Internet domain ownership as the basis for your package names (in reverse). For example, applications published by Google start with com.google. You should also never use the com.example namespace when publishing your applications.
+
+The package name serves as a unique identifier for the application. It's also the default name for the application process (see the <application> element's process process attribute) and the default task affinity of an activity (see the <activity> element's taskAffinity attribute).
+
+Caution: Once you publish your application, you cannot change the package name. The package name defines your application's identity, so if you change it, then it is considered to be a different application and users of the previous version cannot update to the new version.
 
 http://stackoverflow.com/questions/5487683/renaming-the-package-that-r-java-is-generated-in
 第一种方法

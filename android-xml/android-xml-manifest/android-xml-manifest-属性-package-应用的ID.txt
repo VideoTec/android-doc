@@ -1,0 +1,5 @@
+The package name serves as a unique identifier for the application.
+
+Caution: Once you publish your application, you cannot change the package name. The package name defines your application's identity, so if you change it, then it is considered to be a different application and users of the previous version cannot update to the new version.
+
+To avoid conflicts with other developers, you should use Internet domain ownership as the basis for your package names (in reverse). For example, applications published by Google start with com.google. You should also never use the com.example namespace when publishing your applications.
