@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/ComponentName.html
+
+public final class
+ComponentName
+extends Object
+implements Parcelable Cloneable Comparable<ComponentName>
+java.lang.Object
+   ↳	android.content.ComponentName
+   
+Class Overview
+
+Identifier for a specific application component (Activity, Service, BroadcastReceiver, or ContentProvider) that is available. Two pieces of information, encapsulated here, are required to identify a component: the package (a String) it exists in, and the class (a String) name inside of that package.
+
+ComponentName(String pkg, String cls)
+Create a new component identifier.
+
+ComponentName(Context pkg, String cls)
+Create a new component identifier from a Context and class name.
+
+ComponentName(Context pkg, Class<?> cls)
+Create a new component identifier from a Context and Class object.
+
+ComponentName(Parcel in)
+Instantiate a new ComponentName from the data in a Parcel that was previously written with writeToParcel(Parcel, int).

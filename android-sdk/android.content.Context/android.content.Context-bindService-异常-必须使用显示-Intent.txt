@@ -14,19 +14,13 @@
 		startService(intent);
 		app.bindService(new Intent("com.feinno.beside.proxy.service"), mConnection, Activity.BIND_AUTO_CREATE);
 
-尝试解决方法：
-Intent intent = new Intent(ctx, com.feinno.beside.fetion.Fetion2BesideService.class);
-
-根据显示intent的定义，下面这个也是显示 intent
-intent.setComponent(COMPONENT);
-
-问题可能出在：
-app.bindService(new Intent("com.feinno.beside.proxy.service"), mConnection, Activity.BIND_AUTO_CREATE);
-
-http://stackoverflow.com/questions/27842430/service-intent-must-be-explicit-intent
-
-any intent you make to a service, activity etc. in your app should always follow this format
-
-Intent serviceIntent = new Intent(context,MyService.class);
-context.startService(serviceIntent);
-implicit intents (what you have in your code currently) are considered a security risk
+Manifest.xml Service 定义：
+        <!-- 飞信进程代理服务 -->
+        <service
+            android:name="com.feinno.beside.fetion.Beside2FetionProxyService"
+            android:exported="false"
+            android:process=":beside" >
+            <intent-filter>
+                <action android:name="com.feinno.beside.proxy.service" />
+            </intent-filter>
+        </service>

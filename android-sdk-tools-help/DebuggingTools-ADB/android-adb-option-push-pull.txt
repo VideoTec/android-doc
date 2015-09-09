@@ -6,4 +6,4 @@ adb push  就是从PC上复制一份文件到您的真机上
 
 adb push xxx /sdcard/
 
-adb pull /sdcard/xxx
+adb pull /sdcard/xxx d:\xxx

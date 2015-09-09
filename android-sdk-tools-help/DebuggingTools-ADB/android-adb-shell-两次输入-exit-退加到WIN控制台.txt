@@ -1,0 +1,1 @@
+android-adb-shell-两次输入-exit-退加到WIN控制台

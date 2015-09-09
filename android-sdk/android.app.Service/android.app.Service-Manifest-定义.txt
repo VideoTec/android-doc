@@ -1,0 +1,32 @@
+
+        <service
+            android:name="com.feinno.beside.service.ImageService"
+            android:enabled="true"
+            android:process=":image" />
+        <!-- 飞信启动调用身边初始化服务 -->
+        <service
+            android:name="com.feinno.beside.fetion.Fetion2BesideService"
+            android:process=":beside" />
+        <!-- 飞信进程代理服务 -->
+        <service
+            android:name="com.feinno.beside.fetion.Beside2FetionProxyService"
+            android:exported="false"
+            android:process=":beside" >
+            <intent-filter>
+                <action android:name="com.feinno.beside.proxy.service" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.feinno.beside.fetion.Fetion2BesideProxyService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.feinno.fetion.proxy.service" />
+            </intent-filter>
+        </service>
+
+        <!-- 百度地图定位服务 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":baidulocationservice" >
+        </service>

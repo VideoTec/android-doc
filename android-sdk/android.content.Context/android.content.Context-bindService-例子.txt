@@ -14,3 +14,22 @@
 			}, Activity.BIND_AUTO_CREATE);
 		}
 	}
+    
+    /***
+	 * 初始化身边数据
+	 */
+	public void initBeside(){ 
+	    try {
+    		Intent intent = new Intent();
+    		intent.putExtra(FetionBesideConstant.EXTRA_KEY, FetionBesideConstant.EXTRA_SERVICE_INIT_BESIDE);
+    		intent.setComponent(COMPONENT);
+    		startService(intent);
+	    } catch (RuntimeException ex) {
+	        LogSystem.d(TAG, "startService" + ex.getMessage());
+	    }
+	    try {
+	        app.bindService(new Intent("com.feinno.beside.proxy.service"), mConnection, Activity.BIND_AUTO_CREATE);
+	    } catch (RuntimeException ex) {
+	        LogSystem.d(TAG, "bindService" + ex.getMessage());
+	    }
+	}

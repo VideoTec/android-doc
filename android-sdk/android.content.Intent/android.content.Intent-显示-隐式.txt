@@ -1,3 +1,9 @@
+explicit[英][ɪkˈsplɪsɪt] [美][ɪkˈsplɪsɪt]
+adj.明确的，清楚的；直言的；详述的；不隐瞒的
+
+implicit[英][ɪmˈplɪsɪt] [美][ɪmˈplɪsɪt]
+adj.不言明[含蓄]的；无疑问的，绝对的；成为一部份的；内含的
+
 Explicit Intents 
 have specified a component (via setComponent(ComponentName) or setClass(Context, Class)), 
 which provides the exact class to be run. 
