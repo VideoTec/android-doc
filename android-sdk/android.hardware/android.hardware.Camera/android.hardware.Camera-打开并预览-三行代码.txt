@@ -1,0 +1,6 @@
+这三行代码，就可预览成功
+    public void start(SurfaceView surfaceView) throws IOException {
+        mCamera = Camera.open();
+        mCamera.setPreviewDisplay(surfaceView.getHolder());
+        mCamera.startPreview();
+    }

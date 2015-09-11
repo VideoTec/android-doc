@@ -1,0 +1,10 @@
+    public void start(SurfaceView surfaceView) throws IOException {
+        mCamera = Camera.open();
+        mCamera.setParameters(mCamera.getParameters());
+        mCamera.setPreviewDisplay(surfaceView.getHolder());
+        mCamera.startPreview();
+    }
+
+	异常：failed to connect to camera service
+
+<uses-permission android:name="android.permission.CAMERA" />

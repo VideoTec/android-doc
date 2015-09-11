@@ -1,6 +1,21 @@
 Surface 接口
 
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceHolder.html
+
+public interface
+SurfaceHolder
+
 android.view.SurfaceHolder
+
+Class Overview
+
+Abstract interface to someone holding a display surface. Allows you to control the surface size and format, edit the pixels in the surface, and monitor changes to the surface. This interface is typically available through the SurfaceView class.
+
+When using this interface from a thread other than the one running its SurfaceView, you will want to carefully read the methods lockCanvas() and Callback.surfaceCreated().
+
+-----------------------------------------------
+android.view.SurfaceHolder
+-----------------------------------------------
 
 Abstract interface to someone holding a display surface. Allows you to control the surface size and format, edit the pixels in the surface, and monitor changes to the surface. This interface is typically available through the SurfaceView class.
 

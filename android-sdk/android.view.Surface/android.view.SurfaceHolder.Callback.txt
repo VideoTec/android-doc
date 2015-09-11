@@ -1,6 +1,21 @@
 接口
 android.view.SurfaceHolder.Callback
 
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceHolder.Callback.html
+
+public static interface
+SurfaceHolder.Callback
+
+android.view.SurfaceHolder.Callback
+
+Known Indirect Subclasses
+GLSurfaceView, NativeActivity, SurfaceHolder.Callback2
+
+Class Overview
+
+A client may implement this interface to receive information about changes to the surface. When used with a SurfaceView, the Surface being held is only available between calls to surfaceCreated(SurfaceHolder) and surfaceDestroyed(SurfaceHolder). The Callback is set with SurfaceHolder.addCallback method.
+
+
 public class RecordView extends Activity 
                         implements android.view.SurfaceHolder.Callback {
 
