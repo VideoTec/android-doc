@@ -1,0 +1,16 @@
+mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+出现下面的异常
+java.lang.NoClassDefFoundError: android.hardware.camera2.CameraManager
+
+
+        String[] camraIdList;
+        try {
+            mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+            camraIdList = mCameraManager.getCameraIdList();
+            mCameraManager.openCamera(camraIdList[0], null, null);
+        } catch (CameraAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+CameraAccessException 导致程序启动，就报下面的异常
+java.lang.VerifyError: com/xueyie/firstproject/MainActivity

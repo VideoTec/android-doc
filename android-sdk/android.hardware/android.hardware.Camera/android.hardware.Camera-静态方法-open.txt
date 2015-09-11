@@ -1,0 +1,43 @@
+----------------------------------------------------
+public static Camera open (int cameraId)
+----------------------------------------------------
+
+Added in API level 9
+Creates a new Camera object to access a particular hardware camera. If the same camera is opened by other applications, this will throw a RuntimeException.
+
+You must call release() when you are done using the camera, otherwise it will remain locked and be unavailable to other applications.
+
+Your application should only have one Camera object active at a time for a particular hardware camera.
+
+Callbacks from other methods are delivered to the event loop of the thread which called open(). If this thread has no event loop, then callbacks are delivered to the main application event loop. If there is no main application event loop, callbacks are not delivered.
+
+Caution: On some devices, this method may take a long time to complete. It is best to call this method from a worker thread (possibly using AsyncTask) to avoid blocking the main application UI thread.
+
+Parameters
+
+cameraId
+the hardware camera to access, between 0 and getNumberOfCameras()-1.
+
+Returns
+a new Camera object, connected, locked and ready for use.
+
+Throws
+
+RuntimeException
+if opening the camera fails (for example, if the camera is in use by another process or device policy manager has disabled the camera).
+
+See Also
+
+getCameraDisabled(android.content.ComponentName)
+
+----------------------------------------------------
+public static Camera open ()
+----------------------------------------------------
+
+Added in API level 1
+Creates a new Camera object to access the first back-facing camera on the device. 
+If the device does not have a back-facing camera, this returns null.
+
+See Also
+
+open(int)

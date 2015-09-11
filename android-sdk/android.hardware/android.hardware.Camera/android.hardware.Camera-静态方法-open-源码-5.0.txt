@@ -1,0 +1,47 @@
+
+    public static Camera open(int cameraId) {
+        return new Camera(cameraId);
+    }
+    
+    /** used by Camera#open, Camera#open(int) */
+    Camera(int cameraId) {
+        int err = cameraInitNormal(cameraId);
+        if (checkInitErrors(err)) {
+            switch(err) {
+                case EACCESS:
+                    throw new RuntimeException("Fail to connect to camera service");
+                case ENODEV:
+                    throw new RuntimeException("Camera initialization failed");
+                default:
+                    // Should never hit this.
+                    throw new RuntimeException("Unknown camera error");
+            }
+        }
+    }
+    
+    private int cameraInitNormal(int cameraId) {
+        return cameraInitVersion(cameraId, CAMERA_HAL_API_VERSION_NORMAL_CONNECT);
+    }
+
+    private int cameraInitVersion(int cameraId, int halVersion) {
+        mShutterCallback = null;
+        mRawImageCallback = null;
+        mJpegCallback = null;
+        mPreviewCallback = null;
+        mPostviewCallback = null;
+        mUsingPreviewAllocation = false;
+        mZoomListener = null;
+
+        Looper looper;
+        if ((looper = Looper.myLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else if ((looper = Looper.getMainLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else {
+            mEventHandler = null;
+        }
+
+        String packageName = ActivityThread.currentPackageName();
+
+        return native_setup(new WeakReference<Camera>(this), cameraId, halVersion, packageName);
+    }

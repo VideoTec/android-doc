@@ -1,0 +1,29 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0428/2811.html
+
+从5.0开始（API Level 21），
+可以完全控制安卓设备相机的新api Camera2(android.hardware.Camera2)被引入了进来。
+在以前的Camera api(android.hardware.Camera)中，
+对相机的手动控制需要更改系统才能实现，而且api也不友好。
+不过老的Camera API在5.0上已经过时，在未来的app开发中推荐的是Camera2 API。
+
+   L版本之前的Camera API
+       有限的图片数据流获取方式
+       有限相机状态信息
+       没有手动捕获控制
+
+   Camera2 API
+       Supports 30fps full resolution with burst mode
+
+       支持30fps的全高清连拍
+       Supports change on manual camera settings between frame capture
+
+       支持帧之间的手动设置
+       Supports RAW image capture
+
+       支持RAW格式的图片拍摄
+       Supports Zero Shutter Lag & Movie Snapshot
+
+       支持快门0延迟以及电影速拍
+       Supports setting other manual camera device controls including level of Noise Cancelling 
+
+       支持相机其他方面的手动控制包括噪音消除的级别

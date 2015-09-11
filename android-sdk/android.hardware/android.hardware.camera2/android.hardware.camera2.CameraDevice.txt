@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/hardware/camera2/CameraDevice.html
+
+CameraDevice
+extends Object
+
+implements AutoCloseable
+
+java.lang.Object
+   ↳	android.hardware.camera2.CameraDevice
+
+Class Overview
+
+The CameraDevice class is a representation of a single camera connected to an Android device, allowing for fine-grain control of image capture and post-processing at high frame rates.
+
+Your application must declare the Camera permission in its manifest in order to access camera devices.
+
+A given camera device may provide support at one of two levels: limited or full. If a device only supports the limited level, then Camera2 exposes a feature set that is roughly equivalent to the older Camera API, although with a cleaner and more efficient interface. Devices that implement the full level of support provide substantially improved capabilities over the older camera API. Applications that target the limited level devices will run unchanged on the full-level devices; if your application requires a full-level device for proper operation, declare the "android.hardware.camera2.full" feature in your manifest.

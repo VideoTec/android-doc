@@ -9,6 +9,8 @@ android.hardware.camera.capability.manual_sensor
 android.hardware.camera.capability.manual_post_processing
 android.hardware.camera.capability.raw
 
+<uses-permission android:name="android.permission.CAMERA" />
+
 示例：
     <uses-feature
         android:name="android.hardware.camera.autofocus"

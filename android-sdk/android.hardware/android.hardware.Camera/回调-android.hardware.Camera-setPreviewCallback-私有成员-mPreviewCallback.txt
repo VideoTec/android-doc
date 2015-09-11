@@ -1,0 +1,53 @@
+private PreviewCallback mPreviewCallback;
+
+回调的地方：
+private EventHandler mEventHandler;
+    private class EventHandler extends Handler
+    {
+            case CAMERA_MSG_PREVIEW_FRAME:
+                PreviewCallback pCb = mPreviewCallback;
+                if (pCb != null) {
+                    if (mOneShot) {
+                        // Clear the callback variable before the callback
+                        // in case the app calls setPreviewCallback from
+                        // the callback function
+                        mPreviewCallback = null;
+                    } else if (!mWithBuffer) {
+                        // We're faking the camera preview mode to prevent
+                        // the app from being flooded with preview frames.
+                        // Set to oneshot mode again.
+                        setHasPreviewCallback(true, false);
+                    }
+                    pCb.onPreviewFrame((byte[])msg.obj, mCamera);
+                }
+                return;
+设置回调对象
+    public final void setPreviewCallback(PreviewCallback cb) {
+        mPreviewCallback = cb;
+        mOneShot = false;
+        mWithBuffer = false;
+        if (cb != null) {
+            mUsingPreviewAllocation = false;
+        }
+        // Always use one-shot mode. We fake camera preview mode by
+        // doing one-shot preview continuously.
+        setHasPreviewCallback(cb != null, false);
+    }
+    public final void setOneShotPreviewCallback(PreviewCallback cb) {
+        mPreviewCallback = cb;
+        mOneShot = true;
+        mWithBuffer = false;
+        if (cb != null) {
+            mUsingPreviewAllocation = false;
+        }
+        setHasPreviewCallback(cb != null, false);
+    }
+    public final void setPreviewCallbackWithBuffer(PreviewCallback cb) {
+        mPreviewCallback = cb;
+        mOneShot = false;
+        mWithBuffer = true;
+        if (cb != null) {
+            mUsingPreviewAllocation = false;
+        }
+        setHasPreviewCallback(cb != null, true);
+    }

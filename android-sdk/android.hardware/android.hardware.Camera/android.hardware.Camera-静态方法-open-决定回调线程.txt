@@ -1,0 +1,22 @@
+Callbacks from other methods are delivered to the event loop of the thread which called open().
+ 
+If this thread has no event loop, 
+then callbacks are delivered to the main application event loop. 
+
+If there is no main application event loop, callbacks are not delivered.
+
+    public static Camera open(int cameraId) {
+        return new Camera(cameraId);
+    }
+
+下面的代码：
+构建Camera对象，生成处理回调的 Handler:
+
+        Looper looper;
+        if ((looper = Looper.myLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else if ((looper = Looper.getMainLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else {
+            mEventHandler = null;
+        }

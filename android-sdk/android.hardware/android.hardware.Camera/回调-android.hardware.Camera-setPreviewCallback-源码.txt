@@ -1,0 +1,14 @@
+    public final void setPreviewCallback(PreviewCallback cb) {
+        mPreviewCallback = cb;
+        mOneShot = false;
+        mWithBuffer = false;
+        if (cb != null) {
+            mUsingPreviewAllocation = false;
+        }
+        // Always use one-shot mode. We fake camera preview mode by
+        // doing one-shot preview continuously.
+        setHasPreviewCallback(cb != null, false);
+    }
+
+    private native final void setHasPreviewCallback
+        (boolean installed, boolean manualBuffer);

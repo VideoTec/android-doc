@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/hardware/camera2/CameraManager.html
+
+public final class
+CameraManager
+
+extends Object
+
+java.lang.Object
+   ↳	android.hardware.camera2.CameraManager
+   
+Class Overview
+
+A system service manager for detecting, characterizing, and connecting to CameraDevices.
+
+You can get an instance of this class by calling Context.getSystemService().
+
+CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+For more details about communicating with camera devices, read the Camera developer guide or the camera2 package documentation.

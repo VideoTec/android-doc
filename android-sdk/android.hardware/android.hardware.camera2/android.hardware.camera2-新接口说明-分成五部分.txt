@@ -1,0 +1,30 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0428/2811.html
+
+相机的基本使用被分成了5个主要部分（）
+(CameraManager,CameraDevice,CameraCaptureSession,CaptureRequest,CaptureResult)
+
+   CameraManager: 
+       提供构建，列出以及链接相机设备的接口
+       http://developer.android.com/reference/android/hardware/camera2/CameraManager.html
+
+   CameraDevice: 
+       代表和安卓设备相连的单个相机
+       http://developer.android.com/reference/android/hardware/camera2/CameraDevice.html
+
+
+   CameraCaptureSession:
+       提供一套输出目标的surface
+      （TextureView,MediaRecorder,MediaCodec,ImageReader,RenderScriptAllocation）。
+       http://developer.android.com/reference/android/hardware/camera2/CameraCaptureSession.html
+
+   CaptureRequest:
+        Settings and outputs needed to capture a single image from the camera device
+        Create request builder by predefined templates
+        (TEMPLATE_PREVIEW, TEMPLATE_RECORD,
+        TEMPLATE_STILL_CAPTURE, TEMPLATE_VIDEO_SNAPSHOT, TEMPLATE_MANUAL)
+        This requests are given to capture or setRepeatingRequest to capture images from the camera 
+        http://developer.android.com/reference/android/hardware/camera2/CaptureRequest.html
+
+   CaptureResult:
+       从图像传感器获得的单个图片拍摄的结果。
+       http://developer.android.com/reference/android/hardware/camera2/CaptureResult.html

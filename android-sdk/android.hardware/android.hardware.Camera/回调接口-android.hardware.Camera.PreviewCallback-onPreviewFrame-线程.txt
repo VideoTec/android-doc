@@ -1,0 +1,2 @@
+Called as preview frames are displayed. 
+This callback is invoked on the event thread open(int) was called from.

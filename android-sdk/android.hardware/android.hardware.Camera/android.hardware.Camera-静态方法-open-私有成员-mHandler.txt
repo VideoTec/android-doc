@@ -1,0 +1,170 @@
+private EventHandler mEventHandler;
+
+1）构建Camera时创建
+2）用于 postEventFromNative
+3）EventHandler 定义
+
+    private int cameraInitVersion(int cameraId, int halVersion) {
+        mShutterCallback = null;
+        mRawImageCallback = null;
+        mJpegCallback = null;
+        mPreviewCallback = null;
+        mPostviewCallback = null;
+        mUsingPreviewAllocation = false;
+        mZoomListener = null;
+
+        Looper looper;
+        if ((looper = Looper.myLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else if ((looper = Looper.getMainLooper()) != null) {
+            mEventHandler = new EventHandler(this, looper);
+        } else {
+            mEventHandler = null;
+        }
+
+        String packageName = ActivityThread.currentPackageName();
+
+        return native_setup(new WeakReference<Camera>(this), cameraId, halVersion, packageName);
+    }
+    
+    private static void postEventFromNative(Object camera_ref,
+                                            int what, int arg1, int arg2, Object obj)
+    {
+        Camera c = (Camera)((WeakReference)camera_ref).get();
+        if (c == null)
+            return;
+
+        if (c.mEventHandler != null) {
+            Message m = c.mEventHandler.obtainMessage(what, arg1, arg2, obj);
+            c.mEventHandler.sendMessage(m);
+        }
+    }
+    
+    /**
+     * Cancels any auto-focus function in progress.
+     * Whether or not auto-focus is currently in progress,
+     * this function will return the focus position to the default.
+     * If the camera does not support auto-focus, this is a no-op.
+     *
+     * @see #autoFocus(Camera.AutoFocusCallback)
+     */
+    public final void cancelAutoFocus()
+    {
+        synchronized (mAutoFocusCallbackLock) {
+            mAutoFocusCallback = null;
+        }
+        native_cancelAutoFocus();
+        // CAMERA_MSG_FOCUS should be removed here because the following
+        // scenario can happen:
+        // - An application uses the same thread for autoFocus, cancelAutoFocus
+        //   and looper thread.
+        // - The application calls autoFocus.
+        // - HAL sends CAMERA_MSG_FOCUS, which enters the looper message queue.
+        //   Before event handler's handleMessage() is invoked, the application
+        //   calls cancelAutoFocus and autoFocus.
+        // - The application gets the old CAMERA_MSG_FOCUS and thinks autofocus
+        //   has been completed. But in fact it is not.
+        //
+        // As documented in the beginning of the file, apps should not use
+        // multiple threads to call autoFocus and cancelAutoFocus at the same
+        // time. It is HAL's responsibility not to send a CAMERA_MSG_FOCUS
+        // message after native_cancelAutoFocus is called.
+        mEventHandler.removeMessages(CAMERA_MSG_FOCUS);
+    }
+    
+    private class EventHandler extends Handler
+    {
+        private final Camera mCamera;
+
+        public EventHandler(Camera c, Looper looper) {
+            super(looper);
+            mCamera = c;
+        }
+        
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what) {
+            case CAMERA_MSG_SHUTTER:
+                if (mShutterCallback != null) {
+                    mShutterCallback.onShutter();
+                }
+                return;
+
+            case CAMERA_MSG_RAW_IMAGE:
+                if (mRawImageCallback != null) {
+                    mRawImageCallback.onPictureTaken((byte[])msg.obj, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_COMPRESSED_IMAGE:
+                if (mJpegCallback != null) {
+                    mJpegCallback.onPictureTaken((byte[])msg.obj, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_PREVIEW_FRAME:
+                PreviewCallback pCb = mPreviewCallback;
+                if (pCb != null) {
+                    if (mOneShot) {
+                        // Clear the callback variable before the callback
+                        // in case the app calls setPreviewCallback from
+                        // the callback function
+                        mPreviewCallback = null;
+                    } else if (!mWithBuffer) {
+                        // We're faking the camera preview mode to prevent
+                        // the app from being flooded with preview frames.
+                        // Set to oneshot mode again.
+                        setHasPreviewCallback(true, false);
+                    }
+                    pCb.onPreviewFrame((byte[])msg.obj, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_POSTVIEW_FRAME:
+                if (mPostviewCallback != null) {
+                    mPostviewCallback.onPictureTaken((byte[])msg.obj, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_FOCUS:
+                AutoFocusCallback cb = null;
+                synchronized (mAutoFocusCallbackLock) {
+                    cb = mAutoFocusCallback;
+                }
+                if (cb != null) {
+                    boolean success = msg.arg1 == 0 ? false : true;
+                    cb.onAutoFocus(success, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_ZOOM:
+                if (mZoomListener != null) {
+                    mZoomListener.onZoomChange(msg.arg1, msg.arg2 != 0, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_PREVIEW_METADATA:
+                if (mFaceListener != null) {
+                    mFaceListener.onFaceDetection((Face[])msg.obj, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_ERROR :
+                Log.e(TAG, "Error " + msg.arg1);
+                if (mErrorCallback != null) {
+                    mErrorCallback.onError(msg.arg1, mCamera);
+                }
+                return;
+
+            case CAMERA_MSG_FOCUS_MOVE:
+                if (mAutoFocusMoveCallback != null) {
+                    mAutoFocusMoveCallback.onAutoFocusMoving(msg.arg1 == 0 ? false : true, mCamera);
+                }
+                return;
+
+            default:
+                Log.e(TAG, "Unknown message type " + msg.what);
+                return;
+            }
+        }
+    }

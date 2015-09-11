@@ -1,0 +1,12 @@
+虽然推荐在未来的app中使用Camera2 API，
+但是只有Lollipop的设备商才可用，也不大可能会出现兼容老设备的包。
+因此在最小版本（minSdkVersion）升到21之前，
+你还是需要继续使用Camera API(android.hardware.Camera)。
+
+不过你可以用下面的代码对不同的版本区别对待：
+
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        // your code using Camera API here - is between 1-20
+    } else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        // your code using Camera2 API here - is api 21 or higher
+    }
