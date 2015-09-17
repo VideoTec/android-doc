@@ -1,0 +1,43 @@
+1）设置环境变量
+2）ant -f xxx.xml [target]
+
+------------------------------------------
+http://iblike.iteye.com/blog/838880
+------------------------------------------
+
+Ant也可以通过命令行参数 -buildfile <file> 来指定其他目标文件，其中，<file>是你要采用的目标文件名。Ant还有很多命令行可选参数，如下所示：
+可以输入ant -help查看
+
+命令行可选参数摘要：
+
+ant [options] [target [target2 [target3] ...]]
+Options:
+-help                  print this message
+-projecthelp           print project help information
+-version               print the version information and exit
+-quiet                 be extra quiet
+-verbose               be extra verbose
+-debug                 print debugging information
+-emacs                 produce logging information without adornments
+-logfile file          use given file for log output
+-logger classname      the class that is to perform logging
+-listener classname    add an instance of class as a project listener
+-buildfile file        use specified buildfile
+-find file             search for buildfile towards the root of the filesystem and 
+use the first one found
+-Dproperty=value       set property to value
+
+解释：
+-buildfile<file>,-file<file>,-f<file> :要指定执行构件的的位置和名称。
+-find<file>,-s<file>: 查找构件文件，并执行找到的构件文件。 
+-help,-p:显示ant的命令帮助信息。在命令行中显示ant的命令选项及简短的介绍，-h是简写。 
+-version:显示ant 的版本信息。 
+-diagnostics：显示ant项目的运行环境、依赖库等信息，为错误诊断和报告提供一些有用的帮助信息。 
+-quiet，-q: 隐藏ant执行的提示输出信息。命令行将不会输出具体的target的执行信息。 
+-verbose，-v： 显示ant执行的详细信息，包括操作系统和Java环境等信息。 
+-debug，-d：显示ant执行调试的信息、详细的log信息。 
+-lib<path>:指定一个类库所在的位置（jar文件位置），让ant工具可以使用这些类文件。path类型指定类库文件。
+-logfile<file>,-l<file>:指定ant执行时日志输出文件，让日志输出到指定文件而不在命令行输出。 
+例如：执行 ant -f test.xml -l c:\testAntLog.log 将会百日志信息输出到c:\testAntLog.log去。 
+-D<property>=<value>:用于设定一些变量，这些变量可以在target中直接引用，或覆盖已设定的属性值。 
+例如：ant -f test.xml -D src=hello

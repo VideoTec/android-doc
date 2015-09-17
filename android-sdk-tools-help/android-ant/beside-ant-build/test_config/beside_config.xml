@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 是否是中软sdk，true为是，true为否 .值和project.properties的一样-->
+    <bool name="beside_config_library">true</bool>
+    <!-- 内置的ckey。如果设置，运行后会内置为默认账号，点击登录 后会覆盖。如果library为true，则忽略此值 -->
+    <string name="beside_config_ckey">uidfidlogicpool=201908035=136056365=4002</string>
+    <!-- 版本号，供测试查看   201409390 17:30  -->
+    <string name="beside_config_version">currentTime</string>
+    <!-- 是否是现网环境。true代表测试环境，false代表现网环境 -->
+    <bool name="beside_config_function">true</bool>
+</resources>

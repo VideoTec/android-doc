@@ -1,0 +1,19 @@
+Buildfile: D:\work\beside\build\build.xml
+  [taskdef] Could not load definitions from resource anttasks.properties. It could not be found.
+  [taskdef] Could not load definitions from resource emma_ant.properties. It could not be found.
+
+原因是， sdk.dir 没有设置或者设置的路径不正确
+
+有两个地方设置这个值：
+
+1）eclipse-project/local.properties
+sdk.dir=D:\\Program Files\\Android-sdk-windows
+
+2）build.xml 中
+<property file="./build/ant.properties"/>
+
+ant.properties
+sdk.dir=D:/Android-SDK/Android-sdk
+
+其它示例：
+<property name="java.encoding" value="UTF-8" />

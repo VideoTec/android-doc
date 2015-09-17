@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/TextView.html#setLineSpacing(float, float)
+
+public void setLineSpacing (float add, float mult)
+
+Added in API level 1
+Sets line spacing for this TextView. Each line will have its height multiplied by mult and have add added to it.
+
+Related XML Attributes
+
+android:lineSpacingExtra
+android:lineSpacingMultiplier

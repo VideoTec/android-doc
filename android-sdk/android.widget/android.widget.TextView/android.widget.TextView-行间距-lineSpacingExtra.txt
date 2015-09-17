@@ -1,0 +1,12 @@
+android:lineSpacingExtra
+
+Extra spacing between lines of text.
+
+Must be a dimension value, which is a floating point number appended with a unit such as "14.5sp". Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size), in (inches), mm (millimeters).
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol lineSpacingExtra.
+
+Related Methods
+setLineSpacing(float,float)

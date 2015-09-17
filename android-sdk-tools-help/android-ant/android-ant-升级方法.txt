@@ -1,0 +1,12 @@
+下载最新版本的 ant
+http://ant.apache.org/bindownload.cgi
+
+接着可集成或者不集成到 eclipse
+
+1）把新版本集成到 eclipse 里：
+http://stackoverflow.com/questions/5206431/how-to-upgrade-the-ant-built-into-eclipse
+Window > Preferences > Ant > Runtime 
+Ant Home
+
+2）不集成，解压出来，设置环境变量就可以了
+   在命令行中调用，不能在 eclipse 里调用

@@ -1,0 +1,6 @@
+1）定义一个
+ANT_HOME
+E:\apache-ant-1.9.6
+
+2）再添加 path 环境变量
+%ANT_HOME%\bin

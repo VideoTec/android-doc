@@ -1,0 +1,45 @@
+http://stackoverflow.com/questions/9650265/how-do-disable-paging-by-swiping-with-finger-in-viewpager-but-still-be-able-to-s
+
+intercept[英][ˌɪntəˈsept] [美][ˌɪntərˈsept]
+vt.拦截，拦住；截球；截击；拦阻
+
+You need to subclass ViewPager. onTouchEvent has a lot of good things in it that you don't want to change, like allowing child views to get touches. onInterceptTouchEvent is what you want to change. If you look at the code for ViewPager, you'll see the comment:
+
+    /*
+     * This method JUST determines whether we want to intercept the motion.
+     * If we return true, onMotionEvent will be called and we do the actual
+     * scrolling there.
+     */
+
+自定义 viewPager 类
+
+package com.feinno.beside.ui.activity.help;
+
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+
+public class HelpViewPager extends ViewPager {
+
+    public HelpViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public HelpViewPager(Context context) {
+        super(context);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent arg0) {
+        //return super.onInterceptTouchEvent(arg0);
+        return false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent arg0) {
+        //return super.onTouchEvent(arg0);
+        return false;
+    }
+
+}

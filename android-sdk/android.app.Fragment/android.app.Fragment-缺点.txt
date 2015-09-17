@@ -1,0 +1,4 @@
+https://asce1885.gitbooks.io/android-rd-senior-advanced/content/wo_wei_shi_yao_zhu_zhang_fan_dui_shi_yong_android_fragment.html
+
+我为什么主张反对使用Android Fragment
+

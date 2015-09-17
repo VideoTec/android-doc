@@ -1,0 +1,27 @@
+http://www.cnblogs.com/plokmju/p/android_fragment.html
+
+如何管理一个Fragment
+
+　　在代码中管理一个Fragment非常简单，
+需要用到一个FragmentTransaction对象，
+这个对象通过getFragmentManager().beginTransaction()获取，
+它将开启一个事务，用于操作一个ViewGroup中的Fragment。
+
+　　FragmentTransaction的常用方法：
+add()：增加一个Fragment，具有多个重载。
+replace()：替换一个Fragment，具有多个重载。
+remove()：移除掉一个指定的Fragment。
+addToBackStack()：在事务中添加一个栈，用于回退。
+commit()：提交事务。
+
+其中add、replace、remove都是很常见的方法，无需过多介绍。但是
+
+addToBackStack()方法就需要额外讲解一下，
+正常情况下，应用中的Activity是有一个任务栈去管理它的。
+默认情况下，当我们在不同的Activity中跳转的时候，点击回退总是能回到上一个Activity中。
+而Fragment是嵌套在Activity，所以默认无法向Activity的任务栈中添加，
+当点击回退的时候只会回到上一个Activity，不会理会Fragment的操作（add、replace、remove），
+而使用addToBackStack()可以将当前的事务添加到另一个栈中，
+这个栈由Fragment的Activity管理，这个栈中的每一条都是一个Fragment的一次事务，
+有了这个栈去管理Fragment，就可以通过回退按键，反向回滚Fragment的事务。
+这一点很重要，因为Fragment无需在清单文件中配置，所以现在有些应用会使用Fragment来布局跳转
