@@ -2,6 +2,9 @@ android:lineSpacingMultiplier
 
 Extra spacing between lines of text, as a multiplier.
 
+multiplier[英][ˈmʌltɪplaɪə(r)] [美][ˈmʌltəˌplaɪɚ]
+n.乘数；乘子
+
 Must be a floating point value, such as "1.2".
 
 This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.

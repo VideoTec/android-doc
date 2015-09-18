@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.LayoutParams.html
+
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.widget.AbsListView.LayoutParams
+       
+Class Overview
+
+AbsListView extends LayoutParams to provide a place to hold the view type.

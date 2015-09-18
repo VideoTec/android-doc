@@ -1,0 +1,5 @@
+http://zmywly8866.github.io/2014/12/16/android-use-descendantFocusability-to-make-list-item-responsable.html
+
+通常会遇到listview的 列表项 无法响应点击的问题，
+因为消息还没传回每一项的viewgroup就被其子view消费了，
+android的消息传递机制可以参考：Mastering the Android Touch System,里面讲得非常详细。

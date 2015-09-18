@@ -5,3 +5,25 @@ SQLiteDatabase.loadLibs(mContext);
 
 如果不调用，会出现下面的异常
 09-08 16:14:19.745  1868  1868 E CrashHandler: java.lang.UnsatisfiedLinkError: Native method not found: net.sqlcipher.database.SQLiteDatabase.dbopen:(Ljava/lang/String;I)V
+
+
+-----------------------------------
+源码：
+-----------------------------------
+    public static synchronized void loadLibs (Context context) {
+        loadLibs(context, context.getFilesDir());
+    }
+
+    public static synchronized void loadLibs (Context context, File workingDir) {
+        System.loadLibrary("stlport_shared");
+        System.loadLibrary("sqlcipher_android");
+        System.loadLibrary("database_sqlcipher");
+
+        boolean systemICUFileExists = new File("/system/usr/icu/icudt46l.dat").exists();
+
+        String icuRootPath = systemICUFileExists ? "/system/usr" : workingDir.getAbsolutePath();
+        setICURoot(icuRootPath);
+        if(!systemICUFileExists){
+            loadICUData(context, workingDir);
+        }
+    }

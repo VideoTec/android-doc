@@ -1,0 +1,23 @@
+http://www.chenyunchao.com/?p=143
+
+android的文本默认仅有单倍行距，看起来有点拥挤，所以如果是成段的文本就应该要设置行高，才便于阅读。
+android中设置行高有两种方式：
+
+（1）android:lineSpacingExtra ，  可以设置 负值
+比如android:lineSpacingExtra=”8dp”。
+android:lineSpacingExtra 的默认值是0，也就是说行与行之间默认是没有空隙的。所以需要设置一个正整数的行间距，如”8dp”。
+
+（2）android:lineSpacingMultiplier，
+比如android:lineSpacingMultiplier=”1.5″。
+android:lineSpacingMultiplier默认是1，
+有点像css里面的line-height=2em（即设置行间距的倍数），”1.5″表示行间距的1.5倍。
+
+注意：
+不管是lineSpacingExtra  
+还是lineSpacingMultiplier ，
+行高的空隙总是放在行的下方，而不是行的上下均摊，这一点与css的line-height是不一样的
+
+18:20 2015/9/18 android 5.1
+测试结果，最后一行下面，并不会添加 Extra 空间
+
+为设置成上下均摊的方法：

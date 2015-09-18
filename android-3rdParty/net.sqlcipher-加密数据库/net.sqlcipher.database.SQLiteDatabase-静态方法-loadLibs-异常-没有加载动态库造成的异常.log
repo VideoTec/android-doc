@@ -1,0 +1,28 @@
+java.lang.UnsatisfiedLinkError: No implementation found for void net.sqlcipher.database.SQLiteDatabase.dbopen(java.lang.String, int) (tried Java_net_sqlcipher_database_SQLiteDatabase_dbopen and Java_net_sqlcipher_database_SQLiteDatabase_dbopen__Ljava_lang_String_2I)
+	at net.sqlcipher.database.SQLiteDatabase.dbopen(Native Method)
+	at net.sqlcipher.database.SQLiteDatabase.<init>(SQLiteDatabase.java:2165)
+	at net.sqlcipher.database.SQLiteDatabase.openDatabase(SQLiteDatabase.java:1000)
+	at net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:1043)
+	at net.sqlcipher.database.SQLiteOpenHelper.getWritableDatabase(SQLiteOpenHelper.java:132)
+	at net.sqlcipher.database.SQLiteOpenHelper.getWritableDatabase(SQLiteOpenHelper.java:99)
+	at com.feinno.beside.provider.BesideProvider.delete(BesideProvider.java:193)
+	at android.content.ContentProvider$Transport.delete(ContentProvider.java:325)
+	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:206)
+	at android.os.Binder.execTransact(Binder.java:461)
+
+14:27 2015/9/18
+
+这真是奇葩问题，
+身边单独安装包出问题，飞信集成包没有问题。
+最后找到原因是， BesideProvider 是运行在飞信进程里，
+它也，生成数据库对象，并读取数据。
+
+身边单独安装包：飞信进程，没有调用 loadLib，所以出错
+飞信集成包：调用了 loadLib 方法，所以不会出错
+
+        <provider
+            android:name="com.feinno.beside.provider.BesideProvider"
+            android:authorities="com.feinno.beside"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:writePermission="com.feinno.beside.permission.WRITE_SCHEDULE" />
