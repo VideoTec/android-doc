@@ -1,0 +1,15 @@
+朋友圈-片段-基类-CustomListView-分享到对话框-PersonBroadcastItemShareControl-
+beside_dialog_popmenu_broadcastd_share_menu.xml
+
+                <!-- 分享到朋友圈 -->
+
+                <TextView
+                    android:id="@+id/beside_share_dynamic"
+                    style="@style/BroadcastItemTopMenuStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:drawableTop="@drawable/beside_share_dynamic"
+                    android:text="@string/beside_share_dynamic"
+                    android:textColor="#555555"
+                    android:textSize="12sp" />

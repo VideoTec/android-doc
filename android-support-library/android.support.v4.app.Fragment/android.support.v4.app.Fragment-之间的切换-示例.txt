@@ -1,0 +1,70 @@
+MainBroadcastActivity.java
+
+	/**
+	 * 切换当前的Fragment
+	 * 
+	 * @param title
+	 *            选择的标题字符串
+	 */
+	public void switchFragment(String title) {
+		if (TextUtils.isEmpty(title)) {
+			return;
+		}
+		setTitle(title);
+		Fragment fragment = mFragmentMap.get(title);
+		boolean isNew = false;
+
+		if (title.equals(getString(R.string.beside_broadcast_friend))) { // 全部动态
+			if (fragment == null) {
+				fragment = new AllBroadcastFragment();
+				isNew = true;
+				canSignIn = true;
+				mFragmentMap.put(title, fragment);
+			}
+		} 
+//		else if (title.equals(getString(R.string.beside_broadcast_friend))) { // 朋友圈
+//			if (fragment == null) {
+//				fragment = new FriendBroadcastFragment();
+//				isNew = true;
+//				canSignIn = true;
+//				mFragmentMap.put(title, fragment);
+//			}
+//		} else if (title.equals(getString(R.string.beside_broadcast_attention))) { // 特别关注
+//			if (fragment == null) {
+//				fragment = new AttentionBroadcastFragment();
+//				isNew = true;
+//				canSignIn = true;
+//				mFragmentMap.put(title, fragment);
+//			}
+//		} else if (title.equals(getString(R.string.beside_broadcast_group))) {// 我的群组
+//			if (fragment == null) {
+//				fragment = new MyGroupListFragment();
+//				isNew = true;
+//				canSignIn = true;
+//				mFragmentMap.put(title, fragment);
+//			}
+//		} else if (title.equals(getString(R.string.beside_broadcast_anonymous))) {// 匿名动态
+//			if (fragment == null) {
+//				fragment = new AnonymousBroadcastFragment();
+//				isNew = true;
+//				canSignIn = false;
+//				mFragmentMap.put(title, fragment);
+//			}
+//		}
+		if (fragment == mCurrentFragment) {
+			return;
+		}
+		FragmentTransaction transaction = mFragmentManager.beginTransaction();
+		// 隐藏当前的Fragment
+		if (mCurrentFragment != null) {
+			transaction.hide(mCurrentFragment);
+		}
+		if (isNew) {
+			transaction.add(R.id.layout_broadcast_id, fragment);
+		}
+		// 更新当前的Fragment
+		mCurrentFragment = fragment;
+		// 显示所选的Fragment
+		transaction.show(fragment);
+		transaction.commit();
+	}

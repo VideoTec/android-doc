@@ -1,0 +1,22 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/CursorAdapter.html
+
+CursorAdapter
+extends BaseAdapter
+
+implements Filterable ThemedSpinnerAdapter
+
+java.lang.Object
+   ↳	android.widget.BaseAdapter
+ 	   ↳	android.widget.CursorAdapter
+       
+Known Direct Subclasses
+ResourceCursorAdapter
+
+Known Indirect Subclasses
+SimpleCursorAdapter
+
+Class Overview
+
+Adapter that exposes data from a Cursor to a ListView widget.
+
+The Cursor must include a column named "_id" or this class will not work. Additionally, using MergeCursor with this class will not work if the merged Cursors have overlapping values in their "_id" columns.
