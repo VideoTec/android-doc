@@ -1,0 +1,22 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html#toggleSoftInput(int, int)
+
+toggle[英][ˈtɒgl] [美][ˈtɑ:gl]
+v.切换
+
+public void toggleSoftInputFromWindow (IBinder windowToken, int showFlags, int hideFlags)
+
+Added in API level 3
+This method toggles the input method window display. If the input window is already displayed, it gets hidden. If not the input window will be displayed.
+
+Parameters
+
+windowToken
+The token of the window that is making the request, as returned by View.getWindowToken().
+
+showFlags
+Provides additional operating flags. 
+May be 0 or have the SHOW_IMPLICIT, SHOW_FORCED bit set.
+
+hideFlags
+Provides additional operating flags. 
+May be 0 or have the HIDE_IMPLICIT_ONLY, HIDE_NOT_ALWAYS bit set.

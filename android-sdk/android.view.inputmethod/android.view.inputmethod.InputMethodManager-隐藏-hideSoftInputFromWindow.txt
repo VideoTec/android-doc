@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+public boolean hideSoftInputFromWindow (IBinder windowToken, int flags)
+-------------------------------------------------------------------------------
+
+Added in API level 3
+Synonym for hideSoftInputFromWindow(IBinder, int, ResultReceiver) without a result: request to hide the soft input window from the context of the window that is currently accepting input.
+
+Parameters
+windowToken	The token of the window that is making the request, as returned by View.getWindowToken().
+
+flags
+Provides additional operating flags. 
+Currently may be 0 or have the HIDE_IMPLICIT_ONLY bit set.
+
+-------------------------------------------------------------------------------
+public boolean hideSoftInputFromWindow (IBinder windowToken, int flags, ResultReceiver resultReceiver)
+-------------------------------------------------------------------------------
+
+Added in API level 3
+Request to hide the soft input window from the context of the window that is currently accepting input. This should be called as a result of the user doing some actually than fairly explicitly requests to have the input window hidden.
+
+Parameters
+windowToken
+The token of the window that is making the request, as returned by View.getWindowToken().
+
+flags
+Provides additional operating flags. 
+Currently may be 0 or have the HIDE_IMPLICIT_ONLY bit set.
+
+resultReceiver
+If non-null, this will be called by the IME 
+when it has processed your request to tell you what it has done. 
+The result code you receive may be either 
+RESULT_UNCHANGED_SHOWN, RESULT_UNCHANGED_HIDDEN, RESULT_SHOWN, or RESULT_HIDDEN.

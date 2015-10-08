@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html
+
+Architecture Overview
+
+There are three primary parties involved in the input method framework (IMF) architecture:
+
+1）The input method manager as expressed by this class is the central point of the system that manages interaction between all other parts. It is expressed as the client-side API here which exists in each application context and communicates with a global system service that manages the interaction across all processes.
+
+2）An input method (IME) implements a particular interaction model allowing the user to generate text. The system binds to the current input method that is use, causing it to be created and run, and tells it when to hide and show its UI. Only one IME is running at a time.
+
+3）Multiple client applications arbitrate with the input method manager for input focus and control over the state of the IME. Only one such client is ever active (working with the IME) at a time.

@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html
+
+
+java.lang.Object
+   ↳	android.view.inputmethod.InputMethodManager
+   
+Central system API to the overall input method framework (IMF) architecture, which arbitrates interaction between applications and the current input method. You can retrieve an instance of this interface with Context.getSystemService().

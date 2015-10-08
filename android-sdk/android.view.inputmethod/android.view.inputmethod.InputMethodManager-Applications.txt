@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html
+
+Applications
+
+In most cases, applications that are using the standard TextView or its subclasses will have little they need to do to work well with soft input methods. The main things you need to be aware of are:
+
+1）Properly set the inputType in your editable text views, so that the input method will have enough context to help the user in entering text into them.
+
+2）Deal well with losing screen space when the input method is displayed. Ideally an application should handle its window being resized smaller, but it can rely on the system performing panning of the window if needed. You should set the windowSoftInputMode attribute on your activity or the corresponding values on windows you create to help the system determine whether to pan or resize (it will try to determine this automatically but may get it wrong).
+
+3）You can also control the preferred soft input state (open, closed, etc) for your window using the same windowSoftInputMode attribute.
+
+More finer-grained control is available through the APIs here to directly interact with the IMF and its IME -- either showing or hiding the input area, letting the user pick an input method, etc.
+
+For the rare people amongst us writing their own text editors, you will need to implement onCreateInputConnection(EditorInfo) to return a new instance of your own InputConnection interface allowing the IME to interact with your editor

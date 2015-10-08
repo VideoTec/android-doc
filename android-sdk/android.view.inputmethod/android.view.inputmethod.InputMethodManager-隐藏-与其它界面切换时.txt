@@ -1,0 +1,22 @@
+    //显示表情框
+    private void showExpression() {
+        mResponseEdittext.requestFocus();
+        mExpressionImageView.setVisibility(View.GONE);
+        mKeyboradImageView.setVisibility(View.VISIBLE);
+        mViewAddMultiMedia.setVisibility(View.GONE);
+        hideSoftKeyBoard(mResponseEdittext);                     隐藏键盘，需要时间
+        if (mExpressionViewPager.getVisibility() == View.GONE) { 推迟一下，显示表情框
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mExpressionViewPager.setVisibility(View.VISIBLE);
+                }
+            }, 100);
+        }
+    }
+    
+	private void hideSoftKeyBoard(View view) {
+		if (view != null) {
+			mInputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+		}
+	}

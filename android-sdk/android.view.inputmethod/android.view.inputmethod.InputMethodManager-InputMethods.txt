@@ -1,0 +1,8 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html
+
+Input Methods
+
+An input method (IME) is implemented as a Service, typically deriving from InputMethodService. 
+It must provide the core InputMethod interface, though this is normally handled by InputMethodService and implementors will only need to deal with the higher-level API there.
+
+See the InputMethodService class for more information on implementing IMEs.
