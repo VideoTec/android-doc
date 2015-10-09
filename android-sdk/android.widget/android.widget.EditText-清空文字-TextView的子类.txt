@@ -1,0 +1,8 @@
+直接调用 setText("");  就可以了
+
+http://stackoverflow.com/questions/5308200/clear-text-in-edittext-when-entered
+
+editText.getText().clear();
+
+just use the android:hint attribute in your EditText. 
+This text shows up when the box is empty and not focused, but disappears upon selecting the EditText box.

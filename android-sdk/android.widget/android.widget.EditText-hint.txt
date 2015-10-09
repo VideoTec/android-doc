@@ -1,0 +1,36 @@
+public final void setHint (CharSequence hint)
+participate[英][pɑ:ˈtɪsɪpeɪt] [美][pɑ:rˈtɪsɪpeɪt]
+vi.参加某事；分享某事
+vt.得到或接受某部分东西
+Sets the text to be displayed when the text of the TextView is empty. 
+Null means to use the normal empty text. 
+The hint does not currently participate in determining the size of the view.
+
+public final void setHint (int resid)
+public final void setHintTextColor (ColorStateList colors)
+public final void setHintTextColor (int color)
+Sets the color of the hint text for all the states (disabled, focussed, selected...) of this TextView.
+
+android:hint attribute in your EditText. 
+This text shows up when the box is empty and not focused, 
+but disappears upon selecting the EditText box.
+
+android:hint
+
+            <com.feinno.beside.ui.view.expression.FetionEditText
+                android:id="@+id/chat_edittext_id"
+                android:layout_width="0dip"
+                android:layout_height="34dp"
+	            android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/beside_chatroom_input_bg"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/beside_chatroom_input_text_hint"
+                android:maxLength="401"
+                android:maxLines="4"
+                android:minLines="1"
+                android:gravity="center_vertical"
+                android:textColor="@color/broadcast_content_color"
+                android:textColorHint="#919191"
+                android:textSize="15sp" />

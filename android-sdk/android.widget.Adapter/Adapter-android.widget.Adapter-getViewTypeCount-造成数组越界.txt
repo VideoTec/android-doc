@@ -1,0 +1,14 @@
+java.lang.ArrayIndexOutOfBoundsException: length=21; index=21
+	at android.widget.AbsListView$RecycleBin.addScrapView(AbsListView.java:8733)
+
+http://blog.csdn.net/zhufuing/article/details/46410449
+http://stackoverflow.com/questions/2596547/arrayindexoutofboundsexception-with-custom-android-adapter-for-multiple-views-in?answertab=votes#tab-top%20StackOverFlow
+
+造成这个错误的原因是：
+The item view type you are returning from
+getItemViewType() is >= getViewTypeCount().
+
+getViewTypeCount() 的值必须大于 getItemViewType() 的值
+getItemViewType() 
+源码中的注释也提醒我们:
+”Integers must be in the range 0 to {@link #getViewTypeCount} - 1“

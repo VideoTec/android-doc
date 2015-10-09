@@ -1,0 +1,4 @@
+public abstract int getItemViewType (int position)
+
+Note: Integers must be in the range 0 to getViewTypeCount() - 1. 
+IGNORE_ITEM_VIEW_TYPE can also be returned.

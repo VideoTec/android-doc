@@ -1,3 +1,19 @@
+public abstract int getItemViewType (int position)
+
+Added in API level 1
+Get the type of View that will be created by getView(int, View, ViewGroup) for the specified item.
+
+Parameters
+
+position	The position of the item within the adapter's data set whose view type we want.
+
+Returns
+
+An integer representing the type of View. Two views should share the same type if one can be converted to the other in getView(int, View, ViewGroup). Note: Integers must be in the range 0 to getViewTypeCount() - 1. IGNORE_ITEM_VIEW_TYPE can also be returned.
+
+See Also
+IGNORE_ITEM_VIEW_TYPE
+
 自定义，对应位置的数据，对应的视图类型
 
 	@Override
