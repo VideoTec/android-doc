@@ -1,0 +1,25 @@
+1. 是 LinearLayout 子类，派生关系
+
+   PullToRefreshListView > PullToRefreshAdapterViewBase<ListView>
+   
+   PullToRefreshAdapterViewBase > PullToRefreshBase<T>, OnScrollListener 
+   PullToRefreshBase > LinearLayout, IPullToRefresh<T>
+
+2. 有个 ListView 成员
+   protected T mRefreshableView;
+   可以通过 getRefreshableView() 获得。
+   
+3. PullToRefreshBase 有个包装VIEW
+   private FrameLayout mRefreshableViewWrapper;
+   
+4. createListView 创建列表控件
+
+	protected ListView createListView(Context context, AttributeSet attrs) {
+		final ListView lv;
+		if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
+			lv = new InternalListViewSDK9(context, attrs);
+		} else {
+			lv = new InternalListView(context, attrs);
+		}
+		return lv;
+	}

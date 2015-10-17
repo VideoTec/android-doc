@@ -1,0 +1,33 @@
+flicker[英][ˈflɪkə(r)] [美][ˈflɪkɚ]
+v.闪烁；飘扬，摆动；昏倒
+n.闪烁；闪光；电影；假装昏倒的乞丐
+
+---------------------
+18:07 2015/10/16
+---------------------
+找到新原因
+
+PullToRefreshBase
+private void init(Context context, AttributeSet attrs) {
+
+setGravity(Gravity.CENTER); LinearLayout 强制设置成的这个属性
+
+造成，改变大小时闪烁
+
+---------------------
+最后找到原因是：
+---------------------
+
+PullToRefreshBase
+protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+
+// We need to update the header/footer when our size changes
+refreshLoadingViewsSize();
+
+// Update the Refreshable View layout
+refreshRefreshableViewSize(w, h); 这句造成的
+先把 mRefreshableViewWrapper 向下拉，再向上拉。
+这一句的实质是：
+mRefreshableViewWrapper.requestLayout();
+父窗口会做 requestLayout, 为什么还要子窗口，再，requestLayout 呢？
+}

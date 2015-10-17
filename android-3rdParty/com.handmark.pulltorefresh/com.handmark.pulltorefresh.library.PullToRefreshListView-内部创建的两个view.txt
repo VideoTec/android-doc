@@ -1,0 +1,21 @@
+PullToRefreshBase.java
+
+	protected T mRefreshableView;
+	private FrameLayout mRefreshableViewWrapper;
+
+private void init(Context context, AttributeSet attrs) {
+
+		// Refreshable View
+		// By passing the attrs, we can add ListView/GridView params via XML
+		mRefreshableView = createRefreshableView(context, attrs);
+		addRefreshableView(context, mRefreshableView);
+}
+
+private void addRefreshableView(Context context, T refreshableView) {
+    mRefreshableViewWrapper = new FrameLayout(context);
+    mRefreshableViewWrapper.addView(refreshableView, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT);
+
+    addViewInternal(mRefreshableViewWrapper, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+            LayoutParams.MATCH_PARENT));
+}

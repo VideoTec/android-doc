@@ -1,0 +1,10 @@
+http://developer.android.com/intl/zh-cn/training/custom-views/create-view.html
+
+Define Custom Attributes
+To add a built-in View to your user interface, you specify it in an XML element and control its appearance and behavior with element attributes. Well-written custom views can also be added and styled via XML. To enable this behavior in your custom view, you must:
+
+1）Define custom attributes for your view in a <declare-styleable> resource element
+2）Specify values for the attributes in your XML layout
+3）Retrieve attribute values at runtime
+4）Apply the retrieved attribute values to your view
+

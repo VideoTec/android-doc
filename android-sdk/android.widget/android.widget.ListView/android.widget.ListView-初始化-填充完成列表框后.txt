@@ -1,0 +1,9 @@
+E:\doc\android\android-sdk\android.widget.Adapter\Adapter-android.widget.BaseAdapter-notifyDataSetChanged-完成的时间点.txt
+
+adapter.notifyDataSetChanged();
+list.post( new Runnable() {
+    @Override
+    public void run() {
+    //call smooth scroll
+    }
+  });

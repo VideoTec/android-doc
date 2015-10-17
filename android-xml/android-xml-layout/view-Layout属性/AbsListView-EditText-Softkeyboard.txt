@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/9351509/keeping-the-last-visible-item-of-a-listview-when-the-size-of-the-listview-change
+

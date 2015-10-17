@@ -1,0 +1,52 @@
+
+	/**
+	 * Re-measure the Loading Views height, and adjust internal padding as
+	 * necessary
+	 */
+	protected void refreshLoadingViewsSize() {
+		final int maximumPullScroll = (int) (getMaximumPullScroll() * 1.2f);
+
+		int pLeft = getPaddingLeft();
+		int pTop = getPaddingTop();
+		int pRight = getPaddingRight();
+		int pBottom = getPaddingBottom();
+
+		switch (getPullToRefreshScrollDirection()) {
+			case HORIZONTAL:
+				if (mMode.showHeaderLoadingLayout()) {
+					mHeaderLayout.setWidth(maximumPullScroll);
+					pLeft = -maximumPullScroll;
+				} else {
+					pLeft = 0;
+				}
+
+				if (mMode.showFooterLoadingLayout()) {
+					mFooterLayout.setWidth(maximumPullScroll);
+					pRight = -maximumPullScroll;
+				} else {
+					pRight = 0;
+				}
+				break;
+
+			case VERTICAL:
+				if (mMode.showHeaderLoadingLayout()) {
+					mHeaderLayout.setHeight(maximumPullScroll);
+					pTop = -maximumPullScroll;
+				} else {
+					pTop = 0;
+				}
+
+				if (mMode.showFooterLoadingLayout()) {
+					mFooterLayout.setHeight(maximumPullScroll);
+					pBottom = -maximumPullScroll;
+				} else {
+					pBottom = 0;
+				}
+				break;
+		}
+
+		if (DEBUG) {
+			Log.d(LOG_TAG, String.format("Setting Padding. L: %d, T: %d, R: %d, B: %d", pLeft, pTop, pRight, pBottom));
+		}
+		setPadding(pLeft, pTop, pRight, pBottom);
+	}

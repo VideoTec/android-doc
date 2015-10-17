@@ -1,0 +1,19 @@
+
+http://blog.csdn.net/yanzi1225627/article/details/12885317
+
+Help | Install New Software...
+
+填入URL地址：
+http://download.eclipse.org/egit/updates
+
+选择 EGIT。
+
+repository[英][rɪˈpɒzətri] [美][rɪˈpɑ:zətɔ:ri]
+n.仓库；贮藏室；博物馆；亲信
+
+使用方法：
+1) Windows | show view | others | Git Repositories
+2) 工程 右键 Teams 菜单
+
+configure 配置:
+git-repositories 属性设置

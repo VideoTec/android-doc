@@ -1,0 +1,20 @@
+	protected void refreshRefreshableViewSize(int width, int height) {
+		// We need to set the Height of the Refreshable View to the same as
+		// this layout
+		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mRefreshableViewWrapper.getLayoutParams();
+
+		switch (getPullToRefreshScrollDirection()) {
+			case HORIZONTAL:
+				if (lp.width != width) {
+					lp.width = width;
+					mRefreshableViewWrapper.requestLayout();
+				}
+				break;
+			case VERTICAL:
+				if (lp.height != height) {
+					lp.height = height;
+					mRefreshableViewWrapper.requestLayout();
+				}
+				break;
+		}
+	}

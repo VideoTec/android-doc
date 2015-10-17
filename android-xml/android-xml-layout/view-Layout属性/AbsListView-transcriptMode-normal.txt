@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/2537027/how-to-move-scroll-at-the-bottom-of-list-programmatically
+
+You can set android:transcriptMode to normal instead if 
+you want an even better result for chat applications: 
+it will scroll to the bottom only if the last item was already in view. 
+That way your users can view the previous chat without interruption when other users chat.

@@ -1,0 +1,7 @@
+android:transcriptMode 
+3）alwaysScroll	2
+The list will automatically scroll to the bottom, 
+no matter what items are currently visible.
+
+当更新更表框时，会自动滚到最后一行。
+mAdapter.notifyDataSetChanged();

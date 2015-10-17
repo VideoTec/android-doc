@@ -1,0 +1,2 @@
+public abstract class PullToRefreshBase<T extends View> 
+  extends LinearLayout implements IPullToRefresh<T>

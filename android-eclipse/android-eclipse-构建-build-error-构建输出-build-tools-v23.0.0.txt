@@ -1,0 +1,39 @@
+构建条件：
+1）[2015-10-17 13:33:00 - beside] Using default Build Tools revision 23.0.0
+2）工程 属性 android -> build -> Verbose 勾上，输出所有build信息 （解决方法，是把这个勾掉，改为normal）
+
+构建时产生下列错误：
+
+Description	Resource	Path	Location	Type
+note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>	beside_broadcast_attachment_layout.xml	/beside/res/layout	line 2	Android AAPT Problem
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipChildren="false"
+    android:layerType="software"
+    android:orientation="vertical" >
+
+
+构建时产生下列错误：
+
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml:2: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_attachment_layout for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_body_layout.xml:66: note: removing attribute http://schemas.android.com/apk/res/android:textIsSelectable from <com.feinno.beside.ui.view.CopyTextView>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_body_layout.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_body_layout for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item.xml:255: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_item for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_multipic.xml:117: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_multipic.xml:80: note: removing attribute http://schemas.android.com/apk/res/android:textIsSelectable from <TextView>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_multipic.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_item_multipic for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_singlepic.xml:117: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_singlepic.xml:80: note: removing attribute http://schemas.android.com/apk/res/android:textIsSelectable from <TextView>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_broadcast_item_singlepic.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_item_singlepic for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_marketing_broadcast_item_view.xml:117: note: removing attribute http://schemas.android.com/apk/res/android:textIsSelectable from <TextView>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_marketing_broadcast_item_view.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_marketing_broadcast_item_view for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_marketing_broadcast_viewpager.xml:13: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_marketing_broadcast_viewpager.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_marketing_broadcast_viewpager for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_personal_page_header_layout.xml:21: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <RelativeLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_personal_page_header_layout.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_personal_page_header_layout for configuration v11.
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_view_personal_header_view.xml:8: note: removing attribute http://schemas.android.com/apk/res/android:layerType from <RelativeLayout>
+[2015-10-17 13:32:51 - beside] D:\work\beside\res\layout\beside_view_personal_header_view.xml: note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_view_personal_header_view for configuration v11.

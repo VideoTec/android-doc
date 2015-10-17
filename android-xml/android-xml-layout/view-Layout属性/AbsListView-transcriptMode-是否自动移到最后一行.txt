@@ -1,0 +1,31 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.html#attr_android:transcriptMode
+
+transcript[英][ˈtrænskrɪpt] [美][ˈtrænˌskrɪpt]
+n.抄本；誊本；打字本；副本
+
+android:transcriptMode
+
+Sets the transcript mode for the list. 
+In transcript mode, the list scrolls to the bottom to make new items visible 
+when they are added.
+
+Must be one of the following constant values.
+
+1）disabled	0
+Disables transcript mode. 
+This is the default value.
+
+2）normal	1
+The list will automatically scroll to the bottom when a data set change notification is received and only if the last item is already visible on screen.
+
+3）alwaysScroll	2
+The list will automatically scroll to the bottom, 
+no matter what items are currently visible.
+
+This corresponds to the global attribute resource symbol transcriptMode.
+
+transcriptMode 属性，
+需要用ListView或者其它显示大量Items的控件实时跟踪或者查看信息，
+并且希望最新的条目可以自动滚动到可视范围内。
+通过设置的控件transcriptMode属性可以将Android平台的控件（支持ScrollBar）自动滑动到最底部。
+android:transcriptMode="alwaysScroll"

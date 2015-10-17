@@ -1,0 +1,13 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.html#attr_android:stackFromBottom
+
+android:stackFromBottom
+
+Used by ListView and GridView to stack their content from the bottom.
+
+Must be a boolean value, either "true" or "false".
+
+This may also be a reference to a resource (in the form "@[package:]type:name") or theme attribute (in the form "?[package:][type:]name") containing a value of this type.
+
+This corresponds to the global attribute resource symbol stackFromBottom.
+
+Related Methods

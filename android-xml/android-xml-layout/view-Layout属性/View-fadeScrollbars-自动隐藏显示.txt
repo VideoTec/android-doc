@@ -1,0 +1,3 @@
+fadeScrollbars属性，
+android:fadeScrollbars="true"  配置ListView布局的时候，
+设置这个属性为true就可以实现滚动条的自动隐藏和显示

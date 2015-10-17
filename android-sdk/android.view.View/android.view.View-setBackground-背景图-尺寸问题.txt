@@ -1,0 +1,25 @@
+android sdk api 
+可以控制解压的尺寸吗？
+即：1024 解成 480 的。
+
+布局系统，在加载背景图时，使用的那种像素格式？32-bit 还是 24-bit？
+
+http://stackoverflow.com/questions/19875158/android-background-image-size-in-pixel
+
+there is no full list of screen resolutions, 
+there are no fixed values in pixels for ldpi, mdpi, hdpi,xhdpi and xxhdpi. 
+Every android device may have different resolution. 
+If you want to fill all resolutions you will have to create too many images. 
+If you put them in your app, it will make the app size huge. 
+Maybe a better approach is to use composite image for background.
+
+composite[英][ˈkɒmpəzɪt] [美][kəmˈpɑ:zət]
+adj.混合成的，综合成的；[建]综合式的；[数]可分解的；[植]菊科的
+
+Try follow below android icon graphy size reference for various device screen resolutin.
+
+                            ldpi     mdpi     hdpi     xhdpi    xxhdpi     xxxhdpi
+Launcher And Home           36*36    48*48   72*72    96*96    144*144    192*192
+Action Bar And Tab          24*24    32*32   48*48    64*64    96*96      128*128
+Notification                18*18    24*24   36*36    48*48    72*72      96*96
+Background                  320*426  320*470 480*640  720*1280 1080*1920  1440*2560

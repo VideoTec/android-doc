@@ -1,0 +1,23 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/ListView.html#setSelection(int)
+
+public void setSelection (int position)
+
+Added in API level 1
+Sets the currently selected item. If in touch mode, the item will not be selected but it will still be positioned appropriately. If the specified selection position is less than 0, then the item at position 0 will be selected.
+
+Parameters
+position	Index (starting at 0) of the data item to be selected.
+
+http://stackoverflow.com/questions/3606530/listview-scroll-to-the-end-of-the-list-after-updating-the-list
+
+private void scrollMyListViewToBottom() {
+    myListView.post(new Runnable() {
+        @Override
+        public void run() {
+            // Select the last row so it will scroll into view...
+            myListView.setSelection(myListAdapter.getCount() - 1);
+        }
+    });
+}
+
+you can also use myListView.smoothScrollToPosition(myListAdapter.getCount()-1); for smooth scrolling 

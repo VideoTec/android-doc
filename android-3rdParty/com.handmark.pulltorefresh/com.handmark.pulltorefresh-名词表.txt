@@ -1,0 +1,41 @@
+------------------------------------------------
+Loading View - “正在加载的” 的视图， the header/footer
+------------------------------------------------
+示例：
+refreshLoadingViewsSize
+
+------------------------------------------------
+Refreshable View - 实际的列表控件，如 ListView
+------------------------------------------------
+示例：
+protected T mRefreshableView;
+private FrameLayout mRefreshableViewWrapper;
+
+------------------------------------------------
+IndicatorViews - 添加 listview 所在的 FrameLayout 里。
+------------------------------------------------
+indicator[英][ˈɪndɪkeɪtə(r)] [美][ˈɪndɪˌketɚ]
+n.指示器；[化]指示剂；指示者
+private void addIndicatorViews() 添加或者移除 indicator view
+
+	/**
+	 * Sets whether an indicator graphic should be displayed when the View is in
+	 * a state where a Pull-to-Refresh can happen. An example of this state is
+	 * when the Adapter View is scrolled to the top and the mode is set to
+	 * {@link Mode#PULL_FROM_START}
+	 * 
+	 * @param showIndicator - true if the indicators should be shown.
+	 */
+	public void setShowIndicator(boolean showIndicator) {
+		mShowIndicator = showIndicator;
+
+		if (getShowIndicatorInternal()) {
+			// If we're set to Show Indicator, add/update them
+			addIndicatorViews();
+		} else {
+			// If not, then remove then
+			removeIndicatorViews();
+		}
+	}
+
+public class IndicatorLayout extends FrameLayout implements AnimationListener {
