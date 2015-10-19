@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/10910638/how-do-i-access-to-listview-from-the-adapter
+
+ViewGroup parent holds reference to the parent of the View returned by getView(), which in your case is your custom listview.
+
+@Override
+public View getView(int position, View convertView, final ViewGroup parent) {
+    ...
+    details.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            parent.setVisibility(View.INVISIBLE); // or View.GONE
+        }
+    });
+    ...
+    return v;
+}

@@ -3,7 +3,7 @@ http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.htm
 transcript[英][ˈtrænskrɪpt] [美][ˈtrænˌskrɪpt]
 n.抄本；誊本；打字本；副本
 
-android:transcriptMode
+android:transcriptMode  有个对应的方法 setTranscriptMode 方法。
 
 Sets the transcript mode for the list. 
 In transcript mode, the list scrolls to the bottom to make new items visible 

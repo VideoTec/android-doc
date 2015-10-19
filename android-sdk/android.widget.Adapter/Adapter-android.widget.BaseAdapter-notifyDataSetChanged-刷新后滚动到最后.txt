@@ -1,0 +1,27 @@
+notifyDataSetChanged 填充完列表后的事件，没有找到。
+可用下面的方法，替换：
+
+http://stackoverflow.com/questions/6942582/smoothscrolltoposition-after-notifydatasetchanged-not-working-in-android
+
+Use the post() method to wait for the list to finish updating after you call notifyDataSetChanged():
+
+adapter.notifyDataSetChanged();
+list.post( new Runnable() {
+    @Override
+    public void run() {
+    //call smooth scroll
+    }
+  });
+  
+结果测试根本不起作用。
+初始后，调用这个方法，还是能用的。
+
+12:00 2015/10/19 
+最后，通过更改 TranscriptMode 属性来实现这个功能。
+
+1）刷新后，滚动到最后
+mChatListView.getRefreshableView().setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+mMemberAdapter.notifyDataSetChanged();
+2）刷新后，不滚动到
+mChatListView.getRefreshableView().setTranscriptMode(ListView.TRANSCRIPT_MODE_DISABLED);
+mMemberAdapter.notifyDataSetChanged();

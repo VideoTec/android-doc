@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.html#attr_android:transcriptMode
+
+transcript[英][ˈtrænskrɪpt] [美][ˈtrænˌskrɪpt]
+n.抄本；誊本；打字本；副本
+
+http://developer.android.com/intl/zh-cn/reference/android/widget/AbsListView.html#setTranscriptMode(int)
+
+public void setTranscriptMode (int mode)
+
+Added in API level 1
+Puts the list or grid into transcript mode. In this mode the list or grid will always scroll to the bottom to show new items.
+
+Parameters
+mode	the transcript mode to set
+See Also
+TRANSCRIPT_MODE_DISABLED
+TRANSCRIPT_MODE_NORMAL
+TRANSCRIPT_MODE_ALWAYS_SCROLL

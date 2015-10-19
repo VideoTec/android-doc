@@ -1,0 +1,25 @@
+E:\doc\android\android-sdk\android.widget\android.widget.AbsListView-adapter-在适配器代码中获取-listview.txt
+
+http://stackoverflow.com/questions/10910638/how-do-i-access-to-listview-from-the-adapter
+
+这个方法不可靠，还是初始时保存个，listview，变量可靠。
+ViewGroup parent holds reference to the parent of the View returned by getView(), which in your case is your custom listview.
+
+@Override
+public View getView(int position, View convertView, final ViewGroup parent) {
+    ...
+    details.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            parent.setVisibility(View.INVISIBLE); // or View.GONE
+        }
+    });
+    ...
+    return v;
+}
+
+另外一种方法：适配器初始化时，保存这个值
+public ViewPackagesAdapter(Activity mActivity, ListView cmgListView) {
+        this.mActivity = mActivity;
+        this.mListView=cmgListView;
+    }

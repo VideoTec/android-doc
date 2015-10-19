@@ -1,0 +1,14 @@
+14:51 2015/10/19
+身边，聊天室，输入框背景， 
+
+beside_chatroom_input_bg.9.png 88x70
+目标高度是 34
+显示后，圆角，上下超过了。
+
+错误的放到了：D:\work\beside\res\drawable-hdpi （1dp = 1.5px）
+见：
+E:\doc\android\android-xml\android-hdpi-xhdpi.txt
+
+但是UI设计时，是按照， 1dp = 2px 设计的。
+应该放到
+D:\work\beside\res\drawable-xhdpi
