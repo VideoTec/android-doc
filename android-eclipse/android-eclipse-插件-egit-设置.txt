@@ -1,0 +1,4 @@
+Windows | Preferences | Team | Git
+
+1） Configuration | System Settings
+设置 GIT 命令行所在的位置

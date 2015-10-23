@@ -1,0 +1,39 @@
+http://stackoverflow.com/questions/9266417/difference-between-onpause-and-onstop
+
+From android doc here http://developer.android.com/reference/android/app/Activity.html, 
+it said 
+'Activity comes into foreground' will call onPause(), and 
+'Activity is no longer visible' will call onStop().
+
+Isn't 
+'Activity comes into foreground' same as 
+'Activity is no longer visible'? 
+Can you please tell me what is the difference between them?
+
+No, if some activity comes into foreground, 
+that doesn't necessarily mean that the other activity is completely invisible. 
+（类似模态对话框的情况）
+1）Floating
+2）translucent[英][trænsˈlu:snt] [美][trænsˈlusənt, trænz-]
+adj.半透明的；透亮的，有光泽的
+
+That leaves a question 
+which activity is considered fully opaque and covering the whole screen and which isn't. This decision is based on the window containing the activity. 
+If the window has a flag windowIsFloating or windowIsTranslucent, 
+then it is considered that the activity doesn't make the underlying stuff invisible, 
+otherwise it does and will cause onStop() to be called. 
+The relevant code can be found in com.android.server.am.ActivityRecord:
+
+fullscreen = ent != null && !ent.array.getBoolean(
+        com.android.internal.R.styleable.Window_windowIsFloating, false)
+        && !ent.array.getBoolean(
+        com.android.internal.R.styleable.Window_windowIsTranslucent, false);
+
+http://blog.csdn.net/lamp_zy/article/details/7703893
+onPause 
+用于由一个Activity转到另一个Activity、
+设备进入休眠状态(屏幕锁住了)、或者有dialog弹出时
+
+onStop 
+用于不可见的Activity
+（有对话框弹出时，这时底下的activity仍然可见，所以此时onStop不会被调用）

@@ -2,3 +2,5 @@
 
 查询：
 Menu >> Windows >> Preferences#//WorkBench>>Keys
+
+Windows | Preferences | General | Keys | 搜索 format

@@ -1,0 +1,14 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html
+
+Focus Handling
+
+The framework will handle routine focus movement in response to user input. This includes changing the focus as views are removed or hidden, or as new views become available. Views indicate their willingness to take focus through the isFocusable() method. To change whether a view can take focus, call setFocusable(boolean). When in touch mode (see notes below) views indicate whether they still would like focus via isFocusableInTouchMode() and can change this via setFocusableInTouchMode(boolean).
+
+Focus movement is based on an algorithm which finds the nearest neighbor in a given direction. In rare cases, the default algorithm may not match the intended behavior of the developer. In these situations, you can provide explicit overrides by using these XML attributes in the layout file:
+
+ nextFocusDown
+ nextFocusLeft
+ nextFocusRight
+ nextFocusUp
+ 
+To get a particular view to take focus, call requestFocus().

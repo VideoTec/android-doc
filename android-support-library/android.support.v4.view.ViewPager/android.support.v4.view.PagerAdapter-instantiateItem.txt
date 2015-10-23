@@ -1,0 +1,14 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/view/PagerAdapter.html#instantiateItem(android.view.ViewGroup, int)
+
+instantiate[英][ɪns'tænʃɪeɪt] [美][ɪns'tænʃɪeɪt]
+实例化
+
+public Object instantiateItem (ViewGroup container, int position)
+
+Create the page for the given position. The adapter is responsible for adding the view to the container given here, although it only must ensure this is done by the time it returns from finishUpdate(ViewGroup).
+
+Parameters
+container	The containing View in which the page will be shown.
+position	The page position to be instantiated.
+Returns
+Returns an Object representing the new page. This does not need to be a View, but can be some other container of the page.

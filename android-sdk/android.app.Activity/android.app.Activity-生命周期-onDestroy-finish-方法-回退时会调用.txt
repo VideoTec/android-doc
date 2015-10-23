@@ -1,0 +1,20 @@
+http://stackoverflow.com/questions/25027399/ondestroy-gets-called-when-the-back-button-is-pressed
+Activity.java
+
+    /**
+     * Called when the activity has detected the user's press of the back
+     * key.  The default implementation simply finishes the current activity,
+     * but you can override this to do whatever you want.
+     */
+    public void onBackPressed() {
+        if (!mFragments.popBackStackImmediate()) {
+            finish();
+        }
+    }
+    
+protected void onDestroy ()
+
+Perform any final cleanup before an activity is destroyed. 
+This can happen either because the activity is finishing (someone called finish() on it, 
+or because the system is temporarily destroying this instance of the activity to save space.
+You can distinguish between these two scenarios with the isFinishing() method.

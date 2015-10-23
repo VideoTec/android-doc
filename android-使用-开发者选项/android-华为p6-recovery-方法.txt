@@ -1,0 +1,20 @@
+http://jiyouhui.it168.com/thread-259992-1-1.html
+
+方法是“关机状态下
+电源键 + 音量+ - （按在音量调节的键的中间）
+按住3秒左右 松开电源键保持音量+ - 即可”
+
+开机后显示下面的内容：
+ro.build.version.release = 4.4.2
+ro.product.name = UEDGE
+Current build version release is not 4.2 , don't need move.
+USB Update Enter ...
+HUAWEI SDCARD&USB UPDATE AGENT VERSION 2.0
+This phone is secureboot phone.
+This phone is LOCK state.
+
+这个时候，再按下电源键，重启后出现，一个菜单，
+默认选项是：reboot，按电源键，出现下面的提示
+cust copying files
+
+后正常启动

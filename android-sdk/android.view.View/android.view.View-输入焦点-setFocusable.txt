@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#setFocusable(boolean)
+
+public void setFocusable (boolean focusable)
+
+Added in API level 1
+Set whether this view can receive the focus. 
+Setting this to false will also ensure that this view is not focusable in touch mode.
+
+Related XML Attributes
+android:focusable
+
+Parameters
+focusable
+If true, this view can receive the focus.
+
+See Also
+setFocusableInTouchMode(boolean)

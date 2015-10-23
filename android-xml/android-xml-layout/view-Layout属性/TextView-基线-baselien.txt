@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-xml\android-xml-layout\android.view.ViewGroup-Layout属性\android.widget.LinearLayout-baselineAligned-影响文本类控件的布局.txt

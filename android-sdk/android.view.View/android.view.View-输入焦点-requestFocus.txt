@@ -1,0 +1,7 @@
+public final boolean requestFocus ()
+
+Added in API level 1
+Call this to try to give focus to a specific view or to one of its descendants. A view will not actually take focus if it is not focusable (isFocusable() returns false), or if it is focusable and it is not focusable in touch mode (isFocusableInTouchMode()) while the device is in touch mode. See also focusSearch(int), which is what you call to say that you have focus, and you want your parent to look for the next one. This is equivalent to calling requestFocus(int, Rect) with arguments FOCUS_DOWN and null.
+
+Returns
+Whether this view or one of its descendants actually took focus.

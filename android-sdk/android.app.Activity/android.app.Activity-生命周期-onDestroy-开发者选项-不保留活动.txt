@@ -1,0 +1,8 @@
+http://stackoverflow.com/questions/17664554/startactivity-is-always-calling-ondestroy-on-the-original-activity
+
+On some devices (Galaxy S2 etc.), there is a setting which can cause activities to be destroyed whilst debugging. You can find this in:
+
+settings > developer options > go down to the bottom under apps section > 
+Do not keep activities
+
+Uncheck this option, to stop activities always being destroyed when you leave them.

@@ -1,0 +1,2 @@
+去掉某个 view 的输入焦点，方法是：
+让另一个 view 调用requestfocus获取焦点。

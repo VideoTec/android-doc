@@ -1,0 +1,12 @@
+public void setFocusableInTouchMode (boolean focusableInTouchMode)
+
+Added in API level 1
+Set whether this view can receive focus while in touch mode. 
+Setting this to true will also ensure that this view is focusable.
+
+Related XML Attributes
+android:focusableInTouchMode
+Parameters
+focusableInTouchMode	If true, this view can receive the focus while in touch mode.
+See Also
+setFocusable(boolean)
