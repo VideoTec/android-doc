@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/2098558/listview-with-clickable-editable-widget/2098866#2098866
+
+You might want to take a look at this issue. 
+Having a focusable item in a row of a ListView causes the OnItemClickListener NOT to be invoked. 
+However, that does not mean you cannot have focusable/clickable items in a row, 
+there are some workarounds like this one.
+
+Also, you can take a look at the Call Logs screen. 
+It has a ListView with clickable item(the call icon on the right). See Source code here

@@ -1,0 +1,13 @@
+		headerLayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                android.widget.Toast.makeText(
+                        this, "test click picture", android.widget.Toast.LENGTH_SHORT);
+            }
+
+		});
+        
+The method makeText(Context, CharSequence, int) in the type Toast is not applicable for the arguments (new View.OnClickListener(){}, String, int)
+
+注意，问题出在，this 指针上。

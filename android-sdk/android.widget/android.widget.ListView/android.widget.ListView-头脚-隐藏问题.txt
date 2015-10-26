@@ -1,0 +1,12 @@
+http://blog.csdn.net/feng88724/article/details/7904807
+http://my.oschina.net/mugg/blog/157866
+
+在使用ListView的header和footer的过程中，如果需要动态的显示和隐藏header和footer的话，以前以为直接setVisibility中的View.GONE就可以。但是在实际使用中发现并不是这样的。直接设置GONE后，虽然元素是隐藏了，但是还是占用着那个区域。感觉就像View.INVISIBILE一样的效果了。后来在网上查找后发现。只要给footer再加上一个layout或者是父级的view就可以了
+在知道这个效果之前，都是用remove和add方法，比较郁闷。
+这样的方式感觉是很迂回的，而且还得加多一个boolean的变量来判断
+
+
+关于解决方法，有的人说设置Header中子View为不可见； 有的人说设置Header中子View高度为0；但是我这边测试下来，没有效果..  
+当前我的解决办法：
+item_head.setPadding(0, -1 * headContentHeight, 0, 0);
+		item_head.setVisibility(View.GONE);

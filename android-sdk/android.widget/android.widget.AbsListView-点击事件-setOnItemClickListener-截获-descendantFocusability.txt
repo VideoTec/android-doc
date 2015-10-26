@@ -1,0 +1,34 @@
+http://stackoverflow.com/questions/2098558/listview-with-clickable-editable-widget/2098866#2098866
+
+If any row item of list contains focusable or clickable view then OnItemClickListener won't work.
+
+row item must be having param like android:descendantFocusability="blocksDescendants"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical" >
+
+    // your other widgets here
+
+</LinearLayout>
+
+descendant[英][dɪˈsendənt] [美][dɪˈsɛndənt]
+n.后代；后裔；（由过去类似物发展来的）派生物；弟子
+adj.下降的；祖传的
+
+http://developer.android.com/intl/zh-cn/reference/android/view/ViewGroup.html#attr_android:descendantFocusability
+
+android:descendantFocusability
+
+Defines the relationship between the ViewGroup and its descendants when looking for a View to take focus.
+
+Must be one of the following constant values.
+
+Constant	Value	Description
+beforeDescendants	0	The ViewGroup will get focus before any of its descendants.
+afterDescendants	1	The ViewGroup will get focus only if none of its descendants want it.
+blocksDescendants	2	The ViewGroup will block its descendants from receiving focus.
+This corresponds to the global attribute resource symbol descendantFocusability.

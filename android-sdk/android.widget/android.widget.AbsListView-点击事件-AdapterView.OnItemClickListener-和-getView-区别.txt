@@ -1,0 +1,14 @@
+http://blog.iamzsx.me/show.html?id=147001
+
+如果这个ListView存在headerView或者footerView的话，
+那么会在我们传入的adapter外面在封装一层HeaderViewListAdapter，
+这是一个专门用来自动处理headerView和footerView的adapter。
+
+在ListView中，本身不区分headerView，footerView。
+ListView可以理解成是只负责管理一组View的数组的UI（ViewGroup），
+headerView和footerView都委托给HeaderViewListAdapter来处理。
+
+（从这里也可以看到为什么API文档中提到，
+addFooterView和addHeaderView要在setAdapter函数之前调用，
+如果在之后调用，
+那么就不会生成 HeaderViewListAdapter ，从而导致显示不出headerView和footerView）

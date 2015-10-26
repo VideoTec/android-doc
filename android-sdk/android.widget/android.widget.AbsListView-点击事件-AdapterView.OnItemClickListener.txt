@@ -1,0 +1,43 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AdapterView.OnItemClickListener.html
+
+abstract void	onItemClick(AdapterView<?> parent, View view, int position, long id)
+Callback method to be invoked when an item in this AdapterView has been clicked.
+
+Public Methods
+
+public abstract void onItemClick (AdapterView<?> parent, View view, int position, long id)
+
+Added in API level 1
+
+Callback method to be invoked when an item in this AdapterView has been clicked.
+
+Implementers can call getItemAtPosition(position) if they need to access the data associated with the selected item.
+
+Parameters
+parent	The AdapterView where the click happened.
+view	The view within the AdapterView that was clicked (this will be a view provided by the adapter)
+position	The position of the view in the adapter.
+id	The row id of the item that was clicked.
+
+-----------------------------------------
+position 和 id 参数的正确理解：
+-----------------------------------------
+http://blog.iamzsx.me/show.html?id=147001
+position事实上就是ListView中被点击的view的位置。
+注意，在ListView中是不负责处理headerView和footViewer的，
+所以，这个位置应该是这个被点击的view在数组
+[所有的headerView，用户添加的view，所有的footerView]中的位置
+
+而id是来自于adapter.getItemId(position)
+id=position-headerView的个数（id < headerviewer的个数+用户view的个数），
+否则=-1
+
+void onItemClick(AdapterViewparent, View view, int position, long id){
+    if(id<0) {
+        // 点击的是headerView或者footerView
+        return;
+    }
+    int realPosition=(int)id;
+    T item=getItem(realPosition);
+    // 响应代码
+}

@@ -1,0 +1,26 @@
+------------------------------------------------------------------------------------
+public static Toast makeText (Context context, int resId, int duration)
+------------------------------------------------------------------------------------
+
+Added in API level 1
+Make a standard toast that just contains a text view with the text from a resource.
+
+Parameters
+context	The context to use. Usually your Application or Activity object.
+resId	The resource id of the string resource to use. Can be formatted text.
+duration	How long to display the message. Either LENGTH_SHORT or LENGTH_LONG
+Throws
+if the resource can't be found.
+Resources.NotFoundException	
+
+------------------------------------------------------------------------------------
+public static Toast makeText (Context context, CharSequence text, int duration)
+------------------------------------------------------------------------------------
+
+Added in API level 1
+Make a standard toast that just contains a text view.
+
+Parameters
+context	The context to use. Usually your Application or Activity object.
+text	The text to show. Can be formatted text.
+duration	How long to display the message. Either LENGTH_SHORT or LENGTH_LONG

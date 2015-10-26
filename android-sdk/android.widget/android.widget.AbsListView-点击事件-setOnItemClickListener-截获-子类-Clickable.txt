@@ -1,0 +1,18 @@
+If any row item of list contains focusable or clickable view then OnItemClickListener won't work.
+
+理解什么是 clickable view
+
+    /**
+     * Register a callback to be invoked when this view is clicked. If this view is not
+     * clickable, it becomes clickable.
+     *
+     * @param l The callback that will run
+     *
+     * @see #setClickable(boolean)
+     */
+    public void setOnClickListener(OnClickListener l) {
+        if (!isClickable()) {
+            setClickable(true);
+        }
+        getListenerInfo().mOnClickListener = l;
+    }
