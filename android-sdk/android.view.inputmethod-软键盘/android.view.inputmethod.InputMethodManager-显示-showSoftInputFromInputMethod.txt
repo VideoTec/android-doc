@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html#showSoftInputFromInputMethod(android.os.IBinder, int)
+
+public void showSoftInputFromInputMethod (IBinder token, int flags)
+
+Added in API level 3
+Show the input method's soft input area, so the user sees the input method window and can interact with it. This can only be called from the currently active input method, as validated by the given token.
+
+Parameters
+token	
+Supplies the identifying token given to an input method when it was started,
+which allows it to perform this operation on itself.
+
+flags	
+Provides additional operating flags. 
+Currently may be 0 or have the SHOW_IMPLICIT or SHOW_FORCED bit set.

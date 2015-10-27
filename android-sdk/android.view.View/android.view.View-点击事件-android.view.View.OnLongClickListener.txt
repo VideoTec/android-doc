@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.OnLongClickListener.html
+
+public abstract boolean onLongClick (View v)
+
+Added in API level 1
+Called when a view has been clicked and held.
+
+Parameters
+v	The view that was clicked and held.
+
+consume[英][kənˈsju:m] [美][kənˈsu:m]
+vt.消耗，消费；耗尽，毁灭；吃光，喝光；烧毁
+
+Returns
+true if the callback consumed the long click, false otherwise.

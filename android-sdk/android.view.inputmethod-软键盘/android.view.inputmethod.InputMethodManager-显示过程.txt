@@ -1,0 +1,11 @@
+http://technicalsearch.iteye.com/blog/1967715
+
+软键盘的显示原理
+
+软键盘其实是一个Dialog。
+InputMethodService为我们的输入法创建了一个Dialog，
+并且对某些参数进行了设置，使之能够在底部或者全屏显示。
+
+当我们点击输入框时，
+系统会对当前的主窗口进行调整，
+以便留出相应的空间来显示该Dialog在底部，或者全屏

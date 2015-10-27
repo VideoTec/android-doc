@@ -1,0 +1,27 @@
+hideFlags
+Provides additional operating flags. 
+May be 0 or have the HIDE_IMPLICIT_ONLY, HIDE_NOT_ALWAYS bit set.
+
+http://stackoverflow.com/questions/32697376/difference-between-inputmethodmanager-show-forced-and-show-implicit-in-android
+
+SHOW_FORCED and SHOW_IMPLICIT work in tandem with the hiding methods HIDE_IMPLICIT_ONLY and HIDE_NOT_ALWAYS.
+
+Using SHOW_FORCED indicates that the user has explicitly requested that the keyboard be shown (such as by pressing an "open keyboard" button), and thus the system should force it to open. In this case, any existing request to hide the keyboard using the above flags will be ignored (thus the keyboard is "forced" open).
+
+Using SHOW_IMPLICIT means that your app thinks the user wants the keyboard open, but hasn't explicitly requested it. In this case, requests to hide the keyboard with HIDE_IMPLICIT_ONLY or HIDE_NOT_ALWAYS will still be respected.
+
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html#HIDE_IMPLICIT_ONLY
+
+public static final int HIDE_IMPLICIT_ONLY
+
+Added in API level 3
+Flag for hideSoftInputFromWindow(IBinder, int) to indicate that the soft input window should only be hidden if it was not explicitly shown by the user.
+
+Constant Value: 1 (0x00000001)
+
+public static final int HIDE_NOT_ALWAYS
+
+Added in API level 3
+Flag for hideSoftInputFromWindow(IBinder, int) to indicate that the soft input window should normally be hidden, unless it was originally shown with SHOW_FORCED.
+
+Constant Value: 2 (0x00000002)

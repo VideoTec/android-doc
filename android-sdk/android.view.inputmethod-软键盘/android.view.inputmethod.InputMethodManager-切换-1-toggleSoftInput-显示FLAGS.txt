@@ -1,0 +1,35 @@
+showFlags
+Provides additional operating flags. 
+May be 0 or have the SHOW_IMPLICIT, SHOW_FORCED bit set.
+
+http://stackoverflow.com/questions/32697376/difference-between-inputmethodmanager-show-forced-and-show-implicit-in-android
+
+tandem[英][ˈtændəm] [美][ˈtændəm]
+n.两匹[数匹]前后串联在马车上的马；双马串联马车；双人自行车；串联
+adv.一个跟着一个地；纵排地
+adj.（两匹马）前后纵列的；串联的
+
+explicitly[英][ɪk'splɪsɪtlɪ] [美][ɪk'splɪsɪtlɪ]
+adv.明白地，明确地
+
+SHOW_FORCED and SHOW_IMPLICIT work in tandem with【同…串联，同…合作】 the hiding methods HIDE_IMPLICIT_ONLY and HIDE_NOT_ALWAYS.
+
+Using SHOW_FORCED indicates that the user has explicitly requested that the keyboard be shown (such as by pressing an "open keyboard" button), and thus the system should force it to open. In this case, any existing request to hide the keyboard using the above flags will be ignored (thus the keyboard is "forced" open).
+
+Using SHOW_IMPLICIT means that your app thinks the user wants the keyboard open, but hasn't explicitly requested it. In this case, requests to hide the keyboard with HIDE_IMPLICIT_ONLY or HIDE_NOT_ALWAYS will still be respected.
+
+http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/InputMethodManager.html#HIDE_IMPLICIT_ONLY
+
+public static final int SHOW_FORCED
+
+Added in API level 3
+Flag for showSoftInput(View, int) to indicate that the user has forced the input method open (such as by long-pressing menu) so it should not be closed until they explicitly do so.
+
+Constant Value: 2 (0x00000002)
+
+public static final int SHOW_IMPLICIT
+
+Added in API level 3
+Flag for showSoftInput(View, int) to indicate that this is an implicit request to show the input window, not as the result of a direct request by the user. The window may not be shown in this case.
+
+Constant Value: 1 (0x00000001)

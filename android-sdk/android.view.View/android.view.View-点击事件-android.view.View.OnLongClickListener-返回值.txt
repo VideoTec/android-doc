@@ -1,0 +1,8 @@
+public abstract boolean onLongClick (View v)
+
+
+Returns
+true if the callback consumed the long click, false otherwise.
+
+返回true, 可以截获消息，使不产生 onClick 消息。
+返回false，当抬起手指后，还会产生 onClick 消息。

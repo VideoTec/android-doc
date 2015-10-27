@@ -5,12 +5,6 @@
 AAPT err(1899704683): C:\Users\wangxiang\AndroidStudioProjects\MyApplication\app\src\main\res\mipmap-xhdpi\progress_bar_green_start.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
 
 http://stackoverflow.com/questions/26446610/android-gradle-project-upgrading-build-tools-to-21-0-1-aapt-throws-exception
-http://pgqlife.info/2015/05/11/%E5%A4%84%E7%90%86libpng-warning-iCCP-Not-recognizing/
-解决三方法：
-1）降低 libpng
-2）用 imagemagick strip  .png 
-3）不提示warning
-
 原因是：
 
 This is caused by a faulty aapt. 
