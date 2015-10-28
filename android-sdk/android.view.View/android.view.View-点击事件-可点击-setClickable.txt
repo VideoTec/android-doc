@@ -1,0 +1,29 @@
+    /**
+     * Register a callback to be invoked when this view is clicked. If this view is not
+     * clickable, it becomes clickable.
+     *
+     * @param l The callback that will run
+     *
+     * @see #setClickable(boolean)
+     */
+    public void setOnClickListener(OnClickListener l) {
+        if (!isClickable()) {
+            setClickable(true);
+        }
+        getListenerInfo().mOnClickListener = l;
+    }
+    
+    /**
+     * Enables or disables click events for this view. When a view
+     * is clickable it will change its state to "pressed" on every click.
+     * Subclasses should set the view clickable to visually react to
+     * user's clicks.
+     *
+     * @param clickable true to make the view clickable, false otherwise
+     *
+     * @see #isClickable()
+     * @attr ref android.R.styleable#View_clickable
+     */
+    public void setClickable(boolean clickable) {
+        setFlags(clickable ? CLICKABLE : 0, CLICKABLE);
+    }

@@ -1,0 +1,8 @@
+https://support.lenovo.com/us/en/documents/ht072214
+
+Please note that the following only works for Android keyboard and not Lenovo IME keyboard.
+Go to settings
+Language and Input
+At keyboard settings tab then select configure input methods
+At Android keyboard, select Settings
+Uncheck Sound on keypress

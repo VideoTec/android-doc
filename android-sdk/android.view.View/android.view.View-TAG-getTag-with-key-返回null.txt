@@ -1,0 +1,20 @@
+viewHolder.mChatMsgText.setTag(R.id.chat_text_content, msg);
+
+这个可以正常获得。
+Object tag = viewHolder.mChatMsgText.getTag(R.id.chat_text_content);
+
+下面返回的就是null了。
+		viewHolder.mChatMsgText.setOnLongClickListener(new OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Object tag = v.getTag(R.id.chat_text_content);
+                if (tag instanceof TextMessage) {
+                    TextMessage textMsg = (TextMessage) tag;
+                    Toast.makeText(mActivity, textMsg.content.trim(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            }
+
+		});

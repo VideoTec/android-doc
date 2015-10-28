@@ -1,0 +1,20 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/PopupWindow.html#showAsDropDown(android.view.View, int, int, int)
+
+public void showAsDropDown (View anchor, int xoff, int yoff, int gravity)
+
+Added in API level 19
+
+Displays the content view in a popup window anchored to the corner of another view. The window is positioned according to the specified gravity and offset by the specified x and y coordinates.
+
+If there is not enough room on screen to show the popup in its entirety, this method tries to find a parent scroll view to scroll. If no parent view can be scrolled, the specified vertical gravity will be ignored and the popup will anchor itself such that it is visible.
+
+If the view later scrolls to move anchor to a different location, the popup will be moved correspondingly.
+
+Parameters
+anchor	the view on which to pin the popup window
+xoff	A horizontal offset from the anchor in pixels
+yoff	A vertical offset from the anchor in pixels
+gravity	Alignment of the popup relative to the anchor
+
+See Also
+dismiss()

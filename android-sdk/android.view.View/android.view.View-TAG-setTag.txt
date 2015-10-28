@@ -1,0 +1,13 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#setTag(int, java.lang.Object)
+
+public void setTag (Object tag)
+
+Added in API level 1
+Sets the tag associated with this view. A tag can be used to mark a view in its hierarchy and does not have to be unique within the hierarchy. Tags can also be used to store data within a view without resorting to another data structure.
+
+Parameters
+tag	an Object to tag the view with
+
+See Also
+getTag()
+setTag(int, Object)

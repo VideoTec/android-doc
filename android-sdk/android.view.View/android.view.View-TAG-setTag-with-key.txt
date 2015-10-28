@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#setTag(int, java.lang.Object)
+
+public void setTag (int key, Object tag)
+
+Added in API level 4
+Sets a tag associated with this view and a key. A tag can be used to mark a view in its hierarchy and does not have to be unique within the hierarchy. Tags can also be used to store data within a view without resorting to another data structure. The specified key should be an id declared in the resources of the application to ensure it is unique (see the ID resource type). Keys identified as belonging to the Android framework or not associated with any package will cause an IllegalArgumentException to be thrown.
+
+Parameters
+key	The key identifying the tag
+tag	An Object to tag the view with
+
+Throws
+IllegalArgumentException
+If they specified key is not valid
+
+See Also
+setTag(Object)
+getTag(int)

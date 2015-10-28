@@ -1,0 +1,8 @@
+http://blog.csdn.net/dxj007/article/details/8026691
+
+这篇文章主要介绍了popupWindow 在控件的各个方向上的显示（上、下、左、右），
+主要用到popupWindow 的showAtLocation(）方法：
+
+int[] location = new int[2];  
+v.getLocationOnScreen(location);
+popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0], location[1]-popupWindow.getHeight());

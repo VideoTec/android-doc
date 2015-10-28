@@ -1,0 +1,5 @@
+用代码动态创建 alert 对话框
+
+TextView showText = new TextView(mActivity);
+showText.setText("copy");
+(new AlertDialog.Builder(mActivity)).setView(showText).create().show();

@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/7197939/copy-text-from-android-alertdialog
+
+showText.setOnLongClickListener(new View.OnLongClickListener() {
+
+    @Override
+    public boolean onLongClick(View v) {
+        // Copy the Text to the clipboard
+        ClipboardManager manager = 
+            (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+        TextView showTextParam = (TextView) v;
+        manager.setText( showTextParam.getText() );
+        // Show a message:
+        Toast.makeText(v.getContext(), "Text in clipboard",
+                Toast.LENGTH_SHORT)
+        .show();
+        return true;
+    }
+});

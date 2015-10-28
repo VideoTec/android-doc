@@ -1,0 +1,4 @@
+private ChatRoomDialog mPortraitPopMenu;
+mPortraitPopMenu = new ChatRoomDialog(mContext);
+mPortraitPopMenu.setUserinfo(Long.valueOf(userid), name);
+mPortraitPopMenu.show();

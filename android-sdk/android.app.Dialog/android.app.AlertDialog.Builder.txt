@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/AlertDialog.Builder.html
+
+public static class
+AlertDialog.Builder
+
+extends Object
+
+java.lang.Object
+   ↳	android.app.AlertDialog.Builder

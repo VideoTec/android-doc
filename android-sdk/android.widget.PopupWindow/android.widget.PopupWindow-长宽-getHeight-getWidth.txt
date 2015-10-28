@@ -1,0 +1,53 @@
+public int getHeight ()
+public void setHeight (int height)
+
+public int getWidth ()
+public void setWidth (int width)
+
+http://developer.android.com/intl/zh-cn/reference/android/widget/PopupWindow.html#getHeight()
+
+public int getHeight ()
+
+Added in API level 1
+Returns the popup's height MeasureSpec.
+
+Returns
+the height MeasureSpec of the popup
+See Also
+setHeight(int)
+
+public void setHeight (int height)
+
+Added in API level 1
+Sets the popup's height MeasureSpec.
+
+If the popup is showing, calling this method will take effect the next time the popup is shown.
+
+Parameters
+height	the height MeasureSpec of the popup
+See Also
+getHeight()
+isShowing()
+
+public int getWidth ()
+
+Added in API level 1
+Returns the popup's width MeasureSpec.
+
+Returns
+the width MeasureSpec of the popup
+See Also
+setWidth(int)
+
+public void setWidth (int width)
+
+Added in API level 1
+Sets the popup's width MeasureSpec.
+
+If the popup is showing, calling this method will take effect the next time the popup is shown.
+
+Parameters
+width	the width MeasureSpec of the popup
+See Also
+getWidth()
+isShowing()

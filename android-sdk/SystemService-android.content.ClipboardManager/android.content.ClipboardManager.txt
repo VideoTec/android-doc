@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/ClipboardManager.html
+
+
+java.lang.Object
+   ↳	android.text.ClipboardManager
+ 	   ↳	android.content.ClipboardManager
+Class Overview
+Interface to the clipboard service, for placing and retrieving text in the global clipboard.
+
+You do not instantiate this class directly; instead, retrieve it through getSystemService(Class).
+
+The ClipboardManager API itself is very simple: it consists of methods to atomically get and set the current primary clipboard data. That data is expressed as a ClipData object, which defines the protocol for data exchange between applications.

@@ -1,0 +1,27 @@
+可重载的构造方法
+
+    /**
+     * Construct an AlertDialog that uses an explicit theme.  The actual style
+     * that an AlertDialog uses is a private implementation, however you can
+     * here supply either the name of an attribute in the theme from which
+     * to get the dialog's style (such as {@link android.R.attr#alertDialogTheme}
+     * or one of the constants {@link #THEME_TRADITIONAL},
+     * {@link #THEME_HOLO_DARK}, or {@link #THEME_HOLO_LIGHT}.
+     */
+    protected AlertDialog(Context context, int theme) {
+        this(context, theme, true);
+    }
+
+    AlertDialog(Context context, int theme, boolean createContextWrapper) {
+        super(context, resolveDialogTheme(context, theme), createContextWrapper);
+        mWindow.alwaysReadCloseOnTouchAttr();
+        mAlert = new AlertController(getContext(), this, getWindow());
+    }
+
+    protected AlertDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, resolveDialogTheme(context, 0));
+        mWindow.alwaysReadCloseOnTouchAttr();
+        setCancelable(cancelable);
+        setOnCancelListener(cancelListener);
+        mAlert = new AlertController(context, this, getWindow());
+    }

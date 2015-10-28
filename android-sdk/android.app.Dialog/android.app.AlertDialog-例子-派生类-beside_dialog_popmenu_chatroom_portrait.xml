@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/beside_find_item_single_bg_topandbottom"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- 查看资料 -->
+
+    <LinearLayout
+        android:id="@+id/beside_dialog_popupmenu_chatroom_menu_lookinfo_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/beside_dialog_popupmenu_chatroom_menu_lookinfo_id"
+            style="@style/BroadcastItemTopMenuStyle"
+            android:text="查看Ta的资料"
+            android:textColor="#222222" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/beside_friend_popmenu_divide" />
+    </LinearLayout>
+
+    <!-- 不欢迎TA -->
+
+    <LinearLayout
+        android:id="@+id/beside_dialog_popupmenu_chatroom_menu_unlike_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/beside_dialog_popupmenu_chatroom_menu_unlike_id"
+            style="@style/BroadcastItemTopMenuStyle"
+            android:text="不欢迎Ta"
+            android:textColor="#222222" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/beside_friend_popmenu_divide" />
+    </LinearLayout>
+
+    <!-- 取消 -->
+
+    <TextView
+        android:id="@+id/broadcast_detail_popmenu_cancle_id"
+        style="@style/BroadcastItemTopMenuStyle"
+        android:text="@string/popup_menu_cancel"
+        android:textColor="#222222" />
+
+</LinearLayout>

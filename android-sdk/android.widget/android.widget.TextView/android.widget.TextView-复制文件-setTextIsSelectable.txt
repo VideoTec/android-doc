@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/7197939/copy-text-from-android-alertdialog

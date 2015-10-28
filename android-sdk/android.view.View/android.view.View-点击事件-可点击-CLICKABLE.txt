@@ -1,0 +1,28 @@
+源码：
+    /**
+     * <p>Indicates this view can be clicked. When clickable, a View reacts
+     * to clicks by notifying the OnClickListener.<p>
+     * {@hide}
+     */
+    static final int CLICKABLE = 0x00004000;
+    
+    
+                 case com.android.internal.R.styleable.View_clickable:
+                    if (a.getBoolean(attr, false)) {
+                        viewFlagValues |= CLICKABLE;
+                        viewFlagMasks |= CLICKABLE;
+                    }
+                    break;
+                    
+                    
+String toString() 标明是否是可点击的
+out.append((mViewFlags&CLICKABLE) != 0 ? 'C' : '.');
+
+    @ViewDebug.ExportedProperty
+    public boolean isClickable() {
+        return (mViewFlags & CLICKABLE) == CLICKABLE;
+    }
+    
+    public void setClickable(boolean clickable) {
+        setFlags(clickable ? CLICKABLE : 0, CLICKABLE);
+    }

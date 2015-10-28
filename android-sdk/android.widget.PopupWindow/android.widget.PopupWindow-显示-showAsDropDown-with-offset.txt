@@ -1,0 +1,13 @@
+public void showAsDropDown (View anchor, int xoff, int yoff)
+
+Added in API level 1
+Display the content view in a popup window anchored to the bottom-left corner of the anchor view offset by the specified x and y coordinates. If there is not enough room on screen to show the popup in its entirety, this method tries to find a parent scroll view to scroll. If no parent scroll view can be scrolled, the bottom-left corner of the popup is pinned at the top left corner of the anchor view.
+
+If the view later scrolls to move anchor to a different location, the popup will be moved correspondingly.
+
+Parameters
+anchor	the view on which to pin the popup window
+xoff	A horizontal offset from the anchor in pixels
+yoff	A vertical offset from the anchor in pixels
+See Also
+dismiss()

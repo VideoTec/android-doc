@@ -1,0 +1,5 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html
+
+Tags
+
+Unlike IDs, tags are not used to identify views. Tags are essentially an extra piece of information that can be associated with a view. They are most often used as a convenience to store data related to views in the views themselves rather than by putting them in a separate structure

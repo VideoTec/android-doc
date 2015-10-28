@@ -1,0 +1,39 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/PopupWindow.html#showAtLocation(android.view.View, int, int, int)
+
+public void showAtLocation (View parent, int gravity, int x, int y)
+
+Added in API level 1
+Display the content view in a popup window at the specified location. If the popup window cannot fit on screen, it will be clipped. See WindowManager.LayoutParams for more information on how gravity and the x and y parameters are related. Specifying a gravity of NO_GRAVITY is similar to specifying Gravity.LEFT | Gravity.TOP.
+
+Parameters
+parent	a parent view to get the getWindowToken() token from
+
+gravity	the gravity which controls the placement of the popup window
+定义，x,y 值的原点在那里
+默认相对于窗口的左上角
+
+x	the popup's x location offset
+y	the popup's y location offset
+
+http://www.pocketdigi.com/20130218/987.html
+
+PopupWindow显示的方法有三个,
+showAsDropDown(anchor),
+showAsDropDown(anchor, xoff, yoff)和
+showAtLocation(parent, gravity, x, y)。
+
+前两个showAsDropDown方法是让PopupWindow相对于某个控件显示，
+而showAtLocation是相对于整个窗口的。
+
+第一个参数是View类型的parent,虽然这里参数名是parent，
+
+其实，不是把PopupWindow放到这个parent里，并不要求这个parent是一个ViewGroup，
+这个参数名让人误解。
+官方文档
+”a parent view to get the android.view.View.getWindowToken() 
+token from“,
+这个parent的作用应该是调用其getWindowToken()方法获取窗口的Token,所以，
+只要是该窗口上的控件就可以了。
+
+第二个参数是Gravity，可以使用|附加多个属性，如Gravity.LEFT|Gravity.BOTTOM。
+第三四个参数是x,y偏移。

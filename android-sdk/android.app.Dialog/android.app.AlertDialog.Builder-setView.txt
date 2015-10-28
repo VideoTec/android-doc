@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/AlertDialog.Builder.html#setView(android.view.View)
+
+public AlertDialog.Builder setView (View view)
+
+Added in API level 1
+Sets a custom view to be the contents of the alert dialog.
+
+When using a pre-Holo theme, if the supplied view is an instance of a ListView then the light background will be used.
+
+Note: To ensure consistent styling, the custom view should be inflated or constructed using the alert dialog's themed context obtained via getContext().
+
+Parameters
+view	the view to use as the contents of the alert dialog
+
+Returns
+this Builder object to allow for chaining of calls to set methods

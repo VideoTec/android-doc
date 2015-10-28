@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/PopupWindow.html#showAtLocation(android.view.View, int, int, int)
+
+public void showAsDropDown (View anchor)
+
+Added in API level 1
+Display the content view in a popup window anchored to the bottom-left corner of the anchor view. If there is not enough room on screen to show the popup in its entirety, this method tries to find a parent scroll view to scroll. If no parent scroll view can be scrolled, the bottom-left corner of the popup is pinned at the top left corner of the anchor view.
+
+Parameters
+anchor	the view on which to pin the popup window
+See Also
+dismiss()

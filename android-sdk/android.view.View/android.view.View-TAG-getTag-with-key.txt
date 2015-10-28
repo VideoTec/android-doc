@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#getTag(int)
+
+public Object getTag (int key)
+
+Added in API level 4
+Returns the tag associated with this view and the specified key.
+
+Parameters
+key	The key identifying the tag
+
+Returns
+the Object stored in this view as a tag, or null if not set
+
+See Also
+setTag(int, Object)
+getTag()

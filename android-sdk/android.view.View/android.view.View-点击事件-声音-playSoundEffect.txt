@@ -1,0 +1,13 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#playSoundEffect%28int%29
+
+public void playSoundEffect (int soundConstant)
+
+Added in API level 1
+Play a sound effect for this view.
+
+The framework will play sound effects for some built in actions, such as clicking, but you may wish to play these effects in your widget, for instance, for internal navigation.
+
+The sound effect will only be played if sound effects are enabled by the user, and isSoundEffectsEnabled() is true.
+
+Parameters
+soundConstant	One of the constants defined in SoundEffectConstants

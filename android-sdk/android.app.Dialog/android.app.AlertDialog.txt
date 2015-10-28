@@ -1,1 +1,19 @@
 http://developer.android.com/reference/android/app/AlertDialog.html
+
+AlertDialog
+extends Dialog
+implements DialogInterface
+java.lang.Object
+   ↳	android.app.Dialog
+ 	   ↳	android.app.AlertDialog
+       
+Known Direct Subclasses
+DatePickerDialog, ProgressDialog, TimePickerDialog
+
+Class Overview
+A subclass of Dialog that can display one, two or three buttons. If you only want to display a String in this dialog box, use the setMessage() method. If you want to display a more complex view, look up the FrameLayout called "custom" and add your view to it:
+
+ FrameLayout fl = (FrameLayout) findViewById(android.R.id.custom);
+ fl.addView(myView, new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+ 
+The AlertDialog class takes care of automatically setting WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM for you based on whether any views in the dialog return true from View.onCheckIsTextEditor(). Generally you want this set for a Dialog without text editors, so that it will be placed on top of the current input method UI. You can modify this behavior by forcing the flag to your desired mode after calling onCreate(Bundle).

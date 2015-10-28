@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/View.html#getLocationOnScreen(int[])
+
+public void getLocationOnScreen (int[] location)
+
+Added in API level 1
+Computes the coordinates of this view on the screen. The argument must be an array of two integers. After the method returns, the array contains the x and y location in that order.
+
+Parameters
+location	an array of two integers in which to hold the coordinates

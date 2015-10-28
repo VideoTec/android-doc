@@ -1,0 +1,6 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Dialog.html#setCancelable(boolean)
+
+public void setCancelable (boolean flag)
+
+Added in API level 1
+Sets whether this dialog is cancelable with the BACK key.
