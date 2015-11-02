@@ -1,0 +1,13 @@
+http://www.barryzhang.com/archives/413
+
+Android SDK Build-tools的19.1版本，但是下载的时候却死活下载不了
+
+SDK的列表是从一个xml中解析的： 
+https://dl-ssl.google.com/android/repository/repository-8.xml
+
+显示url是build-tools_r19.1-macosx.zip。再然后，通过尝试，
+发现完整的url是https://dl-ssl.google.com/android/repository/build-tools_r19.1-macosx.zip——直接访问，
+就下载到了这个 build-tools_r19.1-macosx.zip zip包了，
+然后丢到本地sdk的build-tools目录下
+
+build-tools_r19.1-macosx.zip 解压入到 android sdk 对应的目录里。文件夹改名为 19.1

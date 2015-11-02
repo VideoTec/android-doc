@@ -12,6 +12,10 @@ Then preview callback is invoked with the buffer.
 If a frame arrives and there is no buffer left, the frame is discarded. 
 Applications should add buffers back when they finish processing the data in them.
 
+android.graphics.ImageFormat.YV12
+android.graphics.ImageFormat.NV21
+android.graphics.ImageFormat.YUV_420_888
+
 For formats besides YV12, 
 the size of the buffer is determined by multiplying the preview image width, height, and bytes per pixel. 
 The width and height can be read from getPreviewSize(). 
