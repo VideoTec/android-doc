@@ -1,0 +1,34 @@
+----------------------
+文档
+----------------------
+
+dump
+The 'dump' sub-command of aapt is used to 
+display the values of individual elements or parts of a package.
+
+ aapt d[ump] [--values] [--include-meta-data] WHAT file.{apk} [asset [asset ...]]
+   strings          Print the contents of the resource table string pool in the APK.
+   badging          Print the label and icon for the app declared in APK.
+   permissions      Print the permissions from the APK.
+   resources        Print the resource table from the APK.
+   configurations   Print the configurations in the APK.
+   xmltree          Print the compiled xmls in the given assets.
+   xmlstrings       Print the strings of the given compiled xml assets.
+
+----------------------
+例子
+----------------------
+
+aapt dump badging SpareParts.apk
+aapt dump permissions SpareParts.apk
+aapt dump resources SpareParts.apk
+aapt dump configurations SpareParts.apk
+
+aapt dump xmltree SpareParts.apk res/layout/spare_parts.xml
+The xmltree option with the 'dump' command allows you to 
+print out the xml parse tree for an xml file contained within the package
+
+aapt dump xmltree SpareParts.apk AndroidManifest.xml
+You can use this to print out the xmltree for the AndroidManifest.xml file:
+
+aapt dump xmlstrings SpareParts.apk res/layout/spare_parts.xml

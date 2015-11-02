@@ -1,0 +1,7 @@
+private Drawable mBackground;
+
+mBackground = a.getDrawable(R.styleable.PopupWindow_popupBackground);
+
+if (mBackground instanceof StateListDrawable)
+    StateListDrawable background = (StateListDrawable) mBackground;
+    

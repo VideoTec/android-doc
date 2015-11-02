@@ -1,0 +1,10 @@
+http://android-developers.blogspot.de/2009/01/avoiding-memory-leaks.html
+
+In a regular Android application, 
+you usually have two kinds of Context, Activity and Application.
+ 
+There are two easy ways to avoid context-related memory leaks. 
+
+1）The most obvious one is to avoid escaping the context outside of its own scope. The example above showed the case of a static reference but inner classes and their implicit reference to the outer class can be equally dangerous. 
+
+2）The second solution is to use the Application context. This context will live as long as your application is alive and does not depend on the activities life cycle. If you plan on keeping long-lived objects that need a context, remember the application object. You can obtain it easily by calling Context.getApplicationContext() or Activity.getApplication().

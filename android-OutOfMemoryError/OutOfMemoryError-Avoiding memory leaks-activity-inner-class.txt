@@ -1,0 +1,13 @@
+http://android-developers.blogspot.de/2009/01/avoiding-memory-leaks.html
+
+Avoid non-static inner classes in an activity 
+if you don't control their life cycle, 
+use a static inner class and make a weak reference to the activity inside. 
+
+The solution to this issue is to use 
+a static inner class with a WeakReference to the outer class, 
+as done in ViewRoot and its W inner class for instance
+
+非静态内部类，隐含的外部类引用
+The example above showed the case of a static reference 
+but inner classes and their implicit reference to the outer class can be equally dangerous.

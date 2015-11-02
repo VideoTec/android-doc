@@ -1,0 +1,4 @@
+https://github.com/makovkastar/FloatingActionButton
+
+Android floating action button which reacts on scrolling events. 
+Becomes visible when an attached target is scrolled up and invisible when scrolled down.

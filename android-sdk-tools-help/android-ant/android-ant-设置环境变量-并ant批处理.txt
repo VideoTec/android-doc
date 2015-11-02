@@ -1,0 +1,17 @@
+@ECHO off
+SET PATH=%PATH%;E:\tools\apache-ant-1.9.4\bin
+call ant -f ./beside/build/build.xml a_onlinejar_new
+pause
+
+-------------------------
+问题：
+-------------------------
+Buildfile: D:\work\beside\build\build.xml
+  [taskdef] Could not load definitions from resource anttasks.properties. It cou
+ld not be found.
+  [taskdef] Could not load definitions from resource emma_ant.properties. It cou
+ld not be found.
+
+E:\doc\android\android-sdk-tools-help\android-ant\android-ant-error-could-not load-definitionsfrom-tasks.properties.txt
+原因是 
+sdk.dir=D:\\Program Files\\Android-sdk-windows

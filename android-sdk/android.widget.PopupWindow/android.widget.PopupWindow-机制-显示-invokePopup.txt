@@ -1,0 +1,18 @@
+显示弹出窗口方法：
+
+    /**
+     * <p>Invoke the popup window by adding the content view to the window
+     * manager.</p>
+     *
+     * <p>The content view must be non-null when this method is invoked.</p>
+     *
+     * @param p the layout parameters of the popup's content view
+     */
+    private void invokePopup(WindowManager.LayoutParams p) {
+        if (mContext != null) {
+            p.packageName = mContext.getPackageName();
+        }
+        mPopupView.setFitsSystemWindows(mLayoutInsetDecor);
+        setLayoutDirectionFromAnchor();
+        mWindowManager.addView(mPopupView, p);
+    }

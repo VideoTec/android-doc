@@ -1,0 +1,8 @@
+crunch[英][krʌntʃ] [美][krʌntʃ]
+vt.嘎吱嘎吱地咬嚼；嘎吱嘎吱地压，碾，跺；[俚]运行，处理
+运行环境支持Win9x/Me/NT/2000/XP/2003软件介绍Crunch 
+可以将您的.EXE、OCX、DLL 文件的大小缩减 30%.
+它可以对生成的二进制代码进行压缩,还可以在 16 进制编辑器中隐藏真实的程序
+
+ aapt s[ingleCrunch] [-v] -i input-file -o outputfile
+   Do PNG preprocessing on a single file.

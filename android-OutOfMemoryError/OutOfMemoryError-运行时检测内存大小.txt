@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/16620843/out-of-memory-error-android
+
+To query the available memory size at runtime, 
+use the methods getMemoryClass() or getLargeMemoryClass().

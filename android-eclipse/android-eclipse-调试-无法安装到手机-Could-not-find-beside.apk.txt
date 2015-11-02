@@ -1,0 +1,5 @@
+原因是：
+
+project.properties 里设置输出 android 库
+
+android.library=true

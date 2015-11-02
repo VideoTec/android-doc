@@ -1,0 +1,11 @@
+elevation[英][ˌelɪˈveɪʃn] [美][ˌɛləˈveʃən]
+n.
+高处，高地，高度，海拔，（枪炮的）仰角，射角；
+升级，上进，向上；高尚；[建]正视图，立视图
+
+    public void setElevation(float elevation) {
+        mElevation = elevation;
+    }
+    public float getElevation() {
+        return mElevation;
+    }

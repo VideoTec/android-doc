@@ -5,6 +5,7 @@ Buildfile: D:\work\beside\build\build.xml
 原因是， sdk.dir 没有设置或者设置的路径不正确
 
 有两个地方设置这个值：
+只有一个文件起作用，在这里是 ant.properties
 
 1）eclipse-project/local.properties
 sdk.dir=D:\\Program Files\\Android-sdk-windows
@@ -17,3 +18,13 @@ sdk.dir=D:/Android-SDK/Android-sdk
 
 其它示例：
 <property name="java.encoding" value="UTF-8" />
+
+参考：
+http://stackoverflow.com/questions/17074286/failed-to-create-task-or-type-checkenv-cause-the-name-is-undefined
+
+------------------------
+18:09 2015/10/30
+------------------------
+1）写成了 \ 不正确
+sdk.dir=E:\android-sdk-windows
+2）多个文件有这个值，只有一个地方起作用

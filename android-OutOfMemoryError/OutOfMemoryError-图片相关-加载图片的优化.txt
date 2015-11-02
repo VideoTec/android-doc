@@ -1,0 +1,20 @@
+http://developer.android.com/intl/zh-cn/training/displaying-bitmaps/load-bitmap.html
+
+1）Load a Scaled Down Version into Memory
+
+To tell the decoder to subsample the image, loading a smaller version into memory, set inSampleSize to true in your BitmapFactory.Options object. For example, an image with resolution 2048x1536 that is decoded with an inSampleSize of 4 produces a bitmap of approximately 512x384. Loading this into memory uses 0.75MB rather than 12MB for the full image (assuming a bitmap configuration of ARGB_8888)
+
+2）Read Bitmap Dimensions and Type
+dimension[英][daɪˈmenʃn] [美][dɪˈmɛnʃən, daɪ-]
+n.尺寸；[复]面积，范围；[物]量纲；[数]次元，度，维
+
+To avoid java.lang.OutOfMemory exceptions, 
+check the dimensions of a bitmap before decoding it, 
+unless you absolutely trust the source to 
+provide you with predictably sized image data 
+that comfortably fits within the available memory
+
+Setting the inJustDecodeBounds property to true 
+while decoding avoids memory allocation, 
+returning null for the bitmap object 
+but setting outWidth, outHeight and outMimeType

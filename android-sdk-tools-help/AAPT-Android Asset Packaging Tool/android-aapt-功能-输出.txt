@@ -1,0 +1,5 @@
+http://elinux.org/Android_aapt
+
+1）compile resources into binary assets
+2）view, create, and update Zip-compatible archives (zip, jar, apk)
+3）

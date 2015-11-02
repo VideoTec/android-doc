@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/16804093/android-studio-rename-package
+
+refactor
+重构
+
+Individually select each directory you want to rename, and:
+
+Right-click it
+Select Refactor
+Click on Rename
+In the Pop-up dialog, click on Rename Package instead of Rename Directory
+Enter the new name and hit Refactor
+Allow a minute to let Android Studio update all changes
+Note: When renaming com in Android Studio, it might give a warning. In such case, select Rename All

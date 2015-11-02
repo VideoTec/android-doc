@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/18977407/how-to-change-a-package-name-in-eclipse
+
+First you need to create package:
+
+com.myCompany.executabe (src > right click > new > package).
+
+Follow these steps to move the Java files to your new package.
+
+Select the Java files
+Right click
+Refactor
+Move
+Select your preferred package

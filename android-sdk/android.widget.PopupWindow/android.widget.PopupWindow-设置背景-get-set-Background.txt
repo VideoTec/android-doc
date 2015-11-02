@@ -1,0 +1,23 @@
+
+    /**
+     * Return the drawable used as the popup window's background.
+     *
+     * @return the background drawable or {@code null} if not set
+     * @see #setBackgroundDrawable(Drawable)
+     * @attr ref android.R.styleable#PopupWindow_popupBackground
+     */
+    public Drawable getBackground() {
+        return mBackground;
+    }
+
+    /**
+     * Specifies the background drawable for this popup window. The background
+     * can be set to {@code null}.
+     *
+     * @param background the popup's background
+     * @see #getBackground()
+     * @attr ref android.R.styleable#PopupWindow_popupBackground
+     */
+    public void setBackgroundDrawable(Drawable background) {
+        mBackground = background;
+    }

@@ -1,0 +1,6 @@
+/** 表情转义符 */
+private final String[] defaultCodeArray, classicCodeArray;
+    
+classicCodeArray = 
+    mContext.getResources().
+        getStringArray(R.array.beside_classic_fetionexpression_code_array);

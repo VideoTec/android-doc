@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/WindowManager.LayoutParams.html
+
+WindowManager.LayoutParams
+
+extends ViewGroup.LayoutParams
+
+implements Parcelable
+
+java.lang.Object
+   ↳	android.view.ViewGroup.LayoutParams
+ 	   ↳	android.view.WindowManager.LayoutParams

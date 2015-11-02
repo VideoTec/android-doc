@@ -1,0 +1,5 @@
+http://blog.csdn.net/liranke/article/details/5616647
+
+D:\work\beside>aapt v
+Android Asset Packaging Tool, v0.2-2166767
+

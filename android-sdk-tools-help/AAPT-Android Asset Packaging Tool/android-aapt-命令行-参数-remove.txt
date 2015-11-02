@@ -1,0 +1,2 @@
+ aapt r[emove] [-v] file.{zip,jar,apk} file1 [file2 ...]
+   Delete specified files from Zip-compatible archive.

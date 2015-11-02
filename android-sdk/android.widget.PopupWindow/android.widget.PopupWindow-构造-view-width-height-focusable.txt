@@ -1,0 +1,37 @@
+
+    /**
+     * <p>Create a new popup window which can display the <tt>contentView</tt>.
+     * The dimension of the window must be passed to this constructor.</p>
+     *
+     * <p>The popup does not provide any background. This should be handled
+     * by the content view.</p>
+     *
+     * @param contentView the popup's content
+     * @param width the popup's width
+     * @param height the popup's height
+     * @param focusable true if the popup can be focused, false otherwise
+     */
+    public PopupWindow(View contentView, int width, int height, boolean focusable) {
+        if (contentView != null) {
+            mContext = contentView.getContext();
+            mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        }
+        setContentView(contentView);
+        setWidth(width);
+        setHeight(height);
+        setFocusable(focusable);
+    }
+    
+    重载的构造
+    public PopupWindow() {
+        this(null, 0, 0);
+    }
+    public PopupWindow(View contentView) {
+        this(contentView, 0, 0);
+    }
+    public PopupWindow(int width, int height) {
+        this(null, width, height);
+    }
+    public PopupWindow(View contentView, int width, int height) {
+        this(contentView, width, height, false);
+    }

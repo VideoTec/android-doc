@@ -1,0 +1,2 @@
+ aapt a[dd] [-v] file.{zip,jar,apk} file1 [file2 ...]
+   Add specified files to Zip-compatible archive.

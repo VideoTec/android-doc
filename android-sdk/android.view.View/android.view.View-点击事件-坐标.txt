@@ -1,0 +1,29 @@
+http://stackoverflow.com/questions/1967039/onclicklistener-x-y-location-of-event
+
+Thank you. That was exactly what I was looking for. My code now is:
+
+imageView.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN){
+                textView.setText("Touch coordinates : " +
+                        String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+            }
+            return true;
+        }
+    });
+which does precisely what Mark asked for...
+
+http://stackoverflow.com/questions/8973148/how-to-get-click-position-in-onclicklistener
+
+Use an onTouchListener with ACTION_DOWN flag
+
+view.setOnTouchListener(new View.OnTouchListener() {
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN){
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+            }
+            return true;
+        }
+    });

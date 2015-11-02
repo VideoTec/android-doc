@@ -1,0 +1,4 @@
+E:\android-sdk-windows\build-tools\23.0.0\aapt.exe
+
+http://developer.android.com/guide/developing/tools/aapt.html（打不开）
+http://elinux.org/Android_aapt

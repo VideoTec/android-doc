@@ -1,0 +1,12 @@
+http://www.bubuko.com/infodetail-274190.html
+
+因为Android开发基本上是以java语言为基础，
+那么程序是在java虚拟机上运行的。
+而虚拟机不允许单个程序中的Bitmap占用超过8M的内存，
+从报错的日志可以看出：7458832-byte大约就是7M多的样子
+
+http://stackoverflow.com/questions/16620843/out-of-memory-error-android
+
+Recycle bitmaps when not in use. After honeycomb bitmaps stay on heap.
+
+ bitmaps.recycle();

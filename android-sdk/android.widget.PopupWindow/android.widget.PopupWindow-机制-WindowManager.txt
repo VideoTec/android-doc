@@ -1,0 +1,8 @@
+管理弹出窗口的成员
+private WindowManager mWindowManager;
+
+mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+
+mWindowManager.addView(mPopupView, p);
+mWindowManager.removeViewImmediate(mPopupView);
+mWindowManager.updateViewLayout(mPopupView, p);

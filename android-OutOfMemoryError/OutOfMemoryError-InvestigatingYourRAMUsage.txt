@@ -1,0 +1,21 @@
+investigate[英][ɪnˈvestɪgeɪt] [美][ɪnˈvɛstɪˌɡet]
+vt.调查；审查；研究
+
+trigger[英][ˈtrɪgə(r)] [美][ˈtrɪɡɚ]
+vt.引发，触发；扣…的扳机；发射或使爆炸（武器或爆炸性弹药）
+
+interpreting[英][ɪn'tɜ:prɪtɪŋ] [美][ɪn'tɜ:prɪtɪŋ]
+v.解释( interpret的现在分词 )；理解；把…理解为；演绎（按自己的感觉演奏音乐或表现角色）
+
+Because Android is designed for mobile devices, you should always be careful about how much random-access memory (RAM) your app uses. Although Dalvik and ART perform routine garbage collection (GC), this doesn’t mean you can ignore when and where your app allocates and releases memory. In order to provide a stable user experience that allows the system to quickly switch between apps, it is important that your app does not needlessly consume memory when the user is not interacting with it.
+
+http://developer.android.com/intl/zh-cn/tools/debugging/debugging-memory.html#TriggerLeaks
+
+目录：
+
+Interpreting Log Messages
+Viewing Heap Updates
+Tracking Allocations
+Viewing Overall Memory Allocations
+Capturing a Heap Dump
+Triggering Memory Leaks

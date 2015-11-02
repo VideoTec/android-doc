@@ -1,0 +1,19 @@
+----------------------
+文档
+----------------------
+aapt l[ist] [-v] [-a] file.{zip,jar,apk}
+   List contents of Zip-compatible archive.
+
+----------------------
+例子
+----------------------
+aapt list SpareParts.apk 
+
+aapt list -v SpareParts.apk
+
+aapt list -a SpareParts.apk
+shows all the resources and also parses out the xmltree from the AndroidManifest.xml file
+This is similar to doing the following three commands in sequence: 
+aapt list <pkg> ; 
+aapt dump resources <pkg> ; 
+aapt dump xmltree <pkg> AndroidManifest.xml

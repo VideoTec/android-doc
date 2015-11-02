@@ -1,0 +1,29 @@
+关闭，弹出窗口方法：
+
+    /**
+     * <p>Dispose of the popup window. This method can be invoked only after
+     * {@link #showAsDropDown(android.view.View)} has been executed. Failing that, calling
+     * this method will have no effect.</p>
+     *
+     * @see #showAsDropDown(android.view.View) 
+     */
+    public void dismiss() {
+        if (isShowing() && mPopupView != null) {
+            mIsShowing = false;
+
+            unregisterForScrollChanged();
+
+            try {
+                mWindowManager.removeViewImmediate(mPopupView);
+            } finally {
+                if (mPopupView != mContentView && mPopupView instanceof ViewGroup) {
+                    ((ViewGroup) mPopupView).removeView(mContentView);
+                }
+                mPopupView = null;
+
+                if (mOnDismissListener != null) {
+                    mOnDismissListener.onDismiss();
+                }
+            }
+        }
+    }

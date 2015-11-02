@@ -1,0 +1,12 @@
+    public static final class array {
+        /**  符号表情 
+         */
+        public static final int beside_char_smiley_resid_array=0x7f060003;
+        /**  经典表情关键帧对应数据 
+         */
+        public static final int beside_classic_fetionexpression_array=0x7f060009;
+        public static final int beside_classic_fetionexpression_code_array=0x7f060007;
+        /**  经典表情关键帧对应数据 
+         */
+        public static final int beside_classic_fetionexpression_frame_array=0x7f060008;
+        /**  PC动态表情 
