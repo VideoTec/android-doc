@@ -2,4 +2,9 @@ public void finish ()
 
 Added in API level 1
 
-Call this when your activity is done and should be closed. The ActivityResult is propagated back to whoever launched you via onActivityResult().
+propagate[英][ˈprɒpəgeɪt] [美][ˈprɑ:pəgeɪt]
+vt.繁衍，增殖；使遗传；扩散；使蔓延
+vi.繁殖；扩大；[物] 通过媒介传送
+
+Call this when your activity is done and should be closed. 
+The ActivityResult is propagated back to whoever launched you via onActivityResult().

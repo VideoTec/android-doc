@@ -1,0 +1,23 @@
+http://developer.android.com/reference/android/app/Dialog.html#onCreate(android.os.Bundle)
+
+protected void onCreate (Bundle savedInstanceState)
+
+Added in API level 1
+Similar to onCreate(Bundle), 
+you should initialize your dialog in this method, 
+including calling setContentView(View).
+
+Parameters
+savedInstanceState
+If this dialog is being reinitalized after a the hosting activity was previously shut down, 
+holds the result from the most recent call to onSaveInstanceState(), 
+or null if this is the first time.
+
+参考 文档
+public void create ()
+
+Added in API level 21
+Forces immediate creation of the dialog.
+
+Note that you should not override this method to perform dialog creation. 
+Rather, override onCreate(Bundle).

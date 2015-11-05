@@ -1,0 +1,56 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Dialog.html#dismiss()
+
+public void dismiss ()
+
+Added in API level 1
+Dismiss this dialog, removing it from the screen. 
+This method can be invoked safely from any thread. 
+Note that you should not override this method to do cleanup when the dialog is dismissed, 
+instead implement that in onStop().
+
+    /**
+     * Dismiss this dialog, removing it from the screen. This method can be
+     * invoked safely from any thread.  Note that you should not override this
+     * method to do cleanup when the dialog is dismissed, instead implement
+     * that in {@link #onStop}.
+     */
+    public void dismiss() {
+        if (Looper.myLooper() == mHandler.getLooper()) {
+            dismissDialog();
+        } else {
+            mHandler.post(mDismissAction);
+        }
+    }
+    
+
+    void dismissDialog() {
+        if (mDecor == null || !mShowing) {
+            return;
+        }
+
+        if (mWindow.isDestroyed()) {
+            Log.e(TAG, "Tried to dismissDialog() but the Dialog's window was already destroyed!");
+            return;
+        }
+
+        try {
+            mWindowManager.removeView(mDecor);
+        } finally {
+            if (mActionMode != null) {
+                mActionMode.finish();
+            }
+            mDecor = null;
+            mWindow.closeAllPanels();
+            onStop();
+            mShowing = false;
+            
+            sendDismissMessage();
+        }
+    }
+
+    private void sendDismissMessage() {
+        if (mDismissMessage != null) {
+            // Obtain a new message so this dialog can be re-used
+            Message.obtain(mDismissMessage).sendToTarget();
+        }
+    }

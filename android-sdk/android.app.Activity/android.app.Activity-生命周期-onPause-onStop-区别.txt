@@ -1,3 +1,10 @@
+http://blog.csdn.net/joeylittlefat/article/details/6794228
+那么有人会说了，那onPause有什么存在的意义呢？完全可以被onStop代替嘛。。
+这里举几个反例说明吧：
+1. 一个透明的包含Dialog的Activity 出现
+2. 按poweroff锁屏
+这两种情况下 都只会触发onPause而不会触发onStop
+
 http://stackoverflow.com/questions/9266417/difference-between-onpause-and-onstop
 
 From android doc here http://developer.android.com/reference/android/app/Activity.html, 
@@ -12,7 +19,7 @@ Can you please tell me what is the difference between them?
 
 No, if some activity comes into foreground, 
 that doesn't necessarily mean that the other activity is completely invisible. 
-（类似模态对话框的情况）
+（类似模态对话框的情况，指另一个Activity中得dialog）
 1）Floating
 2）translucent[英][trænsˈlu:snt] [美][trænsˈlusənt, trænz-]
 adj.半透明的；透亮的，有光泽的

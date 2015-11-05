@@ -1,0 +1,11 @@
+protected void onStart ()
+
+Added in API level 1
+Called when the dialog is starting.
+
+调用 show 后，触发的事件。
+
+E:\doc\android\android-sdk\android.app.Dialog\android.app.Dialog-显示-show.txt
+Dialog.show 文档：
+Note that you should not override this method to do initialization when the dialog is shown, 
+instead implement that in onStart().

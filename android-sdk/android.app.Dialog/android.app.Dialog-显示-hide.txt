@@ -1,0 +1,8 @@
+    /**
+     * Hide the dialog, but do not dismiss it.
+     */
+    public void hide() {
+        if (mDecor != null) {
+            mDecor.setVisibility(View.GONE);
+        }
+    }

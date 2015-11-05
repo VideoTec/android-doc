@@ -1,0 +1,9 @@
+float 转成 int
+
+
+-------------------------------------------------
+public final float getRawX ()
+-------------------------------------------------
+
+Added in API level 1
+Returns the original raw X coordinate of this event. For touch events on the screen, this is the original location of the event on the screen, before it had been adjusted for the containing window and views.

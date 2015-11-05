@@ -1,0 +1,9 @@
+http://blog.csdn.net/joeylittlefat/article/details/6794228
+
+dialog不能独立存在，必须附属于一个activity
+dialog只是activity中得一个元素而已
+
+类似Activity中的其他元素，
+比如说按钮啊，各种view一样，
+只不过这个特殊的view（指dialog）在出现的时候
+其他元素将不能触碰到，而且颜色略暗而已
