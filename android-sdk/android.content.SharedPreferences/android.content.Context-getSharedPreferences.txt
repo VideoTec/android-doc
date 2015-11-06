@@ -1,3 +1,5 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#getSharedPreferences(java.lang.String, int)
+
 public abstract SharedPreferences getSharedPreferences (String name, int mode)
 
 Added in API level 1
