@@ -1,0 +1,42 @@
+    private static final class ListenersHandler extends Handler {
+        private WeakReference<DialogInterface> mDialog;
+
+        public ListenersHandler(Dialog dialog) {
+            mDialog = new WeakReference<DialogInterface>(dialog);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case DISMISS:
+                    ((OnDismissListener) msg.obj).onDismiss(mDialog.get());
+                    break;
+                case CANCEL:
+                    ((OnCancelListener) msg.obj).onCancel(mDialog.get());
+                    break;
+                case SHOW:
+                    ((OnShowListener) msg.obj).onShow(mDialog.get());
+                    break;
+            }
+        }
+    }
+    
+    private Handler mListenersHandler;
+    
+    Dialog(Context context, int theme, boolean createContextWrapper) {
+        if (theme == 0) {
+            TypedValue outValue = new TypedValue();
+            context.getTheme().resolveAttribute(com.android.internal.R.attr.dialogTheme,
+                    outValue, true);
+            theme = outValue.resourceId;
+        }
+
+        mContext = createContextWrapper ? new ContextThemeWrapper(context, theme) : context;
+        mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        Window w = PolicyManager.makeNewWindow(mContext);
+        mWindow = w;
+        w.setCallback(this);
+        w.setWindowManager(mWindowManager, null, null);
+        w.setGravity(Gravity.CENTER);
+        mListenersHandler = new ListenersHandler(this);
+    }

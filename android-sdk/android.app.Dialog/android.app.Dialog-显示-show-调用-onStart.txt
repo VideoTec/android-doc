@@ -1,0 +1,9 @@
+http://developer.android.com/reference/android/app/Dialog.html#show()
+
+public void show ()
+
+Added in API level 1
+Start the dialog and display it on screen. 
+The window is placed in the application layer and opaque. 
+Note that you should not override this method to do initialization when the dialog is shown, 
+instead implement that in onStart().

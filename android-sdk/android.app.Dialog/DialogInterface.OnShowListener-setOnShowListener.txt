@@ -1,0 +1,97 @@
+http://developer.android.com/reference/android/app/Dialog.html#setOnShowListener(android.content.DialogInterface.OnShowListener)
+
+public void setOnShowListener (DialogInterface.OnShowListener listener)
+
+Added in API level 8
+Sets a listener to be invoked when the dialog is shown.
+
+Parameters
+listener	The DialogInterface.OnShowListener to use.
+
+http://developer.android.com/reference/android/content/DialogInterface.OnShowListener.html
+
+android.content.DialogInterface.OnShowListener
+
+Class Overview
+Interface used to allow the creator of a dialog to run some code when the dialog is shown.
+
+public abstract void onShow (DialogInterface dialog)
+
+Added in API level 8
+This method will be invoked when the dialog is shown.
+
+Parameters
+dialog	The dialog that was shown will be passed into the method.
+
+源码：
+    private Message mShowMessage;
+
+    private void sendShowMessage() {
+        if (mShowMessage != null) {
+            // Obtain a new message so this dialog can be re-used
+            Message.obtain(mShowMessage).sendToTarget();
+        }
+    }
+
+    /**
+     * Sets a listener to be invoked when the dialog is shown.
+     * @param listener The {@link DialogInterface.OnShowListener} to use.
+     */
+    public void setOnShowListener(OnShowListener listener) {
+        if (listener != null) {
+            mShowMessage = mListenersHandler.obtainMessage(SHOW, listener);
+        } else {
+            mShowMessage = null;
+        }
+    }
+    
+    在 show 时调用 mShowMessage 的事件。
+    
+    /**
+     * Start the dialog and display it on screen.  The window is placed in the
+     * application layer and opaque.  Note that you should not override this
+     * method to do initialization when the dialog is shown, instead implement
+     * that in {@link #onStart}.
+     */
+    public void show() {
+        if (mShowing) {
+            if (mDecor != null) {
+                if (mWindow.hasFeature(Window.FEATURE_ACTION_BAR)) {
+                    mWindow.invalidatePanelMenu(Window.FEATURE_ACTION_BAR);
+                }
+                mDecor.setVisibility(View.VISIBLE);
+            }
+            return;
+        }
+
+        mCanceled = false;
+        
+        if (!mCreated) {
+            dispatchOnCreate(null);
+        }
+
+        onStart();
+        mDecor = mWindow.getDecorView();
+
+        if (mActionBar == null && mWindow.hasFeature(Window.FEATURE_ACTION_BAR)) {
+            mActionBar = new ActionBarImpl(this);
+        }
+
+        WindowManager.LayoutParams l = mWindow.getAttributes();
+        if ((l.softInputMode
+                & WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION) == 0) {
+            WindowManager.LayoutParams nl = new WindowManager.LayoutParams();
+            nl.copyFrom(l);
+            nl.softInputMode |=
+                    WindowManager.LayoutParams.SOFT_INPUT_IS_FORWARD_NAVIGATION;
+            l = nl;
+        }
+
+        try {
+            mWindowManager.addView(mDecor, l);
+            mShowing = true;
+    
+            sendShowMessage();
+        } finally {
+        }
+    }

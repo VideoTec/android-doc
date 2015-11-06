@@ -1,0 +1,18 @@
+http://blog.csdn.net/joeylittlefat/article/details/6794228
+
+按照sdk doc中的说明：
+1. onPause: Called when the system is about to start resuming another activity. 
+2. onPause() is called when the device goes to sleep or when a dialog appears. 
+注意：文档中说明的dialog的出现会触发 onPause ，这当然指的也是另一个Activity中得dialog
+
+没找到对应的SDK描述，可能是老版本的吧。
+
+对话框显示时，不会触发所在ACT的 onPause
+1）A dialog is always created and displayed as a part of an Activity
+并且
+2）只有Activity之间的转换才会调用生命周期函数
+activity中得一个元素而已，
+Activity内部的组件类似于显示隐藏的操作当然也就不会触发生命周期函数了
+
+因此：
+他的出现当然不会触发Activity的生命周期函数

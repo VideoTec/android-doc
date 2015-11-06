@@ -1,1 +1,1 @@
-http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#getExternalFilesDir(java.lang.String)
+http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#getExternalFilesDir(java.lang.String)举例：String loginFile = getExternalCacheDir() + "beside-chatroom-login-ok";/storage/emulated/0/Android/data/cn.com.fetion/cachebeside-chatroom-login-okgetExternalCacheDir 不带最后的 /注意：File f = new File(getExternalCacheDir(), "beside-chatroom-login-ok");

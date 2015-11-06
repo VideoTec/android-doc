@@ -1,0 +1,7 @@
+public void create ()
+
+Added in API level 21
+Forces immediate creation of the dialog.
+
+Note that you should not override this method to perform dialog creation. 
+Rather, override onCreate(Bundle).
