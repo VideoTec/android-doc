@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/ResourceCursorAdapter.html
+
+java.lang.Object
+   ↳	android.widget.BaseAdapter
+ 	   ↳	android.widget.CursorAdapter
+ 	 	   ↳	android.widget.ResourceCursorAdapter
+		   
+An easy adapter that creates views defined in an XML file. 
+You can specify the XML file that defines the appearance of the views.

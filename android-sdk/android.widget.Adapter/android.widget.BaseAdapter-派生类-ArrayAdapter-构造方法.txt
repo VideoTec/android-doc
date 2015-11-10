@@ -1,0 +1,22 @@
+ArrayAdapter(Context context, int resource)
+ArrayAdapter(Context context, int resource, int textViewResourceId)
+ArrayAdapter(Context context, int resource, T[] objects)
+ArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects)
+ArrayAdapter(Context context, int resource, List<T> objects)
+ArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects)
+
+resource	The resource ID for a layout file containing a TextView to use when instantiating views.
+textViewResourceId	The id of the TextView within the layout resource to be populated
+
+---------------------------
+例子：
+---------------------------
+        List<String> colorList =
+                mCamInfos.cam(ACamInfs.CType.BACK)
+                        .getCamParam().getSupportedColorEffects();
+        ArrayAdapter<String> arrayAdapter =
+                new ArrayAdapter<>(
+                        this,
+                        R.layout.array_adapter_textview,
+                        R.id.text_view_id, colorList);
+        mSpinner.setAdapter(arrayAdapter);

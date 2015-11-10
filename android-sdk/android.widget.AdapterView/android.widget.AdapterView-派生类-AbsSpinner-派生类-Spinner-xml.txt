@@ -1,0 +1,43 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0105/2264.html
+
+-----------------------------------
+例子一
+-----------------------------------
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="80dip"
+        android:orientation="vertical" >
+      
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          />
+</LinearLayout>
+
+-----------------------------------
+例子二
+-----------------------------------
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+      
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/languages"
+          />
+</LinearLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>c语言</item>
+        <item>java </item>
+        <item>php</item>
+        <item>xml</item>
+        <item>html</item>
+    </string-array>
+</resources>

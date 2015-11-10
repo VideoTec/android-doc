@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/ArrayAdapter.html
+
+concrete[英][ˈkɒŋkri:t] [美][ˈkɑ:ŋkri:t]
+adj.具体的，有形的，实在的，实际的；固结成的，混凝土制的；图案诗歌的
+n.混凝土；具体物；（图案式）有形诗；〔建〕钢筋混凝土
+vt.使凝固；用混凝土修筑；萃取
+vi.凝固；固结；变坚固；使用混凝土
+
+java.lang.Object
+   ↳	android.widget.BaseAdapter
+ 	   ↳	android.widget.ArrayAdapter<T>
+
+A concrete BaseAdapter that is backed by an array of arbitrary objects. By default this class expects that the provided resource id references a single TextView. If you want to use a more complex layout, use the constructors that also takes a field id. That field id should reference a TextView in the larger layout resource.
+
+However the TextView is referenced, it will be filled with the toString() of each object in the array. You can add lists or arrays of custom objects. Override the toString() method of your objects to determine what text will be displayed for the item in the list.
+
+To use something other than TextViews for the array display, for instance, ImageViews, or to have some of data besides toString() results fill the views, override getView(int, View, ViewGroup) to return the type of view you want.

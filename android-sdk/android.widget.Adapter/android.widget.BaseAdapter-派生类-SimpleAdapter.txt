@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/SimpleAdapter.html
+
+java.lang.Object
+   ↳	android.widget.BaseAdapter
+ 	   ↳	android.widget.SimpleAdapter
+
+An easy adapter to map static data to views defined in an XML file. 
+You can specify the data backing the list as an ArrayList of Maps. 
+Each entry in the ArrayList corresponds to one row in the list. 
+The Maps contain the data for each row. 
+You also specify an XML file that defines the views used to display the row, 
+and a mapping from keys in the Map to specific views. 
+Binding data to views occurs in two phases. 
+
+First, if a SimpleAdapter.ViewBinder is available, 
+setViewValue(android.view.View, Object, String) is invoked. 
+
+If the returned value is true, binding has occurred. 
+If the returned value is false, the following views are then tried in order:
+
+A view that implements Checkable (e.g. CheckBox). The expected bind value is a boolean.
+TextView. The expected bind value is a string and setViewText(TextView, String) is invoked.
+ImageView. The expected bind value is a resource id or a string and setViewImage(ImageView, int) or setViewImage(ImageView, String) is invoked.
+If no appropriate binding can be found, an IllegalStateException is thrown.
