@@ -1,4 +1,5 @@
 设置显示预览画出的窗口
+http://developer.android.com/intl/zh-cn/reference/android/hardware/Camera.html#setPreviewDisplay(android.view.SurfaceHolder)
 
 -----------------------------------------------------------
 public final void setPreviewDisplay (SurfaceHolder holder)

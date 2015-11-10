@@ -1,0 +1,7 @@
+设置断点，判断，应该是运行在主线程里。
+
+文档：
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceView.html
+
+All SurfaceView and SurfaceHolder.Callbackmethods will be called from the thread running the SurfaceView's window(typically the main thread of the application). 
+They thus need to correctlysynchronize with any state that is also touched by the drawing thread.

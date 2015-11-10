@@ -1,0 +1,12 @@
+public abstract void surfaceDestroyed (SurfaceHolder holder)
+
+Added in API level 1
+This is called immediately before a surface is being destroyed. 
+After returning from this call, 
+you should no longer try to access this surface. 
+If you have a rendering thread that directly accesses the surface, 
+you must ensure that thread is no longer touching the Surface 
+before returning from this function.
+
+Parameters
+holder	The SurfaceHolder whose surface is being destroyed.

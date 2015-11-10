@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceView.html
+
+discover[英][dɪˈskʌvə(r)] [美][dɪˈskʌvɚ]
+vt.发现；碰见；撞见；获得知识
+
+Surface 创建和销毁的时间点：
+The Surface will be created for you while the SurfaceView's window is visible; 
+you should implement 
+surfaceCreated(SurfaceHolder) and 
+surfaceDestroyed(SurfaceHolder) to 
+discover when the Surface is created and destroyed as the window is shown and hidden.

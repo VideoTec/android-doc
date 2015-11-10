@@ -1,0 +1,19 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceHolder.Callback.html
+
+public abstract void surfaceChanged (SurfaceHolder holder, int format, int width, int height)
+
+Added in API level 1
+This is called immediately after any structural changes (format or size) have been made to the surface. You should at this point update the imagery in the surface. This method is always called at least once, after surfaceCreated(SurfaceHolder).
+
+Parameters
+holder	The SurfaceHolder whose surface has changed.
+format	The new PixelFormat of the surface.
+width	The new width of the surface.
+height	The new height of the surface.
+
+http://android-developers.blogspot.in/2009/04/introducing-glsurfaceview.html
+
+The onSurfaceChanged() method is called when the surface changes size. 
+It's a good place to set your OpenGL viewport. 
+You may also want to set your camera here, 
+if it's a fixed camera that doesn't move around the scene.

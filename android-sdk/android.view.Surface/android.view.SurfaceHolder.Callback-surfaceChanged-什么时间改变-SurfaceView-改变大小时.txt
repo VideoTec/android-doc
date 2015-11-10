@@ -1,0 +1,6 @@
+            LayoutParams p = mSurfaceView.getLayoutParams();
+            p.height = 50;
+            p.width = 50;
+            mSurfaceView.setLayoutParams(p);
+            
+            这样也会触发 surfaceChanged

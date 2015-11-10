@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/14189800/when-is-surfacechanged-activated
+
+The method is called when 
+1）the size of the viewport is changed or 
+2）first created.
+
+In case of screen rotation from vertical to horizontal, 
+the size of the viewport may change, 
+so you should reset your viewport and projection matrices.

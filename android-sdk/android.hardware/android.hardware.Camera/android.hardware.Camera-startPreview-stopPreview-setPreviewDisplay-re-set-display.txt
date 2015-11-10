@@ -1,0 +1,9 @@
+Camera 打开后，可以改变 SurfaceHolder，
+不需要重新打开 Camera
+                    try {
+                        mCamera.stopPreview();
+                        mCamera.setPreviewDisplay(mSurfaceHolder);
+                        mCamera.startPreview();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }

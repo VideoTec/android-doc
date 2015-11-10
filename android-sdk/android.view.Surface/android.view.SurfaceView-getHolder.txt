@@ -1,0 +1,10 @@
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceView.html#getHolder()
+
+public SurfaceHolder getHolder ()
+
+Added in API level 1
+Return the SurfaceHolder providing access and 
+control over this SurfaceView's underlying surface.
+
+Returns
+SurfaceHolder The holder of the surface.

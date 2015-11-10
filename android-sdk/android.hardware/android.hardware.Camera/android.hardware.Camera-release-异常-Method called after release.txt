@@ -1,0 +1,52 @@
+java.lang.RuntimeException: Method called after release()
+	at android.hardware.Camera.setHasPreviewCallback(Native Method)
+	at android.hardware.Camera.access$600(Camera.java:139)
+	at android.hardware.Camera$EventHandler.handleMessage(Camera.java:867)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loop(Looper.java:176)
+	at android.os.HandlerThread.run(HandlerThread.java:61)
+    
+    产生异常的代码：
+    private void closeCam() {
+        if (null != mCamera) {
+            mCamera.stopPreview();  把回调设置为 null
+            mCamera.release();
+            mCamera = null;
+            mStatus = MDRStatus.STOPPED;
+            onStop(StopCode.OK);
+        }
+    }
+    
+    Camera.java 代码
+    CAMERA_MSG_PREVIEW_FRAME 什么时候产生的？
+    
+    private class EventHandler extends Handler
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what) {
+            case CAMERA_MSG_PREVIEW_FRAME:
+                PreviewCallback pCb = mPreviewCallback;
+                if (pCb != null) {
+                    if (mOneShot) {
+                        // Clear the callback variable before the callback
+                        // in case the app calls setPreviewCallback from
+                        // the callback function
+                        mPreviewCallback = null;
+                    } else if (!mWithBuffer) {
+                        // We're faking the camera preview mode to prevent
+                        // the app from being flooded with preview frames.
+                        // Set to oneshot mode again.
+                        setHasPreviewCallback(true, false);
+                    }
+                    pCb.onPreviewFrame((byte[])msg.obj, mCamera);
+                }
+                return;
+                
+http://stackoverflow.com/questions/8868732/method-called-after-release-exception-unable-to-resume-with-android-camera
+
+I've got the same problem. mCamera.setPreviewCallback(null); didn't help. In my activity I've added this to releaseCamera:
+
+mPreview.getHolder().removeCallback(mPreview);
+and it works now.
+

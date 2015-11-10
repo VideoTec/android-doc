@@ -1,0 +1,103 @@
+http://blog.csdn.net/zimo2013/article/details/16865417
+
+--------------------------------------
+Surface
+--------------------------------------
+Surface就是“表面”的意思。在SDK的文档中，对Surface的描述是这样的：“Handle onto a raw buffer that is being managed by the screen compositor”，翻译成中文就是“由屏幕显示内容合成器(screen compositor)所管理的原生缓冲器的句柄”，这句话包括下面两个意思：
+1.      通过Surface（因为Surface是句柄）就可以获得原生缓冲器以及其中的内容。就像在C语言中，可以通过一个文件的句柄，就可以获得文件的内容一样；
+
+2.      原生缓冲器（rawbuffer）是用于保存当前窗口的像素数据的。
+
+引伸地，可以认为Android中的Surface就是一个用来画图形（graphics）或图像（image）的地方。根据Java方面的常规知识，我们知道通常画图是在一个Canvas对象上面进行的，由此，可以推知一个Surface对象中应该包含有一个Canvas对象，事实上的确如此。
+
+3.      Surface中有一个Canvas成员，专门用于画图的。
+所以，Surface中的Canvas成员，是专门用于供程序员画图的场所，就像黑板一样；其中的原生缓冲器是用来保存数据的地方；Surface本身的作用类似一个句柄，得到了这个句柄就可以得到其中的Canvas、原生缓冲器以及其它方面的内容。
+
+--------------------------------------
+二、SurfaceView
+--------------------------------------
+SurfaceView，顾名思义就是Surface的View，通过SurfaceView就可以看到Surface的部分或者全部的内容，下面用一个图来形象地描述一下Surface和SurfaceView的关系：
+
+也就是说，Surface是用通过SurfaceView才能展示其中的内容。从这个意思上来说，SurfaceView中的View之确切的含义应该是viewport即“视口”的意思，做过数据库设计的朋友知道，假定一个数据表有20个字段，但我们常常只用到其中的5个字段，那么就可以在原数据表的基础上，通过SQL语句CREATEVIEW来创建只包含那5个字段内容的view。
+另一方面，SurfaceView是Android中View的子类。事实上，在Android中所有用于界面展示的类皆为View的子类，包括那些不可见的、各种各样的Layout。
+所以说，SurfaceView中的View有两个含义：
+1.      视口（viewport）的意思
+2.      SurfaceView是View的派生类
+ 
+在Android中Surface是从Object派生而来，且实现了Parcelable接口。看到Parcelable就让人能很自然地想到数据容器，SurfaceView就是用来展示Surface中的数据的。在这个层面上而言，Surface就是管理数据的地方，SurfaceView就是展示数据的地方。
+
+--------------------------------------
+三、SurfaceHolder
+--------------------------------------
+SurfaceHolder是一个接口，其作用就像一个关于Surface的监听器。提供访问和控制SurfaceView背后的Surface 相关的方法 （providingaccess and control over this SurfaceView's underlying surface），它通过三个回调方法，让我们可以感知到Surface的创建、销毁或者改变。在SurfaceView中有一个方法getHolder，可以很方便地获得SurfaceView所对应的Surface所对应的SurfaceHolder（有点拗口吧）。
+ 
+除下面将要提到的SurfaceHolder.Callback外，SurfaceHolder还提供了很多重要的方法，其中最重要的就是：
+1.        abstract void addCallback(SurfaceHolder.Callbackcallback)
+为SurfaceHolder添加一个SurfaceHolder.Callback回调接口。
+2.        abstract Canvas lockCanvas()
+获取一个Canvas对象，并锁定之。所得到的Canvas对象，其实就是Surface中一个成员。
+3.        abstract Canvas lockCanvas(Rectdirty)
+同上。但只锁定dirty所指定的矩形区域，因此效率更高。
+4.        abstract void unlockCanvasAndPost(Canvas canvas)
+当修改Surface中的数据完成后，释放同步锁，并提交改变，然后将新的数据进行展示，同时Surface中相关数据会被丢失。
+5.      public abstract void setType (int type)
+         设置Surface的类型，接收如下的参数：
+SURFACE_TYPE_NORMAL：用RAM缓存原生数据的普通Surface
+SURFACE_TYPE_HARDWARE：适用于DMA(Direct memory access )引擎和硬件加速的Surface
+SURFACE_TYPE_GPU：适用于GPU加速的Surface
+SURFACE_TYPE_PUSH_BUFFERS：表明该Surface不包含原生数据，Surface用到的数据由其他对象提供，在Camera图像预览中就使用该类型的Surface，有Camera负责提供给预览Surface数据，这样图像预览会比较流畅。如果设置这种类型则就不能调用lockCanvas来获取Canvas对象了。需要注意的是，在高版本的Android SDK中，setType这个方法已经被depreciated了。
+
+2、3、4中的同步锁机制的目的，就是为了在绘制的过程中，Surface中的数据不会被改变。
+
+从设计模式的高度来看，Surface、SurfaceView和SurfaceHolder实质上就是广为人知的MVC，即Model-View-Controller。
+
+Model就是模型的意思，
+或者说是数据模型，
+或者更简单地说就是数据，也
+就是这里的Surface；
+
+View即视图，
+代表用户交互界面，
+也就是这里的SurfaceView；
+
+SurfaceHolder
+很明显可以理解为MVC中的Controller（控制器）。
+
+这样看起来三者之间的关系就清楚了很多。
+
+--------------------------------------
+四、SurfaceHolder.Callback
+--------------------------------------
+前面已经讲到SurfaceHolder是一个接口，它通过回调方式，
+让我们可以感知到Surface的创建、销毁或者改变。
+其实这一点是通过其内部的静态子接口SurfaceHolder.Callback来实现的。
+SurfaceHolder.Callback中定义了三个接口方法：
+1.     abstract void surfaceChanged(SurfaceHolderholder, int format, int width, int height)
+当surface发生任何结构性的变化时（格式或者大小），该方法就会被立即调用。
+2.      abstract void surfaceCreated(SurfaceHolderholder)
+当surface对象创建后，该方法就会被立即调用。
+3.      abstract void surfaceDestroyed(SurfaceHolderholder)
+当surface对象在将要销毁前，该方法会被立即调用。
+ 
+在Android SDK文档中，关于SurfaceView的描述里面，有一段这样的话：
+http://developer.android.com/intl/zh-cn/reference/android/view/SurfaceView.html
+
+One of the purposes of this class is to provide a surface in which a secondarythread can render into the screen. If you are going to use it this way, youneed to be aware of some threading semantics:
+ 
+-        All SurfaceView and SurfaceHolder.Callbackmethods will be called from the thread running the SurfaceView's window(typically the main thread of the application). They thus need to correctlysynchronize with any state that is also touched by the drawing thread.
+-      You must ensure that the drawingthread only touches the underlying Surface while it is valid -- betweenSurfaceHolder.Callback.surfaceCreated() andSurfaceHolder.Callback.surfaceDestroyed().
+
+这段话很重要，大致意思如下：
+这个类的目的之一，
+就是提供一个可以用另外一个线程（第二个线程）
+进行屏幕渲染的surface（译注：即UI线程和绘制线程可以分离）。
+如果你打算这样使用，那么应当注意一些线程方面的语义：
+
+-           所有SurfaceView和SurfaceHolder.Callback中声明的方法，
+必须在运行SurfaceView窗口中的线程中调用
+（典型地，就是应用的主线程。译注：即UI线程），
+因为它们需要正确地将同时被绘制线程访问的各种状态进行同步。
+
+-           必须保证，只有在背后的Surface有效的时候 – 在
+SurfaceHolder.Callback.surfaceCreated()和
+SurfaceHolder.Callback.surfaceDestroyed()这两个方法调用之间，访问它。
