@@ -1,0 +1,4 @@
+http://blog.csdn.net/zhou699/article/details/7610074
+
+Android audioManager
+解决 MediaPlayer AudioTrack 调节音量问题

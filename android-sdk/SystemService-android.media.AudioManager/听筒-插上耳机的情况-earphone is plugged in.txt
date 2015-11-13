@@ -1,0 +1,11 @@
+headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
+n.戴在头上的耳机或听筒
+
+http://stackoverflow.com/questions/26670001/weird-audiomanager-behaviour-of-setspeakerphoneon
+
+When I try to play a sound or Text-To-Speech sound through STREAM_RING and 
+my earphone is plugged in, 
+the sound will be played on both speakerphone and earphone. 
+
+It seems to be a default behaviour for Android framework, 
+but I'd like to have sounds play only on earphone when it plugged in.

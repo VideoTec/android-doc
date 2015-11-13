@@ -1,0 +1,62 @@
+headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
+n.戴在头上的耳机或听筒
+
+----------------------------------------------
+注意 5.0 问题
+----------------------------------------------
+In android Lollipop 
+setAudioMode(AudioManager.MODE_IN_CALL) is restricted. 
+It can be used only by system application 
+with MODIFY_PHONE_STATE permission.
+
+However you can use 
+MODE_IN_COMMUNICATION and MODE_NORMAL in normal applications.
+
+----------------------------------------------
+http://cloudstack.blog.163.com/blog/static/18769811720119189564480/
+----------------------------------------------
+Android recording and playing +speakerphone as an option
+
+AudioManager.setSpeakerphoneOn(false) does not work unless AudioManager.setMode(AudioManager.MODE_IN_CALL) is called. 
+So I have to be in MODE_IN_CALL
+
+----------------------------------------------
+http://mysuperbaby.iteye.com/blog/1460982
+----------------------------------------------
+setSpeakerphoneOn() only work when audio mode set to MODE_IN_CALL
+
+android.permission.MODIFY_AUDIO_SETTINGS permission set in your manifest file 
+because setSpeakerPhoneOn() requires that permission
+
+----------------------------------------------
+http://stackoverflow.com/questions/1726436/how-to-play-media-via-speaker-phone
+----------------------------------------------
+setSpeakerphoneOn() only work when audio mode set to MODE_IN_CALL. Try this:
+
+AudioManager audioManager = (AudioManager)mActivity.getSystemService(Context.AUDIO_SERVICE); audioManager.setMode(AudioManager.MODE_IN_CALL);
+audioManager.setSpeakerphoneOn(true);
+
+Please remember set back to normal mode before you quit.
+
+----------------------------------------------
+http://stackoverflow.com/questions/26670001/weird-audiomanager-behaviour-of-setspeakerphoneon
+----------------------------------------------
+
+I have no idea why MODE_IN_CALL causes unstable sound and MODE_INVALID works well. 
+And to begin with, 
+I have no idea why I should call AudioManager#setMode(int) 
+to turn the speakerphone off.
+
+If you are trying to play audio 
+with stream as STREAM_MUSIC and mode as MODE_NORMAL 
+then only audio routing will be handled 
+by the Android framework to speakerphone and 
+headset once you insert and remove the headset. 
+
+Personally never used setMode(AudioManager.MODE_INVALID) and 
+I guess you should never make use of that MODE. 
+
+I don't clearly know your stream type from the code above. 
+Find basic audio routing in my Github repo: 
+https://github.com/sauravpradhan/Basic-Audio-Routing 
+You can implement your routing logic as per the code.

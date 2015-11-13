@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Build.VERSION.html
+
+if (Build.VERSION.SDK_INT < 20) {
+    act.getAudioManager().setMode(AudioManager.MODE_IN_CALL);
+} else {
+    act.getAudioManager().setMode(AudioManager.MODE_IN_COMMUNICATION);
+}

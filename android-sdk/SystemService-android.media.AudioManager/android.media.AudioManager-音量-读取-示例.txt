@@ -1,0 +1,4 @@
+int vol = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);    //15
+vol = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);     //15
+vol = mAudioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);   //5
+vol = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL); //5

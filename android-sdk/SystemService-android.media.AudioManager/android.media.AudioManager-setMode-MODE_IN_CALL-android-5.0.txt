@@ -1,0 +1,15 @@
+public static final int MODE_IN_CALL
+
+Added in API level 1
+In call audio mode. A telephony call is established.
+
+http://stackoverflow.com/questions/31871328/android-5-0-audiomanager-setmode-not-working
+
+In android Lollipop 
+setAudioMode(AudioManager.MODE_IN_CALL) is restricted. 
+
+It can be used only by system application 
+with MODIFY_PHONE_STATE permission. 
+
+However you can use 
+MODE_IN_COMMUNICATION and MODE_NORMAL in normal applications.

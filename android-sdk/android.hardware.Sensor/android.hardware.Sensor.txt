@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/reference/android/hardware/Sensor.html
+
+ava.lang.Object
+   ↳	android.hardware.Sensor
+
+Class representing a sensor. 
+Use getSensorList(int) to get the list of available Sensors.

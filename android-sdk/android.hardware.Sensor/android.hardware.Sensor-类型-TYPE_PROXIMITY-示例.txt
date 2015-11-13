@@ -1,0 +1,41 @@
+proximity[英][prɒkˈsɪməti] [美][prɑ:kˈsɪməti]
+n.接近，邻近；接近度，距离；亲近
+
+--------------------------------
+创建 传感器管理对象
+--------------------------------
+SensorManager mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+--------------------------------
+get 默认距离传感器
+--------------------------------
+Sensor mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+-------------------------------
+注册和返注册监听对象
+-------------------------------
+在 onResume 时：注册传感器监听对象
+mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_FASTEST);
+在 onPause 时：反注册传感器监听对象
+mSensorManager.unregisterListener(this);
+
+--------------------------------
+传感器监听对象 SensorEventListener 接口
+--------------------------------
+
+public void onAccuracyChanged(Sensor sensor, int accuracy) {
+}
+
+public void onSensorChanged(SensorEvent event) {
+    Log.e("distance", String.valueOf(event.values[0]));
+    Log.e("MaximumRange", String.valueOf(mSensor.getMaximumRange()));
+
+    if (event.values[0] < mSensor.getMaximumRange()) {
+        iv.setImageResource(R.drawable.near);
+        mAudioManager.setSpeakerphoneOn(false);
+
+    } else {
+        iv.setImageResource(R.drawable.far);
+        mAudioManager.setSpeakerphoneOn(true);
+    }
+}

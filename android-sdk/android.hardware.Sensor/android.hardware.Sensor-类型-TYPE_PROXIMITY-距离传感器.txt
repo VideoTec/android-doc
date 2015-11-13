@@ -1,0 +1,9 @@
+proximity[英][prɒkˈsɪməti] [美][prɑ:kˈsɪməti]
+n.接近，邻近；接近度，距离；亲近
+
+TYPE_PROXIMITY
+
+A constant describing a proximity sensor type. 
+This is a wake up sensor.
+
+See SensorEvent.values for more details.

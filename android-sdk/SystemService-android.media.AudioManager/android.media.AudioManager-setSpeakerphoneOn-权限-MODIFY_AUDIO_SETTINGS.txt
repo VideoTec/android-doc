@@ -1,0 +1,5 @@
+http://mysuperbaby.iteye.com/blog/1460982
+setSpeakerphoneOn() only work when audio mode set to MODE_IN_CALL
+
+android.permission.MODIFY_AUDIO_SETTINGS permission set in your manifest file 
+because setSpeakerPhoneOn() requires that permission

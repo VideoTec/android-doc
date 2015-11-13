@@ -1,0 +1,10 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Build.VERSION.html
+
+public static final String	BASE_OS	The base OS build the product is based on.
+public static final String	CODENAME	The current development codename, or the string "REL" if this is a release build.
+public static final String	INCREMENTAL	The internal value used by the underlying source control to represent this build.
+public static final int	PREVIEW_SDK_INT	The developer preview revision of a prerelease SDK.
+public static final String	RELEASE	The user-visible version string.
+public static final String	SDK	This field was deprecated in API level 4. Use SDK_INT to easily get this as an integer.
+public static final int	SDK_INT	The user-visible SDK version of the framework; its possible values are defined in Build.VERSION_CODES.
+public static final String	SECURITY_PATCH	The user-visible security patch level

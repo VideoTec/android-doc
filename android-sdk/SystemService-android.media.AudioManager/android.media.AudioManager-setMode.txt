@@ -1,0 +1,47 @@
+encompass[英][ɪnˈkʌmpəs] [美][ɛnˈkʌmpəs]
+vt.围绕，包围；包含或包括某事物；完成
+
+http://developer.android.com/intl/zh-cn/reference/android/media/AudioManager.html#setMode(int)
+
+public void setMode (int mode)
+
+Added in API level 1
+
+Sets the audio mode.
+
+The audio mode encompasses 
+1）audio routing AND 
+2）the behavior of the telephony layer. 
+
+Therefore this method should only be used by applications that 
+1）replace the platform-wide management of audio settings or 
+2）the main telephony application. 
+
+In particular, 
+the MODE_IN_CALL mode should only be used by 
+the telephony application when it places a phone call, 
+as it will cause signals from the radio layer to feed the platform mixer.
+MODE_IN_CALL模式只能用在当打电话时的电话程序中,
+因为它会引起信号从音频层馈入到平台混音器
+
+Parameters
+
+mode
+
+the requested audio mode (
+1）MODE_NORMAL, 
+2）MODE_RINGTONE, 
+3）MODE_IN_CALL or 
+4）MODE_IN_COMMUNICATION). 
+Informs the HAL about the current audio state so that 
+it can route the audio appropriately.
+
+通知HAL当前的音频状态
+以便它能适当的路由音频
+
+http://stackoverflow.com/questions/26670001/weird-audiomanager-behaviour-of-setspeakerphoneon
+
+I have no idea why MODE_IN_CALL causes unstable sound and MODE_INVALID works well. 
+And to begin with, 
+I have no idea why I should call AudioManager#setMode(int) 
+to turn the speakerphone off.

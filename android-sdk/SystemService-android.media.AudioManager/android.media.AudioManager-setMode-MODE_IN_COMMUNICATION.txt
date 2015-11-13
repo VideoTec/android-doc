@@ -1,0 +1,7 @@
+public static final int MODE_IN_COMMUNICATION
+
+Added in API level 11
+In communication audio mode. 
+An audio/video chat or VoIP call is established.
+
+Constant Value: 3 (0x00000003)

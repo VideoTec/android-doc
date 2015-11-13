@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/reference/android/hardware/SensorManager.html
+
+java.lang.Object
+   ↳	android.hardware.SensorManager
+   
+SensorManager lets you access the device's sensors. Get an instance of this class by calling Context.getSystemService() with the argument SENSOR_SERVICE.
+
+Always make sure to disable sensors you don't need, especially when your activity is paused. Failing to do so can drain the battery in just a few hours. Note that the system will not disable sensors automatically when the screen turns off.
+
+disable sensors 方法：
+mSensorManager.unregisterListener(this);
+
+http://stackoverflow.com/questions/25881889/how-to-use-proximity-sensor-and-audio-manager-to-reduce-volume-in-android-device
+Don't forget to un-register the sensor 
+because android system won't release the sensors automatically 
+after the usage. 
+If you forget to do so music player and other application 
+which uses music player will behave odd.

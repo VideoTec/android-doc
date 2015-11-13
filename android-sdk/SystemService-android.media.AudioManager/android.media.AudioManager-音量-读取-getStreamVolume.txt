@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/media/AudioManager.html#getStreamVolume(int)
+
+public int getStreamVolume (int streamType)
+
+Added in API level 1
+Returns the current volume index for a particular stream.
+
+Parameters
+streamType	The stream type whose volume index is returned.
+
+Returns
+The current volume index for the stream.
+
+See Also
+getStreamMaxVolume(int)
+setStreamVolume(int, int, int)

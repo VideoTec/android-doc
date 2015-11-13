@@ -1,0 +1,26 @@
+earpiece[英][ˈɪəpi:s] [美][ˈɪrpi:s]
+听筒
+earphone[英]['ɪəfəʊn] [美][ˈɪrˌfon]
+耳机，听筒
+
+speakerphone[英][ˈspi:kəfəʊn] [美][ˈspi:kərfoʊn]
+喇叭扩音器
+loudspeaker[英][ˌlaʊdˈspi:kə(r)] [美][ˈlaʊdˌspikɚ]
+n.扩音器，扬声器；喇叭；扬场器
+
+headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
+n.戴在头上的耳机或听筒
+
+public void setSpeakerphoneOn (boolean on)
+
+Added in API level 1
+Sets the speakerphone on or off.
+
+This method should only be used by applications that 
+1）replace the platform-wide management of audio settings or 
+2）the main telephony application.
+
+Parameters
+on	set 
+1）true to turn on speakerphone; 
+2）false to turn it off

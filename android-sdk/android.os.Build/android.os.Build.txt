@@ -1,0 +1,3 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Build.html
+
+Information about the current build, extracted from system properties.

@@ -1,0 +1,149 @@
+earpiece[英][ˈɪəpi:s] [美][ˈɪrpi:s]
+听筒
+earphone[英]['ɪəfəʊn] [美][ˈɪrˌfon]
+耳机，听筒
+
+speakerphone[英][ˈspi:kəfəʊn] [美][ˈspi:kərfoʊn]
+喇叭扩音器
+loudspeaker[英][ˌlaʊdˈspi:kə(r)] [美][ˈlaʊdˌspikɚ]
+n.扩音器，扬声器；喇叭；扬场器
+
+headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
+n.戴在头上的耳机或听筒
+
+http://stackoverflow.com/questions/25881889/how-to-use-proximity-sensor-and-audio-manager-to-reduce-volume-in-android-device
+
+传感器的操作是正确的，
+但是听筒模式，声音很小，不知道原因
+http://stackoverflow.com/questions/11674921/switching-between-earpiece-and-speakerphone-on-button-press
+
+---------------------------------
+注意事项一：
+---------------------------------
+Don't forget to un-register the sensor because android system won't release the sensors automatically after the usage. If you forget to do so music player and other application which uses music player will behave odd.
+
+---------------------------------
+注意事项二：
+---------------------------------
+add 
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 
+to your Manifest
+
+---------------------------------
+源码：
+---------------------------------
+
+package com.example.proximitysensordemo;
+
+import java.io.IOException;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class SensorActivity extends Activity implements SensorEventListener {
+    private SensorManager mSensorManager;
+    private Sensor mSensor;
+    ImageView iv;
+    Button b;
+    MediaPlayer player;
+    private AudioManager mAudioManager;
+    public boolean isHeadsetOn;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_sensor);
+    mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+    mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+    iv = (ImageView) findViewById(R.id.image);
+    b = (Button) findViewById(R.id.audio);
+    mAudioManager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+    b.setOnClickListener(new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+            if (player != null && player.isPlaying()) {
+                player.pause();
+            } else {
+                AssetFileDescriptor afd;
+                try {
+                    if (player == null) {
+                        afd = getAssets().openFd("Kraddy Android Porn.mp3");
+                        player = new MediaPlayer();
+                        player.setDataSource(afd.getFileDescriptor());
+                        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                        player.prepare();
+                        player.start();
+                    } else {
+                        player.start();
+                    }
+
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    });
+}
+
+protected void onResume() {
+    super.onResume();
+    mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_FASTEST);
+    mAudioManager.setMode(AudioManager.MODE_IN_CALL);
+}
+
+protected void onPause() {
+    super.onPause();
+    mAudioManager.setMode(AudioManager.MODE_NORMAL);
+    try {
+        // unregisterReceiver(mReciever);
+        mSensorManager.unregisterListener(this);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    if (player != null) {
+        player.stop();
+        player.release();
+        player = null;
+    }
+}
+
+@Override
+protected void onStop() {
+    // TODO Auto-generated method stub
+    super.onStop();
+}
+
+public void onAccuracyChanged(Sensor sensor, int accuracy) {
+}
+
+public void onSensorChanged(SensorEvent event) {
+    Log.e("distance", String.valueOf(event.values[0]));
+    Log.e("MaximumRange", String.valueOf(mSensor.getMaximumRange()));
+
+    if (event.values[0] < mSensor.getMaximumRange()) {
+        iv.setImageResource(R.drawable.near);
+        mAudioManager.setSpeakerphoneOn(false);
+
+    } else {
+        iv.setImageResource(R.drawable.far);
+        mAudioManager.setSpeakerphoneOn(true);
+    }
+}
