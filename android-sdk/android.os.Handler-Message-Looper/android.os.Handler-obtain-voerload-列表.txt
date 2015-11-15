@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Handler.html
+
+final Message	obtainMessage(int what, int arg1, int arg2)
+Same as obtainMessage(), except that it also sets the what, arg1 and arg2 members of the returned Message.
+
+final Message	obtainMessage()
+Returns a new Message from the global message pool.
+
+final Message	obtainMessage(int what, int arg1, int arg2, Object obj)
+Same as obtainMessage(), except that it also sets the what, obj, arg1,and arg2 values on the returned Message.
+
+final Message	obtainMessage(int what)
+Same as obtainMessage(), except that it also sets the what member of the returned Message.
+
+final Message	obtainMessage(int what, Object obj)
+Same as obtainMessage(), except that it also sets the what and obj members of the returned Message.

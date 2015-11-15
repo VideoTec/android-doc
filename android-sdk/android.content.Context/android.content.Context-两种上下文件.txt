@@ -1,0 +1,25 @@
+http://blog.csdn.net/janronehoo/article/details/7348566
+
+getApplicationContext() 返回应用的上下文，生命周期是整个应用，应用摧毁它才摧毁
+Activity.this的context 返回当前activity的上下文，属于activity ，activity 摧毁他就摧毁
+getBaseContext()  返回由构造函数指定或setBaseContext()设置的上下文
+
+http://stackoverflow.com/questions/10641144/difference-between-getcontext-getapplicationcontext-getbasecontext-and
+
+View.getContext(): 
+Returns the context the view is currently running in. 
+Usually the currently active Activity.
+
+Activity.getApplicationContext(): 
+Returns the context for the entire application (the process all the Activities are running inside of). 
+Use this instead of the current Activity context if you need a context tied to the lifecycle of the entire application, 
+not just the current Activity.
+
+ContextWrapper.getBaseContext(): 
+If you need access to a Context from within another context, 
+you use a ContextWrapper. 
+The Context referred to from inside that ContextWrapper is accessed via getBaseContext().
+
+getApplicationContext() - Returns the context for all activities running in application.
+getBaseContext() - If you want to access Context from another context within application you can access.
+getContext() - Returns the context view only current running activity.

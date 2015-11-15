@@ -1,0 +1,12 @@
+indeterminate[英][ˌɪndɪˈtɜ:mɪnət] [美][ˌɪndɪˈtɜ:rmɪnət]
+不定的，不明确的；模糊的
+
+ProgressDialog dialog = new ProgressDialog(this);
+dialog.setIndeterminate(false);
+
+不明确(false)就是滚动条的当前值自动在最小到最大值之间来回移动，
+形成这样一个动画效果，这个只是告诉别人“我正在工作”，
+但不能提示工作进度到哪个阶段。
+主要是在进行一些无法确定操作时间的任务时作为提示。
+
+而“明确”(true)就是根据你的进度可以设置现在的进度值。

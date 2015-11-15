@@ -1,0 +1,25 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Message.html
+
+static Message	obtain(Handler h, int what, int arg1, int arg2, Object obj)
+Same as obtain(), but sets the values of the target, what, arg1, arg2, and obj members.
+
+static Message	obtain(Handler h, int what, Object obj)
+Same as obtain(), but sets the values of the target, what, and obj members.
+
+static Message	obtain(Handler h, int what)
+Same as obtain(), but sets the values for both target and what members on the Message.
+
+static Message	obtain(Handler h)
+Same as obtain(), but sets the value for the target member on the Message returned.
+
+static Message	obtain(Handler h, Runnable callback)
+Same as obtain(Handler), but assigns a callback Runnable on the Message that is returned.
+
+static Message	obtain()
+Return a new Message instance from the global pool.
+
+static Message	obtain(Handler h, int what, int arg1, int arg2)
+Same as obtain(), but sets the values of the target, what, arg1, and arg2 members.
+
+static Message	obtain(Message orig)
+Same as obtain(), but copies the values of an existing message (including its target) into the new one.

@@ -1,0 +1,17 @@
+http://blog.csdn.net/yanzi1225627/article/details/17652643
+
+经常听人问Camera开发中，各种变形问题，今天有空就在此梳理总结下。
+
+三个尺寸：
+
+1、Surfaceview的尺寸
+
+Surfaceview是用来预览Camera的，当它全屏时就是Screen的大小。
+
+2、Picturesize的尺寸
+
+这是拍照后的PictureSize尺寸。
+
+3、Previewsize的尺寸
+
+这是预览时帧数据的尺寸

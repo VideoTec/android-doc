@@ -1,3 +1,4 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/HandlerThread.html
 
 java.lang.Object
    ↳	java.lang.Thread

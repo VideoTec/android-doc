@@ -1,0 +1,81 @@
+http://blog.csdn.net/barryhappy/article/details/7376231
+
+在应用中经常会用到一些费时的操作，需要用户进行等待，比如加载网页内容……
+这时候就需要一个提示来告诉用户程序正在执行，并没有假死或者真死……囧……
+而ProgressBar、ProgressDialog等就是专门干这个的
+
+private ProgressDialog pd;
+
+/* 显示ProgressDialog */  
+pd = ProgressDialog.show(MainActivity.this, "标题", "加载中，请稍后……");
+
+pd.dismiss();// 关闭ProgressDialog
+
+http://blog.csdn.net/sjf0115/article/details/7255280
+
+ProgressDialog是AlertDialog类的一个扩展，
+可以为一个未定义进度的任务显示一个旋转轮形状的进度动画，
+或者为一个指定进度的任务显示一个进度条。
+
+一个对话框中显示
+1）一个进步指标和
+2）一个可选的文本信息或一个视图。只有文本信息或一个视图,可以同时使用。
+对话框可以按back键取消
+
+setProgressStyle()     设置进度条风格 
+setTitle()    设置ProgressDialog 标题
+    
+setMessage()    设置ProgressDialog 提示信息
+setIcon()    设置ProgressDialog 标题图标
+
+setIndeterminate()  设置ProgressDialog 的进度条是否不明确    
+setCancelable()   设置ProgressDialog 是否可以按退回按键取消
+setButton()    设置ProgressDialog 的一个Button 
+setProgress() 设置ProgressDialog 进度条进度
+ 
+show()  显示ProgressDialog
+
+----------------------------------------------
+示例：
+----------------------------------------------
+//创建ProgressDialog对象  
+progressDialog = new ProgressDialog(Activity01.this);  
+// 设置进度条风格，风格为圆形，旋转的  
+progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);  
+// 设置ProgressDialog 标题  
+progressDialog.setTitle("提示");  
+// 设置ProgressDialog 提示信息  
+progressDialog.setMessage("这是一个圆形进度条对话框");  
+// 设置ProgressDialog 标题图标  
+progressDialog.setIcon(R.drawable.a);  
+// 设置ProgressDialog 的进度条是否不明确  
+progressDialog.setIndeterminate(false);           
+// 设置ProgressDialog 是否可以按退回按键取消  
+progressDialog.setCancelable(true);           
+//设置ProgressDialog 的一个Button  
+progressDialog.setButton("确定", new SureButtonListener());  
+// 让ProgressDialog显示  
+progressDialog.show();
+
+----------------------------------------------
+示例：
+----------------------------------------------
+// 创建ProgressDialog对象  
+progressDialog = new ProgressDialog(Activity01.this);                 
+// 设置进度条风格，风格为长形  
+progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);                 
+// 设置ProgressDialog 标题  
+progressDialog.setTitle("提示");                
+// 设置ProgressDialog 提示信息  
+progressDialog.setMessage("这是一个长形对话框进度条");                
+// 设置ProgressDialog 标题图标  
+progressDialog.setIcon(R.drawable.a);  
+// 设置ProgressDialog 进度条进度  
+progressDialog.setProgress(100);              
+// 设置ProgressDialog 的进度条是否不明确  
+progressDialog.setIndeterminate(false);               
+// 设置ProgressDialog 是否可以按退回按键取消  
+progressDialog.setCancelable(true);               
+// 让ProgressDialog显示  
+progressDialog.show();
+

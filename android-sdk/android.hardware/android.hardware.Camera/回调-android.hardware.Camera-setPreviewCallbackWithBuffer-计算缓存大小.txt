@@ -1,0 +1,82 @@
+http://stackoverflow.com/questions/14538871/the-buffer-size-for-callbackbuffer-of-android-camera-need-to-be-8-time-as-big-as
+
+For formats besides YV12, 
+the size of the buffer is determined by multiplying the preview image width, height, and bytes per pixel. 
+The width and height can be read from getPreviewSize(). 
+Bytes per pixel can be computed from getBitsPerPixel(int) / 8, using the image format from getPreviewFormat().
+
+If using the YV12 format, 
+the size can be calculated using the equations listed in setPreviewFormat(int).
+
+----------------------------------------------------------------------
+android.hardware.Camera.Parameters
+public void setPreviewFormat (int pixel_format)
+----------------------------------------------------------------------
+
+Added in API level 1
+Sets the image format for preview pictures.
+
+If this is never called, the default format will be NV21, which uses the NV21 encoding format.
+
+Use getSupportedPreviewFormats() to get a list of the available preview formats.
+
+It is strongly recommended that either NV21 or YV12 is used, since they are supported by all camera devices.
+
+necessarily[英][ˌnesəˈserəli] [美][ˌnɛsɪˈsɛrəli, -ˈsɛr-]
+adv.必要地；必需地；必定地；必然地
+
+For YV12, the image buffer that is received is not necessarily tightly packed, 
+as there may be padding at the end of each row of pixel data, as described in YV12. 
+For camera callback data, 
+it can be assumed that the stride of the Y and UV data is the smallest possible that meets the alignment requirements. 
+That is, if the preview size is width x height, 
+then the following equations describe the buffer index for the beginning of row y for the Y plane and row c for the U and V planes: 
+
+ yStride   = (int) ceil(width / 16.0) * 16;
+ uvStride  = (int) ceil( (yStride / 2) / 16.0) * 16;
+ ySize     = yStride * height;
+ uvSize    = uvStride * height / 2;
+ yRowIndex = yStride * y;
+ uRowIndex = ySize + uvSize + uvStride * c;
+ vRowIndex = ySize + uvStride * c;
+ size      = ySize + uvSize * 2;
+ 
+Parameters
+pixel_format	the desired preview picture format, defined by one of the ImageFormat constants. (E.g., ImageFormat.NV21 (default), or ImageFormat.YV12)
+
+--------------------------------------------
+ImageFormat.YV12
+--------------------------------------------
+
+Android YUV format.
+
+This format is exposed to software decoders and applications.
+
+YV12 is a 4:2:0 YCrCb planar format comprised of a WxH Y plane followed by (W/2) x (H/2) Cr and Cb planes.
+
+This format assumes
+
+even[英][ˈi:vn] [美][ˈivən]
+adj.公平的；平坦的； 偶数的；平均的
+
+1）an even width
+2）an even height
+3）a horizontal stride multiple of 16 pixels
+4）a vertical stride equal to the height
+
+ y_size = stride * height
+ c_stride = ALIGN(stride/2, 16)
+ c_size = c_stride * height/2
+ size = y_size + c_size * 2
+ cr_offset = y_size
+ cb_offset = y_size + c_size
+ 
+For the android.hardware.camera2 API, the YUV_420_888 format is recommended for YUV output instead.
+
+For the older camera API, this format is guaranteed to be supported for Camera preview images since API level 12; 
+for earlier API versions, check getSupportedPreviewFormats().
+
+Note that for camera preview callback use (see setPreviewCallback(Camera.PreviewCallback)), 
+the stride value is the smallest possible; that is, it is equal to:
+
+stride = ALIGN(width, 16)

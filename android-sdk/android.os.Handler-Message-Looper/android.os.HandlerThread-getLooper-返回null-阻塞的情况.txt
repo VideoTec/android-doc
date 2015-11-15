@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/HandlerThread.html#getLooper()
+
+public Looper getLooper ()
+
+Added in API level 1
+
+This method returns the Looper associated with this thread. 
+
+返回null情况：
+If this thread not been started or for any reason is isAlive() returns false, 
+this method will return null. If this thread has been started, 
+
+阻塞的情况：
+this method will block until the looper has been initialized.
+
+Returns
+The looper.

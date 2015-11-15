@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Message.html#obtain(android.os.Handler, java.lang.Runnable)
+
+public static Message obtain (Handler h, Runnable callback)
+
+Added in API level 1
+Same as obtain(Handler), but assigns a callback Runnable on the Message that is returned.
+
+Parameters
+h	Handler to assign to the returned Message object's target member.
+callback	Runnable that will execute when the message is handled.
+Returns
+A Message object from the global pool.

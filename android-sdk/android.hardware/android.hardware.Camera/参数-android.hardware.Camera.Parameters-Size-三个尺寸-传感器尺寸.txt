@@ -1,0 +1,19 @@
+http://stackoverflow.com/questions/19259400/android-camera-preview-size-issue
+
+When working with the camera you have a few different sizes to consider:
+
+1）Sensor size The camera has a native resolution and aspect ratio that is determined by the hardware.
+
+2）Picture size This is the size of the image produced when you tell the camera to take a photo. 
+If it is the same aspect ratio as the native resolution then it will be directly scaled from that. 
+If the aspect ratio is different then it will be cropped from the native size. 
+In my experience, the largest size returned by getSupportedPictureSizes is the native resolution of the camera.
+
+3）Preview size This is the size of the image preview that is shown on-screen. 
+It may be a different aspect ratio than either the native size or the picture size, 
+causing further cropping.
+
+To get the closest match between what you see on screen and the image that is produced 
+when you take a photo try to select a preview size with an aspect ratio as close as possible 
+to the aspect ratio of the picture size that you've selected. 
+I generally try to get both as close as possible to the native size.
