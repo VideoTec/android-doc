@@ -1,0 +1,50 @@
+http://developer.android.com/guide/webapps/index.html
+
+There are essentially two ways to deliver an application on Android:
+ 
+1）as a client-side application 
+(developed using the Android SDK and installed on user devices in an APK) or 
+
+2）as a web application 
+(developed using web standards and accessed 
+through a web browser—there's nothing to install on user devices).
+
+If you chose to provide a web-based app for Android-powered devices, 
+you can rest assured that major web browsers for Android 
+(and the WebView framework) allow you to specify viewport and 
+style properties that make your web pages appear at the proper size and scale 
+on all screen configurations.
+
+Figure 1 illustrates 
+how you can provide access to your web pages 
+from either a web browser or your your own Android app. 
+However, you shouldn't develop an Android app simply 
+as a means to view your web site. 
+Rather, the web pages you embed in your Android app 
+should be designed especially for that environment. 
+You can even define an interface 
+between your Android application and your web pages 
+that allows JavaScript in the web pages to call upon APIs 
+in your Android application—providing Android APIs to your web-based application.
+
+To start developing web pages for Android-powered devices, see the following documents:
+
+1）Supporting Different Screens from Web Apps
+How to properly size your web app 
+on Android-powered devices and support multiple screen densities. 
+The information in this document is important 
+if you're building a web application
+that you at least expect to be available on Android-powered devices 
+(which you should assume for anything you publish on the web), 
+but especially if you're targeting mobile devices or using WebView.
+
+2）Building Web Apps in WebView
+How to embed web pages into your Android application 
+using WebView and bind JavaScript to Android APIs.
+
+3）Debugging Web Apps
+How to debug web apps using JavaScript Console APIs.
+
+4）Best Practices for Web Apps
+A list of practices you should follow, 
+in order to provide an effective web application on Android-powered devices.

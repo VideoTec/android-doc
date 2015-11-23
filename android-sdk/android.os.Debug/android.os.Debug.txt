@@ -1,0 +1,15 @@
+http://developer.android.com/reference/android/os/Debug.html
+
+Class Overview
+
+Provides various debugging methods for Android applications, 
+including tracing and allocation counts.
+
+Logging Trace Files
+
+Debug can create log files that give details about an application, 
+such as a call stack and start/stop times for any running methods. 
+See Traceview: 
+A Graphical Log Viewer for information about reading trace files. 
+To start logging trace files, call one of the startMethodTracing() methods. 
+To stop tracing, call stopMethodTracing().

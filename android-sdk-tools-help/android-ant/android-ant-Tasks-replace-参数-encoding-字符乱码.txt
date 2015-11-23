@@ -1,0 +1,10 @@
+encoding
+The encoding of the files upon which replace operates.
+No - defaults to default JVM encoding
+
+需要指定编码方式：
+<copy encoding="utf-8" file="build/online_config/beside_config.xml"  todir="${out.jar.dir}/res/values" overwrite="on"></copy>
+<!-- <replace dir="${out.jar.dir}/res/values" includes="beside_config.xml"   token="false" value="true" summary="on" />-->
+<replace dir="${out.jar.dir}/res/values" includes="beside_config.xml"   token="${config_version_tokenValue}"  summary="on" value="${NOW}" />
+
+这里的 replace 需要添加参数: encoding="utf-8"

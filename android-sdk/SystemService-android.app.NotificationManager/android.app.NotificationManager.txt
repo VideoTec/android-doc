@@ -1,0 +1,29 @@
+NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
+
+http://developer.android.com/reference/android/app/NotificationManager.html
+
+Class to notify the user of events that happen. 
+This is how you tell the user that something has happened in the background.
+
+Notifications can take different forms:
+
+1）A persistent icon that goes in the status bar and is accessible through the launcher, 
+(when the user selects it, a designated Intent can be launched),
+2）Turning on or flashing LEDs on the device, or
+3）Alerting the user by flashing the backlight, playing a sound, or vibrating.
+
+Each of the notify methods takes an int id parameter and 
+optionally a String tag parameter, which may be null. 
+These parameters are used to form a pair (tag, id), or (null, id) 
+if tag is unspecified. 
+This pair identifies this notification from your app to the system, 
+so that pair should be unique within your app. 
+If you call one of the notify methods with a (tag, id) pair 
+that is currently active and a new set of notification parameters, it will be updated. 
+For example, if you pass a new status bar icon, 
+the old icon in the status bar will be replaced with the new one. 
+This is also the same tag and id you pass 
+to the cancel(int) or cancel(String, int) method to clear this notification.
+
+You do not instantiate this class directly; 
+instead, retrieve it through getSystemService(Class).

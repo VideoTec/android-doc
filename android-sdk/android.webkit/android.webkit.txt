@@ -1,0 +1,6 @@
+http://developer.android.com/reference/android/webkit/package-summary.html
+
+Provides tools for browsing the web.
+
+For more information about building apps with web-based content, 
+see the Web Apps Overview.

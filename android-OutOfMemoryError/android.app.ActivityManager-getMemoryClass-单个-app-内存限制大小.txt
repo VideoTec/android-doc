@@ -1,0 +1,22 @@
+http://developer.android.com/reference/android/app/ActivityManager.html#getMemoryClass()
+
+public int getMemoryClass ()
+
+Added in API level 5
+Return the approximate per-application memory class of the current device. 
+This gives you an idea of how hard a memory limit 
+you should impose on your application to let the overall system work best. 
+The returned value is in megabytes; 
+the baseline Android memory class is 16 
+(which happens to be the Java heap limit of those devices); 
+some device with more memory may return 24 or even higher numbers.
+
+http://www.cnblogs.com/qiengo/archive/2012/04/25/2468372.html
+
+每个 android 平台内存限制不一样，从最开始的 16M 到 24M，以及后来的 32M，64M，或许以后会更大。
+那如何获取单个 app 内存限制大小呢？
+
+　　class : ActivityManager
+
+ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+activityManager.getMemoryClass();

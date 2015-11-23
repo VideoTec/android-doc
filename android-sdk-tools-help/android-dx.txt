@@ -1,5 +1,6 @@
 E:\android\adt\sdk\build-tools\android-4.4W\lib\dx.jar
 E:\android\adt\sdk\build-tools\android-4.4W\dx.bat
+E:\android-sdk-windows\build-tools\23.0.0\dx.bat
 
 生成class.dex可执行文件
 dx 
@@ -20,7 +21,10 @@ Android DEX文件 ：Android平台上可执行文件的类型
 
 编译时使用Sun JDK将Java源程序编程成标准的Java字节码文件（.class文件）
 通过工具软件DX把所有的字节码文件转成Android DEX文件（classes.dex）
-用Android打包工具（aapt）将DEX文件，资源文件以及AndroidManifest.xml文件（二进制格式）组合成一个应用程序包（APK）
+用Android打包工具（aapt）将
+1）DEX文件，
+2）资源文件以及
+3）AndroidManifest.xml文件（二进制格式）组合成一个应用程序包（APK）
 
 dx --dex --output=dexed.jar hello.jar
 

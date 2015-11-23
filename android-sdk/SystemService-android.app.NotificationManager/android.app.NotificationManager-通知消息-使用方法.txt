@@ -1,0 +1,25 @@
+http://tonysun3544.iteye.com/blog/1273055
+
+下面来谈谈notification，
+这个notification一般用在电话，短信，邮件，闹钟铃声，
+在手机的 状态栏 上就会出现一个小图标，提示用户处理这个通知，
+这时手从上方滑动 状态栏 就可以展开并处理这个快讯。
+已添加的Notification.Builder，使其更容易构建通知。
+notification是一种让你的应用程序在没有开启情况下或在后台运行警示用户。
+它是看不见的程序组件(Broadcast Receiver，Service和不活跃的Activity)
+警示用户有需要注意的事件发生的最好途径。
+
+先来区分以下 状态栏 和 状态条 的区别：
+
+1、 状态条 就是手机屏幕最上方的一个条形状的区域；
+      在状态条有好多信息量：比如usb连接图标，
+      手机信号图标，电池电量图标，时间图标等等；
+2、 状态栏 就是手从状态条滑下来的可以伸缩的view；
+      在状态栏中一般有两类（使用FLAG_标记）：
+      （1）正在进行的程序；
+      （2）是通知事件；
+使用步骤：
+第一步：通过getSystemService（）方法得到NotificationManager对象
+第二步：对Notification的一些属性进行设置比如：内容，图标，标题，相应notification的动作进行处理等等
+第三步：通过NotificationManager对象的notify（）方法来执行一个notification的消息
+第四步：通过NotificationManager对象的cancel（）方法来取消一个notificatioin的消息

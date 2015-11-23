@@ -1,0 +1,31 @@
+http://developer.android.com/reference/android/os/Debug.html#getNativeHeapAllocatedSize()
+
+public static long getNativeHeapAllocatedSize ()
+
+Added in API level 1
+Returns the amount of allocated memory in the native heap.
+
+Returns
+The allocated size in bytes.
+
+http://www.cnblogs.com/qiengo/archive/2012/04/25/2468372.html
+要查看您的应用程序确实分配多少内存可以使用
+android.os.Debug.getNativeHeapAllocatedSize
+
+http://stackoverflow.com/questions/4726097/how-to-tell-how-much-memory-an-android-app-has-left-to-use
+http://stackoverflow.com/questions/6136806/what-shoud-be-difference-between-nativeheapallocatedsize-and-runtime-totalmem
+
+Runtime.getRuntime().totalMemory()
+Returns the total amount of memory which is available to the running program.
+
+getNativeHeapAllocatedSize()
+For devices below HoneyComb most of the huge allocations 
+are deferred to the native heap (e.g Bitmaps). 
+Hence this api is useful to find out how much of native heap is allocated.
+
+OOM Errors occurs when there are no objects which can be freed by the DVM. 
+Typically you have about 16MB in the Heap to play with (for a standard phone). 
+Check your logs* to see GC statements having info about how much of memory is allocated.
+
+I don't think there should be a fixed ratio to cause an OOM error. 
+Like in the case when you load a very huge bitmap, here the native memory used is huge.

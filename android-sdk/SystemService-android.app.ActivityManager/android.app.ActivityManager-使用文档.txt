@@ -1,0 +1,10 @@
+http://blog.csdn.net/qinjuning/article/details/6978560
+
+获取方法 
+ActivityManager mActivityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+常用的静态内部类如下(下面具体介绍):
+    ActivityManager.MemoryInfo： 系统可用内存信息
+    ActivityManager.RecentTaskInfo： 最近的任务信息
+    ActivityManager.RunningAppProcessInfo： 正在运行的进程信息
+    ActivityManager.RunningServiceInfo： 正在运行的服务信息
+    ActivityManager.RunningTaskInfo： 正在运行的任务信息

@@ -1,0 +1,20 @@
+http://developer.51cto.com/art/201002/182933.htm
+Android应用开发和Dalvik虚拟机Android应用所使用的编程语言是Java语言，
+和Java SE一样，
+编译时使用Sun JDK将Java源程序编程成标准的Java字节码文件（.class文件）。
+即： java Bytecode
+
+而后通过工具软件DX
+把所有的字节码文件转成Android DEX文件（classes.dex）。
+最后使用Android打包工具（aapt）将DEX文件，
+资源文件以及AndroidManifest.xml文件（二进制格式）组合成一个应用程序包（APK）。
+应用程序包可以被发布到手机上运行
+
+https://zh.wikipedia.org/wiki/Dalvik%E8%99%9A%E6%8B%9F%E6%9C%BA
+dx是一套工具，可以将Java .class转换成.dex格式。一个dex文件通常会有多个.class。
+由于dex有时必须进行优化，会使文件大小增加1-4倍，以ODEX结尾
+
+1）Dalvik虚拟机早期并没有使用即时编译（JIT）技术。从Android 2.2开始, Dalvik虚拟机也支持JIT.
+2）Dalvik虚拟机有自己的字节码，并非使用Java字节码。
+3）Dalvik基于寄存器，而JVM基于堆栈。
+4）Dalvik VM通过Zygote进行类的预加载，Zygote会完成虚拟机的初始化，也是与JVM不同之处。

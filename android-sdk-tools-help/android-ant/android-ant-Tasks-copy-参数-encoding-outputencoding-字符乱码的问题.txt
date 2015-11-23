@@ -1,0 +1,20 @@
+encoding
+The encoding to assume when filter-copying the files. since Ant 1.5.
+No - 不是必须指定的
+defaults to default JVM encoding
+
+outputencoding --- 这个参数的默认值 encoding
+The encoding to use when writing the files. since Ant 1.6.
+No - 不是必须指定的
+defaults to the value of the encoding attribute if given or 
+the default JVM encoding otherwise.
+
+12:33 2015/11/23
+身边的 beside_config.xml，在使用ant打包后，其中有乱码，
+原因就是没有明确指定，字符编译方式。
+http://blog.csdn.net/rfjian123/article/details/8742870
+
+<!-- Copy resources -->
+<copy encoding="utf-8" todir="${test.dest.dir}">
+<fileset dir="${src.test.dir}" includes="resources/**/*.*"/>
+</copy>
