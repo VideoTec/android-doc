@@ -1,0 +1,6 @@
+三种方法参考：
+1. onHiddenChanged - 基本上不会被调用
+2. setUserVisibleHint - 据说，搭配，ViewPager，可正常使用
+3. 使用 onPagerChangeListener.onPageSelected 方法来做相应处理
+
+http://stackoverflow.com/questions/10024739/how-to-determine-when-fragment-becomes-visible-in-viewpager

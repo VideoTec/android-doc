@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/22236162/eclipse-creates-extends-actionbaractivity-instead-activity
+
+--------------------------------------------------------------
+原因：如果要支持小于 API 11 版本的就需要这个兼容类 
+android.support.v7.app.ActionBarActivity
+--------------------------------------------------------------
+
+If you set your minimum required SDK below 11 
+it will create the application like 
+this because in API level below 11 there is no ActionBar. 
+
+解决方法：在新建工程时，设置最小兼容API为14（android 4.0）就没问题了
+The default value is 8. 
+You should set it 14 and then you can change it in your AndroidManifest.xml file.

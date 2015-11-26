@@ -1,0 +1,17 @@
+http://www.cnblogs.com/mengdd/archive/2013/01/09/2853254.html
+
+用FragmentManager可以做的工作有：
+
+1）得到Activity中存在的fragment：
+
+　　使用findFragmentById()或findFragmentByTag()方法。
+
+2）将fragment弹出 back stack：
+
+　　popBackStack()：
+将back stack中最后一次的fragment转换弹出。如果没有可以出栈的东西，返回false。
+这个函数是异步的：它将弹出栈的请求加入队列，但是这个动作直到应用回到事件循环才会执行。
+
+3）为 back stack 加上监听器：
+
+　　addOnBackStackChangedListener()

@@ -1,0 +1,69 @@
+http://www.cnblogs.com/mengdd/archive/2013/01/09/2853254.html
+
+Performing Fragment Transactions
+
+使用Fragment时，可以通过用户交互来执行一些动作，比如增加、移除、替换等。
+所有这些改变构成一个集合，这个集合被叫做一个 transaction。
+可以调用FragmentTransaction中的方法来处理这个 transaction，
+并且可以将transaction存进由activity管理的back stack中，
+这样用户就可以进行fragment变化的回退操作
+
+得到 FragmentTransaction 类的实例
+FragmentManager fragmentManager = getFragmentManager();
+FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+每个transaction是一组同时执行的变化的集合。
+用 add(), remove(), replace() 方法，
+把所有需要的变化加进去，然后调用commit()方法，将这些变化应用。
+
+在commit()方法之前，
+你可以调用 FragmentTransaction.addToBackStack()，把这个 transaction 加入 back stack 中去，
+这个back stack是由activity管理的，
+当用户按返回键时，就会回到上一个fragment的状态。
+
+---------------------------------------------------------
+关于commit()方法
+---------------------------------------------------------
+
+调用commit()方法并不能立即执行transaction中包含的改变动作，
+commit()方法把transaction加入activity的UI线程队列中。
+
+但是，如果觉得有必要的话，
+可以调用executePendingTransactions()方法来立即执行commit()提供的transaction。
+这样做通常是没有必要的，除非这个transaction被其他线程依赖。
+
+注意：你只能在activity存储它的状态（当用户要离开activity时）之前调用commit()，
+如果在存储状态之后调用commit()，将会抛出一个异常。
+这是因为当activity再次被恢复时commit之后的状态将丢失。
+如果丢失也没关系，那么使用commitAllowingStateLoss()方法。
+
+---------------------------------------------------------
+例子：
+用一个新的fragment取代之前的fragment，
+并且将前次的状态存储在back stack中
+---------------------------------------------------------
+// Create new fragment and transaction
+Fragment newFragment = new ExampleFragment();
+FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack
+transaction.replace(R.id.fragment_container, newFragment);
+transaction.addToBackStack(null);
+
+// Commit the transaction
+transaction.commit();
+
+在这个例子中，
+newFragment将取代在R.id.fragment_container容器中的fragment，
+如果没有，将直接添加新的fragment。
+
+通过调用transaction.addToBackStack()，
+commit()的一系列转换作为一个transaction
+被存储在back stack中，用户按Back键可以返回上一个转换前的状态。
+
+当你移除一个fragment的时候，
+如果commit()之前没有调用transaction.addToBackStack()，
+那个fragment将会是destroyed；
+如果调用了transaction.addToBackStack()，
+这个fragment会是stopped，可以通过返回键来恢复

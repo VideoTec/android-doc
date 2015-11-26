@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/10609268/difference-between-fragment-and-fragmentactivity
+
+If you are using a Fragment in an Activity (HoneyComb and up), call
+
+getFragmentManager() to get android.app.FragmentManager
+getLoaderManager() to get android.app.LoaderManager
+
+if you are using a Fragment in a FragmentActivity (pre-HoneyComb), call:
+
+getSupportFragmentManager() to get android.support.v4.app.FragmentManager.
+getSupportLoaderManager() to get android.support.v4.app.LoaderManager

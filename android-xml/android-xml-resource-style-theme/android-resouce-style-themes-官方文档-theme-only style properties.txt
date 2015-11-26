@@ -1,0 +1,21 @@
+http://developer.android.com/guide/topics/ui/themes.html
+
+Some style properties, 
+however, are not supported by any View element and can only be applied as a theme. 
+These style properties apply to the entire window and not to any type of View. 
+
+For example, 
+style properties for a theme can 
+hide the application title, 
+hide the status bar, or 
+change the window's background. 
+
+These kind of style properties do not belong to any View object. 
+To discover these theme-only style properties, 
+look at the R.attr reference for attributes that begin with window.
+http://developer.android.com/reference/android/R.attr.html 
+
+For instance, windowNoTitle and windowBackground are style properties 
+that are effective only 
+when the style is applied as a theme to an Activity or application. 
+See the next section for information about applying a style as a theme.

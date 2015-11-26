@@ -1,0 +1,25 @@
+
+	@Override
+	public void onClick(View v) {
+		int viewId = v.getId();
+		if (viewId == R.id.help_all_notice_layout) {
+			BesideInitUtil.reportWrapper(BehaviorNumberId.BESIDE_HELP_MAIN_NOTICE);
+			Intent intent = new Intent();
+			intent.setClass(mActivity, HelpNoticeActivity.class);
+			intent.putExtra(HelpNoticeActivity.NOTICE_EXTRA, msgDatas);
+			mActivity.clearHelpNoticeCount();
+			startActivity(intent);
+		} else if (viewId == R.id.banner_all_close_btn) {
+			mBannerView.setVisibility(View.GONE);
+			if (callback != null) {
+				callback.closeBanner();
+			}
+			mHelpManager.updateBannerInfo(info);
+		} else if (viewId == R.id.banner_all_image) {
+			BesideInitUtil.reportWrapper(BehaviorNumberId.BESIDE_HELP_MAIN_BANNER);
+			new UISwitch().showFetionBrowerActivity(mActivity, info.banner);
+		} else if (viewId == R.id.help_all_no_data_layout) {
+			mActivity.publishHelp();
+			mNoDataView.setVisibility(View.GONE);
+		}
+	}

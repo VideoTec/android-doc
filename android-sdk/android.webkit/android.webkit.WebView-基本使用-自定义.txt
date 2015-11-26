@@ -1,0 +1,44 @@
+
+http://developer.android.com/reference/android/webkit/WebView.html
+
+A WebView has several customization points where you can add your own behavior. These are:
+
+1）Creating and setting a WebChromeClient subclass. 
+This class is called when something that might impact a browser UI happens, 
+for instance, progress updates and JavaScript alerts are sent here (see Debugging Tasks).
+
+2）Creating and setting a WebViewClient subclass. 
+It will be called when things happen that impact the rendering of the content, 
+eg, errors or form submissions. 
+You can also intercept URL loading here (via shouldOverrideUrlLoading()).
+
+3）Modifying the WebSettings, such as enabling JavaScript with setJavaScriptEnabled().
+
+4）Injecting Java objects into the WebView 
+using the addJavascriptInterface(Object, String) method. 
+This method allows you to inject Java objects into a page's JavaScript context, 
+so that they can be accessed by JavaScript in the page.
+
+Here's a more complicated example, showing error handling, settings, and progress notification:
+
+ // Let's display the progress in the activity title bar, like the
+ // browser app does.
+ getWindow().requestFeature(Window.FEATURE_PROGRESS);
+
+ webview.getSettings().setJavaScriptEnabled(true);
+
+ final Activity activity = this;
+ webview.setWebChromeClient(new WebChromeClient() {
+   public void onProgressChanged(WebView view, int progress) {
+     // Activities and WebViews measure progress with different scales.
+     // The progress meter will automatically disappear when we reach 100%
+     activity.setProgress(progress * 1000);
+   }
+ });
+ webview.setWebViewClient(new WebViewClient() {
+   public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+     Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+   }
+ });
+
+ webview.loadUrl("http://developer.android.com/");

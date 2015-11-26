@@ -1,5 +1,8 @@
 android:layout_weight 比重
 
+设置了这个值的线性布局，
+其对应的 layout_width/layout_height 应该设置为 "0dp"
+
 包含这个属性的 布局参数类的有 
 android.widget.LinearLayout.LayoutParams
 ActionMenuView.LayoutParams, 

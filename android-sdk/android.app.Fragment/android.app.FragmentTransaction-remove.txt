@@ -1,0 +1,9 @@
+    /**
+     * Remove an existing fragment.  If it was added to a container, its view
+     * is also removed from that container.
+     * 
+     * @param fragment The fragment to be removed.
+     * 
+     * @return Returns the same FragmentTransaction instance.
+     */
+    public abstract FragmentTransaction remove(Fragment fragment);

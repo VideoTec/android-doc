@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/407929/how-do-i-change-eclipse-to-use-spaces-instead-of-tabs
+
+Window | Preferences | General | Editors | Text Editors | Insert spaces for tabs（选择）
+
+Click Window » Preferences
+Expand General » Editors
+Click Text Editors
+Check Insert spaces for tabs
+Click OK ad nauseum to apply the changes.

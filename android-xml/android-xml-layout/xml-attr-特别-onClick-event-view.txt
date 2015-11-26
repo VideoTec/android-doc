@@ -20,6 +20,8 @@ theme attribute (in the form "?[package:][type:]name") containing a value of thi
 
 This corresponds to the global attribute resource symbol onClick.
 
+17:46 2015/11/26
+TextView 直接设置这个 onClick 无效，不会调用。
 
 ------------------------------------
 实例

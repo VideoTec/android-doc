@@ -1,0 +1,32 @@
+基本使用的意思：
+does not enable JavaScript and web page errors are ignored
+
+http://developer.android.com/reference/android/webkit/WebView.html
+
+Basic usage
+
+By default, a WebView provides no browser-like widgets, does not enable JavaScript and web page errors are ignored. If your goal is only to display some HTML as a part of your UI, this is probably fine; the user won't need to interact with the web page beyond reading it, and the web page won't need to interact with the user. If you actually want a full-blown web browser, then you probably want to invoke the Browser application with a URL Intent rather than show it with a WebView. For example:
+
+ Uri uri = Uri.parse("http://www.example.com");
+ Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+ startActivity(intent);
+ 
+See Intent for more information.
+
+To provide a WebView in your own Activity, include a <WebView> in your layout, or set the entire Activity window as a WebView during onCreate():
+
+ WebView webview = new WebView(this);
+ setContentView(webview);
+ 
+Then load the desired web page:
+
+ // Simplest usage: note that an exception will NOT be thrown
+ // if there is an error loading this page (see below).
+ webview.loadUrl("http://slashdot.org/");
+
+ // OR, you can also load from an HTML string:
+ String summary = "<html><body>You scored <b>192</b> points.</body></html>";
+ webview.loadData(summary, "text/html", null);
+ // ... although note that there are restrictions on what this HTML can do.
+ // See the JavaDocs for loadData() and loadDataWithBaseURL() for more info.
+ 

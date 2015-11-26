@@ -1,3 +1,7 @@
+参考：
+E:\doc\android\android-eclipse\android-eclipse-新建Android工程-ActionBarActivity.txt
+
+
 https://developer.android.com/intl/zh-cn/reference/android/support/v7/app/AppCompatActivity.html
 
 遇到的问题：

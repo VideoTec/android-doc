@@ -1,0 +1,5 @@
+http://developer.android.com/reference/android/webkit/WebViewFragment.html
+
+A fragment that displays a WebView.
+
+The WebView is automically paused or resumed when the Fragment is paused or resumed.

@@ -1,0 +1,49 @@
+FILE LOCATION:
+res/values/filename.xml
+The filename is arbitrary[ˈɑ:bɪtrəri] 任性的. The element's name will be used as the resource ID.
+
+RESOURCE REFERENCE:
+In XML: @[package:]style/style_name
+
+SYNTAX:
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style
+        name="style_name"
+        parent="@[package:]style/style_to_inherit">
+        <item
+            name="[package:]style_property_name"
+            >style_value</item>
+    </style>
+</resources>
+
+--------------------------------------------------
+例子
+-------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomText" parent="@style/Text">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#008</item>
+    </style>
+</resources>
+
+<?xml version="1.0" encoding="utf-8"?>
+<EditText
+    style="@style/CustomText"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Hello, World!" />
+
+--------------------------------------------------
+文档
+-------------------------------------------------
+A style resource defines the format and look for a UI. 
+A style can be applied 
+to an individual View (from within a layout file) or 
+to an entire Activity or application (from within the manifest file).
+
+For more information about creating and applying styles, please read Styles and Themes.
+
+Note: A style is a simple resource that is referenced using the value provided in the name attribute (not the name of the XML file).
+As such, you can combine style resources with other simple resources in the one XML file, under one <resources> element.

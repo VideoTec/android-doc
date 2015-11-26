@@ -1,0 +1,7 @@
+public final int getId ()
+
+Added in API level 11
+Return the identifier this fragment is known by. 
+This is either 
+1）the android:id value supplied in a layout or 
+2）the container view ID supplied when adding the fragment.

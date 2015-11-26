@@ -1,0 +1,52 @@
+最重要的一条：
+
+android.app.Fragment
+是 API 11 （android 3.0 honeycomb） 引入的。
+
+honeycomb[英][ˈhʌnikəʊm] [美][ˈhʌnikoʊm]
+n.蜂窝，蜂巢
+
+http://stackoverflow.com/questions/10609268/difference-between-fragment-and-fragmentactivity
+
+A Fragment is a section of an Activity, which has:
+
+its own lifecycle
+receives its own input events
+can be added or removed while the Activity is running.
+A Fragment must always be embedded in an Activity.
+
+Fragments are not part of the API prior to HoneyComb (3.0). If you want to use Fragments in an app targeting a platform version prior to HoneyComb, you need to add the Support Package to your project and use the FragmentActivity to hold your Fragments. The FragmentActivity class has an API for dealing with Fragments, whereas the Activity class, prior to HoneyComb, doesn't.
+
+If your project is targeting HoneyComb or newer only, you should use Activity and not FragmentActivity to hold your Fragments.
+
+Some details:
+
+Use android.app.Fragment with Activity. Use android.support.v4.app.Fragment with FragmentActivity. Don't add the support package Fragment to an Activity as it will cause an Exception to be thrown.
+
+A thing to be careful with: FragmentManager and LoaderManager have separate support versions for FragmentActivity:
+
+If you are using a Fragment in an Activity (HoneyComb and up), call
+
+getFragmentManager() to get android.app.FragmentManager
+getLoaderManager() to get android.app.LoaderManager
+
+if you are using a Fragment in a FragmentActivity (pre-HoneyComb), call:
+
+getSupportFragmentManager() to get android.support.v4.app.FragmentManager.
+getSupportLoaderManager() to get android.support.v4.app.LoaderManager
+
+so, don't do
+
+//don't do this
+myFragmentActivity.getLoaderManager(); 
+//instead do this:
+myFragmentActivity.getSupportLoaderManager();
+
+or
+
+//don't do this:
+android.app.FragmentManager fm = myFragmentActivity.getSupportFragmentManager();
+//instead do this:
+android.support.v4.app.FragmentManager fm = myFragmentActivity.getSupportFragmentManager()
+
+Also useful to know is that while a fragment has to be embedded in an Activity it doesn't have to be part of the Activity layout. It can be used as an invisible worker for the activity, with no UI of its own.

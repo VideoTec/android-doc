@@ -1,0 +1,2 @@
+public abstract FragmentTransaction replace(int containerViewId, Fragment fragment);
+public abstract FragmentTransaction replace(int containerViewId, Fragment fragment, String tag);

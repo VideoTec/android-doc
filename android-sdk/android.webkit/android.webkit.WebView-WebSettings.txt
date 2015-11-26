@@ -1,0 +1,14 @@
+http://developer.android.com/reference/android/webkit/WebSettings.html
+
+java.lang.Object
+   ↳	android.webkit.WebSettings
+   
+Manages settings state for a WebView. 
+When a WebView is first created, it obtains a set of default settings. 
+These default settings will be returned from any getter call.
+
+A WebSettings object obtained from WebView.getSettings() 
+is tied to the life of the WebView.
+ 
+If a WebView has been destroyed, 
+any method call on WebSettings will throw an IllegalStateException.

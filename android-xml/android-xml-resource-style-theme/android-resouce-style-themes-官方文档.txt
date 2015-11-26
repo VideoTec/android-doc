@@ -1,0 +1,22 @@
+http://developer.android.com/guide/topics/ui/themes.html
+
+A style is a collection of properties 
+that specify the look and format for a View or window. 
+A style can specify properties 
+such as height, padding, font color, font size, background color, and much more. 
+A style is defined in an XML resource 
+that is separate from the XML that specifies the layout.
+
+类似于 网页中的 CSS 技术：
+Styles in Android share a similar philosophy 
+to cascading stylesheets in web design—they 
+allow you to separate the design from the content.
+
+样式（theme）一般应用到整个 ACT 或者 APP 中：
+A theme is a style applied to an entire Activity or application, 
+rather than an individual View (as in the example above). 
+When a style is applied as a theme, 
+every View in the Activity or application will apply each style property that it supports. 
+For example, 
+you can apply the same CodeFont style as a theme for an Activity 
+and then all text inside that Activity will have green monospace font.

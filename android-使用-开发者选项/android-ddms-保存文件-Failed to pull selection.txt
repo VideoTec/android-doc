@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/15450055/failed-to-pull-selection-null
+
+重新选中设备，再把文件打开，就可以了。
+
+Just re-selecting the device from the left panel would solve your problem.

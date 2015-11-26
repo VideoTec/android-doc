@@ -1,0 +1,17 @@
+-------------------------------------------------
+注意这个是 theme-only style property
+-------------------------------------------------
+
+    <!-- Application theme. -->
+    <style name="FeinnoBesideTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/FeinnoBesideTheme.Activity</item>
+    </style>
+
+AndroidManifest.xml
+    <application
+        android:name="com.feinno.beside.application.BesideApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/FeinnoBesideTheme" >

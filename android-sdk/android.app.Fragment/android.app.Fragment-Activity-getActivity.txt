@@ -1,0 +1,10 @@
+http://www.cnblogs.com/smyhvae/p/4000390.html
+
+在Fragment中调用Activity中的方法：
+
+Fragment可以通过getActivity()方法来获得Activity的实例，然后就可以调用一些例如findViewById()之类的方法。例如：
+
+View listView = getActivity().findViewById(R.id.list);
+但是注意调用getActivity()时，fragment必须和activity关联（attached to an activity），否则将会返回一个null。
+
+另外，当碎片中需要使用Context对象时，也可以使用getActivity()方法，因此获取到的活动本身就是一个Context对象。

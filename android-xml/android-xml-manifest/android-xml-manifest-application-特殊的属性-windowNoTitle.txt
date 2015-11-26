@@ -1,0 +1,25 @@
+
+这种属性被称为：
+theme-only style properties
+注意如果直接写： 无效
+<application
+    android:windowNoTitle="false" >
+参考：
+E:\doc\android\android-xml\android-xml-resource-style-theme\android-resouce-style-themes-官方文档-theme-only style properties.txt
+
+去掉ACT的标题栏
+
+自定义 theme
+    <!-- Application theme. -->
+    <style name="FeinnoBesideTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/FeinnoBesideTheme.Activity</item>
+    </style>
+
+应用 theme
+    <application
+        android:name="com.feinno.beside.application.BesideApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/FeinnoBesideTheme" >

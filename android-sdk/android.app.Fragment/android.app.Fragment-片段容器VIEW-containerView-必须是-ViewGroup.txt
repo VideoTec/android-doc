@@ -1,0 +1,7 @@
+containerViewId Optional identifier of the container 
+this fragment is to be placed in.  
+If 0, it will not be placed in a container.
+
+用来放置包含片段的 视图容器。
+
+必须是 ViewGroup 类型

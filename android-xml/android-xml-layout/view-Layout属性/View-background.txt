@@ -1,0 +1,19 @@
+http://developer.android.com/reference/android/view/View.html#attr_android:background
+
+android:background
+
+A drawable to use as the background. This can be either a reference to a full drawable resource (such as a PNG image, 9-patch, XML state list description, etc), or a solid color such as "#ff000000" (black).
+
+May be a reference to another resource, in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+May be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+This corresponds to the global attribute resource symbol background.
+
+Related Methods
+setBackgroundResource(int)
+
+----------------------------------------------------
+特别注意： setBackgroundResource 的参数
+----------------------------------------------------
+setBackgroundResource(0xff0000);  这个颜色值是透明的。

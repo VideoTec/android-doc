@@ -1,0 +1,19 @@
+为什么？
+
+        <Button 
+            android:id="@+id/msg_page_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="消息"
+            android:onClick="onNavClick"      -----  这个是可以调用到
+            android:background="#5f5" />        
+            
+        <TextView               
+            android:id="@+id/msg_page_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="消息"
+            android:onClick="onNavClick"          -----  这个是无效的，不会调用
+            android:background="#5f5" />

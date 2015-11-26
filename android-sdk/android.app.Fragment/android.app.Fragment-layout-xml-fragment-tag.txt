@@ -1,0 +1,20 @@
+http://developer.android.com/reference/android/app/Fragment.html
+
+Fragments can be used as part of your application's layout, 
+allowing you to better modularize your code and 
+more easily adjust your user interface to the screen it is running on. 
+
+As an example, 
+we can look at a simple program consisting of a list of items, 
+and display of the details of each item.
+
+An activity's layout XML can include <fragment> tags 
+to embed fragment instances inside of the layout. 
+For example, here is a simple layout that embeds one fragment:
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <fragment class="com.example.android.apis.app.FragmentLayout$TitlesFragment"
+            android:id="@+id/titles"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+</FrameLayout>

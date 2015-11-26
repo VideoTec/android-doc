@@ -1,0 +1,21 @@
+    /**
+     * Hides an existing fragment.  This is only relevant for fragments whose
+     * views have been added to a container, as this will cause the view to
+     * be hidden.
+     * 
+     * @param fragment The fragment to be hidden.
+     * 
+     * @return Returns the same FragmentTransaction instance.
+     */
+    public abstract FragmentTransaction hide(Fragment fragment);
+    
+    /**
+     * Shows a previously hidden fragment.  This is only relevant for fragments whose
+     * views have been added to a container, as this will cause the view to
+     * be shown.
+     * 
+     * @param fragment The fragment to be shown.
+     * 
+     * @return Returns the same FragmentTransaction instance.
+     */
+    public abstract FragmentTransaction show(Fragment fragment);

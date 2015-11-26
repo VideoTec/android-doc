@@ -1,3 +1,15 @@
+
+---------------------------------------------------------
+add 重载列表
+---------------------------------------------------------
+public abstract FragmentTransaction add(Fragment fragment, String tag);
+public abstract FragmentTransaction add(int containerViewId, Fragment fragment);
+public abstract FragmentTransaction add(int containerViewId, Fragment fragment, String tag);
+
+---------------------------------------------------------
+所有重载函数方法
+---------------------------------------------------------
+
 public abstract FragmentTransaction add (int containerViewId, Fragment fragment)
 
 Added in API level 11

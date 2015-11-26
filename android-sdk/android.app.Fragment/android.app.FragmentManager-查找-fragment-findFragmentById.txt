@@ -1,0 +1,5 @@
+http://www.cnblogs.com/smyhvae/p/4000390.html
+
+activity也可以获得一个fragment的引用，从而调用fragment中的方法。获得fragment的引用要用FragmentManager，之后可以调用findFragmentById() 或者 findFragmentByTag()。例如：
+
+ExampleFragment fragment = (ExampleFragment) getFragmentManager().findFragmentById(R.id.example_fragment);

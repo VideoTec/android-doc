@@ -1,0 +1,10 @@
+http://developer.android.com/reference/android/webkit/WebSettings.html#setJavaScriptEnabled(boolean)
+
+public abstract void setJavaScriptEnabled (boolean flag)
+
+Added in API level 1
+Tells the WebView to enable JavaScript execution. 
+The default is false.
+
+Parameters
+flag	true if the WebView should execute JavaScript

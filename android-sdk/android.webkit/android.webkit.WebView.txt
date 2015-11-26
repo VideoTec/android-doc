@@ -1,0 +1,17 @@
+http://developer.android.com/reference/android/webkit/WebView.html
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.view.ViewGroup
+ 	 	   ↳	android.widget.AbsoluteLayout
+ 	 	 	   ↳	android.webkit.WebView
+               
+A View that displays web pages. This class is the basis upon which you can roll your own web browser or simply display some online content within your Activity. It uses the WebKit rendering engine to display web pages and includes methods to navigate forward and backward through a history, zoom in and out, perform text searches and more.
+
+Note that, in order for your Activity to access the Internet and load web pages in a WebView, you must add the INTERNET permissions to your Android Manifest file:
+
+<uses-permission android:name="android.permission.INTERNET" />
+This must be a child of the element.
+
+For more information, read Building Web Apps in WebView.
+http://developer.android.com/guide/webapps/webview.html
