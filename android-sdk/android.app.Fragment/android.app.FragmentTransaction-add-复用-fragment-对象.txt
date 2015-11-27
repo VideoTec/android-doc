@@ -1,0 +1,20 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0324/2639.html
+
+每次replace会把生命周期全部执行一遍，
+如果在这些生命周期函数 里拉取数据的话，就会不断重复的加载刷新数据
+
+如果要复用 fragment-object 正确的方法是：
+
+1.在add的时候，加上一个tab参数
+transaction.add(R.id.content, IndexFragment,”Tab1″);
+2.然后当IndexFragment引用被回收置空的话，先通过
+IndexFragment＝FragmentManager.findFragmentByTag(“Tab1″);
+找到对应的引用，然后继续上面的hide,show;
+
+------------------------------------------------------
+注意，add之前，查找下是否已经有，fragment 对象。
+------------------------------------------------------
+transaction.add(R.id.content, IndexFragment);
+transaction.hide(otherfragment);
+transaction.show(thisfragment);
+transaction.commit();

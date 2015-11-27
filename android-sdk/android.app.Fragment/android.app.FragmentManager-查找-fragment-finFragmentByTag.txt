@@ -1,0 +1,34 @@
+接口
+    /**
+     * Finds a fragment that was identified by the given tag either when inflated
+     * from XML or as supplied when added in a transaction.  This first
+     * searches through fragments that are currently added to the manager's
+     * activity; if no such fragment is found, then all fragments currently
+     * on the back stack are searched.
+     * @return The fragment if found or null otherwise.
+     */
+    public abstract Fragment findFragmentByTag(String tag);
+
+final class FragmentManagerImpl extends FragmentManager implements LayoutInflater.Factory2
+实现
+    public Fragment findFragmentByTag(String tag) {
+        if (mAdded != null && tag != null) {
+            // First look through added fragments.
+            for (int i=mAdded.size()-1; i>=0; i--) {
+                Fragment f = mAdded.get(i);
+                if (f != null && tag.equals(f.mTag)) {
+                    return f;
+                }
+            }
+        }
+        if (mActive != null && tag != null) {
+            // Now for any known fragment.
+            for (int i=mActive.size()-1; i>=0; i--) {
+                Fragment f = mActive.get(i);
+                if (f != null && tag.equals(f.mTag)) {
+                    return f;
+                }
+            }
+        }
+        return null;
+    }

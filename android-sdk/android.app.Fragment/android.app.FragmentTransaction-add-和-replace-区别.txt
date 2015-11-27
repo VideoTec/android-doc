@@ -1,0 +1,37 @@
+http://www.binkery.com/archives/317.html
+
+在大部分情况下，这两个的表现基本相同。
+因为，一般，咱们会使用一个FrameLayout来当容器，
+而每个Fragment被add 或者 replace 到这个FrameLayout的时候，都是显示在最上层的。
+所以你看到的界面都是一样的。
+
+但是，使用add的情况下，这个FrameLayout其实有2层，
+多层肯定要比一层的来得浪费，所以还是推荐使用replace。
+
+当然有时候还是需要使用add的。
+比如要实现轮播图的效果，每个轮播图都是一个独立的Fragment，
+而他的容器FrameLayout需要add多个Fragment，这样他就可以根据提供的逻辑进行轮播了
+
+分析源码：
+
+FragmentManager 是一个抽象类，
+实现类是 FragmentManagerImpl ，
+跟 FragmentManager 在同一个类文件里。
+
+FragmentTransaction 也是一个抽象类，
+具体实现是 BackStackRecord 。
+BackStackRecord 其实是一个封装了一个队列。
+
+咱们看 add 方法和 replace 方法。
+
+add 方法和 replace 方法都是把一个操作 OP_XX 放入到队列里，
+Op 是其内部封装的一个操作的类。
+在 BackStackRecord 的 run 方法里，每次会从队列的头（mHead）获取一个操作 Op ,
+如果 Op 操作是 add ，则调用 FragmentManager 的 addFragment() 方法，
+如果 Op 操作是 replace ，
+则先调用 FragmentManager 的 removeFragment() 方法，然后再调用 addFragment() 方法。
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0324/2639.html
+
+每次replace会把生命周期全部执行一遍，
+如果在这些生命周期函数 里拉取数据的话，就会不断重复的加载刷新数据

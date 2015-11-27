@@ -1,0 +1,18 @@
+http://www.binkery.com/archives/317.html
+
+FragmentManager 是一个抽象类，
+实现类是 FragmentManagerImpl ，
+跟 FragmentManager 在同一个类文件里。
+
+FragmentTransaction 也是一个抽象类，
+具体实现是 BackStackRecord 。
+BackStackRecord 其实是一个封装了一个队列。
+
+咱们看 add 方法和 replace 方法。
+
+add 方法和 replace 方法都是把一个操作 OP_XX 放入到队列里，
+Op 是其内部封装的一个操作的类。
+在 BackStackRecord 的 run 方法里，每次会从队列的头（mHead）获取一个操作 Op ,
+如果 Op 操作是 add ，则调用 FragmentManager 的 addFragment() 方法，
+如果 Op 操作是 replace ，
+则先调用 FragmentManager 的 removeFragment() 方法，然后再调用 addFragment() 方法。

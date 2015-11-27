@@ -1,3 +1,37 @@
+    /**
+     * Finds a fragment that was identified by the given id either when inflated
+     * from XML or as the container ID when added in a transaction.  This first
+     * searches through fragments that are currently added to the manager's
+     * activity; if no such fragment is found, then all fragments currently
+     * on the back stack associated with this ID are searched.
+     * @return The fragment if found or null otherwise.
+     */
+    public abstract Fragment findFragmentById(int id);
+    
+final class FragmentManagerImpl extends FragmentManager implements LayoutInflater.Factory2
+实现
+    public Fragment findFragmentById(int id) {
+        if (mAdded != null) {
+            // First look through added fragments.
+            for (int i=mAdded.size()-1; i>=0; i--) {
+                Fragment f = mAdded.get(i);
+                if (f != null && f.mFragmentId == id) {
+                    return f;
+                }
+            }
+        }
+        if (mActive != null) {
+            // Now for any known fragment.
+            for (int i=mActive.size()-1; i>=0; i--) {
+                Fragment f = mActive.get(i);
+                if (f != null && f.mFragmentId == id) {
+                    return f;
+                }
+            }
+        }
+        return null;
+    }
+
 http://www.cnblogs.com/smyhvae/p/4000390.html
 
 activity也可以获得一个fragment的引用，从而调用fragment中的方法。获得fragment的引用要用FragmentManager，之后可以调用findFragmentById() 或者 findFragmentByTag()。例如：
