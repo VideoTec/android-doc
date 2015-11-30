@@ -1,0 +1,7 @@
+依赖：
+org.apache.http.client 库
+
+2015 9
+commit 15f9556b578dbf247ff32032461b094d4bfd31a9
+Dependency added, build script updated, 
+renamed all org.apache.http dependency to cz.msebera.android.httpclient

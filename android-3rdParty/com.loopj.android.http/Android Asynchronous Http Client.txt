@@ -1,0 +1,24 @@
+http://loopj.com/android-async-http/
+
+An asynchronous callback-based 
+Http client for Android built on top of Apache’s HttpClient libraries. 
+
+All requests are made outside of your app’s main UI thread, 
+but any callback logic will be executed 
+on the same thread as the callback 
+was created using Android’s Handler message passing. 
+
+You can also use it in Service or background thread, 
+library will automatically recognize in which context is ran.
+
+https://github.com/loopj/android-async-http
+1）Make asynchronous HTTP requests, handle responses in anonymous callbacks
+2）HTTP requests happen outside the UI thread
+3）Requests use a threadpool to cap concurrent resource usage
+4）GET/POST params builder (RequestParams)
+5）Multipart file uploads with no additional third party libraries
+6）Tiny size overhead to your application, only 60kb for everything
+7）Automatic smart request retries optimized for spotty mobile connections
+8）Automatic gzip response decoding support for super-fast requests
+9）Optional built-in response parsing into JSON (JsonHttpResponseHandler)
+10）Optional persistent cookie store, saves cookies into your app's SharedPreferences

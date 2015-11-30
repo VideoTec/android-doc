@@ -1,0 +1,32 @@
+
+    /**
+     * Starts the dispatchers in this queue.
+     */
+    public void start() {
+        stop();  // Make sure any currently running dispatchers are stopped.
+        // Create the cache dispatcher and start it.
+        mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
+        mCacheDispatcher.start();
+
+        // Create network dispatchers (and corresponding threads) up to the pool size.
+        for (int i = 0; i < mDispatchers.length; i++) {
+            NetworkDispatcher networkDispatcher = new NetworkDispatcher(mNetworkQueue, mNetwork,
+                    mCache, mDelivery);
+            mDispatchers[i] = networkDispatcher;
+            networkDispatcher.start();
+        }
+    }
+
+    /**
+     * Stops the cache and network dispatchers.
+     */
+    public void stop() {
+        if (mCacheDispatcher != null) {
+            mCacheDispatcher.quit();
+        }
+        for (int i = 0; i < mDispatchers.length; i++) {
+            if (mDispatchers[i] != null) {
+                mDispatchers[i].quit();
+            }
+        }
+    }

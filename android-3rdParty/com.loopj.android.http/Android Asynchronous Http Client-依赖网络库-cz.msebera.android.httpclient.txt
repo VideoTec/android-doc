@@ -1,0 +1,10 @@
+https://github.com/smarek/httpclient-android
+
+HttpClient Android repackage buildscript
+
+Build script and dependencies to 
+create repackaged upstream version of HttpClient and depdendencies 
+(HttpMime, HttpCore, HttpClient-Cache) and 
+get it working on Android API version from 3 to 23
+
+Current version: 4.4.1.1 (originating from upstream HttpClient 4.4.1 version)

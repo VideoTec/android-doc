@@ -1,0 +1,12 @@
+http://developer.android.com/reference/android/util/Base64OutputStream.html
+
+
+java.lang.Object
+   ↳	java.io.OutputStream
+ 	   ↳	java.io.FilterOutputStream
+ 	 	   ↳	android.util.Base64OutputStream
+
+Class Overview
+
+An OutputStream that does Base64 encoding on the data written to it, 
+writing the resulting data to another OutputStream.

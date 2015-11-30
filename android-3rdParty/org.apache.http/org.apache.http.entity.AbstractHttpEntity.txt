@@ -1,0 +1,22 @@
+https://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/org/apache/http/entity/AbstractHttpEntity.html
+
+org.apache.http.entity
+Class AbstractHttpEntity
+
+java.lang.Object
+org.apache.http.entity.AbstractHttpEntity
+
+All Implemented Interfaces:
+HttpEntity
+
+Direct Known Subclasses:
+BasicHttpEntity, ByteArrayEntity, EntityTemplate, FileEntity, InputStreamEntity, SerializableEntity, StringEntity
+
+@NotThreadSafe
+public abstract class AbstractHttpEntity
+extends Object
+
+implements HttpEntity
+
+Abstract base class for entities. 
+Provides the commonly used attributes for streamed and self-contained implementations of HttpEntity.

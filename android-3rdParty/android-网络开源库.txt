@@ -1,0 +1,42 @@
+http://stackoverflow.com/questions/16902716/comparison-of-android-networking-libraries-okhttp-retrofit-volley?lq=1
+
+Volley roughly competes with Retrofit + Picasso. On the plus side, it is one library.
+
+Retrofit uses OkHTTP automatically if available. 
+There is a Gist from Jake Wharton that connects Volley to OkHTTP.
+
+http://stackoverflow.com/questions/25346813/google-volley-vs-android-async-http
+
+Android Async Http: Is a powerful Http client. 
+Offers some functionalities as REST helper and 
+integration for JSON parsing with other libraries.
+
+Volley: Is a REST helper/library that helps you to 
+deal with async requests and image loading. 
+Volley it's not an http client. 
+Volley uses the SDK http clients 
+(the apache or the httpclient depending on the API level) 
+if you don't provide one, but a common client for volley is 
+OkHttp (https://goo.gl/nl2DfN). 
+You can integrate Volley with Gson easily as well.
+
+From my point of view, 
+as much responsibility you give to a single library, 
+less customization you have and more unneeded code you'll add.
+
+单一库 和 多个单一功能的库 ：
+That's the reason libraries as Android Async Http or ION are losing grip nowadays and
+other options like the Square solutions 
+(Okio + OkHttp + Retrofit + Moshi + Picasso - Those are five libraries) 
+are gaining grip. 
+So here you have 5 libraries that can be 
+used separately as standalone or 
+tied together as 2, 3 or 4. 
+That's flexibility and power.
+
+http://stackoverflow.com/questions/6341400/alternative-http-client-library-for-android/31453152#31453152
+
+OkHttp (needs Okio) + Volley + Gson: is a common REST solution for JSON based APIs.
+OkHttp (needs Okio) + Retrofit + Moshi + Picasso. This option is pretty much equivalent to the previous one.
+ION is a very good library
+Android Async Http:
