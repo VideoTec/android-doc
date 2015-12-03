@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/2997348/i-can-t-find-the-android-keytool
+
+keytool comes with the Java SDK. 
+You should find it in the directory that contains javac, etc.
+
+Got it: C:\Program Files\Java\jdk1.6.0_14\bin Thanks
+can even find it in the JRE... Thanks

@@ -1,0 +1,13 @@
+A special type-safe container, called Bundle, 
+is available for key/value maps of heterogeneous values. 
+
+marshalling[英]['mɑ:ʃəlɪŋ] [美]['mɑ:ʃəlɪŋ]
+adj.编组的，集结待发的
+n.信号编集
+
+This has many optimizations for improved performance 
+when reading and writing data, 
+and its type-safe API avoids difficult to debug type errors 
+when finally marshalling the data contents into a Parcel. 
+
+The methods to use are writeBundle(Bundle), readBundle(), and readBundle(ClassLoader).

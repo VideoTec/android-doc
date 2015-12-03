@@ -1,0 +1,47 @@
+
+    /**
+     * Notify the host application that a page has started loading. This method
+     * is called once for each main frame load so a page with iframes or
+     * framesets will call onPageStarted one time for the main frame. This also
+     * means that onPageStarted will not be called when the contents of an
+     * embedded frame changes, i.e. clicking a link whose target is an iframe.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param url The url to be loaded.
+     * @param favicon The favicon for this page if it already exists in the
+     *            database.
+     */
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+    }
+    
+    http://blog.csdn.net/cwuhao/article/details/6543065
+    在页面加载开始时调用
+    
+    http://blog.csdn.net/typename/article/details/39495409
+    当内核开始加载访问的url时，会通知应用程序，
+    对每个main frame这个函数只会被调用一次，
+    页面包含iframe 或者framesets 不会另外调用一次onPageStarted，
+    当网页内内嵌的frame 发生改变时也不会调用onPageStarted。
+
+参数说明：
+
+@param view 
+接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+
+@param url    即将要被加载的url
+@param favicon 如果这个favicon已经存储在本地数据库中，则会返回这个网页的favicon，否则返回为null。
+
+Tips：
+(1) iframe 可能不少人不知道什么含义，
+这里我解释下，iframe 我们加载的一张，
+下面有很多链接，我们随便点击一个链接是即当前host的一个iframe.
+
+(2) 有个问题可能是开发者困惑的，
+onPageStarted和shouldOverrideUrlLoading 
+在网页加载过程中这两个函数到底哪个先被调用。
+当我们通过loadUrl的方式重新加载一个网址时候，
+这时候会先调用onPageStarted再调用shouldOverrideUrlLoading，
+当我们在打开的这个网址点击一个link，
+这时候会先调用shouldOverrideUrlLoading 再调用onPageStarted。
+不过shouldOverrideUrlLoading不一定每次都被调用，只有需要的时候才会被调用。

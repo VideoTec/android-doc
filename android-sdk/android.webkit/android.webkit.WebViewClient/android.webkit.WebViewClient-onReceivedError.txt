@@ -1,0 +1,24 @@
+    /**
+     * Report an error to the host application. These errors are unrecoverable
+     * (i.e. the main resource is unavailable). The errorCode parameter
+     * corresponds to one of the ERROR_* constants.
+     * @param view The WebView that is initiating the callback.
+     * @param errorCode The error code corresponding to an ERROR_* value.
+     * @param description A String describing the error.
+     * @param failingUrl The url that failed to load.
+     */
+    public void onReceivedError(WebView view, int errorCode,
+            String description, String failingUrl) {
+    }
+    
+    http://blog.csdn.net/typename/article/details/39495409
+    当浏览器访问制定的网址发生错误时会通知我们应用程序，比如网络错误。
+
+参数说明：
+@param view 接收WebViewClient的那个实例，前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param errorCode 错误号可以在WebViewClient.ERROR_* 里面找到对应的错误名称。
+@param description 描述错误的信息
+@param failingUrl  当前访问失败的url，注意并不一定是我们主url
+
+Tips
+在onReceiveError我们可以自定义网页的错误页面。

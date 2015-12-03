@@ -1,0 +1,17 @@
+C:\Program Files\Java\jdk1.8.0_66\bin\jarsigner.exe
+
+http://developer.android.com/intl/zh-cn/tools/publishing/app-signing.html
+3）Sign your app with your private key using jarsigner:
+
+$ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1
+-keystore my-release-key.keystore my_application.apk alias_name
+
+This example prompts you for passwords for the keystore and key. 
+It then modifies the APK in-place to sign it. 
+Note that you can sign an APK multiple times with different keys.
+
+4）Verify that your APK is signed. For example:
+
+$ jarsigner -verify -verbose -certs my_application.apk
+
+http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html

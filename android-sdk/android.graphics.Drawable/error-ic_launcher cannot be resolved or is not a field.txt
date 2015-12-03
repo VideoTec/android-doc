@@ -1,0 +1,22 @@
+Bitmap launcherBMP = BitmapFactory.decodeResource(
+                mAppContext.getResources(), R.drawable.ic_launcher);
+
+http://stackoverflow.com/questions/11172582/r-drawable-cannot-resolve-image
+正确解决方法： 18:49 2015/12/3
+
+Are you sure You import import com.yourcompanyname.product.R 
+instead of
+import android.R;
+                
+http://stackoverflow.com/questions/19385467/ic-launcher-cannot-be-resolved-or-is-not-a-field
+
+replace "mipmap" with "drawable"
+
+I had the same problem while following a tutorial and 
+i found out that my AndroidManifest.xml file had the following code :-
+
+android:icon="@mipmap/ic_launcher
+
+so I changed R.drawable to R.mipmap it solved the problem . 
+Wherever I found out drawable I replaced it with mipmap. 
+Good to check for mipmap with android studio 1.1. for more info

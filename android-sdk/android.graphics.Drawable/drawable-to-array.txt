@@ -1,0 +1,32 @@
+http://bingtian.iteye.com/blog/642128
+Drawable、Bitmap、byte[]之间的转换
+
+http://stackoverflow.com/questions/4435806/drawable-to-byte
+
+----------------------------------------------------
+It should be: bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+Otherwise the stream contains no data
+----------------------------------------------------
+Drawable d; // the drawable (Captain Obvious, to the rescue!!!)
+Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
+ByteArrayOutputStream stream = new ByteArrayOutputStream();
+bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+byte[] bitmapdata = stream.toByteArray();
+
+----------------------------------------------------
+Thanks all and this solved my problem.
+----------------------------------------------------
+
+Resources res = getResources();
+Drawable drawable = res.getDrawable(R.drawable.my_pic);
+Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+ByteArrayOutputStream stream = new ByteArrayOutputStream();
+bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+byte[] bitMapData = stream.toByteArray();
+
+----------------------------------------------------
+----------------------------------------------------
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tester);
+ByteArrayOutputStream stream = new ByteArrayOutputStream();
+bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+byte[] bitMapData = stream.toByteArray();

@@ -1,0 +1,92 @@
+https://guides.codepath.com/android/using-parcelable
+One very important thing to pay close attention to is 
+the order that you write and read your values to and from the Parcel. 
+They need to match up in both cases. 
+
+In my example, 
+I write the int and then the String to the Parcel. 
+Afterwards, 
+I read them in that same exact order. 
+The mechanism that Android uses to read the Parcel is blind and 
+completely trusts you to get the order correct, or else you will run into run-time crashes.
+
+http://shri.blog.kraya.co.uk/2010/04/26/android-parcel-data-to-pass-between-activities-using-parcelable-classes/
+in the same order
+
+@Override
+	public void writeToParcel(Parcel dest, int flags) {
+ 
+		// We just need to write each field into the
+		// parcel. When we read from parcel, they
+		// will come back in the same order
+		dest.writeString(strValue);
+		dest.writeInt(intValue);
+	}
+ 
+	/**
+	 *
+	 * Called from the constructor to create this
+	 * object from a parcel.
+	 *
+	 * @param in parcel from which to re-create object
+	 */
+	private void readFromParcel(Parcel in) {
+ 
+		// We just need to read back each
+		// field in the order that it was
+		// written to the parcel
+		strValue = in.readString();
+		intValue = in.readInt();
+	}
+
+http://stackoverflow.com/questions/10169479/android-parcelable-issue
+
+It is not the order but the data type that is not the same, 
+from the first 4 lines 
+
+you write int, string, string, int then 
+you read int, string, string, long. 
+
+I didn't check any further, 
+you must match both order and datatype of read and write operations.
+
+问题代码：
+public void writeToParcel(Parcel out, int flags) {
+    out.writeInt(id);
+    out.writeString(appNo);
+    out.writeString(this.policyNo);
+    out.writeInt((int)this.AppRcptDt.getTime());
+    out.writeString(this.currentStatus);
+    out.writeString(this.productCd);
+    out.writeDouble(this.sumAssured);
+    out.writeDouble(this.modalPremium);
+    out.writeDouble(this.annualPremium);
+    out.writeString(this.paymentMode);
+    out.writeString(this.branchCd);
+    out.writeString(this.branchName);
+    out.writeString(this.insuredName);
+    out.writeString(this.auraStatus);
+    out.writeString(this.ownerName);
+    out.writeString(this.agentCd);
+    out.writeString(this.billingMode);
+}
+
+private ApplicationTrackerDO(Parcel in) {
+    id=in.readInt();
+    this.appNo = in.readString();
+    this.policyNo = in.readString();
+    this.AppRcptDt = new Date(in.readLong());
+    this.currentStatus = in.readString();
+    this.productCd = in.readString();
+    this.sumAssured = in.readDouble();
+    this.modalPremium = in.readDouble();
+    this.annualPremium = in.readDouble();
+    this.paymentMode = in.readString();
+    this.branchCd = in.readString();
+    this.branchName = in.readString();
+    this.insuredName = in.readString();
+    this.auraStatus = in.readString();
+    this.ownerName = in.readString();
+    this.agentCd = in.readString();
+    this.billingMode = in.readString();
+}

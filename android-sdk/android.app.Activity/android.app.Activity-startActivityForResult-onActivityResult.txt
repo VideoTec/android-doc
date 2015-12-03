@@ -1,0 +1,11 @@
+http://blog.csdn.net/wangjinyu501/article/details/7643396
+
+从 Activity1 中启动了 Activity2，
+则当前处于栈顶端的是 Activity2，第二层是 Activity1，
+
+当我们在 Activity2中调用 Activity2.finish()方法时，
+Activity Manager 重新激活 Activity1 并入栈，
+Activity2 从 Active 状态转换 Stoped 状态，
+同时标注Activity2可以被“回收” 。
+Activity1. onActivityResult(int requestCode, int resultCode, Intent data)方法被执行，
+Activity2 返回的数据通过 data参数返回给 Activity1

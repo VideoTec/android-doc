@@ -1,0 +1,22 @@
+
+    /**
+     * Notify the host application that a page has finished loading. This method
+     * is called only for main frame. When onPageFinished() is called, the
+     * rendering picture may not be updated yet. To get the notification for the
+     * new Picture, use {@link WebView.PictureListener#onNewPicture}.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param url The url of the page.
+     */
+    public void onPageFinished(WebView view, String url) {
+    }
+    
+    http://blog.csdn.net/typename/article/details/39495409
+    当内核加载完当前页面时会通知我们的应用程序，
+    这个函数只有在main frame情况下才会被调用，
+    当调用这个函数之后，渲染的图片不会被更新，
+    如果需要获得新图片的通知可以使用@link WebView.PictureListener#onNewPicture。
+
+参数说明：
+@param view 接收WebViewClient的那个实例，前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param url    即将要被加载的url

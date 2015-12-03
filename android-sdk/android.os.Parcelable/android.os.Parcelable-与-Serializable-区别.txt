@@ -1,0 +1,9 @@
+http://my.oschina.net/zhoulc/blog/172163?fromerr=MNwZudEi
+
+1.在使用内存的时候Parcelable比Serializable的性能高。
+
+2.Serializable在序列化的时候会产生大量的临时变量，
+从而引起频繁的GC（内存回收）。
+
+3.Parcelable不能使用在将对象存储在磁盘上这种情况，
+因为在外界的变化下Parcelable不能很好的保证数据的持续性

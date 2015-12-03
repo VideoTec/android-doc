@@ -1,0 +1,92 @@
+boolean[]            getBooleanArrayExtra(String name)
+byte[]               getByteArrayExtra(String name)
+char[]               getCharArrayExtra(String name)
+CharSequence[]       getCharSequenceArrayExtra(String name)
+double[]             getDoubleArrayExtra(String name)
+float[]              getFloatArrayExtra(String name)
+int[]                getIntArrayExtra(String name)
+long[]               getLongArrayExtra(String name)
+Parcelable[]         getParcelableArrayExtra(String name)
+short[]              getShortArrayExtra(String name)
+String[]             getStringArrayExtra(String name)
+
+ArrayList<CharSequence>    getCharSequenceArrayListExtra(String name)
+ArrayList<Integer>         getIntegerArrayListExtra(String name)
+ArrayList<String>          getStringArrayListExtra(String name)
+
+boolean              getBooleanExtra(String name, boolean defaultValue)
+Bundle               getBundleExtra(String name)
+byte                 getByteExtra(String name, byte defaultValue)
+char                 getCharExtra(String name, char defaultValue)
+CharSequence         getCharSequenceExtra(String name)
+double               getDoubleExtra(String name, double defaultValue)
+Bundle               getExtras()
+float                getFloatExtra(String name, float defaultValue)
+int                  getIntExtra(String name, int defaultValue)
+long                 getLongExtra(String name, long defaultValue)
+Serializable         getSerializableExtra(String name)
+short                getShortExtra(String name, short defaultValue)
+String               getStringExtra(String name)
+
+<T extends Parcelable> ArrayList<T>     getParcelableArrayListExtra(String name)
+<T extends Parcelable> T                getParcelableExtra(String name)
+
+-------------------------------------------------------------------
+boolean[]	getBooleanArrayExtra(String name)
+Retrieve extended data from the intent.
+boolean	getBooleanExtra(String name, boolean defaultValue)
+Retrieve extended data from the intent.
+Bundle	getBundleExtra(String name)
+Retrieve extended data from the intent.
+byte[]	getByteArrayExtra(String name)
+Retrieve extended data from the intent.
+byte	getByteExtra(String name, byte defaultValue)
+Retrieve extended data from the intent.
+char[]	getCharArrayExtra(String name)
+Retrieve extended data from the intent.
+char	getCharExtra(String name, char defaultValue)
+Retrieve extended data from the intent.
+CharSequence[]	getCharSequenceArrayExtra(String name)
+Retrieve extended data from the intent.
+ArrayList<CharSequence>	getCharSequenceArrayListExtra(String name)
+Retrieve extended data from the intent.
+CharSequence	getCharSequenceExtra(String name)
+Retrieve extended data from the intent.
+double[]	getDoubleArrayExtra(String name)
+Retrieve extended data from the intent.
+double	getDoubleExtra(String name, double defaultValue)
+Retrieve extended data from the intent.
+Bundle	getExtras()
+Retrieves a map of extended data from the intent.
+float[]	getFloatArrayExtra(String name)
+Retrieve extended data from the intent.
+float	getFloatExtra(String name, float defaultValue)
+Retrieve extended data from the intent.
+int[]	getIntArrayExtra(String name)
+Retrieve extended data from the intent.
+int	getIntExtra(String name, int defaultValue)
+Retrieve extended data from the intent.
+ArrayList<Integer>	getIntegerArrayListExtra(String name)
+Retrieve extended data from the intent.
+long[]	getLongArrayExtra(String name)
+Retrieve extended data from the intent.
+long	getLongExtra(String name, long defaultValue)
+Retrieve extended data from the intent.
+Parcelable[]	getParcelableArrayExtra(String name)
+Retrieve extended data from the intent.
+<T extends Parcelable> ArrayList<T>	getParcelableArrayListExtra(String name)
+Retrieve extended data from the intent.
+<T extends Parcelable> T	getParcelableExtra(String name)
+Retrieve extended data from the intent.
+Serializable	getSerializableExtra(String name)
+Retrieve extended data from the intent.
+short[]	getShortArrayExtra(String name)
+Retrieve extended data from the intent.
+short	getShortExtra(String name, short defaultValue)
+Retrieve extended data from the intent.
+String[]	getStringArrayExtra(String name)
+Retrieve extended data from the intent.
+ArrayList<String>	getStringArrayListExtra(String name)
+Retrieve extended data from the intent.
+String	getStringExtra(String name)
+Retrieve extended data from the intent.

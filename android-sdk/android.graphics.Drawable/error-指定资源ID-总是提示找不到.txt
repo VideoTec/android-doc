@@ -1,0 +1,8 @@
+http://stackoverflow.com/questions/11172582/r-drawable-cannot-resolve-image
+正确解决方法： 18:49 2015/12/3
+
+Are you sure You import 
+
+import com.yourcompanyname.product.R 
+instead of
+import android.R;

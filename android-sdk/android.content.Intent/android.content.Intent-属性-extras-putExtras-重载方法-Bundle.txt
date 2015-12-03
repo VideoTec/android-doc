@@ -1,7 +1,9 @@
 public Intent putExtras (Bundle extras)
 
 Added in API level 1
-Add a set of extended data to the intent. The keys must include a package prefix, for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
+Add a set of extended data to the intent. 
+The keys must include a package prefix, 
+for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
 
 Parameters
 extras	The Bundle of extras to add to this intent.

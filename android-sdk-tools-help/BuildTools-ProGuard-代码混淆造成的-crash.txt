@@ -1,0 +1,9 @@
+12:12 2015/12/2
+
+中软 打飞信 release 包时，产生的 crash,
+最后证实是， proguard 配置文件设置问题：
+
+增加下列，保护类：
+-keep class com.feinno.sdk.**{*;}
+-keep class com.feinno.superpojo.**{*;}
+-keep class com.feinno.util

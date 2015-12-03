@@ -1,0 +1,68 @@
+调用 JS 代码。
+
+mWebView.loadUrl("javascript:window.JSCallbacker.back()");
+mWebView.loadUrl("javascript:window.JSCallbacker.menu()");
+
+其中 JSCallbacker 为自定义的 js 对象。
+
+http://blog.csdn.net/andyhuabing/article/details/7591527
+
+webview.getSettings().setJavaScriptEnabled(true);
+
+webview.addJavascriptInterface(object,"name"); 
+//把Name="name"的对象添加到object中。
+object如果是this，就是window.name -- 这个怎么解释？胡说？
+
+android中调用js的function方法：
+         Callfunction(){
+            webview.loadUrl("javascript: function ()");
+很多数据类型js中不认识，最好是在android那边封装好，提供必要的方法接口。
+比如传到js中的list，在js中是没办法去得到里面的元素的
+
+addJavascriptInterface：
+addJavascriptInterface方法中
+要绑定的Java对象及方法要运行在另外的线程中，
+不能运行在构造他的线程中，
+也就是说不能运行在当前的activity线程中，就是把这个方法绑定到页面中，js也可以调用
+
+http://stackoverflow.com/questions/29961956/javascript-calling-android-methods-in-webview
+webView.loadUrl("javascript:window.Android.showAdBanner(showSdkAd())");
+Should be
+webView.loadUrl("javascript:Android.showAdBanner(showSdkAd())");
+
+http://stackoverflow.com/questions/17041472/inject-js-file-to-webview
+
+java 及 js 写法示例
+
+<html>
+<head>
+<script>
+onload = function () {
+    window.jsinterface.windowLoaded();
+}
+
+
+//JS
+function loadScript(url, callback)
+{
+    console.log("loading script " + url);
+    // adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // then bind the event to the callback function 
+    // there are several events for cross browser compatibility
+    //script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // fire the loading
+    head.appendChild(script);
+}
+
+</script>
+</head>
+<body>replace this
+</body>
+</html>

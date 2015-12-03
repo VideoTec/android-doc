@@ -1,0 +1,26 @@
+http://www.chengxuyuans.com/Android/91602.html
+安卓 引导页实现（第一次登陆）
+
+MainActivity.java要根据用户是否登陆过进行判断，
+是否使用Intent启动系统组建，
+这样的话，他要在xml里面增加配置项
+
+<activity android:name="com.alexgaoyh.andriodtest.launchGuide.LaunchGuideViewActivity">
+			<intent-filter>  
+				<action android:name="com.alexgaoyh.andriodtest.MainActivity" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter> 
+</activity>
+
+<activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+</activity>
+
+这样，andriod的引导页功能就简单的实现了，不过存在一些问题：
+1：最后一个引导页缺少 ’立即体验‘ 的按钮；
+2：首页功能未实行。。

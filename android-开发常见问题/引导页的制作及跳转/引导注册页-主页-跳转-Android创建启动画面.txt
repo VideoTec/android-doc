@@ -1,0 +1,35 @@
+http://blog.csdn.net/wangjinyu501/article/details/7643396
+
+package com.demo.app;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+
+public class SplashActivity extends Activity {
+
+	private final int SPLASH_DISPLAY_LENGHT = 6000; // 延迟六秒
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.splash);
+
+		new Handler().postDelayed(new Runnable() {
+			public void run() {
+				Intent mainIntent = new Intent(SplashActivity.this,
+						HelloWorldActivity.class);
+                //下面两行代码启动一个新的Activity，同时关闭当前Activity。
+				SplashActivity.this.startActivity(mainIntent);
+				SplashActivity.this.finish();
+			}
+
+		}, SPLASH_DISPLAY_LENGHT);
+
+	}
+}
+
+思路有两个，
+1）一个是用两个Activity来做，一个用来做启动画面，另
+2）一个是主页面；还可以用一个Activity来做，程序启动时显现启动画面，当启动完成后，它会被隐藏来。

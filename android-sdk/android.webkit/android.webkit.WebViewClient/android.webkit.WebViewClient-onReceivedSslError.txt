@@ -1,0 +1,32 @@
+    /**
+     * Notify the host application that an SSL error occurred while loading a
+     * resource. The host application must call either handler.cancel() or
+     * handler.proceed(). Note that the decision may be retained for use in
+     * response to future SSL errors. The default behavior is to cancel the
+     * load.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param handler An SslErrorHandler object that will handle the user's
+     *            response.
+     * @param error The SSL error object.
+     */
+    public void onReceivedSslError(WebView view, SslErrorHandler handler,
+            SslError error) {
+        handler.cancel();
+    }
+    
+    当网页加载资源过程中发现SSL错误会调用此方法。
+    我们应用程序必须做出响应，
+    是取消请求handler.cancel(),
+    还是继续请求handler.proceed();
+    
+    内核的默认行为是handler.cancel();
+
+参数说明：
+@param view 接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param handler 处理用户请求的对象。
+@param error  SSL错误对象
+
+Tips
+内核会记住本次选择，如果下次还有相同的错误，内核会直接执行之前选择的结果。

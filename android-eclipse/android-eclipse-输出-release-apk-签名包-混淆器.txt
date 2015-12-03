@@ -1,0 +1,32 @@
+http://www.cnblogs.com/ok-lanyan/archive/2013/04/02/2995462.html
+http://www.cppblog.com/wc250en007/archive/2012/08/15/187250.html
+
+http://www.cppblog.com/wc250en007/archive/2012/08/15/187250.html
+
+2.1 Eclipse导出
+在Eclipse中，右键要发布的项目，
+依次选择Android Tool -> Export Signed Application Package... 
+然后就是step-by-step了，
+选择刚才生成的release版keystore，
+输入密码，选择alias，输入alias密码，生成release版的apk。
+
+------------------------------------------------------
+出现下面错误： Lint Warnings
+解决方法： http://stackoverflow.com/questions/15631994/android-export-signed-application-package-error
+In "Window" > "Preferences" > "Android" > "Lint Error Checking"
+找到对应的项，改为警告。
+------------------------------------------------------
+Duplicate id @+id/id_nav_beside_person_layout, already defined earlier in this layout
+Issue: Checks for duplicate ids within a single layout
+Id: DuplicateIds
+Within a layout, id's should be unique since otherwise findViewById() can return an unexpected view.
+
+Duplicate id @+id/id_find_beside_person_go, already defined earlier in this layout
+Issue: Checks for duplicate ids within a single layout
+Id: DuplicateIds
+Within a layout, id's should be unique since otherwise findViewById() can return an unexpected view.
+
+@+id/expressionPageControl is not a sibling in the same RelativeLayout
+Issue: Checks for id references in RelativeLayouts that are not referencing a sibling
+Id: NotSibling
+Layout constraints in a given RelativeLayout should reference other views within the same relative layout.

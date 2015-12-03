@@ -1,0 +1,37 @@
+http://blog.csdn.net/wangjinyu501/article/details/7643396
+
+SplashActivity ： 启动画面
+HelloWorldActivity ： 主页
+
+从 Activity1 中启动了 Activity2，
+则当前处于栈顶端的是 Activity2，第二层是 Activity1，
+
+当我们在 Activity2中调用 Activity2.finish()方法时，
+Activity Manager 重新激活 Activity1 并入栈，
+Activity2 从 Active 状态转换 Stoped 状态，
+同时标注Activity2可以被“回收” 。
+Activity1. onActivityResult(int requestCode, int resultCode, Intent data)方法被执行，
+Activity2 返回的数据通过 data参数返回给 Activity1
+
+下面再讲一下Activity的生命周期，方便大家理解Activity的跳转。
+
+Android 程序员可以决定一个 Activity 的“生”，
+但不能决定它的“死”，
+也就时说程序员可以启动一个 Activity，
+但是却不能手动的“结束”一个 Activity。
+
+当你调用 Activity.finish()方法时，
+结果和用户按下 BACK 键一样：
+告诉 Activity Manager 该 Activity 实例完成了相应的工作，可以被“回收”。
+随后 Activity Manager 激活处于栈第二层的 Activity 并重新入栈，
+同时原 Activity 被压入到栈的第二层，从 Active 状态转到 Paused 状态。
+
+例如上面例子中：
+从 SplashActivity 中启动了 HelloWorldActivity，
+则当前处于栈顶端的是 HelloWorldActivity，
+第二层是 SplashActivity 。
+
+当我们调用 SplashActivity.finish()方法时
+（我们是在SplashActivity中通过SplashActivity.this.finish()调用的），
+SplashActivity 从 Active 状态转换 Stoped 状态，
+并被系统从栈中移除，标志可以被“回收”。

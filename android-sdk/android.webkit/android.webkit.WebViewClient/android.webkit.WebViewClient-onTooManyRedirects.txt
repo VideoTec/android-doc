@@ -1,0 +1,17 @@
+    /**
+     * Notify the host application that there have been an excessive number of
+     * HTTP redirects. As the host application if it would like to continue
+     * trying to load the resource. The default behavior is to send the cancel
+     * message.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param cancelMsg The message to send if the host wants to cancel
+     * @param continueMsg The message to send if the host wants to continue
+     * @deprecated This method is no longer called. When the WebView encounters
+     *             a redirect loop, it will cancel the load.
+     */
+    @Deprecated
+    public void onTooManyRedirects(WebView view, Message cancelMsg,
+            Message continueMsg) {
+        cancelMsg.sendToTarget();
+    }

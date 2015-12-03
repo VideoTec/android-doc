@@ -1,0 +1,58 @@
+通知应用程序内核即将加载url制定的资源，
+应用程序可以返回本地的资源提供给内核，若本地处理返回数据，
+内核不从网络上获取数据。
+
+参数说明：
+@param view 接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param url    raw url 制定的资源
+@return 返回WebResourceResponse包含数据对象，或者返回null
+
+Tips
+这个回调并不一定在UI线程执行，
+所以我们需要注意在这里操作View或者私有数据相关的动作。
+如果我们需要改变网页的背景，
+或者需要实现网页页面颜色定制化的需求，可以在这个回调时机处理。
+
+    /**
+     * Notify the host application of a resource request and allow the
+     * application to return the data.  If the return value is null, the WebView
+     * will continue to load the resource as usual.  Otherwise, the return
+     * response and data will be used.  NOTE: This method is called on a thread
+     * other than the UI thread so clients should exercise caution
+     * when accessing private data or the view system.
+     *
+     * @param view The {@link android.webkit.WebView} that is requesting the
+     *             resource.
+     * @param url The raw url of the resource.
+     * @return A {@link android.webkit.WebResourceResponse} containing the
+     *         response information or null if the WebView should load the
+     *         resource itself.
+     * @deprecated Use {@link #shouldInterceptRequest(WebView, WebResourceRequest)
+     *             shouldInterceptRequest(WebView, WebResourceRequest)} instead.
+     */
+    @Deprecated
+    public WebResourceResponse shouldInterceptRequest(WebView view,
+            String url) {
+        return null;
+    }
+
+    /**
+     * Notify the host application of a resource request and allow the
+     * application to return the data.  If the return value is null, the WebView
+     * will continue to load the resource as usual.  Otherwise, the return
+     * response and data will be used.  NOTE: This method is called on a thread
+     * other than the UI thread so clients should exercise caution
+     * when accessing private data or the view system.
+     *
+     * @param view The {@link android.webkit.WebView} that is requesting the
+     *             resource.
+     * @param request Object containing the details of the request.
+     * @return A {@link android.webkit.WebResourceResponse} containing the
+     *         response information or null if the WebView should load the
+     *         resource itself.
+     */
+    public WebResourceResponse shouldInterceptRequest(WebView view,
+            WebResourceRequest request) {
+        return shouldInterceptRequest(view, request.getUrl().toString());
+    }

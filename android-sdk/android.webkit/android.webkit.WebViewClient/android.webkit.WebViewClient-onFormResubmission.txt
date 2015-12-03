@@ -1,0 +1,23 @@
+    /**
+     * As the host application if the browser should resend data as the
+     * requested page was a result of a POST. The default is to not resend the
+     * data.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param dontResend The message to send if the browser should not resend
+     * @param resend The message to send if the browser should resend data
+     */
+    public void onFormResubmission(WebView view, Message dontResend,
+            Message resend) {
+        dontResend.sendToTarget();
+    }
+    
+    如果浏览器需要重新发送POST请求，可以通过这个时机来处理。
+    默认是不重新发送数据。
+    
+参数说明：
+@param view 
+接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param dontResent 当浏览器不需要重新发送数据时，可以使用这个参数。
+@param resent 当浏览器需要重新发送数据时， 可以使用这个参数。

@@ -1,4 +1,13 @@
+
+http://stackoverflow.com/questions/4435806/drawable-to-byte
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tester);
+ByteArrayOutputStream stream = new ByteArrayOutputStream();
+bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+byte[] bitMapData = stream.toByteArray();
+
+------------------------------------------------------------------------------------------
 public static Bitmap decodeResource (Resources res, int id, BitmapFactory.Options opts)
+------------------------------------------------------------------------------------------
 
 Added in API level 1
 Synonym for opening the given resource and calling decodeResourceStream(Resources, TypedValue, InputStream, Rect, BitmapFactory.Options).
@@ -12,7 +21,9 @@ The decoded bitmap, or null if the image data could not be decoded, or, if opts 
 public static Bitmap decodeResource (Resources res, int id)
 
 Added in API level 1
+------------------------------------------------------------------------------------------
 Synonym for decodeResource(Resources, int, android.graphics.BitmapFactory.Options) with null Options.
+------------------------------------------------------------------------------------------
 
 Parameters
 res	The resources object containing the image data

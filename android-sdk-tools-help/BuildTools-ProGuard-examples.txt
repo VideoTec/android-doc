@@ -1,0 +1,11 @@
+http://proguard.sourceforge.net/manual/examples.html
+
+You can find some sample configuration 
+files in the examples directory of the ProGuard distribution.
+
+A typical application
+
+To shrink, optimize, 
+and obfuscate a simple Java application, 
+you typically create a configuration file like myconfig.pro, 
+which can be used with

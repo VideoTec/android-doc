@@ -1,0 +1,21 @@
+http://developer.android.com/intl/zh-cn/tools/help/lint.html
+http://tools.android.com/tips/lint
+
+http://blog.csdn.net/xyz_lmn/article/details/14222939
+
+作为移动应用开发者，
+我们总希望发布的apk文件越小越好，
+不希望资源文件没有用到的图片资源也被打包进apk，
+不希望应用中使用了高于minSdk的api，
+也不希望AndroidManifest文件存在异常，
+lint就能解决我们的这些问题。
+Android lint是在ADT 16提供的新工具，它是一个代码扫描工具，
+能够帮助我们识别代码结构存在的问题，主要包括：
+
+1）布局性能（以前是 layoutopt工具，可以解决无用布局、嵌套太多、布局太多）
+2）未使用到资源
+3）不一致的数组大小
+4）国际化问题（硬编码）
+5）图标的问题（重复的图标，错误的大小）
+6）可用性问题（如不指定的文本字段的输入型）
+7）manifest文件的错误

@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+There are a variety of methods 
+for reading and writing raw arrays of primitive objects, 
+which generally result in writing a 4-byte length followed by the primitive data items. 
+The methods for reading can either read the data into an existing array, 
+or create and return a new array. These available types are:
+
+writeBooleanArray(boolean[]), readBooleanArray(boolean[]), createBooleanArray()
+writeByteArray(byte[]), writeByteArray(byte[], int, int), readByteArray(byte[]), createByteArray()
+writeCharArray(char[]), readCharArray(char[]), createCharArray()
+writeDoubleArray(double[]), readDoubleArray(double[]), createDoubleArray()
+writeFloatArray(float[]), readFloatArray(float[]), createFloatArray()
+writeIntArray(int[]), readIntArray(int[]), createIntArray()
+writeLongArray(long[]), readLongArray(long[]), createLongArray()
+writeStringArray(String[]), readStringArray(String[]), createStringArray().
+writeSparseBooleanArray(SparseBooleanArray), readSparseBooleanArray().

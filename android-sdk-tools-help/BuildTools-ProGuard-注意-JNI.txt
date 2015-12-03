@@ -1,0 +1,4 @@
+http://www.cnitblog.com/zouzheng/archive/2011/01/12/72639.html
+
+在Android项目中用到JNI，当用了proguard后，发现native方法找不到很多变量，原来是被produard优化掉了。
+所以，在JNI应用中该慎用progurad啊。

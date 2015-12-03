@@ -1,0 +1,28 @@
+    /**
+     * Give the host application a chance to handle the key event synchronously.
+     * e.g. menu shortcut key events need to be filtered this way. If return
+     * true, WebView will not handle the key event. If return false, WebView
+     * will always handle the key event, so none of the super in the view chain
+     * will see the key event. The default behavior returns false.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param event The key event.
+     * @return True if the host application wants to handle the key event
+     *         itself, otherwise return false
+     */
+    public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
+        return false;
+    }
+    
+    http://blog.csdn.net/typename/article/details/39495409
+    提供应用程序同步一个处理按键事件的机会，菜单快捷键需要被过滤掉。
+    如果返回true，webview不处理该事件，
+    如果返回false， webview会一直处理这个事件，
+    因此在view 链上没有一个父类可以响应到这个事件。默认行为是return false；
+    
+参数说明：
+@param view 接收WebViewClient的那个实例，
+            前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，
+            即是这个webview。
+@param  event 键盘事件名
+@return  如果返回true,应用程序处理该事件，返回false 交有webview处理。

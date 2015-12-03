@@ -1,0 +1,26 @@
+    /**
+     * Notifies the host application that the WebView received an HTTP
+     * authentication request. The host application can use the supplied
+     * {@link HttpAuthHandler} to set the WebView's response to the request.
+     * The default behavior is to cancel the request.
+     *
+     * @param view the WebView that is initiating the callback
+     * @param handler the HttpAuthHandler used to set the WebView's response
+     * @param host the host requiring authentication
+     * @param realm the realm for which authentication is required
+     * @see WebView#getHttpAuthUsernamePassword
+     */
+    public void onReceivedHttpAuthRequest(WebView view,
+            HttpAuthHandler handler, String host, String realm) {
+        handler.cancel();
+    }
+    
+    通知应用程序WebView接收到了一个Http auth的请求，
+    应用程序可以使用supplied 设置webview的响应请求。默认行为是cancel 本次请求。
+    
+参数说明：
+@param view 接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param handler 用来响应WebView请求的对象
+@param host  请求认证的host
+@param realm 认真请求所在的域

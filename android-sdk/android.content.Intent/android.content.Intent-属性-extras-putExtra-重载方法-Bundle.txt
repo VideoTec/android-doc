@@ -3,7 +3,9 @@ http://developer.android.com/intl/zh-cn/reference/android/content/Intent.html#pu
 public Intent putExtra (String name, Bundle value)
 
 Added in API level 1
-Add extended data to the intent. The name must include a package prefix, for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
+Add extended data to the intent.
+The name must include a package prefix, 
+for example the app com.android.contacts would use names like "com.android.contacts.ShowAll".
 
 Parameters
 name	The name of the extra data, with package prefix.

@@ -1,0 +1,45 @@
+
+    /**
+     * Give the host application a chance to take over the control when a new
+     * url is about to be loaded in the current WebView. If WebViewClient is not
+     * provided, by default WebView will ask Activity Manager to choose the
+     * proper handler for the url. If WebViewClient is provided, return true
+     * means the host application handles the url, while return false means the
+     * current WebView handles the url.
+     * This method is not called for requests using the POST "method".
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param url The url to be loaded.
+     * @return True if the host application wants to leave the current WebView
+     *         and handle the url itself, otherwise return false.
+     */
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        return false;
+    }
+    
+    http://blog.csdn.net/cwuhao/article/details/6543065
+    在点击请求的是链接是才会调用，
+    重写此方法返回true表明点击网页里面的链接还是在当前的webview里跳转，
+    不跳到浏览器那边
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+       view.loadUrl(url);
+       return true;
+    }
+    
+    http://blog.csdn.net/typename/article/details/39495409
+    当加载的网页需要重定向的时候就会回调这个函数告知我们应用程序是否需要接管控制网页加载，
+    如果应用程序接管，
+    并且return true意味着主程序接管网页加载，
+    如果返回false让webview自己处理。
+
+参数说明：
+@param view 接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+@param url    即将要被加载的url
+@return  true 当前应用程序要自己处理这个url， 返回false则不处理。
+
+Tips
+(1) 当请求的方式是"POST"方式时这个回调是不会通知的。
+(2) 当我们访问的地址需要我们应用程序自己处理的时候，
+可以在这里截获，比如我们发现跳转到的是一个market的链接，
+那么我们可以直接跳转到应用市场，或者其他app。

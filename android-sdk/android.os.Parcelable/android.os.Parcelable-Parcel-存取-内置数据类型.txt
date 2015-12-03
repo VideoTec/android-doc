@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+Primitives
+
+The most basic data functions are 
+for writing and reading primitive data types: 
+
+writeByte(byte), readByte(), 
+writeDouble(double), readDouble(), 
+writeFloat(float), readFloat(), 
+writeInt(int), readInt(), 
+writeLong(long), readLong(),
+writeString(String), readString(). 
+ 
+Most other data operations are built on top of these. 
+The given data is written and read using the endianess of the host CPU.

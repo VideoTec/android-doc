@@ -1,0 +1,8 @@
+public Bundle getExtras ()
+
+Added in API level 1
+Retrieves a map of extended data from the intent.
+
+Returns
+the map of all extras previously added with putExtra(), 
+or null if none have been added.

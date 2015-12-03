@@ -1,0 +1,9 @@
+https://guides.codepath.com/android/using-parcelable
+
+Creating a Parcelable, The Easier Way (using IntelliJ or Android Studio)
+
+There is a Parcelable plugin that can be imported 
+directly into IntelliJ or Android Studio, 
+which enables you to generate the boilerplate code for creating Parcelables. 
+You can install this plugin by going to 
+Android Studio -> File -> Settings -> Plugins -> Browse repositories:

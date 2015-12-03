@@ -1,0 +1,1 @@
+E:\android-sdk-windows\tools\lint.bat

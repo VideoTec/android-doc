@@ -1,0 +1,27 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+Parcelables
+
+The Parcelable protocol provides an extremely efficient 
+(but low-level) protocol for objects to write and read themselves from Parcels. 
+You can use the direct methods 
+writeParcelable(Parcelable, int) and readParcelable(ClassLoader) or 
+writeParcelableArray(T[], int) and readParcelableArray(ClassLoader) to write or read. 
+
+These methods write both the class type and its data to the Parcel, 
+allowing that class to be reconstructed from the appropriate class loader when later reading.
+
+There are also some methods that provide a more efficient way to work with Parcelables: 
+writeTypedObject(T, int), writeTypedArray(T[], int), 
+writeTypedList(List), readTypedObject(Parcelable.Creator), 
+createTypedArray(Parcelable.Creator) and createTypedArrayList(Parcelable.Creator). 
+
+These methods do not write the class information of the original object: 
+instead, the caller of the read function must know what type to expect and 
+pass in the appropriate Parcelable.Creator instead 
+to properly construct the new object and read its data.
+ 
+(To more efficient write and read a single Parceable object that is not null, 
+you can directly call 
+Parcelable.writeToParcel and 
+Parcelable.Creator.createFromParcel yourself.)

@@ -1,0 +1,54 @@
+Parcelable 打包的
+parcel[英][ˈpɑ:sl] [美][ˈpɑ:rsl]
+n.包袱，包裹；（土地的）一块；一批，一群；（货物的）一宗
+vt.分，区分；把…划成部分后分配；给…打成包裹；把…拼在一起
+
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcelable.html
+
+android.os.Parcelable
+
+Known Indirect Subclasses
+AbsSavedState, 
+AbsoluteSizeSpan, 
+
+AccessibilityEvent, 
+AccessibilityNodeInfo, 
+AccessibilityServiceInfo, 
+AccessibilityWindowInfo, 
+
+Account, 
+AccountAuthenticatorResponse, 
+
+ActivityInfo, 
+ActivityManager.MemoryInfo, 
+ActivityManager.ProcessErrorStateInfo, 
+ActivityManager.RecentTaskInfo, 
+ActivityManager.RunningAppProcessInfo, and 264 others.
+
+Interface for classes whose instances can be written to and restored from a Parcel. 
+Classes implementing the Parcelable interface 
+must also have a non-null static field called CREATOR of a type 
+that implements the Parcelable.Creator interface.
+
+http://my.oschina.net/zhoulc/blog/172163
+
+parcel定义介绍： 
+
+android提供了一种新的类型：
+parcel（英文解释：包裹，小包），
+本类用来封装数据的容器，
+封装后的数据可以通过Intent或IPC传递，除了基本类型外，
+只有实现了Parcelable接口的类才能放入parcel中。
+
+parcel
+一般都用在Binder通信，
+通过read和write方法进行客户端与服务端的数据传递（通信）。
+        比如：frameworks层服务端与hardware客户端的Binder通信
+                reply->writeInt32(getCardReaderSize());
+                int mid = data.readInt32();
+用来存放parcel数据的是内存（RAM），而不是永远介质(Nand等)。
+
+parcelable
+定义了把数据写入parcel和从parcel读出数据的接口，
+一个类的实例，如果需要封装到消息中去，
+就必须实现这一接口，如果实现了这个接口，该类的实例就是可以“被打包”

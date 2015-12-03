@@ -1,0 +1,13 @@
+E:\android-sdk-windows\build-tools\23.0.0\zipalign.exe
+
+http://developer.android.com/intl/zh-cn/tools/publishing/app-signing.html
+5）Align the final APK package using zipalign.
+
+$ zipalign -v 4 your_project_name-unaligned.apk your_project_name.apk
+
+zipalign ensures that 
+all uncompressed data starts with a particular byte alignment 
+relative to the start of the file, 
+which reduces the amount of RAM consumed by an app.
+
+http://developer.android.com/intl/zh-cn/tools/help/zipalign.html

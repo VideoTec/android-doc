@@ -1,0 +1,42 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+Active Objects
+
+An unusual feature of Parcel is the ability to read and write active objects. 
+For these objects the actual contents of the object is not written, 
+rather a special token referencing the object is written. 
+When reading the object back from the Parcel, 
+you do not get a new instance of the object, 
+but rather a handle that operates on the exact same object that was originally written. 
+There are two forms of active objects available.
+
+-----------------------------------------------------------
+Binder objects are a core facility 
+-----------------------------------------------------------
+of Android's general cross-process communication system. 
+The IBinder interface describes an abstract protocol with a Binder object. 
+Any such interface can be written in to a Parcel, 
+and upon reading you will receive either the original object implementing 
+that interface or a special proxy implementation 
+that communicates calls back to the original object. 
+
+The methods to use are 
+writeStrongBinder(IBinder), 
+writeStrongInterface(IInterface), 
+readStrongBinder(), 
+writeBinderArray(IBinder[]), readBinderArray(IBinder[]), createBinderArray(), 
+writeBinderList(List), readBinderList(List), createBinderArrayList().
+
+-----------------------------------------------------------
+FileDescriptor objects, 
+-----------------------------------------------------------
+representing raw Linux file descriptor identifiers, 
+can be written and ParcelFileDescriptor objects returned 
+to operate on the original file descriptor. 
+
+The returned file descriptor is a dup of the original file descriptor: 
+the object and fd is different, 
+but operating on the same underlying file stream, 
+with the same position, etc. 
+The methods to use are 
+writeFileDescriptor(FileDescriptor), readFileDescriptor().

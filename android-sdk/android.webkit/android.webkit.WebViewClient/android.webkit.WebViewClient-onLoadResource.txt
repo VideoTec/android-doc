@@ -1,0 +1,19 @@
+
+    /**
+     * Notify the host application that the WebView will load the resource
+     * specified by the given url.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param url The url of the resource the WebView will load.
+     */
+    public void onLoadResource(WebView view, String url) {
+    }
+    
+    通知应用程序WebView即将加载url 制定的资源
+
+参数说明：
+@param view 
+接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+
+@param url    即将加载的url 资源

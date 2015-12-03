@@ -1,6 +1,5 @@
     private HttpListener<String> listener;
     private HttpEntity entity;              org.apache.http.HttpEntity
-
     ³É¶Ô»º´æ
 
 package com.feinno.beside.volleyclient;

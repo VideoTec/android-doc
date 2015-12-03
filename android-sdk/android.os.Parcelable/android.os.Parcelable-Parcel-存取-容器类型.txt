@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+Untyped Containers
+
+A final class of methods are 
+for writing and reading standard Java containers of arbitrary types. 
+
+These all revolve around the 
+writeValue(Object) and readValue(ClassLoader) methods 
+which define the types of objects allowed. 
+
+The container methods are 
+writeArray(Object[]), readArray(ClassLoader), 
+writeList(List), readList(List, ClassLoader), readArrayList(ClassLoader), 
+writeMap(Map), readMap(Map, ClassLoader), 
+writeSparseArray(SparseArray), readSparseArray(ClassLoader).

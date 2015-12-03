@@ -1,0 +1,23 @@
+    /**
+     * Notify the host application to update its visited links database.
+     *
+     * @param view The WebView that is initiating the callback.
+     * @param url The url being visited.
+     * @param isReload True if this url is being reloaded.
+     */
+    public void doUpdateVisitedHistory(WebView view, String url,
+            boolean isReload) {
+    }
+    
+    通知应用程序可以将当前的url存储在数据库中，
+    意味着当前的访问url已经生效并被记录在内核当中。
+    这个函数在网页加载过程中只会被调用一次。
+    注意网页前进后退并不会回调这个函数。
+参数说明：
+
+@param view 
+接收WebViewClient的那个实例，
+前面看到webView.setWebViewClient(new MyAndroidWebViewClient())，即是这个webview。
+
+@param url 当前正在访问的url 
+@ param isReload 如果是true 这个是正在被reload的url

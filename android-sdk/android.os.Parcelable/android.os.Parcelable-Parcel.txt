@@ -1,0 +1,29 @@
+parcel[英][ˈpɑ:sl] [美][ˈpɑ:rsl]
+n.包袱，包裹；（土地的）一块；一批，一群；（货物的）一宗
+vt.分，区分；把…划成部分后分配；给…打成包裹；把…拼在一起
+
+http://developer.android.com/intl/zh-cn/reference/android/os/Parcel.html
+
+java.lang.Object
+   ↳	android.os.Parcel
+   
+Container for a message (data and object references) 
+that can be sent through an IBinder. 
+A Parcel can contain both flattened data 
+that will be unflattened on the other side of the IPC 
+(using the various methods here for writing specific types, 
+or the general Parcelable interface), 
+and references to live IBinder objects 
+that will result in the other side receiving 
+a proxy IBinder connected with the original IBinder in the Parcel.
+
+Parcel is not a general-purpose serialization mechanism. 
+This class (and the corresponding Parcelable API for placing arbitrary objects into a Parcel) 
+is designed as a high-performance IPC transport. 
+As such, it is not appropriate to place any Parcel data in to persistent storage: 
+changes in the underlying implementation of 
+any of the data in the Parcel can render older data unreadable.
+
+The bulk of the Parcel API revolves around 
+reading and writing data of various types. 
+There are six major classes of such functions available.
