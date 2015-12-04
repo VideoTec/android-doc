@@ -1,0 +1,40 @@
+android-eclipse-窗口布局-breakpoints-断点窗口
+可以删除指定断点
+
+http://blog.sina.com.cn/s/blog_8185e44b01011iet.html
+所有类型的断点
+
+http://stackoverflow.com/questions/4079000/what-different-breakpoint-icons-mean-in-eclipse
+
+Adding to earlier answers. 
+The small white c over a green ball icon means that 
+the breakpoint is at the class level.
+
+http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fmenus%2Frun%2Fref-add_class_load_breakpoint.htm
+Select the Add Class Load Breakpoint command 
+[ The small white c over a green ball icon ] to add a Java class load breakpoint.
+
+In the resulting dialog:
+
+In the Choose a Type field, 
+type a string that is contained in the name of the exception you want to add. 
+You can use wildcards as needed ("* " for any string and "? " for any character).
+In the Matching items list , select the exception you want to add.
+The Add Class Load Breakpoint Dialog.
+
+http://stackoverflow.com/questions/1876430/how-to-set-a-breakpoint-on-a-default-java-constructor-in-eclipse
+class load breakpoints
+If you can get by with only hitting this breakpoint once, 
+then you can use a class load breakpoint:
+
+You can set a Class Load Breakpoint, 
+which will stop when the class is being lodaed [sic]. 
+Right-click on a class in the 
+Package Explorer, 
+Project Explorer, or 
+Types view and choose "Toggle class load breakpoint"
+
+As the name implies, 
+this breakpoint will be hit when the class is first loaded, 
+so it will only fire once (assuming you only have a single classloader). 
+But depending on your needs, it might be good enough.

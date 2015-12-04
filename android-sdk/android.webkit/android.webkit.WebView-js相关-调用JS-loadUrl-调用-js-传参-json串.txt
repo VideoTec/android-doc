@@ -1,0 +1,17 @@
+需要添加单引号吗？
+11:13 2015/12/4
+最后验证，不用加单引号，也可以。
+
+http://stackoverflow.com/questions/5797293/trying-to-push-data-into-js-function-within-webview
+
+I needed to add single quotes around the JSON string.
+mWebView.loadUrl("javascript:returnData('"+json+"')");
+
+http://stackoverflow.com/questions/23066456/how-to-escape-a-json-object-to-feed-into-a-javascript-function
+
+What happens if you try something like: (or for cases that don't work for you)
+
+myWebView.EvaluateJavascript("parseJson('{\"key\":\"value\"}')");
+JSON.stringify() looks useful too in your case:
+
+myWebView.EvaluateJavascript("parseJson(JSON.stringify({key:value}))");

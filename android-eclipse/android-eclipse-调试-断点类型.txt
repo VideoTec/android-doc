@@ -1,0 +1,9 @@
+http://blog.sina.com.cn/s/blog_8185e44b01011iet.html
+
+1. Line Breakpoint
+2. Watchpoint
+3. Method Breakpoint
+4. Exception Breakpoint
+5. Class Load Breakpoint
+还有一种大家平时可能不太用的断点--Class Load Breakpoint，
+即当某个类被加载时，通过该断点可以中断程序

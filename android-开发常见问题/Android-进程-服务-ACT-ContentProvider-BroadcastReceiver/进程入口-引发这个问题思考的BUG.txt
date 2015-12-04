@@ -1,0 +1,43 @@
+14:21 2015/12/4
+飞信集成版的一个异常。
+
+这是从飞信进程，startActivity 的 ACT 的创建接口
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mContext = getApplicationContext();
+        //getEngine 依赖 BesideInitUtil 单例的初始化 
+		mEngine = BesideEngine.getEngine(getApplicationContext());
+        BesideInitUtil.getBesideInitUtilInstance().initBeside(getApplication(), true);
+
+飞信进程通过这个函数启动，
+身边服务 com.feinno.beside.init.besideservice
+飞信在身边的代理服务 com.feinno.beside.fetion.Beside2FetionProxyService
+	public void initBeside() { 
+		LogSystem.d(TAG,"############ FetionBesideChannel,begin initBeside.........");
+		Intent intent = new Intent();
+		intent.putExtra(FetionBesideConstant.EXTRA_KEY, FetionBesideConstant.EXTRA_SERVICE_INIT_BESIDE);
+		intent.setComponent(COMPONENT);
+		intent.setAction("com.feinno.beside.init.besideservice");
+		startService(intent);
+		Intent bindIntent = new Intent("com.feinno.beside.proxy.service");
+		bindIntent.setComponent(new ComponentName(BESIDE_SERVICE_PKG_NAME,"com.feinno.beside.fetion.Beside2FetionProxyService"));
+		app.bindService(bindIntent, mConnection, Activity.BIND_AUTO_CREATE);
+	}
+飞信APP的 AndroidManifest.xml 中
+身边服务 com.feinno.beside.init.besideservice 的配置
+        <service android:exported="false"
+        android:name="com.feinno.beside.fetion.Fetion2BesideService"
+        android:process=":beside">
+            <intent-filter>
+                <action android:name="com.feinno.beside.init.besideservice"/>
+            </intent-filter>
+        </service>
+飞信在身边的代理服务 com.feinno.beside.fetion.Beside2FetionProxyService
+        <service android:exported="false" 
+        android:name="com.feinno.beside.fetion.Beside2FetionProxyService" 
+        android:process=":beside">
+            <intent-filter>
+                <action android:name="com.feinno.beside.proxy.service"/>
+            </intent-filter>
+        </service>

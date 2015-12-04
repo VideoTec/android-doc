@@ -1,0 +1,26 @@
+http://stackoverflow.com/questions/9105059/what-are-valid-return-values-for-an-javascript-interface-on-an-android-webview
+
+I have an Android Webview that has javascript 
+that is calling Android methods through the addJavascriptInterface method:
+
+myWebview.addJavascriptInterface(new JavascriptBridge(), "Android");
+
+public class JavascriptBridge {
+
+    public String getAString() {
+        return "my_str";
+    }
+}
+
+this works fine.
+
+---------------------------------------------------------------
+通过 JSON 串传递所有类型
+---------------------------------------------------------------
+You can return anything, primitives or Objects. 
+Objects are converted to strings via their toString() method. 
+If the JavascriptInterface method returns a JSON string 
+(e.g. an Object who's toString() outputs JSON)
+you can then parse that string directly:
+
+var array = JSON.parse(window.android.getSomeJsonThing()); // 注： android 是自定对象
