@@ -1,0 +1,6 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+第一种方式，导入项目时设置：
+如果你到官方下载 gradle 绿色包，解压到某个目录，
+你可以使用 gradle distribution，并设定 Gradle home 目录，
+这样 IDEA 构建编译项目的时候，就使用你设定的gradle版本进行。

@@ -1,0 +1,3 @@
+添加下面的 hosts
+64.233.162.86    tools.android.com
+103.7.200.79    dl.google.com

@@ -1,0 +1,3 @@
+C:\Users\wangxiangfx\.AndroidStudio1.3
+C:\Users\wangxiangfx\.AndroidStudio1.4
+C:\Users\wangxiangfx\.AndroidStudio1.5

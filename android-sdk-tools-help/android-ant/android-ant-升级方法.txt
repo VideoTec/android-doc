@@ -14,3 +14,10 @@ Ant Home
 17:07 2015/10/30
 压缩包的文件名是什么？解压到那了？
 apache-ant-1.9.4-bin.zip
+
+11:48 2015/12/7 批处理，指定环境变量，并调用打包命令
+@ECHO off
+SET JAVA_HOME=C:\Program Files\Java\jdk1.8.0_66
+SET PATH=%PATH%;E:\tools\apache-ant-1.9.4\bin
+call ant -f ./beside/build/build.xml a_onlinejar_new
+pause

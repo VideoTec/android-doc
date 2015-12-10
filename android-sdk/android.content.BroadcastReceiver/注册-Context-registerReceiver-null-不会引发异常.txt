@@ -1,0 +1,13 @@
+注册时，传递 null 也不会引发异常：
+
+                BroadcastReceiver r = new BroadcastReceiver() {
+
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        // TODO Auto-generated method stub
+                        
+                    }
+                    
+                };
+                IntentFilter intentFilter = new IntentFilter();
+                registerReceiver(null, intentFilter);

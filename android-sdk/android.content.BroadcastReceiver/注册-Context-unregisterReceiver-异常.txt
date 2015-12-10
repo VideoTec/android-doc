@@ -1,0 +1,41 @@
+------------------------------------------
+未注册过的 接收器调用反注册
+------------------------------------------
+            try {
+                unregisterReceiver(null);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+java.lang.IllegalArgumentException: Receiver not registered: null
+            }
+
+------------------------------------------
+对同一个 BroadcastRecevier 连续两次调用反注册
+------------------------------------------
+Caused by: java.lang.IllegalArgumentException: Receiver not registered: com.feinno.beside.manager.BroadcastManager$BSAReceiver@43ea4158
+	at android.app.LoadedApk.forgetReceiverDispatcher(LoadedApk.java:688)
+	at android.app.ContextImpl.unregisterReceiver(ContextImpl.java:1534)
+	at android.content.ContextWrapper.unregisterReceiver(ContextWrapper.java:489)
+	at com.feinno.beside.manager.BroadcastManager.destory(BroadcastManager.java:1718)
+	at com.feinno.beside.manager.BesideEngine.destoryManager(BesideEngine.java:133)
+	at com.feinno.beside.manager.BesideEngine.destory(BesideEngine.java:291)
+	at com.feinno.beside.manager.BesideEngine$1.onReceive(BesideEngine.java:49)
+	at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:794)
+    
+            try {
+                BroadcastReceiver r = new BroadcastReceiver() {
+
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        // TODO Auto-generated method stub
+                        
+                    }
+                    
+                };
+                IntentFilter intentFilter = new IntentFilter();
+                registerReceiver(r, intentFilter);
+                unregisterReceiver(r);
+                unregisterReceiver(r);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                java.lang.IllegalArgumentException: Receiver not registered: com.feinno.vocation.VocationMain$2@42701760
+            }

@@ -1,0 +1,4 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+gradle 文件夹，用于保存gradle 下载路径的配置文件位置，
+用于没有gradle环境的环境初始化使用

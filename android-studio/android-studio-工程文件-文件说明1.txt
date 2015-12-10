@@ -1,0 +1,16 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+目录文件            作用
+.gradle             gradle项目产生文件（自动编译工具产生的文件）
+.idea               IDEA项目文件（开发工具产生的文件）
+app                 其中一个module，复用父项目的设置，可与父项目拥有相同的配置文件
+build               自动构建时生成文件的地方
+gradle              自动完成gradle环境支持文件夹
+.gitignore          git源码管理文件
+build.gradle        gradle 项目自动编译的配置文件
+gradle.properties   gradle 运行环境配置文件
+gradlew             自动完成 gradle 环境的linux mac 脚本，配合gradle 文件夹使用
+gradlew.bat         自动完成 gradle 环境的windows 脚本，配合gradle 文件夹使用
+local.properties    Android SDK NDK 环境路径配置
+*.iml               IDEA 项目文件
+setting.gradle      gradle 项目的子项目包含文件

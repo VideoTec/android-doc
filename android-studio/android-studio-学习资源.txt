@@ -1,3 +1,9 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+深度好文：IDEA 及 Gradle 使用总结
+
+https://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/index.html
+Gradle Plugin User Guide 中文版
+
 http://www.developerphil.com/android-studio-tips-of-the-day-roundup-6/
 快捷键
 
@@ -16,3 +22,7 @@ Android Studio是一个为Android平台开发程序的集成开发环境。
 图形布局编辑器	            是	        是
 APK签名和密钥库管理	        是	        是
 NDK支持	                    Beta	    是
+
+Android的小伙伴们，这两个是Studio的相关教程网站，可以参考下，以android-studio.org为主
+http://www.android-studio.org/index.php
+http://blog.csdn.net/column/details/zsl-androidstudio.html

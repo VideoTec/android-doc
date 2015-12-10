@@ -1,0 +1,11 @@
+http://stormzhang.com/devtools/2015/01/05/android-studio-tutorial5/
+
+./gradlew -v ./gradlew clean ./gradlew build, 
+
+这里注意是./gradlew, ./代表当前目录，
+
+gradlew代表 gradle wrapper，
+意思是gradle的一层包装，
+大家可以理解为在这个项目本地就封装了gradle，即gradle wrapper， 
+在9GAG/gradle/wrapper/gralde-wrapper.properties文件中声明了它指向的目录和版本。
+只要下载成功即可用grdlew wrapper的命令代替全局的gradle命令

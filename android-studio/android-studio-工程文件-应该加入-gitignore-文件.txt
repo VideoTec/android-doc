@@ -1,0 +1,10 @@
+*.iml
+.idea 文件夹
+.gradle 文件夹
+build 文件夹
+local.properties - 会自动生成
+
+
+.gradle .idea 是在分别在 
+gradle ，IDEA 运行时候会生成的文件，
+一般这样的文件也不会纳入源代码管理之中

@@ -1,0 +1,54 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+说到这里，我觉得该说说 
+use default gradle wrapper 
+记得新建项目的时候也是使用 
+use default gradle warpper，这时候，上面目录说到的三个文件。
+
+.gradle/ 目录
+gradle/  目录
+gradlew       linux 调用的脚本
+gradlew.bat   windows 调用的批处理
+
+如果使用这种方法，I
+DEA会调用项目根目录 gradlew 或者 gradlew.bat 
+（根据linux，windows，osx自动选型）代替原生的 gradle 方法做自动构建。
+
+这两个文件做了什么事情呢：
+
+1）解析 gradle/wrapper/gradle-wrapper.properties 文件，
+获取项目需要的 gradle 版本下载地址
+
+2）判断本地用户目录下的 ./gradle 目录下是否存在该版本，
+不存在该版本，走第3点，
+存在走第4点
+
+3）下载 gradle-wrapper.properties 指定版本，
+并解压到用户目录的下 ./gradle 文件下
+
+4）利用 ./gradle 目录下
+对应的版本的 gradle 进行相应自动编译操作
+
+看了上面的原理，应该明白了，
+如果你自己下载 gradle 让idea 导入项目的时候使用。 
+那么其他人就不知道你使用什么版本的gradle版本进行自动编译，
+如果使用 项目目录自带的 gradlew 的话，gradlew 就会自动完善 gradle 的安装，
+
+若需要更新 gradle 的版本，
+只需要修改 gradle/wrapper/gradle-wrapper.properties 文件内的下载链接即可。
+而且gradlew的版本和 android 版本是需要适配的，
+在自己电脑维护需求不同版本的 gradlew 也是一个麻烦的事情。
+
+而且这样的好处也有一个，
+当你在新电脑上下载你的源码进行编译时，
+你完全可以不依赖IDE开发工具，
+直接在项目目录下使用 ./gradlew build 即可对源码进行编译，
+因为它会自动下载 gradle 进行调用,可以使得新电脑较快完成项目开发环境适配
+（
+对网络依赖较强，希望带上vpn，
+这就是为什么你们在新建项目时需要去下载gradle，
+还比较慢的原因，我们一起来 f-u-c-k-g-f-w
+）
+
+当然，导入项目需要能够选上 use default gradle wrapper 的前提是
+存在上面一个gradle文件夹与 gradlew、gradew.bat

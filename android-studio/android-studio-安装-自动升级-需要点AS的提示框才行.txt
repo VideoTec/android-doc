@@ -1,0 +1,5 @@
+AS 启动后，会自动检测是否有新版本，如果有会提示：
+
+A new version of Android Studio is available
+
+这时点 available 会出现 Platform and Plugin Updates

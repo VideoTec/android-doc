@@ -1,0 +1,13 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+在导入项目或者新建项目的时候，
+idea 会根据 build.gradle 文件更新 *.iml 项目文件，
+
+有时候，你会发现，新增一个jar包，但是无法读取jar包内容，
+因为对于 gradle 来说，
+jar包属于项目外依赖，包括maven拓展包，都是属于项目外依赖，
+需要修改build.gradle 文件，
+
+当你
+加入新的 jar包，或者
+添加了 maven支持包，在idea上面都会提示需要进行同步

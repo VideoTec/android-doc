@@ -1,0 +1,40 @@
+https://www.jetbrains.com/idea/help/project.html
+
+bulk[英][bʌlk] [美][bʌlk]
+n.（大）体积；大块，大量；大多数，大部分；主体
+
+decompose[英][ˌdi:kəmˈpəʊz] [美][ˌdi:kəmˈpoʊz]
+vt.& vi.分解；（使）腐烂
+
+series[英][ˈsɪəri:z] [美][ˈsɪri:z]
+n.系列，连续；串联
+
+discrete[英][dɪˈskri:t] [美][dɪˈskrit]
+adj.分离的，不相关联的；分立式；非连续
+
+isolated[英][ˈaɪsəleɪtɪd] [美][ˈaɪsəˌletɪd]
+adj.隔离的；孤独的；单独的；偏远的
+
+serve[英][sɜ:v] [美][sɜ:rv]
+vt.招待；（为…）工作；对…有用；向…供应
+
+Whatever you do in IntelliJ IDEA, 
+you do that in the context of a project. 
+A project is an organizational unit that represents a complete software solution. 
+It serves as a basis for 
+1）coding assistance, 
+2）bulk refactoring, 
+3）coding style consistency, etc.
+
+Your finished product may be decomposed into 
+a series of discrete, isolated modules, 
+but it's a project definition that 
+brings them together and ties them into a greater whole.
+
+Projects don't themselves contain development artifacts such as 
+1）source code, 
+2）build scripts, or 
+3）documentation. 
+They are the highest level of organization in the IDE, and 
+they define project-wide settings as well as collections of 
+what IntelliJ IDEA refers to as modules and libraries.

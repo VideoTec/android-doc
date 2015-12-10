@@ -1,0 +1,12 @@
+Unregistered VCS root detected
+The directory d:\androidrongfly is under Git, but is not registered int the Settings.
+Add root / Configure / Ignore
+
+解决方法：
+add root 就可以了
+
+产生原因：
+http://www.bubuko.com/infodetail-1236611.html
+
+就是这个“Create Git Repository”，不然你会一直得到
+“...such that source detected in git but Unregistered Vcs root detected”提示

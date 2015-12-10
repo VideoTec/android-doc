@@ -1,0 +1,35 @@
+
+---------------------------------------
+解决方法
+---------------------------------------
+
+解决方法一：不使用 https 安全链接
+Android SDK Manager | Tools | Options | Others 勾选：Force https to http
+
+解决方法二：设置代理（没有试验，不知道 goagent 能不能用）
+解决方法三：找到正确的 dl.google.com 的IP地址（没有找到）
+
+---------------------------------------
+问题
+---------------------------------------
+
+Fetching https://dl.google.com/android/repository/addons_list-2.xml
+Fetched Add-ons List successfully
+Fetching URL: https://dl.google.com/android/repository/repository-11.xml
+Done loading packages.
+
+Fetching https://dl.google.com/android/repository/addons_list-2.xml
+Failed to fetch URL https://dl.google.com/android/repository/addons_list-2.xml, 
+reason: hostname in certificate didn't match: 
+<dl.google.com> != <accounts.google.com> OR <accounts.google.com> OR <*.partner.android.com>
+Fetched Add-ons List successfully
+
+Fetching URL: https://dl.google.com/android/repository/repository-11.xml
+Failed to fetch URL https://dl.google.com/android/repository/repository-11.xml, 
+reason: SSL hostname in certificate didn't match: 
+<dl.google.com> != <accounts.google.com> OR <accounts.google.com> OR <*.partner.android.com>
+Done loading packages.
+
+证书不对，怎么忽略这个问题呢？
+https://dl.google.com/android/repository/addons_list-2.xml
+https://dl.google.com/android/repository/repository-11.xml

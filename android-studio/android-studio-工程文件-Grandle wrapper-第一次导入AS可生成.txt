@@ -1,0 +1,15 @@
+如果工程目录里没有以下文件：
+文件   -   grandlew
+文件   -   grandlew.bat
+文件夹 -   grandle
+文件夹 -   .grandle
+
+第一次向AS导入这种工程时，会弹出 Grandle Sync 提示框：
+Grandle settings for this project are not configure yet.
+
+Would you like the project to use the Grandle wrapper?
+(The wrapper will automatically download the latest supported Gradle version).
+
+Click 'OK' to use the Gradle wrapper, or 'Cancel' to manually set the path of a local Grandle distribution.
+
+点OK后，会生成这些文件：

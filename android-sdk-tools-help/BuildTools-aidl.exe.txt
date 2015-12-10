@@ -1,0 +1,1 @@
+E:\android-sdk-windows\build-tools\23.0.2\aidl.exe

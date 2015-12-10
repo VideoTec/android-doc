@@ -1,0 +1,17 @@
+因为这个点九图，没有定义 左，上 两个拉伸区别
+
+D:\work\beside\res\drawable-hdpi\share_content_layout.9.png
+Error:
+Error: com.android.ide.common.process.ProcessException: 
+org.gradle.process.internal.ExecException: 
+Process 'command 'E:\android-sdk-windows\build-tools\19.1.0\aapt.exe'' 
+finished with non-zero exit value 42
+:beside:mergeDebugResources FAILED
+
+Error:Execution failed for task ':beside:mergeDebugResources'.
+
+> D:\work\beside\res\drawable-hdpi\share_content_layout.9.png: 
+Error: com.android.ide.common.process.ProcessException: 
+org.gradle.process.internal.ExecException:
+Process 'command 'E:\android-sdk-windows\build-tools\19.1.0\aapt.exe'' 
+finished with non-zero exit value 42

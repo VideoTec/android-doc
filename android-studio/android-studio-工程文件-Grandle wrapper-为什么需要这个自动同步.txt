@@ -1,0 +1,29 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+    }
+}
+
+整个项目需要依赖插件 
+com.android.tools.build:gradle:0.14.2 最后是版本号。
+（目前AS的版本号已经是1.0.0了）
+
+这个插件的版本号与gradle调用编译时是有依赖关系的，
+插件的版本越高，需要更多gradle的新特性。
+
+如果要使用android项目自动编译的新特性，
+如果选择不同的gradle指向方式，那么你就要做不同的处理
+
+1）下载不同版本的gradle对不同的项目的不同版本做 插件<-->gradle的对应 维护，
+如果其他人使用你的项目，
+你还要告知他使用什么版本以上的gradle才能使用这个插件。
+
+2）把对应关系一次弄好之后，
+更新gradle/wrapper/gradle-wrapper.properties下载地址，
+利用gradlew自动使用相应版本的gradle，
+这样gradlew版本的需求就跟着源码管理一直保留到其他人的电脑。

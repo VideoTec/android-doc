@@ -1,4 +1,7 @@
+
+----------------------------------------------
 19:54 2015/5/14
+----------------------------------------------
 
 从 OpenslTest Eclipse 工程里直接复制过来的图片，出现在下面的错误
 
@@ -42,3 +45,17 @@ After this most of the warnings will be gone but the warnings coming from PNGs i
 
 
 PS: isn't it weird to use "+profile" to remove profile?
+
+----------------------------------------------
+15:11 2015/12/10
+----------------------------------------------
+不输出 编译信息 就可以通过。那是另一个问题
+E:\doc\android\android-eclipse\android-eclipse-构建-build-error-构建输出-build-tools-v23.0.0.txt
+[2015-10-17 13:32:51 - beside] 
+D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml:2: 
+note: removing attribute http://schemas.android.com/apk/res/android:layerType from <FrameLayout>
+
+[2015-10-17 13:32:51 - beside] 
+D:\work\beside\res\layout\beside_broadcast_attachment_layout.xml: 
+note: using v11 attributes; synthesizing resource cn.com.fetion:layout/beside_broadcast_attachment_layout for configuration v11.
+

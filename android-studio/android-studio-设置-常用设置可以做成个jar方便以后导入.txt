@@ -1,0 +1,2 @@
+这个文件是Android Studio的setting jar包，
+可通过 file-import setting导入Android studio的常用配置

@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver)
+
+public abstract void unregisterReceiver (BroadcastReceiver receiver)
+
+Added in API level 1
+Unregister a previously registered BroadcastReceiver. 
+All filters that have been registered for this BroadcastReceiver will be removed.
+
+Parameters
+receiver	The BroadcastReceiver to unregister.
+See Also
+registerReceiver(BroadcastReceiver, IntentFilter)

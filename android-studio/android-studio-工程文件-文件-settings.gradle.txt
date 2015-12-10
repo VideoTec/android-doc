@@ -1,0 +1,26 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+setting.gradle 子项目包含文件，声明当前目录下含有什么module，
+当然你的app底下加上这样的文件，
+也能继续在app底下加module。
+
+和我第点说的，
+整个project就是一个大的module，
+每个module下面还能包含相应的module。
+
+如果你理解这个了，
+其实app目录单独作为一个项目管理也是可以的，，
+把相应的配置文件配上而已，
+相当于主目录应用 android 的 gradle plugin （下一点会说到这个）
+
+从上面目录的配置文件内容来看，
+整个project也算是一个module，
+如果改module底下还有module，
+就可以通过setting.gradle配置进来，
+使得该module底下的gradle，
+
+从app module底下可以看出，
+module最少要含有 build.gradle文件，
+这个module的项目编译文件，
+该module依赖什么插件对该目录进行编译都在此配置，
+比如android与android-library，其他内容可继承父类的

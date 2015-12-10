@@ -1,0 +1,29 @@
+怎么解决？
+应该不影响编译，确实不影响输出APK 使用的 build-tools 是 23.0.2
+
+AAPT err(Facade for 1023820653): D:\work\beside\res\drawable-hdpi\beside_icon_assistance_tags.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 236349416): D:\work\beside\res\drawable-xxhdpi\beside_send_image_default_icon.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 415911715): D:\work\beside\res\drawable-xhdpi\beside_help_detail_foot_progress.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1023820653): D:\work\beside\res\drawable-xhdpi\broadcast_tips_1.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1735257079): D:\work\beside\res\drawable-xxhdpi\beside_send_comment_anonymous_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1735257079): D:\work\beside\res\drawable-xxhdpi\beside_help_detail_foot_progress.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 638196124): D:\work\beside\res\drawable-xhdpi\broadcast_tips_3.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 638196124): D:\work\beside\res\drawable-xhdpi\beside_marketing_participation.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 638196124): D:\work\beside\res\drawable-hdpi\beside_send_comment_anonymous_normal.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 837526834): D:\work\beside\res\drawable-xhdpi\broadcast_tips_2.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1408509316): D:\work\beside\res\drawable-hdpi\beside_mytopic_icon_setting_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 946566962): D:\work\beside\res\drawable-hdpi\beside_send_comment_anonymous_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 946566962): D:\work\beside\res\drawable-xxhdpi\beside_mytopic_icon_setting_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 946566962): D:\work\beside\res\drawable-hdpi\broadcast_tips_2.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 946566962): D:\work\beside\res\drawable-xhdpi\beside_mytopic_icon_setting_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-xhdpi\beside_icon_assistance_tags.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-hdpi\beside_send_icon_press.9.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-xxhdpi\beside_send_comment_anonymous_normal.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-xhdpi\beside_send_comment_anonymous_hover.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-xxhdpi\beside_icon_assistance_tags.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-hdpi\broadcast_tips_3.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-hdpi\beside_help_detail_foot_progress.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1662615600): D:\work\beside\res\drawable-xhdpi\beside_send_comment_anonymous_normal.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1011106760): D:\work\beside\res\drawable-hdpi\broadcast_tips_1.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 950741838): D:\work\beside\res\drawable-xxhdpi\beside_marketing_participation.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+AAPT err(Facade for 1008044680): D:\work\beside\res\drawable-hdpi\beside_send_image_default_icon.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited

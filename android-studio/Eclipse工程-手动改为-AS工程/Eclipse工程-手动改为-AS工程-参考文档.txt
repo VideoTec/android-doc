@@ -1,0 +1,28 @@
+http://www.jiechic.com/archives/the-idea-and-gradle-use-summary
+
+先来看看eclipse的完整目录与IDEA的完整目录结构
+（当然，IDEA看的目录时基于module的目录设置的，而不是根据总项目的目录设置的）
+
+你一定奇怪，为什么libs 的jar包没有目录呢？
+没错，还记得我上面写过的，
+对于 gradle android 项目来说，jar包和library支持，属于android项目的外部支持，
+通通由 Gradle 配置文件去管理。
+上图的最后一段说明这一切。
+
+1. 其中adil是跨进程通信使用的
+2. jni文件夹是存放dnk编译的c或者cpp文件
+3. jnilibs文件，就是平时jni接入使用的 *.so库。
+需要里面是需要包含平台文件夹的。
+
+所示需要适应eclipse的目录格式，可以写成：
+sourceSets {
+    main {
+        manifest.srcFile 'AndroidManifest.xml'
+        java.srcDirs = ['src']
+        resources.srcDirs = ['src']
+        aidl.srcDirs = ['src']
+        res.srcDirs = ['res']
+        assets.srcDirs = ['assets']
+        jni.srcDirs=['jni']
+        jniLibs.srcDirs = ['libs']
+    }

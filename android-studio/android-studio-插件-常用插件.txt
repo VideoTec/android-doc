@@ -1,0 +1,5 @@
+studio中建议安装的插件：
+
+ButterKnife 黄油刀，控件代码生成器
+GsonFormat Gson解析对应的Bean属性自动生成器
+Strings-xml-tools 管理Android中的字符串资源

@@ -1,0 +1,25 @@
+16:26 2015/12/10
+
+Android Studio 编译 AIDL 时失败：
+
+:beside:compileDebugAidl
+This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
+  
+Error:Execution failed for task ':beside:compileDebugAidl'.
+> java.lang.RuntimeException
+: com.android.ide.common.process.ProcessException
+: org.gradle.process.internal.ExecException
+: Process 'command 'E:\android-sdk-windows\build-tools\23.0.2\aidl.exe'' finished with non-zero exit value 3
+
+http://wenda.jikexueyuan.com/question/22901/ 找到原因：
+
+D:\work\beside\src\com\feinno\beside\fetion\NoticeUIState.aidl
+在Eclipse里面，不加包名，没有任何问题！
+在Android Studio里面，需要加上包名
+
+package com.feinno.beside.fetion;  这个包名需要加上（在 AS 中必须）
+parcelable NoticeUIState;

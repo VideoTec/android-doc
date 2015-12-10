@@ -1,0 +1,5 @@
+gradlew && gradlew.bat 
+代替gradle 命令实现自动完成gradle环境搭建。
+
+配合gradle文件夹的内容，
+会降到IDEA如何搭配gradlew使用

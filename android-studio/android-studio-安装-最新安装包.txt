@@ -1,0 +1,4 @@
+android studio 最新安装包：
+
+http://tools.android.com/download/studio/canary/latest/
+http://tools.android.com/recent

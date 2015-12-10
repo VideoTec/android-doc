@@ -1,0 +1,16 @@
+为什么图片文件名，不能 '.'?
+因为：代码里用文件名作为ID值。
+变量名中不能有的字符，文件名里都不能有。
+
+D:\work\beside\res\drawable-hdpi\beside_group_broadcast_list_sendbroadcast_button_hover..png
+
+Error:Error: '.' is not a valid file-based resource name character: 
+File-based resource names must contain only lowercase a-z, 0-9, or underscore
+
+:beside:mergeDebugResources FAILED
+Error:Execution failed for task ':beside:mergeDebugResources'.
+
+> D:\work\beside\res\drawable-hdpi\beside_group_broadcast_list_sendbroadcast_button_hover..png: 
+
+Error: '.' is not a valid file-based resource name character: 
+File-based resource names must contain only lowercase a-z, 0-9, or underscore

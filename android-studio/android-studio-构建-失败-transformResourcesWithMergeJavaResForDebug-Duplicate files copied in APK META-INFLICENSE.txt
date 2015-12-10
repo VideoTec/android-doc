@@ -1,0 +1,32 @@
+:beside:transformResourcesWithMergeJavaResForDebug FAILED
+Error
+:Execution failed for task '
+:beside:transformResourcesWithMergeJavaResForDebug'.
+
+> com.android.build.api.transform.TransformException
+: com.android.builder.packaging.DuplicateFileException
+: Duplicate files copied in APK META-INF/LICENSE
+	File1: D:\work\beside\libs\bop-sdk.jar
+	File2: D:\work\beside\libs\httpmime-4.3.5.jar
+	File3: D:\work\beside\libs\httpcore-4.3.2.jar
+    
+http://blog.csdn.net/zhouzme/article/details/18923293
+谷歌了一番之后据说应该是 android studio 自身的bug
+
+解决办法：
+打开项目下面的 build.gradle 文件，在 android 代码块中添加下面代码
+
+android {
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+将这些文件全部排出掉就ok了
+但不知道这么做会不会有什么隐患，还是有其他更好的解决办法
+
+http://stackoverflow.com/questions/20853094/gradle-and-android-studio-duplicate-file-copied-from-same-jar

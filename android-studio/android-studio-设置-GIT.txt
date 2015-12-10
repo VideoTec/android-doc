@@ -1,0 +1,3 @@
+File | Settings | Version Control | Git
+
+设置 GIT 目录
