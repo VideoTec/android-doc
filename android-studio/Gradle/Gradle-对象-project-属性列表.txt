@@ -1,0 +1,16 @@
+https://docs.gradle.org/current/userguide/writing_build_scripts.html
+
+The Project object provides some standard properties, 
+which are available in your build script. 
+The following table lists a few of the commonly used ones.
+
+Name            Type        Default Value
+project         Project     The Project instance
+name            String      The name of the project directory.
+path            String      The absolute path of the project.
+description     String      A description for the project.
+projectDir      File        The directory containing the build script.
+buildDir        File        projectDir/build
+group           Object      unspecified
+version         Object      unspecified
+ant             AntBuilder  An AntBuilder instance

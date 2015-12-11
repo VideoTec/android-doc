@@ -1,0 +1,21 @@
+https://docs.gradle.org/current/userguide/writing_build_scripts.html
+
+the build script defines a project in Gradle. 
+For each project in the build, 
+Gradle 
+1）creates an object of type Project and 
+2）associates this Project object with the build script. 
+
+As the build script executes, it configures this Project object:
+
+1）
+Any method you call in your build script 
+which is not defined in the build script, 
+is delegated to the Project object.
+
+2）
+Any property you access in your build script, 
+which is not defined in the build script, 
+is delegated to the Project object.
+
+Let's try this out and try to access the name property of the Project object

@@ -1,0 +1,12 @@
+16:39 2015/12/11 错误信息：
+
+Target device: samsung-gt_i9308-3230911981727f4f
+No apk changes detected since last installation, skipping installation of D:\work\beside\ASProject\build\outputs\apk\ASProject-debug.apk
+Force stopping package: cn.com.fetion
+DEVICE SHELL COMMAND: am force-stop cn.com.fetion
+Could not identify launch activity
+: Default Activity not foundWaiting for process: cn.com.fetion
+
+Client not ready yet.
+Client not ready yet.
+Client not ready yet.

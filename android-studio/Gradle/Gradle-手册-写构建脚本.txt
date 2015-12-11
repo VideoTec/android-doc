@@ -1,0 +1,11 @@
+https://docs.gradle.org/current/userguide/writing_build_scripts.html
+
+13. Writing Build Scripts
+13.1. The Gradle build language
+13.2. The Project API
+13.3. The Script API
+13.4. Declaring variables
+13.5. Configuring arbitrary objects
+13.6. Configuring arbitrary objects using an external script
+13.7. Some Groovy basics
+

@@ -1,0 +1,13 @@
+C:\Users\wangxiangfx\.android\androidtool.cfg
+
+设置: force https to http
+
+### Settings for Android Tool
+#Thu Dec 10 10:30:58 CST 2015
+http.proxyPort=
+sdkman.enable.previews2=true
+http.proxyHost=
+sdkman.ask.adb.restart=false
+sdkman.show.update.only=true
+sdkman.force.http=true
+sdkman.use.dl.cache=true

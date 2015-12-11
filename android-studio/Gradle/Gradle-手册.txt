@@ -1,0 +1,482 @@
+https://docs.gradle.org/current/userguide/userguide.html
+
+Gradle User Guide
+
+Table of Contents
+
+1. Introduction
+1.1. About this user guide
+2. Overview
+2.1. Features
+2.2. Why Groovy?
+3. Tutorials
+3.1. Getting Started
+4. Installing Gradle
+4.1. Prerequisites
+4.2. Download
+4.3. Unpacking
+4.4. Environment variables
+4.5. Running and testing your installation
+4.6. JVM options
+5. Troubleshooting
+5.1. Working through problems
+5.2. Getting help
+6. Build Script Basics
+6.1. Projects and tasks
+6.2. Hello world
+6.3. A shortcut task definition
+6.4. Build scripts are code
+6.5. Task dependencies
+6.6. Dynamic tasks
+6.7. Manipulating existing tasks
+6.8. Shortcut notations
+6.9. Extra task properties
+6.10. Using Ant Tasks
+6.11. Using methods
+6.12. Default tasks
+6.13. Configure by DAG
+6.14. Where to next?
+7. Java Quickstart
+7.1. The Java plugin
+7.2. A basic Java project
+7.3. Multi-project Java build
+7.4. Where to next?
+8. Dependency Management Basics
+8.1. What is dependency management?
+8.2. Declaring your dependencies
+8.3. Dependency configurations
+8.4. External dependencies
+8.5. Repositories
+8.6. Publishing artifacts
+8.7. Where to next?
+9. Groovy Quickstart
+9.1. A basic Groovy project
+9.2. Summary
+10. Web Application Quickstart
+10.1. Building a WAR file
+10.2. Running your web application
+10.3. Summary
+11. Using the Gradle Command-Line
+11.1. Executing multiple tasks
+11.2. Excluding tasks
+11.3. Continuing the build when a failure occurs
+11.4. Task name abbreviation
+11.5. Selecting which build to execute
+11.6. Obtaining information about your build
+11.7. Dry Run
+11.8. Summary
+12. Using the Gradle Graphical User Interface
+12.1. Task Tree
+12.2. Favorites
+12.3. Command Line
+12.4. Setup
+13. Writing Build Scripts
+13.1. The Gradle build language
+13.2. The Project API
+13.3. The Script API
+13.4. Declaring variables
+13.5. Configuring arbitrary objects
+13.6. Configuring arbitrary objects using an external script
+13.7. Some Groovy basics
+14. More about Tasks
+14.1. Defining tasks
+14.2. Locating tasks
+14.3. Configuring tasks
+14.4. Adding dependencies to a task
+14.5. Ordering tasks
+14.6. Adding a description to a task
+14.7. Replacing tasks
+14.8. Skipping tasks
+14.9. Skipping tasks that are up-to-date
+14.10. Task rules
+14.11. Finalizer tasks
+14.12. Summary
+15. Working With Files
+15.1. Locating files
+15.2. File collections
+15.3. File trees
+15.4. Using the contents of an archive as a file tree
+15.5. Specifying a set of input files
+15.6. Copying files
+15.7. Using the Sync task
+15.8. Creating archives
+16. Using Ant from Gradle
+16.1. Using Ant tasks and types in your build
+16.2. Importing an Ant build
+16.3. Ant properties and references
+16.4. API
+17. Logging
+17.1. Choosing a log level
+17.2. Writing your own log messages
+17.3. Logging from external tools and libraries
+17.4. Changing what Gradle logs
+18. The Gradle Daemon
+18.1. What is the Gradle Daemon?
+18.2. Management and configuration
+18.3. When should I not use the Gradle Daemon?
+18.4. Tools & IDEs
+18.5. How does the Gradle Daemon make builds faster?
+19. Continuous build
+19.1. How do I start and stop a continuous build?
+19.2. What will cause a subsequent build?
+19.3. Limitations and quirks
+20. The Build Environment
+20.1. Configuring the build environment via gradle.properties
+20.2. Gradle properties and system properties
+20.3. Accessing the web via a proxy
+21. Gradle Plugins
+21.1. What plugins do
+21.2. Types of plugins
+21.3. Applying plugins
+21.4. Applying plugins with the buildscript block
+21.5. Applying plugins with the plugins DSL
+21.6. Finding community plugins
+21.7. More on plugins
+22. Standard Gradle plugins
+22.1. Language plugins
+22.2. Incubating language plugins
+22.3. Integration plugins
+22.4. Incubating integration plugins
+22.5. Software development plugins
+22.6. Incubating software development plugins
+22.7. Base plugins
+22.8. Third party plugins
+23. The Java Plugin
+23.1. Usage
+23.2. Source sets
+23.3. Tasks
+23.4. Project layout
+23.5. Dependency management
+23.6. Convention properties
+23.7. Working with source sets
+23.8. Javadoc
+23.9. Clean
+23.10. Resources
+23.11. CompileJava
+23.12. Incremental Java compilation
+23.13. Test
+23.14. Jar
+23.15. Uploading
+24. The Groovy Plugin
+24.1. Usage
+24.2. Tasks
+24.3. Project layout
+24.4. Dependency management
+24.5. Automatic configuration of groovyClasspath
+24.6. Convention properties
+24.7. Source set properties
+24.8. GroovyCompile
+25. The Scala Plugin
+25.1. Usage
+25.2. Tasks
+25.3. Project layout
+25.4. Dependency management
+25.5. Automatic configuration of scalaClasspath
+25.6. Convention properties
+25.7. Source set properties
+25.8. Fast Scala Compiler
+25.9. Compiling in external process
+25.10. Incremental compilation
+25.11. Eclipse Integration
+25.12. IntelliJ IDEA Integration
+26. The War Plugin
+26.1. Usage
+26.2. Tasks
+26.3. Project layout
+26.4. Dependency management
+26.5. Convention properties
+26.6. War
+26.7. Customizing
+27. The Ear Plugin
+27.1. Usage
+27.2. Tasks
+27.3. Project layout
+27.4. Dependency management
+27.5. Convention properties
+27.6. Ear
+27.7. Customizing
+27.8. Using custom descriptor file
+28. The Jetty Plugin
+28.1. Usage
+28.2. Tasks
+28.3. Project layout
+28.4. Dependency management
+28.5. Convention properties
+29. The Checkstyle Plugin
+29.1. Usage
+29.2. Tasks
+29.3. Project layout
+29.4. Dependency management
+29.5. Configuration
+30. The CodeNarc Plugin
+30.1. Usage
+30.2. Tasks
+30.3. Project layout
+30.4. Dependency management
+30.5. Configuration
+31. The FindBugs Plugin
+31.1. Usage
+31.2. Tasks
+31.3. Dependency management
+31.4. Configuration
+32. The JDepend Plugin
+32.1. Usage
+32.2. Tasks
+32.3. Dependency management
+32.4. Configuration
+33. The PMD Plugin
+33.1. Usage
+33.2. Tasks
+33.3. Dependency management
+33.4. Configuration
+34. The JaCoCo Plugin
+34.1. Getting Started
+34.2. Configuring the JaCoCo Plugin
+34.3. JaCoCo Report configuration
+34.4. JaCoCo specific task configuration
+34.5. Tasks
+34.6. Dependency management
+35. The Sonar Plugin
+35.1. Usage
+35.2. Analyzing Multi-Project Builds
+35.3. Analyzing Custom Source Sets
+35.4. Analyzing languages other than Java
+35.5. Setting Custom Sonar Properties
+35.6. Configuring Sonar Settings from the Command Line
+35.7. Tasks
+36. The SonarQube Runner Plugin
+36.1. SonarQube Runner version and compatibility
+36.2. Getting started
+36.3. Configuring the SonarQube Runner
+36.4. Specifying the SonarQube Runner version
+36.5. Analyzing Multi-Project Builds
+36.6. Analyzing Custom Source Sets
+36.7. Analyzing languages other than Java
+36.8. More on configuring SonarQube properties
+36.9. Setting SonarQube Properties from the Command Line
+36.10. Controlling the SonarQube Runner process
+36.11. Tasks
+37. The OSGi Plugin
+37.1. Usage
+37.2. Implicitly applied plugins
+37.3. Tasks
+37.4. Dependency management
+37.5. Convention object
+37.6.
+38. The Eclipse Plugins
+38.1. Usage
+38.2. Tasks
+38.3. Configuration
+38.4. Customizing the generated files
+39. The IDEA Plugin
+39.1. Usage
+39.2. Tasks
+39.3. Configuration
+39.4. Customizing the generated files
+39.5. Further things to consider
+40. The ANTLR Plugin
+40.1. Usage
+40.2. Tasks
+40.3. Project layout
+40.4. Dependency management
+40.5. Convention properties
+40.6. Source set properties
+40.7. Controlling the ANTLR generator process
+41. The Project Report Plugin
+41.1. Usage
+41.2. Tasks
+41.3. Project layout
+41.4. Dependency management
+41.5. Convention properties
+42. The Announce Plugin
+42.1. Usage
+42.2. Configuration
+43. The Build Announcements Plugin
+43.1. Usage
+44. The Distribution Plugin
+44.1. Usage
+44.2. Tasks
+44.3. Distribution contents
+44.4. Publishing distributions
+45. The Application Plugin
+45.1. Usage
+45.2. Tasks
+45.3. Convention properties
+46. The Java Library Distribution Plugin
+46.1. Usage
+46.2. Tasks
+46.3. Including other resources in the distribution
+47. Build Init Plugin
+47.1. Tasks
+47.2. What to set up
+47.3. Build init types
+48. Wrapper Plugin
+48.1. Usage
+48.2. Tasks
+49. The Build Dashboard Plugin
+49.1. Usage
+49.2. Tasks
+49.3. Project layout
+49.4. Dependency management
+49.5. Configuration
+50. The Java Gradle Plugin Development Plugin
+50.1. Usage
+51. The Gradle TestKit
+51.1. Usage
+51.2. Functionally testing with the Gradle runner
+52. Dependency Management
+52.1. Introduction
+52.2. Dependency Management Best Practices
+52.3. Dependency configurations
+52.4. How to declare your dependencies
+52.5. Working with dependencies
+52.6. Repositories
+52.7. How dependency resolution works
+52.8. Fine-tuning the dependency resolution process
+52.9. The dependency cache
+52.10. Strategies for transitive dependency management
+53. Publishing artifacts
+53.1. Introduction
+53.2. Artifacts and configurations
+53.3. Declaring artifacts
+53.4. Publishing artifacts
+53.5. More about project libraries
+54. The Maven Plugin
+54.1. Usage
+54.2. Tasks
+54.3. Dependency management
+54.4. Convention properties
+54.5. Convention methods
+54.6. Interacting with Maven repositories
+55. The Signing Plugin
+55.1. Usage
+55.2. Signatory credentials
+55.3. Specifying what to sign
+55.4. Publishing the signatures
+55.5. Signing POM files
+56. Building native binaries
+56.1. Supported languages
+56.2. Tool chain support
+56.3. Tool chain installation
+56.4. Native software model
+56.5. Parallel Compilation
+56.6. Building a library
+56.7. Building an executable
+56.8. Tasks
+56.9. Finding out more about your project
+56.10. Language support
+56.11. Configuring the compiler, assembler and linker
+56.12. Windows Resources
+56.13. Library Dependencies
+56.14. Precompiled Headers
+56.15. Native Binary Variants
+56.16. Tool chains
+56.17. Visual Studio IDE integration
+56.18. CUnit support
+56.19. GoogleTest support
+57. The Play Plugin
+57.1. Usage
+57.2. Limitations
+57.3. Software Model
+57.4. Project Layout
+57.5. Tasks
+57.6. Finding out more about your project
+57.7. Running a Play application
+57.8. Configuring a Play application
+57.9. Multi-project Play applications
+57.10. Packaging a Play application for distribution
+57.11. Resources
+58. The Build Lifecycle
+58.1. Build phases
+58.2. Settings file
+58.3. Multi-project builds
+58.4. Initialization
+58.5. Configuration and execution of a single project build
+58.6. Responding to the lifecycle in the build script
+59. Multi-project Builds
+59.1. Cross project configuration
+59.2. Subproject configuration
+59.3. Execution rules for multi-project builds
+59.4. Running tasks by their absolute path
+59.5. Project and task paths
+59.6. Dependencies - Which dependencies?
+59.7. Project lib dependencies
+59.8. Parallel project execution
+59.9. Decoupled Projects
+59.10. Multi-Project Building and Testing
+59.11. Multi Project and buildSrc
+59.12. Property and method inheritance
+59.13. Summary
+60. Writing Custom Task Classes
+60.1. Packaging a task class
+60.2. Writing a simple task class
+60.3. A standalone project
+60.4. Incremental tasks
+61. Writing Custom Plugins
+61.1. Packaging a plugin
+61.2. Writing a simple plugin
+61.3. Getting input from the build
+61.4. Working with files in custom tasks and plugins
+61.5. A standalone project
+61.6. Maintaining multiple domain objects
+62. Organizing Build Logic
+62.1. Inherited properties and methods
+62.2. Injected configuration
+62.3. Configuring the project using an external build script
+62.4. Build sources in the buildSrc project
+62.5. Running another Gradle build from a build
+62.6. External dependencies for the build script
+62.7. Ant optional dependencies
+62.8. Summary
+63. Initialization Scripts
+63.1. Basic usage
+63.2. Using an init script
+63.3. Writing an init script
+63.4. External dependencies for the init script
+63.5. Init script plugins
+64. The Gradle Wrapper
+64.1. Configuration
+64.2. Verification of downloaded Gradle distributions
+64.3. Unix file permissions
+65. Embedding Gradle
+65.1. Introduction to the Tooling API
+65.2. Tooling API and the Gradle Build Daemon
+65.3. Quickstart
+66. Comparing Builds
+66.1. Definition of terms
+66.2. Current Capabilities
+66.3. Comparing Gradle Builds
+67. Ivy Publishing (new)
+67.1. The “ivy-publish” Plugin
+67.2. Publications
+67.3. Repositories
+67.4. Performing a publish
+67.5. Generating the Ivy module descriptor file without publishing
+67.6. Complete example
+67.7. Future features
+68. Maven Publishing (new)
+68.1. The “maven-publish” Plugin
+68.2. Publications
+68.3. Repositories
+68.4. Performing a publish
+68.5. Publishing to Maven Local
+68.6. Generating the POM file without publishing
+69. Rule based model configuration
+69.1. Background
+69.2. Motivations for change
+69.3. Concepts
+69.4. Rule sources
+69.5. The “model DSL”
+69.6. The Model Report
+69.7. Limitations and future direction
+70. Building Java Libraries
+70.1. The Software Model
+70.2. Usage
+70.3. Creating a library
+70.4. Source Sets
+70.5. Tasks
+70.6. Finding out more about your project
+70.7. Dependencies between components
+70.8. Platform aware dependency management
+70.9. Custom variant resolution
+70.10. Enforcing API boundaries at compile time

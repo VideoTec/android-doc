@@ -1,0 +1,32 @@
+正确的方法：
+
+在 rootProject 的 build.gradle 增加：
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    rootProject.buildDir = "${rootProject.projectDir}/ASProjectBuild"
+}
+
+注意：如果写成下面这样，路径存在那里？
+rootProject.buildDir = "ASProjectBuild"
+
+-------------------------------------------------------
+直接在 rootProject 的 build.gradle 增加：
+-------------------------------------------------------
+
+rootProject {
+    buildDir = "ASProjectBuild"
+}
+
+提示下面的错误：
+Error:(18, 0) Gradle DSL method not found: 'rootProject()'
+
+Possible causes:
+
+The project 'beside' may be using a version of Gradle that does not contain the method.
+<a href="openGradleSettings">Gradle settings</a></li><li>
+
+The build file may be missing a Gradle plugin.
+<a href="apply.gradle.plugin">Apply Gradle plugin</a></li>
