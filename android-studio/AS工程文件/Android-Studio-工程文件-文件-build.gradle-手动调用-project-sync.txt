@@ -7,3 +7,5 @@ Tools -> Android -> Sync Project with Gradle Files
 If that fails, try running 'Rebuild project':
 
 Build -> Rebuild Project
+
+http://stackoverflow.com/questions/18368748/android-studio-module-wont-show-up-in-edit-configuration

@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/26178963/how-to-copy-error-in-android-studio-like-in-eclipse
+
+You can Copy Error Message By click on the part of line that error happened, 
+you can seeing error message on status bar, 
+then Right Click On The Left Of Status bar and select copy.
+
+Also, You can run application and copy error by right click on error of message toolbar

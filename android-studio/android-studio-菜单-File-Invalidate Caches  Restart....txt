@@ -1,0 +1,26 @@
+https://www.jetbrains.com/idea/help/cleaning-system-cache.html
+
+--------------------------------------
+Cleaning System Cache
+--------------------------------------
+
+IntelliJ IDEA caches a great number of files, 
+therefore the system cache may one day become overloaded. 
+In certain situations the caches will never be needed again, 
+for example, if you work with frequent short-term projects. 
+Also, the only way to solve some conflicts is to clean out the cache.
+
+--------------------------------------
+Cleaning out the system caches
+--------------------------------------
+
+To clean out the system caches:
+
+On the main menu, choose File | Invalidate Caches/Restart. 
+The Invalidate Caches message appears informing you that 
+the caches will be invalidated and rebuilt on the next start. 
+Use buttons in the dialog to invalidate caches, restart IntelliJ IDEA or both.
+It is important to note the following:
+
+The files are not actually deleted until IntelliJ IDEA restarts.
+Opening and closing a project does not result in deleting any files.

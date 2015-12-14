@@ -1,0 +1,11 @@
+16:11 2015/12/14
+应该是 Run/Debug Configurations 对话框：
+Android Application 列表中：
+选中，带红叉号的，Android Application 工程：
+设置右边：General : Launch Options : Launch : 指定启动 ACT
+
+http://bbs.csdn.net/topics/391832620
+
+点击有红色箭头app的向下箭头，
+选择Edit  Configurations 进入Run/Debug  Configrations 目录，
+选择Activity下的Launch,选择自己的路径，点击OK

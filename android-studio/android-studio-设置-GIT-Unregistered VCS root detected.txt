@@ -10,3 +10,12 @@ http://www.bubuko.com/infodetail-1236611.html
 
 就是这个“Create Git Repository”，不然你会一直得到
 “...such that source detected in git but Unregistered Vcs root detected”提示
+
+http://stackoverflow.com/questions/22785746/intellij-android-studio-git-integration-where-is-git
+
+15:44 2015/12/14 界面设置：
+Android Studio | Preferences | Version Control | 添加按钮(+)
+
+You should be able to click Android Studio > Preferences
+Under the Version Control tab there are many settings, including the add button
+You should get to this screen, where you can add your .git file.

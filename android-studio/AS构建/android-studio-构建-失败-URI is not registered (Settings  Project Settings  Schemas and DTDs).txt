@@ -1,0 +1,9 @@
+URI is not registered (Settings | Project Settings | Schemas and DTDs)
+
+AndroidManifest.xml 错误提示：
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+这里提示错误，为什么？
+    package="cn.com.fetion"
+    android:versionCode="20130528"
+    android:versionName="1.0" >

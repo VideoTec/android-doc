@@ -1,0 +1,25 @@
+http://stackoverflow.com/questions/15825081/error-default-activity-not-found
+
+If you see that error occur after upgrading IDEA or Android Studio version, 
+you may need to refresh the IDE's cache.
+File -> Invalidate Caches / Restart...
+
+You should have at least one activity that looks something like this:
+<activity
+        android:name="com.your.package.name.YourActivity"
+        android:label="@string/app_name">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+</activity>
+            
+https://teamtreehouse.com/community/error-in-android-studio-default-activity-not-found
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+http://blog.csdn.net/senyangs/article/details/44196115
+关于Idea android studio 提示Error:Default Activity not found无法编译问题
