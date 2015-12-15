@@ -1,2 +1,8 @@
 这个文件是Android Studio的setting jar包，
 可通过 file-import setting导入Android studio的常用配置
+
+导入设置：
+File | import settings
+
+导出设置：
+File | export settings

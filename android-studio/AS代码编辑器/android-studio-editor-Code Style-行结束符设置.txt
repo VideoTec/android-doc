@@ -1,3 +1,8 @@
+
+15:29 2015/12/15
+改变单个文件的行结束符：
+File | Line Separator
+
 https://www.jetbrains.com/phpstorm/help/configuring-line-separators.html
 
 Settings -> editor -> code-style 右侧：

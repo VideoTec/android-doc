@@ -9,3 +9,7 @@ File | Settings | Editor | File Types | Ignore files and folders
 添加的文件及文件夹有：
 gradle;.gradle;.idea;.settings;*.iml;gradlew*;
 .classpath;.project;ASProjectBuild;
+
+14:58 2015/12/15
+不能忽略 AS 的Build目录，如果忽略了，
+就解析不到 R 类，在代码编辑器中，会提示错误。

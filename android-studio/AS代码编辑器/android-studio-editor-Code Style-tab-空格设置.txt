@@ -1,3 +1,11 @@
+15:13 2015/12/15
+勾选： Use tab character, 使用 tab 字符。
+取消勾选： Use tab character, 使用空格代替。
+
+Settings | Editor | Code Style 设置默认 Indent Options
+勾掉：Detect and use existing file indents for editing。
+
+------------------------------------------------------------------------
 Type in 'spac' in the search panel of the settings view.
 
 You will find Code Style->Java->Tabs and Indents->Use tab character.

@@ -1,0 +1,17 @@
+源码：
+https://github.com/facebook/fresco
+
+文档
+http://fresco-cn.org/docs/index.html
+
+demo:
+https://github.com/liaohuqiu/fresco-demo-for-maven
+
+--------------------------------------------------
+maven.org
+--------------------------------------------------
+dependencies {
+  compile 'com.facebook.fresco:fresco:0.6.0+'
+}
+
+http://search.maven.org/#artifactdetails%7Ccom.github.theyy%7Cfresco%7C0.8.2%7Caar

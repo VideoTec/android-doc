@@ -1,0 +1,20 @@
+源码：
+https://github.com/greenrobot/EventBus
+
+文档：
+https://github.com/greenrobot/EventBus/blob/master/HOWTO.md
+
+--------------------------------------------
+Maven Central
+--------------------------------------------
+Add EventBus to your project
+
+dependencies {
+    compile 'de.greenrobot:eventbus:2.4.0'
+}
+
+EventBus is available on Maven Central. 
+Please ensure that you are using the latest version by checking here
+http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22de.greenrobot%22%20AND%20a%3A%22eventbus%22
+http://search.maven.org/#artifactdetails%7Cde.greenrobot%7Ceventbus%7C2.4.1%7Cjar
+http://repo1.maven.org/maven2/de/greenrobot/eventbus/2.4.1/

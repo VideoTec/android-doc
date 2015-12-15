@@ -1,5 +1,58 @@
 studio中建议安装的插件：
 
+-------------------------------------------
 ButterKnife 黄油刀，控件代码生成器
+-------------------------------------------
+Plugin for generating ButterKnife injections 
+from selected layout XMLs in activities/fragments/adapters.
+
+Android ButterKnife
+是一个“Android视图注入库”。
+它提供了一个更好的代码视图，使之更具可读性。
+
+ButterKnife能让你专注于逻辑，
+而不是胶合代码用于查找视图或增加侦听器。
+用ButterKnife编程，你必须对任意对象进行注入，注入形式是这样的：
+
+@InjectView(R.id.title) TextView title;
+
+Android ButterKnife Zelezny
+是一款Android Studio插件，用于在活动、片段和适配器中，
+从所选的XML布局文件生成ButterKnife注入。
+该插件提供了生成XML对象注入的最快方式。
+如果只是一两个注入，那么这样写是没有问题的，
+但如果你有很多要写，那就需要参考所有的注入，将它们编写到源文件中。
+
+-------------------------------------------
 GsonFormat Gson解析对应的Bean属性自动生成器
-Strings-xml-tools 管理Android中的字符串资源
+-------------------------------------------
+quickly to convert a JSON string to an InnerClassEntity class .. 
+ ● Support Data Conversion Library(eg:Gson,Jack,FastJson) 
+ ● Added Virgo mode. 
+ ● Support Field name Custom.
+ 
+https://github.com/zzz40500/GsonFormat
+
+使用方法：
+Menu | Code | Generate... | Gson Format
+
+------------------------------------------------
+Android Strings.xml tools 管理Android中的字符串资源
+------------------------------------------------
+Provides simple actions for sorting entries 
+in Android localization files and adding missing ones.
+
+Strings-xml-tools是一个虽小但很有用的插件，
+可以用来管理Android项目中的字符串资源。
+它提供了排序Android本地文件和添加缺少的字符串的基本操作。
+
+虽然这个插件是有限制的，
+但如果应用程序有大量的字符串资源，那这个插件就非常有用了。
+
+https://github.com/constantine-ivanov/strings-xml-tools
+https://plugins.jetbrains.com/plugin/7498?pr=androidstudio
+
+-------------------------------------------
+.ignore 插件：
+-------------------------------------------
+自动安装一个 .gitignore 扩展插件。

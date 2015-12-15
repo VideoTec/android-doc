@@ -1,3 +1,7 @@
+14:52 2015/12/15
+不显示行结束符，
+状态栏里，显示当前文档的行结束符是什么。
+
 File->Settings->Editor->General->in Appearance->toggle Show whitespaces on
 
 carriage return[英][ˈkæridʒ riˈtə:n] [美][ˈkærɪdʒ rɪˈtɚn] 回车

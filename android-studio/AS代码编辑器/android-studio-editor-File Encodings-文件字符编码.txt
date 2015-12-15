@@ -10,7 +10,8 @@ Click file encoding on the Status bar.
 
 第二种方法：文件编辑器的状态栏，右下角，直接修改
 
-第三种方法：file | settings -> editor -> file encodings -> 设置行结束符
+第三种方法：指定 每个文件的 字符编码集
+file | settings -> editor -> file encodings -> 设置字符编码集
 
 Using the File Encodings page of the Settings dialog, for directories and for the files that do not contain encoding information.
 Using the Status bar or menu command, for individual files that do not contain encoding information.

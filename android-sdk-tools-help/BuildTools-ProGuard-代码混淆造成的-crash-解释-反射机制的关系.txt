@@ -1,0 +1,19 @@
+https://github.com/greenrobot/EventBus/blob/master/HOWTO.md
+
+ProGuard configuration
+
+ProGuard obfuscates method names. 
+However, the onEvent methods must not renamed 
+because they are accessed using reflection. 
+
+Use the following snip 
+in your ProGuard configuration file (proguard.cfg):
+
+-keepclassmembers class ** {
+    public void onEvent*(***);
+}
+
+# Only required if you use AsyncExecutor
+-keepclassmembers class * extends de.greenrobot.event.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}

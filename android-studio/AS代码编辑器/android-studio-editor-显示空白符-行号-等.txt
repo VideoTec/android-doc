@@ -1,4 +1,24 @@
+--------------------------------------
+全局设置：
+--------------------------------------
+Settings | Editor | General | Appearance
+
+appearance[英][əˈpɪərəns] [美][əˈpɪrəns]
+n.外貌，外观；出现，露面；[哲]现象
+
+Show whitespaces 三个选项：
+1) Leading
+2) Inner
+3) Trailing
+
+--------------------------------------
+临时显示，隐藏：
+--------------------------------------
+Menu | View | Active Editor -> 选择 显示/隐藏
+
+--------------------------------------
 http://stackoverflow.com/questions/25500123/how-to-show-white-space-character-in-android-studio-as-eclipse-tool
+--------------------------------------
 
 File->Settings->Editor->General->in Appearance->toggle Show whitespaces on
 just search show whitespaces in searchbox in Settings, you can also find the way to show white space
