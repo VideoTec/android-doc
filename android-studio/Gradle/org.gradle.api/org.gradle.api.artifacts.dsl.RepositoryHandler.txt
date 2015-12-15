@@ -1,0 +1,9 @@
+artifact[英]['ɑ:təˌfækt] [美][ˈɑrtəˌfækt]
+n.人工制品，手工艺品，加工品；石器
+工件的意思
+
+public interface RepositoryHandler
+extends ArtifactRepositoryContainer
+
+A RepositoryHandler manages a set of repositories, 
+allowing repositories to be defined and queried.

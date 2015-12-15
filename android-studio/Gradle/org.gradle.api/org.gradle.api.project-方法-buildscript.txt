@@ -1,0 +1,22 @@
+示例：
+
+buildscript {
+    repositories {   org.gradle.api.Project.repositories
+        jcenter()    org.gradle.api.artifacts.dsl.RepositoryHandler.jcenter
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+    }
+}
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#buildscript(groovy.lang.Closure)
+
+void buildscript(Closure configureClosure)
+
+Configures the build script classpath for this project.
+
+The given closure is executed against this project's ScriptHandler. 
+The ScriptHandler is passed to the closure as the closure's delegate.
+
+Parameters:
+configureClosure - the closure to use to configure the build script classpath.

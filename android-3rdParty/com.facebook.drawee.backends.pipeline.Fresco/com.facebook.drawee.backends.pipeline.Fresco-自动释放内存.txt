@@ -1,0 +1,10 @@
+http://www.csdn.net/article/1970-01-01/2824328
+
+自动释放内存！Facebook推出强大Android图片库Fresco
+
+Fresco是Facebook最新推出的
+一款用于Android应用中展示图片的强大图片库，
+可以从网络、本地存储和本地资源中加载图片。
+其中的Drawees可以显示占位符，直到图片加载完成。
+而当图片从屏幕上消失时，会自动释放内存。
+

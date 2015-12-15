@@ -1,0 +1,13 @@
+org.gradle.api.artifacts.dsl.RepositoryHandler
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#repositories(groovy.lang.Closure)
+
+void repositories(Closure configureClosure)
+
+Configures the repositories for this project.
+
+This method executes the given closure against the RepositoryHandler for this project. 
+The RepositoryHandler is passed to the closure as the closure's delegate.
+
+Parameters:
+configureClosure - the closure to use to configure the repositories.

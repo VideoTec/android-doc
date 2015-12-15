@@ -1,0 +1,55 @@
+重载，两个方法：
+MavenArtifactRepository jcenter(Action<? super MavenArtifactRepository> action)
+MavenArtifactRepository jcenter()
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/RepositoryHandler.html#jcenter()
+
+-------------------------------------------------------------------------------------
+MavenArtifactRepository jcenter(Action<? super MavenArtifactRepository> action)
+-------------------------------------------------------------------------------------
+
+Adds a repository 
+which looks in Bintray's JCenter repository for dependencies.
+
+The URL used to access this repository is "https://jcenter.bintray.com/". 
+The behavior of this repository 
+is otherwise the same as those added by maven(org.gradle.api.Action).
+
+Examples:
+
+ repositories {
+   jcenter {
+     artifactUrls = ["http://www.mycompany.com/artifacts1", "http://www.mycompany.com/artifacts2"]
+   }
+   jcenter {
+     name = "nonDefaultName"
+     artifactUrls = ["http://www.mycompany.com/artifacts1"]
+   }
+ }
+ 
+Parameters:
+action - a configuration action
+Returns:
+the added repository
+
+-------------------------------------------------------------------------------------
+MavenArtifactRepository jcenter()
+-------------------------------------------------------------------------------------
+
+Adds a repository 
+which looks in Bintray's JCenter repository for dependencies.
+
+The URL used to access this repository is "https://jcenter.bintray.com/".
+ The behavior of this repository 
+ is otherwise the same as those added by maven(org.gradle.api.Action).
+
+Examples:
+
+ repositories {
+     jcenter()
+ }
+ 
+Returns:
+the added resolver
+See Also:
+jcenter(Action)

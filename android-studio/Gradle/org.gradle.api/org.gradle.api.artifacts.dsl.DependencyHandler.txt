@@ -1,0 +1,34 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html
+
+public interface DependencyHandler
+
+A DependencyHandler is used to declare dependencies. 
+Dependencies are grouped into configurations (see Configuration).
+
+To declare a specific dependency for a configuration 
+you can use the following syntax:
+
+ dependencies {
+     configurationName dependencyNotation1, dependencyNotation2, ...
+ }
+ 
+Example shows a basic way of declaring dependencies.
+
+ apply plugin: 'java'
+ //so that we can use 'compile', 'testCompile' for dependencies
+
+ dependencies {
+   //for dependencies found in artifact repositories you can use
+   //the group:name:version notation
+   compile 'commons-lang:commons-lang:2.6'
+   testCompile 'org.mockito:mockito:1.9.0-rc1'
+
+   //map-style notation:
+   compile group: 'com.google.code.guice', name: 'guice', version: '1.0'
+
+   //declaring arbitrary files as dependencies
+   compile files('hibernate.jar', 'libs/spring.jar')
+
+   //putting all jars from 'libs' onto compile classpath
+   compile fileTree('libs')
+ }
