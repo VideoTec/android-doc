@@ -1,0 +1,4 @@
+https://docs.gradle.org/current/javadoc/constant-values.html#org.gradle.api.initialization.Settings.DEFAULT_SETTINGS_FILE
+
+org.gradle.api.initialization.Settings 
+public static final String	DEFAULT_SETTINGS_FILE	"settings.gradle"

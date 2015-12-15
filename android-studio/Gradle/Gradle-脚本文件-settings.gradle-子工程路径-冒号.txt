@@ -1,0 +1,26 @@
+https://docs.gradle.org/current/userguide/multi_project_builds.html
+
+colon[英][ˈkəʊlən] [美][ˈkoʊlən]
+
+pattern[英][ˈpætn] [美][ˈpætərn] 
+模式；花样，样品；图案；榜样，典范
+
+interpret[英][ɪnˈtɜ:prɪt] [美][ɪnˈtɜ:rprɪt]
+vt.解释；理解；诠释，体现；口译
+vi.作解释；作口译
+
+59.5. Project and task paths
+
+工程的路径：
+A project path has the following pattern: 
+It starts with an optional colon, which denotes the root project. 
+The root project is the only project in a path that is not specified by its name. 
+The rest of a project path is a colon-separated sequence of project names, 
+where the next project is a subproject of the previous project.
+
+任务的路径：
+The path of a task is simply its project path plus the task name, 
+like “:bluewhale:hello”. 
+Within a project you can address a task of the same project just by its name. 
+This is interpreted as a relative path.
+

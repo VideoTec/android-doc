@@ -1,0 +1,15 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html
+
+A project is essentially a collection of Task objects. 
+Each task performs some basic piece of work, 
+
+such as 
+1）compiling classes, or 
+2）running unit tests, or 
+3）zipping up a WAR file. 
+
+You add tasks to a project using one of the create() methods on TaskContainer, 
+such as TaskContainer.create(String). 
+
+You can locate existing tasks using one of the lookup methods on TaskContainer, 
+such as TaskCollection.getByName(String).

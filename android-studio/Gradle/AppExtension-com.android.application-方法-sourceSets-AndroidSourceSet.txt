@@ -1,0 +1,39 @@
+特别注意：没有 libs 目录。
+gradle 中 jar 是依赖，应该这样写：
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+}
+
+http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.api.AndroidSourceSet.html#com.android.build.gradle.api.AndroidSourceSet:manifest
+
+An AndroidSourceSet represents a logical group of Java, 
+aidl and RenderScript sources 
+as well as Android and non-Android (Java-style) resources.
+
+-----------------------------------------
+String 属性
+-----------------------------------------
+compileConfigurationName    The name of the compile configuration for this source set.
+name                        The name of this source set.
+packageConfigurationName    The name of the runtime configuration for this source set.
+providedConfigurationName   The name of the compiled-only configuration for this source set.
+
+-----------------------------------------
+AndroidSourceFile 属性
+-----------------------------------------
+manifest    The Android Manifest file for this source set.
+
+-----------------------------------------
+AndroidSourceDirectorySet 属性
+-----------------------------------------
+aidl    The Android AIDL source directory for this source set.
+assets  The Android Assets directory for this source set.
+
+java    The Java source which is to be compiled by the Java compiler into the class output directory.
+jni     The Android JNI source directory for this source set.
+jniLibs The Android JNI libs directory for this source set.
+
+renderscript    The Android RenderScript source directory for this source set.
+res             The Android Resources directory for this source set.
+resources       The Java resources which are to be copied into the javaResources output directory.

@@ -1,0 +1,18 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/ProjectDescriptor.html
+
+evaluate[英][ɪˈvæljueɪt] [美][ɪˈvæljuˌet]
+vt.评价；求…的值（或数）；对…评价；[数学、逻辑学]求…的数值
+vi.评价，估价
+
+public interface ProjectDescriptor
+
+A ProjectDescriptor declares 
+the configuration required to create and evaluate a Project.
+
+A ProjectDescriptor is created 
+when you add a project to the build from the settings script, 
+using Settings.include(String[]) or 
+Settings.includeFlat(String[]). 
+
+You can access the descriptors using one of the lookup methods on the Settings object.
+

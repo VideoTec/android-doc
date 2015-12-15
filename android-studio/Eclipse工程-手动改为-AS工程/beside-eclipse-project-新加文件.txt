@@ -1,6 +1,9 @@
 beside-eclipse-project\build.gradle
 beside-eclipse-project\settings.gradle
 
+这种方法有问题，
+E:\doc\android\android-studio\Eclipse工程-手动改为-AS工程\beside-eclipse-project-添加假的子工程的方法-有问题.txt
+
 --------------------------------------
 新建文件夹 AndroidProjecct
 --------------------------------------

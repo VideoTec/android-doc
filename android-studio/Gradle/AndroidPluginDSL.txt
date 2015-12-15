@@ -1,0 +1,12 @@
+http://google.github.io/android-gradle-dsl/current/index.html
+
+Introduction
+This is the DSL reference for Android Gradle Plugin.
+
+Start reading by finding the right extension type for the plugin you are using, 
+e.g. AppExtension
+
+Listed below are the Gradle extension types used by respective plugins:
+1）AppExtension        android extension for com.android.application projects.
+2）LibraryExtension    android extension for com.android.library projects.
+3）TestExtension       android extension for com.android.test projects.

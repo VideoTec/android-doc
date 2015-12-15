@@ -22,7 +22,7 @@ ASProject/AndroidManifest.xml
 
 改到同一级目录，就不出错了。
 
-或者不添加添的子工程，
-直接在 根工程中，设置 android 构造任务，也可以解决这个问题
-
 真正的原因是什么？
+
+暂时解决方法：
+修改 ROOT-PROJECT-BUILD.GRADLE

@@ -1,0 +1,10 @@
+https://docs.gradle.org/current/javadoc/constant-values.html#org.gradle.api.Project.DEFAULT_BUILD_FILE
+
+org.gradle.api.Project 
+public static final String	DEFAULT_BUILD_DIR_NAME	"build"
+public static final String	DEFAULT_BUILD_FILE	"build.gradle"
+public static final String	DEFAULT_STATUS	"release"
+public static final String	DEFAULT_VERSION	"unspecified"
+public static final String	GRADLE_PROPERTIES	"gradle.properties"
+public static final String	PATH_SEPARATOR	":"
+public static final String	SYSTEM_PROP_PREFIX	"systemProp"

@@ -1,6 +1,0 @@
-http://blog.jetbrains.com/idea/2011/04/intellij-idea-does-not-show-some-files-know-the-hiding-places/
-
-File | Settings | File Types:
-
-现在是：
-File | Settings | Editor | File Types | Ignore files and folders

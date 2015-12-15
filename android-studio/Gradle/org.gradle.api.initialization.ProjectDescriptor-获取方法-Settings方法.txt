@@ -1,0 +1,45 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/Settings.html#project(java.lang.String)
+
+----------------------------------------------------------------------
+ProjectDescriptor project(String path)
+                          throws UnknownProjectException
+----------------------------------------------------------------------
+Returns the project with the given path.
+
+Parameters:
+path - The path.
+Returns:
+The project with the given path. Never returns null.
+Throws:
+UnknownProjectException - If no project with the given path exists.
+
+----------------------------------------------------------------------
+ProjectDescriptor project(File projectDir)
+                          throws UnknownProjectException
+----------------------------------------------------------------------
+Returns the project with the given project directory.
+
+Parameters:
+projectDir - The project directory.
+Returns:
+The project with the given project directory. Never returns null.
+Throws:
+UnknownProjectException - If no project with the given path exists.
+
+----------------------------------------------------------------------
+ProjectDescriptor getRootProject()
+----------------------------------------------------------------------
+Returns the root project of the build.
+
+Returns:
+The root project. Never returns null.
+
+----------------------------------------------------------------------
+ProjectDescriptor findProject(String path)
+----------------------------------------------------------------------
+Returns the project with the given path.
+
+Parameters:
+path - The path
+Returns:
+The project with the given path. Returns null if no such project exists.

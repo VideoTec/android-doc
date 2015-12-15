@@ -1,0 +1,7 @@
+http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html#com.android.build.gradle.AppExtension:sourceSets
+
+NamedDomainObjectContainer<AndroidSourceSet> sourceSets
+
+All source sets. 
+Note that the Android plugin 
+uses its own implementation of source sets, AndroidSourceSet.

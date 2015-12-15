@@ -1,0 +1,9 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/invocation/Gradle.html
+
+public interface Gradle
+
+extends PluginAware
+
+Represents an invocation of Gradle.
+You can obtain a Gradle instance by calling Project.getGradle().
+

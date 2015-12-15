@@ -1,0 +1,22 @@
+https://docs.gradle.org/current/userguide/tutorial_java_projects.html#sec:examples
+
+corresponding[英][ˌkɒrəˈspɒndɪŋ] [美][ˌkɔ:rəˈspɑ:ndɪŋ]
+adj.相当的，对应的；通信的；符合的，符合。。；一致的
+
+To define a multi-project build, 
+you need to create a settings file. 
+
+The settings file lives in the root directory of the source tree, 
+and specifies which projects to include in the build. 
+
+It must be called settings.gradle. 
+For this example, 
+we are using a simple hierarchical layout. 
+Here is the corresponding settings file:
+
+settings.gradle
+include "shared", "api", "services:webservice", "services:shared"
+
+You can find out more about the settings file in Chapter 59, Multi-project Builds.
+
+https://docs.gradle.org/current/userguide/multi_project_builds.html

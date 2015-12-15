@@ -1,0 +1,11 @@
+http://blog.jetbrains.com/idea/2011/04/intellij-idea-does-not-show-some-files-know-the-hiding-places/
+
+File | Settings | File Types:
+
+现在是：
+File | Settings | Editor | File Types | Ignore files and folders
+
+14:21 2015/12/15
+添加的文件及文件夹有：
+gradle;.gradle;.idea;.settings;*.iml;gradlew*;
+.classpath;.project;ASProjectBuild;

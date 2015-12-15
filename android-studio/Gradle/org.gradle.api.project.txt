@@ -1,0 +1,32 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html
+org.gradle.api
+Interface Project
+
+public interface Project
+extends Comparable<Project>, ExtensionAware, PluginAware
+
+This interface is the main API you use to interact with Gradle from your build file. 
+From a Project, 
+you have programmatic access to all of Gradle's features.
+
+Lifecycle
+
+There is a one-to-one relationship between 
+
+a Project and 
+a "build.gradle" file. 
+
+During build initialisation, 
+Gradle assembles a Project object for each project 
+which is to participate in the build, as follows:
+
+1）Create a Settings instance for the build.
+2）Evaluate the "settings.gradle" script, if present, against the Settings object to configure it.
+3）Use the configured Settings object to create the hierarchy of Project instances.
+4）Finally, evaluate each Project by executing its "build.gradle" file, 
+if present, against the project. 
+The projects are evaluated in breadth-wise order, 
+such that a project is evaluated before its child projects. 
+This order can be overridden 
+by calling evaluationDependsOnChildren() or 
+by adding an explicit evaluation dependency using evaluationDependsOn(String).

@@ -1,0 +1,24 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/Settings.html#include(java.lang.String[])
+
+void include(String[] projectPaths)
+
+Adds the given projects to the build. 
+Each path in the supplied list is treated as the path of a project to add to the build. 
+
+Note that these path are not file paths, 
+but instead specify the location of the new project in the project hierarchy. 
+
+As such, 
+the supplied paths must use the ':' character as separator.
+
+The last element of the supplied path is used as the project name. 
+The supplied path is converted to a project directory 
+relative to the root project directory.
+
+As an example, 
+the path a:b adds a project with path :a:b, 
+1）name b and 
+2）project directory $rootDir/a/b.
+
+Parameters:
+projectPaths - the projects to add.

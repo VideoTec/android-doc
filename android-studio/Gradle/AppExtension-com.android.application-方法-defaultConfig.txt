@@ -1,0 +1,6 @@
+http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html#com.android.build.gradle.AppExtension:defaultConfig
+
+ProductFlavor defaultConfig
+Default config, shared by all flavors.
+
+http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ProductFlavor.html
