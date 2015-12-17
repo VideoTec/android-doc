@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/about/versions/android-5.0-changes.html
+
+Binding to a Service
+The Context.bindService() method now requires an explicit Intent, and 
+throws an exception if given an implicit intent. 
+
+To ensure your app is secure, 
+use an explicit intent when starting or binding your Service, and 
+do not declare intent filters for the service.
+
+http://stackoverflow.com/questions/27981246/dealing-with-implicit-intent-future-deprecation-in-lollipop

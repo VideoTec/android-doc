@@ -1,0 +1,35 @@
+Dependency	add(String configurationName, Object dependencyNotation)
+Adds a dependency to the given configuration.
+
+Dependency	add(String configurationName, Object dependencyNotation, Closure configureClosure)
+Adds a dependency to the given configuration, and configures the dependency using the given closure.
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html#add(java.lang.String, java.lang.Object)
+
+Dependency add(String configurationName,
+             Object dependencyNotation)
+             
+Adds a dependency to the given configuration.
+
+Parameters:
+configurationName - The name of the configuration.
+dependencyNotation - The dependency notation, in one of the notations described above.
+
+Returns:
+The dependency.
+
+
+Dependency add(String configurationName,
+             Object dependencyNotation,
+             Closure configureClosure)
+             
+Adds a dependency to the given configuration, 
+and configures the dependency using the given closure.
+
+Parameters:
+configurationName - The name of the configuration.
+dependencyNotation - The dependency notation, in one of the notations described above.
+configureClosure - The closure to use to configure the dependency.
+
+Returns:
+The dependency.

@@ -1,0 +1,10 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/plugins/PluginAware.html
+
+public interface PluginAware
+
+Something that can have plugins applied to it.
+The plugin manager can be used 
+for applying and detecting whether plugins have been applied.
+
+For more on writing and applying plugins, see Plugin.
+

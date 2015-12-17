@@ -1,0 +1,14 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/file/FileCollection.html
+
+public interface FileCollection
+extends Iterable<File>, AntBuilderAware, Buildable
+
+A FileCollection represents a collection of files 
+which you can query in certain ways. 
+
+A file collection is often used to define a classpath, 
+or to add files to a container.
+
+You can obtain a FileCollection instance using 
+Project.files(java.lang.Object...).
+

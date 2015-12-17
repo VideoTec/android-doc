@@ -1,0 +1,18 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/Configuration.html
+
+public interface Configuration
+extends FileCollection
+
+A Configuration represents a group of artifacts and their dependencies. 
+
+Find more information 
+about declaring dependencies to a configuration or 
+about managing configurations in docs for ConfigurationContainer
+
+Configuration is an instance of a FileCollection 
+that contains all dependencies (see also getAllDependencies()) but not artifacts. 
+
+If you want to refer to the artifacts declared in this configuration 
+please use getArtifacts() or getAllArtifacts(). 
+Read more about declaring artifacts in the configuration in docs for ArtifactHandler
+

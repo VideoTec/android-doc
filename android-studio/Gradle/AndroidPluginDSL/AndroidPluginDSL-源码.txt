@@ -1,0 +1,5 @@
+https://android.googlesource.com/platform/tools/build/+/android-6.0.0_r7
+
+gradle / src / main / groovy / com / android / build / gradle
+https://android.googlesource.com/platform/tools/build/+/android-6.0.0_r7/gradle/src/main/groovy/com/android/build/gradle
+

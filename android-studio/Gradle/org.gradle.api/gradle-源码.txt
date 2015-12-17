@@ -1,0 +1,28 @@
+https://github.com/gradle/gradle
+
+Gradle is a build tool 
+with a focus on build automation and support for multi-language development. 
+
+If you are 
+1）building, 
+2）testing, 
+3）publishing, and 
+4）deploying software on any platform, 
+Gradle offers a flexible model that can 
+support the entire development lifecycle 
+from compiling and packaging code to publishing web sites. 
+
+Gradle has been designed to 
+support build automation across multiple languages and platforms 
+including Java, Scala, Android, C/C++, and Groovy, 
+and is closely integrated with development tools and 
+continuous integration servers including 
+1）Eclipse, 
+2）IntelliJ, and 
+3）Jenkins.
+
+gradle/subprojects/core/src/main/groovy/org/gradle/api/
+https://github.com/gradle/gradle/tree/6277a4dc70fbeea83c111e75c95ba851d1e56ffc/subprojects/core/src/main/groovy/org/gradle/api
+
+gradle/subprojects/plugins/src/main/groovy/org/gradle/api/
+https://github.com/gradle/gradle/tree/6277a4dc70fbeea83c111e75c95ba851d1e56ffc/subprojects/plugins/src/main/groovy/org/gradle/api

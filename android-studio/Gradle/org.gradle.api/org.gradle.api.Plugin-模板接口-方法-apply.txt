@@ -1,0 +1,5 @@
+void apply(T target)
+Apply this plugin to the given target object.
+
+Parameters:
+target - The target object

@@ -1,0 +1,10 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/Plugin.html
+
+public interface Plugin<T>
+A Plugin represents an extension to Gradle. 
+A plugin applies some configuration to a target object. 
+
+Usually, 
+this target object is a Project, 
+but plugins can be applied to any type of objects.
+
