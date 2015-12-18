@@ -1,0 +1,4 @@
+https://docs.gradle.org/current/javadoc/constant-values.html
+
+org.gradle.api.initialization.dsl.ScriptHandler 
+public static final String	CLASSPATH_CONFIGURATION	"classpath"

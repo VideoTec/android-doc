@@ -1,0 +1,35 @@
+https://buckbuild.com/concept/faq.html
+
+Why doesn't Buck support Windows?
+
+A: 
+There are a number of engineering tasks 
+that need to be addressed before Buck will run on Windows.
+
+Buck uses symlinks under the hood in many places. 
+We need to map that concept to the Windows equivalent throughout the codebase.
+
+Buck hardcodes the use of OS X/Linux file and path separators all over the place. 
+This may be a poor software design choice, 
+but it makes the code more readable in many circumstances, 
+particularly in unit tests.
+
+Documentation becomes more work to maintain. 
+For example, a nifty trick from the OS X/Linux command line, such as:
+
+buck targets --type java_test | xargs buck test
+
+does not work on Windows, 
+so that must be documented separately.
+
+The ./bin/buck script is written in Bash, so to support Windows, 
+the equivalent would have to be maintained as a Windows Batch Script. 
+Keeping both scripts in sync would be non-trivial. 
+
+Alternatively, 
+the run script could be written in a platform-independent language, such as Ruby, 
+but that would require users to install an additional tool.
+
+It increases the surface area of what needs to be tested.
+Despite all of the work it will require, 
+we do hope to support Windows in the future.

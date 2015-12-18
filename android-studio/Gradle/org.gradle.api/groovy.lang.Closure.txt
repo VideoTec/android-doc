@@ -1,0 +1,6 @@
+http://docs.groovy-lang.org/docs/groovy-2.4.4/html/gapi/groovy/lang/Closure.html?is-external=true
+
+groovy.lang.Closure
+
+All Implemented Interfaces and Traits:
+Cloneable, GroovyCallable, Runnable, Serializable

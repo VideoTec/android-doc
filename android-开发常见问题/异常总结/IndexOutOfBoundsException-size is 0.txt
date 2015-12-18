@@ -1,0 +1,7 @@
+如果使用前，检查下容器的，size，
+不会出这种问题的
+
+Caused by: java.lang.IndexOutOfBoundsException: Invalid index 0, size is 0
+	at java.util.ArrayList.throwIndexOutOfBoundsException(ArrayList.java:255)
+	at java.util.ArrayList.get(ArrayList.java:308)
+	at com.feinno.beside.ui.view.SendFailedHeader.updataSendFailedHeaderView(SendFailedHeader.java:397)

@@ -1,0 +1,11 @@
+https://www.jetbrains.com/idea/help/launching-groovy-interactive-console.html
+
+第一步：编写代码：
+Type code in the console after the prompt character, or 
+just paste from a different file.
+
+Note that coding assistance is available, 
+as you type (code completion and error highlighting):
+
+第二步：运行代码：
+Click runBuild, or press Ctrl+Enter to execute the entered code.

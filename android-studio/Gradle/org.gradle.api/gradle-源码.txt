@@ -24,5 +24,11 @@ continuous integration servers including
 gradle/subprojects/core/src/main/groovy/org/gradle/api/
 https://github.com/gradle/gradle/tree/6277a4dc70fbeea83c111e75c95ba851d1e56ffc/subprojects/core/src/main/groovy/org/gradle/api
 
+org.gradle.api.Project.java
+org.gradle.api.plugins.PluginAware.java
+org.gradle.api.artifacts.Configuration.java
+
 gradle/subprojects/plugins/src/main/groovy/org/gradle/api/
 https://github.com/gradle/gradle/tree/6277a4dc70fbeea83c111e75c95ba851d1e56ffc/subprojects/plugins/src/main/groovy/org/gradle/api
+
+org.gradle.api.Plugin.JavaPlugin.java

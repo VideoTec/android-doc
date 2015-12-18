@@ -1,0 +1,12 @@
+http://docs.groovy-lang.org/docs/groovy-2.4.4/html/gapi/groovy/lang/Closure.html?is-external=true#setDelegate(java.lang.Object)
+
+public void setDelegate(Object delegate)
+
+Allows the delegate to be changed 
+such as when performing markup building
+
+Parameters:
+delegate - the new delegate
+
+http://georgik.sinusgear.com/2014/06/23/how-to-debug-gradle-script/
+

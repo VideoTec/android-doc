@@ -1,0 +1,63 @@
+------------------------------------------------
+https://github.com/facebook/buck
+源码
+------------------------------------------------
+Buck is a build tool.
+A fast build system 
+that encourages the creation of small, reusable modules 
+over a variety of platforms and languages.
+
+Installation 安装方法：
+
+To build Buck, run the following:
+
+git clone https://github.com/facebook/buck.git
+cd buck
+ant
+./bin/buck --help
+
+------------------------------------------------
+https://buckbuild.com/
+官网
+------------------------------------------------
+Buck is a build system developed and used by Facebook. 
+It encourages the creation of small, reusable modules consisting of code and resources, and 
+supports a variety of languages on many platforms.
+
+教程:
+http://buckbuild.com/setup/quick_start.html
+
+------------------------------------------------
+http://www.infoq.com/cn/news/2015/06/buck-android-build
+介绍
+------------------------------------------------
+Buck是Facebook出品的高效开源Android编译工具，
+旨在鼓励开发者构建小规模可重用的程序模块，
+2013年发布时，InfoQ对此有过非常详细的报道。 
+
+随着版本的不断迭代和功能的不断演进，
+越来越多的团队开始利用Buck改进编译过程，
+Vine就是其中之一，该团队近期在博客中分享了Buck使用的经验
+
+一次完整编译要花费5分钟左右时间，
+而哪怕修改一行代码的编译都需要1分钟。
+对于Vine这样的小型团队来讲，
+每天都要花费几个小时在等待编译完成，这让他们非常纠结
+
+dex文件合并以及通过USB安装App的时间占去了整个的90%
+最小编译依赖、最小dex传输
+1）编译规则（rule），规定Buck在给定输入文件后生成输出文件的过程。
+2）编译目标（target），项目中用来指定采用哪个规则编译的字符串。
+3）编译文件（file），可包含多个编译规则，可类比为Make技术中的Makefile。
+
+Buck会根据file中给定的target寻找特定编译规则集合，
+然后根据每个规则来对Android工程进行编译。
+
+这种分布式编译的方式，在Buck内部以依赖图的形式表示，
+它能够使得相互之间没有依赖关系的模块并行编译，节约编译时间，
+并且通过对未改动模块的标记，还可以进一步加速
+
+1）将远程jar全部放置本地，
+2）运行时修改R值，
+3）创建混合AndroidManifest.xml文件和
+4）创建Buck配置文件等

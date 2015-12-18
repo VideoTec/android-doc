@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/22017433/debugging-gradle-build-files-in-intellij-android-studio
+
+You can't debug Gradle files. 
+We may someday implement this, as it would obviously be a great thing, 
+but it's a long ways off. 
+
+We're in the process of adding more intelligence about syntax highlighting and analysis of build files. Well, actually, JetBrains is adding it to IntelliJ and we're picking it up. 
+
+This will get better over the coming weeks and months.

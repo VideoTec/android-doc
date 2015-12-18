@@ -1,0 +1,62 @@
+http://www.blogjava.net/BlueSUN/archive/2007/12/22/169580.html
+在类的实例方法中调用方法和引用属性时，
+我们可以省略方法或属性前this
+（比如this.method()，this.property可简写为method()，property），
+表示调用或引用的是本实例的方法或属性。
+
+类似地，在closure中调用方法和引用属性时，
+我们也可以省略方法和属性前的delegate，
+表示调用或引用的是本closure的方法或属性
+（而closure通过delegate隐式变量将方法调用和变量引用‘委派’给了delegate引用的那个对象）
+
+那closure的delegate的默认值是什么呢？
+默认值是closure所在context中的this
+
+closure的delegate的默认值是closure的隐式变量owner
+（
+为了方便理解起见，可以暂时这么记忆，
+因为closure套closure的情况不是很多见。
+其实closure的delegate的默认值是closure的隐式变量owner，
+而owner通常引用closure所在context中的this，
+除非closure所处的context又是个closure，那么owner引用的就是那个外层的closure
+）
+
+http://www.blogjava.net/BlueSUN/archive/2007/12/archive/2007/12/23/169683.html
+那么this, delegate以及owner有什么关系呢？
+隐式变量delegate的默认值为owner，
+如果closure没有‘嵌套’在其他closure中，那么该closure的owner的值为this；
+否则该closure的owner引用的是‘直接包含’该closure的closure
+
+http://yeziwang.iteye.com/blog/826918
+实际上，闭包根据其创建的上下文不同，
+还可以分为静态闭包和实例闭包，
+在这两种情况下，this，owner和delegate的含义也是不同的
+
+1） this 讲解：
+对于this来讲，它基本上保持了跟java中this一样的含义
+（在java的静态方法以及静态域中，this是没有任何含义的），
+在上面的闭包创建的4种上下文中，实际上可以了解为只有2种，
+一种是在普通的类中定义，如上面的Person类，
+一种是在groovy script中定义，
+实际上也是在类中定义，只不过这个是一个比较特殊的类而已
+（Groovy会将groovy script编译为Script.class), 
+
+所以，this在闭包中的含义指的是，
+表示定义该闭包的类的实例对象（实例闭包）或者类本身（静态闭包）。
+
+2）Owner在闭包中的含义：
+对于owner来讲，它的含义基本上跟this的含义一样，
+只是除了一种情况，
+如果该闭包是在其他的闭包中定义的，
+那么owner是指向定义它的闭包对象。
+
+3）Delegate在闭包中的含义
+对于delegate来讲，
+它的含义大多数情况下是跟owner的含义一样，
+除非它被显示的修改（通过Closure.setDelegate()方法进行修改）。
+ 
+在上面的几种创建上下文中，可以看到，如果闭包的delegate没有被显示改动的话，
+那么delegate确实是同owner是一个含义。
+
+setDelegate 还被广泛的使用于groovy builder的构建中。
+有兴趣的可以看下groovy中BuildSupport的实现
