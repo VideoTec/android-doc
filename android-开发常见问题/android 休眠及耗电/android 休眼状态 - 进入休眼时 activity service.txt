@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/4267897/what-happens-to-activities-services-when-phone-goes-to-sleep-standby-mode
+
+In case of device sleep, activity's `onPause()' will be called. 
+Read activity lifecycle to understand this.
+
+OS only kills the process when memory/resources are low. 
+Activities are killed first, services are only killed as last resort.
+
+But there is no guarantee they will not be killed. 
+This is why you should rely on system services to call you 
+when you need some work done: 
+1）use AlarmManager to do call your code periodically or 
+2）use listeners to notify you of system changes (gps, network, etc..)

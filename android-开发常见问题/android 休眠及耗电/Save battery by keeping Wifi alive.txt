@@ -1,0 +1,7 @@
+http://www.androidcentral.com/android-101-save-battery-keeping-wifi-alive
+
+Now even when your phone goes into standby mode, 
+you'll stay connected to Wifi and be able to get mail and messages without turning the cell radio back on and trouncing your battery life. 
+And for the times when you're not in an area with a Wifi connection, 
+just shut Wifi off, either through the menu or with a handy toggle widget.  
+Your battery will thank you for it.

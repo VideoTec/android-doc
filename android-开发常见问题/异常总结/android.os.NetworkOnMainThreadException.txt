@@ -1,0 +1,16 @@
+
+    @Override
+    protected void onStart() {
+                int seq = 0;
+                int port = 9054;
+                Socket socket = null;
+                try {
+                    socket = new Socket("192.168.137.1",port);
+                } catch (UnknownHostException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+    }

@@ -1,0 +1,25 @@
+file:///E:/android-sdk-windows/docs/reference/android/os/PowerManager.html
+
+PowerManager
+extends Object
+
+java.lang.Object
+   ↳	android.os.PowerManager
+   
+Class Overview
+This class gives you control of the power state of the device.
+
+Device battery life will be significantly affected by the use of this API. Do not acquire PowerManager.WakeLocks unless you really need them, use the minimum levels possible, and be sure to release them as soon as possible.
+
+You can obtain an instance of this class by calling Context.getSystemService().
+
+The primary API you'll use is newWakeLock(). This will create a PowerManager.WakeLock object. You can then use methods on the wake lock object to control the power state of the device.
+
+In practice it's quite simple:
+
+ PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+ PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
+ wl.acquire();
+   ..screen will stay on during this section..
+ wl.release();
+ 

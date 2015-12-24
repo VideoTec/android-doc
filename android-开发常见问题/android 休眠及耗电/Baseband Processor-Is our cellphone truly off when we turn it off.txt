@@ -1,0 +1,18 @@
+https://www.quora.com/Is-our-cellphone-truly-off-when-we-turn-it-off
+
+Okay, the first thing to know is that in any modern cellphone, there are two completely distinct ways of being "off".
+
+The first, that you experience many times a day, is when you push the "off button" briefly, and the screen turns off. When the screen is off, the phone is using a lot less of your battery, but many things still use energy:
+
+- the baseband processor is maintaining your mobile network connections
+- the application processor (the one you probably think of as your phone's CPU) is mostly asleep, but will wake up periodically for brief intervals to respond to network events (e.g. receiving notifications from cloud services), run background tasks and services, send position updates to cloud services (if you've enabled location tracking), etc.
+
+The OS that runs on the application processor (Android, iOS, Windows Phone) will try its hardest to conserve energy, but it's there to provide services to you, the cloud services you use, and the services and applications that are installed on your phone.
+
+The nature of the baseband processor, and the operating system it runs, are closely guarded secrets. Unlike for the application processor, there is no worthwhile open source OS.
+
+Now, when you explicitly power down your phone using the UI that appears after you hold down the power button for a few seconds, *as far as anyone knows*, both the application and baseband processors are really powered down, unable to transmit or receive data, or run any software. The only thing that ought to be consuming energy is the standby circuit, that waits for someone to push the power button, then powers up the processors, which then boot up their respective operating systems, thus restoring your phone to full functionality.
+
+With the screen off, and the application processor nearly always asleep (this is called standby mode), in a good mobile coverage area, your phone should be able to last at least 2 days, usually more than a week. When powered off, with the standby circuit drawing a tiny bit of current, it will take weeks or months to completely drain the battery.
+
+There have been rumours going around for years, that some phones could operate in some kind of covert surveillance mode, where they appear to the user to be powered off, but they're still listening and transmitting, but I have no faith in those rumours with respect to the current era of smartphones, and I've never seen any credible claims to support the rumours, despite fairly intensive googling.

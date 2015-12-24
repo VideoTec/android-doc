@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/5120185/android-sleep-standby-mode
+
+The device will go into sleep mode shortly thereafter, if nothing is keeping it awake with a WakeLock. However, there is no guarantee that within a millisecond of you pressing that button and the screen turning off that the CPU is off.
+
+https://software.intel.com/en-us/android/articles/wakelocks-detect-no-sleep-issues-in-android-applications
+
+Android OS is designed to opportunistically go into sleep mode as soon as it detects no user activity on the system.
+
+14:02 2015/12/24
+实际测试 GT-I9308
+关闭屏幕后，15，分钟左右，WIFI，不在发送数据包

@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/15942622/how-to-make-service-run-even-in-sleep-mode
+
+If you want to ensure that your service is not killed/reclaimed by the OS you need to make it a foreground service. By default all services are background, meaning they will be killed when the OS needs resources. For details refer to this doc
+
+Basically, you need to create a Notification for your service and indicate that it is foreground. 
+This way the user will see a persistent notification so he knows your app is running, 
+and the OS will not kill your service.
+
+使用 WakeLock 保持服务始终运行
+A year later, and I'm replying to this comment, better late than never I suppose. You may need to hold a WakeLock in order for your service to keep running. See developer.android.com/reference/android/os/… for more info. 
+
+有些机器不支持
+i tried this approach on the Huawei U8860 and the service is not working while the device is in the sleep mode ( screen is off and the device is locked). and this problem is only exists with this Huawei U8860, i've tried it on the HTC ONE X , S3 , Experia T, S2, ... and it works. Any ideas about why this is not working with this device ?? thanks

@@ -1,0 +1,37 @@
+https://github.com/lucasr/android-layout-samples
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.0'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:21.0.+'
+    compile 'com.squareup.picasso:picasso:2.2.0'
+    compile 'org.lucasr.smoothie:smoothie:0.1.0'
+}

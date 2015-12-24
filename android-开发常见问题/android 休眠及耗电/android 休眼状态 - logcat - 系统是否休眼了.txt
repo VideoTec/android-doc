@@ -1,0 +1,14 @@
+https://software.intel.com/en-us/android/articles/wakelocks-detect-no-sleep-issues-in-android-applications
+
+Identifying No Sleep bugs
+
+The no sleep bug can be tackled in two ways: 
+either 
+1）a static analysis doing a code path scanning or 
+2）dynamically at run time. In this paper we will focus on run-time analysis.
+
+This method does not guarantee you’ll find all the wakelocks bugs in an application. It will however help you spot some wakelock issues if they occur during run time. To identify a wakelock issue, you need to follow a code path where the wakelock is not released. Testing an application against no sleep bugs involves manipulating the application, trying different ways to exit it, at different places in the application to see if a wakelock persists.
+
+In some cases, it may be necessary to prevent the system from going into deep sleep even if the application is not in the foreground anymore. An application may need to perform a task in the background. This is the case, for example, if the application has to perform a long download: a video or game dataset. The application may be put in the background by the user while it’s downloading, but the phone should stay awake until the download is completed. In that case, the application may hold a wakelock until the download is completed. Of course, you should check that the wakelock is released at some point. For example, if the phone loses network connection in the middle of a download, the phone should not remain awake if the action cannot be performed anymore.
+
+In summary, identifying a No Sleep bug is very context dependent. There is no predefined criterion that allows someone to easily identify this issue. Only common sense can assess these types of bugs.

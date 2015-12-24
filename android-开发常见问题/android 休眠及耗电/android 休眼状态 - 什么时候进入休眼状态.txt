@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/15620139/when-android-device-goes-to-sleep-mode
+
+You can never really be sure if the device has gone to sleep. At best, I can give you a list of things that would make sure that the device hasn't gone to sleep:
+
+Screen being on - Requires CPU and GPU, and hence RAM, to stay active
+Any app holding a wakelock - Even the lowest wakelocks keep the CPU on, though the screen may be switched off
+Apart from this, there is no guarantee that the device will go to sleep n seconds after the screen is turned off, even if no wakelocks are being held. This is upto the OEM, and they can alter this.
+
+Keep in mind that Android devices have an option to keep the device unlocked for a certain amount of time after the screen has gone to sleep.
+
+http://stackoverflow.com/questions/15620139/when-android-device-goes-to-sleep-mode
+
+Your question : How do i know when my phone will go to sleep? - Ans : Simple it goes sleep mode when LCD power is off, with in fraction of seconds.
+
+Your question : Does sleep mode in particular device varies from brand device - Ans : Since android is open source, any OEM can take driver layer , which is GPU license and can modify the power manager drive to behave differently. All these sleep modes and wake locks are finally under control of Power manager driver of Linux kernel layer.

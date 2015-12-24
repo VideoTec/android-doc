@@ -1,0 +1,19 @@
+http://stackoverflow.com/questions/5007721/android-sleep-stages-levels-on-an-android-device
+There is not really a separate stage called "deep sleep". 
+There is only "awake", "asleep", and "off".
+
+-------------------------------------
+android.os.SystemClock 提到这个概念
+-------------------------------------
+
+public static long uptimeMillis ()
+Returns milliseconds since boot, 
+not counting time spent in deep sleep.
+
+public static long elapsedRealtimeNanos ()
+Returns nanoseconds since boot, 
+including time spent in sleep.
+
+public static long elapsedRealtime ()
+Returns milliseconds since boot, 
+including time spent in sleep.

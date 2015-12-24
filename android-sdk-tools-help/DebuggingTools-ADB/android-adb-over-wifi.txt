@@ -1,0 +1,22 @@
+http://stackoverflow.com/questions/2604727/how-can-i-connect-to-android-with-adb-over-tcp
+
+1）Connect device via USB and make sure debugging is working, then run:
+
+adb tcpip 5555                        这个输入后，需要断开，USB，线，才会返回。
+adb connect <DEVICE_IP_ADDRESS>:5555
+
+2）Disconnect USB and proceed with wireless debugging.
+
+3）When you're done and want to switch back to USB debugging, run:
+
+adb -s <DEVICE_IP_ADDRESS>:5555
+
+
+adb connect 后在 eclipse ddms，中能够看到设备，
+选中设备，就可以用了
+
+从 ECLIPSE 安装失败:
+选向 192.168.137.241:5555 上传，时失败
+Failed to install TestKeepAliveClient.apk on device '192.168.137.241:5555': timeout
+但是直接从命令行中，操作，可以成功：
+adb install xxxx

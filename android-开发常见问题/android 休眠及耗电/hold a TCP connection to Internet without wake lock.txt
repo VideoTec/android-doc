@@ -1,0 +1,5 @@
+When you are blocked on a read from a tcp stream the device can go into a deep sleep and when tcp traffic comes in it will briefly wakeup the device, as soon as a bit is read in you start a wakelock until you have received the whole transmission then release it.
+
+Here is an example with web sockets, I've ran this app for over 12 hours in the background with no battery impact. https://github.com/schwiz/android-websocket-example
+
+The client is here, the blocking read is in the start method. https://github.com/schwiz/android-websockets/blob/master/src/com/codebutler/android_websockets/HybiParser.java

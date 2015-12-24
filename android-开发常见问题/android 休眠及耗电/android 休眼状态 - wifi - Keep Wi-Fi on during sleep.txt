@@ -1,0 +1,14 @@
+http://android.stackexchange.com/questions/61261/what-does-keep-wifi-on-during-sleep-mean
+What does “Keep wifi on during sleep” mean?
+
+The device goes to sleep when the screen is off and no background services are doing anything (such as checking for mail). When this happens, the Wi-Fi chip in the phone can go into a low-power state. This saves power while the device is asleep, but has some costs:-
+
+Next time the device wakes up it'll take an extra fraction of a second to turn the Wi-Fi back on, making the tablet less response when you turn the screen on.
+
+If the device wakes up to perform a background task (such as checking for mail), that'll take slightly longer too, and use more power. That is, the device uses less power while asleep, but waking it up costs slightly more: like the trade-off between keeping the engine in your car running, or stopping it and using more fuel/battery to restart it later.
+
+Any apps with "push" features (using Google Cloud Messaging or similar) won't work while the device is asleep. That is, you won't get Google Hangouts messages, or notifications from Gmail, while the device is asleep.
+
+If those costs are fine for you, leave the setting off to allow the Wi-Fi chip to go to sleep when the rest of your phone does. Otherwise, turn the setting on to keep the Wi-Fi on all the time.
+
+http://teckfront.com/how-to-keep-wi-fi-on-during-sleep-in-android-5-0-2-lollipop-devices/

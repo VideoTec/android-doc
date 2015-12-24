@@ -1,0 +1,8 @@
+public static final int FLAG_KEEP_SCREEN_ON
+
+Added in API level 1
+
+Window flag: as long as this window is visible to the user, 
+keep the device's screen turned on and bright.
+
+Constant Value: 128 (0x00000080)

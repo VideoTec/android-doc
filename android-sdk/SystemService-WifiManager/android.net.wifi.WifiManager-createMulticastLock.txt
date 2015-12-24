@@ -1,0 +1,15 @@
+public WifiManager.MulticastLock createMulticastLock (String tag)
+
+Added in API level 4
+Create a new MulticastLock
+
+Parameters
+
+tag
+a tag for the MulticastLock to identify it in debugging messages. 
+This string is never shown to the user under normal conditions, 
+but should be descriptive enough to identify your application and 
+the specific MulticastLock within it, if it holds multiple MulticastLocks.
+
+Returns
+a new, unacquired MulticastLock with the given tag.

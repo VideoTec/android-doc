@@ -1,0 +1,12 @@
+file:///E:/android-sdk-windows/docs/reference/android/os/PowerManager.WakeLock.html
+
+java.lang.Object
+   ↳	android.os.PowerManager.WakeLock
+   
+A wake lock is a mechanism to indicate that your application needs to have the device stay on.
+
+Any application using a WakeLock must request the android.permission.WAKE_LOCK permission in an <uses-permission> element of the application's manifest. Obtain a wake lock by calling newWakeLock(int, String).
+
+Call acquire() to acquire the wake lock and force the device to stay on at the level that was requested when the wake lock was created.
+
+Call release() when you are done and don't need the lock anymore. It is very important to do this as soon as possible to avoid running down the device's battery excessively.

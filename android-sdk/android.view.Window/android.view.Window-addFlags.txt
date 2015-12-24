@@ -1,0 +1,8 @@
+public void addFlags (int flags)
+
+Added in API level 1
+Convenience function to set the flag bits as specified in flags, 
+as per setFlags(int, int).
+
+Parameters
+flags	The flag bits to be set.

@@ -1,0 +1,23 @@
+http://stackoverflow.com/questions/5120185/android-sleep-standby-mode
+
+-------------------------------------------------
+I'm sure the workaround isn't too difficult
+-------------------------------------------------
+Using AlarmManager is a bit tricky.
+
+-------------------------------------------------
+My question is what exactly does "sleep mode" do on android systems?
+-------------------------------------------------
+Primarily, it shuts down the CPU. Along the way, non-essential radios (WiFi, GPS) will have been shut down as well.
+
+-------------------------------------------------
+What does it stop, what doesn't it stop, etc.
+-------------------------------------------------
+About the only thing you can count on not stopping is the GSM or CDMA radio (for incoming calls, SMSes, and IP packets) and AlarmManager.
+
+-------------------------------------------------
+By sleep mode I mean, of course, when you press the power button and the screen goes black.
+-------------------------------------------------
+Actually, that's not sleep mode, per se. That is the screen turning off.
+
+The device will go into sleep mode shortly thereafter, if nothing is keeping it awake with a WakeLock. However, there is no guarantee that within a millisecond of you pressing that button and the screen turning off that the CPU is off.

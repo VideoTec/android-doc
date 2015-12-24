@@ -1,0 +1,2 @@
+http://lucasr.org/2014/05/12/custom-layouts-on-android/
+https://github.com/lucasr/android-layout-samples

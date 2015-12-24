@@ -1,0 +1,19 @@
+http://android.stackexchange.com/questions/95625/what-is-androids-sleep-mode
+
+A few to much questions for a single post, though they are mostly related. Let's roll up from the end:
+
+Deep Sleep is a state where the CPU has "nothing to do at all". Depending on the tasks the device has to perform, CPU runs in different "speeds" (frequencies). Say you've got a 1 GHz CPU, that doesn't mean it permanently runs at 1 GHz (and eats your battery); it will only "fully power up to that" if there is demand for it. On average, it will run on much lower frequencies, down to ~50 MHz. If there's really nothing to do, the system will "send it to sleep", and set a timer to wake it up later. This state is called "deep sleep".
+
+synonym[英][ˈsɪnənɪm] [美][ˈsɪnəˌnɪm]
+n.同义词
+criterium[英][k'raɪtɪərɪəm] [美][k'raɪtɪərɪrm]
+n.环行公路赛
+
+Standby
+待机
+
+Your device goes to Standby only when you've turned the display off, never when the display is turned on. IMHO "Standby" and "Sleep mode" are synonyms. But switching off your display is not the only criterium for entering Standby. Depending on your device's settings and apps currently started/running, e.g. running downloads might continue, as well as other "ongoing calculations". The "locked state" usually has nothing to do with it: that's rather a "security measure" against "unwanted access".
+
+What services are stopped when you switch off the screen is something no generic answer can be given to: this very much differs not only between devices and Android versions, but also depends on what apps you have installed and how they're programmed/configured.
+
+As for your specific example: This again depends. Say you've switched off mobile data, and run your download on WiFi. Your "WiFi Standby Policy" is set to cut the connection when the screen is turned off. Results for your download should be obvious then :)

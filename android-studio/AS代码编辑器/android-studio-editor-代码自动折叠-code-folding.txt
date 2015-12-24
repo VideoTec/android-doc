@@ -1,0 +1,14 @@
+folding[英][ˈfəʊldɪŋ] [美][ˈfoʊldɪŋ]
+adj.可折叠的
+
+https://www.jetbrains.com/idea/help/configuring-autofolding-behavior.html
+
+Open the Settings/Preferences dialog box, 
+expand the Editor and then General nodes, and then click Code Folding. 
+Code Folding page is displayed
+
+In the Collapse by default list, 
+select the check boxes to the left of the code constructs 
+you want to be displayed collapsed.
+
+Apply changes.

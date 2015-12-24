@@ -1,0 +1,15 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+socket = new Socket("192.168.137.1",port);
+
+12-23 18:31:38.080: V/KeepAliveService(1630): connect server ex: socket failed: EACCES (Permission denied)
+
+网络权限，没有开：
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

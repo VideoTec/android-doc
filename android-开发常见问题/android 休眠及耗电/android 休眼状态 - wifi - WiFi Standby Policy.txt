@@ -1,0 +1,3 @@
+http://android.stackexchange.com/questions/95625/what-is-androids-sleep-mode
+
+As for your specific example: This again depends. Say you've switched off mobile data, and run your download on WiFi. Your "WiFi Standby Policy" is set to cut the connection when the screen is turned off. Results for your download should be obvious then :)

@@ -1,0 +1,4 @@
+https://forums.oneplus.net/threads/wifi-disconnects-during-sleep.324314/page-2
+Wifi disconnects during sleep
+
+I'm having the same issue. After the phone is in sleep mode for awhile (maybe like 10-20 minutes) the WiFi and network lose connection.

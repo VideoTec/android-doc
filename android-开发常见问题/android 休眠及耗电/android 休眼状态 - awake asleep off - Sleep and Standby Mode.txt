@@ -1,0 +1,29 @@
+http://stackoverflow.com/questions/5007721/android-sleep-stages-levels-on-an-android-device
+
+There is not really a separate stage called "deep sleep". 
+There is only "awake", "asleep", and "off".
+
+Execution of all processes ceases 
+when the device goes to sleep or is powered off.
+
+cease[英][si:s] [美][sis]
+vt.停止，终止，结束
+
+休眼后，除了用户主动，重新打开，还有其它方法恢复吗？
+If so, besides user hitting the power button, 
+what else could wake the device back up?
+
+1）An alarm from AlarmManager
+2）An incoming phone call
+3）An incoming text message
+4）If you have a socket open on wireless data (not WiFi), 
+   an incoming packet on that socket
+怎么解释这个 (not WiFi) 见：
+http://www.dewen.io/q/2227/android+
+通讯协议栈运行于BP，一旦收到数据包，
+BP会将AP唤醒，
+唤醒的时间足够AP执行代码完成对收到的数据包的处理过程
+   
+http://stackoverflow.com/questions/21378303/android-and-so-keepalive-will-a-sleeping-device-still-send-keepalive-segments
+The system only wakes up from that state upon device interrupts 
+(e.g. incoming data from the network) or when a scheduled alarm fires.

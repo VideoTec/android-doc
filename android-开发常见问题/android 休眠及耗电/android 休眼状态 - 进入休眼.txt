@@ -1,0 +1,23 @@
+http://stackoverflow.com/questions/5118007/what-is-the-definition-of-asleep-for-an-android-device
+
+Device is asleep when there is not running application that prevents it from sleeping. So: 
+1. The screen is off (while it's on there is always some running app, e.g.Launcher) 
+2. There is no running service (e.g. music, downloads) - no CPU locks.
+
+AlarmManager wakes device from sleeping, runs what is to run. 
+It's critical 
+e.g. to ends a service that was created 
+in broadcast receiver from alarm to let the device fall asleep again. 
+If you do sth longer and important in the background 
+you should acquire CPU lock for your app 
+to prevent it from being killed by Android OS.
+
+IMHO you shouldn't bother about sleep mode, 
+just make your app "good Android citizen" by 
+1）handling screen off and on intents (Intent.ACTION_SCREEN_OFF) if needed, 
+2）finishing services ASAP, 
+3）releasing resources (network, GPS, CPU) ASAP, 
+4）using inexact alarms, 
+5）download manager, 
+and all good staff brought by OS. 
+I believe that Android handles CPU sleeps transparently.

@@ -1,0 +1,38 @@
+http://stackoverflow.com/questions/8713361/keep-a-service-running-even-when-phone-is-asleep
+
+1） android 5.0 之后： JobScheduler API 
+2）
+public class AlarmReceiver extends BroadcastReceiver 
+{
+    @Override
+    public void onReceive(Context context, Intent intent) 
+    {
+        Intent myService = new Intent(context, YourService.class);
+        context.startService(myService);
+    }
+}
+3）
+Create a Pending Intent
+Intent myAlarm = new Intent(getApplicationContext(), AlarmReceiver.class);
+//myAlarm.putExtra("project_id", project_id); //Put Extra if needed
+PendingIntent recurringAlarm = PendingIntent.getBroadcast(getApplicationContext(), 0, myAlarm, PendingIntent.FLAG_CANCEL_CURRENT);
+AlarmManager alarms = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+Calendar updateTime = Calendar.getInstance();
+//updateTime.setWhatever(0);    //set time to start first occurence of alarm 
+alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, updateTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, recurringAlarm); //you can modify the interval of course
+
+4）
+Intent myAlarm = new Intent(getApplicationContext(), AlarmReceiver.class);
+//myAlarm.putExtra("project_id",project_id); //put the SAME extras
+PendingIntent recurringAlarm = PendingIntent.getBroadcast(getApplicationContext(), 0, myAlarm, PendingIntent.FLAG_CANCEL_CURRENT);
+AlarmManager alarms = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+alarms.cancel(recurringAlarm);
+
+of course there is also something to do in the Manifest:
+include these two lines
+
+  < receiver android:name=".AlarmReceiver"></receiver>
+  < service android:name=".YourService"></service>
+  
+inside the < application>-tag. 
+Without it, the system does not accept the start of recurrent alarm of a service.

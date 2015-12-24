@@ -1,0 +1,8 @@
+http://tokudu.com/post/50024574938/how-to-implement-push-notifications-for-android
+
+UPDATE 5/2/2013: I wrote this post almost 3 years ago. 
+At this point, Google GCM is the best way to implement push 
+if you are targeting Android 2.2+. 
+
+However, 
+this post is still relevant if you want to implement push on ALL versions of Android.

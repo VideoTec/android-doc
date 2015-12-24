@@ -1,0 +1,3 @@
+http://mobile.slashdot.org/story/13/11/13/0237214/the-second-operating-system-hiding-in-every-mobile-phone
+
+"Every smartphone or other device with mobile communications capability (e.g. 3G or LTE) actually runs not one, but two operating systems. Aside from the operating system that we as end-users see (Android, iOS, PalmOS), it also runs a small operating system that manages everything related to radio. So, we have a complete operating system, running on an ARM processor, without any exploit mitigation (or only very little of it), which automatically trusts every instruction, piece of code, or data it receives from the base station you're connected to. What could possibly go wrong?"

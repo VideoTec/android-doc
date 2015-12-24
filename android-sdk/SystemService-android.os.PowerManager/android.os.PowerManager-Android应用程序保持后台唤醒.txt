@@ -1,0 +1,6 @@
+http://blog.csdn.net/ryantang03/article/details/8628753
+
+需求：
+要在后台跑一个Service执行轮询，屏幕熄灭或锁屏后，
+仍然需要保持Service一直处于轮询状态
+

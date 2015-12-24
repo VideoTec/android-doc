@@ -1,0 +1,10 @@
+
+java.lang.Object
+   ↳	android.net.wifi.WifiManager.MulticastLock
+   
+Allows an application to receive Wifi Multicast packets. 
+Normally the Wifi stack filters out packets not explicitly addressed to this device. 
+
+Acquring a MulticastLock will cause the stack to receive packets addressed to multicast addresses.
+Processing these extra packets can 
+cause a noticable battery drain and should be disabled when not needed.

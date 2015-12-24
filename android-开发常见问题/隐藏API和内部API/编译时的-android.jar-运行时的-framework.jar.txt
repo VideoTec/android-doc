@@ -1,0 +1,15 @@
+http://flyingcat2013.blog.51cto.com/7061638/1536679
+
+在开发的时候我们使用最多的库就是android.jar包，
+该包下有我们用的几乎所有功能【不排除会使用到android-support-v4.jar】。
+在该jar包中，我们可以看到，所有的android.internal内的类都不见了，
+同样，类中也不含有源码中标记为@hide的字段、函数和类。
+
+但是在应用程序真正在设备上运行的时候，
+系统加载的是framework.jar包，该包未被裁剪，包含所有内部API和隐藏代码。
+因此开发者可以通过反射机制进行调用。
+
+另外：
+在使用Eclipse ADT 的时候，ADT插件专门对android.internal包做了访问规则限制。
+因此，即使将项目下的android.jar替换成未裁剪的android.jar包，
+也是很难使用内部API的。

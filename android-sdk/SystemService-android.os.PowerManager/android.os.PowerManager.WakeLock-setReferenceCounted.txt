@@ -1,0 +1,19 @@
+file:///E:/android-sdk-windows/docs/reference/android/os/PowerManager.WakeLock.html#setReferenceCounted(boolean)
+
+public void setReferenceCounted (boolean value)
+
+Added in API level 1
+Sets whether this WakeLock is reference counted.
+
+Wake locks are reference counted by default. 
+If a wake lock is reference counted, 
+then each call to acquire() 
+must be balanced by an equal number of calls to release(). 
+
+If a wake lock is not reference counted, 
+then one call to release() is sufficient 
+to undo the effect of all previous calls to acquire().
+
+Parameters
+value
+True to make the wake lock reference counted, false to make the wake lock non-reference counted.

@@ -1,0 +1,8 @@
+adb logcat -c
+
+http://stackoverflow.com/questions/28920311/does-logcat-log-errors-that-are-12-hours-old
+
+Is there a way to see an error that is 12 hours long?
+The logging area is a ring buffer. It used to be fixed at 64KB. On Android 5.0, it is selectable by you via the Developer Options in the Settings app. I am not sure how big it is on Android 4.4 in general, let alone on a Samsung device.
+
+How old the logs can be therefore is dependent on the size of the ring buffer and how much stuff gets logged. Unfortunately, production hardware logs a lot, so I would be skeptical that you can see 12+ hours back in the log. For example, on my Nexus 5, in a 256KB log buffer, I get about 8 hours of history.

@@ -1,0 +1,51 @@
+partial[英][ˈpɑ:ʃl] [美][ˈpɑ:rʃl]
+adj.部分的；偏爱的；偏袒的；钟爱的
+
+创建锁：
+PowerManager.WakeLock newWakeLock(int levelAndFlags, String tag)
+Creates a new wake lock with the specified level and flags.
+
+锁的级别：
+The following wake lock levels are defined, with varying effects on system power. 
+These levels are mutually exclusive - you may only specify one of them.
+
+Flag Value                  CPU     Screen    Keyboard
+PARTIAL_WAKE_LOCK           On*     Off         Off
+SCREEN_DIM_WAKE_LOCK        On      Dim         Off
+SCREEN_BRIGHT_WAKE_LOCK     On      Bright      Off
+FULL_WAKE_LOCK              On      Bright      Bright
+
+*If you hold a partial wake lock, the CPU will continue to run, 
+regardless of any display timeouts or the state of the screen 
+and even after the user presses the power button. 
+In all other wake locks, the CPU will run, 
+but the user can still put the device to sleep using the power button.
+
+In addition, you can add two more flags, which affect behavior of the screen only. 
+These flags have no effect when combined with a PARTIAL_WAKE_LOCK.
+
+1）ACQUIRE_CAUSES_WAKEUP
+Normal wake locks don't actually turn on the illumination. 
+Instead, they cause the illumination to remain on once it turns on (e.g. from user activity). 
+This flag will force the screen and/or keyboard to turn on immediately, 
+when the WakeLock is acquired. 
+A typical use would be for notifications which are important for the user to see immediately.
+
+2）ON_AFTER_RELEASE
+If this flag is set, the user activity timer will be reset when the WakeLock is released, 
+causing the illumination to remain on a bit longer. 
+This can be used to reduce flicker if you are cycling between wake lock conditions.
+
+http://blog.csdn.net/ryantang03/article/details/8628753
+
+各种锁的类型对CPU 、屏幕、键盘的影响：
+
+级别：
+PARTIAL_WAKE_LOCK:保持CPU 运转，屏幕和键盘灯有可能是关闭的。
+SCREEN_DIM_WAKE_LOCK：保持CPU 运转，允许保持屏幕显示但有可能是灰的，允许关闭键盘灯
+SCREEN_BRIGHT_WAKE_LOCK：保持CPU 运转，允许保持屏幕高亮显示，允许关闭键盘灯
+FULL_WAKE_LOCK：保持CPU 运转，保持屏幕高亮显示，键盘灯也保持亮度
+
+FLAGS：
+ACQUIRE_CAUSES_WAKEUP：强制使屏幕亮起，这种锁主要针对一些必须通知用户的操作.
+ON_AFTER_RELEASE：当锁被释放时，保持屏幕亮起一段时间

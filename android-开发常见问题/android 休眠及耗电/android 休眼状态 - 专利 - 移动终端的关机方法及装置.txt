@@ -1,0 +1,13 @@
+http://www.google.com/patents/CN104461596A?cl=en
+
+4.根据权利要求2所述的方法，其特征在于，
+保持所述基带处理器和所述应用处理器处于所述上电状态包括: 控制基带系统中除所述基带处理器之外的其余部分进入飞行模式
+以及控制所述基带处理器进入空闲模式或者睡眠模式；
+
+在关闭全部上层应用和显示屏后，
+控制应用处理器进入所述空闲模式或者所述睡眠模式。
+
+4. The method according to claim 2, characterized in that, to maintain the baseband processor and the application processor is in the power-on state comprises: the control group with the rest of the system in addition to the baseband processor enter flight mode and controlling the baseband processor into idle mode or sleep mode; close all applications and the upper display, the control application processor enters the idle mode or the sleep mode.
+
+6.根据权利要求4所述的方法，其特征在于，控制除所述基带处理器之外的其余部分进入所述飞行模式以及控制所述基带处理器进入所述空闲模式或者所述睡眠模式包括: 向所述基带系统发送通知消息，其中，所述通知消息用于通知除所述基带处理器之外的其余部分进入所述飞行模式并且通知所述基带处理器进入所述空闲模式或者所述睡眠模式。 6. The method according to claim 4, characterized in that, in addition to the rest of the control of the baseband processor enters the flight mode and controls the baseband processor enters the idle mode or the sleep mode comprises : send a notification message to the base band system, wherein the notification message is used to inform the rest of the addition to the baseband processor enters the flight mode and informs the baseband processor enters the idle mode or the Sleep mode.
+7.根据权利要求4所述的方法，其特征在于，在控制所述应用处理器进入所述空闲模式或者所述睡眠模式之后，还包括: 响应长按键中断或者实时时钟中断，唤醒所述应用处理器； 采用所述应用处理器运行预设的上层应用。 7. The method according to claim 4, characterized in that, after controlling the application processor enters the idle mode or the sleep mode, further comprising: in response to long keypress interrupt or real-time clock interrupt, wake the application processor; use preset upper application processor to run the application.

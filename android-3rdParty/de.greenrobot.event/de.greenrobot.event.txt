@@ -1,6 +1,11 @@
 源码：
 https://github.com/greenrobot/EventBus
 
+Android optimized event bus that simplifies 
+communication between Activities, Fragments, Threads, Services, etc. 
+
+Less code, better quality.
+
 文档：
 https://github.com/greenrobot/EventBus/blob/master/HOWTO.md
 

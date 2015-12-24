@@ -1,0 +1,24 @@
+WifiManager.WifiLock createWifiLock(String tag)  Creates a new WifiLock.
+WifiManager.WifiLock createWifiLock(int lockType, String tag)  Creates a new WifiLock.
+
+public WifiManager.WifiLock createWifiLock (int lockType, String tag)
+
+Added in API level 3
+Creates a new WifiLock.
+
+Parameters
+
+lockType
+the type of lock to create. 
+See WIFI_MODE_FULL, WIFI_MODE_FULL_HIGH_PERF and WIFI_MODE_SCAN_ONLY 
+for descriptions of the types of Wi-Fi locks.
+
+tag
+a tag for the WifiLock to identify it in debugging messages. 
+This string is never shown to the user under normal conditions, 
+but should be descriptive enough 
+to identify your application and the specific WifiLock within it, 
+if it holds multiple WifiLocks.
+
+Returns
+a new, unacquired WifiLock with the given tag.
