@@ -1,1 +1,18 @@
 http://tokudu.com/post/50024574938/how-to-implement-push-notifications-for-android
+
+源码：A example of an android app that receives push notifications using MQTT
+https://github.com/tokudu/AndroidPushNotificationsDemo
+源码：This is a simple example of how send MQTT messages using PHP
+https://github.com/tokudu/PhpMQTTClient
+
+----------------------------------------------------
+用 MQTT connection 代替 raw TCP/IP connection
+----------------------------------------------------
+my idea consists of 
+1）taking a KeepAliveService and 
+2）replacing the raw TCP/IP connection with an MQTT connection. 
+
+In this case, each device can simply 
+subscribe to a unique topic which is based on its device ID. 
+Now, assuming that your server knows the device ID, 
+it can push data to the device over MQTT by publishing to that unique topic.

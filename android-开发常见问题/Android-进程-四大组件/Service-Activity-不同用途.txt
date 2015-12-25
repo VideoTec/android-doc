@@ -1,0 +1,34 @@
+http://dalelane.co.uk/blog/?p=1599#code
+
+trash[英][træʃ] [美][træʃ]
+vt.废弃；拆毁；搞垮，贬低；从…上除去细枝或枝条
+
+sticky[英][ˈstɪki] [美][ˈstɪki]
+adj.粘性的；热湿的，闷热的；极不愉快的；不动的
+
+stick[英][stɪk] [美][stɪk]
+vt.& vi.粘贴；张贴；插入；刺入
+
+Services vs Activities
+
+Let’s start with an easy one. The most obvious screw-up in my first attempt was not realising the difference between Activities and Services.
+
+When you’re writing an Android GUI, you extend Activity. Only one Activity runs on the phone at a time – the app the user is using. When you switch to another app or close the app, the Activity is trashed. If you rotate the phone while the app is running, the Activity is trashed and a new one is started to implement the GUI in the new orientation.
+
+The point is – Activities are short-lived. Make them pretty. Don’t make them do any long-running heavy lifting.
+
+Don’t put any of the MQTT stuff into your Activity. Because it will be killed soon, without much warning. It doesn’t matter if you kick off background threads as they’ll be killed off, too.
+
+My first MQTT sample (which did everything in an Activity) was totally unreliable. I created an MQTTClient object which creates a long-running TCP/IP connection. And then if I turned the phone round a little bit, my MQTTClient object would get garbage collected.
+
+Instead, I now use a Service. Services are meant for implementing longer-running operations – more than one Service can be running at a time. It doesn’t matter if you’re GUI Activity class gets trashed and garbage collected – the Service can keep running along in the background.
+
+An MQTTClient object can survive in a Service object, and it’s persistent TCP/IP connection can be kept open.
+
+Make it sticky
+
+Services are meant to be long-running, but they don’t stick around forever. If the phone gets low on memory – typically because the user is using an app in the foreground (therefore is treated as high priority) which needs a lot of memory.
+
+This happens frequently – it’s not an unusual thing that might possibly happen once a blue moon. My experience suggests that it’ll happen to your Service every day. Several times. My service might bumble along for a few hours happily, but then it’ll get killed off without warning.
+
+By returning the START_STICKY constant when your Service is started, you tell Android that if it has to kill the Service to free up valuable resources, then you’d like it to restart the Service when resource become available again.

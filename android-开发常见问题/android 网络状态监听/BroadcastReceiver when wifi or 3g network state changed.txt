@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/10733121/broadcastreceiver-when-wifi-or-3g-network-state-changed
+
+<intent-filter>
+<action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+<action android:name="android.net.wifi.STATE_CHANGE"/>
+</intent-filter>
+
+final IntentFilter filters = new IntentFilter();
+filters.addAction("android.net.wifi.WIFI_STATE_CHANGED");
+filters.addAction("android.net.wifi.STATE_CHANGE");
+super.registerReceiver(yourReceiver, filters);
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+ConnectivityManager conMngr = (ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
+android.net.NetworkInfo wifi = conMngr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+android.net.NetworkInfo mobile = conMngr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);

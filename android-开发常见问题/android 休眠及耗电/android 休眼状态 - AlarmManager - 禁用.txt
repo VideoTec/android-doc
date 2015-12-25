@@ -1,0 +1,10 @@
+http://forum.xda-developers.com/showthread.php?t=1299430
+
+AlarmManager is an Android process which other applications can use and hence 
+(as was eloquently pointed out): no, you can not disable it.
+
+What you really need to do is work out what application is using AlarmManager to wake the system up.
+
+I used these instructions to get some extra info on it. I didn't get a concrete answer from it, but you may have more joy:
+
+http://forum.xda-developers.com/show....php?t=1212671

@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/5780280/how-can-i-see-which-wakelocks-are-active
+
+dumpsys power
+
+http://bbs.csdn.net/topics/390445045?page=1#post-394376853
+请问如何知道哪些应用程序持有wakelock
+
+查看当前谁持有WAKE_LOCK锁对象，adb shell 后执行 dumpsys power
+该软件应该也是通过java代码执行的adb 命令查到的
+
+https://software.intel.com/zh-cn/android/articles/wakelocks-detect-no-sleep-issues-in-android-applications
+adb shell cat /proc/wakelocks

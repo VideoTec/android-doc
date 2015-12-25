@@ -6,6 +6,24 @@ https://software.intel.com/en-us/android/articles/wakelocks-detect-no-sleep-issu
 
 Android OS is designed to opportunistically go into sleep mode as soon as it detects no user activity on the system.
 
-14:02 2015/12/24
+17:10 2015/12/25
+经过一天的测试，发现一个问题
+E:\doc\android\android-开发常见问题\android 休眠及耗电\android 休眼状态 - 休眼状态发生了什么 - 查看 wakelock 是否开着.txt
+关闭屏幕后半分钟，就进入休眼了。
+但是每隔一段时间，被唤醒，是谁唤醒的，什么机制？ alarmManager
+12-25 17:01:09.050: V/AlarmManager(2372): waitForAlarm result :10
+12-25 17:01:09.820: V/AlarmManager(2372): waitForAlarm result :4
+12-25 17:02:09.050: V/AlarmManager(2372): waitForAlarm result :12
+12-25 17:03:48.050: V/AlarmManager(2372): waitForAlarm result :8
+12-25 17:03:49.115: V/AlarmManager(2372): waitForAlarm result :4
+12-25 17:05:54.050: V/AlarmManager(2372): waitForAlarm result :8
+12-25 17:05:59.995: V/AlarmManager(2372): waitForAlarm result :8
+
+9:36 2015/12/25
+24 号下班，开着应用走的，今天早上发现，
+service 运行了大概 80 分钟，就停了，
+打开后，service断续运行。
+
+14:02 2015/12/24 - 这是个误会，应该是 WIFI 网络出了问题。
 实际测试 GT-I9308
 关闭屏幕后，15，分钟左右，WIFI，不在发送数据包

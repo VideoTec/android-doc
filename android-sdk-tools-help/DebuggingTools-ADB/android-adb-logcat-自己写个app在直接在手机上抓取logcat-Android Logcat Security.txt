@@ -1,0 +1,21 @@
+http://drops.wooyun.org/tips/3812
+
+development version ：开发版，正在开发内测的版本，会有许多调试日志。
+
+release version ： 发行版，签名后开发给用户的正式版本，日志量较少。
+
+android.util.Log：提供了五种输出日志的方法
+
+Log.e(), Log.w(), Log.i(), Log.d(), Log.v()
+
+ERROR, WARN, INFO, DEBUG, VERBOSE
+
+android.permission.READ_LOGS:app读取日志权限，
+android 4.1之前版本通过申请READ_LOGS权限就可以读取其他应用的log了。
+但是谷歌发现这样存在安全风险，
+于是android 4.1以及之后版本，
+即使申请了READ_LOGS权限也无法读取其他应用的日志信息了。
+
+4.1版本中 Logcat的签名变为“signature|system|development”了，
+这意味着只有系统签名的app或者root权限的app才能使用该权限。
+普通用户可以通过ADB查看所有日志。

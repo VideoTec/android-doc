@@ -1,0 +1,54 @@
+<uses-permission android:name="android.permission.READ_LOGS" />
+
+android 4.1以及之后版本，即使申请了READ_LOGS权限也无法读取其他应用的日志信息了
+4.1版本中 Logcat的签名变为“signature|system|development”了，
+这意味着只有系统签名的app或者root权限的app才能使用该权限。
+普通用户可以通过ADB查看所有日志
+
+http://stackoverflow.com/questions/12692103/read-logcat-programmatically-within-application
+
+try {
+  Process process = Runtime.getRuntime().exec("logcat -d");
+  BufferedReader bufferedReader = new BufferedReader(
+  new InputStreamReader(process.getInputStream()));
+
+  StringBuilder log=new StringBuilder();
+  String line = "";
+  while ((line = bufferedReader.readLine()) != null) {
+    log.append(line);
+  }
+  TextView tv = (TextView)findViewById(R.id.textView1);
+  tv.setText(log.toString());
+  } 
+catch (IOException e) {}
+
+https://github.com/nolanlawson/Catlog
+Graphical log reader for Android.
+CatLog is a free and open-source log reader for Android.
+
+It shows a scrolling (tailed) view of the Android "Logcat" system log, hence the goofy name. It also allows you to record logs in real time, send logs via email, and filter using a variety of criteria.
+
+http://stackoverflow.com/questions/6175002/write-android-logcat-data-to-a-file
+<uses-permission android:name="android.permission.READ_LOGS" />
+
+public class LogTest extends Activity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    try {
+      Process process = Runtime.getRuntime().exec("logcat -d");
+      BufferedReader bufferedReader = new BufferedReader(
+      new InputStreamReader(process.getInputStream()));
+
+      StringBuilder log=new StringBuilder();
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        log.append(line);
+      }
+      TextView tv = (TextView)findViewById(R.id.textView1);
+      tv.setText(log.toString());
+    } catch (IOException e) {
+    }
+  }
+}

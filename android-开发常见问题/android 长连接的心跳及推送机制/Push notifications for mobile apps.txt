@@ -1,0 +1,20 @@
+http://dalelane.co.uk/blog/?p=938
+
+Polling 的缺点：
+Polling is generally an unsatisfactory compromise. 
+Polling infrequently results in an application 
+which can appear slow to respond to changes in the data – 
+for example, 
+polling every 30 minutes could potentially result in an application 
+which takes 29 minutes before it notices the queried data has changed.
+ 
+Polling very frequently mitigates this, 
+but at the cost of increasing the app’s battery usage.
+
+最好的方法：等待服务通知
+It’s better for the mobile app to do neither – and simply 
+wait for the server to tell it when the data changes.
+
+IOS 推模式，黑莓模式，SMS 模式，这里新的模式：
+My talk aimed to introduce developers 
+at Over The Air to another approach: MQTT.

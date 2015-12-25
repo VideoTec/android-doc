@@ -1,0 +1,8 @@
+onStartCommand() 返回值的定义：
+
+For started services, there are two additional major modes of operation they can decide to run in, depending on the value they return from onStartCommand(): 
+1）START_STICKY is used for services that are explicitly started and stopped as needed, while 
+2）START_NOT_STICKY or 
+3）START_REDELIVER_INTENT are used for services that should only remain running while processing any commands sent to them. 
+
+See the linked documentation for more detail on the semantics.

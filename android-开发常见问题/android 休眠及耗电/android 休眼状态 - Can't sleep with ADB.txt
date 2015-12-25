@@ -1,0 +1,4 @@
+http://www.thriveforums.org/forum/toshiba-thrive-development/2361-can-t-sleep-adb.html
+
+Can't sleep with ADB
+I've been playing with the adb logcat function to see what may be causing the SODs. But, with USB plugged in and adb logging, the unit won't go into sleep mode. I can turn the screen off but the light stays on constantly. As soon as I pull the plug on the USB, the light starts blinking like it is in sleep mode. That may be by design but then is there a way to make the unit think it is debugging so it won't go to sleep even though the screen is off? It would be an acceptable compromise to having to re-boot all the time.

@@ -1,0 +1,3 @@
+https://software.intel.com/zh-cn/android/articles/wakelocks-detect-no-sleep-issues-in-android-applications
+
+如果 Android* 应用使用唤醒锁不当，将会显著增加电池耗电量。 在本文中，我们将介绍一些提示和技巧，帮助您了解如何确认与误用唤醒锁有关的 No Sleep 漏洞。

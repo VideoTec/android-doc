@@ -1,0 +1,30 @@
+            process = Runtime.getRuntime().exec("logcat -c");
+            try {
+                process.wait();  //应用使用 Process 的 waitFor 方法
+                                 //wait 是 Object 的方法
+            } catch (InterruptedException e) {
+                Log.e(TAG, "wait for logcat -c ex: " + e.getMessage());
+            }
+            
+12-25 11:41:41.815: E/AndroidRuntime(8898): FATAL EXCEPTION: Thread-3708
+12-25 11:41:41.815: E/AndroidRuntime(8898): java.lang.IllegalMonitorStateException: object not locked by thread before wait()
+12-25 11:41:41.815: E/AndroidRuntime(8898): 	at java.lang.Object.wait(Native Method)
+12-25 11:41:41.815: E/AndroidRuntime(8898): 	at java.lang.Object.wait(Object.java:364)
+12-25 11:41:41.815: E/AndroidRuntime(8898): 	at com.example.testkeepaliveclient.KeepAliveService.readLogcatLooper(KeepAliveService.java:61)
+12-25 11:41:41.815: E/AndroidRuntime(8898): 	at com.example.testkeepaliveclient.KeepAliveService.access$2(KeepAliveService.java:54)
+12-25 11:41:41.815: E/AndroidRuntime(8898): 	at com.example.testkeepaliveclient.KeepAliveService$2.run(KeepAliveService.java:47)
+
+http://bbs.csdn.net/topics/350162289
+wait:
+等待对象的同步锁,需要获得该对象的同步锁才可以调用这个方法,
+否则后收到一个 IllegalMonitorStateException,这个是运行时异常.
+调用这个方法后,就放弃了这个同步锁了.
+
+如果不带参数的wait方法就只 有等别人唤醒了,
+如果带一个参数的化就设置等待最长时间,
+过了这个时间即使没有人唤醒这个线程也不再等待了.
+
+notify:
+唤醒在等待该对象同步锁的线程(只唤醒一个,如果有多个在等待),
+但是notifyAll可以唤醒所有等待的线程,
+注意唤醒的时在notify之前wait的线程,之后的没有效果.

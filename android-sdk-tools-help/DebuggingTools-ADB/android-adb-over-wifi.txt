@@ -2,16 +2,28 @@ http://stackoverflow.com/questions/2604727/how-can-i-connect-to-android-with-adb
 
 1）Connect device via USB and make sure debugging is working, then run:
 
-adb tcpip 5555                        这个输入后，需要断开，USB，线，才会返回。
-adb connect <DEVICE_IP_ADDRESS>:5555
+adb tcpip 5555     这个输入后，需要断开，USB，线，才会返回。
+adb connect <DEVICE_IP_ADDRESS>:5555  连接手机
 
 2）Disconnect USB and proceed with wireless debugging.
 
 3）When you're done and want to switch back to USB debugging, run:
+adb -s <DEVICE_IP_ADDRESS>:5555  恢复使用USB调试
 
-adb -s <DEVICE_IP_ADDRESS>:5555
+adb -s 没有这个选项，正确的方法：
 
+To tell the ADB daemon return to listening over USB
+adb usb  同 adb tcpip 命令一样，必须断开，usb，才会返回。
 
+---------------------------------------------------------------
+注意：开发者选项 | USB 调试 必须勾选，否则，连接失败
+---------------------------------------------------------------
+E:\android-sdk-windows\platform-tools>adb connect 192.168.137.241:5555
+unable to connect to 192.168.137.241:5555: cannot connect to 192.168.137.241:555
+5: 由于目标计算机积极拒绝，无法连接。 (10061)
+
+---------------------------------------------------------------
+---------------------------------------------------------------
 adb connect 后在 eclipse ddms，中能够看到设备，
 选中设备，就可以用了
 

@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/4697873/does-the-android-os-release-a-wakelock-if-the-app-or-service-holding-it-is-kille
+
+WakeLock Implementation Overview
+
+When we use pm.newWakeLock to create a new wakelock, the PowerManager simply creates a new WakeLock object and returns. The WakeLock object is not a binder object, so it cannot be used through multiple processes. However, in that WakeLock object, it contains a Binder object named mToken.

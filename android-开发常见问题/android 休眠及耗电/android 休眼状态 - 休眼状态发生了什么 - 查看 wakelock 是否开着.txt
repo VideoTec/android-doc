@@ -1,0 +1,13 @@
+http://dalelane.co.uk/blog/?p=1599#code
+
+Testing what happens when you turn your phone off – a gotcha
+
+Some of my early attempts at an MQTT Service for Android didn’t take a wake lock, but still worked fine.
+
+What I didn’t realise was that I had a couple of apps installed on my phone that hold partial wake locks all the time. Even though my app wasn’t stopping the phone’s CPU from turning off, other apps were. And I was getting the “benefit” of this and not realising that I had a problem.
+
+The command adb shell dumpsys spits out a ton of stuff about the connected phone, including a list of current wake locks. (Search for ‘mLocks.size’ in the output). You have to do this a few times to get a picture of what is happening – some apps will, entirely legitimately, take a partial wake lock from time to time while they do something critical that they don’t want to be interrupted.
+
+The problems are the apps that take a wake lock when they start, and keep it forever – the ones that are always in the mLocks table in the dumpsys output.
+
+After uninstalling these apps, the results from my testing was very different, and was what showed me that I needed to do something to keep the connection alive.

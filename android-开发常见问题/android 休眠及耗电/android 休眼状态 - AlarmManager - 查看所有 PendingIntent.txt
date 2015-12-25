@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/6522792/get-list-of-active-pendingintents-in-alarmmanager
+
+I there a way to view for debug purpose a list of the active PendingIntents in a device?
+
+I am starting to work with AlarmManager and I like to see 
+if my PendingIntents are created and removed correctly.
+
+It would also be nice to see what other PendingIntents are there, 
+just as a curiosity to see if some app is doing some "extra work".
+
+adb shell dumpsys alarm > dump.txt

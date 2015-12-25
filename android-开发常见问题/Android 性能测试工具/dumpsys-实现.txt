@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/24402918/android-dumpsys-batteryinfo-vs-android-dumpsys-batterystats
+
+If you take a look at the source code for dumpsys, you can see that it simply requests a instance of the service from the default service manager and then calls the service dump() method (which is an interface of IBinder) passing STDOUT and the command line args:
+
+sp<IServiceManager> sm = defaultServiceManager();
+...
+sp<IBinder> service = sm->checkService(services[i]);
+...
+int err = service->dump(STDOUT_FILENO, args); 
+In your example above, the service in question would appear to have been renamed from batteryinfo to batterystats

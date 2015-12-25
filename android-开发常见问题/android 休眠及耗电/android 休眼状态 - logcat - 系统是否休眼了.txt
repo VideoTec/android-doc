@@ -1,3 +1,8 @@
+http://stackoverflow.com/questions/17544111/tell-when-android-device-is-in-sleep-mode
+You can find out when the screen goes off using android.intent.action.SCREEN_OFF intent 
+but there is no Intent to find out 
+with certainty if the device is in sleep mode as far as I know.
+
 https://software.intel.com/en-us/android/articles/wakelocks-detect-no-sleep-issues-in-android-applications
 
 Identifying No Sleep bugs

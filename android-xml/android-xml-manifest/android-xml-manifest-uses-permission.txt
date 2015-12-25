@@ -27,3 +27,6 @@ Put your user-permission tag just below the user-sdk and above the application t
 
 <uses-permission android:name="android.permission.WAKE_LOCK"/>
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+<uses-permission android:name="android.permission.READ_LOGS" />
+E:\doc\android\android-sdk-tools-help\DebuggingTools-ADB\android-adb-logcat-在设备上调用logcat.txt

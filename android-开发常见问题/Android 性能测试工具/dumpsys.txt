@@ -1,0 +1,63 @@
+http://blog.csdn.net/melody_lu123/article/details/6777413
+
+示例用法：
+adb shell dumpsys alarm > d:\dump.txt
+
+首先看一下dumpsys有哪些功能：
+dumpsys 用来给出手机中所有应用程序的信息，并且也会给出现在手机的状态。
+dumpsys [Option]
+               meminfo 显示内存信息
+               cpuinfo 显示CPU信息
+               account 显示accounts信息
+               activity 显示所有的activities的信息
+               window 显示键盘，窗口和它们的关系
+               wifi 显示wifi信息
+               
+从我的G14中可以看到它从以下service获得所有的信息
+Currently running services:
+  SurfaceFlinger
+  accessibility
+  account
+  activity
+  alarm
+  appwidget
+  assetredirection
+  audio
+  backup
+  battery
+  batteryinfo
+  bluetooth
+  bluetooth_a2dp
+  bluetooth_hid
+  bluetooth_network
+  clipboard
+  connectivity
+  content
+  cpuinfo
+  device_policy
+  devicestoragemonitor
+  diskstats
+  dropbox
+  entropy
+  hardware
+  input_method
+  iphonesubinfo
+  isms
+  location
+  media.audio_flinger
+  media.audio_policy
+  media.camera
+  media.player
+  meminfo
+  mount
+  netstat
+  network_management
+  notification
+  package
+  
+http://stackoverflow.com/questions/24402918/android-dumpsys-batteryinfo-vs-android-dumpsys-batterystats
+adb shell dumpsys batteryinfo
+
+It has been replaced by
+
+adb shell dumpsys batterystats
