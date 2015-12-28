@@ -1,0 +1,92 @@
+android.content.Context
+
+    /**
+     * Open a new private SQLiteDatabase associated with this Context's
+     * application package.  Create the database file if it doesn't exist.
+     *
+     * @param name The name (unique in the application package) of the database.
+     * @param mode Operating mode.  Use 0 or {@link #MODE_PRIVATE} for the
+     *     default operation, {@link #MODE_WORLD_READABLE}
+     *     and {@link #MODE_WORLD_WRITEABLE} to control permissions.
+     *     Use {@link #MODE_ENABLE_WRITE_AHEAD_LOGGING} to enable write-ahead logging by default.
+     * @param factory An optional factory class that is called to instantiate a
+     *     cursor when query is called.
+     *
+     * @return The contents of a newly created database with the given name.
+     * @throws android.database.sqlite.SQLiteException if the database file could not be opened.
+     *
+     * @see #MODE_PRIVATE
+     * @see #MODE_WORLD_READABLE
+     * @see #MODE_WORLD_WRITEABLE
+     * @see #MODE_ENABLE_WRITE_AHEAD_LOGGING
+     * @see #deleteDatabase
+     */
+    public abstract SQLiteDatabase openOrCreateDatabase(String name,
+            int mode, CursorFactory factory);
+            
+android.app.ContextImpl
+
+    public SQLiteDatabase openOrCreateDatabase(String name, int mode, CursorFactory factory,
+            DatabaseErrorHandler errorHandler) {
+        File f = validateFilePath(name, true);
+        int flags = SQLiteDatabase.CREATE_IF_NECESSARY;
+        if ((mode & MODE_ENABLE_WRITE_AHEAD_LOGGING) != 0) {
+            flags |= SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING;
+        }
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(f.getPath(), factory, flags, errorHandler);
+        setFilePermissionsFromMode(f.getPath(), mode, 0);
+        return db;
+    }
+    
+创建,打开 DB 文件
+
+    private File validateFilePath(String name, boolean createDirectory) {
+        File dir;
+        File f;
+
+        if (name.charAt(0) == File.separatorChar) {
+            String dirPath = name.substring(0, name.lastIndexOf(File.separatorChar));
+            dir = new File(dirPath);
+            name = name.substring(name.lastIndexOf(File.separatorChar));
+            f = new File(dir, name);
+        } else {
+            dir = getDatabasesDir();
+            f = makeFilename(dir, name);
+        }
+
+        if (createDirectory && !dir.isDirectory() && dir.mkdir()) {
+            FileUtils.setPermissions(dir.getPath(),
+                FileUtils.S_IRWXU|FileUtils.S_IRWXG|FileUtils.S_IXOTH,
+                -1, -1);
+        }
+
+        return f;
+    }
+    
+    private File getDatabasesDir() {
+        synchronized (mSync) {
+            if (mDatabasesDir == null) {
+                mDatabasesDir = new File(getDataDirFile(), "databases");
+            }
+            if (mDatabasesDir.getPath().equals("databases")) {
+                mDatabasesDir = new File("/data/system");
+            }
+            return mDatabasesDir;
+        }
+    }
+    private File makeFilename(File base, String name) {
+        if (name.indexOf(File.separatorChar) < 0) {
+            return new File(base, name);
+        }
+        throw new IllegalArgumentException(
+                "File " + name + " contains a path separator");
+    }
+    
+    //final LoadedApk mPackageInfo;
+    //ContextImpl 构造时传递 LoadedApk packageInfo
+    private File getDataDirFile() {
+        if (mPackageInfo != null) {
+            return mPackageInfo.getDataDirFile();  
+        }
+        throw new RuntimeException("Not supported in system context");
+    }

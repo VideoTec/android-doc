@@ -1,0 +1,44 @@
+triggered[英]['trɪgəd] [美]['trɪgəd]
+
+adj.触发的
+v.引发( trigger的过去式和过去分词 )；
+  扣…的扳机；发射（导弹）；松开扳机（或扳柄等）
+  
+trigger[英][ˈtrɪgə(r)] [美][ˈtrɪɡɚ]
+n.（枪）扳机；起动装置，扳柄；引发其他事件的一件事；[电子学]触发器，触发电器
+vt.引发，触发；扣…的扳机；发射或使爆炸（武器或爆炸性弹药）
+
+http://stackoverflow.com/questions/513084/how-to-ship-an-android-application-with-a-database
+
+There are two options for creating and updating databases.
+
+One is to create a database externally, 
+then place it in the assets folder of the project and 
+then copy the entire database from there. 
+This is much quicker if the database has a lot of tables and other components. 
+
+Upgrades are triggered 
+by changing the database version number in the res/values/strings.xml file. 
+Upgrades would then be accomplished by 
+1）creating a new database externally, 
+2）replacing the old database in the assets folder with the new database, 
+3）saving the old database in internal storage under another name, 
+4）copying the new database from the assets folder into internal storage, 
+5）transferring all of the data 
+from the old database (that was renamed earlier) 
+into the new database and 
+finally deleting the old database.
+ 
+You can create a database originally 
+by using the SQLite Manager FireFox plugin 
+to execute your creation sql statements.
+
+The other option is to create a database internally from a sql file. 
+This is not as quick but 
+the delay would probably be unnoticeable to the users 
+if the database has only a few tables. 
+Upgrades are triggered 
+by changing the database version number in the res/values/strings.xml file. 
+Upgrades would then be accomplished by processing an upgrade sql file. 
+The data in the database will remain unchanged except 
+when its container is removed, for example dropping a table.

@@ -1,0 +1,53 @@
+------------------------------------------
+参考： SQLiteOpenHelper 构建的数据库，路径在哪里？
+E:\doc\android\android-sdk\android.database\Context-ContextImpl-openOrCreateDatabase.txt
+------------------------------------------
+12:50 2015/12/28
+name of the database file, or null for an in-memory database
+根据 ContextImpl.java 方法 validateFilePath
+        if (name.charAt(0) == File.separatorChar) {
+            String dirPath = name.substring(0, name.lastIndexOf(File.separatorChar));
+            dir = new File(dirPath);
+            name = name.substring(name.lastIndexOf(File.separatorChar));
+            f = new File(dir, name);
+        } else {
+            dir = getDatabasesDir();
+            f = makeFilename(dir, name);
+        }
+分两种情况，1）绝对路径 2）数据库名称
+
+------------------------------------------
+http://stackoverflow.com/questions/9109438/how-to-use-an-existing-database-with-an-android-application
+------------------------------------------
+
+For Android 4.1 (Jelly Bean), change:
+
+DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+
+to:
+
+DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
+
+in the DataHelper class this code will work on JB 4.2 multi users.
+
+举例：
+databaseName = getApplicationInfo().dataDir + "/wangxiang/test.db";
+
+/data/data/com.example.testkeepaliveclient/wangxiang/test.db
+
+------------------------------------------
+http://blog.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/
+------------------------------------------
+
+suboptimal[英]['sʌb'ɒptɪməl] [美]['sʌb'ɒptɪməl]
+adj.未达最佳标准的；不最理想的；不最适宜的；不最满意的
+
+bulky[英][ˈbʌlki] [美][ˈbʌlki]
+adj.庞大的；笨重的；体积大的
+
+Still suboptimal is the fact 
+that the database must reside in 
+/data/data/YOUR_PACKAGE/databases – 
+because anything bulky should be on the sd card. 
+I guess google will eventually let us access databases in other locations, 
+or install our apps directly on the SD card.

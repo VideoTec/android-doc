@@ -1,0 +1,36 @@
+version = 20151113_10-32
+java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. [in ListView(16908298, class com.handmark.pulltorefresh.library.PullToRefreshListView$InternalListViewSDK9) with Adapter(class android.widget.HeaderViewListAdapter)]
+	at android.widget.ListView.layoutChildren(ListView.java:1557)
+	at android.widget.AbsListView.onLayout(AbsListView.java:2447)
+    
+http://www.cnblogs.com/monodin/p/3874147.html
+
+且不管Exception内容，先查询Android源码看看该Exception是从哪里抛出来的。
+在ListView的layoutChildren()方法里有如下一段方法：
+
+ 1 // Handle the empty set by removing all views that are visible
+ 2 // and calling it a day
+ 3 if (mItemCount == 0) {
+ 4     resetList();
+ 5     invokeOnItemScrollListener();
+ 6     return;
+ 7 } else if (mItemCount != mAdapter.getCount()) {
+ 8     throw new IllegalStateException("The content of the adapter has changed but "
+ 9             + "ListView did not receive a notification. Make sure the content of "
+10             + "your adapter is not modified from a background thread, but only "
+11             + "from the UI thread. [in ListView(" + getId() + ", " + getClass()
+12             + ") with Adapter(" + mAdapter.getClass() + ")]");
+13 }
+
+当ListView缓存的数据Count和ListView中Adapter.getCount()不等时，会抛出该异常
+
+解决方案
+在本例中，解决方案是：
+把addData(List)方法内更新数据的代码挪出来，
+和notifyDataSetChanged()方法一同放在Handler里，
+保证数据更新时及时通知ListView。
+ 
+为了尽量避免该问题，以后编程尽量从如下几个方面检查自己的代码：
+1）确保Adapter的数据更新后一定要调用notifyDataSetChanged()方法通知ListView
+2）数据更新和notifyDataSetChanged()放在UI线程内，且必须同步顺序执行，不可异步
+3）仔细检查确认getCount()方法返回值是否正确

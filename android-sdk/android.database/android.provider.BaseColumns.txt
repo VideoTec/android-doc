@@ -1,0 +1,43 @@
+package android.provider;
+
+public interface BaseColumns
+{
+    /**
+     * The unique ID for a row.
+     * <P>Type: INTEGER (long)</P>
+     */
+    public static final String _ID = "_id";
+
+    /**
+     * The count of rows in a directory.
+     * <P>Type: INTEGER</P>
+     */
+    public static final String _COUNT = "_count";
+}
+
+用法示例：
+	/**
+	 *  当前存在的子目录(用于存一周) 
+	 */
+	interface DirlDBColumns extends BaseColumns {
+		String DIRDB_DIRNAME = "dirname";
+	    String DIRDB_CREATETIME = "createtime";
+	}
+    
+   public static class DirDBModelDB implements DirlDBColumns {
+	   public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon()
+				.appendPath(PATH_DIRDB).build();
+
+		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.feinnobeside.dirdb";
+		public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.feinnobeside.dirdb";
+
+		/** Read {@link #dirdb_id} from {@link Dirdb} */
+		public static String getDirDBId(Uri uri) {
+			return uri.getPathSegments().get(1);
+		}
+
+		/** Build {@link Uri} for requested {@link #Notice_ID}. */
+		public static Uri buildDirDBUri(String dirdbid) {
+			return CONTENT_URI.buildUpon().appendPath(dirdbid).build();
+		}
+   }

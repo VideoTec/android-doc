@@ -1,0 +1,39 @@
+    /**
+     * Called when the database is created for the first time. This is where the
+     * creation of tables and the initial population of the tables should happen.
+     *
+     * @param db The database.
+     */
+    public abstract void onCreate(SQLiteDatabase db);
+    
+-----------------------------------------------------------------------------------
+    实际在 private SQLiteDatabase getDatabaseLocked(boolean writable) { 调用
+-----------------------------------------------------------------------------------
+            onConfigure(db);
+
+            final int version = db.getVersion();
+            if (version != mNewVersion) {
+                if (db.isReadOnly()) {
+                    throw new SQLiteException("Can't upgrade read-only database from version " +
+                            db.getVersion() + " to " + mNewVersion + ": " + mName);
+                }
+
+                db.beginTransaction();
+                try {
+                    if (version == 0) {
+                        onCreate(db);
+                    } else {
+                        if (version > mNewVersion) {
+                            onDowngrade(db, version, mNewVersion);
+                        } else {
+                            onUpgrade(db, version, mNewVersion);
+                        }
+                    }
+                    db.setVersion(mNewVersion);
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+            }
+
+            onOpen(db);

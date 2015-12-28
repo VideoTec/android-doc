@@ -1,0 +1,50 @@
+    /**
+     * Called when the database connection is being configured, to enable features
+     * such as write-ahead logging or foreign key support.
+     * <p>
+     * This method is called before {@link #onCreate}, {@link #onUpgrade},
+     * {@link #onDowngrade}, or {@link #onOpen} are called.  It should not modify
+     * the database except to configure the database connection as required.
+     * </p><p>
+     * This method should only call methods that configure the parameters of the
+     * database connection, such as {@link SQLiteDatabase#enableWriteAheadLogging}
+     * {@link SQLiteDatabase#setForeignKeyConstraintsEnabled},
+     * {@link SQLiteDatabase#setLocale}, {@link SQLiteDatabase#setMaximumSize},
+     * or executing PRAGMA statements.
+     * </p>
+     *
+     * @param db The database.
+     */
+    public void onConfigure(SQLiteDatabase db) {}
+    
+-----------------------------------------------------------------------------------
+    实际在 private SQLiteDatabase getDatabaseLocked(boolean writable) { 调用
+-----------------------------------------------------------------------------------
+            onConfigure(db);
+
+            final int version = db.getVersion();
+            if (version != mNewVersion) {
+                if (db.isReadOnly()) {
+                    throw new SQLiteException("Can't upgrade read-only database from version " +
+                            db.getVersion() + " to " + mNewVersion + ": " + mName);
+                }
+
+                db.beginTransaction();
+                try {
+                    if (version == 0) {
+                        onCreate(db);
+                    } else {
+                        if (version > mNewVersion) {
+                            onDowngrade(db, version, mNewVersion);
+                        } else {
+                            onUpgrade(db, version, mNewVersion);
+                        }
+                    }
+                    db.setVersion(mNewVersion);
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+            }
+
+            onOpen(db);

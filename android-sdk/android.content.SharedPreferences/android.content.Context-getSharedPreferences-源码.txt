@@ -1,0 +1,45 @@
+参考：
+E:\doc\android\android-sdk\android.content.Context\context-实现类-android.app.ContextImpl.java
+
+    @Override
+    public SharedPreferences getSharedPreferences(String name, int mode) {
+        SharedPreferencesImpl sp;
+        synchronized (ContextImpl.class) {
+            if (sSharedPrefs == null) {
+                sSharedPrefs = new ArrayMap<String, ArrayMap<String, SharedPreferencesImpl>>();
+            }
+
+            final String packageName = getPackageName();
+            ArrayMap<String, SharedPreferencesImpl> packagePrefs = sSharedPrefs.get(packageName);
+            if (packagePrefs == null) {
+                packagePrefs = new ArrayMap<String, SharedPreferencesImpl>();
+                sSharedPrefs.put(packageName, packagePrefs);
+            }
+
+            // At least one application in the world actually passes in a null
+            // name.  This happened to work because when we generated the file name
+            // we would stringify it to "null.xml".  Nice.
+            if (mPackageInfo.getApplicationInfo().targetSdkVersion <
+                    Build.VERSION_CODES.KITKAT) {
+                if (name == null) {
+                    name = "null";
+                }
+            }
+
+            sp = packagePrefs.get(name);
+            if (sp == null) {
+                File prefsFile = getSharedPrefsFile(name);
+                sp = new SharedPreferencesImpl(prefsFile, mode);
+                packagePrefs.put(name, sp);
+                return sp;
+            }
+        }
+        if ((mode & Context.MODE_MULTI_PROCESS) != 0 ||
+            getApplicationInfo().targetSdkVersion < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            // If somebody else (some other process) changed the prefs
+            // file behind our back, we reload it.  This has been the
+            // historical (if undocumented) behavior.
+            sp.startReloadIfChangedUnexpectedly();
+        }
+        return sp;
+    }

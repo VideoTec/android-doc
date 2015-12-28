@@ -1,0 +1,13 @@
+public class MyDatabase extends SQLiteAssetHelper {
+     private static final String DATABASE_NAME = "database_name";
+     private static final int DATABASE_VERSION = 1;    
+     public MyDatabase(Context context) {
+         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
+     }  
+ }
+
+https://github.com/jgilfelt/android-sqlite-asset-helper
+
+An Android helper class to 
+manage database creation and version management 
+using an application's raw asset files

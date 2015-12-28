@@ -1,0 +1,25 @@
+http://bbs.ptbus.com/thread-406181-1-1.html
+
+Galaxy S3 i9308移动版到手已经一周了，
+但是移动的9308估计用的人不是太多，
+并没有实打实的root教程，只是联通版的教程很多。
+
+经过内心的挣扎，还是勇敢的把它root了，
+看来9300的硬件都是一样的，和基带无关了，各位可以放心的root了！
+
+http://www.pc6.com/softview/SoftView_115178.html
+odin3刷机工具是Samsung三星手机的官方刷机软件，
+大家可以借助这款odin3将自己的三星手机进行刷机操作，
+odin3 v3.10汉化版是该工具的官方最新版本，
+有需要的朋友一起来看看详细的odin3 v3.10刷机教程吧
+
+http://odin3.en.lo4d.com/
+Odin3 is a free PC application which can flash and root Android-based phones.
+
+http://forum.xda-developers.com/showthread.php?t=2711451
+Odin3 v3.10.0 is released by Samsung recently
+http://techbeasts.com/2015/02/05/odin3-310/
+Download Latest Odin3 v3.10.6
+If you’re a Samsung user, you must be well aware of Odin3, Samsung’s very own flashtool. If you don’t know much about it, you may want to know that Odin3 is Samsung’s little flashtool that is intended for loading stock firmware or other system files e.g. Modem, CSC features, Bootloader or PIT files on a Samsung Galaxy device. The tool is pretty much handy. If your device gets stuck in a bootloop, gets soft bricked, or encounters a firmware upgrade issue, Odin3 can be a life savior. At time, Samsung Kies fails as well and it doesn’t let you recover your soft-bricked Galaxy device, as it may result in connection errors. All you need to do is, you need to acquire the firmware.tar.md5 or firmware.tar file of for your device and flash it using Odin3. Odin3 also helps the users to load custom recoveries on their phones, and Chainfire’s famous CF-Autoroot is also flashed using Odin3 in order to root a Samsung Galaxy device. Other options like PIT, Bootloader, Modem, & CSC are required in specific cases. Most of the times, the only option used is the PDA or AP tab that allows the users to load all the .tar, .md5, .smd, .gz. ,tgz files and then allows flashing.
+
+http://trueandroid.com/how-to-root-samsung-galaxy-s3-gt-i9308-without-pc/

@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/12560590/android-app-restarts-upon-crash-force-close
+
+现象：
+
+My android app is getting restarted after force close, through my entire application which consist of 20 activities, I am relying on static data created on a main activity. So once the app is getting crashed all my static data is getting lost and when the app auto restarts practically it does not have any essential data to operate upon.
+
+解决方法：
+
+1）Best solution would be instead of using Static data, use Shared Preferences or store data in a Database and if any uncaught Exception occurs, show a message like Application has crashed and a report is sent to the admin and then restart the Activity that caused the Crash. This way user can continue using the application.
+
+2）Do the same but instead of restarting the Activity which caused the Exception restart the application.
+
+and in every Activity create an Object of this class and set it as the DefaultUncaughtExceptionHandler
+
+    Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this,
+            YourCurrentActivity.class));

@@ -1,0 +1,19 @@
+    // When true, getReadableDatabase returns a read-only database if it is just being opened.
+    // The database handle is reopened in read/write mode when getWritableDatabase is called.
+    // We leave this behavior disabled in production because it is inefficient and breaks
+    // many applications.  For debugging purposes it can be useful to turn on strict
+    // read-only semantics to catch applications that call getReadableDatabase when they really
+    // wanted getWritableDatabase.
+    private static final boolean DEBUG_STRICT_READONLY = false;
+
+使用方法：
+
+if (DEBUG_STRICT_READONLY && !writable) {
+    final String path = mContext.getDatabasePath(mName).getPath();
+    db = SQLiteDatabase.openDatabase(path, mFactory,
+    SQLiteDatabase.OPEN_READONLY, mErrorHandler);
+} else {
+    db = mContext.openOrCreateDatabase(mName, mEnableWriteAheadLogging ?
+        Context.MODE_ENABLE_WRITE_AHEAD_LOGGING : 0,
+        mFactory, mErrorHandler);
+}

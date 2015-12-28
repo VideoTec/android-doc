@@ -1,0 +1,34 @@
+编写 派生类。
+调用 getWritableDatabase 方法：
+
+public class MySQLiteOpenHelper extends SQLiteOpenHelper {
+
+    public MySQLiteOpenHelper(Context context, String name,
+            CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // TODO Auto-generated method stub
+        
+    }
+
+}
+
+http://blog.csdn.net/conowen/article/details/7306545
+SQLiteOpenHelper 的构造函数， 【注：构造后，调用 getWritableDatabase】
+当数据库不存在时，就会创建数据库，
+然后打开数据库（过程已经被封装起来了），
+再调用onCreate (SQLiteDatabase db)方法来执行创建表之类的操作。
+当数据库存在时，
+SQLiteOpenHelper 就不会调用onCreate (SQLiteDatabase db)方法了，
+它会检测版本号，
+若传入的版本号高于当前的，
+就会执行onUpgrade()方法来更新数据库和版本号。

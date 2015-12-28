@@ -1,0 +1,108 @@
+    /**
+     * Create and/or open a database.  This will be the same object returned by
+     * {@link #getWritableDatabase} unless some problem, such as a full disk,
+     * requires the database to be opened read-only.  In that case, a read-only
+     * database object will be returned.  If the problem is fixed, a future call
+     * to {@link #getWritableDatabase} may succeed, in which case the read-only
+     * database object will be closed and the read/write object will be returned
+     * in the future.
+     *
+     * <p class="caution">Like {@link #getWritableDatabase}, this method may
+     * take a long time to return, so you should not call it from the
+     * application main thread, including from
+     * {@link android.content.ContentProvider#onCreate ContentProvider.onCreate()}.
+     *
+     * @throws SQLiteException if the database cannot be opened
+     * @return a database object valid until {@link #getWritableDatabase}
+     *     or {@link #close} is called.
+     */
+    private SQLiteDatabase getDatabaseLocked(boolean writable) {
+        if (mDatabase != null) {
+            if (!mDatabase.isOpen()) {
+                // Darn!  The user closed the database by calling mDatabase.close().
+                mDatabase = null;
+            } else if (!writable || !mDatabase.isReadOnly()) {
+                // The database is already open for business.
+                return mDatabase;
+            }
+        }
+
+        if (mIsInitializing) {
+            throw new IllegalStateException("getDatabase called recursively");
+        }
+
+        SQLiteDatabase db = mDatabase;
+        try {
+            mIsInitializing = true;
+
+            if (db != null) {
+                if (writable && db.isReadOnly()) {
+                    db.reopenReadWrite();
+                }
+            } else if (mName == null) {
+                db = SQLiteDatabase.create(null);
+            } else {
+                try {
+                    if (DEBUG_STRICT_READONLY && !writable) {
+                        final String path = mContext.getDatabasePath(mName).getPath();
+                        db = SQLiteDatabase.openDatabase(path, mFactory,
+                                SQLiteDatabase.OPEN_READONLY, mErrorHandler);
+                    } else {
+                        db = mContext.openOrCreateDatabase(mName, mEnableWriteAheadLogging ?
+                                Context.MODE_ENABLE_WRITE_AHEAD_LOGGING : 0,
+                                mFactory, mErrorHandler);
+                    }
+                } catch (SQLiteException ex) {
+                    if (writable) {
+                        throw ex;
+                    }
+                    Log.e(TAG, "Couldn't open " + mName
+                            + " for writing (will try read-only):", ex);
+                    final String path = mContext.getDatabasePath(mName).getPath();
+                    db = SQLiteDatabase.openDatabase(path, mFactory,
+                            SQLiteDatabase.OPEN_READONLY, mErrorHandler);
+                }
+            }
+
+            onConfigure(db);
+
+            final int version = db.getVersion();
+            if (version != mNewVersion) {
+                if (db.isReadOnly()) {
+                    throw new SQLiteException("Can't upgrade read-only database from version " +
+                            db.getVersion() + " to " + mNewVersion + ": " + mName);
+                }
+
+                db.beginTransaction();
+                try {
+                    if (version == 0) {
+                        onCreate(db);
+                    } else {
+                        if (version > mNewVersion) {
+                            onDowngrade(db, version, mNewVersion);
+                        } else {
+                            onUpgrade(db, version, mNewVersion);
+                        }
+                    }
+                    db.setVersion(mNewVersion);
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+            }
+
+            onOpen(db);
+
+            if (db.isReadOnly()) {
+                Log.w(TAG, "Opened " + mName + " in read-only mode");
+            }
+
+            mDatabase = db;
+            return db;
+        } finally {
+            mIsInitializing = false;
+            if (db != null && db != mDatabase) {
+                db.close();
+            }
+        }
+    }

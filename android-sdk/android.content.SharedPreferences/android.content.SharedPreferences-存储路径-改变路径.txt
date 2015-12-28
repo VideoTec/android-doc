@@ -1,0 +1,42 @@
+http://stackoverflow.com/questions/3911053/how-to-change-the-android-sharedpreferences-save-path
+You cannot modify where shared preferences are stored. 
+
+http://blog.csdn.net/singleton1900/article/details/8657208
+利用Java反射机制改变SharedPreferences存储路径
+
+SharedPreferences原则上只能保存在当前应用程序私有的Shared_prefs目录中，
+但利用Java的反射机制可以改变系统内定的文件存储路径。
+
+例如：将config.xml文件保存在SD卡的根目录中。
+
+private void savePreToSDcard() {
+		try {
+			Field field;
+			// 获取ContextWrapper对象中的mBase变量。该变量保存了ContextImpl对象
+			field = ContextWrapper.class.getDeclaredField("mBase");
+			field.setAccessible(true);
+			// 获取mBase变量
+			Object obj = field.get(this);
+			// 获取ContextImpl。mPreferencesDir变量，该变量保存了数据文件的保存路径
+			field = obj.getClass().getDeclaredField("mPreferencesDir");
+			field.setAccessible(true);
+			// 创建自定义路径
+			File file = new File("/sdcard");
+			// 修改mPreferencesDir变量的值
+			field.set(obj, file);
+			SharedPreferences mySharedPreferences = getSharedPreferences(
+					"config", Activity.MODE_PRIVATE);
+			SharedPreferences.Editor editor = mySharedPreferences.edit();
+			editor.putString("name", "20130310");
+			editor.commit();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}

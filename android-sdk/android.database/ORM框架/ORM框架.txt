@@ -1,0 +1,2 @@
+http://www.cnblogs.com/vanezkw/archive/2012/07/31/2617210.html
+Android数据库ORMlite框架翻译系列（第一章）

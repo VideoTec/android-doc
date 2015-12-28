@@ -1,4 +1,21 @@
-public SQLiteOpenHelper (Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+12:50 2015/12/28
+name of the database file, or null for an in-memory database
+根据 ContextImpl.java 方法 validateFilePath
+        if (name.charAt(0) == File.separatorChar) {
+            String dirPath = name.substring(0, name.lastIndexOf(File.separatorChar));
+            dir = new File(dirPath);
+            name = name.substring(name.lastIndexOf(File.separatorChar));
+            f = new File(dir, name);
+        } else {
+            dir = getDatabasesDir();
+            f = makeFilename(dir, name);
+        }
+分两种情况，1）绝对路径 2）数据库名称
+
+-------------------------------------------------------------------------------------
+public SQLiteOpenHelper 
+(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+-------------------------------------------------------------------------------------
 
 Added in API level 1
 

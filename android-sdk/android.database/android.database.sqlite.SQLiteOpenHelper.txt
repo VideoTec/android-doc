@@ -34,3 +34,16 @@ to avoid blocking application startup with long-running database upgrades.
 For an example, 
 see the NotePadProvider class in the NotePad sample application, 
 in the samples/ directory of the SDK.
+
+http://www.cnblogs.com/weizilong/p/3285501.html
+
+ * SQLiteOpenHelper是一个辅助类，用来管理数据库的创建和版本他，它提供两个方面的功能
+ 
+ * 第一，
+ getReadableDatabase()、
+ getWritableDatabase()
+ 可以获得SQLiteDatabase对象，通过该对象可以对数据库进行操作
+ 
+ * 第二，
+ 提供了onCreate()、onUpgrade()两个回调函数，
+ 允许我们再创建和升级数据库时，进行自己的操作

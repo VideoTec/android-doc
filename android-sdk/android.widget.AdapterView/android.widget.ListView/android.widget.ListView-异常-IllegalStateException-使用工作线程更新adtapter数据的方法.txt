@@ -1,0 +1,33 @@
+错误的原因：
+protected void layoutChildren() {
+.......
+            } else if (mItemCount != mAdapter.getCount()) {
+                throw new IllegalStateException("The content of the adapter has changed but "
+                        + "ListView did not receive a notification. Make sure the content of "
+                        + "your adapter is not modified from a background thread, but only from "
+                        + "the UI thread. Make sure your adapter calls notifyDataSetChanged() "
+                        + "when its content changes. [in ListView(" + getId() + ", " + getClass()
+                        + ") with Adapter(" + mAdapter.getClass() + ")]");
+            }
+.......
+}
+
+http://stackoverflow.com/questions/3132021/android-listview-illegalstateexception-the-content-of-the-adapter-has-changed
+
+第一种方法：
+I solved this by have 2 Lists. One list I use for only the adapter, and I do all data changes/updates on the other list. This allows me to do updates on one list in a background thread, and then update the "adapter" list in the main/UI thread:
+
+第二种方法：
+I had the same problem, but I fixed it using the method
+
+requestLayout();
+from the class ListView
+
+会修改，ListView.mItemCount 值的方法有：
+public void setAdapter(ListAdapter adapter)
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+
+第三种方法：
+Then it creates the adapter and deliver it to the activity where on ui thread i call setAdapter.
+
+https://code.google.com/p/android-amazing-listview/issues/detail?id=3

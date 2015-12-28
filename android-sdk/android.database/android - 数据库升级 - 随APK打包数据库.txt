@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/513084/how-to-ship-an-android-application-with-a-database
+
+I just found a way to do this in ReignDesign blog in an article titled 
+Using your own SQLite database in Android applications. 
+Basically you precreate your database, 
+put it in your assets directory in your apk, 
+and on first use 
+copy to "/data/data/YOUR_PACKAGE/databases/" directory.
+
+http://blog.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/

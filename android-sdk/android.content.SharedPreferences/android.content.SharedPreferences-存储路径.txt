@@ -1,0 +1,33 @@
+参考：
+E:\doc\android\android-sdk\android.content.Context\context-实现类-android.app.ContextImpl.java
+
+public SharedPreferences getSharedPreferences(String name, int mode) {
+关键部分：
+            sp = packagePrefs.get(name);
+            if (sp == null) {
+                File prefsFile = getSharedPrefsFile(name);
+                sp = new SharedPreferencesImpl(prefsFile, mode);
+                packagePrefs.put(name, sp);
+                return sp;
+            }
+
+创建 sharedpreferences 文件的方法：
+    @Override
+    public File getSharedPrefsFile(String name) {
+        return makeFilename(getPreferencesDir(), name + ".xml");
+    }
+    private File makeFilename(File base, String name) {
+        if (name.indexOf(File.separatorChar) < 0) {
+            return new File(base, name);
+        }
+        throw new IllegalArgumentException(
+                "File " + name + " contains a path separator");
+    }
+    private File getPreferencesDir() {
+        synchronized (mSync) {
+            if (mPreferencesDir == null) {
+                mPreferencesDir = new File(getDataDirFile(), "shared_prefs");
+            }
+            return mPreferencesDir;
+        }
+    }
