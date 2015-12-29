@@ -1,0 +1,5 @@
+Usage: logcat [options] [filterspecs]
+options include:
+
+  -s              Set default filter to silent.
+                  Like specifying filterspec '*:s'

@@ -1,0 +1,38 @@
+Usage: logcat [options] [filterspecs]
+options include:
+  -s              Set default filter to silent.
+                  Like specifying filterspec '*:s'
+  -f <filename>   Log to file. Default to stdout
+  -r [<kbytes>]   Rotate log every kbytes. (16 if unspecified). Requires -f
+  -n <count>      Sets max number of rotated logs to <count>, default 4
+  -v <format>     Sets the log print format, where <format> is one of:
+
+                  brief process tag thread raw time threadtime long
+
+  -c              clear (flush) the entire log and exit
+  -d              dump the log and then exit (don't block)
+  -t <count>      print only the most recent <count> lines (implies -d)
+  -g              get the size of the log's ring buffer and exit
+  -b <buffer>     Request alternate ring buffer, 'main', 'system', 'radio'
+                  or 'events'. Multiple -b parameters are allowed and the
+                  results are interleaved. The default is -b main -b system.
+  -B              output the log in binary
+filterspecs are a series of
+  <tag>[:priority]
+
+where <tag> is a log component tag (or * for all) and priority is:
+  V    Verbose
+  D    Debug
+  I    Info
+  W    Warn
+  E    Error
+  F    Fatal
+  S    Silent (supress all output)
+
+'*' means '*:d' and <tag> by itself means <tag>:v
+
+If not specified on the commandline, filterspec is set from ANDROID_LOG_TAGS.
+If no filterspec is found, filter defaults to '*:I'
+
+If not specified with -v, format is set from ANDROID_PRINTF_LOG
+or defaults to "brief"

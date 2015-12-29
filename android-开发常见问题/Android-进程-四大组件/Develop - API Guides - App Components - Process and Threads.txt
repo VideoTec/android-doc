@@ -1,0 +1,21 @@
+ÎÄµµ£º
+Develop - API Guides - App Components - Process and Threads
+
+When an application component starts and 
+the application does not have any other components running, 
+the Android system starts a new Linux process for the application 
+with a single thread of execution. 
+
+By default, all components of the same application 
+run in the same process and thread (called the "main" thread). 
+If an application component starts and 
+there already exists a process for that application 
+(because another component from the application exists), 
+then the component is started within that process and 
+uses the same thread of execution. 
+However, you can arrange for different components 
+in your application to run in separate processes, 
+and you can create additional threads for any process.
+
+This document discusses how processes and threads work in an Android application.
+
