@@ -1,0 +1,36 @@
+http://stackoverflow.com/questions/600207/how-to-check-if-a-service-is-running-on-android
+
+How do I check if a background service (on Android) is running?
+
+I want an Android activity that toggles the state of the service -- 
+it lets me turn it on if it is off and off if it is on.
+
+private boolean isMyServiceRunning(Class<?> serviceClass) {
+    ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+    for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+        if (serviceClass.getName().equals(service.service.getClassName())) {
+            return true;
+        }
+    }
+    return false;
+}
+
+reliably[英][rɪ'laɪəblɪ] [美][rɪˈlaɪəblɪ]
+adv.可靠地，确实地
+
+This works reliably, 
+because it is based on the information about running services provided 
+by the Android operating system through 
+ActivityManager#getRunningServices.
+http://developer.android.com/intl/zh-cn/reference/android/app/ActivityManager.html#getRunningServices%28int%29
+
+All the approaches using onDestroy 
+or onSometing events or Binders or static variables 
+will not work reliably 
+because as a developer you never know, 
+when Android decides to kill your process or 
+which of the mentioned callbacks are called or not. 
+
+Please note the "killable" column 
+in the lifecycle events table in the Android documentation.
+http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle

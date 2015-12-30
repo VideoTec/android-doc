@@ -1,0 +1,26 @@
+:app:crashlyticsGenerateResourcesDebug FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:crashlyticsGenerateResourcesDebug'.
+> Crashlytics Developer Tools error.
+
+* Try:
+Run with --stacktrace option to get the stack trace. 
+Run with --info or --debug option to get more log output.
+
+解决方法：
+Crashlytics是基于云的错误报告解决方案，
+旨在找到所有崩溃应用的共同点。 
+通过写一行简单的代码来激活一个大概75KB的SDK，
+然后在Amazon Web Services的云上来运行错误报告，
+最后给出关于你的应用崩溃的一个简单的报告。 
+这是目前对移动开发者最有用最简单的错误报告系统。 
+其联合创始人Wayne Chang称“Crashlytics可以提取500个崩溃日志，
+然后找到23个问题样本，然后找到你实际需要修复的那个问题”
+
+http://support.crashlytics.com/knowledgebase/articles/202938-gradle
+The hosted Crashlytics SDK seamlessly integrates with Gradle
+
+http://stackoverflow.com/questions/25060008/crashlytics-developer-tools-error-when-building-android-gradle-project
