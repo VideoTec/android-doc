@@ -1,0 +1,257 @@
+http://developer.android.com/intl/zh-cn/guide/components/processes-and-threads.html
+
+文档：
+Develop - API Guides - App Components - Process and Threads
+
+线程使用最重要的规则：
+1）Do not block the UI thread
+2）Do not access the Android UI toolkit from outside the UI thread
+
+-------------------------------------------------
+Threads
+-------------------------------------------------
+
+When an application is launched, 
+the system creates a thread of execution for the application, called "main." 
+This thread is very important 
+because it is in charge of 
+dispatching events to the appropriate user interface widgets, 
+including drawing events. 
+It is also the thread in which your application 
+interacts with components from the Android UI toolkit 
+(components from the android.widget and android.view packages). 
+As such, the main thread is also sometimes called the UI thread.
+
+The system does not create a separate thread for each instance of a component. 
+All components that run in the same process 
+are instantiated in the UI thread, 
+and system calls to each component are dispatched from that thread. 
+Consequently, methods that respond to system callbacks 
+(such as onKeyDown() to report user actions or a lifecycle callback method) 
+always run in the UI thread of the process.
+
+For instance, 
+when the user touches a button on the screen, 
+your app's UI thread dispatches the touch event to the widget, 
+which in turn sets its pressed state and 
+posts an invalidate request to the event queue. 
+The UI thread dequeues the request and 
+notifies the widget that it should redraw itself.
+
+When your app performs intensive work in response to user interaction, 
+this single thread model can yield poor performance 
+unless you implement your application properly. 
+Specifically, if everything is happening in the UI thread, 
+performing long operations such as network access or database queries 
+will block the whole UI. 
+When the thread is blocked, 
+no events can be dispatched, including drawing events. 
+From the user's perspective, the application appears to hang. 
+Even worse, 
+if the UI thread is blocked for more than a few seconds 
+(about 5 seconds currently) 
+the user is presented with the infamous "application not responding" (ANR) dialog. 
+The user might then decide to quit your application 
+and uninstall it if they are unhappy.
+
+Additionally, 
+the Andoid UI toolkit is not thread-safe. 
+So, you must not manipulate your UI from a worker thread—you 
+must do all manipulation to your user interface from the UI thread. 
+Thus, there are simply two rules to Android's single thread model:
+
+线程使用最重要两点：
+1）Do not block the UI thread
+2）Do not access the Android UI toolkit from outside the UI thread
+
+-------------------------------------------------
+Worker threads
+-------------------------------------------------
+
+Because of the single thread model described above, 
+it's vital to the responsiveness of your application's UI 
+that you do not block the UI thread. 
+If you have operations to perform that are not instantaneous, 
+you should make sure to do them in separate threads 
+("background" or "worker" threads).
+
+For example, 
+below is some code for a click listener 
+that downloads an image from a separate thread and displays it in an ImageView:
+
+public void onClick(View v) {
+    new Thread(new Runnable() {
+        public void run() {
+            Bitmap b = loadImageFromNetwork("http://example.com/image.png");
+            mImageView.setImageBitmap(b);
+        }
+    }).start();
+}
+
+At first, 
+this seems to work fine, 
+because it creates a new thread to handle the network operation. 
+However, it violates the second rule of the single-threaded model: 
+do not access the Android UI toolkit from outside the UI thread—
+this sample modifies the ImageView 
+from the worker thread instead of the UI thread. 
+This can result in undefined and unexpected behavior, 
+which can be difficult and time-consuming to track down.
+
+To fix this problem, 
+Android offers several ways to access the UI thread from other threads. 
+Here is a list of methods that can help:
+
+Activity.runOnUiThread(Runnable)
+View.post(Runnable)
+View.postDelayed(Runnable, long)
+
+For example, you can fix the above code 
+by using the View.post(Runnable) method:
+
+public void onClick(View v) {
+    new Thread(new Runnable() {
+        public void run() {
+            final Bitmap bitmap =
+                    loadImageFromNetwork("http://example.com/image.png");
+            mImageView.post(new Runnable() {
+                public void run() {
+                    mImageView.setImageBitmap(bitmap);
+                }
+            });
+        }
+    }).start();
+}
+
+Now this implementation is thread-safe: 
+the network operation is done from a separate thread 
+while the ImageView is manipulated from the UI thread.
+
+However, as the complexity of the operation grows, 
+this kind of code can get complicated and difficult to maintain. 
+To handle more complex interactions with a worker thread, 
+you might consider using a Handler in your worker thread, 
+to process messages delivered from the UI thread. 
+
+Perhaps the best solution, though, is to extend the AsyncTask class, 
+which simplifies the execution of worker thread tasks that need to interact with the UI.
+
+-------------------------------------------------
+Using AsyncTask
+-------------------------------------------------
+
+AsyncTask allows you to perform asynchronous work on your user interface. 
+It performs the blocking operations in a worker thread 
+and then publishes the results on the UI thread, 
+without requiring you to handle threads and/or handlers yourself.
+
+To use it, 
+you must subclass AsyncTask and implement the doInBackground() callback method, 
+which runs in a pool of background threads. 
+To update your UI, you should implement onPostExecute(), 
+which delivers the result from doInBackground() and runs in the UI thread, 
+so you can safely update your UI. 
+You can then run the task by calling execute() from the UI thread.
+
+For example, you can implement the previous example using AsyncTask this way:
+
+public void onClick(View v) {
+    new DownloadImageTask().execute("http://example.com/image.png");
+}
+
+private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    /** The system calls this to perform work in a worker thread and
+      * delivers it the parameters given to AsyncTask.execute() */
+    protected Bitmap doInBackground(String... urls) {
+        return loadImageFromNetwork(urls[0]);
+    }
+
+    /** The system calls this to perform work in the UI thread and delivers
+      * the result from doInBackground() */
+    protected void onPostExecute(Bitmap result) {
+        mImageView.setImageBitmap(result);
+    }
+}
+
+Now the UI is safe and the code is simpler, 
+because it separates the work into 
+1）the part that should be done on a worker thread and 
+2）the part that should be done on the UI thread.
+
+You should read the AsyncTask reference 
+for a full understanding on how to use this class, 
+but here is a quick overview of how it works:
+
+1）You can specify the type of 
+the parameters, 
+the progress values, and 
+the final value of the task, using generics
+
+2）The method doInBackground() executes automatically on a worker thread
+3）onPreExecute(), onPostExecute(), and onProgressUpdate() are all invoked on the UI thread
+4）The value returned by doInBackground() is sent to onPostExecute()
+5）You can call publishProgress() at anytime in doInBackground() 
+to execute onProgressUpdate() on the UI thread
+6）You can cancel the task at any time, from any thread
+
+caution[英][ˈkɔ:ʃn] [美][ˈkɔʃən]
+n.小心；警告；〈英〉担保；〈口〉须警惕的事或人
+
+encounter[英][ɪnˈkaʊntə(r)] [美][ɛnˈkaʊntɚ]
+vt.不期而遇；遭遇；对抗
+n.相遇，碰见；遭遇战；对决，冲突
+vi.碰见，尤指不期而遇
+
+Caution: 
+Another problem you might encounter 
+when using a worker thread is unexpected restarts in your activity 
+due to a runtime configuration change 
+(such as when the user changes the screen orientation), 
+which may destroy your worker thread. 
+
+To see 
+how you can persist your task during one of these restarts and 
+how to properly cancel the task when the activity is destroyed, 
+see the source code for the Shelves sample application.
+
+-------------------------------------------------
+Thread-safe methods
+
+provider 接口
+IBinder  接口 必须要考虑线程同步，因为它们可能....
+-------------------------------------------------
+
+In some situations, 
+the methods you implement might be called from more than one thread, 
+and therefore must be written to be thread-safe.
+
+This is primarily true for methods 
+that can be called remotely—such as methods in a bound service. 
+When a call on a method implemented 
+in an IBinder originates in the same process in which the IBinder is running, 
+the method is executed in the caller's thread. 
+However, when the call originates in another process, 
+the method is executed in a thread chosen from a pool of threads 
+that the system maintains in the same process as the IBinder 
+(it's not executed in the UI thread of the process). 
+
+For example, 
+whereas a service's onBind() method would be called 
+from the UI thread of the service's process, 
+methods implemented in the object that onBind() returns 
+(for example, a subclass that implements RPC methods) 
+would be called from threads in the pool. 
+Because a service can have more than one client, 
+more than one pool thread can engage the same IBinder method at the same time. 
+IBinder methods must, therefore, be implemented to be thread-safe.
+
+Similarly, 
+a content provider can receive data requests that originate in other processes. 
+Although the ContentResolver and ContentProvider classes 
+hide the details of how the interprocess communication is managed, 
+ContentProvider methods that respond to those requests—the methods 
+query(), insert(), delete(), update(), and getType()—
+are called from a pool of threads in the content provider's process, 
+not the UI thread for the process. 
+Because these methods might be called from any number of threads at the same time, 
+they too must be implemented to be thread-safe.

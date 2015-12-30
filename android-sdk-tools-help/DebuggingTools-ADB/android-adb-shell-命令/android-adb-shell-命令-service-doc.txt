@@ -1,0 +1,8 @@
+shell@m0cmcc:/ $ service -h
+Usage: service [-h|-?]
+       service list
+       service check SERVICE
+       service call SERVICE CODE [i32 INT | s16 STR] ...
+Options:
+   i32: Write the integer INT into the send parcel.
+   s16: Write the UTF-16 string STR into the send parcel.

@@ -1,0 +1,31 @@
+https://github.com/T-Spoon/Android-Developer-Toolbelt
+
+Under the Hood
+
+If you want to fill an Android device's memory - 
+there are two methods of programatically doing this (that I know of):
+
+1）Use the NDK and malloc() to fill the native heap.
+2）Use multiple processes and fill the standard Java heap for each one.
+
+I opted for the latter method for two reasons:
+
+Easier to control. 
+Less chance of doing something stupid and 
+having memory that doesn't get cleaned up when finished testing.
+
+My experience with similar apps seems to indicate that 
+the native heap hits an upper limit memory usage (~1Gb). 
+On recent devices, 
+this sometimes isn't enough to trigger the low-memory state.
+
+rescue[英][ˈreskju:] [美][ˈrɛskju]
+vt.营救，救援，使免遭损失；[法律] 非法劫回
+n.营救，救援；营救[救援]行动
+
+In order to get the application to run in multiple process 
+I'm using multiple Services, 
+each with a seperate android:process attribute set in the manifest. 
+Normally this would mean writing code for ~20 Service classes, 
+but that's where code generation comes to the rescue! 
+The compiler module handles generating the source code for these classes.

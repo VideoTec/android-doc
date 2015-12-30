@@ -1,0 +1,13 @@
+http://log4think.com/adb-shell-dumpsys-parameter-list/
+adb shell dumpsys meminfo com.google.android.apps.maps
+adb shell dumpsys activity activities
+adb shell dumpsys alarm
+
+https://testerhome.com/topics/1462
+
+获取package信息：
+
+adb shell dumpsys package
+加上-h可以获取帮助信息
+获取某个包的信息：
+adb shell dumpsys package PACKAGE_NAME

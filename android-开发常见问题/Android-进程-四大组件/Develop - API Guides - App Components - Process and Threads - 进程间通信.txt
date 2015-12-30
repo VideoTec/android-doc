@@ -1,0 +1,23 @@
+Interprocess Communication
+
+Android offers a mechanism for interprocess communication (IPC) 
+using remote procedure calls (RPCs), 
+in which a method is called by an activity or other application component, 
+but executed remotely (in another process), 
+with any result returned back to the caller. 
+
+This entails decomposing a method call and its data 
+to a level the operating system can understand, 
+
+transmitting it 
+from the local process and address space 
+to   the remote process and address space, 
+then reassembling and reenacting the call there. 
+
+Return values are then transmitted in the opposite direction. 
+Android provides all the code to perform these IPC transactions, 
+so you can focus on defining and implementing the RPC programming interface.
+
+To perform IPC, 
+your application must bind to a service, using bindService(). 
+For more information, see the Services developer guide.

@@ -1,0 +1,50 @@
+http://stackoverflow.com/questions/6208443/what-happens-to-an-android-thread-after-the-activity-that-created-it-is-destroye
+
+------------------------------------------------------------------
+AFAIK, it would appear that this thread continues to execute.
+------------------------------------------------------------------
+This is true but you have no guarantee of how long the thread will stay alive.
+
+------------------------------------------------------------------
+What will happen to this thread 
+if the Android gets into a low memory situation and decides to kill the entire Application?
+------------------------------------------------------------------
+This is actually a fairly rare case in my experience 
+but it will depend on the device's available memory and the user's behaviour, 
+for example they use the device heavily and start multiple apps.
+
+------------------------------------------------------------------
+Will there ever be a situation were this thread might die prematurely?
+------------------------------------------------------------------
+Yes
+
+------------------------------------------------------------------
+If so, is there any way I can see that the thread is being killed, 
+and do something about it?
+------------------------------------------------------------------
+No
+
+------------------------------------------------------------------
+I'm asking because this thread modifies important data in the database, 
+and if it is suddenly killed, the application could stop functioning properly.
+------------------------------------------------------------------
+mission[英][ˈmɪʃn] [美][ˈmɪʃən]
+n.代表团；使命；官方使命；布道所
+v.给…交代任务；派遣；把任务交给；向…传教
+
+critical[英][ˈkrɪtɪkl] [美][ˈkrɪtɪkəl]
+adj.批评的，爱挑剔的；关键的；严重的；极重要的
+
+mission critical - 关键任务
+
+What you describe could be classed as something which is 'mission critical' - 关键任务. 
+As the other two answers have pointed out, 
+a Service would be a more robust way of doing things 
+as a Service is one of the last things to be 'killed' in a low memory situation. 
+Using START_REDELIVER_INTENT may help in resuming what it was doing.
+
+In any case, 
+if you have a 'mission critical' operation, 
+you need to design your code for full recovery such as 
+the use of transactions and 
+the possibility of rollbacks in case of errors

@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/22825729/how-to-cause-low-memory-condition-on-android
+
+Another way to do it:
+In your device: 
+Go to Settings -> Developer options and check "Dont keep activities". 
+This will kill your activity as soon it goes in the background.

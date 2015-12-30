@@ -1,0 +1,27 @@
+http://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys-tool-and-what-are-its-benefits
+
+-----------------------------------------------------
+What's dumpsys and what are its benefit
+-----------------------------------------------------
+
+dumpsys is an android tool 
+that runs on the device and 
+dumps interesting information about the status of system services.
+
+Obvious benefits:
+
+Possibility to easily get system information in a simple string representation.
+Possibility to use dumped 
+CPU, RAM, Battery, storage stats for a pretty charts, 
+which will allow you to check how your application affects the overall device!
+
+-----------------------------------------------------
+What information can we retrieve from dumpsys shell command and how we can use it
+-----------------------------------------------------
+
+If you run dumpsys you would see a ton of system information. 
+But you can use only separate parts of this big dump.
+
+to see all of the "subcommands" of dumpsys do:
+
+dumpsys | grep "DUMP OF SERVICE"

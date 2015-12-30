@@ -1,0 +1,13 @@
+http://blog.csdn.net/emilychai2010/article/details/9295617
+
+为什么单起一个service而
+不是直接在Activity里用thread或者asynctask来load图片那？
+
+现在我想我的答案应该很明显了吧，
+如果在Activity用thread来load图片，
+当Activity不可见后，它就变成了后台进程。
+
+这样一来很容易在内存小的时候被系统杀掉。
+而用Service的话，
+1）保证了这个操作至少拥有“服务进程”的级别，进程级别高，不容易被杀掉，
+2）而且系统会分配给足够的内存，运行效率也高  --- 这个是从何说起？

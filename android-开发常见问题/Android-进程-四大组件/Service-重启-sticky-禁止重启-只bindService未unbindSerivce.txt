@@ -1,0 +1,9 @@
+bindService()方法启用服务：
+调用者与服务绑定在了一起，调用者一旦退出，服务也就终止
+
+解释：
+1）调用了相当次数的 UnbindService 
+或者
+2）调用 bindService 的 context 销毁了
+
+http://www.cnblogs.com/yejiurui/p/3429451.html

@@ -1,0 +1,50 @@
+签名不同的apk, 拥有相同的，<permission>
+android 5.0，只能安装一个，后安装的安提示安装失败
+
+https://www.v2ex.com/t/147486
+把淘宝删掉，高德地图删掉...就可以用支付宝了...
+
+看下android 5.0的changes好么，
+是他们家都声明了同名权限才没法使用。
+没对相互唤醒进行限制 
+
+http://developer.android.com/about/versions/android-5.0-changes.html#custom_permissions
+
+resident[英][ˈrezɪdənt] [美][ˈrɛzɪdənt, -ˌdɛnt]
+adj.定居的，常驻的；[计]常驻的，常存于内存中的；[动]不迁徙的（鸟兽等）；固有的，内在的
+n.居民；（旅馆的）住宿者；住院医师
+
+Starting in Android 5.0, 
+the system enforces a new uniqueness restriction on custom permissions 
+for apps that are signed with different keys. 
+Now only one app on a device 
+can define a given custom permission (as determined by its name), 
+unless the other app defining the permission is signed with the same key. 
+If the user tries to install an app 
+with a duplicate custom permission and 
+is not signed with the same key as the resident app that defines the permission, 
+the system blocks the installation.
+
+http://bbs.saraba1st.com/2b/thread-1049585-1-1.html
+
+Android L对付流氓们的新特性：
+如果应用互相唤醒，就不能同时安装。
+比如百度贴吧、输入法、地图，只要安装过任何一个，再装其他两个的时候就会失败。
+看看各大流氓公司打算怎么应对吧。
+
+http://www.eoeandroid.com/thread-552889-1-1.html?_dsign=8c82f02d
+大概意思就是，如果两个app声明了同一个权限，
+即在manifest里面的<permission>标签，
+而两个app的签名不同的话，就会出现安装不上的错误。
+这是5.0新的规则。
+我自己亲测了一下也的确是这样的
+
+http://tieba.baidu.com/p/3237226241
+通过实验,发现这些apk有一个或多个相同的自定义权限,
+但是签名不一致,因而无法正常安装,
+并不是什么防止相互唤醒之类的,这应该是Android L的新规则,
+
+首先安装贴吧,没什么问题, 然后安装输入法,问题来了,看绿色框, 
+提示安装失败因为权限重复(INSTALL_FAILED_DUPLICATE_PERMISSION), 
+具体的权限是"com.baidu.permission.SHARE",
+包名是"com.baidu.tieba",也就是已经安装的贴吧.

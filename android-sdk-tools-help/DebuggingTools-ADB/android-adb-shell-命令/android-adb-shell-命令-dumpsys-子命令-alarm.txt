@@ -1,0 +1,170 @@
+http://blog.chengyunfeng.com/?p=561
+
+用来测试定时事件的命令：
+adb shell dumpsys alarm 和 
+adb shell dumpsys activity intents 
+通过这两个命令可以查看那些操作被放到定时队列中了
+
+解读输出信息：
+http://blog.csdn.net/memoryjs/article/details/48709183
+http://stackoverflow.com/questions/28742884/how-to-read-adb-shell-dumpsys-alarm-output
+
+1）RTC：表示ALARM的类型，一般有：RTC_WAKEUP, RTC, ELAPSED_WAKEUP, or ELAPSED
+2）闹钟的内部编号 
+3）设置该闹钟的应用包名 
+4）when=+ 该闹钟会在执行完这条dumpsys alarm命令后，19秒304ms后触发
+5）repeatInterval 改闹钟的重复频率，900000ms后重复，0表示不重复
+6）operation=PendingIntent
+   与pendingIntent相关，该intent被实例化后，
+   可以发送广播，启动服务，或者启动Activity，
+   说白了就是唤醒应用的操作
+
+RTC_WAKEUP #4: Alarm{447076d0 type 0 com.sec.esdk.elm}
+type=0 
+when=+6d23h52m23s67ms           多长时间后触发
+repeatInterval=604800000 
+count=0
+
+------------------------------------------
+输出示例：
+当前 Alarm Manager 的状态
+------------------------------------------
+
+shell@m0cmcc:/ $ dumpsys alarm
+dumpsys alarm
+Current Alarm Manager state:
+
+  Realtime wakeup (now=2015-12-30 17:46:42):
+  RTC_WAKEUP #4: Alarm{447076d0 type 0 com.sec.esdk.elm}
+    type=0 when=+6d23h52m23s67ms repeatInterval=604800000 count=0
+    operation=PendingIntent{4471e068: PendingIntentRecord{442d2988 com.sec.esdk.elm broadcastIntent}}
+  RTC_WAKEUP #3: Alarm{442966e8 type 0 com.sec.esdk.elm}
+    type=0 when=+2d16h58m0s927ms repeatInterval=0 count=0
+    operation=PendingIntent{4429f218: PendingIntentRecord{433d2bd8 com.sec.esdk.elm broadcastIntent}}
+  RTC_WAKEUP #2: Alarm{42d74318 type 0 com.sec.android.fotaclient}
+    type=0 when=+20h50m23s163ms repeatInterval=0 count=0
+    operation=PendingIntent{42d96e78: PendingIntentRecord{431e84c0 com.sec.android.fotaclient startService}}
+  RTC_WAKEUP #1: Alarm{43086420 type 0 com.android.providers.calendar}
+    type=0 when=+15h41m42s519ms repeatInterval=0 count=0
+    operation=PendingIntent{42e61d08: PendingIntentRecord{430863a0 com.android.providers.calendar broadcastIntent}}
+  RTC_WAKEUP #0: Alarm{434c8a38 type 0 com.sec.esdk.elm}
+    type=0 when=+6h14m18s101ms repeatInterval=86400000 count=0
+    operation=PendingIntent{43514768: PendingIntentRecord{442c94e0 com.sec.esdk.elm broadcastIntent}}
+  RTC #3: Alarm{42f86280 type 1 android}
+    type=1 when=+18h13m17s753ms repeatInterval=0 count=0
+    operation=PendingIntent{43149198: PendingIntentRecord{43135770 android broadcastIntent}}
+  RTC #2: Alarm{433d6b68 type 1 com.samsung.android.providers.context}
+    type=1 when=+6h13m18s191ms repeatInterval=0 count=0
+    operation=PendingIntent{43566c28: PendingIntentRecord{42cec8d8 com.samsung.android.providers.context broadcastIntent}}
+  RTC #1: Alarm{43481038 type 1 android}
+    type=1 when=+6h13m17s753ms repeatInterval=0 count=0
+    operation=PendingIntent{436046c8: PendingIntentRecord{43489618 android broadcastIntent}}
+  RTC #0: Alarm{43494b00 type 1 com.sec.android.widgetapp.SPlannerAppWidget}
+    type=1 when=+6h13m17s753ms repeatInterval=0 count=0
+    operation=PendingIntent{434a8390: PendingIntentRecord{431f8d00 com.sec.android.widgetapp.SPlannerAppWidget broadcastIntent}}
+
+  Elapsed realtime wakeup (now=+2d2h22m14s325ms):
+  ELAPSED_WAKEUP #4: Alarm{4350b6f8 type 2 com.tencent.mm}
+    type=2 when=+6d23h49m57s40ms repeatInterval=0 count=0
+    operation=PendingIntent{430ab798: PendingIntentRecord{4350b678 com.tencent.mm broadcastIntent}}
+  ELAPSED_WAKEUP #3: Alarm{42c8aeb8 type 2 android}
+    type=2 when=+53m32s401ms repeatInterval=0 count=0
+    operation=PendingIntent{43390a28: PendingIntentRecord{433909a8 android broadcastIntent}}
+  ELAPSED_WAKEUP #2: Alarm{432cb2c8 type 2 android}
+    type=2 when=+22m45s675ms repeatInterval=1800000 count=1
+    operation=PendingIntent{42ed9f68: PendingIntentRecord{432cb228 android broadcastIntent}}
+  ELAPSED_WAKEUP #1: Alarm{44cf62e8 type 2 com.tencent.mm}
+    type=2 when=+20m9s576ms repeatInterval=0 count=0
+    operation=PendingIntent{43133cb0: PendingIntentRecord{44cd9db8 com.tencent.mm broadcastIntent}}
+  ELAPSED_WAKEUP #0: Alarm{44229c50 type 2 android}
+    type=2 when=+8m50s869ms repeatInterval=0 count=0
+    operation=PendingIntent{4333e620: PendingIntentRecord{432158b0 android broadcastIntent}}
+  ELAPSED #4: Alarm{43373740 type 3 android}
+    type=3 when=+9d23h22m10s512ms repeatInterval=0 count=0
+    operation=PendingIntent{42d1a758: PendingIntentRecord{42d1a620 android broadcastIntent}}
+  ELAPSED #3: Alarm{42e793e0 type 3 com.android.phone}
+    type=3 when=+5h52m45s675ms repeatInterval=28800000 count=1
+    operation=PendingIntent{42ea55c8: PendingIntentRecord{42edda48 com.android.phone broadcastIntent}}
+  ELAPSED #2: Alarm{430ebf28 type 3 android}
+    type=3 when=+22m45s675ms repeatInterval=1800000 count=1
+    operation=PendingIntent{431195a0: PendingIntentRecord{43110280 android broadcastIntent}}
+  ELAPSED #1: Alarm{433e1520 type 3 com.tencent.mm}
+    type=3 when=+3m51s928ms repeatInterval=300000 count=1
+    operation=PendingIntent{434439f8: PendingIntentRecord{433e8d78 com.tencent.mm broadcastIntent}}
+  ELAPSED #0: Alarm{441b0470 type 3 android}
+    type=3 when=+17s710ms repeatInterval=0 count=0
+    operation=PendingIntent{4316b0b0: PendingIntentRecord{43153530 android broadcastIntent}}
+
+  Broadcast ref count: 0
+  表示在运行dumpsys alarm的时刻，该时刻并没有广播要发送
+
+  Top Alarms:
+  根据应用的唤醒系统的时间排行，
+  取最长时间的前十名，然后按照降序列出，
+  有助于找出第三方app因为编程不规范，而导致极度耗电
+
+    +5m30s209ms running, 0 wakeups, 1149 alarms: android
+       act=android.intent.action.TIME_TICK
+    +17s926ms running, 0 wakeups, 101 alarms: android
+       act=com.android.server.action.NETWORK_STATS_POLL
+    +10s105ms running, 100 wakeups, 100 alarms: android
+       act=android.appwidget.action.APPWIDGET_UPDATE cmp={com.sec.android.widgetapp.favoriteswidget/com.sec.android.widgetapp.favoriteswidget.SeniorFavoriteWidgetProviderSmall}
+    +8s928ms running, 4 wakeups, 4 alarms: com.android.providers.calendar
+       act=com.android.providers.calendar.intent.CalendarProvider2
+    +3s303ms running, 56 wakeups, 56 alarms: android
+       act=com.android.server.LightsService.action.UPDATE_SVC_LED
+    +2s45ms running, 12 wakeups, 12 alarms: com.tencent.mm
+       act=ALARM_ACTION(22056)
+    +1s491ms running, 14 wakeups, 14 alarms: android
+       act=com.android.internal.policy.impl.PhoneWindowManager.DELAYED_KEYGUARD
+    +1s487ms running, 0 wakeups, 2 alarms: android
+       act=android.intent.action.DATE_CHANGED
+    +1s421ms running, 0 wakeups, 14 alarms: com.tencent.mm
+       act=com.tencent.mm.TrafficStatsReceiver
+    +1s264ms running, 0 wakeups, 6 alarms: com.android.phone
+       act=com.android.phone.UPDATE_CALLER_INFO_CACHE cmp={com.android.phone/com.android.phone.CallerInfoCacheUpdateReceiver}
+
+  Alarm Stats:
+  列出所有系统中应用设置alarm的情况，
+  可以排查设置的闹钟是否起作用了
+  
+  设置alarm的应用包名，系统总体被该应用所有的alarm消耗的时间，设备被闹钟唤醒的次数 
+                       +1s857ms running is the total system time consumed by the processes
+每一项的意义：
++1s817ms    is total system time consumed
+0           wakes is the number of times the device had to be woken up
+83          alarms is the number of times the alarm has been triggered; 
+            this will only be >1 for repeating alarms
+cmp={...}   the service that was started when the alarm was triggered
+  
+  com.samsung.android.providers.context +803ms running, 0 wakeups:
+    +803ms 0 wakes 2 alarms: act=com.samsung.android.providers.context.analyzer.action.ANALYSIS_START_TIMEINTERVAL
+  android +5m50s36ms running, 212 wakeups:
+    +5m30s209ms 0 wakes 1149 alarms: act=android.intent.action.TIME_TICK
+    +17s926ms 0 wakes 101 alarms: act=com.android.server.action.NETWORK_STATS_POLL
+    +10s105ms 100 wakes 100 alarms: act=android.appwidget.action.APPWIDGET_UPDATE cmp={com.sec.android.widgetapp.favoriteswidget/com.sec.android.widgetapp.favoriteswidget.SeniorFavoriteWidgetProviderSmall}
+    +3s303ms 56 wakes 56 alarms: act=com.android.server.LightsService.action.UPDATE_SVC_LED
+    +1s491ms 14 wakes 14 alarms: act=com.android.internal.policy.impl.PhoneWindowManager.DELAYED_KEYGUARD
+    +1s487ms 0 wakes 2 alarms: act=android.intent.action.DATE_CHANGED
+    +631ms 0 wakes 2 alarms: act=edm.intent.action.elm.cleanrecords
+    +610ms 24 wakes 24 alarms: act=android.content.syncmanager.SYNC_ALARM
+    +497ms 17 wakes 17 alarms: act=com.android.internal.policy.impl.Keyguard.LANDSCAPE_WAKE_TIME_LIMIT_EXPIRED
+    +99ms 1 wakes 1 alarms: act=android.net.wifi.DHCP_RENEW
+  com.tencent.mm +3s543ms running, 17 wakeups:
+    +2s45ms 12 wakes 12 alarms: act=ALARM_ACTION(22056)
+    +1s421ms 0 wakes 14 alarms: act=com.tencent.mm.TrafficStatsReceiver
+    +161ms 1 wakes 1 alarms: cmp={com.tencent.mm/com.tencent.mm.booter.MMReceivers$AlarmReceiver}
+    +114ms 1 wakes 1 alarms: act=ALARM_ACTION(23311)
+    +27ms 1 wakes 1 alarms: act=ALARM_ACTION(21877)
+    +18ms 2 wakes 2 alarms: act=ALARM_ACTION(21936)
+  com.android.providers.calendar +9s375ms running, 6 wakeups:
+    +8s928ms 4 wakes 4 alarms: act=com.android.providers.calendar.intent.CalendarProvider2
+    +447ms 2 wakes 2 alarms: act=com.android.providers.calendar.SCHEDULE_ALARM cmp={com.android.providers.calendar/com.android.providers.calendar.CalendarReceiver}
+  com.sec.android.widgetapp.SPlannerAppWidget +608ms running, 0 wakeups:
+    +608ms 0 wakes 2 alarms: act=com.sec.android.widgetapp.SPlannerAppWidget.APPWIDGET_SCHEDULED_UPDATE
+  com.sec.android.app.sysscope +1ms running, 0 wakeups:
+    +1ms 0 wakes 1 alarms: act=com.sec.intent.action.SYSSCOPE
+  com.sec.esdk.elm +402ms running, 2 wakeups:
+    +402ms 2 wakes 2 alarms: act=com.sec.esdk.elm.alarm.SAVE_APICALLLOG
+  com.android.phone +1s264ms running, 0 wakeups:
+    +1s264ms 0 wakes 6 alarms: act=com.android.phone.UPDATE_CALLER_INFO_CACHE cmp={com.android.phone/com.android.phone.CallerInfoCacheUpdateReceiver}

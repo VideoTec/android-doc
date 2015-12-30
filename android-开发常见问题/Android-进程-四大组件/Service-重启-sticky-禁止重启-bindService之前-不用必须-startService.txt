@@ -1,0 +1,37 @@
+关于 bindService 和 startService
+
+1） 两种方式都会调用服务的 onCreate 和 onDestroy
+2） startService() 调用 onStartCommand
+    bindService() 调用 onBind 和 onUnBind
+    
+两种方式的生命周期-结束方式不同：
+
+startService()方法启用服务：一直存在直到
+只要调用一次stopService或者stopSelf，Service都会停止
+
+bindService()方法启用服务：
+调用者与服务绑定在了一起，调用者一旦退出，服务也就终止
+解释：
+1）调用了相当次数的 UnbindService 
+或者
+2）调用 bindService 的 context 销毁了
+
+http://stackoverflow.com/questions/5819368/android-service-can-be-bind-without-start
+
+I found the solution, so am sharing with all of you.
+
+There are 2 types of Services : One where you start and stop. This can be started and stopped only once in an application. Other you Bind and Unbind as required N number of times. My Service is of second type. But just bind and unbind doesn't do the job. The service first needs to be started then only it cna be bound and unbound. So on start of app or whereever appropriate, Start the service. Then Bind when required. When don with it, Unbind it. That Bind-Unbind circle can go on. And Finally when you are sure you don't need it or at the end of the app Stop the Service. So the flow comes as Start -> Bind -> Unbind -> Stop <-
+
+Hope this helps someone.
+
+http://stackoverflow.com/questions/6896161/wait-on-startservice-before-bindservice
+
+http://blog.csdn.net/mad1989/article/details/22492519
+远程服务 Remote Service 
+用于android系统内部的应用程序之间
+它可以通过自己定义并暴露出来的接口进行程序操作。
+客户端建立一个到服务对象的连接，并通过那个连接来调用服务。
+连接以调用Context.bindService()方法建立，
+以调用 Context.unbindService()关闭。
+多个客户端可以绑定至同一个服务。
+如果服务此时还没有加载，bindService()会先加载它

@@ -1,0 +1,24 @@
+示例：
+    <permission
+        android:name="com.feinno.beside.permission.WRITE_SCHEDULE"
+        android:description="@string/permission_write"
+        android:label="@string/permission_write"
+        android:protectionLevel="normal" />
+
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/permission-element.html
+
+Declares a security permission 
+that can be used to limit access to 
+specific components or features of this or other applications. 
+See the Permissions section in the introduction, 
+and the Security and Permissions document for more information on how permissions work.
+
+<permission android:description="string resource"
+            android:icon="drawable resource"
+            android:label="string resource"
+            android:name="string"
+            android:permissionGroup="string"
+            android:protectionLevel=["normal" | "dangerous" | 
+                                     "signature" | "signatureOrSystem"] />
+                                     
+                                     

@@ -1,0 +1,36 @@
+http://www.cnblogs.com/newcj/archive/2011/05/30/2061370.html
+特别注意：
+
+1、你应当知道在调用 bindService 绑定到Service的时候，
+你就应当保证在某处调用 unbindService 解除绑定
+（尽管 Activity 被 finish 的时候绑定会自动解除，并且Service会自动停止）；
+
+2、你应当注意 使用 startService 启动服务之后，
+一定要使用 stopService停止服务，
+不管你是否使用bindService； 
+
+3、同时使用 startService 与 bindService 要注意到，
+Service 的终止，需要unbindService与stopService同时调用，
+才能终止 Service，
+不管 startService 与 bindService 的调用顺序，
+
+如果先调用 unbindService 此时服务不会自动终止，
+再调用 stopService 之后服务才会停止，
+
+如果先调用 stopService 此时服务也不会终止，
+而再调用 unbindService 或者 
+之前调用 bindService 的 Context 不存在了（如Activity 被 finish 的时候）
+之后服务才会自动停止；
+
+4、当在旋转手机屏幕的时候，
+当手机屏幕在“横”“竖”变换时，
+此时如果你的 Activity 如果会自动旋转的话，
+旋转其实是 Activity 的重新创建，
+因此旋转之前的使用 bindService 建立的连接便会断开（Context 不存在了），
+对应服务的生命周期与上述相同。
+
+5、在 sdk 2.0 及其以后的版本中，
+对应的 onStart 已经被否决变为了 onStartCommand，
+不过之前的 onStart 任然有效。
+这意味着，如果你开发的应用程序用的 sdk 为 2.0 及其以后的版本，
+那么你应当使用 onStartCommand 而不是 onStart。

@@ -1,1 +1,19 @@
+关于 bindService 和 startService
+
+1） 两种方式都会调用服务的 onCreate 和 onDestroy
+2） startService() 调用 onStartCommand
+    bindService() 调用 onBind 和 onUnBind
+    
+两种方式的生命周期-结束方式不同：
+
+startService()方法启用服务：一直存在直到
+只要调用一次stopService或者stopSelf，Service都会停止
+
+bindService()方法启用服务：
+调用者与服务绑定在了一起，调用者一旦退出，服务也就终止
+解释：
+1）调用了相当次数的 UnbindService 
+或者
+2）调用 bindService 的 context 销毁了
+
 https://www.safaribooksonline.com/library/view/android-application-development/9780596156220/ch01s06.html

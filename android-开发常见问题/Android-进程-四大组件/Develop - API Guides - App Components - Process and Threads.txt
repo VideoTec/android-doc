@@ -1,4 +1,6 @@
-�ĵ���
+http://developer.android.com/intl/zh-cn/guide/components/processes-and-threads.html
+
+文档：
 Develop - API Guides - App Components - Process and Threads
 
 When an application component starts and 
@@ -19,3 +21,9 @@ and you can create additional threads for any process.
 
 This document discusses how processes and threads work in an Android application.
 
+1）Processes
+2）Process lifecycle
+3）Threads
+4）Worker threads
+5）Using AsyncTask
+6）Thread-safe methods

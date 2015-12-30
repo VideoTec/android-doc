@@ -1,0 +1,20 @@
+http://www.cnblogs.com/HQMIS/archive/2013/01/28/2880584.html
+
+查看Service列表
+
+>adb shell service list
+Found 1 services:
+0 phone: [com.android.internal.telephony.ITelephony]
+
+ 
+
+检查Service是否存在
+
+>adb shell service check phone
+Service phone: found
+
+ 
+
+使用Service
+
+>adb shell service call phone 2 s16 "10086"

@@ -1,0 +1,3 @@
+http://developer.android.com/intl/zh-cn/guide/components/fundamentals.html
+
+Develop - API Guides - Introduction - App Fundamentals

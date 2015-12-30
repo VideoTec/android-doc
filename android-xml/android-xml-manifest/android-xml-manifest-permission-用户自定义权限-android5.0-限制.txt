@@ -1,0 +1,156 @@
+http://developer.android.com/intl/zh-cn/about/versions/android-5.0-changes.html#custom_permissions
+
+Uniqueness Requirement for Custom Permissions
+
+As documented in the Permissions overview, 
+Android apps can define custom permissions 
+as a means of managing access to components in a proprietary way, 
+without using the platform’s pre-defined system permissions. 
+Apps define custom permissions in <permission> elements 
+declared in their manifest files.
+
+scenarios[英][sɪ'nɑ:ri:əʊz] [美][sɪ'nɑ:ri:oʊz]
+n.[意]情节；剧本；事态；脚本
+
+There are a small number of scenarios 
+where defining custom permissions is a legitimate and secure approach. 
+However, creating custom permissions is sometimes unnecessary and 
+can even introduce potential risk to an app, 
+depending on the protection level assigned to the permissions.
+
+Android 5.0 includes a behavior change to ensure that 
+only one app can define a given custom permission, 
+unless signed with the same key as other apps defining the permission.
+
+分以下几部分介绍：
+1）Apps using duplicate custom permissions
+2）Considerations for your app
+3）New installs and updates
+4）Existing installs with Android 5.0 system update
+5）Recommendations
+
+-------------------------------------------------
+Apps using duplicate custom permissions
+-------------------------------------------------
+
+Any app can define any custom permission it wants, 
+so it can happen that multiple apps might define the same custom permission. 
+For example, 
+if two apps offer a similar capability, 
+they might derive the same logical name for their custom permissions. 
+Apps might also incorporate common public libraries or code examples 
+that themselves include the same custom permission definitions.
+
+In Android 4.4 and earlier, 
+users were able to install multiple such apps on a given device, 
+although the system assigned the protection level 
+specified by the first-installed app.
+
+Starting in Android 5.0, 
+the system enforces a new uniqueness 
+restriction on custom permissions for apps 
+that are signed with different keys. 
+Now only one app on a device can 
+define a given custom permission (as determined by its name), 
+unless the other app defining the permission is signed with the same key.
+ 
+If the user tries to install an app 
+with a duplicate custom permission and 
+is not signed with the same key as the resident app 
+that defines the permission, the system blocks the installation.
+
+-------------------------------------------------
+Considerations for your app
+-------------------------------------------------
+
+In Android 5.0 and later, 
+apps can continue to define their own custom permissions 
+just as before and to request custom permissions 
+from other apps through the <uses-permission> mechanism. 
+However with the new requirement introduced in Android 5.0, 
+you should carefully assess possible impacts on your app.
+
+Here are some points to consider:
+
+Does your app declare any <permission> elements in its manifest? 
+If so, are they actually necessary 
+to the proper function of your app or service? 
+Or could you use a system default permission instead?
+
+If you have <permission> elements in your app, 
+do you know where they came from?
+
+Do you actually intend for other apps 
+to request your custom permissions through <uses-permission>?
+
+Are you using boilerplate or example code in your app 
+that includes <permission> elements? 
+
+Are those permission elements actually necessary?
+Do your custom permissions use names 
+that are simple or based on common terms that other apps might share?
+
+-------------------------------------------------
+New installs and updates
+-------------------------------------------------
+
+As mentioned above, 
+for new installs and updates of your app on devices 
+running Android 4.4 or earlier are unaffected and 
+there is no change in behavior. 
+
+For new installs and updates on devices running Android 5.0 or later, 
+the system prevents installation of your app 
+if it defines a custom permission 
+that is already defined by an existing resident app.
+
+-------------------------------------------------
+Existing installs with Android 5.0 system update
+-------------------------------------------------
+
+If your app uses custom permissions and 
+is widely distributed and installed, 
+there’s a chance that it will be affected 
+when users receive update their devices to Android 5.0. 
+
+After the system update is installed, 
+the system revalidates installed apps, 
+including a check of their custom permissions. 
+
+If your app defines a custom permission 
+that is already defined by another app that has already been validated, 
+and your app is not signed with the same key as the other app, 
+the system does not re-install your app.
+
+-------------------------------------------------
+Recommendations
+-------------------------------------------------
+
+On devices running Android 5.0 or later, 
+we recommend that you examine your app immediately, 
+make any adjustments needed, 
+and publish the updated version as soon as possible to your users.
+
+1）If you are using custom permissions in your app, 
+consider their origin and whether you actually need them. 
+Remove all <permission> elements from your app, 
+unless you are certain that they are required for proper function of your app.
+
+2）Consider replacing your custom permissions 
+with system default permissions where possible.
+
+3）If your app requires custom permissions, 
+rename your custom permissions to be unique to your app, 
+such as by appending them to the full package name of your app.
+
+4）If you have a suite of apps signed with different keys and 
+the apps access a shared component by means of a custom permission, 
+make sure that the custom permission is only defined once, 
+in the shared component. 
+Apps that use the shared component 
+should not define the custom permission themselves, 
+but should instead request access through the <uses-permission> mechanism.
+
+5）If you have a suite of apps are signed with the same key, 
+each app can define the same custom permission(s) as needed — 
+the system allows the apps to be installed in the usual way.

@@ -1,0 +1,20 @@
+https://github.com/T-Spoon/Android-Developer-Toolbelt
+
+-----------------------------------------
+Android Developer Toolbelt
+-----------------------------------------
+On-device low-memory testing for Android. 
+Fill your phone's RAM and see how your application performs. 
+Download the app, tap the Fill Memory button, 
+and re-open your app - hopefully nothing breaks :)
+
+-----------------------------------------
+Why?
+-----------------------------------------
+
+In my expierence this is 
+where the majority of bugs in Android applications are found. 
+
+It's also one of the hardest and most time consuming things to test. 
+If you're getting large volumes of seemingly un-reproducable crashes in your logs, 
+my bet is it's something to do with your app being put into a background state.

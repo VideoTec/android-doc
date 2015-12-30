@@ -1,0 +1,8 @@
+查看设备cpu和内存占用情况：
+adb shell top
+
+查看占用内存前6的app：
+adb shell top -m 6
+
+刷新一次内存信息，然后返回：
+adb shell top -n 1

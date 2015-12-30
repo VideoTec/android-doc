@@ -1,9 +1,0 @@
-http://stackoverflow.com/questions/5819368/android-service-can-be-bind-without-start
-
-I found the solution, so am sharing with all of you.
-
-There are 2 types of Services : One where you start and stop. This can be started and stopped only once in an application. Other you Bind and Unbind as required N number of times. My Service is of second type. But just bind and unbind doesn't do the job. The service first needs to be started then only it cna be bound and unbound. So on start of app or whereever appropriate, Start the service. Then Bind when required. When don with it, Unbind it. That Bind-Unbind circle can go on. And Finally when you are sure you don't need it or at the end of the app Stop the Service. So the flow comes as Start -> Bind -> Unbind -> Stop <-
-
-Hope this helps someone.
-
-http://stackoverflow.com/questions/6896161/wait-on-startservice-before-bindservice

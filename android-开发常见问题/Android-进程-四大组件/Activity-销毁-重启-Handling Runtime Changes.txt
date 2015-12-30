@@ -1,0 +1,10 @@
+file:///E:/android-sdk-windows/docs/guide/topics/resources/runtime-changes.html
+
+In this document
+Retaining an Object During a Configuration Change
+Handling the Configuration Change Yourself
+
+See also
+Providing Resources
+Accessing Resources
+Faster Screen Orientation Change

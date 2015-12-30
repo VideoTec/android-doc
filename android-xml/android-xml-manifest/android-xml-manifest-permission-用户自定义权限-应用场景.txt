@@ -1,0 +1,71 @@
+1）自定义权限 相对于 系统定义权限
+2）使用自定义权限，和使用系统定义权限，方法一致
+3）自定义权限具有： 名称、标签、图标、权限组、描述和保护级别 这些属性
+4）使用 eclipse 自动生成自定义权限
+5）配置组件的 自定义权限级别
+   <activity android:name="PrivActivity"  
+            android:permission="syh.permission.STARTMYACTIVITY">  
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />  
+                <category  
+                    android:name="android.intent.category.LAUNCHER" />  
+            </intent-filter>  
+   </activity> 
+
+http://stackoverflow.com/questions/8816623/how-to-use-custom-permissions-in-android
+
+http://stackvoid.com/Understanding-security-on-Android-2/
+全面理解 Android 安全机制(Android Permission)
+
+自定义 Permission
+APP 可以自己定义 Permission 来限制别的APP访问自己的资源。
+别的应用想访问此 APP 的资源，
+必须在自己的 AndroidManifest.xml 中添加此 Permission。
+自定义权限也是在 AndroidManifest.xml 通过 <permission> 标签定义。
+
+最重要理解 android:protectionLevel 属性的意义：
+
+2）B 应用使用A的自定义权限：
+<!-- 声明使用指定的权限 -->
+<uses-permission android:name="com.stackvoid.android.ACCESS_PRIVATE_DATA_TEST" />
+
+1）A 应用自定义权限：
+<manifest xmlns:android="htttp://schemas.android.com/qpk/res/android"
+package="com.stackvoid.xxx"
+>
+<permission
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="com.stackvoid.android.ACCESS_PRIVATE_DATA_TEST"
+        android:description="@string/permission_description"
+        android:label="@string/permission_label"
+        android:protectionLevel="dangerous"
+        android：permissionGroup="android.permission-group.PERSONAL_INFO"
+    >
+</permission>
+</manifest>
+
+以上 XML 语句定义了一个属于 com.stackvoid.xxx 包的新权限
+ - ACCESS_PRIVATE_DATA_TEST，
+ 
+这就意味着用户如果授予另外一个程序 ACCESS_PRIVATE_DATA_TEST 权限
+所有通过 xxx 应用产生的数据都可以被那个应用程序读取到。
+这里，我们将 protectionLevel 设置为 dangerous，
+PERSONAL_INFO 定义在 android.permission-group 包中，
+表示 ACCESS_PRIVATE_DATA_TEST 属于 PERSONAL_INFO 这一组。
+
+这里我们最关心的选项是 protectionLevel：
+
+normal，
+默认值。系统自动授予此 Permission，
+在 APP 安装的时候能看到申请此 Permission。
+
+signature，
+具有相同的 Signature的 APP，才能申请此 Permission，否则，系统拒绝。
+
+dangerous，
+一般来说系统不会自动授予此 Permission，
+因为此 Permission 会有潜在的威胁；
+一般来说在使用 APP 的过程中，需要用到此权限，会弹出窗口，让用户来授权。
+
+http://byandby.iteye.com/blog/1028034
+android 理解和使用自定义权限

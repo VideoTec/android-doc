@@ -1,0 +1,57 @@
+dumpsys activity com.tencent.mm
+dumpsys activity activities com.tencent.mm
+adb shell dumpsys activity intents
+
+shell@m0cmcc:/ $ dumpsys activity com.tencent.mm
+dumpsys activity com.tencent.mm
+TASK com.tencent.mm id=38
+  ACTIVITY com.tencent.mm/.ui.LauncherUI 4477f838 pid=23311
+    Local FragmentActivity 42e01388 State:
+      mCreated=truemResumed=false mStopped=true mReallyStopped=true
+      mLoadersStarted=false
+    FragmentManager misc state:
+      mActivity=com.tencent.mm.ui.LauncherUI@42e01388
+      mContainer=android.support.v4.app.FragmentActivity$2@42d6c790
+      mCurState=2 mStateSaved=true mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{42e1e690 V.E..... ... 0,0-720,1280}
+        android.sec.multiwindow.impl.BorderFrameLayout{42cd7830 V.E..... ... 0,0-720,1280 #1020407 android:id/windowBorder}
+          android.widget.LinearLayout{42ce2d50 V.E..... ... 0,0-720,1280 #1020408 android:id/windowContentFrame}
+            android.widget.ImageView{42ccc908 G.ED.... ... 0,0-0,0 #1020409 android:id/windowIconic}
+            android.widget.LinearLayout{42cf0798 V.E..... ... 0,0-720,1280}
+              com.android.internal.widget.ActionBarOverlayLayout{42e81070 V.E..... ... 0,0-720,1280 #1020460 android:id/action_bar_overlay_layout}
+                android.widget.FrameLayout{42c9b930 V.E..... ... 0,50-720,1280 #1020002 android:id/content}
+                  com.tencent.mm.ui.account.WelcomeSelectView{42eee6c0 V.E..... ... 0,0-720,1230}
+                    android.widget.FrameLayout{42d161c0 V.E..... ... 0,0-720,1230}
+                      android.widget.FrameLayout{42d06e20 V.E..... ... 0,0-720,1230 #7f0e1113 app:id/cg5}
+                        android.widget.ImageView{42d2b950 V.ED.... ... 0,0-720,1230 #7f0e1114 app:id/cg6}
+                      android.widget.TextView{42d11448 V.ED..C. ... 610,26-694,94 #7f0e1116 app:id/cg8}
+                      android.widget.RelativeLayout{42d3d778 V.E..... ... 0,0-720,1230}
+                        android.widget.RelativeLayout{42d3e898 V.E..... ... 0,1094-720,1190 #7f0e1117 app:id/cg9}
+                          android.widget.Button{42d0fe68 VFED..C. ... 42,0-288,96 #7f0e0da8 app:id/btt}
+                          android.widget.Button{42d2fd20 VFED..C. ... 434,0-680,96 #7f0e0da7 app:id/bts}
+                android.widget.LinearLayout{42c980b0 G.E..... ... 0,0-0,0 #1020461 android:id/top_action_bar}
+                  com.android.internal.widget.ActionBarContainer{42e784a8 V.ED.... ... 0,0-0,0 #1020462 android:id/action_bar_container}
+                    com.android.internal.widget.ActionBarView{42e1f928 V.E..... ... 0,0-0,0 #1020463 android:id/action_bar}
+                      android.widget.LinearLayout{42c9a3d8 V.....C. ... 0,0-0,0}
+                        com.android.internal.widget.ActionBarView$HomeView{42ce3490 G.E..... ... 0,0-0,0}
+                          android.widget.ImageView{42e6e2a8 G.ED.... ... 0,0-0,0 #1020294 android:id/up}
+                          android.widget.ImageView{42e72590 V.ED.... ... 0,0-0,0 #102002c android:id/home}
+                      android.widget.LinearLayout{42d0a588 V.E...C. ... 0,0-0,0 #7f0e00e1 app:id/fd}
+                        android.view.View{42deaf10 G.ED.... ... 0,0-0,0 #7f0e00de app:id/fa}
+                        android.widget.LinearLayout{42d0ce48 G.E...C. ... 0,0-0,0 #7f0e00df app:id/fb}
+                          android.widget.ImageView{42e6bbd0 G.ED.... ... 0,0-0,0 #7f0e00e0 app:id/fc}
+                          android.widget.ImageView{42e78810 V.ED.... ... 0,0-0,0 #7f0e00c9 app:id/eq}
+                        android.widget.LinearLayout{42d124f0 V.E..... ... 0,0-0,0}
+                          android.widget.RelativeLayout{42d190b0 V.E..... ... 0,0-0,0}
+                            android.widget.ImageView{42e78b10 I.ED..C. ... 0,0-0,0 #7f0e00e2 app:id/fe}
+                            android.widget.TextView{42d8e170 V.ED.... ... 0,0-0,0 #1020014 android:id/text1}
+                          android.widget.TextView{42d9a400 G.ED.... ... 0,0-0,0 #1020015 android:id/text2}
+                      com.android.internal.view.menu.ActionMenuView{42e6d088 V.ED.... ... 0,0-0,0}
+                        com.android.internal.view.menu.ActionMenuItemView{42ef2368 VFED..CL ... 0,0-0,0 #1}
+                        android.widget.RelativeLayout{42d47078 V.E...C. ... 0,0-0,0 #2}
+                          android.widget.ImageView{42d01238 V.ED.... ... 0,0-0,0 #7f0e00af app:id/e1}
+                          android.widget.ImageView{42e01090 G.ED.... ... 0,0-0,0 #7f0e00e5 app:id/fh}
+                    com.android.internal.widget.ActionBarContextView{42e00d10 G.E..... ... 0,0-0,0 #1020464 android:id/action_context_bar}
+                  android.widget.ImageView{42e7da30 V.ED.... ... 0,0-0,0}
+                com.android.internal.widget.ActionBarContainer{42d06ac8 G.ED.... ... 0,0-0,0 #1020465 android:id/split_action_bar}

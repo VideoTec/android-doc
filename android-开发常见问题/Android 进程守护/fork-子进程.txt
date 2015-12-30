@@ -1,0 +1,14 @@
+http://coolerfall.com/android/android-app-daemon/
+源码： https://github.com/Coolerfall/Android-AppDaemon
+
+https://www.zhihu.com/question/22749446
+通过绿色守护发现，只要打开百度旗下的某一款app，
+其他百度系的app也会自动后台启动，百度为什么要这么做？
+
+http://stackoverflow.com/questions/21279270/android-can-native-code-get-broadcast-intent-from-android-system/21337119#answer-21337119
+
+http://blog.csdn.net/a332324956/article/details/9114919
+android应用创建子进程的方法探究
+
+http://www.linux.org/threads/android-services-and-daemons.7143/
+Android Services and Daemons
