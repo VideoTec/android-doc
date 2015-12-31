@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/4658511/android-how-to-decide-whether-to-run-a-service-in-a-separate-process
+
+A common misunderstanding about Android multitasking 
+is the difference between a process and an application. 
+
+In Android these are not tightly coupled entities: 
+applications may seem present to the user 
+without an actual process currently running the app; 
+multiple applications may share processes, 
+or one application may make use of multiple processes depending on its needs;
+the process(es) of an application may be kept around 
+by Android even when that application is not actively doing something.

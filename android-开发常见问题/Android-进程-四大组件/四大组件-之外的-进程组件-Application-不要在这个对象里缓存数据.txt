@@ -1,0 +1,17 @@
+elegant[英][ˈelɪgənt] [美][ˈɛlɪɡənt]
+adj.（人或其举止）优美的；漂亮的；简炼的；简洁的
+
+http://www.developerphil.com/dont-store-data-in-the-application-object/
+
+There is always some information that is needed in many places in your app. 
+It can be a session token, the result of an expensive computation, etc. 
+It is often tempting to 
+1）avoid the overhead of passing objects between activities or
+http://www.developerphil.com/parcelable-vs-serializable/ 
+2）keeping those in persistent storage.
+http://developer.android.com/guide/topics/data/data-storage.html
+
+A pattern that is sometimes suggested is 
+to dump your data in the Application object 
+with the idea that it will be available across all activities. 
+This solution is simple, elegant and… totally wrong.

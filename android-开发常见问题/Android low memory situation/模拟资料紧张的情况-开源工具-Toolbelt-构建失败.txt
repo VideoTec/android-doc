@@ -10,6 +10,13 @@ Execution failed for task ':app:crashlyticsGenerateResourcesDebug'.
 Run with --stacktrace option to get the stack trace. 
 Run with --info or --debug option to get more log output.
 
+错误原因：
+
+app/build.gradle
+
+// Note, this will throw an error from Crashlytics without a valid key
+properties.setProperty("crashlytics.key", "INVALID_KEY")
+
 解决方法：
 Crashlytics是基于云的错误报告解决方案，
 旨在找到所有崩溃应用的共同点。 

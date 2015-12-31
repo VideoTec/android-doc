@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/4658511/android-how-to-decide-whether-to-run-a-service-in-a-separate-process
+
+The first place to start is by reading through the description of component lifecycles. The take away from that is you really are not guaranteed that a Service or other component will be allowed to run for a long period of time.
+
+However, it does sound like a Service is the right choice for the functionality you describe. This is because you are doing some operations that are not user facing. Going back to the lifecycle description, any time an Activity is not in the foreground, it is essentially a candidate for being killed.
+
+What you should consider doing is using AlarmManager to periodically trigger your Service. You might want also to look at using the WakefulIntent library that @CommonsWare has created.
+
+There is a good article describing multitasking and processes on the Android blog called Multitasking the Android Way that might get at some of the more details regarding processes you are interested in. 
+
+--------------------------------
+任务 和 进程的区别
+--------------------------------
+A common misunderstanding about Android multitasking is the difference between a process and an application. In Android these are not tightly coupled entities: applications may seem present to the user without an actual process currently running the app; multiple applications may share processes, or one application may make use of multiple processes depending on its needs; the process(es) of an application may be kept around by Android even when that application is not actively doing something.

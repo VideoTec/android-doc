@@ -1,0 +1,11 @@
+E:\doc\android\android-开发常见问题\Android-进程-四大组件\Service-重启-sticky-禁止重启-重启造成的异常.txt
+
+猜测：beside进程crash后，其中的服务，在主进程中创建？
+（三星I9308）经测试不对，确实在，身边进程中启动。
+
+为什么会，在飞信进程里崩呢，因为飞信也会捕获身边的崩溃
+
+http://stackoverflow.com/questions/15473957/android-service-restarting-when-application-is-killed
+
+怎么保证，启动服务的进程崩后，服务不销毁？
+销毁的原因是：调用服务的 context 没了。

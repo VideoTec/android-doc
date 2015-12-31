@@ -1,3 +1,6 @@
+E:\android\adt\sdk\platform-tools\adb logcat -c
+E:\android\adt\sdk\platform-tools\adb logcat -v threadtime -s VA:V VideoProcessor:V ProgressDialogTask:V DEBUG:V GLSurfaceView:V GLThread:V AndroidRuntime:V MediaPlayer:V ExcecuteProject:V FVideoJNI:V libc:V fvideo:V TestPVideo:V dalvikvm-heap:V dalvikvm:V TTTT:V> c:\logcat.txt
+
 Usage: logcat [options] [filterspecs]
 options include:
   -s              Set default filter to silent.

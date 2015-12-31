@@ -1,0 +1,19 @@
+http://kyleduo.com/?p=411
+
+Application is initialized multi-times 
+when there were multiple processes in Android.
+
+http://stackoverflow.com/questions/12809737/android-application-class-method-oncreate-being-called-multiple-times
+
+I think that you have additional process in your application. 
+That is why Application.onCreate is called more than once. 
+
+Look into your manifest file and try to find the activity or service 
+with something like android:process= . 
+This means that activity/service is starting in second Dalvik VM, 
+and that's why another application instance is created
+
+http://www.cnblogs.com/0616--ataozhijia/p/4203433.html
+一般来说Application的onCreate方法只会执行一次，
+如果应用中采用多进程方式，oncreate方法会执行多次，根据不同的进程名字进行不同的初始化，
+就是在application中多添加几个if else
