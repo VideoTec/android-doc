@@ -26,7 +26,9 @@
 关于进程的疑问：
 崩在 onCreate 里，
 即使 CoreService 配置在 :beside 进程中。
-因为 Service.onCreate 因为是在主进程里启动，捕获到 crash
+因为 Service.onCreate 因为是在主进程里启动，捕获到 crash 
+（这个假设不对）飞信也是所有进程的异常都捕获
+new CrashHandler(fTag).init(APP_PRE_TERMINATE_MILLIS, new AppOnCrash());
 
 java.lang.RuntimeException: Unable to create service com.feinno.sdk.service.CoreService: java.lang.NullPointerException: Attempt to invoke virtual method 'android.content.SharedPreferences android.content.Context.getSharedPreferences(java.lang.String, int)' on a null object reference
 	at android.app.ActivityThread.handleCreateService(ActivityThread.java:3661)

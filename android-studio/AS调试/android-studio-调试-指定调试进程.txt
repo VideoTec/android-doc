@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/2952140/android-how-do-i-mark-my-app-as-debuggable/2952470#2952470
+
+By putting android:debuggable="true" in your manifest file, application will go in debug mode, that's mean android will manage all logs file regarding your application. But make sure put it again false(or remove this tag) if application will going to live or for release mode.
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    ...
+    <application android:icon="@drawable/icon"
+        android:debuggable="true"
+        
+http://stackoverflow.com/questions/17677506/android-studio-open-debug-mode-when-app-is-running
+
+In Android Studio (I'm currently using I/O Preview 0.2.10) simply click on the icon in the toolbar that looks like a phone with a bug over it - the hover text says: Attach debugger to Android process. It's the third icon along: Attach debugger
+
+A list will then appear showing your processes that you can debug. Choose one and select OK - your application is now being debugged!
+
+Note: Make sure your app is debuggable, as shown here.

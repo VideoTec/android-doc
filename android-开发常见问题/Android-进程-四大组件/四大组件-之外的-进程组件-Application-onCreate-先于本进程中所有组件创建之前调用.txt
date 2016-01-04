@@ -1,3 +1,9 @@
+参考
+E:\doc\android\android-开发常见问题\Android-进程-四大组件\Service-重启-sticky-禁止重启-重启造成的异常.txt
+
+application 只有飞信进程重启时，才会，调用 initBeside。
+什么时候还会调用 initBeside?
+
 http://developer.android.com/intl/zh-cn/reference/android/app/Application.html#onCreate()
 
 public void onCreate ()
