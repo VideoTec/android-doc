@@ -1,3 +1,13 @@
+12:31 2016/1/5
+
+root@lte26007:/etc # cp /sdcard/hosts hosts
+cp /sdcard/hosts hosts
+cp: hosts: Read-only file system
+
+恢复回去时，出错：
+255|shell@lte26007:/ $ mount -o ro,remount /system
+mount: Operation not permitted
+
 ---------------------------
 第一个问题
 ---------------------------

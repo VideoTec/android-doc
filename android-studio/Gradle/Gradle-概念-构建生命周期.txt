@@ -1,0 +1,20 @@
+http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle
+
+相对于Maven完全线性的生命周期，
+Gradle的构建生命周期略微复杂，不过也更为灵活，
+例如jar这个任务是用来打包的，
+
+它不像Maven那样依赖于执行测试的test任务，类似的，从图中可以看到，
+一个最终的build任务也没有依赖于uploadArchives任务。
+这个生命周期并没有将用户限制得很死，
+
+举个例子，我希望每次build都发布 SNAPSHOT版本到Maven仓库中，
+而且我只想使用最简单的$ gradle clean build命令，
+那只需要添加一行任务依赖配置即可：
+
+build.dependsOn 'uploadArchives'
+
+由于Gradle完全是基于灵活的任务模型，
+因此很多事情包括覆盖现有任务，跳过任务都非常易于实现。
+而这些事情，在Maven的世界中，实现起来就比较的麻烦，
+或者说Maven压根就不希望用户这么做

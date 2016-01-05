@@ -1,0 +1,42 @@
+https://en.wikipedia.org/wiki/Apache_Maven
+
+<!-- coordinates of the required library -->
+      
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      
+https://www.safaribooksonline.com/library/view/building-and-testing/9781449306816/ch04.html
+
+<!-- The smallest possible Maven POM.xml -->
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gradleware.samples</groupId>
+  <artifactId>sample01-barestbones</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</project>
+
+While often desirable to have the formal vectors of 
+1）groupId, 
+2）artifactId, and 
+3）version for a build, 
+there are equally times where it is overkill. 
+No allowance is made for that in Maven. 
+You must provide all the fields. 
+Adding a final bit of cruft, 
+you also need the modelVersion field, 
+just in case Maven should ever decide to expand its vocabulary of tags
+
+The Standard Maven Coordinates, Gradle Properties
+
+That comparison of a one line build.gradle 
+to the most minimal pom.xml was valid, 
+but not completely controlled in 
+the metadata values for groupId, artifactId, and version. 
+
+In Gradle, 
+1）the groupId is known just as group, 
+2）the artifactId is known as name, and 
+3）the version is identically version. 
+Formally, each of these kind of fields is known as a property in Gradle 
+since we are saving state in POJO objects under the hood.

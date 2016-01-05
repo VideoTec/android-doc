@@ -1,0 +1,5 @@
+https://www.safaribooksonline.com/library/view/building-and-testing/9781449306816/
+
+Book Description
+
+Gradle is the project automation tool that is taking the Java world by storm. This ebook shows you to us Gradle for building and testing software written in Java and other JVM languages. It covers transitioning to Gradle from Maven, integration with IDEs such as Eclipse, and more.

@@ -1,0 +1,38 @@
+http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle
+
+自动化依赖管理的基石是仓库，
+Maven中央仓库已经成为了Java开发者不可或缺的资源，
+Gradle既然有依赖管理，那必然也得用到仓库，
+这当然也包括了Maven中央仓库，就像这样：
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    mavenRepo urls: "http://repository.sonatype.org/content/groups/forge/"
+}
+
+这段代码几乎不用解释，
+就是在Gradle中配置使用Maven本地仓库、中央仓库、以及自定义地址仓库。
+在我实际构建项目的时候，能看到终端打印的下载信息，
+下载后的文件被存储在 USER_HOME/.gradle/cache/ 目录下供项目使用，
+这种实现的方法与Maven又是及其类似了，
+可以说Gradle不仅最大限度的继承Maven的很多理念，仓库资源也是直接拿来用
+
+Gradle项目生成的构件是否可以发布到Maven仓库中供人使用呢？
+这一点非常重要，
+因为如果做不到这一点，你可能就会丢失大量的用户。
+幸运的是Gradle再次给出了令人满意的答案。
+使用Gradle的Maven Plugin，
+用户就可以轻松地将项目构件上传到Maven仓库中
+
+apply plugin: 'maven'
+...
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "http://localhost:8088/nexus/content/repositories/snapshots/") {
+            authentication(userName: "admin", password: "admin123")
+            pom.groupId = "com.juvenxu"
+            pom.artifactId = "account-captcha"
+        }
+    }
+}

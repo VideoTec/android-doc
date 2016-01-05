@@ -1,0 +1,123 @@
+一个消息接收器：
+        android:name=".booter.MMReceivers$ToolsProcessReceiver" 
+
+所有的 ACT 列表：
+        android:name=".ui.tools.CropImageNewUI"
+        android:name=".plugin.qqmail.ui.ReadMailUI"
+        android:name=".plugin.qqmail.ui.MailWebViewUI"
+        android:name=".plugin.gallery.ui.GalleryUI" 
+        android:name=".plugin.gallery.ui.ImagePreviewUI" 
+        android:name=".plugin.gallery.ui.AlbumPreviewUI" 
+        android:name=".plugin.gallery.ui.GalleryEntryUI" 
+        android:name=".plugin.nfc_open.ui.NfcWebViewUI"
+        android:name=".plugin.webview.ui.tools.WebViewUI"
+        android:name=".plugin.webview.ui.tools.OAuthUI" 
+        android:name=".plugin.webview.ui.tools.ContactQZoneWebView" 
+        android:name=".plugin.webview.ui.tools.QRCodeIntroductionWebViewUI"
+        android:name=".plugin.webview.ui.tools.ExdeviceWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSDetailWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizWebViewUI"
+        android:name=".plugin.webview.ui.tools.fts.FTSBizTeachWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSGlobalTabWebViewUI" 
+
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:launchMode="singleTop" 
+        android:name=".ui.tools.CropImageNewUI" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.qqmail.ui.ReadMailUI" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.qqmail.ui.MailWebViewUI" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.gallery.ui.GalleryUI" 
+        android:process=":tools" 
+        android:screenOrientation="portrait"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.gallery.ui.ImagePreviewUI" 
+        android:process=":tools" 
+        android:screenOrientation="portrait" 
+        android:theme="@style/i4"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.gallery.ui.AlbumPreviewUI" 
+        android:process=":tools" 
+        android:screenOrientation="portrait" 
+        android:theme="@style/i1"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:launchMode="singleTop" 
+        android:name=".plugin.gallery.ui.GalleryEntryUI" 
+        android:process=":tools" 
+        android:theme="@style/i5"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:launchMode="singleTask" 
+        android:name=".plugin.nfc_open.ui.NfcWebViewUI" 
+        android:process=":tools" 
+        android:protectionLevel="signatureOrSystem" 
+        android:screenOrientation="sensor">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/as"/>
+        </activity>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.WebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.OAuthUI" 
+        android:noHistory="true" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.ContactQZoneWebView" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.QRCodeIntroductionWebViewUI" 
+        android:process=":tools" 
+        android:windowSoftInputMode="adjustPan|stateHidden"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.ExdeviceWebViewUI" 
+        android:process=":tools"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSDetailWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizTeachWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSGlobalTabWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+<receiver 
+        android:exported="false" 
+        android:name=".booter.MMReceivers$ToolsProcessReceiver" 
+        android:process=":tools"/>

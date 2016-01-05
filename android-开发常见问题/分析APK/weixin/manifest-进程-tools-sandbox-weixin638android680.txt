@@ -1,0 +1,23 @@
+
+<receiver 
+        android:exported="false" 
+        android:name=".booter.MMReceivers$SandBoxProcessReceiver" 
+        android:process=":sandbox"/>
+
+<service 
+        android:name=".sandbox.monitor.ExceptionMonitorService" 
+        android:process=":sandbox"/>
+<service 
+        android:name=".sandbox.updater.UpdaterService" 
+        android:process=":sandbox"/>
+
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".sandbox.updater.AppUpdaterUI" 
+        android:process=":sandbox" 
+        android:theme="@style/it"/>
+ <activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".sandbox.updater.AppInstallerUI" 
+        android:process=":sandbox" 
+        android:theme="@style/it"/>

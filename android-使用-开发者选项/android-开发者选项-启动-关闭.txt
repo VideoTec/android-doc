@@ -1,0 +1,25 @@
+-------------------------------
+开启方式
+-------------------------------
+
+连续点击版本号：
+
+如：
+关于手机 | MIUI版本
+
+-------------------------------
+关闭方式
+-------------------------------
+你的意思是让开发者选项不显示是吧？
+没办法，打开了就消失不了了，除非重新刷机
+
+http://magiclen.org/android-develop/
+这里提到，清楚 <设置> 应用的缓存
+测试后，发现并没有关闭 (GT-I9308)
+
+http://forums.androidcentral.com/samsung-galaxy-s4/348534-re-hiding-developer-options.html
+Clearing cache or data won't do anything.  这里也说上面的方法无效
+You simply have to do a Factory Restore.
+
+http://www.droidviews.com/how-to-hide-developer-options-on-android-devices/
+这里也是清楚， <设置> 应用的缓存

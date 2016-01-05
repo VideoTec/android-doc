@@ -1,0 +1,6 @@
+https://docs.gradle.org/current/javadoc/org/gradle/api/plugins/MavenPlugin.html
+
+A Plugin which allows project artifacts to be 
+1）deployed to a Maven repository, or 
+2）installed to the local Maven cache.
+

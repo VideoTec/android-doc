@@ -1,0 +1,72 @@
+
+----------------------------
+所有的 service
+----------------------------
+        android:name=".booter.CoreService"
+        android:name=".booter.CoreService$InnerService" 
+        android:name=".booter.cache.CacheService" 
+
+----------------------------
+所有的 receiver
+----------------------------
+        android:name=".booter.MMReceivers$BootReceiver" 
+        android:name=".booter.MMReceivers$ConnectionReceiver" 
+        android:name=".booter.MMReceivers$AlarmReceiver" 
+        android:name=".jni.platformcomm.Alarm" 
+        android:name=".modelmulti.NotifyFreqLimit" 
+        android:name="com.tencent.mm.plugin.gcm.modelgcm.GcmBroadcastReceiver" 
+        android:name=".modelstat.WatchDogPushReceiver"
+
+----------------------------
+详细内容：
+----------------------------
+<service 
+        android:name=".booter.CoreService" 
+        android:process=":push"/>        
+<service 
+        android:name=".booter.CoreService$InnerService" 
+        android:process=":push"/>        
+<service 
+        android:name=".booter.cache.CacheService" 
+        android:process=":push"/>
+
+----------------------------------------------
+<receiver 
+        android:name=".booter.MMReceivers$BootReceiver" 
+        android:process=":push">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+</receiver>
+<receiver 
+        android:name=".booter.MMReceivers$ConnectionReceiver" 
+        android:process=":push">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+</receiver>
+<receiver 
+        android:name=".booter.MMReceivers$AlarmReceiver" 
+        android:process=":push"/>
+<receiver 
+        android:exported="false" 
+        android:name=".jni.platformcomm.Alarm" 
+        android:process=":push"/>
+<receiver 
+        android:exported="false" 
+        android:name=".modelmulti.NotifyFreqLimit" 
+        android:process=":push"/>
+<receiver 
+        android:name="com.tencent.mm.plugin.gcm.modelgcm.GcmBroadcastReceiver" 
+        android:permission="com.google.android.c2dm.permission.SEND" 
+        android:process=":push">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.tencent.mm"/>
+            </intent-filter>
+</receiver>
+<receiver 
+        android:exported="false" 
+        android:name=".modelstat.WatchDogPushReceiver" 
+        android:process=":push"/>

@@ -1,0 +1,11 @@
+https://www.safaribooksonline.com/library/view/building-and-testing/9781449306816/ch04.html
+
+Publishing to a Maven Repository
+Installing to the Local Maven Repository (Cache)
+
+The Maven Plug-in
+It isn’t until the point at which we need to publish a Maven pom.xml file for our project to participate in Maven-compatible dependency resolution that we need to involve Gradle’s Maven plug-in.
+
+The archivesBaseName property introduced by the java plug-in can be consumed by the newly introduced maven plug-in in controlling the value written out as the artifactId in the generated pom.xml file. If left empty, the project’s directory name is used, as per the defaults table.
+
+A Gradle build file need only specify all the Maven coordinates if it wants precise control over each value. The full set of coordinates will be generated into the pom.xml file no matter what, simply with default values if not explicitly set.

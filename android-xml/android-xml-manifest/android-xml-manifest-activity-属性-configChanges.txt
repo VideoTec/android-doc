@@ -1,0 +1,19 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/activity-element.html#config
+
+android:configChanges
+
+Lists configuration changes that the activity will handle itself. 
+When a configuration change occurs at runtime, 
+the activity is shut down and restarted by default, 
+but declaring a configuration with this attribute 
+will prevent the activity from being restarted. 
+
+Instead, the activity remains running and its onConfigurationChanged() method is called.
+
+Note: 
+Using this attribute should be avoided and used only as a last resort. 
+Please read Handling Runtime Changes for more information 
+about how to properly handle a restart due to a configuration change.
+
+Any or all of the following strings are valid values for this attribute. 
+Multiple values are separated by '|' — for example, "locale|navigation|orientation".

@@ -1,0 +1,22 @@
+http://stackoverflow.com/questions/3608017/activity-name-in-androidmanifest-xml
+
+
+// asdf     --> package.asdf
+// .asdf  .a.b  --> package.asdf package.a.b
+// asdf.adsf --> asdf.asdf
+
+Explaining this rule, we have:
+
+If the name starts with a dot, always prefix it with the package.
+If the name has a dot anywhere else, do not prefix it.
+If the name has no dot at all, also prefix it with the package.
+
+注释：
+1）package 代表 <manifest> 的 package 属性值
+2）这段注释的源码：
+platform/frameworks/base/tools/aapt/Resource.cpp file. 
+The relevant function is fullyQualifyClassName, called by massageManifest
+3）这个规则还应用于：
+In the application element, on the name and backupAgent attributes.
+In the activity, service, receiver, provider, and activity-alias elements, on the name attribute.
+In the activity-alias element, on the targetActivity attribute.

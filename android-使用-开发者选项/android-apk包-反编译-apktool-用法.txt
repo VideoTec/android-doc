@@ -1,0 +1,1 @@
+E:\tools>java -jar apktool_2.0.1.jar d -f C:\Users\wangxiangfx\Desktop\Fetion_Android_V5.4.2_20150810_release_sanxing.apk -o d:/apk
