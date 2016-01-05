@@ -1,0 +1,13 @@
+
+<service 
+        android:exported="false" 
+        android:name=".crash.CrashUploaderService" 
+        android:process=":cuploader"/>
+<service 
+        android:exported="false" 
+        android:name="com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService" 
+        android:process=":TMAssistantDownloadSDKService"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name="com.tencent.mm.ui.NoRomSpaceDexUI" 
+        android:process=":nospace"/>
