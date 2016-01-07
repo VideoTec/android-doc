@@ -1,0 +1,3 @@
+<receiver android:name=".booter.NotifyReceiver" android:exported="false" />
+<service  android:name=".booter.NotifyReceiver$NotifyService"/>
+<service  android:name=".booter.NotifyReceiver$NotifyService$InnerService"/>

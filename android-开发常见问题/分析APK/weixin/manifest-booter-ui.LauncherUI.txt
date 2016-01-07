@@ -1,0 +1,22 @@
+
+        <activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:label="@string/axo" 
+        android:launchMode="singleTop" 
+        android:name=".ui.LauncherUI" 
+        android:theme="@style/iz" 
+        android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mm.action.BIZSHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+http://bbs.appcan.cn/forum.php?mod=viewthread&tid=13461
+我用uexWidget.loadApp("com.tencent.mm.action.BIZSHORTCUT",null,null);
+可以打开微信

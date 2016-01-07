@@ -1,0 +1,3 @@
+http://www.dss886.com/android/2015/08/11/01/
+
+在Fragment的生命周期中，onAttach()和onDetach()之间getActivity()函数才会返回正确的对象，否则的话返回null。

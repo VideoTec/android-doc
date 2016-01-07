@@ -1,0 +1,2 @@
+http://www.infoq.com/cn/presentations/android-client-architecture-evolution-and-impact-on-development-process
+http://www.infoq.com/cn/articles/wechat-android-app-architecture

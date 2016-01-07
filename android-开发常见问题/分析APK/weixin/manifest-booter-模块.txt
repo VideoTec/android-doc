@@ -1,0 +1,18 @@
+
+        <receiver android:name=".booter.NotifyReceiver"/>
+        <receiver android:name=".booter.MountReceiver">
+        <receiver android:name=".booter.BluetoothStateReceiver">
+        <receiver android:name=".booter.BluetoothReceiver">
+        <receiver android:name=".booter.InstallReceiver">
+        <receiver android:name=".booter.MMReceivers$BootReceiver"            android:process=":push">
+        <receiver android:name=".booter.MMReceivers$ConnectionReceiver"      android:process=":push">
+        <receiver android:name=".booter.MMReceivers$AlarmReceiver"           android:process=":push"/>
+        <receiver android:name=".booter.MMReceivers$ToolsProcessReceiver"    android:process=":tools"/>
+        <receiver android:name=".booter.MMReceivers$SandBoxProcessReceiver"  android:process=":sandbox"/>
+        <receiver android:name=".booter.MMReceivers$ExdeviceProcessReceiver" android:process=":exdevice">
+        
+        <service android:name=".booter.NotifyReceiver$NotifyService"/>
+        <service android:name=".booter.NotifyReceiver$NotifyService$InnerService"/>
+        <service android:name=".booter.CoreService"                              android:process=":push"/>
+        <service android:name=".booter.CoreService$InnerService"                 android:process=":push"/>
+        <service android:name=".booter.cache.CacheService"                       android:process=":push"/>

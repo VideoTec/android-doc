@@ -1,0 +1,33 @@
+java.lang.NullPointerException
+	at com.feinno.beside.ui.fragment.FindNavigationFragment.addGroupDivider(FindNavigationFragment.java:457)
+	at com.feinno.beside.ui.fragment.FindNavigationFragment.judgeDisplayInfo(FindNavigationFragment.java:436)
+    
+发生错误的代码：
+	private void addGroupDivider() {
+		LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
+        
+发生错误的原因：
+1）进入 导航fragment 时，异步访问服务器，获取导航列表
+2）用户注销 导航fragment 被销毁
+3）第一步里，异步访问服务器，结果返回，调用了 getActivity
+
+参考：
+http://www.dss886.com/android/2015/08/11/01/
+Android: Fragment中getActivity()返回null的问题
+
+在Fragment的生命周期中，
+onAttach()和onDetach()之间getActivity()函数才会返回正确的对象，
+否则的话返回null。
+
+http://stackoverflow.com/questions/6215239/getactivity-returns-null-in-fragment-function
+
+I'd suggest adding an
+onAttach(Activity activity)
+
+The best to get rid of this is to keep activity reference when onAttach is called and use the activity reference wherever needed, for e.g.
+
+@Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = activity;
+    }

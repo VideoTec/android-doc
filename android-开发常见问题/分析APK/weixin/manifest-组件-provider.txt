@@ -1,0 +1,84 @@
+
+        android:name=".plugin.base.stub.MMPluginProvider" 
+        android:name=".plugin.base.stub.WXCommProvider"
+        android:name=".plugin.gwallet.GWalletQueryProvider"
+        android:name=".plugin.ext.provider.ExtContentProviderBase"
+        android:name=".plugin.ext.provider.ExtControlProviderMsg" 
+        android:name=".plugin.ext.provider.ExtControlProviderSearchContact" 
+        android:name=".plugin.ext.provider.ExtControlProviderNearBy"   
+        android:name=".plugin.ext.provider.ExtControlProviderSNS"  
+        android:name=".plugin.ext.provider.ExtControlProviderAccountSync" 
+        android:name=".plugin.ext.provider.ExtControlProviderEntry" 
+        android:name="com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences"  
+
+------------------------------------------------------------
+------------------------------------------------------------
+        <provider 
+        android:authorities="com.tencent.mm.sdk.plugin.provider" 
+        android:exported="true" 
+        android:name=".plugin.base.stub.MMPluginProvider" 
+        android:writePermission="com.tencent.mm.plugin.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.sdk.comm.provider" 
+        android:exported="true" 
+        android:name=".plugin.base.stub.WXCommProvider"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.gwallet.queryprovider" 
+        android:exported="false" 
+        android:name=".plugin.gwallet.GWalletQueryProvider"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.ExtContentProviderBase" 
+        android:exported="false" 
+        android:name=".plugin.ext.provider.ExtContentProviderBase" 
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.message" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderMsg" 
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.SearchContact" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderSearchContact"
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.NearBy" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderNearBy" 
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.SNS" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderSNS" 
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.AccountSync" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderAccountSync" 
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.plugin.ext.entry" 
+        android:exported="true" 
+        android:name=".plugin.ext.provider.ExtControlProviderEntry"
+        android:readPermission="com.tencent.mm.ext.permission.READ" 
+        android:writePermission="com.tencent.mm.ext.permission.WRITE"/>
+        
+        <provider 
+        android:authorities="com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences" 
+        android:exported="false" 
+        android:name="com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences"/>
