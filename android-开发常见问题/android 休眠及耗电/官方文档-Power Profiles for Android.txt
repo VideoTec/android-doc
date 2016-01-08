@@ -1,0 +1,4 @@
+https://source.android.com/devices/tech/power/index.html
+
+Battery use information is derived from battery use statistics 
+and power profile values.

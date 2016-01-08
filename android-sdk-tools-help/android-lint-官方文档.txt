@@ -1,0 +1,26 @@
+http://developer.android.com/intl/zh-cn/tools/help/lint.html
+
+The Android lint tool is a static code analysis tool 
+that checks your Android project source files 
+for potential bugs and optimization improvements for 
+1）correctness, 
+2）security, 
+3）performance, 
+4）usability, 
+5）accessibility, and 
+6）internationalization.
+
+In Android Studio, 
+the configured lint and other IDE inspections run automatically 
+whenever you compile your program. 
+
+inspect[英][ɪnˈspekt] [美][ɪnˈspɛkt]
+vt.检查，检验；视察
+
+手动运行lint检查
+You can also manually run inspections in Android Studio by selecting 
+Analyze > Inspect Code from the application or right-click menu. 
+The Specify Inspections Scope dialog appears 
+so you can specify the desired inspection profile and scope.
+
+For more information on enabling lint inspections and running lint

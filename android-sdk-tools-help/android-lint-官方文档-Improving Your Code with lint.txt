@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/tools/debugging/improving-w-lint.html
+
+In addition to testing that your Android application 
+meets its functional requirements, 
+it's important to ensure that your code has no structural problems. 
+Poorly structured code can 
+impact the reliability and efficiency of your Android apps and 
+make your code harder to maintain. 
+
+For example, 
+if your XML resource files contain unused namespaces, 
+this takes up space and incurs unnecessary processing. 
+Other structural issues, 
+such as use of deprecated elements or API calls 
+that are not supported by the target API versions, 
+might lead to code failing to run correctly.

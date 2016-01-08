@@ -1,0 +1,46 @@
+http://stackoverflow.com/questions/7888191/how-do-i-build-the-android-sdk-with-hidden-and-internal-apis-available
+
+This is what I always do to use hidden api.
+
+Build the repo or download jars from https://sites.google.com/site/hippunosource/home/android/androidnohide-apiwo-shi-yongsuru-rifurekushonha-wei-shi-yong
+
+copy out out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes.jar 
+(better to rename it as something like framework_all.jar)
+config your project build path-->libraries --> add this external jars. 
+In Order and Export, 
+move it up and before android.jar
+
+另一种方法：直接从对应版本的机器上，获取
+We could reconstruct the *.jar files from the Android platform.
+First, connect ADB to your device. Then run:
+adb pull /system/framework/core.jar .
+adb pull /system/framework/framework.jar
+The "core.jar" contain the standard Java libraries (java.*) and 
+the "framework.jar" contain the Android libraries (android.*). 
+This is not usable yet, as the actual files are in DEX format, not JAR format.
+dex2jar core.jar
+dex2jar framework.jar
+
+https://sites.google.com/site/hippunosource/home/android/androidnohide-apiwo-shi-yongsuru-rifurekushonha-wei-shi-yong
+
+多个版本的 完全 android.jar 包，其中包含 com.android.internal
+Android 2.3.4
+Android 2.3.7
+Android 4.0.3
+Android 4.1.2
+Android 4.2.2
+Android 4.3
+Android 4.4
+
+http://www.eoeandroid.com/forum.php?mod=viewthread&tid=254484&fromuid=604899&_dsign=8fce3273
+
+当我们的程序在设备上运行的时候会加载设备上的一个framework.jar的文件，
+它包含了移除的部分
+
+我们的思路是想办法得到framework.jar将那些缺少的API拿出来放到android.jar中。
+当然这些都可以通过编译源码来解决，但那样太过麻烦。
+下面我介绍一种简单的方法来获取这些内容
+
+注意：
+该包不能直接放在libs目录里面，请放到其他地方。
+因为ADT屏蔽了Internal包，直接放在libs下ADT会检测到。

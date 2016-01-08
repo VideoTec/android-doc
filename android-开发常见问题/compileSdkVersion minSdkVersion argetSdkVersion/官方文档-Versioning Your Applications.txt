@@ -1,0 +1,36 @@
+http://developer.android.com/intl/zh-cn/tools/publishing/versioning.html
+
+这个文章说明两个版本号：
+1）Setting Application Version
+2）Specifying Your Application's System API Requirements
+
+Versioning is a critical component of your application upgrade and 
+maintenance strategy. Versioning is important because:
+
+1）Users need to have specific information 
+about the application version that is installed on their devices and 
+the upgrade versions available for installation.
+
+2）Other applications — 
+including other applications that you publish as a suite — 
+need to query the system for your application's version, 
+to determine compatibility and identify dependencies.
+
+3）Services through which you will publish your application(s) 
+may also need to query your application for its version, 
+so that they can display the version to users. 
+A publishing service may also need to 
+check the application version to determine compatibility and 
+establish upgrade/downgrade relationships.
+
+The Android system does not use app version information 
+to enforce restrictions 
+on upgrades, downgrades, or compatibility of third-party apps. 
+Instead, you (the developer) are responsible 
+for enforcing version restrictions within your application or 
+by informing users of the version restrictions and limitations. 
+The Android system does, however, enforce system version compatibility 
+as expressed by the minSdkVersion attribute in the manifest. 
+This attribute allows an application to specify the minimum system API 
+with which it is compatible. 
+For more information see Specifying Minimum System API Version.

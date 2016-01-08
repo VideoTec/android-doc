@@ -1,0 +1,10 @@
+http://www.eoeandroid.com/thread-255696-1-1.html?_dsign=fc2529b2
+
+internal包，该包不但android.jar中没有，及时你找到该包，
+把它放到android.jar中，你会发现也是用不了的。
+原因是ADT对这个包加了限制。不让使用。
+
+一种解决办法是修改ADT，将该限制去掉。
+另外一种就是不把internal放到android.jar中，
+把他单独作为一个包导入到工程中，这样就不会被限制了
+

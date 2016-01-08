@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/16748273/android-gradle-how-to-build-for-android-google-apis-4-2-2-not-for-android-4-2-2
+
+gradle compileSDK === eclipse project.properties target

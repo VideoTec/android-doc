@@ -1,0 +1,27 @@
+http://developer.android.com/intl/zh-cn/tools/debugging/improving-w-lint.html
+
+You can specify your lint checking preferences in the lint.xml file. 
+
+If you are creating this file manually, 
+place it in the root directory of your Android project. 
+
+If you are configuring lint preferences in Android Studio, 
+the lint.xml file is automatically created and 
+added to your Android project for you.
+
+The lint.xml file consists of an enclosing <lint> parent tag 
+that contains one or more children <issue> elements. 
+Each <issue> is identified by a unique id attribute value, 
+which is defined by lint.
+
+<?xml version="1.0" encoding="UTF-8"?>
+    <lint>
+        <!-- list of issues to configure -->
+    </lint>
+
+By setting the severity attribute value in the <issue> tag, 
+you can disable lint checking for an issue or change the severity level for an issue.
+
+Tip: 
+To see the full list of issues supported by the lint tool and 
+their corresponding issue IDs, run the lint --list command.

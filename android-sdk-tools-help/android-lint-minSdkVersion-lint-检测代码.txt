@@ -1,0 +1,16 @@
+参考：
+E:\doc\android\android-开发常见问题\compileSdkVersion minSdkVersion argetSdkVersion\minSdkVersion-lint-检测代码.txt
+
+http://stackoverflow.com/questions/16096877/how-to-force-compile-error-for-api-method-that-is-not-in-minsdkversion
+
+Set the Lint check for NewApi and InlineApi to errors.
+
+right click project --> Properties --> Android Lint Preferences.   
+Find NewApi and InlineApi and set the Severity box to Error or Fatal.
+
+http://stackoverflow.com/questions/10322482/android-lint-erroneously-thinks-min-sdk-version-is-1
+
+I have the same problem, and my solution is:
+
+Right click on the project folder > Android tools > Clear Lint Markers
+"Run Android Lint" makes some markers and the markers cause this error.

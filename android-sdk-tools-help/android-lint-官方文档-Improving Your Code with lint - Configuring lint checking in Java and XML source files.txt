@@ -1,0 +1,41 @@
+http://developer.android.com/intl/zh-cn/tools/debugging/improving-w-lint.html
+
+You can disable lint checking from your Java and XML source files.
+
+Tip: If you are using Android Studio, you can use the 
+File > Settings > Project Settings > Inspections feature 
+to manage the lint checking to your Java or XML source files.
+
+---------------------------------------------
+Configuring lint checking in Java
+---------------------------------------------
+To disable lint checking specifically for a Java class or method 
+in your Android project, 
+add the @SuppressLint annotation to that Java code.
+
+The following example shows 
+how you can turn off lint checking for the NewApi issue 
+in the onCreate method. 
+The lint tool continues to check for the NewApi issue in other methods of this class.
+
+@SuppressLint("NewApi")
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    
+The following example shows 
+how to turn off lint checking for the ParserError issue 
+in the FeedProvider class:
+
+@SuppressLint("ParserError")
+public class FeedProvider extends ContentProvider {
+
+To suppress checking for all lint issues in the Java file, 
+use the all keyword, like this:
+
+@SuppressLint("all")
+
+---------------------------------------------
+Configuring lint checking in XML
+---------------------------------------------

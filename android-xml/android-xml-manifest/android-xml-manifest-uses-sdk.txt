@@ -1,3 +1,17 @@
+参考：
+E:\doc\android\android-开发常见问题\compileSdkVersion minSdkVersion argetSdkVersion
+
+参考：
+仍然是存储在 androidmanifest.xml 中：
+E:\doc\android\android-sdk-tools-help\AAPT-Android Asset Packaging Tool\
+android-aapt-命令行-doc.txt
+   --min-sdk-version
+       inserts android:minSdkVersion in to manifest.  If the version is 7 or
+       higher, the default encoding for resources will be in UTF-8.
+   --target-sdk-version
+       inserts android:targetSdkVersion in to manifest.
+
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/uses-sdk-element.html
 ------------------------
 androidmanifest.xml
 ------------------------

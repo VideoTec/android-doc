@@ -1,0 +1,25 @@
+adb shell getprop | grep "model\|version.sdk\|manufacturer\|hardware\|platform\|revision\|serialno\|product.name\|brand"
+
+可以得到的信息：
+
+model
+                         [ril.model_id]: [GT-I9308]
+                         [ro.product.model]: [GT-I9308]
+version.sdk              [ro.build.version.sdk]: [18]
+manufacturer             [ro.product.manufacturer]: [samsung]
+hardware                 [ro.hardware]: [smdk4x12]
+platform                 [ro.board.platform]: [exynos4]
+revision                 [ro.revision]: [12]
+serialno
+                         [ro.boot.serialno]: [3230911981727f4f]
+                         [ro.serialno]: [3230911981727f4f]
+product.name             [ro.product.name]: [m0zm]
+brand                    [ro.product.brand]: [samsung]
+
+http://stackoverflow.com/questions/21099301/android-adb-commands-to-get-the-device-properties
+
+adb shell getprop ro.build.version.sdk
+
+If you want to see the whole list of parameters just type:
+
+adb shell getprop

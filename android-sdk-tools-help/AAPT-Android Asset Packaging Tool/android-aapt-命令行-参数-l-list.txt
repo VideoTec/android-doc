@@ -1,0 +1,32 @@
+ aapt l[ist] [-v] [-a] file.{zip,jar,apk}
+   List contents of Zip-compatible archive.
+   
+http://stackoverflow.com/questions/8300822/android-how-to-find-which-platform-version-an-apk-targets
+
+
+apk-查看-min target sdk version.txt
+
+方法一：
+
+Use apktool
+
+java -jar apktool.jar d app.apk
+Then look in the generated apktool.yml file for this:
+
+sdkInfo:
+  minSdkVersion: '11'
+  targetSdkVersion: '17'
+  
+You can match the SDK version to Android version here. 
+In the above example minimum Android version is 3.0 and target version is 4.2.
+
+方法二：
+
+Use aapt:
+
+aapt list -a package.apk | grep SdkVersion
+You will see version numbers in hex. e.g.:
+
+  A: android:minSdkVersion(0x0101020c)=(type 0x10)0x3
+  A: android:targetSdkVersion(0x01010270)=(type 0x10)0xc
+For this apk, minSdkVersion is 0x3 i.e. 3, and targetSdkVersion is 0xc i.e. 12.

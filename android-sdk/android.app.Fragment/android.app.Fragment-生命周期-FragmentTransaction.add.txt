@@ -1,0 +1,11 @@
+/**
+ * 生命周期 FragmentTransaction.add(resId, Fragment) 的时候依次执行
+ * onAttach-->onCreate-->onCreateView -->onActivityCreated <br>
+
+ * [可以理解为：当activity对象创建的时候会执行onAttch <br>
+ * 当"开始"执行onCreate的时候会执行onCreateView, 
+   onCreate执行"完成"会执行onActivityCreated] <br>
+
+ * 销毁的过程依次执行 <br>
+ * onPause-->onDestroyView-->onDestroy-->onDetach
+ */

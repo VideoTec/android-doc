@@ -1,0 +1,5 @@
+https://testerhome.com/topics/2331
+
+在Android统计App耗电量比较麻烦，直至Android 4.4，
+它仍没公开“电量统计”API或文档……额，是的，仅没有公开，并不是没有。
+平时在手机“设置- 电量”看到的数据就是系统调用内部API的统计结果。

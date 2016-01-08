@@ -1,0 +1,19 @@
+http://stackoverflow.com/questions/19997509/android-studio-why-are-minsdkversion-and-targetsdkversion-specified-both-in-and
+
+Gradle overrides the manifest values, 
+and I prefer to update build.gradle file rather than manifest. 
+And probably this is the right way using Gradle. 
+Gradle supports product flavours which can be controled via IDE and 
+those product flavors can change many things in our Manifest like 
+1）package name, 
+2）version code, 
+3）version name, 
+4）target SDK and many other. 
+Then by one click in Android Studio You can 
+change many properties and generate another apk.
+
+ou can left the manifest as it is and do all configuration in build.gradle. 
+You can safely remove
+
+<uses-sdk></uses-sdk>
+from manifest as well as version codes.

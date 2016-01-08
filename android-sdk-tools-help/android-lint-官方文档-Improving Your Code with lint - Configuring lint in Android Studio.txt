@@ -1,0 +1,25 @@
+﻿http://developer.android.com/intl/zh-cn/tools/debugging/improving-w-lint.html
+
+Android Studio allows you to enable or disable 
+individual inspections and 
+configure project-global, directory-specific, and file-specific settings for lint.
+
+You can manage inspection profiles and configure inspection severity within 
+Android Studio using the 
+File > Settings > Project Settings menu 
+to open the Inspections page with a list of the supported profiles and inspections.
+
+--------------------------------------
+Global preferences
+--------------------------------------
+
+To specify global project settings, select the project folder in the Project View and choose Analyze > Inspect Code.
+Specify your inspection scope and profile, and click OK.
+The configured settings run the specified lint inspections. The lint inspections are also run whenever you build and run your Android project and modules.
+
+--------------------------------------
+Module and file-specific preferences
+--------------------------------------
+
+Run the lint tool on your module by right-clicking on your module folder or file in the Project View and selecting Analyze > Inspect Code. This displays the lint inspection results with a list of issues that lint detected in your module.
+From the Lint Warnings view, use the toolbar options to configure lint preferences for individual modules and files, and set the issue display options.

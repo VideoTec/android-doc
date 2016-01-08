@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/26694108/what-is-the-difference-between-compilesdkversion-and-targetsdkversion
+If you do not specify the targetSdkVersion, it defaults to the minSdkVersion
+
+http://developer.android.com/intl/zh-cn/tools/building/manifest-merge.html
+Note: If not explicitly declared, the targetSdkVersion defaults to the minSdkVersion value. 
+When no element is present in any manifest or the build.gradle file, 
+the minSdkVersion defaults to 1.

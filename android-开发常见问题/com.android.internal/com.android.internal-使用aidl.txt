@@ -1,0 +1,26 @@
+可参考：
+rongtalk
+android.telephony.NeighboringCellInfo
+android.telephony.RadioAccessFamily
+
+D:\work\rongtalk\incallui\src\com\android\internal\telephony\ITelephony.java
+D:\work\rongtalk\incallui\src\com\android\internal\telephony\RILConstants.java
+This file is auto-generated.  DO NOT MODIFY.
+Original file: 
+/home/yang/rongtalk/UPhoneCommon/src/main/aidl/com/android/internal/telephony/ITelephony.aidl
+
+D:\work\rongtalk\incallui\src\android\telephony\RadioAccessFamily.java
+引用了：
+import com.android.internal.telephony.RILConstants;
+
+D:\work\rongtalk\incallui\src\android\telephony\RadioAccessFamily.aidl
+
+http://stackoverflow.com/questions/34226282/android-reject-incoming-call
+
+From second and third link, 
+I understand that solution is copy ITelephony from here 
+then put it in a new package of com.android.internal.telephony in my solution. 
+The problem is that in this interface 
+there are a lot of problem about find of class android.telephony.RadioAccessFamily 
+(error cannot find symbol class RadioAccessFamily), 
+that class is in platform framework base of android.

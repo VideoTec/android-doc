@@ -1,2 +1,5 @@
+参考：
+E:\doc\android\android-开发常见问题\compileSdkVersion minSdkVersion argetSdkVersion
+
 https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd?linkId=20147489#.tniwwh3fj
 

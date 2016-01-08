@@ -1,0 +1,29 @@
+http://stackoverflow.com/questions/34226282/android-reject-incoming-call
+In the first one link, the suggest solution is 
+use reflection on the interface ITelephony because it's an internal interface. 
+But this solution use MODIFY_PHONE_STATE permission, 
+which can only be granted to system apps so it won't work anyway.
+
+http://stackoverflow.com/questions/7014317/how-to-access-com-android-internal-telephony-gsm-gsmsmsdispatcher-instance
+
+You can't access Android's internal classes using reflection. Each application in Android runs in its own process with its own instance of the Dalvik VM. Classes loaded in one process are not visible to another process. So when you try to access static variables from PhoneFactory, you end up loading the PhoneFactory class with unintialized variables.
+
+Your best will be to do whatever you want to get done using the Android APIs. There are a few ways to get access to some private Android services, but it won't get you too far. The only relevant one for SMS is the isms service. You can look through the methods available in it in the ISms.aidl file present in the com.android.internal.telephony package.
+
+http://stackoverflow.com/questions/15481524/how-to-programatically-answer-end-a-call-in-android-4-1
+
+Access "com.android.internal.telephony.ITelephony" 
+using Java Reflection in the Broadcast receiver for "android.intent.action.PHONE_STATE". 
+Below sample code can be found in hundreds of related post:
+
+http://stackoverflow.com/questions/24580223/how-to-reject-any-incoming-call-when-i-have-already-detected-it/24580252?noredirect=1#comment38077652_24580252
+
+Here we uses Java reflection.These methods are there, but they are marked as "private". Using reflection, we can get lots of information about classes, even the information that is considered "private". Since this is an "unsupported API" it may not work on all devices and it may be changed in a future release of Android
+
+    TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    Class c = Class.forName(tm.getClass().getName());
+    Method m = c.getDeclaredMethod("getITelephony");
+    com.android.internal.telephony.ITelephony telephonyService = (ITelephony) m.invoke(tm);  
+    telephonyService = (ITelephony) m.invoke(tm);
+    telephonyService.silenceRinger();
+    telephonyService.endCall();

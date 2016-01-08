@@ -1,0 +1,14 @@
+http://kinggoo.com/android-apktool2.htm
+
+时间真快，一转眼apktool工具已从1.5.2升级到2.0.1，
+今天也是因一个项目必须要使用高版本apktool才能正常拆包
+( Exception in thread "main" brut.androlib.AndrolibException: Could not decode arsc file )，
+所以去更新了一下，发现apktool这次的更新比较牛哔哔，
+首先速度上真快了好了，
+我们之前的一个项目50M大概解包要5分钟（-_-! 应该不是电脑比较老的原因吧）
+现在100M的2~3分钟的样子吧，很速度。其次是一些参数上做了调整，
+以及配置信息上也做了调整（如versionCode、versionName的修改位置）
+
+SdkInfo – 
+Used to repopulate the sdk information in AndroidManifest.xml 
+since newer aapt requires version information to be passed via parameter 

@@ -1,0 +1,21 @@
+1）androidmanifest.xml 配置的
+2）gradle 中配置的，会重写 androidmanifest.xml中的配置
+   这个写在那里？ 
+   
+产生这个疑问的原因是，使用 apktool 
+反编译出的 androidmanifest.xml 中没有 min target sdk info
+而是存储在 apktool.yml 文件里。
+
+仍然是存储在 androidmanifest.xml 中：
+E:\doc\android\android-sdk-tools-help\AAPT-Android Asset Packaging Tool\android-aapt-命令行-doc.txt
+   --min-sdk-version
+       inserts android:minSdkVersion in to manifest.  If the version is 7 or
+       higher, the default encoding for resources will be in UTF-8.
+   --target-sdk-version
+       inserts android:targetSdkVersion in to manifest.
+
+E:\doc\android\android-使用-开发者选项\android-apk包-反编译-apktool-2.0.x，与以往1.5.2的区别及使用.txt
+
+SdkInfo – 
+Used to repopulate the sdk information in AndroidManifest.xml 
+since newer aapt requires version information to be passed via parameter 

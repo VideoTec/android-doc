@@ -1,0 +1,5 @@
+http://ascii-iicsa.blogspot.com/2015/01/minsdkversion-api.html
+
+Lint 是一個Android SDK 內建的靜態分析工具，放在SDK 的tools 資料夾底下，
+如果已經將編譯工具轉換至Gradle 後，
+每次編譯皆會自動執行Lint 來

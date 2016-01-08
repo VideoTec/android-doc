@@ -1,0 +1,4 @@
+http://developer.android.com/intl/zh-cn/tools/building/configuring-gradle.html
+
+The defaultConfig element configures core settings and entries in the manifest file (AndroidManifest.xml) dynamically from the build system. The values in defaultConfig override those in the manifest file.
+The configuration specified in the defaultConfig element applies to all build variants, unless the configuration for a build variant overrides some of these values.

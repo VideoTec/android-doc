@@ -1,0 +1,34 @@
+https://github.com/pxb1988/dex2jar
+
+Tools to work with android .dex and java .class files
+
+dex-reader/writer: Read/write the Dalvik Executable (.dex) file. It has a light weight API similar with ASM.
+d2j-dex2jar: Convert .dex file to .class files (zipped as jar)
+smali/baksmali: disassemble dex to smali files and assemble dex from smali files. different implementation to smali/baksmali, same syntax, but we support escape in type desc "Lcom/dex2jar\t\u1234;"
+other tools: d2j-decrypt-string
+
+--------------------------
+怎么用啊？
+--------------------------
+dex2jar-2.0  里有一大堆批处理 + lib文件夹
+
+C:\Users\wangxiangfx>E:\tools\dex2jar-2.0\d2j-dex2jar.bat
+d2j-dex2jar -- convert dex to jar
+usage: d2j-dex2jar [options] <file0> [file1 ... fileN]
+options:
+ -d,--debug-info              translate debug info
+ -e,--exception-file <file>   detail exception file, default is $current_dir/[fi
+                              le-name]-error.zip
+ -f,--force                   force overwrite
+ -h,--help                    Print this help message
+ -n,--not-handle-exception    not handle any exception throwed by dex2jar
+ -nc,--no-code
+ -o,--output <out-jar-file>   output .jar file, default is $current_dir/[file-na
+                              me]-dex2jar.jar
+ -os,--optmize-synchronized   optmize-synchronized
+ -p,--print-ir                print ir to Syste.out
+ -r,--reuse-reg               reuse regiter while generate java .class file
+ -s                           same with --topological-sort/-ts
+ -ts,--topological-sort       sort block by topological, that will generate more
+                               readable code, default enabled
+version: reader-2.0, translator-2.0, ir-2.0
