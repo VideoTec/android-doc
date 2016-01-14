@@ -1,0 +1,5 @@
+http://jdam.cd/async-android/
+
+RxJava is increasingly popular in the Android developer community. I was thinking back to the “ah ha!” moment when it’s usefulness really struck me. Even before getting to grips with RxJava’s functional aspects, it looked like a neat alternative to AsyncTask and Loader.
+
+I’m going to explore Android’s threading abstractions and explain why RxJava can provide a more satisfying API for expressing asynchronous operations.

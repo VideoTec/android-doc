@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/20480090/does-android-support-jdk-6-or-7
+
+Try-with-resources requires minSdkVersion 19;
+
+
+http://toughcoder.net/blog/2014/11/12/java-7-and-8-and-android/
+
+        // With 'try-with-resources' no longer need finally to clean up resources.
+        try (BufferedReader br = new BufferedReader(new FileReader(args[args.length - 1]))) {
+            System.out.println(br.readLine());
+            Thread.sleep(1000);
+        // Catch multiple exceptions
+        } catch (InterruptedException | IOException e) {
+            System.out.print(e.getMessage());
+        }

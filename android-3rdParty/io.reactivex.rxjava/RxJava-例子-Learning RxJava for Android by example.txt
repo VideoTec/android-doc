@@ -1,0 +1,7 @@
+https://github.com/kaushikgopal/RxJava-Android-Samples
+
+This is a repository with real-world useful examples of using RxJava with Android. 
+It usually will be in a constant state of "Work in Progress" (WIP).
+
+I also gave a talk at a local meetup about warming up to RxJava here. 
+Here's a link to the video and slides.

@@ -1,0 +1,47 @@
+variant[英][ˈveəriənt] [美][ˈveriənt]
+n.（词等的）变体，（字音的）转讹；
+[生]变种，变异体；变形，变量，转化；[统]变式
+
+artifact[英]['ɑ:təˌfækt] [美][ˈɑrtəˌfækt]
+n.人工制品，手工艺品，加工品；石器
+
+instrumentation[英][ˌɪnstrəmenˈteɪʃn] [美][ˌɪnstrəmɛnˈteʃən]
+n.使用仪器，装设仪器；乐器法；乐曲研究；手段
+
+Build Variants
+Test Artifact
+Android instrumentation tests
+
+http://blog.csdn.net/qinxiandiqi/article/details/37906449
+
+Build Variants（构建变种版本）
+
+新构建系统的一个目标就是允许为同一个应用创建不同的版本。
+
+这里有两个主要的使用情景：
+    1、同一个应用的不同版本。例如一个免费的版本和一个收费的专业版本。
+    2、同一个应用需要打包成不同的apk以发布Google Play Store。查看http://developer.android.com/google/play/publishing/multiple-apks.html获取更多详细信息。
+    3、综合1和2两种情景。
+这个目标就是要让在同一个项目里生成不同的APK成为可能，
+以取代以前需要使用一个库项目和两个及两个以上的应用项目分别生成不同APK的做法
+
+6.2 Build Type  + Product Flavor = Build Variant（构建类型+定制产品=构建变种版本）
+Build Type：         release/debug
+Product Flavor：     在gradle脚本中定义
+
+http://www.jianshu.com/p/03118c11c199
+Android instrumentation tests
+虽然在Android框架内支持运行instrumentation测试，
+但是目前开发重心主要集中在刚刚发布的
+作为Android Testing Support Library一部分的新的AndroidJUnitRunner。
+测试库包含Espresso，用于运行功能UI测试的框架。
+让我们通过编辑build.gradle的相关部分来把它们添加进我们的工程
+
+    //ADD THESE LINES:
+    androidTestCompile 'com.android.support.test:runner:0.2'
+    androidTestCompile 'com.android.support.test:rules:0.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.1'
+
+http://www.jianshu.com/p/03118c11c199
+配置支持单元测试的工程
+确认在Build Variants窗口内的Test Artifact中选择了"Unit Tests"

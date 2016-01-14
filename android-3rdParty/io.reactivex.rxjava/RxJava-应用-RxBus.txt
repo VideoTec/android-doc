@@ -1,0 +1,11 @@
+http://gank.io/post/560e15be2dca930e00da1083#toc_10
+
+RxBus
+
+RxBus 名字看起来像一个库，但它并不是一个库，而是一种模式，
+它的思想是使用 RxJava 来实现了 EventBus ，
+而让你不再需要使用 Otto 或者 GreenRobot 的 EventBus。
+至于什么是 RxBus，可以看这篇文章。
+http://nerds.weddingpartyapp.com/tech/2014/12/24/implementing-an-event-bus-with-rxjava-rxbus/
+顺便说一句，Flipboard 已经用 RxBus 替换掉了 Otto ，
+目前为止没有不良反应。

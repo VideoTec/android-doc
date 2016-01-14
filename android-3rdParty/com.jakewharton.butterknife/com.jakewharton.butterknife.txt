@@ -1,0 +1,33 @@
+https://github.com/JakeWharton/butterknife
+
+View "injection" library for Android. 
+
+Field and method binding for Android views which uses annotation processing to generate boilerplate code for you.
+
+Eliminate findViewById calls by using @Bind on fields.
+Group multiple views in a list or array. Operate on all of them at once with actions, setters, or properties.
+Eliminate anonymous inner-classes for listeners by annotating methods with @OnClick and others.
+Eliminate resource lookups by using resource annotations on fields.
+
+class ExampleActivity extends Activity {
+  @Bind(R.id.user) EditText username;
+  @Bind(R.id.pass) EditText password;
+
+  @BindString(R.string.login_error)
+  String loginErrorMessage;
+
+  @OnClick(R.id.submit) void submit() {
+    // TODO call server...
+  }
+
+  @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.simple_activity);
+    ButterKnife.bind(this);
+    // TODO Use fields...
+  }
+}
+
+For documentation and additional information see the website.
+
+Remember: A butter knife is like a dagger only infinitely less sharp.

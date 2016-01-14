@@ -1,0 +1,14 @@
+http://developer.baidu.com/map/geosdk-android-developv3.3.htm
+
+在application标签中声明service组件,
+为了避免各个app公用1个service出现的权限问题，
+新版本各个app单独拥有自己的定位service.
+
+<service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+</service>
+
+http://developer.baidu.com/map/wiki/index.php?title=android-locsdk/guide/v4-2#.E5.9C.A8application.E6.A0.87.E7.AD.BE.E4.B8.AD.E5.A3.B0.E6.98.8Eservice.E7.BB.84.E4.BB.B6.2C.E6.AF.8F.E4.B8.AAapp.E6.8B.A5.E6.9C.89.E8.87.AA.E5.B7.B1.E5.8D.95.E7.8B.AC.E7.9A.84.E5.AE.9A.E4.BD.8Dservice
+
+在application标签中声明service组件,每个app拥有自己单独的定位service
+<service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+</service>

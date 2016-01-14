@@ -1,0 +1,10 @@
+在创建，修改本地单元测试时，需要先选中：
+
+Build Variants 中的：
+Test Artifacts 的 Unit Tests 选项。
+
+选中后：
+1）src/test 在 Project 视图中
+   就可以用包的形式查看了
+2）goto test 生成新的单元测试类，选择生成路径时，
+   就可以选择 src/test 目录了。

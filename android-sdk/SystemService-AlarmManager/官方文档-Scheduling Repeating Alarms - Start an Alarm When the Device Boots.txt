@@ -1,0 +1,49 @@
+http://developer.android.com/intl/zh-cn/training/scheduling/alarms.html#boot
+
+Start an Alarm When the Device Boots
+By default, all alarms are canceled when a device shuts down. To prevent this from happening, you can design your application to automatically restart a repeating alarm if the user reboots the device. This ensures that the AlarmManager will continue doing its task without the user needing to manually restart the alarm.
+
+Here are the steps:
+
+1）Set the RECEIVE_BOOT_COMPLETED permission in your application's manifest. This allows your app to receive the ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting (this only works if the app has already been launched by the user at least once):
+
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+2）Implement a BroadcastReceiver to receive the broadcast:
+
+public class SampleBootReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+            // Set the alarm here.
+        }
+    }
+}
+
+3）Add the receiver to your app's manifest file with an intent filter that filters on the ACTION_BOOT_COMPLETED action:
+
+<receiver android:name=".SampleBootReceiver"
+        android:enabled="false">
+    <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+    </intent-filter>
+</receiver>
+
+Notice that in the manifest, the boot receiver is set to android:enabled="false". This means that the receiver will not be called unless the application explicitly enables it. This prevents the boot receiver from being called unnecessarily. You can enable a receiver (for example, if the user sets an alarm) as follows:
+
+ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+        PackageManager.DONT_KILL_APP);
+        
+Once you enable the receiver this way, it will stay enabled, even if the user reboots the device. In other words, programmatically enabling the receiver overrides the manifest setting, even across reboots. The receiver will stay enabled until your app disables it. You can disable a receiver (for example, if the user cancels an alarm) as follows:
+
+ComponentName receiver = new ComponentName(context, SampleBootReceiver.class);
+PackageManager pm = context.getPackageManager();
+
+pm.setComponentEnabledSetting(receiver,
+        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+        PackageManager.DONT_KILL_APP);

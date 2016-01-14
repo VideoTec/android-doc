@@ -1,0 +1,146 @@
+http://www.infoq.com/cn/articles/wechat-android-app-architecture
+放在今天webview组件不再是什么问题，
+但在2.3之前的系统里面都会存在严重的内存泄露。
+内存问题为微信客户端架构的第一次进化埋下了伏笔。
+
+Android运行时的择优置换机制，
+会选取占用资源最多的程序结束掉，
+除了微信自己功能膨胀导致内存占用加大之外，
+前面说的不省心的webview，还会给我们在内存问题上挖坑。
+而结果就是在用户手机运行APP比较多的时候，
+微信会被系统杀掉回收资源，消息收取不及时的问题就出来了。
+
+对于有内存泄露问题的webview或者其他不频繁使用的功能，
+再把其分离到独立的工具进程（:tools）中。
+通过分离进程，微信第一次重构解决了系统因为微信资源消耗，
+主动干掉微信服务的困境。
+分离后的push进程内存占用以及被系统kill回收的几率大幅降低，
+而对于worker和tools进程，我们不再要求其一定存在，
+只在用户收到消息，或者进入h5相关功能界面时存在即可。
+这个版本的架构变更基本达成了我们设定的目标，
+无论是电量还是平均待机内存消耗上都大幅度下降，
+从内存上来看下降了70%，电量的话也比竞品和我们前一个版本有好转。
+
+<service 
+        android:name=".plugin.webview.stub.WebViewStubService"/>
+
+-------------------------------------
+第一组，在主进程中的 ACT
+-------------------------------------
+
+        android:name=".plugin.webview.ui.tools.jsapi.ShareToQQWeiboUI"
+        android:name=".plugin.webview.stub.WebViewStubProxyUI"  
+        android:name=".plugin.webview.ui.tools.BrowserChooseActivity"
+        android:name=".plugin.webview.ui.tools.OpenFileChooserUI" 
+        android:name=".plugin.webview.ui.tools.QQCallbackUI" 
+        android:name=".plugin.webview.stub.WebviewScanImageActivity" 
+
+-------------------------------------
+详细情况：
+-------------------------------------
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.jsapi.ShareToQQWeiboUI"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.stub.WebViewStubProxyUI" 
+        android:theme="@style/iu"/>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.BrowserChooseActivity" 
+        android:theme="@style/iu"/>
+<activity 
+        android:name=".plugin.webview.ui.tools.OpenFileChooserUI" 
+        android:theme="@style/iu"/>
+<activity 
+        android:launchMode="singleTask" 
+        android:name=".plugin.webview.ui.tools.QQCallbackUI" 
+        android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="tencent1103188687"/>
+            </intent-filter>
+        </activity>
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".plugin.webview.stub.WebviewScanImageActivity" 
+        android:theme="@style/iu"/>
+
+-------------------------------------
+第二组，在:tools进程中的 ACT
+-------------------------------------
+
+        android:name=".plugin.webview.ui.tools.WebViewUI"
+        android:name=".plugin.webview.ui.tools.OAuthUI" 
+        android:name=".plugin.webview.ui.tools.ContactQZoneWebView" 
+        android:name=".plugin.webview.ui.tools.QRCodeIntroductionWebViewUI" 
+        android:name=".plugin.webview.ui.tools.ExdeviceWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSWebViewUI"
+        android:name=".plugin.webview.ui.tools.fts.FTSDetailWebViewUI"  
+        android:name=".plugin.webview.ui.tools.fts.FTSBizWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizTeachWebViewUI" 
+        android:name=".plugin.webview.ui.tools.fts.FTSGlobalTabWebViewUI" 
+
+-------------------------------------
+详细情况：
+-------------------------------------
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.WebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".plugin.webview.ui.tools.OAuthUI" 
+        android:noHistory="true" 
+        android:process=":tools"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.ContactQZoneWebView" 
+        android:process=":tools"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.QRCodeIntroductionWebViewUI" 
+        android:process=":tools" 
+        android:windowSoftInputMode="adjustPan|stateHidden"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".plugin.webview.ui.tools.ExdeviceWebViewUI" 
+        android:process=":tools"/>
+        
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".plugin.webview.ui.tools.fts.FTSWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSDetailWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize" 
+        android:name=".plugin.webview.ui.tools.fts.FTSBizTeachWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>
+        
+<activity 
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:name=".plugin.webview.ui.tools.fts.FTSGlobalTabWebViewUI" 
+        android:process=":tools" 
+        android:screenOrientation="sensor"/>

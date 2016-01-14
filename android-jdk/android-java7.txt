@@ -1,0 +1,88 @@
+http://stackoverflow.com/questions/20480090/does-android-support-jdk-6-or-7
+
+Added support for Java 7 language features like 
+1）multi-catch, 
+2）try-with-resources, and the 
+3）diamond operator. 
+These features require version 19 or higher of the Build Tools. 
+Try-with-resources requires minSdkVersion 19; 
+the rest of the new language features require minSdkVersion 8 or higher. 
+To use the new language features after installing ADT 22.6.0, 
+ensure that you run Eclipse on JDK 7 and 
+change your application project settings to use JDK 7.
+
+https://www.zhihu.com/question/22456291
+Android 4.4 本身只能用JDK7 编译
+Android 4.4 以下只能用JDK6 编译
+
+编译Android应用程序可以用JDK1.6/1.7
+尝试了在Android 4.4上使用Java7编写app，似乎编译通过后并没有什么问题
+编译环境可以选择1.7
+
+http://toughcoder.net/blog/2014/11/12/java-7-and-8-and-android/
+Java 7和8的新特性以及与Android开发的关系
+Oracle一直在推动Java的发展，
+到目前最新的Java SE是Java 8以及JDK8，
+但是目前貌似很多人还在使用Java 6（JDK6)，
+于是就花时间小研究了下Java 7与Java 8。
+
+Java SE 7新增的语言特性并不是很多，主要有：
+1）try 语句资源管理(The try-with-resources Statement)
+2）同一catch捕获多个异常(Catching Multiple Exception Types)
+3）创建泛型对象时的类型推测(Type inferenes for Generic Instance Creation)
+   这个称作 菱形操作符
+4）二进制的字面常量(Binary Literals)
+5）数值字面常量里的可以有下划线(Underscores in Numeric Literals)
+6）switch语句支持String(Strings in switch Statements)
+可以看出，其实Java 7并无太大改进，只是多了些语法糖而已。
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class Switch {
+    // Underscores in numeric literals
+    public static int USER_COUNT_LIMIT = 1_000_000_000;
+    public static void main(String[] args) {
+        // Type inference when creating generics
+        
+        List<String> fruits = new ArrayList<>(args.length);
+        for (String a : args) {
+            fruits.add(a);
+        }
+        // Strings in switch
+        for (String a : fruits) {
+            switch (a) {
+            case "apple":
+                System.out.println("eat an apple a day, the doctors go away");
+                break;
+            case "orange":
+                System.out.println("orange juice");
+                break;
+            default:
+                System.out.println("i do not know what you want");
+                break;
+            }
+        }
+
+        // With 'try-with-resources' no longer need finally to clean up resources.
+        try (BufferedReader br = new BufferedReader(new FileReader(args[args.length - 1]))) {
+            System.out.println(br.readLine());
+            Thread.sleep(1000);
+        // Catch multiple exceptions
+        } catch (InterruptedException | IOException e) {
+            System.out.print(e.getMessage());
+        }
+
+        // binary literals
+        int userCount = 0b1010101;
+        System.out.println("Current we have " + userCount + " users, while limit is " + USER_COUNT_LIMIT);
+        if (userCount < USER_COUNT_LIMIT) {
+            System.out.println("We are okay, it is under control");
+        } else {
+            System.out.println("Alert alert alert");
+        }
+    }
+}
+
+Java 8最大的改进就是增加了lambda表达式(Lambda Expression)，来看个实例：

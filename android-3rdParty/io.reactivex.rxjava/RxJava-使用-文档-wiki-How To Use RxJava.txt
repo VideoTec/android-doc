@@ -1,0 +1,81 @@
+https://github.com/ReactiveX/RxJava/wiki/How-To-Use-RxJava
+
+------------------------------------
+Hello World!
+------------------------------------
+
+public static void hello(String... names) {
+    Observable.from(names).subscribe(new Action1<String>() {
+
+        @Override
+        public void call(String s) {
+            System.out.println("Hello " + s + "!");
+        }
+
+    });
+}
+
+调用：
+hello("Ben", "George");
+
+输出：
+Hello Ben!
+Hello George!
+
+------------------------------------
+How to Design Using RxJava
+------------------------------------
+To use RxJava you 
+1）create Observables (which emit data items), 
+2）transform those Observables in various ways 
+to get the precise data items that interest you (by using Observable operators), 
+and then observe and react to these sequences of interesting items 
+(by implementing Observers or Subscribers and 
+then subscribing them to the resulting transformed Observables).
+
+------------------------------------
+Creating Observables
+------------------------------------
+To create an Observable, 
+
+1）you can either implement the Observable's behavior manually 
+by passing a function to create() that exhibits Observable behavior, or 
+
+2）you can convert an existing data structure into an Observable 
+by using some of the Observable operators that are designed for this purpose.
+
+------------------------------------
+Creating an Observable from an Existing Data Structure
+------------------------------------
+
+emit[英][iˈmɪt] [美][ɪˈmɪt]
+vt.发出；发射；颁布；发表
+
+You use the Observable just() and from() methods 
+to convert objects, lists, or arrays of objects 
+into Observables that emit those objects:
+
+Observable<String> o = Observable.from("a", "b", "c");
+
+def list = [5, 6, 7, 8]
+Observable<Integer> o = Observable.from(list);
+
+Observable<String> o = Observable.just("one object");
+
+These converted Observables will synchronously 
+invoke the onNext() method of any subscriber that subscribes to them, 
+for each item to be emitted by the Observable, 
+and will then invoke the subscriber’s onCompleted() method.
+
+------------------------------------
+Creating an Observable via the create() method
+------------------------------------
+
+You can implement asynchronous i/o, computational operations, or even “infinite” streams of data by designing your own Observable and implementing it with the create() method.
+
+------------------------------------
+Transforming Observables with Operators
+------------------------------------
+RxJava allows you to chain operators together to transform and compose Observables.
+
+The following example, in Groovy, uses a previously defined, asynchronous Observable that emits 75 items, skips over the first 10 of these (skip(10)), then takes the next 5 (take(5)), and transforms them (map(...)) before subscribing and printing the items:

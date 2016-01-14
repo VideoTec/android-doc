@@ -1,0 +1,7 @@
+https://github.com/square/otto
+
+An enhanced Guava-based event bus with emphasis on Android support.
+
+Otto is an event bus designed to decouple different parts of your application while still allowing them to communicate efficiently.
+
+Forked from Guava, Otto adds unique functionality to an already refined event bus as well as specializing it to the Android platform.

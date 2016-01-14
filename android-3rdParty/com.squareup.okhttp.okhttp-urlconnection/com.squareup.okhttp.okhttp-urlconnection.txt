@@ -1,0 +1,4 @@
+https://github.com/square/okhttp/tree/master/okhttp-urlconnection
+
+Make OkHttp OSGi ready
+Merge pull request #2192 from lburgazzoli/okhttp-osgi

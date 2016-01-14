@@ -1,0 +1,28 @@
+https://developer.android.com/intl/zh-cn/training/testing/unit-testing/local-unit-tests.html#build
+
+http://www.jianshu.com/p/03118c11c199/comments/501302
+11:12 2016/1/13
+初始：在测试包上，右击，新建 java 源文件。
+
+首先，创建一个非常简单的被测类：Calculator类。
+Android Studio提供了一个快速创建测试类的方法。
+只需在编辑器内右键点击Calculator类的声明，
+选择Go to > Test，然后"Create a new test…"
+
+Go to > Test 
+是创建指定类的，测试类，快捷方式
+可以测试指定的接口等等。
+
+在打开的对话窗口中，选择JUnit4和"setUp/@Before"，
+同时为所有的计算器运算生成测试方法。
+请将代码复制到编辑器或者使用JUnit框架提供的断言来编写自己的测试。
+
+http://yrulee.logdown.com/posts/233710-android-studio-start-with-unit-test
+
+可能你會想問，我已經新增了 test 資料夾，
+但為何 AS 並未將其視為一個source package呢？
+以下用強大的 Gradle build script 來回答這個問題。
+
+sourceSets {
+    instrumentTest.setRoot('src/test')
+}

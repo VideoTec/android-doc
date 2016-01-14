@@ -1,0 +1,21 @@
+http://reactivex.io/RxJava/javadoc/
+
+scheduler[英]['ʃedju:lə(r)] [美]['ʃedju:lə(r)]
+n.调度程序，日程安排程序
+
+observable[英][əbˈzɜ:vəbl] [美][əbˈzɜ:rvəbl]
+adj.观察得到的，应遵守的，应庆祝的
+
+subscription[英][səbˈskrɪpʃn] [美][səbˈskrɪpʃən]
+n.（报刊等的）订阅费；捐款；（俱乐部的）会员费；捐助
+
+rx                  Rx Observables
+rx.annotations
+rx.exceptions
+rx.functions
+rx.observables
+rx.observers
+rx.plugin
+rx.schedulers       Rx Schedulers
+rx.subjects
+rx.subscriptions

@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/sdk/installing/studio-build.html
+
+-------------------------------------
+输出物：Build output
+-------------------------------------
+
+flavor[英]['fleɪvə] [美][ˈflevɚ]
+n.味；韵味；特点；香料
+
+The build generates an APK for each build variant in the app/build folder: 
+the app/build/outputs/apk/ directory 
+contains packages named app-<flavor>-<buildtype>.apk; 
+
+for example, 
+app-full-release.apk and 
+app-demo-debug.apk.

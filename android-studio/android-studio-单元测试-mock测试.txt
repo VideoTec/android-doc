@@ -1,0 +1,33 @@
+mock[英][mɒk] [美][mɑ:k]
+n.（英国）模拟考试
+
+http://liuzhijun.iteye.com/blog/1512780
+
+5分钟了解Mockito
+
+mock对象就是在调试期间用来作为真实对象的替代品。（解决被测试类的依赖问题）
+mock测试就是在测试过程中，对那些不容易构建的对象用一个虚拟对象来代替测试的方法就叫mock测试。
+知道什么是mock测试后，那么我们就来认识一下mock框架---Mockito
+
+什么是Mockito
+除了有一个好记的名字外，Mockito尝试用不一样的方法做mocking测试，是简单轻量级能够替代EasyMock的框架。使用简单，测试代码可读性高，丰富的文档包含在javadoc中，直接在IDE中可查看文档，实例，说明
+
+http://dreamhead.blogbus.com/tag/hamcrest/
+写单元测试不用Mock框架几乎是一件不可能的事，
+我是说Mock框架，不是Mock模式哦！
+对于老Java程序员来说，提起Mock框架，
+率先在脑海中撞线的多半是JMock或EasyMock。
+
+使用Mockito，只要有一个理由就够了，简单。
+相比于JMock，它不用写checking，
+相比于EasyMock，它省去了replay。
+
+List mockedList = mock(List.class);
+when(mockedList.get(0)).thenReturn("first");
+System.out.println(mockedList.get(0));
+
+当然，Mockito还是非常强大的。
+
+最后再强调一遍，无论使用哪个框架，
+请尽量不要使用verify，
+也就是传说中的Mock模式，那是把代码拉入泥潭的开始。

@@ -1,0 +1,3 @@
+https://github.com/ReactiveX/RxJavaMath
+
+Math operators for RxJava

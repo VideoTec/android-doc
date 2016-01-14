@@ -1,0 +1,23 @@
+调用方法：
+E:\doc\android\android-studio\Android-Studio-视图-Build Variants.txt
+视图-Build Variants 设置当前测试模块
+
+http://www.jianshu.com/p/03118c11c199
+
+在Android Studio中进行单元测试和UI测试
+
+1.概述
+2.创建新的Android Studio工程
+3.配置支持单元测试的工程
+4.创建第一个单元测试
+5.运行单元测试
+6.配置支持Instrumentation测试的工程
+7.为app添加简单的交互
+8.创建并运行Espresso测试
+9.祝贺！
+
+你会学到什么
+
+更新包含JUnit和Android Testing Support Library的Gradle构建文件
+编写运行在本机Java虚拟机上的单元测试
+编写运行在手机或者虚拟机上的Espresso测试

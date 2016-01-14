@@ -1,0 +1,24 @@
+
+https://trac.ffmpeg.org/wiki/CompilationGuide/Android
+怎么编译 ffmpeg-android
+
+There are pre-packaged sources for FFmpeg including building instructions for Android:
+
+1)
+​https://github.com/hiteshsondhi88/ffmpeg-android
+http://writingminds.github.io/ffmpeg-android/
+
+2) ​android-ffmpeg-with-rtmp
+https://github.com/cine-io/android-ffmpeg-with-rtmp
+
+​3) Bambuser
+http://bambuser.com/opensource
+The client application versions 1.2 to 1.7.1 for Android were based in part on work of the FFmpeg project. Those parts are distributed under the LGPL 2.1 license, and the source code and instructions for building FFmpeg for Android are available for download here:
+
+​4) ffmpeg4android
+http://sourceforge.net/projects/ffmpeg4android/
+
+​5) How to Build FFmpeg for Android
+http://www.roman10.net/how-to-build-ffmpeg-for-android/
+
+​This forum thread describes how to strip .so.5 type names, if you want to go the all-DLL route.

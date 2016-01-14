@@ -1,0 +1,14 @@
+https://ingramchen.io/blog/2014/10/retromlambda.html
+
+常見的 Android async library 有：
+
+Bolts (facebook)
+Jdeferred
+RxJava (netflix, reactive)
+其實還有三、四種變型，不過我一時找不到
+
+尤其是專案開始走向 Promise 與 Reactive 這種風格開發時，
+lambda 是完全必要的工具，不然程式碼可讀性實在是太差。
+在沒有 retrolambda 之前，你還有個理由不採用這種風格開發，
+但現在阻力都沒了，
+你該開始在 Android 裡擁抱 Promise pattern 來處理非同步的工作。

@@ -1,0 +1,39 @@
+https://zh.wikipedia.org/zh-cn/Hamcrest
+
+Hamcrest是一个协助编写用Java语言进行软件测试的框架。
+它支持创建自定义的断言匹配器（assertion matchers）
+（名称“Hamcrest”即为“matchers”的异位构词），
+允许声明式定义匹配规则。
+这些匹配器在单元测试框架（例如JUnit和jMock）中有用。
+
+Hamcrest已经被移植到
+Java、C++、Objective-C、Python、
+ActionScript 3、PHP、JavaScript和Erlang.
+
+http://dreamhead.blogbus.com/tag/hamcrest/
+一句话，如果你写单元测试，就应该用Hamcrest
+
+如今不写单元测试，你都不好意思说自己在做工程项目了。
+但你一般这么写断言呢？如果你还写成下面这样，我只能说你落伍了：
+
+  assertEquals(a, b);
+
+请告诉我，哪个是执行结果，哪个是预期结果，
+不管你是怎样，反正大多数情况下，我是记不住的。
+所以，这个在只重功能不重可读性年代产生的API该更新了。
+于是，Hamcrest就是为了解决这样的问题而生的。
+
+  assertThat(a, is(b));
+
+很明显，前面一个是执行结果，后面一个是预期结果，
+当然这只是一个简单的例子。
+由于Hamcrest引入了matcher的概念（就是你看到的is部分），我们可以进行更多的组合：
+
+  assertThat(number, greaterThan(5));
+  assertThat(text, startsWith("Hello"));
+  assertThat(array, hasItem("World"));
+
+Hamcrest如此好用，
+以至于JUnit已经将其吸纳进去。
+如果你现在用的JUnit是4.4之后的版本，那你已经有了Hamcrest。
+无需额外的配置，就可以拿过来用。

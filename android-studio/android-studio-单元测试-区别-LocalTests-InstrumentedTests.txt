@@ -1,0 +1,7 @@
+https://developer.android.com/intl/zh-cn/training/testing/unit-testing/index.html
+
+For testing Android apps, you typically create these types of automated unit tests:
+
+Local tests: Unit tests that run on your local machine only. These tests are compiled to run locally on the Java Virtual Machine (JVM) to minimize execution time. Use this approach to run unit tests that have no dependencies on the Android framework or have dependencies that can be filled by using mock objects.
+
+Instrumented tests: Unit tests that run on an Android device or emulator. These tests have access to instrumentation information, such as the Context for the app under test. Use this approach to run unit tests that have Android dependencies which cannot be easily filled by using mock objects.

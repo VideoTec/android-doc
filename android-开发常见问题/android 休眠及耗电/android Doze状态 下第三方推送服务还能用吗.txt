@@ -1,0 +1,6 @@
+http://www.padady.com/index.php/Portal/Index/single_garden/post_id/9237
+
+我认为，在原生Android（AOSP）上，第三方推送确实将被废掉。
+但鉴于国情，接下来在国内很难说，
+如果各个手机厂商借M的Doze Mode强推自己的push解决方案（比如MiPush），
+那就真的万劫不复了

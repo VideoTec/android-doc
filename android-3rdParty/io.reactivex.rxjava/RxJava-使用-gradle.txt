@@ -1,0 +1,5 @@
+https://github.com/ReactiveX/RxJava/releases
+Version 1.1.0 – December 2 2015 (Maven Central)
+
+https://github.com/ReactiveX/RxJava
+compile 'io.reactivex:rxjava:x.y.z'

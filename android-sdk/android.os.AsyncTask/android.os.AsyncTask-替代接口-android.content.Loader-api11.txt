@@ -1,0 +1,9 @@
+http://jdam.cd/async-android/
+
+Loader
+
+Loader is an evolution of AsyncTask in many ways, and it shares some of the same limitations.
+
+The key difference is that a Loader binds to a host Activity or Fragment. It allows background operations to continue and be restored relatively seamlessly across configuration changes. This is great. It solves a common and surprisingly difficult problem. However, being tightly bound to the framework often provides a separate set of challenges for unit testing.
+
+There are cases where this might be the right tool for the job. For example, CursorLoader does quite a lot for free in combination with ContentProvider. I used it when I was building Sudoku, and it worked well, but that’s a relatively simple application.

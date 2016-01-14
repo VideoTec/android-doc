@@ -1,0 +1,21 @@
+http://stackoverflow.com/questions/23025433/how-to-clear-gradle-cache
+
+I'm trying to use Android Studio, and the first time I boot it up, it takes like 45 MINUTES to compile... If I don't quit the application, it is okay - each subsequent compilation/running the app will take like 45 seconds.
+
+I've tried to check some of my caches: there's a .gradle/caches folder in my home directory, and it's like 123 MB large.
+
+There's also a .gradle folder in my project folder... one of the taskArtifacts was like 200 MB. I'm scared to just randomly nuke them both. What parts of the folders are safe to delete?
+
+Is there a better explanation for why my Android Studio is taking forever to run the gradle assemble task upon first time loading the application?
+
+Do I also have to clear the intellij cache too?
+
+解答：
+
+You can safely delete the whole .gradle folder located under project directory. It'll be recreated every time the tasks are run. The same is for .gradle under home directory. It'll also be recreated as well, but the whole dependencies must be downloaded again - it's quite time-consuming.
+
+As I see in various places over the web gradle for android development is quite slow and people complain about it. No idea what's reason exactly - this is how it works.
+
+I don't think that low performance is because of big folders. Actually they help it to be faster.
+
+As @Bradford20000 pointed out in the comments, there might might gradle.properties as well as global gradle scripts located under $HOME/.gradle. In such case special attention must be paid when deleting the content of this directory.

@@ -1,3 +1,11 @@
+官网 
+http://gradle.org/
+http://gradle.org/getting-started-android/
+
+源码
+https://github.com/gradle/gradle
+
+资料
 http://baike.baidu.com/view/9916271.htm
 
 groovy[英][ˈgru:vi] [美][ˈɡruvi] 

@@ -1,0 +1,22 @@
+http://stackoverflow.com/questions/17637179/how-to-set-source-1-7-in-android-studio-and-gradle
+
+Java 7 support was added at build tools 19. You can now use features like the diamond operator, multi-catch, try-with-resources, strings in switches, etc. Add the following to your build.gradle.
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 19
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+Gradle 1.7+, Android gradle plugin 0.6.+ are required.
+Note, that only try with resources require minSdkVersion 19. 
+Other features works on previous platforms.

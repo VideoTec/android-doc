@@ -1,3 +1,20 @@
+默认root路径： src/
+
+main/java
+main/jniLibs
+main/assets
+main/res
+main/AndroidManifest.xml
+注意：
+没有包含jar库的lib目录，
+这个由gradle脚本中设置依赖关系。
+
+androidTest/java
+test/java
+
+参考源码：
+com.android-源码\SdkConstants.java
+
 http://flyouting.gitbooks.io/gradle-plugin-user-guide-cn/content/project_structure.html
 
 上面提到的基本构建文件需要一个默认的文件结构.

@@ -1,0 +1,35 @@
+http://jdam.cd/async-android/
+
+AsyncTask
+
+Painless threading? Well, AsyncTask does have some shortcomings, but it’s the first of several abstractions with a clean separation between the code that runs in the background and the code that handles the result on the main thread.
+
+The interface provides two important callbacks:
+
+doInBackground() is executed on a worker thread
+onPostExecute() receives the result on the main thread
+
+It’s also possible to override onProgressUpdate() and receive progress events on the main thread.
+
+AsyncTask works just fine in simple cases. So what’s the problem? 
+We already touched on handling configuration changes, 
+but that’s a common challenge for threading abstractions that live in the context of an Activity. 
+There are three more concrete limitations.
+
+--------------------------------------------
+第一个缺点：ERROR HANDLING
+--------------------------------------------
+
+Operations that need to be executed on background threads tend to have a lot of failure cases – especially I/O. Network requests fail. Common patterns involve returning exceptions in result objects or storing them as state in the task. This means that we always need to check for error results (or null) and might end up dealing with less meaningful types.
+
+--------------------------------------------
+第一个缺点：CALLBACK HELL
+--------------------------------------------
+
+Chaining multiple asynchronous operations together is complex and error-prone. Scenarios where multiple individual tasks depend on each other are not uncommon, though.
+Chained or nested callbacks lead to “callback hell”. It becomes difficult to reason about the flow of control, and the possible failure of the whole chain must be handled in each callback.
+
+--------------------------------------------
+第一个缺点：EXECUTION ORDER
+--------------------------------------------
+This is just a piece of history, assuming a minimum API level 14+. The default threading behaviour of AsyncTask changed twice between platform versions. This resulted in some subtle bugs, inconsistencies and confused developers. It can be specified manually with executeOnExecutor().

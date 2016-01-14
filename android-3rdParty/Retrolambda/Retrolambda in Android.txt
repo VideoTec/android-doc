@@ -1,0 +1,22 @@
+https://ingramchen.io/blog/2014/10/retromlambda.html
+
+最近兩天花了一點時間在 Android 專案裡導入 retrolambda，真是一試成主顧。
+它的原理是改寫 lambda compile 出來的 bytecode，
+把它轉成 Java7 能看的懂的 anonymous class。
+這樣就能在 Android 裡自由寫 lambda 啦：
+
+//listener 使用 lambda expression
+view.setOnClickHandler( v -> System.out.println("hello"));
+
+//method reference 也通
+runOnUiThread(this::finish);
+
+由於是 compile 過程中偷偷轉的，產生出的也是標準的 bytecode，相容性相當的好，也不需要加裝額外的 library。而且未來 Android 正式支援 Java8 後，程式都不用動，只要把 retrolambda 移除再重新 compile 就好，完全是無痛的升級。
+
+在 Android 裡要使用很簡單，已經有人寫好 gradle plugin，設個兩三行就搞定了。實際測試 Android 2.3~5.0 版都 ok，Java 8u5~8u25 也都相容，非常滿意啊。
+
+gradle plugin 有一點沒提到，在 proguard 裡要加個特別設定才會過關：
+
+# java.lang.invoke.* 是 java 8 的 class
+# 這是 plugin 加入的暗椿，要忽略掉
+-dontwarn java.lang.invoke.**

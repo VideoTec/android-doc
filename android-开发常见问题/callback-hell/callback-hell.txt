@@ -1,0 +1,66 @@
+https://ingramchen.io/blog/2014/10/retromlambda.html
+
+ GUI client 有太多 被動 的事件要處理，
+ 小至 click listener，大至非同步操作，
+ 在沒有 lambda 前通通都是堆滿滿的 anonymous class, 
+ 還有那噁心的 nested callback hell，非常的痛苦
+ 
+http://stackoverflow.com/questions/25098066/what-is-callback-hell-and-how-and-why-rx-solves-it
+
+1) What is a "callback hell" for someone who does not know javascript and node.js ?
+2) When (in what kind of settings) does the "callback hell problem" occur?
+3) Why does it occur ?
+4) Or can "callback hell" occur also in a single threaded application?
+5) could you please also show how RX solves the "callback hell problem" on that simple example.
+
+https://blog.coding.net/blog/promise
+使用 Promise 模式可转变为：
+
+var loadImage = new Promise(function(img) {
+    loadImg(img);
+});
+loadImage('a.jpg').then(function() {
+    return loadImage('b.jpg');
+}).then(function () {
+    return loadImage('c.jpg');
+}).then(function () {
+    console.log('all done!');
+});
+
+简而言之，就是可以把异步形式的代码转变成同步代码形式。摆脱回调地狱。
+曾经有个小偷潜入某神秘机构，偷出机密代码的最后一页，打开一看。
+
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
+
+http://callbackhell.com/
+
+intuitively[英][ɪn'tju:ɪtɪvlɪ] [美][ɪnˈtjuɪtɪvlɪ]
+adv.直觉地，直观地；由直觉而得地
+
+affectionately[英][ə'fekʃənətlɪ] [美][ə'fekʃənətlɪ]
+adv.挚爱地，亲切地；脉；脉脉；眽眽
+
+shallow[英][ˈʃæləʊ] [美][ˈʃæloʊ]
+adj.浅的，肤浅的；表面的，皮毛的；（水，器物等）浅的；（呼吸）浅的
+n.浅处；浅滩
+v.使变浅；使变浅薄
+
+What is "callback hell"?
+Asynchronous javascript, or javascript that uses callbacks, 
+is hard to get right intuitively. 
+See all the instances of function and })? Eek! 
+This is affectionately known as callback hell.
+
+解决方法：
+1）Name your functions
+2）Keep your code shallow
+3）Modularize!

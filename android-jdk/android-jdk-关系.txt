@@ -1,0 +1,24 @@
+http://toughcoder.net/blog/2014/11/12/java-7-and-8-and-android/
+
+那么，Android到底与Java是什么关系呢？
+有人说它们是一样的。
+
+其实没啥关系，
+Android虽然使用Java语言作为它的主要开发语言，
+但是它并完全等同于Java SE JDK，
+JDK中关于UI的AWT和Swing在Android都没有，
+所以它的API是标准JDK 6的一个子集。
+
+Android中的Java是基于Apache的Apache Harmony，
+与标准Java SE 6语法完全一样，
+可以看看它们之间的异同，以及Dalvik与Java VM。
+
+Java在进步，语法上越来越人性化，
+那么Android开发能否得益呢？
+Java 7是可以的，在最新的开发工具（ADT 23和Kitkat）下，
+可以使用Java 7。
+但对于Java 8不能直接使用，
+只能借助第三方工具来翻译bytecode。
+所以对于Android开发者同学们来说，
+尝一尝Java最新的语法糖就可以了，
+想要天天使用，还要慎重考虑哦！

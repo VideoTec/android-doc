@@ -1,0 +1,41 @@
+https://www.zhihu.com/question/30774184
+
+官方对Doze模式的说法有一条是：
+
+Network access is disabled, 
+unless your app receives a high priority Google Cloud Messaging tickle.
+
+但是在国内的话应该没多少人用 Google Cloud Messaging 吧？
+那第三方 APP 的推送功能是不是就都不能用了？
+
+在Doze Mode下，
+1）网络访问被屏蔽，
+2）维持唤醒（Wake Lock）被忽略，
+3）定时任务（Alarm）被推迟（以指数递增的后延），
+但不会杀进程。也就是说后台进程就啥都别想干了，
+乖乖躺着吧，push通道不可避免的会断掉。
+这次Google动真格的一点是，对所有应用，
+无视『目标版本（Target SDK Version）』全部生效，
+除了用户在设置中主动赦免的app以及Google自家的Play services和Play Store。
+（Google很贱的不让你剥夺这俩的赦免）
+
+
+更新（2015.10.6）：
+今天Android 6.0源码正式推送到了AOSP。
+从源码中可以发现，Google在最后关头（6.0代码分支冻结前10天）
+为开发者提供了一个例外方案：
+应用可以声明 REQUEST_IGNORE_BATTERY_OPTIMIZATIONS 权限，
+并主动要求用户将其加入至白名单中，
+从而不受 Doze Mode 和 App Standby 的影响。
+估计大部分集成了第三方推送机制的App都会采用这个官方支持的例外方案。
+不过千万别天真的以为你不同意白名单请求就行了，
+某些应用也许会『执着』的坚持这一要求，不达目的誓不罢休
+
+Doze 模式
+
+Doze打盹模式共有五种状态，不同状态间的切换如下图所示，
+如果厂家没有修改时间的话，
+因此从灭屏到Doze模式，至少需要61分钟，官方是60分钟，
+但需要1分钟作为运动监测。
+
+根据代码跟踪,如果应用不在白名单,系统灭屏经过大约一小时后,上层应用wake lock,alarm,还有网络链接都会失效,除非你是白名单应用.

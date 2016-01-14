@@ -1,0 +1,70 @@
+scheduling[英]['ʃedju:lɪŋ] [美]['ʃedju:lɪŋ]
+n.行程安排，时序安排；排时间表
+
+conjunction[英][kənˈdʒʌŋkʃn] [美][kənˈdʒʌŋkʃən]
+n.连词；连接；联合，结合物；（恒星、行星等的）合
+
+This lesson teaches you to
+1）Understand the Trade-offs
+2）Set a Repeating Alarm
+3）Cancel an Alarm
+4）Start an Alarm When the Device Boots
+
+http://developer.android.com/intl/zh-cn/training/scheduling/alarms.html
+
+Scheduling Repeating Alarms
+
+Alarms (based on the AlarmManager class) give you a way to perform time-based operations outside the lifetime of your application. For example, you could use an alarm to initiate a long-running operation, such as starting a service once a day to download a weather forecast.
+
+Alarms have these characteristics:
+
+1）They let you fire Intents at set times and/or intervals.
+2）You can use them in conjunction with broadcast receivers to start services and perform other operations.
+3）They operate outside of your application, so you can use them to trigger events or actions even when your app is not running, and even if the device itself is asleep.
+4）They help you to minimize your app's resource requirements. You can schedule operations without relying on timers or continuously running background services.
+
+Note: For timing operations 
+that are guaranteed to occur during the lifetime of your application, 
+instead consider using the Handler class in conjunction with Timer and Thread. 
+This approach gives Android better control over system resources.
+
+--------------------------------------------
+Cancel an Alarm
+--------------------------------------------
+Depending on your app, you may want to include the ability to cancel the alarm. To cancel an alarm, call cancel() on the Alarm Manager, passing in the PendingIntent you no longer want to fire. For example:
+
+// If the alarm has been set, cancel it.
+if (alarmMgr!= null) {
+    alarmMgr.cancel(alarmIntent);
+}
+
+--------------------------------------------
+Understand the Trade-offs
+--------------------------------------------
+
+particularly[英][pəˈtɪkjələli] [美][pərˈtɪkjələrli]
+adv.特别；尤其；异乎寻常地
+
+trade-offs[英][t'reɪd'ɔ:fs] [美][t'reɪd'ɔ:fs]
+n.交换( trade-off的名词复数 )；协定；交易；平衡
+
+scenario[英][səˈnɑ:riəʊ] [美][səˈnærioʊ]
+n.（行动的）方案；剧情概要；分镜头剧本
+
+A repeating alarm is a relatively simple mechanism with limited flexibility. It may not be the best choice for your app, particularly if you need to trigger network operations. A poorly designed alarm can cause battery drain and put a significant load on servers.
+
+A common scenario for triggering an operation outside the lifetime of your app is syncing data with a server. This is a case where you might be tempted to use a repeating alarm. But if you own the server that is hosting your app's data, using Google Cloud Messaging (GCM) in conjunction with sync adapter is a better solution than AlarmManager. A sync adapter gives you all the same scheduling options as AlarmManager, but it offers you significantly more flexibility. For example, a sync could be based on a "new data" message from the server/device (see Running a Sync Adapter for details), the user's activity (or inactivity), the time of day, and so on. See the linked videos at the top of this page for a detailed discussion of when and how to use GCM and sync adapter.
+
+Best practices
+
+Every choice you make in designing your repeating alarm can have consequences in how your app uses (or abuses) system resources. For example, imagine a popular app that syncs with a server. If the sync operation is based on clock time and every instance of the app syncs at 11:00 p.m., the load on the server could result in high latency or even "denial of service." Follow these best practices in using alarms:
+
+1）Add randomness (jitter) to any network requests that trigger as a result of a repeating alarm:
+Do any local work when the alarm triggers. "Local work" means anything that doesn't hit a server or require the data from the server.
+At the same time, schedule the alarm that contains the network requests to fire at some random period of time.
+2）Keep your alarm frequency to a minimum.
+3）Don't wake up the device unnecessarily (this behavior is determined by the alarm type, as described in Choose an alarm type).
+4）Don't make your alarm's trigger time any more precise than it has to be.
+Use setInexactRepeating() instead of setRepeating(). When you use setInexactRepeating(), Android synchronizes repeating alarms from multiple apps and fires them at the same time. This reduces the total number of times the system must wake the device, thus reducing drain on the battery. As of Android 4.4 (API Level 19), all repeating alarms are inexact. Note that while setInexactRepeating() is an improvement over setRepeating(), it can still overwhelm a server if every instance of an app hits the server around the same time. Therefore, for network requests, add some randomness to your alarms, as discussed above.
+5）Avoid basing your alarm on clock time if possible.
+Repeating alarms that are based on a precise trigger time don't scale well. Use ELAPSED_REALTIME if you can. The different alarm types are described in more detail in the following section.

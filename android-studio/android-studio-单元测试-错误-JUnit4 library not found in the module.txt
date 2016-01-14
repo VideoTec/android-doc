@@ -1,0 +1,9 @@
+goto test 向导，创建新的 Test 时，
+提示下面的错误：
+
+JUnit 4 library not found in the module
+
+解决方法：
+占击右边的 fix 按钮就可以了。
+修改这了什么？
+

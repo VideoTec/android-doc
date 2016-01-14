@@ -1,0 +1,25 @@
+https://github.com/JakeWharton/RxBinding
+
+RxJava binding APIs for Android UI widgets from the platform and support libraries.
+
+http://gank.io/post/560e15be2dca930e00da1083#toc_10
+
+RxBinding 是 Jake Wharton 的一个开源库，
+它提供了一套在 Android 平台上的基于 RxJava 的 Binding API。
+所谓 Binding，就是类似设置 OnClickListener 、设置 TextWatcher 这样的注册绑定对象的 API。
+
+Button button = ...;
+RxView.clickEvents(button) // 以 Observable 形式来反馈点击事件
+    .subscribe(new Action1<ViewClickEvent>() {
+        @Override
+        public void call(ViewClickEvent event) {
+            // Click handling
+        }
+    });
+
+一个例子是前面提到过的 throttleFirst() ，
+用于去抖动，也就是消除手抖导致的快速连环点击：
+
+RxView.clickEvents(button)
+    .throttleFirst(500, TimeUnit.MILLISECONDS)
+    .subscribe(clickAction);

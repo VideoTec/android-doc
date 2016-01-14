@@ -1,0 +1,5 @@
+com\morihacky\android\rxjava\fragments\ConcurrencyWithSchedulersDemoFragment.java
+fragment_concurrency_schedulers.xml
+
+例子说明：
+This is a demo of how long running operations can be offloaded to a background thread. After the operation is done, we resume back on the main thread. All using RxJava! \n\n To really see this shine. Hit the button multiple times and see how the button click which is a ui operation is never blocked because the long operation only runs in the background

@@ -1,0 +1,31 @@
+https://github.com/guardianproject/android-ffmpeg-java
+
+This project is a Java wrapper around an ffmpeg command line binary for use in Android applications. 
+It depends on the android-ffmpeg project to provide the ffmpeg binary.
+
+For ease of developer use, we've included the FFMPEG and Sox binaries in the project, 
+however, we strongly recommend you compile them yourselves using the steps below.
+
+注1：
+Sox binaries
+http://sourceforge.net/projects/sox/?source=navbar
+SoX - Sound eXchange
+SoX is the Swiss Army Knife of sound processing utilities. 
+It can convert audio files to other popular audio file types 
+and also apply sound effects and filters during the conversion.
+
+注2： 调用 ffmpeg 进程
+org.ffmpeg.android.FfmpegController
+    String ffmpegBin = (new File(this.fileBinDir, "ffmpeg")).getAbsolutePath();
+    Runtime.getRuntime().exec("chmod 700 " + ffmpegBin);
+    ProcessBuilder pb = new ProcessBuilder(cmds);
+    Process process1 = pb.start();
+    int exitVal = process1.waitFor();
+
+    回调通知：
+    if(sc != null) {
+        sc.processComplete(exitVal);
+    }
+
+注3： 编译好的二进ffmpeg命令行
+https://github.com/guardianproject/android-ffmpeg-java/tree/master/res/raw

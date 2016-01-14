@@ -1,0 +1,68 @@
+http://android-developers.blogspot.com/2009/05/painless-threading.html
+翻译版本：
+http://blog.chinaunix.net/uid-16506700-id-4097804.html
+
+Painless threading. Whenever you first start an Android application, 
+a thread called "main" is automatically created. The main thread, also 
+
+当第一次启动一个Android程序时，
+Android会自动创建一个称为“main”主线程的线程。
+这个主线程（也称为UI线程）很重要，因为它负责把事件分派到相应的控件，
+其中就包括屏幕绘图事件，
+它同样是用户与Andriod控件交互的线程。
+比如，
+当你在屏幕上按下一个按钮后，
+UI线程会把这个事件分发给刚按得那个按钮，
+紧接着按钮设置它自身为被按下状态并向事件队列发送一个无效（invalidate）请求。
+UI线程会把这个请求移出事件队列并通知按钮在屏幕上重新绘制自身
+
+http://www.agiledeveloper.ninja/2015/05/painful-threading-in-android-part-i.html
+
+Now that we are experts in Threads and Runnables, 
+is time to introduce some more concepts. 
+Android keeps a MessageQueue in each Thread 
+that basically contain a list of Messages and Runnables 
+for being dispatched by the Looper to the corresponding handler of the Thread.
+ 
+Well, if after the last sentence your head is still over your shoulders, 
+keep calm, take some coffee, continue reading and I promise it will not hurt.
+
+What the f..k is a Handler? And a Looper? 
+What the hell I'm doing reading about? 
+
+Let see! A handler is the mechanism 
+which allow to send and process Messages and Runnables associated 
+with the MessageQueue of a Thread. 
+
+Each handler instance is associated just to a thread. 
+So, when we create one, 
+it will be bound to that thread and shall emit Messages and Runnables of this MessageQueue. 
+Is important to say that when we create a Handler, 
+is necessary to pass in the constructor the Looper that the handler must be bound. 
+If not, the handler will be bounded with the Looper of the Thread 
+that the handler was created. 
+Let see two examples:
+
+Handler handler = new Handler(); //Handler bound by default to the current LoopercThread
+
+Handler handler = new Handler(Looper.getMainLooper()); //Handler bound by default to the Main Thread Looper
+
+The Looper of a Thread basically contains the synchronized MessageQueue of that Thread. By default a Thread (except the Main Thread) doesn't have a Looper associated to it so we must prepare explicitly by calling Looper.prepare(). 
+
+
+class LooperThread extends Thread {
+    public Handler mHandler;
+    public void run() {
+        Looper.prepare();
+        mHandler = new Handler() {
+            public void handleMessage(Message msg) {
+                // process incoming messages here
+            }
+        };
+        Looper.loop();
+    }
+}
+
+And... why should all of this information be util for me? Let's try to take a time to think and wait for the Part II of this post.
+
+I hope you find this information useful and do not forget to post your thoughts in the comments.

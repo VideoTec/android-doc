@@ -1,0 +1,62 @@
+http://gank.io/post/560e15be2dca930e00da1083#toc_10
+
+Retrofit 是 Square 的一个著名的网络请求库。
+
+Retrofit 除了提供了传统的 Callback 形式的 API，
+还有 RxJava 版本的 Observable 形式 API。
+下面我用对比的方式来介绍 Retrofit 的 RxJava 版 API 和传统版本的区别。
+
+以获取一个 User 对象的接口作为例子。使用Retrofit 的传统 API，你可以用这样的方式来定义请求：
+
+--------------------------------------
+普通的回调方式
+--------------------------------------
+
+@GET("/user")
+public void getUser(@Query("userId") String userId, Callback<User> callback);
+
+在程序的构建过程中， 
+Retrofit 会把自动把方法实现并生成代码，
+然后开发者就可以利用下面的方法来获取特定用户并处理响应：
+
+getUser(userId, new Callback<User>() {
+    @Override
+    public void success(User user) {
+        userView.setUser(user);
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        // Error handling
+        ...
+    }
+};
+
+--------------------------------------
+RxJava方式
+--------------------------------------
+而使用 RxJava 形式的 API，定义同样的请求是这样的：
+
+@GET("/user")
+public Observable<User> getUser(@Query("userId") String userId);
+
+使用的时候是这样的：
+
+getUser(userId)
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(new Observer<User>() {
+        @Override
+        public void onNext(User user) {
+            userView.setUser(user);
+        }
+
+        @Override
+        public void onCompleted() {
+        }
+
+        @Override
+        public void onError(Throwable error) {
+            // Error handling
+            ...
+        }
+    });
