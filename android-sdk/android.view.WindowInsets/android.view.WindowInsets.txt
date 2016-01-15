@@ -1,0 +1,7 @@
+Added in API level 20
+
+http://developer.android.com/intl/zh-cn/reference/android/view/WindowInsets.html
+
+Describes a set of insets for window content.
+
+WindowInsets are immutable and may be expanded to include more inset types in the future. To adjust insets, use one of the supplied clone methods to obtain a new WindowInsets instance with the adjusted properties.

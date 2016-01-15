@@ -1,0 +1,4 @@
+https://corner.squareup.com/2015/05/leak-canary.html
+
+Nobody likes OutOfMemoryError crashes
+In Square Register, we draw the customer’s signature on a bitmap cache. This bitmap is the size of the device’s screen, and we had a significant number of out of memory (OOM) crashes when creating it.

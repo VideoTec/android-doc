@@ -1,0 +1,9 @@
+http://www.bkjia.com/Androidjc/896615.html
+
+在Android平台，在试过Python后，
+发现虽然集成也不是什么困难的事，但是感觉它还是有点大，
+一个动态库就有3M多，python库还得自己去裁剪
+
+在Android平台上，lua比python更实用。
+正所谓，没有最好，只有最合适。
+Python在追求纯粹的同时，却也阻碍了它的发展

@@ -1,0 +1,15 @@
+http://obacow.iteye.com/blog/1614089
+
+ava嵌入lua有多种方案可选择，
+比如
+纯java的luaj 、
+纯C jni的 luajava还有个lua4j。
+在android中嵌入lua，
+我偏向使用luajava(当然面对除arm外的平台如x86、mips或需单独打包).
+
+要使用luajava除了要下载luajava还要下载lua源码，
+需要注意的是luajava并不支持lua2.0以上的版本，
+我测试支持的版本是5.1.4,
+而且luajava中缺少头文件luajava.h(本文末提供该文件下载)。
+下载完后把lua和luajava的luajava.c和luajava.h解压到同一个文件夹，
+注意：把llex.c源文件的trydecpoint函数中的

@@ -1,0 +1,2 @@
+http://blog.csdn.net/zz7zz7zz/article/details/15029261
+Lua 学习教程之android与lua相互调用(二)
