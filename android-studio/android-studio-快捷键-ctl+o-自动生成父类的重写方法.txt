@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/26574277/how-to-override-method-via-keyboard-shortcut-in-android-studio
+
+CTRL + o
+
+弹出对话框：
+Select Methods to Override/Implement

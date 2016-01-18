@@ -1,0 +1,2 @@
+http://developer.android.com/intl/zh-cn/guide/components/activities.html#ImplementingLifecycleCallbacks
+

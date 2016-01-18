@@ -1,0 +1,33 @@
+Unwrap / wrap 是指的 for , while , try 等等块
+
+http://www.developerphil.com/android-studio-tips-of-the-day-roundup-2/
+
+1）Duplicate Lines
+ctrl+d
+
+2）Expand/Shrink Selection
+ctrl+w / ctrl+shift+w
+
+3）Surround with
+
+4）Recents
+
+5）Live Templates
+
+6）Move Methods
+
+7）Complete Statement 完成语句，结束行编辑，在行尾添加分号
+This will generate the missing code to complete a statement The usual use cases are:
+Add a semicolon at the end of the line, even if you are not at the end of the line
+Add the parentheses and curly braces after an if, while or for
+Add the curly braces after a method declaration
+
+8）Last Edit Location
+
+9）Join Lines and Literals
+
+10）Select In
+alt + f1
+
+11）Unwrap/Remove
+ctrl+shift+delete

@@ -1,0 +1,163 @@
+这段代码的名称是：
+App Indexing API Code
+
+参考：
+http://stackoverflow.com/questions/19879844/adding-google-play-services-version-to-your-apps-manifest
+
+-------------------------------------------
+这段代码的作用？
+-------------------------------------------
+
+Once implemented, any activity that is viewed by your end user 
+will report this deep link to the Android OS. 
+Then it will be available in the Suggest Autocomplete results 
+when a user types a query into the Google Quicksearch Box. 
+Your app icon and the title you have provided will be shown 
+in the Suggest results if the users query matches your title by keyword.
+
+This enables query autocompletions for your app users, 
+as well as richer search results, improved Search quality, 
+and enhanced ranking signals.
+
+-------------------------------------------
+文档：
+https://developers.google.com/app-indexing/android/test#link-creation
+-------------------------------------------
+让您的应用进入 Google 索引
+App Indexing 将您的应用内容列入 Google 搜索结果中。
+这意味着，已安装您的 Android 或 iOS 应用的用户将
+能够直接从搜索结果中打开深藏在您的应用中的内容。
+
+对于 Android 和 iOS 用户来说，
+无论其是否已安装您的应用，
+App Indexing 都会影响评级。
+这意味着，如果您的应用被编制索引，
+Google 将使用应用内的内容作为评级信号，
+而不只是您的网页内容。
+
+如果您是针对 Android 开发应用，
+则还有一种方式可以再次吸引您的用户。
+App Indexing 具备搜索自动完成功能，
+因此，用户在 Google 搜索中开始键入他们的查询时将可以获得您的应用深层链接。
+
+假设某个用户正在浏览 Live Nation 应用并找到她喜爱的音乐会，
+但这并不能肯定她想要参加该音乐会。
+她在购票时犹豫了，但快到周末时，她又返回 Google 搜索这场音乐会。
+Live Nation 深层链接以自动完成的形式出现，
+让该用户可以快速而轻松地跳回到该应用。
+
+-------------------------------------------
+怎么删除这个自动添加的代码？
+-------------------------------------------
+ACT 中添加的代码，
+可以手动删除去。
+
+AndroidManifest.xml
+手动删除后，再 make project 后，又自动生成。为什么？
+需要 clean project，再 make project 就没问题了。
+
+如果 clean 也无效，需要，
+关闭androi studio, 删除 build 目录。
+
+注意，需要删除 build.gradle 中的
+compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+
+http://stackoverflow.com/questions/34758938/remove-google-play-services-from-app-in-android-studio
+
+Restarting Android Studio several times fixed the issue. 
+I suspect that removing the app/build directory would have fixed it, too. Thanks!
+
+-------------------------------------------
+添加的原因是：必须‘显示’的选择了添加菜单
+-------------------------------------------
+http://stackoverflow.com/questions/34481370/what-is-the-new-generated-code-this-was-auto-generated-to-implement-the-app-ind
+To have this code generated for you, 
+1）you can use the pop-up intention list by Alt + Enter, 
+select “Insert App Indexing API Code”:
+2）you can use pop-up code generate list by Alt + Insert, 
+select “App Indexing API Code”:
+
+生成的代码及添加的注释：
+
+build.gradle 中的
+compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+
+activity 类中添加的代码
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_demo_act);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+    
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "DemoACT Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.example.wangxiangfx.demo/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+    
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "DemoACT Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.example.wangxiangfx.demo/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+    
+AndroidManifest.xml
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />

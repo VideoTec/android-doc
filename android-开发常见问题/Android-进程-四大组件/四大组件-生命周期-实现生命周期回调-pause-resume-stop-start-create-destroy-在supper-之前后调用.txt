@@ -1,0 +1,31 @@
+http://stackoverflow.com/questions/16925579/android-implementation-of-lifecycle-methods-can-call-the-superclass-implementati
+
+Methods you override that are part of component creation (onCreate(), onStart(), onResume(), etc.), you should chain to the superclass as the first statement, to ensure that Android has its chance to do its work before you attempt to do something that relies upon that work having been done.
+
+Methods you override that are part of component destruction (onPause(), onStop(), onDestroy(), etc.), you should do your work first and chain to the superclass as the last thing. That way, in case Android cleans up something that your work depends upon, you will have done your work first.
+
+Methods that return something other than void (onCreateOptionsMenu(), etc.), sometimes you chain to the superclass in the return statement, assuming that you are not specifically doing something that needs to force a particular return value.
+
+Everything else -- such as onActivityResult() -- is up to you, on the whole. I tend to chain to the superclass as the first thing, but unless you are running into problems, chaining later should be fine.
+
+http://stackoverflow.com/questions/9625920/should-the-call-to-the-superclass-method-be-the-first-statement/9626268#9626268
+
+But why official doc says: "Always call the superclass method first" in onPause()? developer.android.com/training/basics/activity-lifecycle/…
+
+@petrnohejl because the docs are bad.
+
+http://stackoverflow.com/questions/7225958/when-should-super-onresume-be-called
+
+Whether or not you choose to call the super method depends upon whether you require the inherited functionality. You can often find out if you need to call the super method from Api documentation.
+
+Sometimes you need to do something before the super method is called (ie filter an attribute or perform an action). Sometimes your code has to happen after the super method has executed.
+
+It is very much implementation specific.
+
+http://developer.android.com/intl/zh-cn/guide/components/activities.html#ImplementingLifecycleCallbacks
+
+注：正如以上示例所示，您在实现这些生命周期方法时必须始终先调用超类实现，然后再执行任何操作
+
+Note: Your implementation of these lifecycle methods must always call the superclass implementation before doing any work, as shown in the examples above.
+
+这个文档的描述是不正确的。

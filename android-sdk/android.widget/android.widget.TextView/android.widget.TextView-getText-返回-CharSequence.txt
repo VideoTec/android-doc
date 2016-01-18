@@ -1,0 +1,19 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/TextView.html#getText()
+
+public CharSequence getText ()
+
+Return the text the TextView is displaying. 
+If setText() was called with an argument of 
+BufferType.SPANNABLE or BufferType.EDITABLE, 
+you can cast the return value from this method to Spannable or Editable, respectively.
+
+Note: 
+The content of the return value should not be modified. 
+If you want a modifiable one, you should make your own copy first.
+
+http://stackoverflow.com/questions/3928864/converting-textview-to-string-kind-of-android
+
+Getting text from a TextView returns CharSequence. 
+To convert CharSequence to String, toString() function is used.
+
+String sharedFact = theFact.getText().toString();

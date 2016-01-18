@@ -1,0 +1,11 @@
+能过 ctrl + shift + a 查询所有的 move操作：
+ctrl + ]/[  移动到代码块的开始，结束位置。
+ctrl + [/]  移动选中。
+
+http://www.developerphil.com/android-studio-tips-of-the-day-roundup-2/
+
+Complete Statement 完成语句，结束行编辑，在行尾添加分号
+This will generate the missing code to complete a statement The usual use cases are:
+Add a semicolon at the end of the line, even if you are not at the end of the line
+Add the parentheses and curly braces after an if, while or for
+Add the curly braces after a method declaration

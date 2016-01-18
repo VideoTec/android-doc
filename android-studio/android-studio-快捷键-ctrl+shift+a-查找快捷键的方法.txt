@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/26574277/how-to-override-method-via-keyboard-shortcut-in-android-studio
+
+you can not remember all shortcuts :)
+android studio(actually intellij) has a solution
+
+quick command search : ctrl+shift+A
+
+比如，查找 自动生成重写方法的快捷键，
+输入 override 就可以查到快捷键
+ctrl+o
