@@ -1,0 +1,17 @@
+http://stackoverflow.com/questions/26336709/android-studio-should-the-entire-idea-directory-be-in-git-ignore
+
+So, to answer you question :
+
+If you do not use something like Maven or Gradle to manage dependencies and build : 
+keep the directory under version control. 
+This way, the correct configuration of the project and dependencies 
+will be available for everyone. 
+In the counterpart, all developpers will have to set their environment 
+exactly the same way that you define it in the config files.
+
+If you do use something like Maven or Gradle : 
+correctly configure these tools and do not keep the directory under version control. 
+Actually, all the informations contained inside config files 
+should be stored in Maven/Gradle files. 
+Then let your developers configure their IDE depending of their environment. 
+This way, using Eclipse, IntelliJ, Linux, Windows ... will not be a problem anymore.

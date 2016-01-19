@@ -1,0 +1,3 @@
+http://blog.csdn.net/wys7250578/article/details/17069629
+加在Activity的onCreate里
+getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/14654718/adb-shell-when-multiple-devices
+
+Shouldn't you enter :
+
+adb -s 7f1c864e shell
