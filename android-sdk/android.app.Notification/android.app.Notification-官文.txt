@@ -1,0 +1,35 @@
+http://developer.android.com/intl/zh-cn/guide/topics/ui/notifiers/notifications.html
+
+通知是您可以在应用的常规 UI 外部向用户显示的消息。
+当您告知系统发出通知时，它将先以图标的形式显示在通知区域中。
+用户可以打开抽屉式通知栏查看通知的详细信息。 
+通知区域和抽屉式通知栏均是由系统控制的区域，用户可以随时查看。
+
+除非特别注明，否则本指南均引用版本 4 支持库中的 NotificationCompat.Builder 类。
+Android 3.0（API 级别 11）中已添加类 Notification.Builder
+
+目录：
+
+创建通知
+    必需的通知内容
+    可选通知内容和设置
+    通知操作
+    通知优先级
+    创建简单通知
+    将扩展布局应用于通知
+    处理兼容性
+管理通知
+    更新通知
+    删除通知
+启动 Activity 时保留导航
+    设置常规 Activity PendingIntent
+    设置特殊 Activity PendingIntent
+在通知中显示进度
+    显示持续时间固定的进度指示器
+    显示持续 Activity 指示器
+通知元数据
+浮动通知
+锁定屏幕通知
+设置可见性
+在锁定屏幕上控制媒体播放
+自定义通知布局

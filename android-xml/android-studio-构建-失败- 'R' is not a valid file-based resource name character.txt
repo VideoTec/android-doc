@@ -1,0 +1,14 @@
+D:\work\rongfly-sip\rongflysip\src\main\res\layout\RF_popwindow_list_item.xml: Error: 'R' is not a valid file-based resource name character: File-based resource names must contain only lowercase a-z, 0-9, or underscore
+:rongflysip:mergeDebugResources FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':rongflysip:mergeDebugResources'.
+> D:\work\rongfly-sip\rongflysip\src\main\res\layout\RF_popwindow_list_item.xml: Error: 'R' is not a valid file-based resource name character: File-based resource names must contain only lowercase a-z, 0-9, or underscore
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+出错的原因：
+File-based resource names must contain only lowercase a-z, 0-9, or underscore

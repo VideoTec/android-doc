@@ -1,0 +1,14 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Notification.html
+
+
+java.lang.Object
+   ↳	android.app.Notification
+   
+Class Overview
+A class that represents how a persistent notification is to be presented to the user using the NotificationManager.
+
+The Notification.Builder has been added to make it easier to construct Notifications.
+
+Developer Guides
+
+For a guide to creating notifications, read the Status Bar Notifications developer guide.

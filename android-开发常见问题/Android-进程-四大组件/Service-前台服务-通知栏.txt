@@ -1,0 +1,36 @@
+http://developer.android.com/intl/zh-cn/guide/components/services.html
+
+在前台运行服务
+前台服务被认为是用户主动意识到的一种服务，
+因此在内存不足时，系统也不会考虑将其终止。 
+
+前台服务必须为状态栏提供通知，
+状态栏位于“正在进行”标题下方，
+这意味着除非服务停止或从前台删除，否则不能清除通知。
+
+例如，
+应该将从服务播放音乐的音乐播放器设置为在前台运行，
+这是因为用户明确意识到其操作。 
+状态栏中的通知可能表示正在播放的歌曲，
+并允许用户启动 Activity 来与音乐播放器进行交互。
+
+要请求让服务运行于前台，请调用 startForeground()。
+此方法取两个参数：
+唯一标识通知的整型数和状态栏的 Notification。例如：
+
+Notification notification = new Notification(R.drawable.icon, getText(R.string.ticker_text),
+        System.currentTimeMillis());
+Intent notificationIntent = new Intent(this, ExampleActivity.class);
+PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+notification.setLatestEventInfo(this, getText(R.string.notification_title),
+        getText(R.string.notification_message), pendingIntent);
+startForeground(ONGOING_NOTIFICATION_ID, notification);
+
+注意：提供给 startForeground() 的整型 ID 不得为 0。
+
+要从前台删除服务，请调用 stopForeground()。
+此方法取一个布尔值，指示是否也删除状态栏通知。 此方法绝对不会停止服务。 
+但是，如果您在服务正在前台运行时将其停止，则通知也会被删除。
+
+如需了解有关通知的详细信息，请参阅创建状态栏通知。
+http://developer.android.com/intl/zh-cn/guide/topics/ui/notifiers/notifications.html
