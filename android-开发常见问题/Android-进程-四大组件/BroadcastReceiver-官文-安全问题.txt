@@ -1,0 +1,18 @@
+Security
+
+Receivers used with the Context APIs are by their nature a cross-application facility, so you must consider how other applications may be able to abuse your use of them. Some things to consider are:
+
+1）The Intent namespace is global. Make sure that Intent action names and other strings are written in a namespace you own, or else you may inadvertently conflict with other applications.
+2）When you use registerReceiver(BroadcastReceiver, IntentFilter), any application may send broadcasts to that registered receiver. You can control who can send broadcasts to it through permissions described below.
+3）When you publish a receiver in your application's manifest and specify intent-filters for it, any other application can send broadcasts to it regardless of the filters you specify. To prevent others from sending to it, make it unavailable to them with android:exported="false".
+4）When you use sendBroadcast(Intent) or related methods, normally any other application can receive these broadcasts. You can control who can receive such broadcasts through permissions described below. Alternatively, starting with ICE_CREAM_SANDWICH, you can also safely restrict the broadcast to a single application with Intent.setPackage
+
+None of these issues exist when using LocalBroadcastManager, since intents broadcast it never go outside of the current process.
+
+Access permissions can be enforced by either the sender or receiver of a broadcast.
+
+To enforce a permission when sending, you supply a non-null permission argument to sendBroadcast(Intent, String) or sendOrderedBroadcast(Intent, String, BroadcastReceiver, android.os.Handler, int, String, Bundle). Only receivers who have been granted this permission (by requesting it with the <uses-permission> tag in their AndroidManifest.xml) will be able to receive the broadcast.
+
+To enforce a permission when receiving, you supply a non-null permission when registering your receiver -- either when calling registerReceiver(BroadcastReceiver, IntentFilter, String, android.os.Handler) or in the static <receiver> tag in your AndroidManifest.xml. Only broadcasters who have been granted this permission (by requesting it with the <uses-permission> tag in their AndroidManifest.xml) will be able to send an Intent to the receiver.
+
+See the Security and Permissions document for more information on permissions and security in general.

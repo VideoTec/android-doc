@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/4116487/android-getting-context-from-a-broadcast-receiver-onreceive-to-send-to
+
+public abstract void onReceive (Context context, Intent intent)
+
+onReceive gives you the context. What more do you want?

@@ -4,4 +4,5 @@ vt.& vi.变平，使（某物）变平；打倒，击倒；使失去光泽
 在 Project-View 的右上角 齿轮按钮
 
 功能：显示完整的包名
+      Flatten packages
 

@@ -1,0 +1,12 @@
+        mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.v("TestBroadcast", intent.toString());
+                Notification noti = new Notification.Builder(context)
+                        .setContentTitle("Title: New mail from ")
+                        .setContentText("Content: balabala...")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .build();
+                mNotifyMgr.notify(1, noti);
+            }
+        };

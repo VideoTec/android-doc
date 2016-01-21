@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Notification.Builder.html
+
+Builder class for Notification objects. Provides a convenient way to set the various fields of a Notification and generate content views using the platform's notification layout template. If your app supports versions of Android as old as API level 4, you can instead use NotificationCompat.Builder, available in the Android Support library.
+
+Example:
+
+ Notification noti = new Notification.Builder(mContext)
+         .setContentTitle("New mail from " + sender.toString())
+         .setContentText(subject)
+         .setSmallIcon(R.drawable.new_mail)
+         .setLargeIcon(aBitmap)
+         .build();

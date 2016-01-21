@@ -1,0 +1,75 @@
+inner class 是 no-static 类
+
+    public class MyReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.v("TestBroadcast", intent.toString());
+            Notification noti = new Notification.Builder(context)
+                    .setContentTitle("Title: New mail from ")
+                    .setContentText("Content: balabala...")
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .build();
+            mNotifyMgr.notify(1, noti);  // 注意 mNotifyMgr 是外部类的成员
+                                            即没有这个，也出异常。
+        }
+    }
+    
+    <receiver android:name="com.example.wangxiangfx.demo.TestBroadcastReceiver$MyReceiver">
+        <intent-filter>
+            <action android:name="com.test.action3"/>
+        </intent-filter>
+    </receiver>
+    
+    构建成功，
+    运行时出错：
+com.example.wangxiangfx.demo E/ActivityThread: Unable to instantiate receiver com.example.wangxiangfx.demo.TestBroadcastReceiver$MyReceiver: java.lang.InstantiationException: can't instantiate class com.example.wangxiangfx.demo.TestBroadcastReceiver$MyReceiver; no empty constructor
+java.lang.InstantiationException: can't instantiate class com.example.wangxiangfx.demo.TestBroadcastReceiver$MyReceiver; no empty constructor
+at java.lang.Class.newInstanceImpl(Native Method)
+at java.lang.Class.newInstance(Class.java:1130)
+at android.app.ActivityThread.handleReceiver(ActivityThread.java:2489)
+at android.app.ActivityThread.access$1600(ActivityThread.java:160)
+at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1393)
+at android.os.Handler.dispatchMessage(Handler.java:99)
+at android.os.Looper.loop(Looper.java:176)
+at android.app.ActivityThread.main(ActivityThread.java:5454)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+at dalvik.system.NativeStart.main(Native Method)
+
+----------------------------------------
+解决方法，参考
+----------------------------------------
+http://stackoverflow.com/questions/3608955/receiver-as-inner-class-in-android
+The $ notation doesn't denote an inner class, but a static nested class. 
+So there are in theory 2 ways to solve this particular problem:
+
+第一种方法： 这种方法，不行，还是出异常
+Denote it as a real inner class, 
+i.e. OuterClass.InnerClass 
+(not sure though if Android will eat that 
+since the instantiation of an inner class is pretty more complex 
+than just doing Class#newInstance().
+
+第二种方法：
+Declare the class to be a static nested class instead, 
+i.e. add static to class InnerClass {}. 
+This way the OuterClass$InnerClass must be able to create a new instance out of it.
+
+
+----------------------------------------
+异常原因分析
+----------------------------------------
+http://stackoverflow.com/questions/4854807/broadcastreceiver-as-inner-class
+
+.. because the system would have to instantiate a large Activity object to just have instanitated a recevier instance?
+
+Yup, just like any other non-static inner class. It has to get an instance of the outer class from somewhere (e.g. by instantiating or by some other mechanism) before it can create an instances of the (non-static) inner class.
+
+Global broadcast receivers that are invoked from intents in the manifest file that would be be instantiated automatically by the system have no such outer instance to use to create an instance of the broadcast receiver non-static inner class. This is independent of what the outer class is, Activity or not.
+
+However, if you are using a receiver as part of working with an activity, you can manually instantiate a broadcast receiver yourself in the activity (while one of the activity callbacks, you have an instance of the outer class to work with: this) and then register/unregister it as appropriate:
+
+应该，编程方式，注册反注册，这种 Receiver 对象。

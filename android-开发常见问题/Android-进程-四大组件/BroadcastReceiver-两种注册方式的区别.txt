@@ -1,0 +1,59 @@
+manifest-registered receiver object
+
+1）The OS will magically find and instantiate your class if needed, 
+   calling the onReceive() method, 
+   regardless what the running state of your application was
+   即使应用没有启动或者已经关了，也会接收到消息，并启动进程
+   即：无法 unregister 这个接收器
+2）Your receive will only get called once per broadcast 
+
+registered-programmatically receiver object
+1) 调用过 registerReceiver 后，程序接收广播
+2) 一般情况下需要，反注册。如果没有调用返注册，
+   应用还会接收这个消息，即使，your app crashes  ---  这个有疑问，测试结果，并不会启动进程
+3) 可生成多个 receiver object，并注册多次，
+   每次消息，多个对象，都会接收到消息
+   
+registered Programmatically receiver object 的问题
+
+http://stackoverflow.com/questions/28045342/unregister-broadcastreceiver-after-app-kill-crash
+I register my custom BroadcastReceiver with 
+registerReceiver() in onStart() and 
+unregisterReceiver() in onStop().
+
+Everything works fine, 
+until someone kills the app during runtime. 
+A new app start registered the BroadcastReceiver a second (or more) time.
+
+How can I be sure, that only one instance is registered?
+
+---------------------------------------
+两种方式举例
+---------------------------------------
+
+第一种方式：
+
+D:\work\rongtalk\incallui\AndroidManifest.xml
+        <receiver
+            android:name="com.feinno.phone.service.UWSReceiver"
+            android:exported="true"
+            android:process=":phone"
+            >
+            <intent-filter>
+                <action android:name="com.interrcs.sdk.yourapp.broadcast.ACTION_SERVICE_STATE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.interrcs.sdk.yourapp.broadcast.av_call_out"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.interrcs.sdk.yourapp.broadcast.av"/>
+            </intent-filter>
+        </receiver>
+
+第二种方式：
+
+IntentFilter mIntentFilter = new IntentFilter();
+mIntentFilter.addAction(BroadcastActions.ACTION_PROVISION);
+mIntentFilter.addAction(BroadcastActions.ACTION_LOGIN);
+
+mContext.registerReceiver(mReceiver, mIntentFilter);

@@ -1,0 +1,32 @@
+测试结果：
+应用退出前，没有调用 unregisterReceiver
+系统中出现这个 receiver 注册的 msg，并不会启动新进程，处理消息。
+也不会出现异常。
+
+21:21 2016/1/21 
+实际情况是，也会遇到这个异常，只是测试的时候，
+没有理解，什么情况下，会产生这个异常，以及为什么会产生这个异常。
+
+这个接收器是，一个 ACT 对象的成员，
+BroadcastReceiver mBroadcastReceiver;
+当这个 ACT 退出时，如果没有反注册这个接收器，
+就会出现下面的异常
+
+有些人说，会遇到： android.app.IntentReceiverLeaked 异常
+提示： Are you missing a call to unregister receiver
+http://stackoverflow.com/questions/19626446/missing-a-call-to-unregister-hapticfeedbackbroadcastreceiver-receiver-that-i-nev
+
+http://www.lyriclaw.info/blog/tag/Service/index/1/
+当然，有registerReceiver必须还有unregisterReceiver，
+如果不调用unregisterReceiver会抛出异常。
+unregisterReceiver(msgReceiver);
+
+http://iaiai.iteye.com/blog/1125296
+    // 写一个广播的内部类，当收到动作时，结束activity  
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {  
+        @Override  
+        public void onReceive(Context context, Intent intent) {  
+            unregisterReceiver(this); // 这句话必须要写要不会报错，不写虽然能关闭，会报一堆错  
+            ((Activity) context).finish();  
+        }  
+    }; 

@@ -1,0 +1,12 @@
+enforce[英][ɪnˈfɔ:s] [美][ɪnˈfɔ:rs]
+vt.强迫服从；实施，执行；加强
+
+http://developer.android.com/intl/zh-cn/reference/android/content/BroadcastReceiver.html
+
+Access permissions can be enforced by either the sender or receiver of a broadcast.
+
+To enforce a permission when sending, you supply a non-null permission argument to sendBroadcast(Intent, String) or sendOrderedBroadcast(Intent, String, BroadcastReceiver, android.os.Handler, int, String, Bundle). Only receivers who have been granted this permission (by requesting it with the <uses-permission> tag in their AndroidManifest.xml) will be able to receive the broadcast.
+
+To enforce a permission when receiving, you supply a non-null permission when registering your receiver -- either when calling registerReceiver(BroadcastReceiver, IntentFilter, String, android.os.Handler) or in the static <receiver> tag in your AndroidManifest.xml. Only broadcasters who have been granted this permission (by requesting it with the <uses-permission> tag in their AndroidManifest.xml) will be able to send an Intent to the receiver.
+
+See the Security and Permissions document for more information on permissions and security in general.

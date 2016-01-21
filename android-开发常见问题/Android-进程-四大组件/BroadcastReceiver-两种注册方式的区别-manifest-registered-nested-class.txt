@@ -1,0 +1,24 @@
+nested class 是 static 类
+
+    public static class MyReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+    }
+    
+AndroidManifest.xml 正确写法：
+
+        <receiver android:name="com.example.wangxiangfx.demo.TestBroadcastReceiver$MyReceiver">
+            <intent-filter>
+                <action android:name="com.test.action3"/>
+            </intent-filter>
+        </receiver>
+
+------------------------------------
+如果写成：( $ -> .)
+------------------------------------
+
+com.example.wangxiangfx.demo.TestBroadcastReceiver.MyReceiver
+
+android studio 会提示，找不到类。但是可以构建成功。
+运行时，产生异常。找不到指定的类。

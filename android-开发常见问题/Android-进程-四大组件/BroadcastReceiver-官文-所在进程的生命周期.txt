@@ -1,0 +1,7 @@
+Process Lifecycle
+
+A process that is currently executing a BroadcastReceiver (that is, currently running the code in its onReceive(Context, Intent) method) is considered to be a foreground process and will be kept running by the system except under cases of extreme memory pressure.
+
+Once you return from onReceive(), the BroadcastReceiver is no longer active, and its hosting process is only as important as any other application components that are running in it. This is especially important because if that process was only hosting the BroadcastReceiver (a common case for applications that the user has never or not recently interacted with), then upon returning from onReceive() the system will consider its process to be empty and aggressively kill it so that resources are available for other more important processes.
+
+This means that for longer-running operations you will often use a Service in conjunction with a BroadcastReceiver to keep the containing process active for the entire time of your operation.

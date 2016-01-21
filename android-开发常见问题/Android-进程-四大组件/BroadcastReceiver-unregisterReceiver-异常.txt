@@ -1,0 +1,9 @@
+
+        try {
+            unregisterReceiver(mBroadcastReceiver);
+        } catch (Exception ex) {
+            Log.e("TestBroadcast", ex.getMessage());
+        }
+        
+        异常信息：如果未注册（包括：已经反注册掉的接收器），反注册时会产生一个异常
+        Receiver not registered: com.example.wangxiangfx.demo.TestBroadcastReceiver$2@42d40c28

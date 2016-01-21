@@ -1,0 +1,9 @@
+    public void onRegAction1(View v) {
+        registerReceiver(mBroadcastReceiver, mIFilter1);
+    }
+    
+    同一对象，被注册多次的情况
+    1. 只需要反注册一次，就可了
+    2. onReceive 行为，和注册一次的情况一致
+    3. 如果注册了不同的 IntentFilter，
+       结果，相当于，IntentFilter 添加新的 action

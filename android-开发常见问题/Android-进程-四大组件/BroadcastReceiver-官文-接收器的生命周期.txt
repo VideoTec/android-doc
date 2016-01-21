@@ -1,0 +1,16 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/BroadcastReceiver.html
+
+Receiver Lifecycle
+
+A BroadcastReceiver object is only valid for the duration of the call to onReceive(Context, Intent). Once your code returns from this function, the system considers the object to be finished and no longer active.
+
+This has important repercussions to what you can do in an onReceive(Context, Intent) implementation: anything that requires asynchronous operation is not available, because you will need to return from the function to handle the asynchronous operation, but at that point the BroadcastReceiver is no longer active and thus the system is free to kill its process before the asynchronous operation completes.
+
+-------------------------------------------------------------
+广播接收器里不适合，启动一个界面 或者 绑定一个服务。
+-------------------------------------------------------------
+In particular, you may not 
+show a dialog or 
+bind to a service from within a BroadcastReceiver. 
+For the former, you should instead use the NotificationManager API. 
+For the latter, you can use Context.startService() to send a command to the service.

@@ -1,0 +1,3 @@
+在 Project-View 的右上角 齿轮按钮
+
+功能：show members

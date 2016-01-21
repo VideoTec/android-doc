@@ -1,0 +1,5 @@
+只注册消息接收器
+registerReceiver(mBroadcastReceiver, mIFilter1);
+
+面不反注册接收器，会怎样？
+测试结果：应用退出后，并不会启动新的进程，来处理消息。
