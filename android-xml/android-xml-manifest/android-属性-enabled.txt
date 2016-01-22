@@ -1,0 +1,37 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/application-element.html#enabled
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/service-element.html#enabled
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/receiver-element.html#enabled
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/activity-element.html#enabled
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/provider-element.html#enabled
+
+Whether or not the content provider can be instantiated by the system — "true" if it can be, and "false" if not. The default value is "true".
+
+The <application> element has its own enabled attribute that applies to all application components, including content providers. The <application> and <provider> attributes must both be "true" (as they both are by default) for the content provider to be enabled. If either is "false", the provider is disabled; it cannot be instantiated.
+
+解释：
+
+Android 系统是否能够实例化该应用程序的组件
+
+http://www.yrom.net/blog/2012/10/20/activity-enabled-at-platform-specific-version/
+
+根据Android系统版本禁用/启用某些Activity
+
+<activity android:name=".animation.AnimationLoading"
+        android:enabled="@bool/atLeastHoneycomb">
+    <intent-filter>
+  ...
+    </intent-filter>
+</activity>
+
+android:enabled这个属性是控制Activity是否能被实例化的。
+@bool/atLeastHoneycomb是指values/bools.xml中的atLeastHoneycomb属性的值。
+该文件定义了许多与平台相关的atLeastXxx属性，默认值都是false。
+在APIDemos/src/res/ 目录下有许多的values-vXX目录，各自下面都有bools.xml，
+在values-v11/bools.xml中可以看到
+
+<resources>
+    <!-- True if running under Honeycomb or later. -->
+    <bool name="atLeastHoneycomb">true</bool>
+</resources>
+
+即，.animation.AnimationLoading这个Activity在v11版本以上系统可以被实例化，以下则不能

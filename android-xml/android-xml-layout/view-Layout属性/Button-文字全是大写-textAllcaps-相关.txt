@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/24880388/cannot-lower-case-button-text-in-android-studio
+
+You could add android:textAllCaps="false" to the button.
+
+The button text might be transformed to uppercase 
+by your app's theme that applies to all buttons. 
+Check themes / styles files for setting the attribute android:textAllCaps.

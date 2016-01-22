@@ -1,0 +1,32 @@
+异常信息：
+
+Unable to start receiver com.example.wangxiangfx.demo.VoIPReceiver: android.os.BadParcelableException: ClassNotFoundException when unmarshalling: com.feinno.sdk.session.AvSession
+
+android.os.BadParcelableException: ClassNotFoundException when unmarshalling: com.feinno.sdk.session.AvSession
+
+at android.os.Parcel.readParcelableCreator(Parcel.java:2105)
+at android.os.Parcel.readParcelable(Parcel.java:2055)
+at android.os.Parcel.readValue(Parcel.java:1971)
+at android.os.Parcel.readMapInternal(Parcel.java:2255)
+at android.os.Bundle.unparcel(Bundle.java:223)
+at android.os.Bundle.getParcelable(Bundle.java:1170)
+at com.example.wangxiangfx.demo.VoIPReceiver.onReceive(VoIPReceiver.java:16)
+
+代码：
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Log.d(TAG, "av session: " + intent.getExtras().getParcelable("session"));
+    }
+
+接收到别的APP发送的广播，广播发送操作：
+
+AvSession s
+Intent intent = new Intent(BroadcastActions.ACTION_AV);
+Bundle bundle = new Bundle();
+bundle.putParcelable(BroadcastActions.EXTRA_SESSION, s);
+intent.putExtras(bundle);
+context.sendBroadcast(intent);
+
+造成的原因是：
+接收广播的APP，没有 AvSession 类。
+由此可知：Parcelable 对象中，有序列化类的信息。

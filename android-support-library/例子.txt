@@ -1,0 +1,6 @@
+Each Support Library includes code samples to help you get started using the support APIs. The code is included in the download from the SDK Manager and is placed inside the Android SDK installation directory, as listed below:
+
+4v Samples: <sdk>/extras/android/support/samples/Support4Demos/
+7v Samples: <sdk>/extras/android/support/samples/Support7Demos/
+13v Samples: <sdk>/extras/android/support/samples/Support13Demos/
+App Navigation: <sdk>/extras/android/support/samples/SupportAppNavigation/

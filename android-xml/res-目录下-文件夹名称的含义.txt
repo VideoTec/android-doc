@@ -1,0 +1,15 @@
+----------------------------------
+引子
+----------------------------------
+android:enabled这个属性是控制Activity是否能被实例化的。
+@bool/atLeastHoneycomb是指values/bools.xml中的atLeastHoneycomb属性的值。
+该文件定义了许多与平台相关的atLeastXxx属性，默认值都是false。
+在APIDemos/src/res/ 目录下有许多的values-vXX目录，各自下面都有bools.xml，
+在values-v11/bools.xml中可以看到
+
+<resources>
+    <!-- True if running under Honeycomb or later. -->
+    <bool name="atLeastHoneycomb">true</bool>
+</resources>
+
+即，.animation.AnimationLoading这个Activity在v11版本以上系统可以被实例化，以下则不能

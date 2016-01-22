@@ -1,0 +1,30 @@
+https://medium.com/google-developers/picking-your-compilesdkversion-minsdkversion-targetsdkversion-a098a0341ebd?linkId=20147489#.1y2f8i7ml
+
+--------------------------------------
+compileSdkVersion
+--------------------------------------
+Note that if you use the Support Library, 
+compiling with the latest SDK is a requirement for using the latest Support Library releases. 
+
+For example, 
+to use the 23.1.1 Support Library, 
+you must have a compileSdkVersion of at least 23 (those first numbers need to match!). 
+
+In general, 
+a new version of the Support Library is released alongside a new platform version, 
+providing compatibility shims to newly added APIs as well as new features.
+
+--------------------------------------
+minSdkVersion
+--------------------------------------
+Keep in mind that libraries you use, 
+such as any of the Support Libraries or Google Play services, 
+may have their own minSdkVersion
+your app’s minSdkVersion must be at least as high as your dependencies’ minSdkVersion
+if you have libraries that require 4, 7, and 9, 
+your minSdkVersion must be at least 9. 
+
+In rare cases where you want to continue 
+to use a library with a higher minSdkVersion than your app 
+(and deal with all edge cases/ensure the library is only used on newer platform versions), 
+you can use the tools:overrideLibrary marker, but make sure to test thoroughly!

@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-sdk\android.os.Parcelable\异常-intent.getExtras().getParcelable-android.os.BadParcelableException.txt

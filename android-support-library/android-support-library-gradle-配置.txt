@@ -1,0 +1,123 @@
+https://developer.android.com/intl/zh-cn/tools/support-library/features.html#v4
+
+----------------------------------------------
+v4 Support Library
+----------------------------------------------
+com.android.support:support-v4:23.1.0
+
+----------------------------------------------
+Multidex Support Library
+----------------------------------------------
+com.android.support:multidex:1.0.0
+
+----------------------------------------------
+v7 Support Libraries
+----------------------------------------------
+There are several libraries designed 
+to be used with Android 2.1 (API level 7) and higher. 
+
+com.android.support:appcompat-v7:23.1.0
+com.android.support:cardview-v7:23.1.0
+com.android.support:gridlayout-v7:23.1.0
+com.android.support:mediarouter-v7:23.1.0
+com.android.support:palette-v7:23.1.0
+com.android.support:recyclerview-v7:23.1.0
+com.android.support:preference-v7:23.1.0
+
+----------------------------------------------
+v8 Support Library
+----------------------------------------------
+This library is designed 
+to be used with Android 2.2 (API level 8) and higher. 
+This library provides specific feature sets and 
+can be included in your application independently from other libraries.
+
+v8 renderscript library
+
+defaultConfig {
+    renderscriptTargetApi 18
+    renderscriptSupportModeEnabled true
+}
+
+----------------------------------------------
+v13 Support Library
+----------------------------------------------
+This library is designed 
+to be used for Android 3.2 (API level 13) and higher. 
+
+com.android.support:support-v13:23.1.0
+
+----------------------------------------------
+v14 Preference Support Library
+----------------------------------------------
+
+com.android.support:preference-v14:23.1.0
+
+----------------------------------------------
+v17 Preference Support Library for TV
+----------------------------------------------
+
+com.android.support:preference-leanback-v17:23.1.0
+
+----------------------------------------------
+v17 Leanback Library
+----------------------------------------------
+The android.support.v17.leanback package provides APIs 
+to support building user interfaces on TV devices. 
+It provides a number of important widgets for TV apps. 
+
+YouTube Leanback
+旨在向用户提供可自定义的、简洁的视频观看体验，
+用户可通过其出色的界面观看全高清视频。
+此外，沃克还介绍称，YouTube将提供一个Feed源，
+向用户推荐他们可能感兴趣的内容。该
+服务将在数周内发布测试版
+
+YouTube Leanback脱胎于YouTube XL，
+后者于2009年6月发布。
+YouTube XL的用户界面比常规YouTube网站更加简洁，
+即使隔着一定距离也易于使用，
+但用户认为YouTube XL的体验与电视相去甚远。
+YouTube Leanback的出现将改变这一看法
+
+com.android.support:leanback-v17:23.1.0
+
+----------------------------------------------
+Annotations Support Library
+----------------------------------------------
+The Annotation package provides APIs 
+to support adding annotation metadata to your apps.
+
+com.android.support:support-annotations:23.1.0
+
+----------------------------------------------
+Design Support Library
+----------------------------------------------
+The Design package provides APIs 
+to support adding material design components and patterns to your apps
+
+com.android.support:design:23.1.0
+
+----------------------------------------------
+Custom Tabs Support Library
+----------------------------------------------
+The Custom Tabs package provides APIs 
+to support adding and managing custom tabs in your apps.
+
+com.android.support:customtabs:23.1.0
+
+----------------------------------------------
+Percent Support Library
+----------------------------------------------
+The Percent package provides APIs 
+to support adding and managing percentage based dimensions in your app.
+
+com.android.support:percent:23.1.0
+
+----------------------------------------------
+App Recommendation Support Library for TV
+----------------------------------------------
+The App Recommendation package provides APIs 
+to support adding content recommendations in your app running on TV devices.
+
+com.android.support:recommendation:23.1.0

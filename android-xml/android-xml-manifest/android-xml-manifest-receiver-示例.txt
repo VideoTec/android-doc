@@ -1,0 +1,10 @@
+
+        <receiver
+            android:name=".VoIPReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.interrcs.sdk.yourapp.broadcast.av" />
+                <action android:name="com.interrcs.sdk.yourapp.broadcast.av_call_out" />
+            </intent-filter>
+        </receiver>

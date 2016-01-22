@@ -4,13 +4,6 @@ E:\doc\Computer software\Android平台\android-sdk-tools\android-Support Library
 sdk 包中的位置
 E:\android-sdk-windows\extras\android\support\v4\android-support-v4.jar
 
-作用：
-backward-compatible[英]['bækwədkəmp'ætəbl] [美]['bækwədkəmp'ætəbl]
-向下兼容（downward compatibility），又称向后兼容（backward compatibility）、回溯兼容，
-在计算机中指在一个程序和/或库更新到较新版本后，
-用旧版本程序创建的文档或系统仍能被正常操作或使用（包括写入），
-或在旧版本库的基础上开发的程序仍能正常编译运行的情况
-
 例如： 在旧版本中使用新版本的功能
 import android.support.v4.app.FragmentActivity;
 
