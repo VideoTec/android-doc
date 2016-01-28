@@ -1,0 +1,29 @@
+void	finish()
+Call this when your activity is done and should be closed.
+
+void	finishActivity(int requestCode)
+Force finish another activity 
+that you had previously started with 
+startActivityForResult(Intent, int).
+
+affinity[英][əˈfɪnəti] [美][əˈfɪnɪti]
+n.密切关系，姻亲关系；（男女之间的）吸引力，吸引人的异性；类同；类似，近似
+
+void	finishAffinity()
+Finish this activity as well as all activities immediately 
+below it in the current task that have the same affinity.
+
+void	finishAfterTransition()
+Reverses the Activity Scene entry Transition and 
+triggers the calling Activity to reverse its exit Transition.
+
+void	finishAndRemoveTask()
+Call this when your activity is done 
+and should be closed 
+and the task should be completely removed as a part of finishing the Activity.
+
+void	finishFromChild(Activity child)
+This is called when a child activity of this one calls its finish() method.
+
+void	finishActivityFromChild(Activity child, int requestCode)
+This is called when a child activity of this one calls its finishActivity().

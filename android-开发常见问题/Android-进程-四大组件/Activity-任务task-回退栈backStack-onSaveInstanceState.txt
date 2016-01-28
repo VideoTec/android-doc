@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/guide/components/tasks-and-back-stack.html
+
+正如上文所述，当 Activity 停止时，系统的默认行为会保留其状态。 
+这样一来，当用户导航回到上一个 Activity 时，其用户界面与用户离开时一样。 
+但是，在 Activity 被销毁且必须重建时，
+您可以而且应当主动使用回调方法保留 Activity 的状态。
+
+系统停止您的一个 Activity 时（例如，新 Activity 启动或任务转到前台），
+如果系统需要回收系统内存资源，则可能会完全销毁该 Activity。 
+发生这种情况时，有关该 Activity 状态的信息将会丢失。
+如果发生这种情况，系统仍会知道该 Activity 存在于返回栈中，
+但是当该 Activity 被置于堆栈顶部时，
+系统一定会重建 Activity（而不是恢复 Activity）。 
+为了避免用户的工作丢失，
+您应主动通过在 Activity 中实现 onSaveInstanceState() 回调方法来保留工作。

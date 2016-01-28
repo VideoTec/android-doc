@@ -1,0 +1,35 @@
+情况描述：
+机型： S4
+setPreviewSize 640 480
+设置后，查看 Parameters，其中 preview-size 已经是 640x480
+注意：摄像头旋转角度是 90 度。 所以长宽对调了。
+实际效果看，预览画面，和屏幕的纵横比 (1080x1920)
+
+-------------------------------------------
+http://stackoverflow.com/questions/22054170/camera-parameters-setrecordinghint-and-aspect-ratio
+-------------------------------------------
+
+I've found some odd behavior around Camera.Parameters.setRecordingHint 
+that I'd like to understand better.
+
+If I set it to true, 
+the size of the preview image can come back 
+different from what I pass to setPreviewSize. 
+It depends on what size I set it to-- some aspect ratios work and some don't.
+
+See the screenshots below-- 
+setPreviewSize has been set to 640x480 for both, 
+but one has setRecordingHint to true and the other to false. 
+I have the code that produces this effect on GitHub.
+
+应该同时设置 video-size
+
+You need to set video-size parameter to the correct value. 
+I had the same problem - preview size was 640x480 and 
+the preview appeared stretched while using setRecordingHint(true). 
+I then used getParameters().flatten() 
+to print out all parameters set for my Camera device. 
+My video-size parameter was actually 
+set to 1920x1080 causing the incorrect aspect ratio. 
+You can change this parameter using params.set("video-size", "WxH"). 
+Only then is the aspect ratio correct.

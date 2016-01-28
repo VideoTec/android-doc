@@ -1,3 +1,8 @@
+参考
+http://developer.android.com/intl/zh-cn/guide/components/tasks-and-back-stack.html#ManagingTasks
+任务是指在执行特定作业时与用户交互的一系列 Activity。 
+这些 Activity 按照各自的打开顺序排列在堆栈（即“返回栈”）中
+
 http://blog.csdn.net/wangjinyu501/article/details/7643396
 
 SplashActivity ： 启动画面

@@ -1,0 +1,23 @@
+https://developer.android.com/intl/zh-cn/guide/topics/ui/declaring-layout.html
+
+一般而言，建议不要使用绝对单位（如像素）来指定布局宽度和高度， 
+而是使用相对测量单位，如
+1）密度无关像素单位 (dp)、 
+2）wrap_content 或 
+3）match_parent，
+这种方法更好，因为它有助于确保您的应用在各类尺寸的设备屏幕上正确显示
+
+可用资源文档中定义了可接受的测量单位类型
+https://developer.android.com/intl/zh-cn/guide/topics/resources/more-resources.html
+A dimension value defined in XML. 
+A dimension is specified with a number followed by a unit of measure. 
+For example: 10px, 2in, 5sp. 
+The following units of measure are supported by Android:
+
+dp Density-independent Pixels  根据 屏幕密度 计算实际的像素数
+sp Scale-independent Pixels    根据 屏幕密度+用户设置 计算实际的像素数
+
+pt Points - 1/72 of an inch based on the physical size of the screen
+px Pixels - Corresponds to actual pixels on the screen. 
+mm Millimeters - Based on the physical size of the screen
+in Inches - Based on the physical size of the screen

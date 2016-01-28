@@ -1,3 +1,6 @@
+注意：
+set/get 方法的意义。
+
 http://developer.android.com/reference/android/hardware/Camera.Parameters.html
 
 Obtain an instance of Camera from open(int).

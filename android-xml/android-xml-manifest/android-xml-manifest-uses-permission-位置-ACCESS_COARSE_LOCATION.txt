@@ -1,0 +1,14 @@
+coarse[英][kɔ:s] [美][kɔ:rs]
+adj.粗鄙的；粗糙的；粗野的；粗制滥造的
+
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+http://blog.csdn.net/p106786860/article/details/8114013
+ACCESS_COARSE_LOCATION或者ACCESS_FINE_LOCATION权限
+是使用LoactionManger方法所必须依靠的。
+例如，
+如果你的应用程序仅仅使用基于网络的位置提供者，
+你需要声明ACCESS_COARSE_LOCATION权限。
+更高精度的GPS需要ACCESS_FINE_LOCATION权限。
+注意声明ACCESS_FINE_LOCATION权限
+已经包含了ACCESS_COARSE_LOCATION

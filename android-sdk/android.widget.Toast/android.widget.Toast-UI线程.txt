@@ -1,0 +1,23 @@
+1） toast show 不在工作线程中调用
+2） 在工作线程中使用
+    activity.runOnUiThread(new Runnable() {
+        public void run() {
+            Toast.makeText(activity, "Hello", Toast.LENGTH_SHORT).show();
+        }
+    });
+    
+工作线程调用，产生的异常：
+ *** Uncaught remote exception!  (Exceptions are not yet supported across processes.)
+ java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+     at android.os.Handler.<init>(Handler.java:197)
+     at android.os.Handler.<init>(Handler.java:111)
+     at android.widget.Toast$TN.<init>(Toast.java:370)
+     at android.widget.Toast.<init>(Toast.java:104)
+     at android.widget.Toast.makeText(Toast.java:261)
+     at com.example.wangxiangfx.demo.DemoACT$2.onGetTokenComplete(DemoACT.java:83)
+     at com.cmcc.sso.sdk.auth.AuthnHelper.callbackToApp(AuthnHelper.java:1119)
+     at com.cmcc.sso.sdk.auth.AuthnHelper.access$2(AuthnHelper.java:1105)
+     at com.cmcc.sso.sdk.auth.AuthnHelper$1.callback(AuthnHelper.java:1101)
+     at com.cmcc.sso.service.IPCCallback$Stub.onTransact(IPCCallback.java:55)
+     at android.os.Binder.execTransact(Binder.java:388)
+     at dalvik.system.NativeStart.run(Native Method)

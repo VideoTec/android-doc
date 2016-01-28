@@ -1,0 +1,26 @@
+decouple[英][di:ˈkʌpl] [美][diˈkʌpəl]
+v.减弱（核爆炸）震波
+
+androidManifest.xml pacckage 
+是 R class and the BuildConfig class 的包名
+
+build.gradle applicationId
+是应用程序的ID名，每个应用程序必须惟一
+
+http://stackoverflow.com/questions/24178007/how-does-the-new-applicationid-in-build-gradle-work
+
+One of the user visible changes in 0.11 is that 
+we've deprecated the 
+packageName and 
+packageNameSuffix settings, and 
+have renamed them to 
+applicationId and 
+applicationIdSuffix. 
+The purpose of this is to make it clear that 
+this application id is decoupled from package declarations in your manifest, 
+and in particular, the R class and the BuildConfig class, 
+and all the implementation classes inside your app, 
+can be renamed and refactored（重构） freely; 
+you just need to keep applicationId the same. 
+If you open your build.gradle file, 
+lint is highlighting these deprecated calls and offering quickfixes to update them

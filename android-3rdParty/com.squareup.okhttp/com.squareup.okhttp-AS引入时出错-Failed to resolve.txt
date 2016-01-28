@@ -1,0 +1,5 @@
+Error:(29, 13) Failed to resolve: com.squareup.okhttp3:okhttp:2.4.0
+<a href="openFile:D:/work/Demo/app/build.gradle">Show in File</a><br><a href="open.dependency.in.project.structure">Show in Project Structure dialog</a>
+
+解决方法：
+把 okhttp-2.4.0.jar 复制到工程的 libs 目录下。

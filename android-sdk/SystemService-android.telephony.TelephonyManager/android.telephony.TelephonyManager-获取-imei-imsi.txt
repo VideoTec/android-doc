@@ -1,0 +1,15 @@
+    public static String getDeviceId(Context context) {
+        String DeviceID = "";
+        TelephonyManager telephonyManager = (TelephonyManager) context
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        if (telephonyManager.getDeviceId() == null) {
+            DeviceID = Settings.Secure.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        } else {
+            DeviceID = telephonyManager.getDeviceId(); // 用于获取无IMEI设备的序列号
+        }
+        return DeviceID;
+    }
+    public static String getImsi(Context context) {
+        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
+    }

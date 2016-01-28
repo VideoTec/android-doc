@@ -1,0 +1,4 @@
+http://developer.android.com/intl/zh-cn/tools/performance/batterystats-battery-historian/index.html
+
+adb shell dumpsys batterystats > batterystats.txt
+python historian.py batterystats.txt > batterystats.html

@@ -1,0 +1,40 @@
+    /** Signing configs used by this project. */
+    final NamedDomainObjectContainer<SigningConfig> signingConfigs;
+
+    /**
+     * Configures signing configs.
+     */
+    public void signingConfigs(Action<? super NamedDomainObjectContainer<SigningConfig>> action) {
+        checkWritability();
+        action.execute(signingConfigs);
+    }
+    @Override
+    public Collection<SigningConfig> getSigningConfigs() {
+        return signingConfigs;
+    }
+    
+参考：
+com.android.build.gradle.internal.dsl.SigningConfig
+    
+实例： 定义一组 签名配置属性
+    signingConfigs {
+        releaseConfig{
+            storeFile file("../rongfly.jks")
+            storePassword "123456"
+            keyAlias "rongfly"
+            keyPassword "123456"
+        }
+    }
+
+    注意添加下面的这段，设置 release, debug 的签名配置
+    注意： signingConfigs 的配置必须在使用它之前，定义
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.releaseConfig
+        }
+        release {
+            signingConfig signingConfigs.releaseConfig
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }

@@ -1,0 +1,41 @@
+http://developer.android.com/intl/zh-cn/reference/android/telephony/TelephonyManager.html
+
+Note that access to some telephony information is permission-protected. 
+Your application cannot access the protected information 
+unless it has the appropriate permissions declared in its manifest file. 
+Where permissions apply, 
+they are noted in the the methods through which you access the protected information.
+
+------------------------------------------------------------------
+public static final String ACTION_PHONE_STATE_CHANGED
+------------------------------------------------------------------
+
+Added in API level 3
+Broadcast intent action indicating that the call state on the device has changed.
+
+The EXTRA_STATE extra indicates the new call state. 
+If the new state is RINGING, 
+a second extra EXTRA_INCOMING_NUMBER provides the incoming phone number as a String.
+
+Requires the READ_PHONE_STATE permission.
+
+This was a sticky broadcast in version 1.0, 
+but it is no longer sticky. 
+Instead, use getCallState() to synchronously query the current call state.
+
+------------------------------------------------------------------
+public static final String ACTION_RESPOND_VIA_MESSAGE
+------------------------------------------------------------------
+The intent-filter that consumes this Intent needs to be in a Service 
+that requires the permission SEND_RESPOND_VIA_MESSAGE
+
+------------------------------------------------------------------
+public List<CellInfo> getAllCellInfo ()
+------------------------------------------------------------------
+Requires permission: ACCESS_COARSE_LOCATION
+
+------------------------------------------------------------------
+public CellLocation getCellLocation ()
+------------------------------------------------------------------
+Current location of the device or null if not available.
+Requires Permission: ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION.

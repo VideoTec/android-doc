@@ -1,0 +1,59 @@
+public void setRecordingHint (boolean hint) Added in API level 14
+http://developer.android.com/intl/zh-cn/reference/android/hardware/Camera.Parameters.html#setRecordingHint(boolean)
+
+-------------------------------------------
+下面两种设置方法是等价的：
+-------------------------------------------
+1） mParameters.setRecordingHint(true)
+2） mParameters.set("recording-hint", "true");
+
+-------------------------------------------
+作用 提高录制模式的性能
+-------------------------------------------
+Sets recording mode hint. 
+This tells the camera that 
+the intent of the application is to record videos start(), 
+not to take still pictures 
+takePicture
+(Camera.ShutterCallback, Camera.PictureCallback, Camera.PictureCallback, Camera.PictureCallback). 
+Using this hint can allow MediaRecorder.start() 
+to start faster or with fewer glitches on output. 
+This should be called before starting preview for the best result, 
+but can be changed while the preview is active. The default value is false. 
+The app 
+can still call takePicture() when the hint is true or 
+call MediaRecorder.start() when the hint is false. 
+But the performance may be worse.
+
+Parameters
+hint	true if the apps intend to record videos using MediaRecorder.
+
+
+-------------------------------------------
+http://stackoverflow.com/questions/22054170/camera-parameters-setrecordinghint-and-aspect-ratio
+-------------------------------------------
+
+I've found some odd behavior around Camera.Parameters.setRecordingHint 
+that I'd like to understand better.
+
+If I set it to true, 
+the size of the preview image can come back 
+different from what I pass to setPreviewSize. 
+It depends on what size I set it to-- some aspect ratios work and some don't.
+
+See the screenshots below-- 
+setPreviewSize has been set to 640x480 for both, 
+but one has setRecordingHint to true and the other to false. 
+I have the code that produces this effect on GitHub.
+
+应该同时设置 video-size
+
+You need to set video-size parameter to the correct value. 
+I had the same problem - preview size was 640x480 and 
+the preview appeared stretched while using setRecordingHint(true). 
+I then used getParameters().flatten() 
+to print out all parameters set for my Camera device. 
+My video-size parameter was actually 
+set to 1920x1080 causing the incorrect aspect ratio. 
+You can change this parameter using params.set("video-size", "WxH"). 
+Only then is the aspect ratio correct.

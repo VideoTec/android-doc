@@ -1,0 +1,12 @@
+示例：
+    private void ajustPreviewWindow() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.width = displayMetrics.widthPixels;
+        double aspect = (double)mVideoWidth / mVideoHeight;
+        double inchWidth = displayMetrics.widthPixels / displayMetrics.xdpi;
+        double inchHeight = inchWidth * aspect;
+        p.height = (int)(inchHeight * (float)displayMetrics.ydpi);
+        mSurfaceview.setLayoutParams(p);
+    }

@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/34171505/build-and-reuse-android-open-source-dialer-source-code-in-my-project
+
+http://stackoverflow.com/questions/8666521/easy-way-to-build-android-system-app-eclipse-for-exemple/8668334#8668334

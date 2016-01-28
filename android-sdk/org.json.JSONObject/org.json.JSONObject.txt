@@ -1,0 +1,44 @@
+http://developer.android.com/intl/zh-cn/reference/org/json/JSONObject.html
+
+A modifiable set of name/value mappings. Names are unique, non-null strings. Values may be any mix of JSONObjects, JSONArrays, Strings, Booleans, Integers, Longs, Doubles or NULL. Values may not be null, NaNs, infinities, or of any type not listed here.
+
+This class can coerce values to another type when requested.
+
+1）When the requested type is a boolean, 
+strings will be coerced using a case-insensitive comparison to "true" and "false".
+
+2）When the requested type is a double, 
+other Number types will be coerced using doubleValue. 
+Strings that can be coerced using valueOf(String) will be.
+
+3）When the requested type is an int, 
+other Number types will be coerced using intValue. 
+Strings that can be coerced using valueOf(String) will be, and then cast to int.
+
+Number types will be coerced using longValue. 
+Strings that can be coerced using valueOf(String) will be, 
+and then cast to long. 
+This two-step conversion is lossy for very large values. 
+For example, 
+the string "9223372036854775806" yields the long 9223372036854775807.
+
+4）When the requested type is a String, 
+other non-null values will be coerced using valueOf(Object). 
+Although null cannot be coerced, 
+the sentinel value NULL is coerced to the string "null".
+
+This class can look up both mandatory and optional values:
+
+1）Use getType() to retrieve a mandatory value. 
+This fails with a JSONException 
+if the requested name has no value or 
+if the value cannot be coerced to the requested type.
+
+2）Use optType() to retrieve an optional value. 
+This returns a system- or user-supplied default 
+if the requested name has no value or 
+if the value cannot be coerced to the requested type.
+
+Warning: this class represents null in two incompatible ways: the standard Java null reference, and the sentinel value NULL. In particular, calling put(name, null) removes the named entry from the object but put(name, JSONObject.NULL) stores an entry whose value is JSONObject.NULL.
+
+Instances of this class are not thread safe. Although this class is nonfinal, it was not designed for inheritance and should not be subclassed. In particular, self-use by overrideable methods is not specified. See Effective Java Item 17, "Design and Document or inheritance or else prohibit it" for further information.

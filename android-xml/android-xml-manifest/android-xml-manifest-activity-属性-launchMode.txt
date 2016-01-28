@@ -1,0 +1,21 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/activity-element.html#lmode
+
+"standard" 
+"singleTop" 
+"singleTask" 
+"singleInstance"
+
+The default mode is "standard".
+
+参考：
+http://developer.android.com/intl/zh-cn/guide/components/tasks-and-back-stack.html#ManagingTasks
+
+任务： task
+返回栈： back-stack
+
+在清单文件中声明 Activity 时，
+您可以使用 <activity> 元素的 launchMode 属性
+指定 Activity 应该如何与任务关联。
+
+launchMode 属性指定有关应如何将 Activity 启动到任务中的指令。
+您可以分配给 launchMode 属性的启动模式共有四种：

@@ -1,0 +1,17 @@
+http://developer.android.com/intl/zh-cn/reference/android/telephony/TelephonyManager.html
+
+Provides access to information about the telephony services on the device. 
+Applications can use the methods in this class to determine telephony services and states, 
+as well as to access some types of subscriber information. 
+Applications can also register a listener to receive notification of telephony state changes.
+
+You do not instantiate this class directly; 
+instead, you retrieve a reference to an instance through 
+
+Context.getSystemService(Context.TELEPHONY_SERVICE).
+
+Note that access to some telephony information is permission-protected. 
+Your application cannot access the protected information 
+unless it has the appropriate permissions declared in its manifest file. 
+Where permissions apply, 
+they are noted in the the methods through which you access the protected information.

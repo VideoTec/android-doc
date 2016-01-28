@@ -1,0 +1,23 @@
+The exact physical pixels per inch of the screen in the X dimension.
+public float xdpi;
+
+The exact physical pixels per inch of the screen in the Y dimension.
+public float ydpi;
+
+    private void ajustPreviewWindow() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.width = displayMetrics.widthPixels;
+        double aspect = (double)mVideoWidth / mVideoHeight;
+        double inchWidth = displayMetrics.widthPixels / displayMetrics.xdpi;
+        double inchHeight = inchWidth * aspect;  
+        注意这里的 w * w / h 的原因是，视频是旋转了 90 度的，视频宽 对应 窗口高
+        p.height = (int)(inchHeight * (float)displayMetrics.ydpi);
+        mSurfaceview.setLayoutParams(p);
+    }
+    
+12:41 2016/1/27
+截取了，融聊，SmartVideoRecorder SmartVideoSurface，
+在 startPreview，后调用这个调整代码。mSurfaceview.setLayoutParams(p)
+预览窗口，还是扁的。

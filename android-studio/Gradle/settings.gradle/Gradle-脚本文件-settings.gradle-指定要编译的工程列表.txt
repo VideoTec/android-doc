@@ -5,6 +5,9 @@ include ':app', ':mylibrary', ':3rdLibrary/gson'
 ':3rdLibrary/gson'
 
 注意：这个工程名称是相对路径 ':../gson' 也可以
+      这种情况下，app/build.gradle，依赖应该这样写
+      compile project(':../gson')
+      修改后，为什么没有把工程引入呢？
 
 注意：<没有这个必要>必须是子目录，'../gson'，这种形式不行。
 <这个是不对的，错误的原因是 路径前没加冒号>

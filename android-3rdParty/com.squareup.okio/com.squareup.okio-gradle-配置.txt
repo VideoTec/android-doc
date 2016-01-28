@@ -1,0 +1,3 @@
+https://github.com/square/okio
+
+compile 'com.squareup.okio:okio:1.6.0'

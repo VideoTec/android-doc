@@ -1,0 +1,16 @@
+http://blog.csdn.net/yihongyuelan/article/details/19930861
+
+通话功能(Telephony)是手机最基本，也是最重要的功能，
+因此 Google对于这块的改动历来是最少的。
+在经过了数次迭代之后，我们在 4.4 上发现 Google 对 Phone 模块进行了较大的改动
+
+Dialer
+git clone https://android.googlesource.com/platform/packages/apps/Dialer
+
+TeleService
+这个没找到单独的工程
+不知道是不是这个
+git clone https://android.googlesource.com/platform/packages/services/Telephony
+
+InCall
+git clone https://android.googlesource.com/platform/packages/apps/InCallUI

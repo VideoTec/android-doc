@@ -1,0 +1,36 @@
+需要权限：
+
+
+    public static String getImsi(Context context) {
+        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
+    }
+    
+https://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E7%A7%BB%E5%8A%A8%E7%94%A8%E6%88%B7%E8%AF%86%E5%88%AB%E7%A0%81
+
+国际移动用户识别码（英语：IMSI，International Mobile Subscriber Identity），
+是用于区分蜂窝网络中不同用户的、在所有蜂窝网络中不重复的识别码。
+手机将IMSI存储于一个64比特的字段发送给网络。
+IMSI可以用来在归属位置寄存器（HLR，Home Location Register）或
+拜访位置寄存器（VLR，Visitor Location Register）中查询用户的信息。
+为了避免被监听者识别并追踪特定的用户，
+大部分情形下手机和网络之间的通信会使用随机产生的临时移动用户识别码
+（TMSI，Temporary Mobile Subscriber Identity）
+代替IMSI。
+
+只要一个移动网络的用户需要与其他移动网络互通，就必须使用IMSI。
+在GSM、UMTS和LTE网络中，IMSI来自SIM卡，
+在CDMA2000网络中则是直接来自手机，或者RUIM。
+
+IMSI由一串十进制数字组成，最大长度为15位[1]。
+实际使用的IMSI的长度绝大部分都是15位，短于15位的例子少见，
+例如，
+南非MTN有一些仍在网络中使用的较旧的IMSI为14位数字。
+IMSI由
+移动国家代码（MCC，Mobile Country Code）、
+移动网络代码（MNC，Mobile Nation Code）和
+移动订户识别代码（MSIN，Mobile subscription identification number）依次连接而成。
+MCC长度为3位，
+MNC长度由MCC的值决定，可以是2位（欧洲标准）或3位数字（北美标准）[2]，
+MSIN的值由运营商自行分配。
+
+IMSI的格式由国际电信联盟（ITU）的E.212标准定义。

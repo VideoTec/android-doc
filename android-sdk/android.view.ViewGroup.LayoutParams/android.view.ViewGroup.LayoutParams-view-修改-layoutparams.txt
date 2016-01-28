@@ -1,0 +1,33 @@
+示例：
+    private void ajustPreviewWindow() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        LayoutParams p = mSurfaceview.getLayoutParams();
+        p.width = displayMetrics.widthPixels;
+        double aspect = (double)mVideoWidth / mVideoHeight;
+        double inchWidth = displayMetrics.widthPixels / displayMetrics.xdpi;
+        double inchHeight = inchWidth * aspect;
+        p.height = (int)(inchHeight * (float)displayMetrics.ydpi);
+        mSurfaceview.setLayoutParams(p);
+    }
+ 
+在 ACT onCreate 时创建会怎么样？
+问题是，这时设置的 长宽有效吗？
+有效，可以改变成，最后生成的大小。
+
+问题是，这时，xml，中配置的长宽已经生效了吗？
+这时的长宽为指定值：WRAP_CONTENT，MATCH_PARENT，xdp
+注意：这里的 xdp，会换算成，像素数，保存在，layout 参数里。
+注意：WRAP_CONTENT，MATCH_PARENT 什么时候计算出实际值呢？
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        setContentView(R.layout.content_demo_act);
+
+        //test change view size by code
+        View p2pBtn = findViewById(R.id.open_p2p);
+        ViewGroup.LayoutParams layout = p2pBtn.getLayoutParams();
+        layout.height = 100;
+        layout.width = 100;
+        p2pBtn.setLayoutParams(layout);
