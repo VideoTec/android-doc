@@ -1,0 +1,51 @@
+
+安装插件方法：
+设置 | Plugin | Browse repositories | 搜索安装
+
+https://www.zhihu.com/question/28527388
+http://blog.csdn.net/maosidiaoxian/article/details/44992655
+
+----------------------------------------------------
+AndroidCodeGenerator
+----------------------------------------------------
+可以生成ViewHolder和findView方法的代码。
+尤其是在Adapter实现类的getView当中很有用
+
+它的介绍说是可以生成ViewHolder和findView方法的代码。
+不过怎么生成findView方法的代码我还没找到，  
+注：找到方法 
+xx_layout.xml 右击菜单中 | Generate Android Code -> activity
+弹出带有自动生成的代码的窗口
+
+但生成ViewHolder也是挺酷炫的
+
+在你的Adapter实现类的getView当中，
+将光标定位到你的布局文件的ID的变量中， 注释：在 getView 时，填充的布局
+按Alt+Insert插件代码，可以看到多了一项Create view holder
+
+----------------------------------------------------
+Android Parcelable code generator
+----------------------------------------------------
+生成实现了Parcelable接口的代码的插件。
+在你的类中，按下alt + insert键弹出插入代码的上下文菜单，
+你会看到在下面有一个Parcelable，如下所示。
+选择它之后，就会在你的类当中插入实现了Parcelable接口的代码。
+从此不用再手动写Parcelable代码。
+
+----------------------------------------------------
+SelectorChapek for Android生成Selector的插件。
+----------------------------------------------------
+你需要在drawable文件夹中右键，
+在弹出的菜单中选择Generate Android Selectors，
+如下所示，它就会根据你的几个drawable文件夹里的资源的命名，帮你生成Selector代码。
+当然，你的资源文件需要根据约定的后缀来命名。
+比如按下状态为_pressed，正常状态为_normal，不可用状态为_disable，等等。
+
+----------------------------------------------------
+Android Layout ID Converter <没有找到>
+----------------------------------------------------
+由于上面的插件当中我没找到生成findView代码的使用方法，
+于是我又找到了另一个插件来生成这样的代码
+
+使用方法：在你的布局文件当中右键，
+在弹出来的菜单当中选择Convert Android layout xml，

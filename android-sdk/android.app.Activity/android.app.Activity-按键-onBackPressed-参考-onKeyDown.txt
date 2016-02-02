@@ -6,6 +6,22 @@ Called when the activity has detected the user's press of the back key.
 The default implementation simply finishes the current activity, 
 but you can override this to do whatever you want.
 
+
+    /**
+     * Called when the activity has detected the user's press of the back
+     * key.  The default implementation simply finishes the current activity,
+     * but you can override this to do whatever you want.
+     */
+    public void onBackPressed() {
+        if (mActionBar != null && mActionBar.collapseActionView()) {
+            return;
+        }
+
+        if (!mFragments.popBackStackImmediate()) {
+            finishAfterTransition();
+        }
+    }
+
 --------------------------------------
 http://stackoverflow.com/questions/13185476/how-to-handle-back-button-using-view-pager
 How to handle back button using view pager?

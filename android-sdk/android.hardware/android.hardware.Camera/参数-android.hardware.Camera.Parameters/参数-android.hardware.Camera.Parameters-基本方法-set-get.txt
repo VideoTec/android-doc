@@ -1,7 +1,0 @@
-举例：
-
-public void setRecordingHint (boolean hint) api 14
-
-下面两种设置方法是等价的：
-1） mParameters.setRecordingHint(true)
-2） mParameters.set("recording-hint", "true");

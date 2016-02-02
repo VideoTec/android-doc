@@ -1,0 +1,45 @@
+
+        /**
+         * Creates a single string with all the parameters set in
+         * this Parameters object.
+         * <p>The {@link #unflatten(String)} method does the reverse.</p>
+         *
+         * @return a String with all values from this Parameters object, in
+         *         semi-colon delimited key-value pairs
+         */
+        public String flatten() {
+            StringBuilder flattened = new StringBuilder(128);
+            for (String k : mMap.keySet()) {
+                flattened.append(k);
+                flattened.append("=");
+                flattened.append(mMap.get(k));
+                flattened.append(";");
+            }
+            // chop off the extra semicolon at the end
+            flattened.deleteCharAt(flattened.length()-1);
+            return flattened.toString();
+        }
+
+        /**
+         * Takes a flattened string of parameters and adds each one to
+         * this Parameters object.
+         * <p>The {@link #flatten()} method does the reverse.</p>
+         *
+         * @param flattened a String of parameters (key-value paired) that
+         *                  are semi-colon delimited
+         */
+        public void unflatten(String flattened) {
+            mMap.clear();
+
+            TextUtils.StringSplitter splitter = new TextUtils.SimpleStringSplitter(';');
+            splitter.setString(flattened);
+            for (String kv : splitter) {
+                int pos = kv.indexOf('=');
+                if (pos == -1) {
+                    continue;
+                }
+                String k = kv.substring(0, pos);
+                String v = kv.substring(pos + 1);
+                mMap.put(k, v);
+            }
+        }

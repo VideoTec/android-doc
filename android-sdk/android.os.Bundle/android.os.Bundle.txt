@@ -1,6 +1,13 @@
+bundle[英][ˈbʌndl] [美][ˈbʌndl]
+n.捆；一批（同类事物或出售的货品）；一大笔钱；风趣的人
+vt.& vi.收集，归拢，把…塞入
+vt.额外免费提供（设备等），（尤指出售计算机时）赠送软件
+vi.匆匆送走；推搡；赶；（成群地）匆忙赶往
 
 java.lang.Object
    ↳	android.os.BaseBundle
  	   ↳	android.os.Bundle
 
-Bundle对象提供一系列的getXxx()和setXxx()方法用于传递基本数据类型的键值对，对于基本数据类型，使用起来很简单
+Bundle对象
+提供一系列的getXxx()和setXxx()方法用于传递基本数据类型的键值对，
+对于基本数据类型，使用起来很简单

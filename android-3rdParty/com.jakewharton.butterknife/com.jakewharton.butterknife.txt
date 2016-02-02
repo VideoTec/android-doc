@@ -1,13 +1,29 @@
 https://github.com/JakeWharton/butterknife
 
+boilerplate[英][ˈbɔɪləpleɪt] [美][ˈbɔɪlərpleɪt]
+n.样板文件；公式化，陈词滥调
+
+eliminate[英][ɪˈlɪmɪneɪt] [美][ɪˈlɪməˌnet]
+vt.排除，消除；淘汰；除掉；<口>干掉
+
+infinitely[英][ˈɪnfɪnətli] [美][ˈɪnfənɪtlɪ]
+adv.无限地，无穷地；极其
+
 View "injection" library for Android. 
 
-Field and method binding for Android views which uses annotation processing to generate boilerplate code for you.
+Field and method binding for Android views 
+which uses annotation processing to generate boilerplate code for you.
 
-Eliminate findViewById calls by using @Bind on fields.
-Group multiple views in a list or array. Operate on all of them at once with actions, setters, or properties.
-Eliminate anonymous inner-classes for listeners by annotating methods with @OnClick and others.
-Eliminate resource lookups by using resource annotations on fields.
+Eliminate findViewById calls 
+by using @Bind on fields.
+Group multiple views in a list or array. 
+Operate on all of them at once with actions, setters, or properties.
+
+Eliminate anonymous inner-classes for listeners 
+by annotating methods with @OnClick and others.
+
+Eliminate resource lookups 
+by using resource annotations on fields.
 
 class ExampleActivity extends Activity {
   @Bind(R.id.user) EditText username;
@@ -30,4 +46,5 @@ class ExampleActivity extends Activity {
 
 For documentation and additional information see the website.
 
-Remember: A butter knife is like a dagger only infinitely less sharp.
+Remember: 
+A butter knife is like a dagger only infinitely less sharp.

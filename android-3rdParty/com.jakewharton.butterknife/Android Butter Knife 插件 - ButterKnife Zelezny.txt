@@ -1,0 +1,3 @@
+https://github.com/avast/android-butterknife-zelezny
+
+in Android Studio: go to 设置 → Plugins → Browse repositories and search for ButterKnife Zelezny

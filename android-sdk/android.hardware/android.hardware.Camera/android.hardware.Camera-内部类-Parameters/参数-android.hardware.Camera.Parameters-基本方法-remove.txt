@@ -1,0 +1,4 @@
+
+        public void remove(String key) {
+            mMap.remove(key);
+        }

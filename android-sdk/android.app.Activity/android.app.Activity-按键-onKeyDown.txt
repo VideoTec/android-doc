@@ -1,0 +1,133 @@
+
+    /**
+     * Called when a key was pressed down and not handled by any of the views
+     * inside of the activity. So, for example, key presses while the cursor
+     * is inside a TextView will not trigger the event (unless it is a navigation
+     * to another object) because TextView handles its own key presses.
+     *
+     * <p>If the focused view didn't want this event, this method is called.
+     *
+     * <p>The default implementation takes care of {@link KeyEvent#KEYCODE_BACK}
+     * by calling {@link #onBackPressed()}, though the behavior varies based
+     * on the application compatibility mode: for
+     * {@link android.os.Build.VERSION_CODES#ECLAIR} or later applications,
+     * it will set up the dispatch to call {@link #onKeyUp} where the action
+     * will be performed; for earlier applications, it will perform the
+     * action immediately in on-down, as those versions of the platform
+     * behaved.
+     *
+     * <p>Other additional default key handling may be performed
+     * if configured with {@link #setDefaultKeyMode}.
+     *
+     * @return Return <code>true</code> to prevent this event from being propagated
+     * further, or <code>false</code> to indicate that you have not handled
+     * this event and it should continue to be propagated.
+     * @see #onKeyUp
+     * @see android.view.KeyEvent
+     */
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getApplicationInfo().targetSdkVersion
+                    >= Build.VERSION_CODES.ECLAIR) {
+                event.startTracking();
+            } else {
+                onBackPressed();
+            }
+            return true;
+        }
+
+        if (mDefaultKeyMode == DEFAULT_KEYS_DISABLE) {
+            return false;
+        } else if (mDefaultKeyMode == DEFAULT_KEYS_SHORTCUT) {
+            if (getWindow().performPanelShortcut(Window.FEATURE_OPTIONS_PANEL,
+                    keyCode, event, Menu.FLAG_ALWAYS_PERFORM_CLOSE)) {
+                return true;
+            }
+            return false;
+        } else {
+            // Common code for DEFAULT_KEYS_DIALER & DEFAULT_KEYS_SEARCH_*
+            boolean clearSpannable = false;
+            boolean handled;
+            if ((event.getRepeatCount() != 0) || event.isSystem()) {
+                clearSpannable = true;
+                handled = false;
+            } else {
+                handled = TextKeyListener.getInstance().onKeyDown(
+                        null, mDefaultKeySsb, keyCode, event);
+                if (handled && mDefaultKeySsb.length() > 0) {
+                    // something useable has been typed - dispatch it now.
+
+                    final String str = mDefaultKeySsb.toString();
+                    clearSpannable = true;
+
+                    switch (mDefaultKeyMode) {
+                    case DEFAULT_KEYS_DIALER:
+                        Intent intent = new Intent(Intent.ACTION_DIAL,  Uri.parse("tel:" + str));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        break;
+                    case DEFAULT_KEYS_SEARCH_LOCAL:
+                        startSearch(str, false, null, false);
+                        break;
+                    case DEFAULT_KEYS_SEARCH_GLOBAL:
+                        startSearch(str, false, null, true);
+                        break;
+                    }
+                }
+            }
+            if (clearSpannable) {
+                mDefaultKeySsb.clear();
+                mDefaultKeySsb.clearSpans();
+                Selection.setSelection(mDefaultKeySsb,0);
+            }
+            return handled;
+        }
+    }
+
+
+http://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#onKeyDown(int, android.view.KeyEvent)
+
+public boolean onKeyDown (int keyCode, KeyEvent event)
+
+Added in API level 1
+
+Called when a key was pressed down and 
+not handled by any of the views inside of the activity. 
+
+So, for example, 
+key presses while the cursor is inside a TextView 
+will not trigger the event (unless it is a navigation to another object) 
+because TextView handles its own key presses.
+
+If the focused view didn't want this event, this method is called.
+
+The default implementation takes care of KEYCODE_BACK by calling onBackPressed(), 
+though the behavior varies based on the application compatibility mode:
+ 
+eclair[英][ɪˈkleə(r)] [美][ɪˈkler]
+1）for ECLAIR (Android 2.0–2.1 "Eclair") or later applications, 
+it will set up the dispatch to call onKeyUp(int, KeyEvent) 
+where the action will be performed; 
+
+2）for earlier applications, 
+it will perform the action immediately in on-down, 
+as those versions of the platform behaved.
+
+Other additional default key handling may be performed 
+if configured with setDefaultKeyMode(int).
+
+Parameters
+keyCode	The value in event.getKeyCode().
+event	Description of the key event.
+
+Returns
+
+propagate[英][ˈprɒpəgeɪt] [美][ˈprɑ:pəgeɪt]
+vt.繁衍，增殖；使遗传；扩散；使蔓延
+
+true to prevent this event from being propagated further, or 
+false to indicate that you have not handled this event and it should continue to be propagated.
+
+See Also
+onKeyUp(int, KeyEvent)
+KeyEvent

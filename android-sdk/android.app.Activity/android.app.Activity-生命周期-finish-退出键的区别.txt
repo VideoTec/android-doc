@@ -1,0 +1,31 @@
+根据源码判断区别：
+Activity 默认处理回退键，也是 finish。
+只是要做些判断，和，特殊处理。
+
+    /**
+     * Called when the activity has detected the user's press of the back
+     * key.  The default implementation simply finishes the current activity,
+     * but you can override this to do whatever you want.
+     */
+    public void onBackPressed() {
+        if (mActionBar != null && mActionBar.collapseActionView()) {
+            return;
+        }
+
+        if (!mFragments.popBackStackImmediate()) {
+            finishAfterTransition();
+        }
+    }
+    
+    /**
+     * Reverses the Activity Scene entry Transition and triggers the calling Activity
+     * to reverse its exit Transition. When the exit Transition completes,
+     * {@link #finish()} is called. If no entry Transition was used, finish() is called
+     * immediately and the Activity exit Transition is run.
+     * @see android.app.ActivityOptions#makeSceneTransitionAnimation(Activity, android.util.Pair[])
+     */
+    public void finishAfterTransition() {
+        if (!mActivityTransitionState.startExitBackTransition(this)) {
+            finish();
+        }
+    }

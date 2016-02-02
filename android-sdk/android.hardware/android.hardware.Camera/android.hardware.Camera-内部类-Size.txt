@@ -1,0 +1,66 @@
+为什么做成内部类呢？ 即 非静态类，
+这个对象为什么，必须要依赖一个 Camera 对象才能存在呢？
+
+用法示例一：
+        Parameters p = getParameters();
+        Size previewSize = p.getPreviewSize();
+        
+
+用法示例二：
+        // Parses a string (ex: "480x320") to Size object.
+        // Return null if the passing string is null.
+        private Size strToSize(String str) {
+            if (str == null) return null;
+
+            int pos = str.indexOf('x');
+            if (pos != -1) {
+                String width = str.substring(0, pos);
+                String height = str.substring(pos + 1);
+                return new Size(Integer.parseInt(width),
+                                Integer.parseInt(height));
+            }
+            Log.e(TAG, "Invalid size parameter string=" + str);
+            return null;
+        }
+
+    /**
+     * Image size (width and height dimensions).
+     * @deprecated We recommend using the new {@link android.hardware.camera2} API for new
+     *             applications.
+     */
+    @Deprecated
+    public class Size {
+        /**
+         * Sets the dimensions for pictures.
+         *
+         * @param w the photo width (pixels)
+         * @param h the photo height (pixels)
+         */
+        public Size(int w, int h) {
+            width = w;
+            height = h;
+        }
+        /**
+         * Compares {@code obj} to this size.
+         *
+         * @param obj the object to compare this size with.
+         * @return {@code true} if the width and height of {@code obj} is the
+         *         same as those of this size. {@code false} otherwise.
+         */
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Size)) {
+                return false;
+            }
+            Size s = (Size) obj;
+            return width == s.width && height == s.height;
+        }
+        @Override
+        public int hashCode() {
+            return width * 32713 + height;
+        }
+        /** width of the picture */
+        public int width;
+        /** height of the picture */
+        public int height;
+    };

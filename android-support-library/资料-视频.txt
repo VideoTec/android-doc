@@ -1,0 +1,7 @@
+http://chinagdg.org/google-videos/?vid=XMTM5NjE3NjY2OA==&plid=26291445
+
+The Android Support Libraries contain great libraries 
+which help you jump-start your Android app. 
+Chris Banes and Adam Powell 
+use their expertise in Android Support Libraries at Google 
+to discuss all the ins and outs along the way

@@ -1,0 +1,15 @@
+代码：
+        Intent voipInCallAct = new Intent(context, VoIPInCallActivity.class);
+        voipInCallAct.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        voipInCallAct.putExtras(intent);
+        voipInCallAct.putExtra(VoIPInCallActivity.IS_CALLIN, isCallIn);
+        context.startActivity(voipInCallAct);
+
+产生原因：
+没有在 Manifest.xml 中配置这个 ACT。
+
+Unable to start receiver com.feinno.rongfly.core.broadcast.VoIPReceiver: android.content.ActivityNotFoundException: Unable to find explicit activity class {com.feinno.rongfly/com.feinno.rongfly.ui.voip.VoIPInCallActivity}; have you declared this activity in your AndroidManifest.xml?
+android.content.ActivityNotFoundException: Unable to find explicit activity class {com.feinno.rongfly/com.feinno.rongfly.ui.voip.VoIPInCallActivity}; have you declared this activity in your AndroidManifest.xml?
+    at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1645)
+    at android.app.Instrumentation.execStartActivity(Instrumentation.java:1441)
+    at android.app.ContextImpl.startActivity(ContextImpl.java:1329)

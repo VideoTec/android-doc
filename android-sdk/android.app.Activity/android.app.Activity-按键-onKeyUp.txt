@@ -1,0 +1,27 @@
+
+    /**
+     * Called when a key was released and not handled by any of the views
+     * inside of the activity. So, for example, key presses while the cursor
+     * is inside a TextView will not trigger the event (unless it is a navigation
+     * to another object) because TextView handles its own key presses.
+     *
+     * <p>The default implementation handles KEYCODE_BACK to stop the activity
+     * and go back.
+     *
+     * @return Return <code>true</code> to prevent this event from being propagated
+     * further, or <code>false</code> to indicate that you have not handled
+     * this event and it should continue to be propagated.
+     * @see #onKeyDown
+     * @see KeyEvent
+     */
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (getApplicationInfo().targetSdkVersion
+                >= Build.VERSION_CODES.ECLAIR) {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.isTracking()
+                    && !event.isCanceled()) {
+                onBackPressed();
+                return true;
+            }
+        }
+        return false;
+    }

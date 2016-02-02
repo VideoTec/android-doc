@@ -1,0 +1,102 @@
+举例：
+
+public void setRecordingHint (boolean hint) api 14
+
+下面两种设置方法是等价的：
+1） mParameters.setRecordingHint(true)
+2） mParameters.set("recording-hint", "true");
+
+文档：
+
+public void set(String key, String value)
+public void set(String key, int value)
+private void put(String key, String value)       这私有方法，统一set方法。
+private void set(String key, List<Area> areas)   这私有方法，应用于 setFocusAreas 类方法
+
+public String get(String key)
+public int getInt(String key)
+
+        /**
+         * Sets a String parameter.
+         *
+         * @param key   the key name for the parameter
+         * @param value the String value of the parameter
+         */
+        public void set(String key, String value) {
+            if (key.indexOf('=') != -1 || key.indexOf(';') != -1 || key.indexOf(0) != -1) {
+                Log.e(TAG, "Key \"" + key + "\" contains invalid character (= or ; or \\0)");
+                return;
+            }
+            if (value.indexOf('=') != -1 || value.indexOf(';') != -1 || value.indexOf(0) != -1) {
+                Log.e(TAG, "Value \"" + value + "\" contains invalid character (= or ; or \\0)");
+                return;
+            }
+
+            put(key, value);
+        }
+
+        /**
+         * Sets an integer parameter.
+         *
+         * @param key   the key name for the parameter
+         * @param value the int value of the parameter
+         */
+        public void set(String key, int value) {
+            put(key, Integer.toString(value));
+        }
+
+        private void put(String key, String value) {
+            /*
+             * Remove the key if it already exists.
+             *
+             * This way setting a new value for an already existing key will always move
+             * that key to be ordered the latest in the map.
+             */
+            mMap.remove(key);
+            mMap.put(key, value);
+        }
+
+        private void set(String key, List<Area> areas) {
+            if (areas == null) {
+                set(key, "(0,0,0,0,0)");
+            } else {
+                StringBuilder buffer = new StringBuilder();
+                for (int i = 0; i < areas.size(); i++) {
+                    Area area = areas.get(i);
+                    Rect rect = area.rect;
+                    buffer.append('(');
+                    buffer.append(rect.left);
+                    buffer.append(',');
+                    buffer.append(rect.top);
+                    buffer.append(',');
+                    buffer.append(rect.right);
+                    buffer.append(',');
+                    buffer.append(rect.bottom);
+                    buffer.append(',');
+                    buffer.append(area.weight);
+                    buffer.append(')');
+                    if (i != areas.size() - 1) buffer.append(',');
+                }
+                set(key, buffer.toString());
+            }
+        }
+
+        /**
+         * Returns the value of a String parameter.
+         *
+         * @param key the key name for the parameter
+         * @return the String value of the parameter
+         */
+        public String get(String key) {
+            return mMap.get(key);
+        }
+
+        /**
+         * Returns the value of an integer parameter.
+         *
+         * @param key the key name for the parameter
+         * @return the int value of the parameter
+         */
+        public int getInt(String key) {
+            return Integer.parseInt(mMap.get(key));
+        }

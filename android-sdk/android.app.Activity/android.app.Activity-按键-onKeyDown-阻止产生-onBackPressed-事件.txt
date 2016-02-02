@@ -10,7 +10,8 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
     }
 }
 
-This will capture the "back" button press event and send the user to the first item in the ViewPager.
+This will capture the "back" button press event 
+and send the user to the first item in the ViewPager.
 
 ------------------------
 正确做法：

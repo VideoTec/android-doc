@@ -1,0 +1,10 @@
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getApplicationInfo().targetSdkVersion
+                    >= Build.VERSION_CODES.ECLAIR) {
+                event.startTracking();  参考，按键长按事件
+            } else {
+                onBackPressed();
+            }
+            return true;
+        }

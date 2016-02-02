@@ -5,9 +5,14 @@ android:name=".plugin.qqmail.ui.RoomInfoShareQrUI"/>
 
 http://blog.csdn.net/zhaokaiqiang1992/article/details/19921703
 
-android中的组件Activity在manifest.xml文件中可以指定参数android：ConfigChanges，用于捕获手机状态的改变。
-在Activity中添加了android:configChanges属性，在当所指定属性(Configuration Changes)发生改变时，通知程序调用onConfigurationChanged()函数。
-设置方法：将下列字段用“|”符号分隔开，例如：“locale|navigation|orientation” 
+android中的组件Activity在manifest.xml文件中可以指定参数android：ConfigChanges，
+用于捕获手机状态的改变。
+在Activity中添加了android:configChanges属性，
+在当所指定属性(Configuration Changes)发生改变时，
+通知程序调用onConfigurationChanged()函数。
+
+设置方法：
+将下列字段用“|”符号分隔开，例如：“locale|navigation|orientation” 
 
 对android:configChanges属性，一般认为有以下几点：
 

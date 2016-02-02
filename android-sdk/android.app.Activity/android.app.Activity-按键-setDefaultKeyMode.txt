@@ -1,0 +1,127 @@
+疑问：键盘是怎么呼出来的？代码调出来的吗？
+
+如果在Activity中的onCreate()方法中使用setDefaultKeyMode()
+可以做到在当前activity中打开拨号器、执行快捷键、启动本地搜索、启动全局搜索
+
+http://blog.csdn.net/silenceburn/article/details/6069645
+
+Activity提供的默认按键功能其实非常强大，
+可以把默认按键传入拨号、传入搜索、作为菜单快捷键等等
+完全不支持中文，因此对于我们中国开发者来讲，其实用性几乎等于零了
+
+当Activity中发生了一些按键事件，但是这些事件没有被任何控件Listen到时（截获时），
+系统应该如何处理这些按键事件
+
+如果处于中文输入状态，那么按键都会被理解为试图输入中文，
+而当输入完成后产生的中文，也不会进行默认按键处理
+
+    /** @hide */
+    @IntDef({
+            DEFAULT_KEYS_DISABLE,   
+            直接丢弃，这种情况你把键盘按穿了也不会有系统理你
+            
+            DEFAULT_KEYS_DIALER,
+            将键盘事件传入拨号器进行处理
+            
+            DEFAULT_KEYS_SHORTCUT,
+            将键盘输入作为当前窗体上注册的快捷键，进行快捷键处理
+            
+            DEFAULT_KEYS_SEARCH_LOCAL,
+            将键盘输入作为搜索内容，进行本地搜索，如
+            果本地没有实现自定义搜索，则使用全局搜索
+            
+            DEFAULT_KEYS_SEARCH_GLOBAL})
+            将键盘输入作为搜索内容，进行全局搜索
+            
+    @Retention(RetentionPolicy.SOURCE)
+    @interface DefaultKeyMode {}
+
+    /**
+     * Use with {@link #setDefaultKeyMode} to turn off default handling of
+     * keys.
+     *
+     * @see #setDefaultKeyMode
+     */
+    static public final int DEFAULT_KEYS_DISABLE = 0;
+    /**
+     * Use with {@link #setDefaultKeyMode} to launch the dialer during default
+     * key handling.
+     *
+     * @see #setDefaultKeyMode
+     */
+    static public final int DEFAULT_KEYS_DIALER = 1;
+    /**
+     * Use with {@link #setDefaultKeyMode} to execute a menu shortcut in
+     * default key handling.
+     *
+     * <p>That is, the user does not need to hold down the menu key to execute menu shortcuts.
+     *
+     * @see #setDefaultKeyMode
+     */
+    static public final int DEFAULT_KEYS_SHORTCUT = 2;
+    /**
+     * Use with {@link #setDefaultKeyMode} to specify that unhandled keystrokes
+     * will start an application-defined search.  (If the application or activity does not
+     * actually define a search, the the keys will be ignored.)
+     *
+     * <p>See {@link android.app.SearchManager android.app.SearchManager} for more details.
+     *
+     * @see #setDefaultKeyMode
+     */
+    static public final int DEFAULT_KEYS_SEARCH_LOCAL = 3;
+
+    /**
+     * Use with {@link #setDefaultKeyMode} to specify that unhandled keystrokes
+     * will start a global search (typically web search, but some platforms may define alternate
+     * methods for global search)
+     *
+     * <p>See {@link android.app.SearchManager android.app.SearchManager} for more details.
+     *
+     * @see #setDefaultKeyMode
+     */
+    static public final int DEFAULT_KEYS_SEARCH_GLOBAL = 4;
+
+    /**
+     * Select the default key handling for this activity.  This controls what
+     * will happen to key events that are not otherwise handled.  The default
+     * mode ({@link #DEFAULT_KEYS_DISABLE}) will simply drop them on the
+     * floor. Other modes allow you to launch the dialer
+     * ({@link #DEFAULT_KEYS_DIALER}), execute a shortcut in your options
+     * menu without requiring the menu key be held down
+     * ({@link #DEFAULT_KEYS_SHORTCUT}), or launch a search ({@link #DEFAULT_KEYS_SEARCH_LOCAL}
+     * and {@link #DEFAULT_KEYS_SEARCH_GLOBAL}).
+     *
+     * <p>Note that the mode selected here does not impact the default
+     * handling of system keys, such as the "back" and "menu" keys, and your
+     * activity and its views always get a first chance to receive and handle
+     * all application keys.
+     *
+     * @param mode The desired default key mode constant.
+     *
+     * @see #DEFAULT_KEYS_DISABLE
+     * @see #DEFAULT_KEYS_DIALER
+     * @see #DEFAULT_KEYS_SHORTCUT
+     * @see #DEFAULT_KEYS_SEARCH_LOCAL
+     * @see #DEFAULT_KEYS_SEARCH_GLOBAL
+     * @see #onKeyDown
+     */
+    public final void setDefaultKeyMode(@DefaultKeyMode int mode) {
+        mDefaultKeyMode = mode;
+
+        // Some modes use a SpannableStringBuilder to track & dispatch input events
+        // This list must remain in sync with the switch in onKeyDown()
+        switch (mode) {
+        case DEFAULT_KEYS_DISABLE:
+        case DEFAULT_KEYS_SHORTCUT:
+            mDefaultKeySsb = null;      // not used in these modes
+            break;
+        case DEFAULT_KEYS_DIALER:
+        case DEFAULT_KEYS_SEARCH_LOCAL:
+        case DEFAULT_KEYS_SEARCH_GLOBAL:
+            mDefaultKeySsb = new SpannableStringBuilder();
+            Selection.setSelection(mDefaultKeySsb,0);
+            break;
+        default:
+            throw new IllegalArgumentException();
+        }
+    }

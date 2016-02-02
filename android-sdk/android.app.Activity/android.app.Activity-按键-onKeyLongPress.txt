@@ -1,0 +1,25 @@
+
+    /**
+     * Default implementation of {@link KeyEvent.Callback#onKeyLongPress(int, KeyEvent)
+     * KeyEvent.Callback.onKeyLongPress()}: always returns false (doesn't handle
+     * the event).
+     */
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        return false;
+    }
+    
+    http://blog.csdn.net/netwalk/article/details/17094407
+    Android项目中有不少地方需要对按键的长按操作进行 响应；
+    例如长按物理菜单按键/音量上下按键等
+    在Activity以及View中均有一个方法onKeyLongPress()；
+    但重载该方法之后，并不能对长按操作进行响应
+    不能正常响应的原因：onKeyDown()中没有对短按，长按事件进行识别。
+    如要对长按事件进行响应，要在onKeyDown()中添加如下代码：
+    if (event.getRepeatCount() == 0) {  //识别长按短按的代码  
+       event.startTracking();  
+       isLongPressKey = false;  
+    } else {  
+       isLongPressKey = true;  
+    }
+    添加长按响应以后要在onKeyUp()中添加长按冲突处理，
+    否则长按事件和UP事件响应会同时起作用。

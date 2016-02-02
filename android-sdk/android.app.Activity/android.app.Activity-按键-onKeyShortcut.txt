@@ -1,0 +1,14 @@
+
+    /**
+     * Called when a key shortcut event is not handled by any of the views in the Activity.
+     * Override this method to implement global key shortcuts for the Activity.
+     * Key shortcuts can also be implemented by setting the
+     * {@link MenuItem#setShortcut(char, char) shortcut} property of menu items.
+     *
+     * @param keyCode The value in event.getKeyCode().
+     * @param event Description of the key event.
+     * @return True if the key shortcut was handled.
+     */
+    public boolean onKeyShortcut(int keyCode, KeyEvent event) {
+        return false;
+    }

@@ -1,0 +1,83 @@
+    http://blog.csdn.net/netwalk/article/details/17094407
+    Android项目中有不少地方需要对按键的长按操作进行 响应；
+    例如长按物理菜单按键/音量上下按键等
+    在Activity以及View中均有一个方法onKeyLongPress()；
+    但重载该方法之后，并不能对长按操作进行响应
+    不能正常响应的原因：onKeyDown()中没有对短按，长按事件进行识别。
+    如要对长按事件进行响应，要在onKeyDown()中添加如下代码：
+    if (event.getRepeatCount() == 0) {  //识别长按短按的代码  
+       event.startTracking();  
+       isLongPressKey = false;  
+    } else {  
+       isLongPressKey = true;  
+    }
+    添加长按响应以后要在onKeyUp()中添加长按冲突处理，
+    否则长按事件和UP事件响应会同时起作用。
+    
+    /**
+     * Private control to determine when an app is tracking a key sequence.
+     * @hide
+     */
+    public static final int FLAG_START_TRACKING = 0x40000000;
+
+    /**
+     * Call this during {@link Callback#onKeyDown} to have the system track
+     * the key through its final up (possibly including a long press).  Note
+     * that only one key can be tracked at a time -- if another key down
+     * event is received while a previous one is being tracked, tracking is
+     * stopped on the previous event.
+     */
+    public final void startTracking() {
+        mFlags |= FLAG_START_TRACKING;
+    }
+    
+    在分发按键ACTION_DOWN事件时用到
+    public final boolean dispatch(Callback receiver, DispatcherState state,
+            Object target) {
+        switch (mAction) {
+            case ACTION_DOWN: {
+                mFlags &= ~FLAG_START_TRACKING;
+                if (DEBUG) Log.v(TAG, "Key down to " + target + " in " + state
+                        + ": " + this);
+                boolean res = receiver.onKeyDown(mKeyCode, this);
+                if (state != null) {
+                    if (res && mRepeatCount == 0 && (mFlags&FLAG_START_TRACKING) != 0) {
+                        if (DEBUG) Log.v(TAG, "  Start tracking!");
+                        state.startTracking(this, target);
+                    } else if (isLongPress() && state.isTracking(this)) {
+                        try {
+                            if (receiver.onKeyLongPress(mKeyCode, this)) {
+                                if (DEBUG) Log.v(TAG, "  Clear from long press!");
+                                state.performedLongPress(this);
+                                res = true;
+                            }
+                        } catch (AbstractMethodError e) {
+                        }
+                    }
+                }
+                return res;
+            }
+            
+    DispatcherState 的 startTracking
+    for more advanced key dispatching, such as long presses.
+    public static class DispatcherState {
+        /**
+         * Start tracking the key code associated with the given event.  This
+         * can only be called on a key down.  It will allow you to see any
+         * long press associated with the key, and will result in
+         * {@link KeyEvent#isTracking} return true on the long press and up
+         * events.
+         *
+         * <p>This is only needed if you are directly dispatching events, rather
+         * than handling them in {@link Callback#onKeyDown}.
+         */
+        public void startTracking(KeyEvent event, Object target) {
+            if (event.getAction() != ACTION_DOWN) {
+                throw new IllegalArgumentException(
+                        "Can only start tracking on a down event");
+            }
+            if (DEBUG) Log.v(TAG, "Start trackingt in " + target + ": " + this);
+            mDownKeyCode = event.getKeyCode();
+            mDownTarget = target;
+        }
+    

@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/TabActivity.html
+
+ava.lang.Object
+   ↳	android.content.Context
+ 	   ↳	android.content.ContextWrapper
+ 	 	   ↳	android.view.ContextThemeWrapper
+ 	 	 	   ↳	android.app.Activity
+ 	 	 	 	   ↳	android.app.ActivityGroup
+ 	 	 	 	 	   ↳	android.app.TabActivity
+                       
+This class was deprecated in API level 13.
+New applications should use Fragments instead of this class; 
+to continue to run on older devices, 
+you can use the v4 support library 
+which provides a version of the Fragment API that is compatible down to DONUT.
