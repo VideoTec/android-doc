@@ -1,0 +1,27 @@
+priority[英][praɪˈɒrəti] [美][praɪˈɔ:rəti]
+n.优先，优先权；（时间，序上的）先，前；优先考虑的事；[数]优先次序
+
+http://developer.android.com/intl/zh-cn/reference/java/lang/Thread.html
+
+
+    /**
+     * The maximum priority value allowed for a thread.
+     * This corresponds to (but does not have the same value as)
+     * {@code android.os.Process.THREAD_PRIORITY_URGENT_DISPLAY}.
+     */
+    public static final int MAX_PRIORITY = 10;
+
+    /**
+     * The minimum priority value allowed for a thread.
+     * This corresponds to (but does not have the same value as)
+     * {@code android.os.Process.THREAD_PRIORITY_LOWEST}.
+     */
+    public static final int MIN_PRIORITY = 1;
+
+    /**
+     * The normal (default) priority value assigned to the main thread.
+     * This corresponds to (but does not have the same value as)
+     * {@code android.os.Process.THREAD_PRIORITY_DEFAULT}.
+
+     */
+    public static final int NORM_PRIORITY = 5;

@@ -1,0 +1,118 @@
+favorable[英]['feɪvərəbl] [美][ˈfevərəbəl, ˈfevrə-]
+adj.赞同的；称赞的；有利的；讨人喜欢的
+
+priority[英][praɪˈɒrəti] [美][praɪˈɔ:rəti]
+n.优先，优先权；（时间，序上的）先，前；优先考虑的事；[数]优先次序
+
+urgent[英][ˈɜ:dʒənt] [美][ˈɜ:rdʒənt]
+adj.急迫的；催促的；强求的；极力主张的
+
+    public static final int THREAD_PRIORITY_DEFAULT = 0;
+                            java.lang.Thread.THREAD_PRIORITY_DEFAULT
+    
+    public static final int THREAD_PRIORITY_LOWEST = 19;
+                            java.lang.Thread.MIN_PRIORITY
+
+    public static final int THREAD_PRIORITY_BACKGROUND = 10;
+    public static final int THREAD_PRIORITY_FOREGROUND = -2;
+    public static final int THREAD_PRIORITY_DISPLAY = -4;
+
+    public static final int THREAD_PRIORITY_URGENT_DISPLAY = -8;
+                            java.lang.Thread.MAX_PRIORITY
+
+    public static final int THREAD_PRIORITY_AUDIO = -16;
+    public static final int THREAD_PRIORITY_URGENT_AUDIO = -19;
+    public static final int THREAD_PRIORITY_MORE_FAVORABLE = -1;
+    public static final int THREAD_PRIORITY_LESS_FAVORABLE = +1;
+    
+    /**
+     * Standard priority of application threads.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_DEFAULT = 0;
+
+    /*
+     * ***************************************
+     * ** Keep in sync with utils/threads.h **
+     * ***************************************
+     */
+    
+    /**
+     * Lowest available thread priority.  Only for those who really, really
+     * don't want to run if anything else is happening.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_LOWEST = 19;
+    
+    /**
+     * Standard priority background threads.  This gives your thread a slightly
+     * lower than normal priority, so that it will have less chance of impacting
+     * the responsiveness of the user interface.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_BACKGROUND = 10;
+    
+    /**
+     * Standard priority of threads that are currently running a user interface
+     * that the user is interacting with.  Applications can not normally
+     * change to this priority; the system will automatically adjust your
+     * application threads as the user moves through the UI.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_FOREGROUND = -2;
+    
+    /**
+     * Standard priority of system display threads, involved in updating
+     * the user interface.  Applications can not
+     * normally change to this priority.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_DISPLAY = -4;
+    
+    /**
+     * Standard priority of the most important display threads, for compositing
+     * the screen and retrieving input events.  Applications can not normally
+     * change to this priority.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_URGENT_DISPLAY = -8;
+
+    /**
+     * Standard priority of audio threads.  Applications can not normally
+     * change to this priority.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_AUDIO = -16;
+
+    /**
+     * Standard priority of the most important audio threads.
+     * Applications can not normally change to this priority.
+     * Use with {@link #setThreadPriority(int)} and
+     * {@link #setThreadPriority(int, int)}, <b>not</b> with the normal
+     * {@link java.lang.Thread} class.
+     */
+    public static final int THREAD_PRIORITY_URGENT_AUDIO = -19;
+
+    /**
+     * Minimum increment to make a priority more favorable.
+     */
+    public static final int THREAD_PRIORITY_MORE_FAVORABLE = -1;
+
+    /**
+     * Minimum increment to make a priority less favorable.
+     */
+    public static final int THREAD_PRIORITY_LESS_FAVORABLE = +1;
