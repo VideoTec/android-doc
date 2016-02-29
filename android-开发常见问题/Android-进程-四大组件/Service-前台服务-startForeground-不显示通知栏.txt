@@ -1,0 +1,51 @@
+http://stackoverflow.com/questions/10962418/startforeground-without-showing-notification
+
+As a security feature of the Android platform, 
+you cannot, under any circumstance, 
+have a foregrounded service without also having a notification. 
+This is because a foregrounded service consumes a heavier amount of resources and 
+is subject to different scheduling constraints 
+(i.e., it doesn't get killed as quickly) than background services, 
+and the user needs to know what's possibly eating their battery. 
+So, don't do this.
+
+However, 
+it is possible to have a "fake" notification, 
+i.e., you can make a transparent notification icon (iirc). 
+This is extremely disingenuous to your users, 
+and you have no reason to do it, 
+other than killing their battery and thus creating malware.
+
+http://stackoverflow.com/questions/10962418/startforeground-without-showing-notification
+
+I've made peace with the fact the notification itself 
+still needs to be there but for who ever who still wants to hide it, 
+I may have found a workaround for that as well:
+
+Start a fake service with startForeground() with the notification and everything.
+Start the real service you want to run, 
+also with startForeground() (same notification ID)
+
+Stop the first (fake) service 
+(you can call stopSelf() and in onDestroy call stopForeground(true)).
+Voilà! No notification at all and your second service keeps running.
+
+http://stackoverflow.com/questions/8725909/startforeground-does-not-show-my-notification
+
+I just noticed that startForeground() 
+doesn't show the notification icon if the id parameter is set to 0...
+
+startForeground(0, notification); // Doesn't work...
+
+startForeground(1, notification); // Works!!!
+I hope that it could help someone stuck on this.
+
+甘寿聪 19:58:14 
+不管用。。。设为0就能杀掉了。。。 --- 也就是，服务不是前台服务。
+
+http://stackoverflow.com/questions/10962418/startforeground-without-showing-notification
+Settings icon to 0 doesn't work anymore (in 4.3)
+
+http://stackoverflow.com/questions/21524672/hiding-status-bar-notification-icon-for-foreground-service-after-raising-priorit
+https://commonsware.com/blog/2013/07/30/notifications-foreground-services-android-4p3.html
+ If you really need a foreground service, the user have the right to know.
