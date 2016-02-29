@@ -1,0 +1,26 @@
+http://blog.csdn.net/u011494050/article/details/25471007
+
+重写Baseadapter时，我们知道需要重写以下四个方法：
+getCount，getItem(int position)，getItemId(int position)，getView方法，
+
+getCount决定了listview一共有多少个item，而
+getView返回了每个item项所显示的view。
+可是
+getItem(int position)，getItemId(int position)
+有什么作用呢？该怎么重写呢？
+
+所以一般情况下，我们可以这样写：
+
+           @Override
+            public Object getItem(int position) {
+
+return this.datalist.get(position);
+
+            }
+
+当然如果你喜欢，也可以在里面直接返回null.
+
+@Override  
+public long getItemId(int position) {  
+    return position;  
+}  

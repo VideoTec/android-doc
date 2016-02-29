@@ -1,0 +1,1 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/uses-library-element.html

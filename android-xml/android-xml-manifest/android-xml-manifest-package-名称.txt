@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.feinno.rongfly"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/manifest-element.html#package
+
+A full Java-language-style package name for the application. 
+The name should be unique. 
+The name may contain 
+1) uppercase or lowercase letters ('A' through 'Z'), 
+2) numbers, and 
+3) underscores ('_'). 
+However, individual package name parts may only start with letters.
+
+To avoid conflicts with other developers, 
+you should use Internet domain ownership as the basis for your package names (in reverse). 
+For example, applications published by Google start with com.google. 
+You should also never use the com.example namespace when publishing your applications.
+
+The package name serves as a unique identifier for the application. 
+It's also 
+1) the default name for the application process 
+(see the <application> element's process process attribute) and 
+2) the default task affinity of an activity 
+(see the <activity> element's taskAffinity attribute).
+
+caution[英][ˈkɔ:ʃn] [美][ˈkɔʃən]
+n.小心；警告；〈英〉担保；〈口〉须警惕的事或人
+Caution: 
+Once you publish your application, 
+you cannot change the package name. 
+The package name defines your application's identity, 
+so if you change it, 
+then it is considered to be a different application and 
+users of the previous version cannot update to the new version.

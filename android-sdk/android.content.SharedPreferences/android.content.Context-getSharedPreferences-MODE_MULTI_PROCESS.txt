@@ -1,0 +1,28 @@
+reliably[英][rɪ'laɪəblɪ] [美][rɪˈlaɪəblɪ]
+adv.可靠地，确实地
+
+deprecated in API level 23
+Added in API level 11
+does not work reliably in some versions of Android
+
+http://developer.android.com/intl/zh-cn/reference/android/content/Context.html#MODE_MULTI_PROCESS
+
+This constant was deprecated in API level 23.
+MODE_MULTI_PROCESS 
+does not work reliably in some versions of Android, and furthermore 
+does not provide any mechanism for reconciling concurrent modifications across processes. 
+Applications should not attempt to use it. 
+Instead, they should use an explicit cross-process data management approach 
+such as ContentProvider.
+
+SharedPreference loading flag: 
+when set, the file on disk will be checked for modification 
+even if the shared preferences instance is already loaded in this process. 
+This behavior is sometimes desired in cases where the application has multiple processes, 
+all writing to the same SharedPreferences file. 
+Generally there are better forms of communication between processes, though.
+
+This was the legacy (but undocumented) behavior in and before Gingerbread (Android 2.3) and 
+this flag is implied when targetting such releases. 
+For applications targetting SDK versions greater than Android 2.3, 
+this flag must be explicitly set if desired.

@@ -1,0 +1,45 @@
+中文翻译:
+http://wangxinghe.me/blog/2016-02-05/androidmanifest-merge/
+
+原文：
+http://developer.android.com/intl/zh-cn/tools/building/manifest-merge.html
+
+conflict[英][ˈkɒnflɪkt] [美][ˈkɑ:nflɪkt]
+n.冲突；战斗；相互干扰；矛盾
+
+Merge Conflict Rules
+
+Merge conflicts occur 
+when merged manifests contain the same manifest element 
+but with a different attribute value 
+that does not resolve based on the default merge conflict rules. 
+Conflict markers and selectors can also define custom merge rules, 
+such as allowing an imported library to have a minSdkVersion 
+higher than the version defined in the other higher priority manifests.
+
+The manifest merge priority determines 
+which manifest settings are retained in merge conflicts, 
+with the settings in higher priority manifest overwriting those in lower priority manifests. 
+The following list details 
+which manifest settings are are the highest priority during the merge process:
+
+1）Highest priority: buildType manifest settings
+android-xml-manifest-合并-gradle-buildTypes-指定-Manifest.txt
+2）Higher priority: productFlavor manifest settings
+3）Medium priority: Manifests in the src/main/ directory of an app project
+4）Low priority: Dependency and library manifest settings
+
+Manifest merge conflicts are resolved at the XML node and attribute levels 
+based on the following merge rules.
+android-xml-manifest-合并-解决冲突规则.png
+
+一般规则之外的，例外情况：
+Exceptions to the manifest merge rules:
+
+1）The 
+uses-feature android:required; and 
+uses-library android:required elements default to true and 
+use an OR merge so that any required feature or library is included in the generated APK.
+
+2）If not declared, the <uses-sdk> elements, minSdkVersion and targetSdkVersion, default to a value of 1. When merge conflicts occur, the value in the higher priority manifest version is used.
+3）Importing a library with a minSdkVersion value higher than the app's src/main/ manifest manifest generates an error unless the overrideLibrary conflict marker is used.

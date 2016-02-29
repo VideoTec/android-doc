@@ -3,3 +3,5 @@ android studio 第一次启后，欢迎界面
 1. 点击 configure
 2. 点击 project default
 3. 点击 project structure
+
+File | Project Structure

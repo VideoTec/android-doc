@@ -1,0 +1,21 @@
+http://developer.android.com/intl/zh-cn/guide/topics/manifest/uses-library-element.html#rq
+
+android:required
+
+Boolean value that indicates 
+whether the application requires the library specified by android:name:
+
+1）"true": The application does not function without this library. 
+The system will not allow the application on a device 
+that does not have the library.
+
+2）"false": The application can use the library if present, 
+but is designed to function without it if necessary. 
+The system will allow the application to be installed, 
+even if the library is not present. 
+If you use "false", you are responsible for checking at runtime 
+that the library is available.
+To check for a library, 
+you can use reflection to determine if a particular class is available.
+
+The default is "true".

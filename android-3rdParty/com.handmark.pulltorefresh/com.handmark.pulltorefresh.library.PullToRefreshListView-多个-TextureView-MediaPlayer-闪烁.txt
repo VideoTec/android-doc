@@ -1,0 +1,27 @@
+列表中，多个TextureView, 多个mediaplayer播放，
+有时其中一个播放窗口，会闪烁。
+
+只要调了 listview 的分隔线，就出问题。
+不设置 分隔线，播放正常。
+
+最后找到原因：和分隔线没关系
+是使用的自义 listview 的问题。
+如果使用原始 listview 没有问题。
+
+http://stackoverflow.com/questions/32285253/weird-frames-appear-when-using-textureview-to-play-video-in-listview
+
+https://code.google.com/p/android/issues/detail?id=178525
+
+This was a bug that got fixed in the L release. 
+Issue could occur when multiple TextureViews were onscreen at once.
+
+The problem was that drawing IDs for the TextureViews were being incorrectly cached, 
+so it was possible for multiple TextureViews 
+that were onscreen to swap rendering content at draw time.
+
+Adding extra invalidates is an appropriate way to work around the issue, 
+but if that doesn't work alternate options are 
+1) use SurfaceView, or 
+2) if you're using canvas to draw, 
+use a custom View to render your content 
+(and you can use LAYER_TYPE_SOFTWARE if your content can't be rendered in HW)

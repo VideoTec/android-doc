@@ -1,0 +1,129 @@
+
+http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename
+
+All Android apps have a package name. 
+The package name uniquely identifies the app on the device; 
+it is also unique in the Google Play store. 
+This means that once you have published an app with this package name, 
+you can never change it; 
+doing so would cause your app to be treated as a brand new app, 
+and existing users of your app will not see the newly packaged app as an update.
+
+Prior to the Android Gradle build system, 
+the package name for your app was determined by the package attribute 
+at the root element of your manifest file:
+
+AndroidManifest.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="/apk/res/android"
+    package="com.example.my.app"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+However, the package defined here also serves a secondary purpose: 
+it is used to name the package for your R resource class 
+(as well as to resolve any relative class names to Activities). 
+In the above example, 
+the generated R class will be com.example.my.app.R, 
+so if you have code in other packages that need to reference resources, 
+it needs to import com.example.my.app.R.
+
+With the new Android Gradle build system, 
+you can easily build multiple different versions of your app; 
+for example, 
+you can build both a "free" version and a "pro" version of your app (using flavors), 
+and these should have different packages in the Google Play store such that 
+they can be installed and purchased separately, 
+both installed at the same time, and so on. 
+Similarly, you may also build both "debug" and "alpha" and "beta" versions 
+of your app (using build types) and 
+these can also similarly contribute to unique package names.
+
+At the same time, 
+the R class you are importing in your code must stay the same at all time; 
+your .java source files should not have to change 
+when you are building the different versions of your app.
+
+Therefore, we have decoupled the two usages of package name:
+
+1）The final package that is used in your built .apk's manifest, 
+and is the package your app 
+is known as on your device and in the Google Play store, 
+is the "application id".
+
+2）The package that is used in your source code to refer to your R class, 
+and to resolve any relative activity/service registrations, 
+continues to be called the "package".
+
+You can specify the application id in your gradle file as follows:
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1"
+
+    defaultConfig {
+        applicationId "com.example.my.app"
+        minSdkVersion 15
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    ...
+    
+ As before, 
+ you need to specify the package used for your code in the Manifest file, 
+ just as shown in the above AndroidManifest.xml sample.
+ 
+ Here comes the critical part: 
+ When you've done the above, 
+ the two packages are independent. 
+ You are completely free to refactor your code - 
+ changing the internal package used for your activities and services, 
+ updating your Manifest package, and 
+ refactoring your import statements. 
+ This will have no bearing on the final id of your application, 
+ which is now always going to be the applicationId specified in the Gradle file.
+ 
+ You can 
+ vary the applicationId of your app for flavors and 
+ build types by using the following Gradle DSL methods:
+ 
+     productFlavors {
+        pro {
+            applicationId = "com.example.my.pkg.pro"
+        }
+        free {
+            applicationId = "com.example.my.pkg.free"
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+    ....
+    
+  (In Android Studio you can configure all of this graphically as well 
+  in the Project Structure dialog.)
+  
+NOTE: 
+For compatibility reasons, 
+if you have not defined an applicationId in your build.gradle file, 
+the applicationId will default to the same value 
+as the one specified in the AndroidManifest.xml. 
+In that case, 
+the two are obviously not decoupled, 
+and attempting to refactor your code can accidentally 
+change the id of your application as well! 
+In Android Studio, newly created projects always specify both.
+
+NOTE 2: 
+The package name must always be specified in the default AndroidManifest.xml file. 
+If you have multiple manifests 
+(e.g. a flavor specific manifest or a buildType specific manifest), 
+the package name is optional, 
+but if it is specified it must be identical to the package specified d in the main manifest.

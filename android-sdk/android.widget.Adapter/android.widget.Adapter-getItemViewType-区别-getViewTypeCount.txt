@@ -1,0 +1,3 @@
+E:\doc\android\android-sdk\android.widget.Adapter\
+
+android.widget.Adapter-getViewTypeCount-区别-getItemViewType.txt

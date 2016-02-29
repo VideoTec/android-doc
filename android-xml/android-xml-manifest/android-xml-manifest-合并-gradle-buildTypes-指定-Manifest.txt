@@ -1,0 +1,21 @@
+android-xml-manifest-合并-gradle-buildTypes-指定-Manifest.txt
+
+The following list details 
+which manifest settings are are the highest priority during the merge process:
+
+1）Highest priority: buildType manifest settings
+2）Higher priority: productFlavor manifest settings
+3）Medium priority: Manifests in the src/main/ directory of an app project
+4）Low priority: Dependency and library manifest settings
+
+这里最高优先级的 buildType 配置是什么意思？
+http://stackoverflow.com/questions/25496597/is-it-possible-to-add-an-androidmanifest-to-a-specific-buildtype-with-gradle-no
+
+You can have sourceSets for build types the same way as for flavors. This should work:
+
+android.sourceSets.debug {
+    manifest.srcFile 'debug/AndroidManifest.xml'
+}
+
+http://wangxinghe.me/blog/2016-02-05/androidmanifest-merge/
+buildType下的Manifest设置 -> productFlavor下的Manifest设置

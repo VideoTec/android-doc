@@ -1,2 +1,17 @@
 http://developer.android.com/intl/zh-cn/tools/building/manifest-merge.html
 
+With Android Studio and Gradle-based builds, 
+each app can contain manifest files in multiple locations, 
+such as the src/main/ folder for the 
+1）productFlavor, 
+2）libraries, 
+3）Android ARchive (AAR) bundles of Android Library projects, and 
+4）dependencies. 
+During the build process, 
+manifest merging combines the settings from the various AndroidManifest.xml files 
+included in your app into a single, 
+generated APK manifest file for app packaging and distribution. 
+Manifest settings are merged based on the manifest priority, 
+determined by the manifest's file location. 
+Building your app merges the manifest elements, attributes, and sub-elements 
+from these manifests for the specified build variant.

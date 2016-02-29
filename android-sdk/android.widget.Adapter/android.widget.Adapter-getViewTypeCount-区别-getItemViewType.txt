@@ -1,0 +1,56 @@
+http://stackoverflow.com/questions/5300962/getviewtypecount-and-getitemviewtype-methods-of-arrayadapter/5301093#5301093
+
+These handle the case where you want different types of view for different rows. 
+For instance, 
+in a contacts application you may want even rows to have pictures on the left side and 
+odd rows to have pictures on the right. 
+In that case, you would use:
+
+@Override
+public int getViewTypeCount() {
+    return 2;
+}
+
+@Override
+public int getItemViewType(int position) {
+    return position % 2;
+}
+
+The framework uses your view type to decide which views to hand you 
+via convertView in your getView method. 
+In other words, in the above example, 
+your even rows will only get recycled views with pictures on the left side to reuse, 
+and odd rows will only get ones with pictures on the right.
+
+if every row in your list has the same layout, 
+you don't need to worry about view types. 
+In fact, BaseAdapter.java provides a default behavior for all adapters:
+
+public int getItemViewType(int position) {
+    return 0;
+}
+
+public int getViewTypeCount() {
+    return 1;
+}
+
+This indeed provides you with the same view type for every row.
+
+Edit - to outline the general flow:
+
+1 You bind data to your AdapterView using an adapter.
+2 The AdapterView tries to display items that are visible to the user.
+3 The framework calls getItemViewType for row n, the row it is about to display.
+4 The framework checks its recycled views pool for views of row n's type. It doesn't find any because no views have been recycled yet.
+5 getView is called for row n.
+6 You call getItemViewType for row n to determine what type of view you should use.
+7 You use an if/switch statement to inflate a different xml file depending on which view type is required.
+8 You fill the view with information.
+9 You return the view, exiting getView, and your row's view is displayed to the user.
+
+Now, when a view is recycled by scrolling off the screen it goes into a recycled views pool that is managed by the framework. These are essentially organized by view type so that a view of the correct type is given to you in convertView parameter in your getView method:
+
+1 The framework again calls getItemViewType for the row it wants to display.
+2 This time, there is a view in the recycled pool of the appropriate type.
+3 The recycled view is passed to you as the convertView parameter to your getView method.
+4 You fill the recycled view with new information and return it.

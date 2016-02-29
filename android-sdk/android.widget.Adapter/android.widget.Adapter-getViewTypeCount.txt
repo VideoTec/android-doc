@@ -1,0 +1,26 @@
+public abstract int getViewTypeCount ()
+
+Added in API level 1
+Returns the number of types of Views 
+that will be created by getView(int, View, ViewGroup). 
+Each type represents a set of views that can be converted in getView(int, View, ViewGroup). 
+If the adapter always returns the same type of View for all items, 
+this method should return 1.
+
+This method will only be called 
+when when the adapter is set on the the AdapterView.
+
+Returns
+int	The number of types of Views that will be created by this adapter
+
+-----------------------------
+应该返回多少个？
+-----------------------------
+各位问个问题，listView 的getViewTypeCount的大小 对listView 有什么影响？
+如果这样 其实listView 中没有那么多类型，
+
+不易太多，这会在listview里面new一堆没用的cachelist
+
+其实影响应该不算大，就是没用而且还有一些开销
+你们现在搞了多少类型？3
+类型的目的是为了合理的缩减单个item的复杂度

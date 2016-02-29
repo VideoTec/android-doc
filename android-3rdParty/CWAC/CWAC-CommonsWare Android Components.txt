@@ -1,0 +1,22 @@
+https://commonsware.com/cwac
+
+CommonsWare Android Components (CWAC)
+The CommonsWare Android Components, or CWAC, are open source libraries to help solve various tactical problems with Android development. Most CWAC components are packaged as a tiny JAR file that you can add to your project (e.g., drop it in libs/), requiring at most other CWAC JARs as dependencies. Most are also available as AAR artifacts in a CommonsWare repository, ready for inclusion in your Gradle-based project build scripts.
+
+The current supported CWAC components, and their GitHub repositories, are:
+
+cwac-adapter: Provides an AdapterWrapper, a simple wrapper class that, by default, delegates all ListAdapter methods to a wrapped ListAdapter. The idea is that you can extend AdapterWrapper and only override certain ListAdapter methods, with the rest handled via the wrapped adapter.
+cwac-anddown: Provides support for Markdown syntax in Android, such as a JNI wrapper around the sundown Markdown to HTML converter.
+cwac-cam2: Provides drop-in replacements for ACTION_IMAGE_CAPTURE and ACTION_VIDEO_CAPTURE, to allow you to take basic pictures and videos within your own process.
+cwac-colormixer: Provides a simple color mixer widget, dialog, activity, and preference.
+cwac-layouts: Provides some Android container classes for specialized situations.
+cwac-merge: Provides the MergeAdapter, a ListAdapter that blends multiple Views or ListAdapters into a single ListAdapter. Use this for section headings, blending multiple sources of data together, etc.
+cwac-pager: Provides classes in support of ViewPager, such as the ArrayPagerAdapter implementation
+cwac-presentation: Provides classes in support of the Presentation engine in Android, for driving separate content to an external display (compared to what you shown on the device's own display)
+cwac-provider: Provides StreamProvider, an extended version of Google's FileProvider, for making files, resources, and assets available to other apps via a ContentProvider
+cwac-richedit: Provides RichEditText, an extended version of Google's EditText, offering formatted text entry (bold, italics, etc.)
+cwac-sacklist: Provides SackOfViewsAdapter, which accepts a list of View objects and presents them in a ListAdapter.
+cwac-security: Provides utility classes to help app developers defend their users.
+cwac-strictmodeex: Provides utility classes to help app developers find out where they are spending too much time on the main application thread.
+cwac-wakeful: Provides the WakefulIntentService, a refinement of the IntentService that keeps the device awake while background tasks are being processed. This is useful for work to be scheduled via the AlarmManager.
+And, in case you were wondering, CWAC is pronounced like "quack".

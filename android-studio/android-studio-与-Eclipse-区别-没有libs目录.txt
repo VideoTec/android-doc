@@ -1,0 +1,13 @@
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs 'src'
+            aidl.srcDirs 'src'
+            res.srcDirs 'res'
+            assets.srcDirs 'assets'
+            jniLibs.srcDirs 'libs'
+        }
+        注意，AS 和 Eclipse 的一个区别：
+        AS 工程目录结构里没有 Eclipse 工程目录里的 libs 目录。
+        所有的 jar 库，在AS 里是在依赖中指定的。
+    }
