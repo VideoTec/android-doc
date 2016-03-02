@@ -1,0 +1,41 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#ContentURIs
+
+内容 URI
+
+内容 URI 是用于在提供程序中标识数据的 URI。
+内容 URI 包括整个提供程序的符号名称（其权限）和一个指向表的名称（路径）。 
+当您调用客户端方法来访问提供程序中的表时，
+该表的内容 URI 将是其参数之一。
+
+在前面的代码行中，
+常量 CONTENT_URI 包含用户字典的“字词”表的内容 URI。 
+ContentResolver 对象会分析出 URI 的授权，
+并通过将该授权与已知提供程序的系统表进行比较，来“解析”提供程序。 
+然后， 
+ContentResolver 可以将查询参数分派给正确的提供程序。
+
+ContentProvider 
+使用内容 URI 的路径部分来选择要访问的表。 
+提供程序通常会为其公开的每个表显示一条路径。
+
+在前面的代码行中，“字词”表的完整 URI 是：
+
+content://user_dictionary/words
+
+其中，user_dictionary 字符串是提供程序的授权， 
+words 字符串是表的路径。
+字符串 content://（架构）始终显示，并将此标识为内容 URI。
+
+许多提供程序都允许您通过将 ID 值追加到 URI 末尾来访问表中的单个行。
+例如，要从用户字典中检索 _ID 为 4 的行，
+则可使用此内容 URI：
+
+Uri singleUri = ContentUris.withAppendedId(UserDictionary.Words.CONTENT_URI,4);
+
+在检索到一组行后想要更新或删除其中某一行时通常会用到 ID 值。
+
+注：
+Uri 和 Uri.Builder 类 包含根据字符串构建格式规范的 URI 对象的便利方法。 
+ContentUris 包含一些可以将 ID 值轻松追加到 URI 后的方法。
+前面的代码段就是使用 withAppendedId() 
+将 ID 追加到用户字典内容 URI 后

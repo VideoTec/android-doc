@@ -1,0 +1,42 @@
+Contract Classes
+
+contract[英][ˈkɒntrækt] [美][ˈkɑ:ntrækt]
+n.合同；契约；协议
+
+协定类 UserDictionary
+协定类 ContactsContract
+协定类 ContactsContract.Intents.Insert
+
+Android 平台中包含的许多提供程序
+都在软件包 android.provider 中具有对应的协定类
+
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#ContractClasses
+
+协定类定义帮助应用使用
+1）内容 URI、
+2）列名称、 
+3）Intent 操作
+4）以及内容提供程序的其他功能的常量。 
+
+协定类未自动包含在提供程序中；
+提供程序的开发者需要定义它们，然后使其可用于其他开发者。 
+Android 平台中包含的许多提供程序
+都在软件包 android.provider 中具有对应的协定类。
+
+例如，
+用户字典提供程序具有包含内容 URI 和列名称常量的协定类 UserDictionary。 
+“字词”表的内容 URI 在常量 UserDictionary.Words.CONTENT_URI 中定义。 
+UserDictionary.Words 类也包含列名称常量，
+本指南的示例代码段中就使用了该常量。 
+例如，查询投影可以定义为：
+
+String[] mProjection =
+{
+    UserDictionary.Words._ID,
+    UserDictionary.Words.WORD,
+    UserDictionary.Words.LOCALE
+};
+
+联系人提供程序的 ContactsContract 也是一个协定类。 
+此类的参考文档包括示例代码段。
+其子类之一 ContactsContract.Intents.Insert 是包含 Intent 和 Intent 数据的协定类。

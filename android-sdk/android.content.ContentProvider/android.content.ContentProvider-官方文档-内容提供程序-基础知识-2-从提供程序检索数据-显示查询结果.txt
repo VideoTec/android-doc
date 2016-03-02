@@ -1,0 +1,64 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#DisplayResults
+
+显示查询结果
+
+ContentResolver.query() 
+客户端方法始终会返回符合以下条件的 Cursor：
+包含查询的投影为匹配查询选择条件的行指定的列。 
+Cursor 对象为其包含的行和列提供随机读取访问权限。 
+通过使用 Cursor 方法，您可以
+1）循环访问结果中的行、
+2）确定每个列的数据类型、
+3）从列中获取数据，并检查结果的其他属性。 
+某些 Cursor 实现会在
+1）提供程序的数据发生更改时自动更新对象和/或
+2）在 Cursor 更改时触发观察程序对象中的方法。
+
+注：
+提供程序可能会根据发出查询的对象的性质来限制对列的访问。 
+例如，
+联系人提供程序会限定只有同步适配器才能访问某些列，
+因此不会将它们返回至 Activity 或服务。
+
+如果没有与选择条件匹配的行，
+则提供程序会返回 Cursor.getCount() 为 0（空游标）的 Cursor 对象。
+
+如果出现内部错误，
+查询结果将取决于具体的提供程序。
+它可能会选择返回 null，或抛出 Exception。
+
+由于 Cursor 是行“列表”，
+因此显示 Cursor 内容的良好方式是
+通过 SimpleCursorAdapter 将其与 ListView 关联。
+
+以下代码段将延续上一代码段的代码。
+它会创建一个包含由查询检索到的 Cursor 的 SimpleCursorAdapter 对象，
+并将此对象设置为 ListView 的适配器：
+
+// Defines a list of columns to retrieve from the Cursor and load into an output row
+String[] mWordListColumns =
+{
+    UserDictionary.Words.WORD,   // Contract class constant containing the word column name
+    UserDictionary.Words.LOCALE  // Contract class constant containing the locale column name
+};
+
+// Defines a list of View IDs that will receive the Cursor columns for each row
+int[] mWordListItems = { R.id.dictWord, R.id.locale};
+
+// Creates a new SimpleCursorAdapter
+mCursorAdapter = new SimpleCursorAdapter(
+    getApplicationContext(),               // The application's Context object
+    R.layout.wordlistrow,                  // A layout in XML for one row in the ListView
+    mCursor,                               // The result from the query
+    mWordListColumns,                      // A string array of column names in the cursor
+    mWordListItems,                        // An integer array of view IDs in the row layout
+    0);                                    // Flags (usually none are needed)
+
+// Sets the adapter for the ListView
+mWordList.setAdapter(mCursorAdapter);
+
+注：
+要通过 Cursor 支持 ListView，游标必需包含名为 _ID 的列。 
+正因如此，前文显示的查询会为“字词”表检索 _ID 列，即使 ListView 未显示该列。 
+此限制也解释了为什么大多数提供程序的每个表都具有 _ID 列。
+

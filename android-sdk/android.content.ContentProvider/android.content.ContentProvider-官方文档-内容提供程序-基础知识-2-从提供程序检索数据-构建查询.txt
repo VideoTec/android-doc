@@ -1,0 +1,139 @@
+projection[英][prəˈdʒekʃn] [美][prəˈdʒɛkʃən]
+n.预测；规划，设计；[心]投射；突起物
+
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Query
+
+从提供程序中检索数据的下一步是构建查询。
+第一个代码段定义某些用于访问用户字典提供程序的变量：
+
+// A "projection" defines the columns that will be returned for each row
+String[] mProjection =
+{
+    UserDictionary.Words._ID,    // Contract class constant for the _ID column name
+    UserDictionary.Words.WORD,   // Contract class constant for the word column name
+    UserDictionary.Words.LOCALE  // Contract class constant for the locale column name
+};
+
+// Defines a string to contain the selection clause
+String mSelectionClause = null;
+
+// Initializes an array to contain selection arguments
+String[] mSelectionArgs = {""};
+
+下一个代码段以用户字典提供程序为例，
+显示了如何使用 ContentResolver.query()。 
+提供程序客户端查询与 SQL 查询类似，
+并且包含一组要返回的列、一组选择条件和排序顺序
+
+查询应该返回的列集被称为投影（变量 mProjection）。
+
+用于指定要检索的行的表达式分割为选择子句和选择参数。 
+选择子句是逻辑和布尔表达式、列名称和值（变量 mSelectionClause）的组合。 
+如果您指定了可替换参数 ? 而非值，
+则查询方法会从选择参数数组（变量 mSelectionArgs）中检索值。
+
+在下一个代码段中，
+如果用户未输入字词，则选择子句将设置为 null，而且查询会返回提供程序中的所有字词。 
+如果用户输入了字词，选择子句将设置为 UserDictionary.Words.WORD + " = ?" 
+且选择参数数组的第一个元素将设置为用户输入的字词
+
+/*
+ * This defines a one-element String array to contain the selection argument.
+ */
+String[] mSelectionArgs = {""};
+
+// Gets a word from the UI
+mSearchString = mSearchWord.getText().toString();
+
+// Remember to insert code here to check for invalid or malicious input.
+
+// If the word is the empty string, gets everything
+if (TextUtils.isEmpty(mSearchString)) {
+    // Setting the selection clause to null will return all words
+    mSelectionClause = null;
+    mSelectionArgs[0] = "";
+
+} else {
+    // Constructs a selection clause that matches the word that the user entered.
+    mSelectionClause = UserDictionary.Words.WORD + " = ?";
+
+    // Moves the user's input string to the selection arguments.
+    mSelectionArgs[0] = mSearchString;
+
+}
+
+// Does a query against the table and returns a Cursor object
+mCursor = getContentResolver().query(
+    UserDictionary.Words.CONTENT_URI,  // The content URI of the words table
+    mProjection,                       // The columns to return for each row
+    mSelectionClause                   // Either null, or the word the user entered
+    mSelectionArgs,                    // Either empty, or the string the user entered
+    mSortOrder);                       // The sort order for the returned rows
+
+// Some providers return null if an error occurs, others throw an exception
+if (null == mCursor) {
+    /*
+     * Insert code here to handle the error. Be sure not to use the cursor! You may want to
+     * call android.util.Log.e() to log this error.
+     *
+     */
+// If the Cursor is empty, the provider found no matches
+} else if (mCursor.getCount() < 1) {
+
+    /*
+     * Insert code here to notify the user that the search was unsuccessful. This isn't necessarily
+     * an error. You may want to offer the user the option to insert a new row, or re-type the
+     * search term.
+     */
+
+} else {
+    // Insert code here to do something with the results
+
+}
+
+此查询与 SQL 语句相似：
+
+SELECT _ID, word, locale FROM words WHERE word = <userinput> ORDER BY word ASC;
+
+在此 SQL 语句中，
+会使用实际的列名称而非协定类常量。
+
+防止恶意输入
+
+如果内容提供程序管理的数据位于 SQL 数据库中，
+将不受信任的外部数据包括在原始 SQL 语句中可能会导致 SQL 注入。
+
+考虑此选择子句：
+
+// Constructs a selection clause by concatenating the user's input to the column name
+String mSelectionClause =  "var = " + mUserInput;
+
+如果您执行此操作，
+则会允许用户将恶意 SQL 串连到 SQL 语句上。 
+例如，用户可以为 mUserInput 输入“nothing; DROP TABLE *;”，
+这会生成选择子句 var = nothing; DROP TABLE *;。 
+由于选择子句是作为 SQL 语句处理，
+因此这可能会导致提供程序擦除基础 SQLite 数据库中的所有表
+（除非提供程序设置为可捕获 SQL 注入尝试）。
+
+要避免此问题，
+可使用一个用于将 ? 作为可替换参数的选择子句以及一个单独的选择参数数组。 
+执行此操作时，用户输入直接受查询约束，
+而不解释为 SQL 语句的一部分。 
+由于用户输入未作为 SQL 处理，因此无法注入恶意 SQL。
+请使用此选择子句，而不要使用串连来包括用户输入：
+
+// Constructs a selection clause with a replaceable parameter
+String mSelectionClause =  "var = ?";
+
+按如下所示设置选择参数数组：
+
+// Defines an array to contain the selection arguments
+String[] selectionArgs = {""};
+按如下所示将值置于选择参数数组中：
+
+// Sets the selection argument to the user's input
+selectionArgs[0] = mUserInput;
+
+一个用于将 ? 用作可替换参数的选择子句和一个选择参数数组是指定选择的首选方式，
+即使提供程序并未基于 SQL 数据库。

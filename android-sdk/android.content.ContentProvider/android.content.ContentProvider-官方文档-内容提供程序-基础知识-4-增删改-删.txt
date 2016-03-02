@@ -1,0 +1,28 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Deleting
+
+删除数据
+
+删除行与检索行数据类似：
+为要删除的行指定选择条件，客户端方法会返回已删除的行数。 
+以下代码段会删除应用 ID 与“用户”匹配的行。
+该方法会返回已删除的行数。
+
+// Defines selection criteria for the rows you want to delete
+String mSelectionClause = UserDictionary.Words.APP_ID + " LIKE ?";
+String[] mSelectionArgs = {"user"};
+
+// Defines a variable to contain the number of rows deleted
+int mRowsDeleted = 0;
+
+...
+
+// Deletes the words that match the selection criteria
+mRowsDeleted = getContentResolver().delete(
+    UserDictionary.Words.CONTENT_URI,   // the user dictionary content URI
+    mSelectionClause                    // the column to select on
+    mSelectionArgs                      // the value to compare to
+);
+
+您还应该在调用 ContentResolver.delete() 时检查用户输入。
+如需了解有关此内容的更多详情，
+请阅读防止恶意输入部分。

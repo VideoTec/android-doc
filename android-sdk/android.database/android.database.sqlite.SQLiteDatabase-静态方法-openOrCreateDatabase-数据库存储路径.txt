@@ -3,3 +3,12 @@ http://stackoverflow.com/questions/2699954/new-to-android-openorcreatedatabase-w
 All databases, SQLite and others, are stored on the device in /data/data/package_name/databases.
 
 http://developer.android.com/guide/topics/data/data-storage.html
+
+http://developer.android.com/intl/zh-cn/reference/android/database/sqlite/SQLiteDatabase.html
+
+static SQLiteDatabase	openOrCreateDatabase(String path, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler)
+Equivalent to openDatabase(path, factory, CREATE_IF_NECESSARY, errorHandler).
+static SQLiteDatabase	openOrCreateDatabase(String path, SQLiteDatabase.CursorFactory factory)
+Equivalent to openDatabase(path, factory, CREATE_IF_NECESSARY).
+static SQLiteDatabase	openOrCreateDatabase(File file, SQLiteDatabase.CursorFactory factory)
+Equivalent to openDatabase(file.getPath(), factory, CREATE_IF_NECESSARY).

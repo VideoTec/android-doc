@@ -1,0 +1,17 @@
+批量访问
+
+批量访问提供程序适用于插入大量行，
+或通过同一方法调用在多个表中插入行，
+或者通常用于跨进程界限将一组操作作为事务处理（原子操作）执行。
+
+要在“批量模式”下访问提供程序， 
+您可以创建 ContentProviderOperation 对象数组，
+然后使用 ContentResolver.applyBatch() 将其分派给内容提供程序。 
+您需将内容提供程序的授权传递给此方法，
+而不是特定内容 URI。
+这样可使数组中的每个 ContentProviderOperation 对象都能适用于其他表。 
+调用 ContentResolver.applyBatch() 会返回结果数组。
+
+ContactsContract.RawContacts 协定类 
+的说明包括展示批量注入的代码段。 
+联系人管理器示例应用包含在其 ContactAdder.java 源文件中进行批量访问的示例。

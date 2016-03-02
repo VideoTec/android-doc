@@ -1,0 +1,38 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Basics
+
+1）概览
+  访问提供程序
+  内容 URI
+  
+内容提供程序以一个或多个表（与在关系数据库中找到的表类似）
+的形式将数据呈现给外部应用。 
+行表示提供程序收集的某种数据类型的实例，
+行中的每个列表示为实例收集的每条数据。
+
+例如，
+Android 平台的内置提供程序之一是用户字典，
+它会存储用户想要保存的非标准字词的拼写。 
+表 1 描述了数据在此提供程序表中的显示情况：
+
+字词	    应用id	  频率	区域设置	_ID
+mapreduce	user1     100	en_US	    1
+precompiler	user14	  200	fr_FR	    2
+applet	    user2	  225	fr_CA	    3
+const	    user1	  255	pt_BR	    4
+int	        user5	  100	en_UK	    5
+
+在表 1 中，
+每行表示可能无法在标准词典中找到的字词实例。 
+每列表示该字词的某些数据，如该字词首次出现时的区域设置。 
+列标题是存储在提供程序中的列名称。 
+要引用行的区域设置，需要引用其 locale 列。
+对于此提供程序，_ID 列充当由提供程序自动维护的“主键”列。
+
+注：
+提供程序无需具有主键，
+也无需将 _ID 用作其主键的列名称（如果存在主键）。 
+但是，
+如果您要将来自提供程序的数据与 ListView 绑定，
+则其中一个列名称必须是 _ID。 
+显示查询结果部分详细说明了此要求。
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#DisplayResults

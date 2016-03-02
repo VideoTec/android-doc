@@ -1,0 +1,43 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#GettingResults
+
+从查询结果中获取数据
+
+您可以将查询结果用于其他任务，而不是仅显示它们。
+例如，您可以从用户字典中检索拼写，然后在其他提供程序中查找它们。 
+要执行此操作，您需要在 Cursor 中循环访问行：
+
+// Determine the column index of the column named "word"
+int index = mCursor.getColumnIndex(UserDictionary.Words.WORD);
+
+/*
+ * Only executes if the cursor is valid. The User Dictionary Provider returns null if
+ * an internal error occurs. Other providers may throw an Exception instead of returning null.
+ */
+
+if (mCursor != null) {
+    /*
+     * Moves to the next row in the cursor. Before the first movement in the cursor, the
+     * "row pointer" is -1, and if you try to retrieve data at that position you will get an
+     * exception.
+     */
+    while (mCursor.moveToNext()) {
+
+        // Gets the value from the column.
+        newWord = mCursor.getString(index);
+
+        // Insert code here to process the retrieved word.
+
+        ...
+
+        // end of while loop
+    }
+} else {
+
+    // Insert code here to report an error if the cursor is null or the provider threw an exception.
+}
+
+Cursor 
+实现包含多个用于从对象中检索不同类型的数据的“获取”方法。 
+例如，
+上一个代码段使用 getString()。 
+它们还具有 getType() 方法，该方法会返回指示列的数据类型的值。

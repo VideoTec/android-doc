@@ -1,0 +1,35 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#ClientProvider
+
+访问提供程序
+
+应用从具有 ContentResolver 客户端对象的内容提供程序访问数据。 
+此对象具有调用提供程序对象（ContentProvider 的某个具体子类的实例）中同名方法的方法。 
+ContentResolver 方法可提供持续存储的基本“CRUD”（创建、检索、更新和删除）功能。
+
+客户端应用进程中的 
+ContentResolver 对象和拥有提供程序的应用中的 
+ContentProvider 对象可自动处理跨进程通信。 
+
+ContentProvider 还可充当其
+1）数据存储库和
+2）表格形式的数据外部显示
+之间的抽象层。
+
+注：要访问提供程序，
+您的应用通常需要在其清单文件中请求特定权限。 
+内容提供程序权限部分详细介绍了此内容。
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Permissions
+
+例如，
+要从用户字典提供程序中获取字词及其区域设置的列表，
+则需调用 ContentResolver.query()。 
+query() 方法会调用用户字典提供程序所定义的 ContentProvider.query() 方法。 
+以下代码行显示了 ContentResolver.query() 调用：
+
+// Queries the user dictionary and returns results
+mCursor = getContentResolver().query(
+    UserDictionary.Words.CONTENT_URI,   // The content URI of the words table
+    mProjection,                        // The columns to return for each row
+    mSelectionClause                    // Selection criteria
+    mSelectionArgs,                     // Selection criteria
+    mSortOrder);                        // The sort order for the returned rows

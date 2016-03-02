@@ -1,0 +1,36 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Permissions
+
+内容提供程序权限
+
+提供程序的应用可以指定其他应用访问提供程序的数据所必需的权限。 
+这些权限可确保用户了解应用将尝试访问的数据。 
+根据提供程序的要求，
+其他应用会请求它们访问提供程序所需的权限。 
+最终用户会在安装应用时看到所请求的权限。
+
+如果提供程序的应用未指定任何权限，
+则其他应用将无权访问提供程序的数据。 
+但是，
+无论指定权限为何，
+提供程序的应用中的组件始终具有完整的读取和写入访问权限。
+
+如前所述，
+用户字典提供程序
+需要 android.permission.READ_USER_DICTIONARY 权限才能从中检索数据。 
+提供程序具有用于
+1）插入、
+2）更新或
+3）删除数据的单独 android.permission.WRITE_USER_DICTIONARY 权限。
+
+要获取访问提供程序所需的权限，
+应用将通过其清单文件中的 <uses-permission> 元素来请求这些权限。
+Android 软件包管理器安装应用时，用户必须批准该应用请求的所有权限。 
+如果用户批准所有权限，软件包管理器将继续安装；
+如果用户未批准这些权限，软件包管理器将中止安装。
+
+以下 <uses-permission> 元素会请求对用户字典提供程序的读取访问权限：
+
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY">
+    
+安全与权限指南中详细介绍了权限对提供程序访问的影响。
+http://developer.android.com/guide/topics/security/security.html

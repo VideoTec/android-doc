@@ -1,0 +1,15 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/package-summary.html
+
+Provides convenience classes 
+to access the content providers supplied by Android.
+
+Android ships with a number of content providers 
+that store common data such as 
+1）contact informations, 
+2）calendar information, and 
+3）media files. 
+These classes provide simplified methods of 
+adding or retrieving data from these content providers.
+
+For information about how to use a content provider, 
+see the Content Providers developer guide.

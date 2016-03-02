@@ -1,0 +1,47 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/calendar-provider.html
+
+日历提供程序是用户日历事件的存储库。
+您可以利用 Calendar Provider API 
+对日历、事件、参加者、提醒等执行查询、插入、更新和删除操作。
+
+Calender Provider API 可供应用和同步适配器使用。
+规则因进行调用的程序类型而异。 
+本文主要侧重于介绍使用 Calendar Provider API 作为应用的情况。
+如需了解对各类同步适配器差异的阐述，
+请参阅同步适配器。
+http://developer.android.com/intl/zh-cn/guide/topics/providers/calendar-provider.html#sync-adapter
+
+正常情况下，
+要想读取或写入日历数据，应用的清单文件必须包括用户权限中所述的适当权限。 
+为简化常见操作的执行，
+日历提供程序提供了一组 Intent 对象，
+日历 Intent 对象中对这些 Intent 做了说明。 
+这些 Intent 对象会将用户转到日历应用，
+执行插入事件、查看事件和编辑事件操作。 
+用户与日历应用交互，然后返回原来的应用。 
+因此，您的应用不需要请求权限，
+也不需要提供用于查看事件或创建事件的用户界面。
+
+目录
+
+基础知识
+用户权限
+日历表
+    查询日历
+    修改日历
+    插入日历
+事件表
+    添加事件
+    更新事件
+    删除事件
+参加者表
+    添加参加者
+提醒表
+    添加提醒
+实例表
+    查询实例表
+日历 Intent 对象
+    使用 Intent 对象插入事件
+    使用 Intent 对象编辑事件
+    使用 Intent 对象查看日历数据
+同步适配器

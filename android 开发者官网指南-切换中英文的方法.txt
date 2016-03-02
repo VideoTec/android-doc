@@ -1,0 +1,6 @@
+内容提供程序基础知识
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html
+http://developer.android.com/guide/topics/providers/content-provider-basics.html
+
+查看英文原文的方法：把 zh-cn 换成 en
+查看中文的方法：在 guide 前添加 intl/zh-cn/

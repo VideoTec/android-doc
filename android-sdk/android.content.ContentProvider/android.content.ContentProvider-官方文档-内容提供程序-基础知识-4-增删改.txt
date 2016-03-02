@@ -1,0 +1,12 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Modifications
+
+4）插入、更新和删除数据
+  插入数据
+  更新数据
+  删除数据
+  
+  插入、更新和删除数据
+  与从提供程序检索数据的方式相同，
+  也可以通过提供程序客户端和提供程序 ContentProvider 之间的交互来修改数据。 
+  您通过传递到 ContentProvider 的对应方法的参数来调用 ContentResolver 方法。 
+  提供程序和提供程序客户端会自动处理安全性和跨进程通信。

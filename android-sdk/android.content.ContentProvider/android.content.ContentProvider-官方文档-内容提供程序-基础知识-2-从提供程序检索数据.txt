@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#SimpleQuery
+
+2）从提供程序检索数据
+  请求读取访问权限
+  构建查询
+  显示查询结果
+  从查询结果中获取数据
+  
+本节将以用户字典提供程序为例，
+介绍如何从提供程序中检索数据。
+
+为了明确进行说明，
+本节中的代码段将在“UI 线程”上调用 ContentResolver.query()。
+但在实际代码中，您应该在单独线程上异步执行查询。 
+执行此操作的方式之一是使用 CursorLoader 类，
+加载器指南中对此有更为详细的介绍。 
+http://developer.android.com/guide/components/loaders.html
+此外，前述代码行只是代码段；
+它们不会显示整个应用。
+
+要从提供程序中检索数据，请按照以下基本步骤执行操作：
+
+1）请求对提供程序的读取访问权限。
+2）定义将查询发送至提供程序的代码。

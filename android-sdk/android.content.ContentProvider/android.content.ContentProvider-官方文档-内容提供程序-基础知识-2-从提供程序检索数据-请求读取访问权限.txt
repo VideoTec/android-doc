@@ -1,0 +1,23 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#RequestPermissions
+
+请求读取访问权限
+
+要从提供程序检索数据，
+您的应需要具备对提供程序的“读取访问”权限。 
+您无法在运行时请求此权限；
+相反，您需要使用<uses-permission>元素和提供程序定义的准确权限名称，
+在清单文件中指明您需要此权限。 
+在您的清单文件中指定此元素后，
+您将有效地为应用“请求”此权限。 
+用户安装您的应用时，会隐式授予允许此请求。
+
+要找出您正在使用的提供程序的读取访问权限的准确名称，
+以及提供程序使用的其他访问权限的名称，
+请查看提供程序的文档。
+
+内容提供程序权限部分详细介绍了权限在访问提供程序过程中的作用。
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Permissions
+
+用户字典提供程序在其清单文件中
+定义了权限 android.permission.READ_USER_DICTIONARY，
+因此希望从提供程序中进行读取的应用必需请求此权限。

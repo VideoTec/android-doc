@@ -1,0 +1,18 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#AltForms
+
+提供程序访问的
+三种替代形式在应用开发过程中十分重要：
+
+1）批量访问：
+您可以通过 ContentProviderOperation 类中的方法创建一批访问调用，
+然后通过 ContentResolver.applyBatch() 应用它们。
+
+2）异步查询：
+您应该在单独线程中执行查询。
+执行此操作的方式之一是使用 CursorLoader 对象。 
+加载器指南中的示例展示了如何执行此操作。
+
+3）通过 Intent 访问数据：
+尽管您无法直接向提供程序发送 Intent，
+但可以向提供程序的应用发送 Intent，
+后者通常具有修改提供程序数据的最佳配置。

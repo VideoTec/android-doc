@@ -1,0 +1,3 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/CallLog.html
+
+The CallLog provider contains information about placed and received calls.

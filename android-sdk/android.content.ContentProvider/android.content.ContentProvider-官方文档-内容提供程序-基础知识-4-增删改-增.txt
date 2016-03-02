@@ -1,0 +1,49 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Inserting
+
+插入数据
+
+要将数据插入提供程序，可调用 ContentResolver.insert() 方法。
+此方法会在提供程序中插入新行并为该行返回内容 URI。 
+此代码段显示如何将新字词插入用户字典提供程序：
+
+// Defines a new Uri object that receives the result of the insertion
+Uri mNewUri;
+
+...
+
+// Defines an object to contain the new values to insert
+ContentValues mNewValues = new ContentValues();
+
+/*
+ * Sets the values of each column and inserts the word. The arguments to the "put"
+ * method are "column name" and "value"
+ */
+mNewValues.put(UserDictionary.Words.APP_ID, "example.user");
+mNewValues.put(UserDictionary.Words.LOCALE, "en_US");
+mNewValues.put(UserDictionary.Words.WORD, "insert");
+mNewValues.put(UserDictionary.Words.FREQUENCY, "100");
+
+mNewUri = getContentResolver().insert(
+    UserDictionary.Word.CONTENT_URI,   // the user dictionary content URI
+    mNewValues                          // the values to insert
+);
+
+新行的数据会进入单个 ContentValues 对象中，
+该对象在形式上与单行游标类似。 
+此对象中的列不需要具有相同的数据类型，
+如果您不想指定值，
+则可以使用 ContentValues.putNull() 将列设置为 null。
+
+代码段不会添加 _ID 列，因为系统会自动维护此列。 
+提供程序会向添加的每个行分配唯一的 _ID 值。 
+通常，提供程序会将此值用作表的主键。
+
+newUri 中返回的内容 URI 会按照以下格式标识新添加的行：
+
+content://user_dictionary/words/<id_value>
+
+<id_value> 是新行的 _ID 内容。 
+大多数提供程序都能自动检测这种格式的内容 URI，
+然后在该特定行上执行请求的操作。
+
+要从返回的 Uri 中获取 _ID 的值，请调用 ContentUris.parseId()。

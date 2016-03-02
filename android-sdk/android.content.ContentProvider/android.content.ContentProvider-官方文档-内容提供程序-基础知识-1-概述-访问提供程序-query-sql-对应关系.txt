@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#ClientProvider
+
+projection[英][prəˈdʒekʃn] [美][prəˈdʒɛkʃən]
+n.预测；规划，设计；[心]投射；突起物
+
+public final Cursor query (
+Uri uri, 
+String[] projection, 
+String selection, 
+String[] selectionArgs, 
+String sortOrder)
+
+query(Uri,projection,selection,selectionArgs,sortOrder) 
+
+的参数如何匹配 SQL SELECT 语句：
+
+Query() 与 SQL 查询对比。
+
+query() 参数	        SELECT 关键字/参数	    备注
+Uri	                    FROM table_name	        Uri 映射至名为 table_name 的提供程序中的表。
+projection	            col,col,col,...	        projection 是应该为检索到的每个行包含的列的数组。
+selection	            WHERE col = value	    selection 会指定选择行的条件。
+selectionArgs	        （没有完全等效项。选择参数会替换选择子句中 ? 的占位符。）
+sortOrder	            ORDER BY col,col,...	sortOrder 指定行在返回的 Cursor 中的显示顺序。

@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/os/AsyncTask.html
+
+AsyncTask is designed to be a helper class 
+around Thread and Handler and 
+does not constitute a generic threading framework. 
+AsyncTasks should ideally be used for short operations 
+(a few seconds at the most.) 
+If you need to keep threads running for long periods of time, 
+it is highly recommended you use the various APIs provided 
+by the java.util.concurrent package 
+such as Executor, ThreadPoolExecutor and FutureTask.

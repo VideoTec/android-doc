@@ -1,0 +1,62 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#MIMETypeReference
+
+MIME 类型引用
+内容提供程序可以返回
+1）标准 MIME 媒体类型和/或
+2）自定义 MIME 类型字符串。
+
+MIME 类型具有格式
+type/subtype
+
+例如，
+众所周知的 MIME 类型 text/html 具有 text 类型和 html 子类型。
+如果提供程序为 URI 返回此类型，
+则意味着使用该 URI 的查询会返回包含 HTML 标记的文本。
+
+自定义 MIME 类型字符串
+（也称为“特定于供应商”的 MIME 类型）
+具有更加复杂的类型和子类型值。 
+
+类型值始终为
+vnd.android.cursor.dir
+（多行）或
+vnd.android.cursor.item
+（单行）。
+
+子类型特定于提供程序。
+Android 内置提供程序通常具有简单的子类型。 
+例如，
+当联系人应用为电话号码创建行时，
+它会在行中设置以下 MIME 类型：
+
+vnd.android.cursor.item/phone_v2
+
+请注意，
+子类型值只是 phone_v2
+
+其他提供程序开发者可能会根据提供程序的授权和表名称创建自己的子类型模式。 
+例如，假设提供程序包含列车时刻表。 
+提供程序的授权是 com.example.trains，
+并包含表 Line1、Line2 和 Line3。
+在响应表 Line1 的内容 URI
+
+content://com.example.trains/Line1
+
+时，提供程序会返回 MIME 类型
+
+vnd.android.cursor.dir/vnd.example.line1
+
+在响应表 Line2 中第 5 行的内容 URI
+
+content://com.example.trains/Line2/5
+
+时，提供程序会返回 MIME 类型
+
+vnd.android.cursor.item/vnd.example.line2
+
+大多数内容提供程序都会为其使用的 MIME 类型定义协定类常量。
+例如，
+联系人提供程序协定类 ContactsContract.RawContacts 
+会为单个原始联系人行的 MIME 类型定义常量 CONTENT_ITEM_TYPE 。
+
+内容 URI 部分介绍了单个行的内容 URI。

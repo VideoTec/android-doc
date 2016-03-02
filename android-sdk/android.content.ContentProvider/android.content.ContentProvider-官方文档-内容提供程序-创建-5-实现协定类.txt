@@ -1,0 +1,22 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-creating.html#ContractClass
+
+实现协定类
+
+协定类是一种 public final 类，
+其中包含对 URI、列名称、MIME 类型以及其他与提供程序有关的元数据的常量定义。 
+该类可确保即使 URI、列名称等数据的实际值发生变化，
+也可以正确访问提供程序，
+从而在提供程序与其他应用之间建立合同。
+
+协定类对开发者也有帮助，
+因为其常量通常采用助记名称，
+因此可以降低开发者为列名称或 URI 使用错误值的可能性。 
+由于它是一种类，因此可以包含 Javadoc 文档。 
+集成开发环境（如 Eclipse）可以根据协定类自动完成常量名称，
+并为常量显示 Javadoc。
+
+开发者无法从您的应用访问协定类的类文件，
+但他们可以通过您提供的 .jar 文件将其静态编译到其应用内。
+
+举例来说，
+ContactsContract 类及其嵌套类便属于协定类。

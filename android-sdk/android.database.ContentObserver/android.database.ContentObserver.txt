@@ -1,0 +1,4 @@
+http://developer.android.com/intl/zh-cn/reference/android/database/ContentObserver.html
+
+Receives call backs for changes to content. 
+Must be implemented by objects which are added to a ContentObservable.

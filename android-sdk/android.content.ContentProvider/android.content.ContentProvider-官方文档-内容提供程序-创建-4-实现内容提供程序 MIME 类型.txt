@@ -1,0 +1,77 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-creating.html#MIMETypes
+
+实现 ContentProvider MIME 类型
+ContentProvider 类具有两个返回 MIME 类型的方法：
+
+1）getType()
+您必须为任何提供程序实现的必需方法之一。
+2）getStreamTypes()
+系统在您的提供程序提供文件时要求实现的方法。
+
+-------------------------------------------
+表的 MIME 类型
+-------------------------------------------
+
+getType() 方法会返回一个 MIME 格式的 String，
+后者描述内容 URI 参数返回的数据类型。
+Uri 参数可以是模式，而不是特定 URI；
+在这种情况下，
+您应该返回与匹配该模式的内容 URI 关联的数据类型。
+
+对于文本、HTML 或 JPEG 等常见数据类型， 
+getType() 应该为该数据返回标准 MIME 类型。 
+IANA MIME Media Types 网站上提供了这些标准类型的完整列表。
+http://www.iana.org/assignments/media-types/index.htm
+
+对于指向一个或多个表数据行的内容 URI， 
+getType() 应该以 Android 供应商特有 MIME 格式返回 MIME 类型：
+
+类型部分：vnd
+
+子类型部分：
+    如果 URI 模式用于单个行：android.cursor.item/
+    如果 URI 模式用于多个行：android.cursor.dir/
+    
+提供程序特有部分：vnd.<name>.<type>
+    您提供 <name> 和 <type>。 
+    <name> 值应具有全局唯一性， 
+    <type> 值应在对应的 URI 模式中具有唯一性。
+    适合选择贵公司的名称或您的应用 Android 软件包名称的某个部分作为 <name>。 
+    适合选择 URI 关联表的标识字符串作为 <type>。
+    
+例如，
+如果提供程序的权限是 com.example.app.provider，
+并且它公开了一个名为 table1 的表，
+
+则 table1 中多个行的 MIME 类型是：
+vnd.android.cursor.dir/vnd.com.example.provider.table1
+
+对于 table1 的单个行，MIME 类型是：
+vnd.android.cursor.item/vnd.com.example.provider.table1
+
+-------------------------------------------
+文件的 MIME 类型
+-------------------------------------------
+
+如果您的提供程序提供文件，
+请实现 getStreamTypes()。
+该方法会为您的提供程序可以为
+给定内容 URI 返回的文件返回一个 MIME 类型 String 数组。
+您应该通过 MIME 类型过滤器参数过滤您提供的 MIME 类型，
+以便只返回客户端想处理的那些 MIME 类型。
+
+例如，
+假设提供程序以 .jpg、 .png 和 .gif 格式文件形式提供照片图像。
+ 
+如果应用调用 ContentResolver.getStreamTypes() 时
+使用了过滤器字符串 image/*（任何是“图像”的内容），
+则 ContentProvider.getStreamTypes() 方法应返回数组：
+{"image/jpeg", "image/png", "image/gif"}
+
+如果应用只对 .jpg 文件感兴趣，
+则可以在调用 ContentResolver.getStreamTypes() 时
+使用过滤器字符串 *\/jpeg，ContentProvider.getStreamTypes() 应返回：
+{"image/jpeg"}
+
+如果您的提供程序未提供过滤器字符串中请求的任何 MIME 类型，
+则 getStreamTypes() 应返回 null。

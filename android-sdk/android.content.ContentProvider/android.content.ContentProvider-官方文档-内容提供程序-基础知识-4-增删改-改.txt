@@ -1,0 +1,39 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#Updating
+
+更新数据
+
+要更新行，请按照执行插入的方式使用具有更新值的 ContentValues 对象，
+并按照执行查询的方式使用选择条件。 
+您使用的客户端方法是 ContentResolver.update()。
+您只需将值添加至您要更新的列的 ContentValues 对象。 
+如果您要清除列的内容，请将值设置为 null。
+
+以下代码段会将区域设置具有语言“en”的所有行的区域设置更改为 null。 
+返回值是已更新的行数：
+
+// Defines an object to contain the updated values
+ContentValues mUpdateValues = new ContentValues();
+
+// Defines selection criteria for the rows you want to update
+String mSelectionClause = UserDictionary.Words.LOCALE +  "LIKE ?";
+String[] mSelectionArgs = {"en_%"};
+
+// Defines a variable to contain the number of updated rows
+int mRowsUpdated = 0;
+
+...
+
+/*
+ * Sets the updated value and updates the selected words.
+ */
+mUpdateValues.putNull(UserDictionary.Words.LOCALE);
+
+mRowsUpdated = getContentResolver().update(
+    UserDictionary.Words.CONTENT_URI,   // the user dictionary content URI
+    mUpdateValues                       // the columns to update
+    mSelectionClause                    // the column to select on
+    mSelectionArgs                      // the value to compare to
+);
+
+您还应该在调用 ContentResolver.update() 时检查用户输入。
+如需了解有关此内容的更多详情，请阅读防止恶意输入部分

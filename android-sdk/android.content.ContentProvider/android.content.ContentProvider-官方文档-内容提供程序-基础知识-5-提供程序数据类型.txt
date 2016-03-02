@@ -1,0 +1,35 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-basics.html#DataTypes
+
+提供程序数据类型
+内容提供程序可以提供多种不同的数据类型。
+用户字典提供程序仅提供文本，
+但提供程序也能提供以下格式：
+
+1）整型
+2）长整型（长）
+3）浮点型
+4）长浮点型（双倍）
+
+提供程序经常使用的另一种数据类型是
+作为 64KB 字节的数组实施的二进制大型对象 (BLOB)。 
+您可以通过查看 Cursor 类“获取”方法看到可用数据类型。
+
+提供程序文档中通常都列出了其每个列的数据类型。 
+用户字典提供程序的数据类型
+列在其协定类 UserDictionary.Words 参考文档中
+（协定类部分对协定类进行了介绍）。 
+您也可以通过调用 Cursor.getType() 来确定数据类型。
+
+提供程序还会维护其定义的
+每个内容 URI 的 MIME（多用途互联网邮件扩展）数据类型信息。
+您可以使用 MIME 类型信息查明应用是否可以处理提供程序提供的数据，
+或根据 MIME 类型选择处理类型。 
+在使用包含复杂数据结构或文件的提供程序时，通常需要 MIME 类型。
+ 
+例如，
+联系人提供程序中的 ContactsContract.Data 表
+会使用 MIME 类型来标记每行中存储的联系人数据类型。 
+要获取与内容 URI 对应的 MIME 类型，
+请调用 ContentResolver.getType()。
+
+MIME 类型引用部分介绍了标准和自定义 MIME 类型的语法。

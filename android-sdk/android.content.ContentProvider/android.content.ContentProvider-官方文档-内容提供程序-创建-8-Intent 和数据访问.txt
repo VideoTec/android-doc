@@ -1,0 +1,24 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-creating.html#Intents
+
+Intent 和数据访问
+应用可以通过 Intent 间接访问内容提供程序。 
+应用不会调用 ContentResolver 或 ContentProvider 的任何方法，
+而会发送一个启动 Activity 的 Intent，
+该 Activity 通常是提供程序自身应用的一部分。 
+目标 Activity 负责检索和显示其 UI 中的数据。
+视 Intent 中的操作而定，
+目标 Activity 可能还会提示用户对提供程序的数据进行修改。 
+Intent 可能还包含目标 Activity 在 UI 中显示的“extra”数据；
+用户随后可以选择更改此数据，
+然后使用它来修改提供程序中的数据。
+
+您可能想使用 Intent 访问权限来帮助确保数据完整性。
+您的提供程序可能依赖于根据严格定义的业务逻辑插入、更新和删除数据。 
+如果是这种情况，
+则允许其他应用直接修改您的数据可能会导致无效的数据。 
+如果您想让开发者使用 Intent 访问权限，
+请务必为其提供详尽的参考资料。 
+向他们解释为什么使用自身应用 UI 的 Intent 访问比尝试通过代码修改数据更好。
+
+处理想要修改您的提供程序数据的传入 Intent 与处理其他 Intent 没有区别。 
+您可以通过阅读 Intent 和 Intent 过滤器主题了解有关 Intent 用法的更多信息。
