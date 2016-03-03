@@ -1,0 +1,74 @@
+11:02 2016/3/3
+
+android-xml-json.jar
+android.jar
+
+都包含：
+org.json.JSONArray
+org.json.JSONException
+org.json.JSONObject
+org.json.JSONStringer
+org.json.JSONTokener
+
+结论：
+1. 会自动引用 android.jar 中的类。
+2. jdk rt.jar 中包含 java.nio.Buffer 
+   android.jar 也包含 java.nio.Buffer
+   test.jar 也包含，这时会出错。
+3. jak rt.jar 中包含 com.oracle.nio.BufferSecrtes
+   android.jar 不包含这个类
+   test.jar 中包含这个类
+   应用中不引用这个类的时候，构建没有出错。
+   这里有个问题：android 工程中，直接引用 com.oracle.nio.BufferSecrtes 
+   会出下面的错误：
+   程序包com.oracle.nio不存在 参考：
+   E:\doc\android\android-jdk\android-jdk-rt.jar-关系.txt
+4. appcompat-v7-23.2.0
+   android.support.v7.app.ActionBar
+   会出错
+   :app:transformClassesWithDexForDebug
+    UNEXPECTED TOP-LEVEL EXCEPTION:
+    com.android.dex.DexException: Multiple dex files define Landroid/support/v7/app/ActionBar;
+
+android-xml-json.jar 
+压缩包中，每个class类，都有个对应的源码文件
+
+在代码中引用，并使用，也可以正常编译构建，运行：
+
+        try {
+            JSONObject object = new JSONObject("this is a test json");
+        } catch (JSONException ex) {
+            Log.e("Demo", ex.getMessage());
+        }
+        
+调试发现，进入 android.jar 源码中。
+
+:app:transformClassesWithDexForDebug
+
+在工程中，添加 org.json.JSONException 类，构建APK时，出现下面的错误：
+UNEXPECTED TOP-LEVEL EXCEPTION:
+com.android.dex.DexException: Multiple dex files define Lorg/json/JSONException;
+	at com.android.dx.merge.DexMerger.readSortableTypes(DexMerger.java:579)
+	at com.android.dx.merge.DexMerger.getSortedTypes(DexMerger.java:535)
+	at com.android.dx.merge.DexMerger.mergeClassDefs(DexMerger.java:517)
+	at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:164)
+	at com.android.dx.merge.DexMerger.merge(DexMerger.java:188)
+	at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:504)
+	at com.android.dx.command.dexer.Main.runMonoDex(Main.java:334)
+	at com.android.dx.command.dexer.Main.run(Main.java:277)
+	at com.android.dx.command.dexer.Main.main(Main.java:245)
+	at com.android.dx.command.Main.main(Main.java:106)
+    
+这时在 android defaultConfig 中添加：
+multiDexEnabled true
+出现下面的错误：
+
+:app:transformClassesWithJarMergingForDebug FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:transformClassesWithJarMergingForDebug'.
+> com.android.build.api.transform.TransformException: 
+java.util.zip.ZipException: 
+duplicate entry: org/json/JSONException.class

@@ -1,0 +1,6 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/BaseColumns.html
+
+android.provider.BaseColumns
+
+String	_COUNT	The count of rows in a directory.
+String	_ID	    The unique ID for a row.

@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/20151100/multiple-android-support-v4-versions-in-same-project
+http://stackoverflow.com/questions/16507839/conflict-between-multiple-android-support-v4-libraries
+http://blog.csdn.net/alexander_xfl/article/details/9464037

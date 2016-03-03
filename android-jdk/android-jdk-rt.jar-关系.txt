@@ -1,0 +1,26 @@
+引发这个问题的原因是：
+E:\doc\android\android-studio\AS构建\
+android-studio-构建-失败-包类同名冲突-Unable to execute dex Multiple dex files define-为什么有些情况不会冲突呢.txt
+
+android 工程中，直接引用 com.oracle.nio.BufferSecrtes 
+   会出下面的错误：
+   程序包com.oracle.nio不存在 参考：
+   E:\doc\android\android-jdk\android-jdk-rt.jar-关系.txt
+
+http://stackoverflow.com/questions/31127707/cant-import-a-standard-java-library-class-in-android-studio
+
+The Android Platform Runtime Environment 
+is similar to common (Oracle or OpenJDK) Java Runtime Environment 
+but it is not the same.
+
+Therefore classes that exist in Java 1.6/1.7/1.8 
+may exist on Android as well but they can also be missing. 
+If they exist you can use them if not you can't.
+
+The package java.nio.file.* 
+for example is not available on Android. 
+If you have code that requires this package you have to rewrite it.
+
+Even if the Java Runtime is added by default to your project 
+as external library this is done only for compatibility reasons. 
+You can not use classes from this library.

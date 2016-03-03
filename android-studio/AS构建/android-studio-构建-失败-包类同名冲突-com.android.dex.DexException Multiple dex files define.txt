@@ -1,0 +1,12 @@
+UNEXPECTED TOP-LEVEL EXCEPTION:
+com.android.dex.DexException: Multiple dex files define Lorg/json/JSONException;
+	at com.android.dx.merge.DexMerger.readSortableTypes(DexMerger.java:579)
+	at com.android.dx.merge.DexMerger.getSortedTypes(DexMerger.java:535)
+	at com.android.dx.merge.DexMerger.mergeClassDefs(DexMerger.java:517)
+	at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:164)
+	at com.android.dx.merge.DexMerger.merge(DexMerger.java:188)
+	at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:504)
+	at com.android.dx.command.dexer.Main.runMonoDex(Main.java:334)
+	at com.android.dx.command.dexer.Main.run(Main.java:277)
+	at com.android.dx.command.dexer.Main.main(Main.java:245)
+	at com.android.dx.command.Main.main(Main.java:106)

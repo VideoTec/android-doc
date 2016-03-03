@@ -1,0 +1,38 @@
+http://jingyan.baidu.com/article/ff42efa904b4d7c19e220282.html
+
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+1. 使用Javac编译文件
+javac Hello.java
+
+2. 打jar包
+jar -cvf hello.jar hello.class
+
+这个 package 路径问题，示例：
+
+jar -cvf test.jar e:\java-code\JSONException.class
+
+打成的 jar 里，目录是：
+e:\java-code\
+
+这里的 jar 包，是无法运行的。
+需要解压后再打包
+
+解压刚打的Jar包到新的目录，
+会发现里边多了一个META-INF文件夹里边有一个MANIFEST.MF文件
+
+用记事本打开MANIFEST.MF文件，修改为
+Manifest-Version: 1.0
+Main-Class: Hello
+Created-By: aaa
+
+切换到C:\test\jar\hello目录，将MANIFEST.MF复制到当前目录
+然后打包：
+jar cvfm abc.jar MANIFEST.MF Hello.class
+
+最后运行测试
+java -jar abc.jar
