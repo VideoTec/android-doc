@@ -1,0 +1,14 @@
+http://chinagdg.org/2016/01/android-serialization/
+
+数据序列化是 Android 应用很重要的一个方面，
+同时也影响着 Android 性能。
+JSON 虽然可读性好，但这些面向人类的信息却不是性能最优的。
+本期 Android Performance Patterns 第四季第14集，
+Colt McAnlis 为大家介绍一些性能更优的数据序列化方案。
+
+google-gson：高性能 Java JSON 库
+Protocol Buffers 和 Nano-Proto-Buffers(Android优化版的 PB)
+FlatBuffers：性能最高的序列化库，由 Google 游戏开发小组专为性能而设计
+SharedPreferences API：存储简单 key-value 信息无需序列化
+Parcelable API：Android 进程间传递数据，性能远优于 Java 默认序列化机制
+SQLiteDatabase：存储结构化数据时的选择

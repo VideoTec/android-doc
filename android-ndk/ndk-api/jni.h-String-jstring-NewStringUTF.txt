@@ -1,0 +1,34 @@
+jstring     (*NewStringUTF)(JNIEnv*, const char*);
+
+http://stackoverflow.com/questions/6238785/newstringutf-and-freeing-memory
+
+The storage for the const char* argument to NewStringUTF() 
+is entirely your responsibility: 
+if you allocated test with malloc(), then you need to free() it. 
+So, the snippet you posted is correct. 
+You are corrupting the heap somewhere else.
+
+I see conflicting opinions. 
+Some say I should free it myself, 
+some say the VM frees it, 
+some say the VM doesn't free it and you should do strange voodoo magic to free it. 
+I'm confused.
+
+They are talking about the jstring instance returned by NewStringUTF(). 
+That follows the confusing rules for 'local references'.
+
+It is never an error to release this reference with DeleteLocalRef() 
+when you are finished with it. 
+However, the JVM performs some dubious magic 
+if you call NewStringUTF() in the context of a JVM thread. 
+When the native method returns to Java, 
+any leaked leaked local references are automatically cleaned up. 
+So if you are sure your ultimate caller is in a Java thread, 
+then you can safely leak the reference.
+
+On the other hand, 
+if you are running in the context of a native thread
+ - say, some event reporting thread making callbacks to Java - 
+there never is a return to Java, 
+so you must call DeleteLocalRef() yourself on this jstring 
+(and indeed all the other local references returned by typical JNI calls).

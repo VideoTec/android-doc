@@ -1,0 +1,3 @@
+系统库，参考： E:\android\ndk\platforms\android-21\arch-arm\usr\lib
+
+LOCAL_LDLIBS += -llog -landroid

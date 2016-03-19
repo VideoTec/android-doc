@@ -1,0 +1,19 @@
+Prebuilt Libraries
+Android NDK r5 introduced support for prebuilt libraries (shared and static), 
+i.e. the ability to include and use, 
+in your applications, prebuilt version of libraries.
+
+This feature can be useful for two things:
+
+1）You want to distribute your own libraries 
+to third-party NDK developers without distributing your sources.
+2）You want to use a prebuilt version of your own libraries to speed up your build.
+
+This document explains how this support works.
+
+分以下主题讨论：
+1）Declaring a prebuilt library module
+2）Referencing the prebuilt library in other modules
+3）Exporting headers for prebuilt libraries
+4）Debugging prebuilt binaries
+5）ABI Selection of prebuilt binaries

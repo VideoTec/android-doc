@@ -1,0 +1,40 @@
+http://blog.csdn.net/roland_sun/article/details/45922183
+
+Android中如何将原生程序向stdout和stderr的输出重定向到logcat
+
+在Android系统中，凡是由Zygote孵化出来的进程，
+其标准输出（stdout）、标准错误（stderr）都被重定向到了/dev/null这个设备中。
+因此，任何输出到stdout和stderr的信息都会被忽略。
+而Android的应用程序，都是自Zygote进程孵化出来的，
+所以都不会有stdout和stderr输出，
+printf函数根本不起作用。
+
+http://developer.android.com/intl/zh-cn/tools/debugging/debugging-log.html
+
+Viewing stdout and stderr
+By default, the Android system sends stdout and stderr (System.out and System.err) output to /dev/null. 
+In processes that run the Dalvik VM, 
+you can have the system write a copy of the output to the log file. 
+In this case, the system writes the messages to the log 
+using the log tags stdout and stderr, both with priority I.
+
+To route the output in this way, 
+you stop a running emulator/device instance and 
+then use the shell command setprop to enable the redirection of output. 
+Here's how you do it:
+
+$ adb shell stop
+$ adb shell setprop log.redirect-stdio true
+$ adb shell start
+
+The system retains this setting until you terminate the emulator/device instance. 
+To use the setting as a default on the emulator/device instance, 
+you can add an entry to /data/local.prop on the device
+
+http://stackoverflow.com/questions/5499202/why-is-redirecting-stdout-stderr-on-android-not-working
+Another way of doing this is having a file /data/local.prop, 
+containing just the line log.redirect-stdio=true. 
+Maybe this works better? 
+Also, note that stdout is buffered, 
+so it could be that your output is still sitting in the buffer, 
+waiting to be flushed. You can call fflush manually to check this

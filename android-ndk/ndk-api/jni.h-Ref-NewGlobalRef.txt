@@ -1,0 +1,6 @@
+/*
+ * Table of interface function pointers.
+ */
+struct JNINativeInterface {
+    jobject     (*NewGlobalRef)(JNIEnv*, jobject);
+    void        (*DeleteGlobalRef)(JNIEnv*, jobject);

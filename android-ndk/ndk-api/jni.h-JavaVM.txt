@@ -1,0 +1,30 @@
+struct _JNIEnv;
+struct _JavaVM;
+typedef const struct JNINativeInterface* C_JNIEnv;
+
+#if defined(__cplusplus)
+typedef _JNIEnv JNIEnv;
+typedef _JavaVM JavaVM;
+#else
+typedef const struct JNINativeInterface* JNIEnv;
+typedef const struct JNIInvokeInterface* JavaVM;
+#endif
+
+struct JNINativeInterface {
+    jint        (*GetJavaVM)(JNIEnv*, JavaVM**);
+}
+
+/*
+ * JNI invocation interface.
+ */
+struct JNIInvokeInterface {
+    void*       reserved0;
+    void*       reserved1;
+    void*       reserved2;
+
+    jint        (*DestroyJavaVM)(JavaVM*);
+    jint        (*AttachCurrentThread)(JavaVM*, JNIEnv**, void*);
+    jint        (*DetachCurrentThread)(JavaVM*);
+    jint        (*GetEnv)(JavaVM*, void**, jint);
+    jint        (*AttachCurrentThreadAsDaemon)(JavaVM*, JNIEnv**, void*);
+};

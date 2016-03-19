@@ -1,0 +1,60 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/ContactsContract.html
+
+The contract between the contacts provider and applications. 
+Contains definitions for the supported URIs and columns. 
+These APIs supersede ContactsContract.Contacts.
+
+Overview
+
+three-tier[英][θ'ri:t'aɪə] [美][θ'ri:t'aɪə]
+[医]三层
+
+aggregation[英][ˌæɡrɪ'ɡeɪʃn] [美][ˌæɡrɪˈɡeʃən]
+n.聚集；集成；集结；聚集体
+
+disaggregation[英][dɪsˌægrɪ'geɪʃən] [美][dɪsˌægrə'geɪʃən]
+n.崩溃，解体；解集；解离
+
+ContactsContract defines 
+an extensible database of contact-related information. 
+Contact information is stored in a three-tier data model:
+
+1) A row in the ContactsContract.Data 
+table can store any kind of personal data, 
+such as a phone number or email addresses. 
+The set of data kinds that can be stored in this table is open-ended. 
+There is a predefined set of common kinds, 
+but any application can add its own data kinds.
+
+2) A row in the ContactsContract.RawContacts 
+table represents a set of data describing a person and 
+associated with a single account 
+(for example, one of the user's Gmail accounts).
+
+3) A row in the ContactsContract.Contacts table 
+represents an aggregate of one or more RawContacts presumably 
+describing the same person. 
+When data in or associated with the RawContacts table is changed, 
+the affected aggregate contacts are updated as necessary.
+
+Other tables include:
+
+1) ContactsContract.Groups, 
+which contains information about raw contact groups 
+such as Gmail contact groups. 
+The current API does not support the notion of groups spanning multiple accounts.
+
+2) ContactsContract.StatusUpdates, 
+which contains social status updates including IM availability.
+
+3) ContactsContract.AggregationExceptions, 
+which is used for manual aggregation and disaggregation of raw contacts
+
+4) ContactsContract.Settings, 
+which contains visibility and sync settings for accounts and groups.
+
+5) ContactsContract.SyncState, 
+which contains free-form data maintained on behalf of sync adapters
+
+6) ContactsContract.PhoneLookup, 
+which is used for quick caller-ID lookup

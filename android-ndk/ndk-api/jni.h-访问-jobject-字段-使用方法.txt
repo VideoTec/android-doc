@@ -1,0 +1,20 @@
+http://journals.ecs.soton.ac.uk/java/tutorial/native1.1/implementing/field.html
+
+Accessing Java Fields
+
+The JNI provides functions that native methods use to get and set Java fields. 
+You can get and set both instance fields and static (class) fields. 
+Similar to accessing Java methods, 
+you use different JNI functions to access instance and static fields.
+
+Our example program, FieldAccess.java, 
+contains a class with one static integer field si and an instance string field s. 
+It calls the native method accessFields, 
+which prints out the value of these two fields, 
+and then sets the fields to new values. 
+To verify the fields have indeed changed, 
+we print out their values again in Java after returning from the native method.
+
+http://blog.csdn.net/ljeagle/article/details/6705327
+
+JNI学习笔记（五）——fields和methods

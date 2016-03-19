@@ -1,0 +1,85 @@
+typedef jobject         jarray;
+typedef jarray          jobjectArray;
+typedef jarray          jbooleanArray;
+typedef jarray          jbyteArray;
+typedef jarray          jcharArray;
+typedef jarray          jshortArray;
+typedef jarray          jintArray;
+typedef jarray          jlongArray;
+typedef jarray          jfloatArray;
+typedef jarray          jdoubleArray;
+
+    jsize       (*GetArrayLength)(JNIEnv*, jarray);
+    jobjectArray (*NewObjectArray)(JNIEnv*, jsize, jclass, jobject);
+    jobject     (*GetObjectArrayElement)(JNIEnv*, jobjectArray, jsize);
+    void        (*SetObjectArrayElement)(JNIEnv*, jobjectArray, jsize, jobject);
+
+    jbooleanArray (*NewBooleanArray)(JNIEnv*, jsize);
+    jbyteArray    (*NewByteArray)(JNIEnv*, jsize);
+    jcharArray    (*NewCharArray)(JNIEnv*, jsize);
+    jshortArray   (*NewShortArray)(JNIEnv*, jsize);
+    jintArray     (*NewIntArray)(JNIEnv*, jsize);
+    jlongArray    (*NewLongArray)(JNIEnv*, jsize);
+    jfloatArray   (*NewFloatArray)(JNIEnv*, jsize);
+    jdoubleArray  (*NewDoubleArray)(JNIEnv*, jsize);
+
+    jboolean*   (*GetBooleanArrayElements)(JNIEnv*, jbooleanArray, jboolean*);
+    jbyte*      (*GetByteArrayElements)(JNIEnv*, jbyteArray, jboolean*);
+    jchar*      (*GetCharArrayElements)(JNIEnv*, jcharArray, jboolean*);
+    jshort*     (*GetShortArrayElements)(JNIEnv*, jshortArray, jboolean*);
+    jint*       (*GetIntArrayElements)(JNIEnv*, jintArray, jboolean*);
+    jlong*      (*GetLongArrayElements)(JNIEnv*, jlongArray, jboolean*);
+    jfloat*     (*GetFloatArrayElements)(JNIEnv*, jfloatArray, jboolean*);
+    jdouble*    (*GetDoubleArrayElements)(JNIEnv*, jdoubleArray, jboolean*);
+
+    void        (*ReleaseBooleanArrayElements)(JNIEnv*, jbooleanArray,
+                        jboolean*, jint);
+    void        (*ReleaseByteArrayElements)(JNIEnv*, jbyteArray,
+                        jbyte*, jint);
+    void        (*ReleaseCharArrayElements)(JNIEnv*, jcharArray,
+                        jchar*, jint);
+    void        (*ReleaseShortArrayElements)(JNIEnv*, jshortArray,
+                        jshort*, jint);
+    void        (*ReleaseIntArrayElements)(JNIEnv*, jintArray,
+                        jint*, jint);
+    void        (*ReleaseLongArrayElements)(JNIEnv*, jlongArray,
+                        jlong*, jint);
+    void        (*ReleaseFloatArrayElements)(JNIEnv*, jfloatArray,
+                        jfloat*, jint);
+    void        (*ReleaseDoubleArrayElements)(JNIEnv*, jdoubleArray,
+                        jdouble*, jint);
+
+    void        (*GetBooleanArrayRegion)(JNIEnv*, jbooleanArray,
+                        jsize, jsize, jboolean*);
+    void        (*GetByteArrayRegion)(JNIEnv*, jbyteArray,
+                        jsize, jsize, jbyte*);
+    void        (*GetCharArrayRegion)(JNIEnv*, jcharArray,
+                        jsize, jsize, jchar*);
+    void        (*GetShortArrayRegion)(JNIEnv*, jshortArray,
+                        jsize, jsize, jshort*);
+    void        (*GetIntArrayRegion)(JNIEnv*, jintArray,
+                        jsize, jsize, jint*);
+    void        (*GetLongArrayRegion)(JNIEnv*, jlongArray,
+                        jsize, jsize, jlong*);
+    void        (*GetFloatArrayRegion)(JNIEnv*, jfloatArray,
+                        jsize, jsize, jfloat*);
+    void        (*GetDoubleArrayRegion)(JNIEnv*, jdoubleArray,
+                        jsize, jsize, jdouble*);
+
+    /* spec shows these without const; some jni.h do, some don't */
+    void        (*SetBooleanArrayRegion)(JNIEnv*, jbooleanArray,
+                        jsize, jsize, const jboolean*);
+    void        (*SetByteArrayRegion)(JNIEnv*, jbyteArray,
+                        jsize, jsize, const jbyte*);
+    void        (*SetCharArrayRegion)(JNIEnv*, jcharArray,
+                        jsize, jsize, const jchar*);
+    void        (*SetShortArrayRegion)(JNIEnv*, jshortArray,
+                        jsize, jsize, const jshort*);
+    void        (*SetIntArrayRegion)(JNIEnv*, jintArray,
+                        jsize, jsize, const jint*);
+    void        (*SetLongArrayRegion)(JNIEnv*, jlongArray,
+                        jsize, jsize, const jlong*);
+    void        (*SetFloatArrayRegion)(JNIEnv*, jfloatArray,
+                        jsize, jsize, const jfloat*);
+    void        (*SetDoubleArrayRegion)(JNIEnv*, jdoubleArray,
+                        jsize, jsize, const jdouble*);

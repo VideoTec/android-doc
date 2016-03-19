@@ -1,0 +1,36 @@
+http://blog.codingnow.com/2011/12/protocol_buffers_for_c.html
+Protocol Buffers for C
+
+每个环境需要独立注册需要的消息类型，
+传入一个 protobuf 库官方工具生成的 .pb 数据块即可。
+以 slice 的形式传入，register 完后，这块数据内存可以释放
+
+没找到生成的 .pb 数据块的工具。有人可以给个链接？
+
+有json-c的开放接口的简洁，同时又具备protobuf的sdl优越性。设计确实蛮酷的！ 
+这个东西要是应用在服务器端的话，确实不错。
+客户端的话就不好说了，由于是脱离了code generation，采用类库来进行解析数据，
+那就不好避免.pb文件与程序一起发布。
+要是这些.pb放在客户端的话，确实会有很大的安全隐患。
+protobuf-c给提供的接口太过于丑陋了，
+如果一个协议里面出现多个repeated字段，那对填充协议的人来说，真的是噩梦，
+而且对于内存方面作者也将这个问题完全抛给了实现者。
+个人觉得作者并没有用心去实现他。 
+回到.pb文件的问题上，有没有一种方案，
+用protoc生成精简后的源代码，在访问填充数据的接口却像你设计的那样如此简洁？
+我的主要考虑是在随着协议的增加，
+必然要对不同的协议生成不同的.pb协议流，
+而且如果全部都是用打开文件的方式进行加载的话，
+对移动设备来说可能会有一定的效率问题，
+而且.pb随着程序一起发布，确实不安全。
+
+http://www.ithao123.cn/content-787814.html
+
+创建好用通过protobuf库官方工具生成的.pb数据块（login.pb）
+具体操作：
+
+1.进入http://code.google.com/p/protobuf/downloads/list 下载protoc-2.5.0-win32.zip
+2.解压获得执行文件protoc.exe
+3.将login.proto放到protoc.exe目录下
+4.在protoc.exe下执行指令：
+protoc.exe --descriptor_set_out=./login.pb ./login.proto ,即可生成login.pb文件

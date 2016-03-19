@@ -1,0 +1,30 @@
+注意，android.mk， 中适配符的用法：
+LOCAL_SRC_FILES  := ../v6sdk-code/v6sdk/src/v6_api.c \
+                    ../v6sdk-code/v6sdk/src/v6_engine.c \
+                    ../v6sdk-code/v6sdk/src/v6_proto.c \
+                    $(wildcard ../v6sdk-code/v6sdk/lualibs/**/*.c)
+
+http://stackoverflow.com/questions/9970082/android-mk-file-including-all-source-files-in-different-folders-and-subfolders
+
+第一种方案：
+You can use ** wildcard to include files from all subdirectories:
+
+LOCAL_SRC_FILES += $(patsubst $(LOCAL_PATH)/%, %, $(wildcard folder/**/*.cpp))
+
+另一种方案：
+FILE_LIST := $(wildcard $(LOCAL_PATH)/*.cpp)
+FILE_LIST += $(wildcard $(LOCAL_PATH)/**/*.cpp)
+FILE_LIST += $(wildcard $(LOCAL_PATH)/**/**/*.cpp)
+LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
+
+http://stackoverflow.com/questions/12551951/ndk-build-library-outside-main-project-source-tree
+
+ZOO_LOCAL_PATH := $(call my-dir)
+include ~/projects/bar/jni/Android.mk
+LOCAL_PATH := $(ZOO_LOCAL_PATH)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := zoo
+LOCAL_SRC_FILES := zoo/zoo.c
+LOCAL_SHARED_LIBRARIES := bar
+include $(BUILD_SHARED_LIBRARY)

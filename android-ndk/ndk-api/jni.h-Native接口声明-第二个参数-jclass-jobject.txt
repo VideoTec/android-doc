@@ -1,0 +1,24 @@
+对应java类的非静态 native 方法
+JNIEXPORT int JNICALL jni_tx_subscribe(JNIEnv *env, jobject clazz);
+
+对应java类的静态 native 方法
+JNIEXPORT int JNICALL jni_tx_subscribe(JNIEnv *env, jclass clazz);
+
+http://stackoverflow.com/questions/25774801/c-jni-stored-object-jobject-changes-unexpectedly-in-vectors-and-arrays-c
+I went ahead and researched more heavily after posting this and 
+realized it was indeed a problem on the JNI side relating to local and global references. 
+All I had to do was env->NewGlobalRef(object); 
+and then store the object in the array. 
+That solved it.
+
+I'm going to leave this question and answer up 
+in case it helps anyone in the future.
+
+22:02 2016/3/17 遇到的问题：
+
+代码：
+tx_ptr->attachment = clazz; 把 jobject 对象保存到缓存里
+(*env)->CallVoidMethod(env, tx->attachment, g_method_callback_response); 在回调里，使用这个值。
+
+错误信息：
+E dalvikvm: JNI ERROR (app bug): accessed stale local reference 0x82b0001d (index 7 in a table of size 0)

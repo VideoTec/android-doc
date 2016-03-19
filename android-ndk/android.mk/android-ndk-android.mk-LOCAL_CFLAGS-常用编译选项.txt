@@ -1,0 +1,8 @@
+15:23 2015/7/11 android.mk
+它是编译选项
+LOCAL_CFLAGS := -D__STDC_CONSTANT_MACROS -Wl,--no-undefined
+
+链接 可执行文件 或者 动态库时, 使用这个选项的作用
+any undefined reference encountered 
+when trying to build a shared library will result in an "undefined symbol" error. 
+This is a great help to catch bugs in your source code.

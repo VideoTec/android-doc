@@ -1,0 +1,22 @@
+        /**
+         * Columns common across the specific types.
+         */
+        protected interface CommonColumns extends BaseTypes {
+            /**
+             * The data for the contact method.
+             * <P>Type: TEXT</P>
+             */
+            public static final String DATA = DataColumns.DATA1;
+
+            /**
+             * The type of data, for example Home or Work.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String TYPE = DataColumns.DATA2;
+
+            /**
+             * The user defined label for the the contact method.
+             * <P>Type: TEXT</P>
+             */
+            public static final String LABEL = DataColumns.DATA3;
+        }

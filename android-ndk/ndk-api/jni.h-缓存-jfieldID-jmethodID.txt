@@ -1,0 +1,8 @@
+http://blog.csdn.net/ljeagle/article/details/6705327
+
+方法一：
+缓存字段ID到一个静态变量中，
+这样就不需要在每次调用的InstanceFieldAccess.accessField时候都去重新计算
+
+方法二：
+在类的初始化时捕获

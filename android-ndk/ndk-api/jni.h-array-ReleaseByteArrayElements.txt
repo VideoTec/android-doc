@@ -1,0 +1,31 @@
+见 jni.h 头文件
+
+typedef int8_t          jbyte;          /* signed 8 bits */
+typedef int32_t         jint;           /* signed 32 bits */
+
+void ReleaseByteArrayElements(jbyteArray array, jbyte* elems, jint mode)
+
+mode         actions
+0            copy back the content and free the elems buffer
+JNI_COMMIT   copy back the content but do not free the elems buffer
+JNI_ABORT    free the buffer without copying back the possible changes
+
+PARAMETERS:
+env:    the JNI interface pointer.
+array:  a Java array object.
+elems:  a pointer to array elements.
+mode:   the release mode.
+
+
+示例：
+void getPCMData(JNIEnv *env, jobject clazz, jbyteArray data) {
+  static uint8_t *buffer = (uint8_t *)malloc(1024 * 2 * 2);
+  static uint8_t *pcm_data[2] = {buffer, buffer + 1024 * 2};
+  fv_audio_mix_cbk(pcm_data);
+  save_bytes_to_file("/sdcard/1024-16bit-2ch.sample", buffer, 1024 * 2 * 2);  //确定 buffer 中的数据不全是零
+  env->ReleaseByteArrayElements(data, (jbyte*)buffer, JNI_COMMIT);
+}
+
+在 java 中得到的数据，和 c 层中的buffer不一致。
+原因：
+必须调用 GetByteArrayElements, 再调用 ReleaseByteArrayElements 才有效？调用 get 后再 release 就可以返回正确数据了

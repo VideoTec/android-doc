@@ -1,0 +1,1911 @@
+    /**
+     * Container for definitions of common data types stored in the {@link ContactsContract.Data}
+     * table.
+     */
+    public static final class CommonDataKinds {
+        /**
+         * This utility class cannot be instantiated
+         */
+        private CommonDataKinds() {}
+
+        /**
+         * The {@link Data#RES_PACKAGE} value for common data that should be
+         * shown using a default style.
+         *
+         * @hide RES_PACKAGE is hidden
+         */
+        public static final String PACKAGE_COMMON = "common";
+
+        /**
+         * The base types that all "Typed" data kinds support.
+         */
+        public interface BaseTypes {
+            /**
+             * A custom type. The custom label should be supplied by user.
+             */
+            public static int TYPE_CUSTOM = 0;
+        }
+
+        /**
+         * Columns common across the specific types.
+         */
+        protected interface CommonColumns extends BaseTypes {
+            /**
+             * The data for the contact method.
+             * <P>Type: TEXT</P>
+             */
+            public static final String DATA = DataColumns.DATA1;
+
+            /**
+             * The type of data, for example Home or Work.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String TYPE = DataColumns.DATA2;
+
+            /**
+             * The user defined label for the the contact method.
+             * <P>Type: TEXT</P>
+             */
+            public static final String LABEL = DataColumns.DATA3;
+        }
+
+        /**
+         * A data kind representing the contact's proper name. You can use all
+         * columns defined for {@link ContactsContract.Data} as well as the following aliases.
+         *
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th><th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #DISPLAY_NAME}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #GIVEN_NAME}</td>
+         * <td>{@link #DATA2}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #FAMILY_NAME}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PREFIX}</td>
+         * <td>{@link #DATA4}</td>
+         * <td>Common prefixes in English names are "Mr", "Ms", "Dr" etc.</td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #MIDDLE_NAME}</td>
+         * <td>{@link #DATA5}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #SUFFIX}</td>
+         * <td>{@link #DATA6}</td>
+         * <td>Common suffixes in English names are "Sr", "Jr", "III" etc.</td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PHONETIC_GIVEN_NAME}</td>
+         * <td>{@link #DATA7}</td>
+         * <td>Used for phonetic spelling of the name, e.g. Pinyin, Katakana, Hiragana</td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PHONETIC_MIDDLE_NAME}</td>
+         * <td>{@link #DATA8}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PHONETIC_FAMILY_NAME}</td>
+         * <td>{@link #DATA9}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class StructuredName implements DataColumnsWithJoins, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private StructuredName() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/name";
+
+            /**
+             * The name that should be used to display the contact.
+             * <i>Unstructured component of the name should be consistent with
+             * its structured representation.</i>
+             * <p>
+             * Type: TEXT
+             */
+            public static final String DISPLAY_NAME = DATA1;
+
+            /**
+             * The given name for the contact.
+             * <P>Type: TEXT</P>
+             */
+            public static final String GIVEN_NAME = DATA2;
+
+            /**
+             * The family name for the contact.
+             * <P>Type: TEXT</P>
+             */
+            public static final String FAMILY_NAME = DATA3;
+
+            /**
+             * The contact's honorific prefix, e.g. "Sir"
+             * <P>Type: TEXT</P>
+             */
+            public static final String PREFIX = DATA4;
+
+            /**
+             * The contact's middle name
+             * <P>Type: TEXT</P>
+             */
+            public static final String MIDDLE_NAME = DATA5;
+
+            /**
+             * The contact's honorific suffix, e.g. "Jr"
+             */
+            public static final String SUFFIX = DATA6;
+
+            /**
+             * The phonetic version of the given name for the contact.
+             * <P>Type: TEXT</P>
+             */
+            public static final String PHONETIC_GIVEN_NAME = DATA7;
+
+            /**
+             * The phonetic version of the additional name for the contact.
+             * <P>Type: TEXT</P>
+             */
+            public static final String PHONETIC_MIDDLE_NAME = DATA8;
+
+            /**
+             * The phonetic version of the family name for the contact.
+             * <P>Type: TEXT</P>
+             */
+            public static final String PHONETIC_FAMILY_NAME = DATA9;
+
+            /**
+             * The style used for combining given/middle/family name into a full name.
+             * See {@link ContactsContract.FullNameStyle}.
+             */
+            public static final String FULL_NAME_STYLE = DATA10;
+
+            /**
+             * The alphabet used for capturing the phonetic name.
+             * See ContactsContract.PhoneticNameStyle.
+             * @hide
+             */
+            public static final String PHONETIC_NAME_STYLE = DATA11;
+        }
+
+        /**
+         * <p>A data kind representing the contact's nickname. For example, for
+         * Bob Parr ("Mr. Incredible"):
+         * <pre>
+         * ArrayList&lt;ContentProviderOperation&gt; ops =
+         *          new ArrayList&lt;ContentProviderOperation&gt;();
+         *
+         * ops.add(ContentProviderOperation.newInsert(Data.CONTENT_URI)
+         *          .withValue(Data.RAW_CONTACT_ID, rawContactId)
+         *          .withValue(Data.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE)
+         *          .withValue(StructuredName.DISPLAY_NAME, &quot;Bob Parr&quot;)
+         *          .build());
+         *
+         * ops.add(ContentProviderOperation.newInsert(Data.CONTENT_URI)
+         *          .withValue(Data.RAW_CONTACT_ID, rawContactId)
+         *          .withValue(Data.MIMETYPE, Nickname.CONTENT_ITEM_TYPE)
+         *          .withValue(Nickname.NAME, "Mr. Incredible")
+         *          .withValue(Nickname.TYPE, Nickname.TYPE_CUSTOM)
+         *          .withValue(Nickname.LABEL, "Superhero")
+         *          .build());
+         *
+         * getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+         * </pre>
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as well as the
+         * following aliases.
+         * </p>
+         *
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th><th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NAME}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>
+         * Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_DEFAULT}</li>
+         * <li>{@link #TYPE_OTHER_NAME}</li>
+         * <li>{@link #TYPE_MAIDEN_NAME}</li>
+         * <li>{@link #TYPE_SHORT_NAME}</li>
+         * <li>{@link #TYPE_INITIALS}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Nickname implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts{
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Nickname() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/nickname";
+
+            public static final int TYPE_DEFAULT = 1;
+            public static final int TYPE_OTHER_NAME = 2;
+            public static final int TYPE_MAIDEN_NAME = 3;
+            /** @deprecated Use TYPE_MAIDEN_NAME instead. */
+            @Deprecated
+            public static final int TYPE_MAINDEN_NAME = 3;
+            public static final int TYPE_SHORT_NAME = 4;
+            public static final int TYPE_INITIALS = 5;
+
+            /**
+             * The name itself
+             */
+            public static final String NAME = DATA;
+        }
+
+        /**
+         * <p>
+         * A data kind representing a telephone number.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NUMBER}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_MOBILE}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_FAX_WORK}</li>
+         * <li>{@link #TYPE_FAX_HOME}</li>
+         * <li>{@link #TYPE_PAGER}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * <li>{@link #TYPE_CALLBACK}</li>
+         * <li>{@link #TYPE_CAR}</li>
+         * <li>{@link #TYPE_COMPANY_MAIN}</li>
+         * <li>{@link #TYPE_ISDN}</li>
+         * <li>{@link #TYPE_MAIN}</li>
+         * <li>{@link #TYPE_OTHER_FAX}</li>
+         * <li>{@link #TYPE_RADIO}</li>
+         * <li>{@link #TYPE_TELEX}</li>
+         * <li>{@link #TYPE_TTY_TDD}</li>
+         * <li>{@link #TYPE_WORK_MOBILE}</li>
+         * <li>{@link #TYPE_WORK_PAGER}</li>
+         * <li>{@link #TYPE_ASSISTANT}</li>
+         * <li>{@link #TYPE_MMS}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Phone implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Phone() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/phone_v2";
+
+            /**
+             * The MIME type of {@link #CONTENT_URI} providing a directory of
+             * phones.
+             */
+            public static final String CONTENT_TYPE = "vnd.android.cursor.dir/phone_v2";
+
+            /**
+             * The content:// style URI for all data records of the
+             * {@link #CONTENT_ITEM_TYPE} MIME type, combined with the
+             * associated raw contact and aggregate contact data.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "phones");
+
+            /**
+            * URI used for getting all contacts from primary and managed profile.
+            *
+            * It supports the same semantics as {@link #CONTENT_URI} and returns the same
+            * columns.  If the device has no corp profile that is linked to the current profile, it
+            * behaves in the exact same way as {@link #CONTENT_URI}.  If there is a corp profile
+            * linked to the current profile, it will merge corp profile and current profile's
+            * results and return
+            *
+            * @hide
+            */
+            public static final Uri ENTERPRISE_CONTENT_URI =
+                    Uri.withAppendedPath(Data.ENTERPRISE_CONTENT_URI, "phones");
+
+            /**
+             * The content:// style URL for phone lookup using a filter. The filter returns
+             * records of MIME type {@link #CONTENT_ITEM_TYPE}. The filter is applied
+             * to display names as well as phone numbers. The filter argument should be passed
+             * as an additional path segment after this URI.
+             */
+            public static final Uri CONTENT_FILTER_URI = Uri.withAppendedPath(CONTENT_URI,
+                    "filter");
+
+            /**
+             * A boolean query parameter that can be used with {@link #CONTENT_FILTER_URI}.
+             * If "1" or "true", display names are searched.  If "0" or "false", display names
+             * are not searched.  Default is "1".
+             */
+            public static final String SEARCH_DISPLAY_NAME_KEY = "search_display_name";
+
+            /**
+             * A boolean query parameter that can be used with {@link #CONTENT_FILTER_URI}.
+             * If "1" or "true", phone numbers are searched.  If "0" or "false", phone numbers
+             * are not searched.  Default is "1".
+             */
+            public static final String SEARCH_PHONE_NUMBER_KEY = "search_phone_number";
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_MOBILE = 2;
+            public static final int TYPE_WORK = 3;
+            public static final int TYPE_FAX_WORK = 4;
+            public static final int TYPE_FAX_HOME = 5;
+            public static final int TYPE_PAGER = 6;
+            public static final int TYPE_OTHER = 7;
+            public static final int TYPE_CALLBACK = 8;
+            public static final int TYPE_CAR = 9;
+            public static final int TYPE_COMPANY_MAIN = 10;
+            public static final int TYPE_ISDN = 11;
+            public static final int TYPE_MAIN = 12;
+            public static final int TYPE_OTHER_FAX = 13;
+            public static final int TYPE_RADIO = 14;
+            public static final int TYPE_TELEX = 15;
+            public static final int TYPE_TTY_TDD = 16;
+            public static final int TYPE_WORK_MOBILE = 17;
+            public static final int TYPE_WORK_PAGER = 18;
+            public static final int TYPE_ASSISTANT = 19;
+            public static final int TYPE_MMS = 20;
+
+            /**
+             * The phone number as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String NUMBER = DATA;
+
+            /**
+             * The phone number's E164 representation. This value can be omitted in which
+             * case the provider will try to automatically infer it.  (It'll be left null if the
+             * provider fails to infer.)
+             * If present, {@link #NUMBER} has to be set as well (it will be ignored otherwise).
+             * <P>Type: TEXT</P>
+             */
+            public static final String NORMALIZED_NUMBER = DATA4;
+
+            /**
+             * @deprecated use {@link #getTypeLabel(Resources, int, CharSequence)} instead.
+             * @hide
+             */
+            @Deprecated
+            public static final CharSequence getDisplayLabel(Context context, int type,
+                    CharSequence label, CharSequence[] labelArray) {
+                return getTypeLabel(context.getResources(), type, label);
+            }
+
+            /**
+             * @deprecated use {@link #getTypeLabel(Resources, int, CharSequence)} instead.
+             * @hide
+             */
+            @Deprecated
+            public static final CharSequence getDisplayLabel(Context context, int type,
+                    CharSequence label) {
+                return getTypeLabel(context.getResources(), type, label);
+            }
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.phoneTypeHome;
+                    case TYPE_MOBILE: return com.android.internal.R.string.phoneTypeMobile;
+                    case TYPE_WORK: return com.android.internal.R.string.phoneTypeWork;
+                    case TYPE_FAX_WORK: return com.android.internal.R.string.phoneTypeFaxWork;
+                    case TYPE_FAX_HOME: return com.android.internal.R.string.phoneTypeFaxHome;
+                    case TYPE_PAGER: return com.android.internal.R.string.phoneTypePager;
+                    case TYPE_OTHER: return com.android.internal.R.string.phoneTypeOther;
+                    case TYPE_CALLBACK: return com.android.internal.R.string.phoneTypeCallback;
+                    case TYPE_CAR: return com.android.internal.R.string.phoneTypeCar;
+                    case TYPE_COMPANY_MAIN: return com.android.internal.R.string.phoneTypeCompanyMain;
+                    case TYPE_ISDN: return com.android.internal.R.string.phoneTypeIsdn;
+                    case TYPE_MAIN: return com.android.internal.R.string.phoneTypeMain;
+                    case TYPE_OTHER_FAX: return com.android.internal.R.string.phoneTypeOtherFax;
+                    case TYPE_RADIO: return com.android.internal.R.string.phoneTypeRadio;
+                    case TYPE_TELEX: return com.android.internal.R.string.phoneTypeTelex;
+                    case TYPE_TTY_TDD: return com.android.internal.R.string.phoneTypeTtyTdd;
+                    case TYPE_WORK_MOBILE: return com.android.internal.R.string.phoneTypeWorkMobile;
+                    case TYPE_WORK_PAGER: return com.android.internal.R.string.phoneTypeWorkPager;
+                    case TYPE_ASSISTANT: return com.android.internal.R.string.phoneTypeAssistant;
+                    case TYPE_MMS: return com.android.internal.R.string.phoneTypeMms;
+                    default: return com.android.internal.R.string.phoneTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if ((type == TYPE_CUSTOM || type == TYPE_ASSISTANT) && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing an email address.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #ADDRESS}</td>
+         * <td>{@link #DATA1}</td>
+         * <td>Email address itself.</td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * <li>{@link #TYPE_MOBILE}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Email implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Email() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/email_v2";
+
+            /**
+             * The MIME type of {@link #CONTENT_URI} providing a directory of email addresses.
+             */
+            public static final String CONTENT_TYPE = "vnd.android.cursor.dir/email_v2";
+
+            /**
+             * The content:// style URI for all data records of the
+             * {@link #CONTENT_ITEM_TYPE} MIME type, combined with the
+             * associated raw contact and aggregate contact data.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "emails");
+
+            /**
+             * <p>
+             * The content:// style URL for looking up data rows by email address. The
+             * lookup argument, an email address, should be passed as an additional path segment
+             * after this URI.
+             * </p>
+             * <p>Example:
+             * <pre>
+             * Uri uri = Uri.withAppendedPath(Email.CONTENT_LOOKUP_URI, Uri.encode(email));
+             * Cursor c = getContentResolver().query(uri,
+             *          new String[]{Email.CONTACT_ID, Email.DISPLAY_NAME, Email.DATA},
+             *          null, null, null);
+             * </pre>
+             * </p>
+             */
+            public static final Uri CONTENT_LOOKUP_URI = Uri.withAppendedPath(CONTENT_URI,
+                    "lookup");
+
+            /**
+            * <p>URI used for enterprise email lookup.</p>
+            *
+            * <p>
+            * It supports the same semantics as {@link #CONTENT_LOOKUP_URI} and returns the same
+            * columns.  If the device has no corp profile that is linked to the current profile, it
+            * behaves in the exact same way as {@link #CONTENT_LOOKUP_URI}.  If there is a
+            * corp profile linked to the current profile, it first queries against the personal contact database,
+            * and if no matching contacts are found there, then queries against the
+            * corp contacts database.
+            * </p>
+            * <p>
+            * If a result is from the corp profile, it makes the following changes to the data:
+            * <ul>
+            *     <li>
+            *     {@link #PHOTO_THUMBNAIL_URI} and {@link #PHOTO_URI} will be rewritten to special
+            *     URIs.  Use {@link ContentResolver#openAssetFileDescriptor} or its siblings to
+            *     load pictures from them.
+            *     {@link #PHOTO_ID} and {@link #PHOTO_FILE_ID} will be set to null.  Do not
+            *     use them.
+            *     </li>
+            *     <li>
+            *     Corp contacts will get artificial {@link #CONTACT_ID}s.  In order to tell whether
+            *     a contact
+            *     is from the corp profile, use
+            *     {@link ContactsContract.Contacts#isEnterpriseContactId(long)}.
+             *     </li>
+             *     <li>
+             *     Corp contacts will get artificial {@link #LOOKUP_KEY}s too.
+             *     </li>
+             * </ul>
+             * <p>
+             * A contact lookup URL built by
+             * {@link ContactsContract.Contacts#getLookupUri(long, String)}
+             * with an {@link #_ID} and a {@link #LOOKUP_KEY} returned by this API can be passed to
+             * {@link ContactsContract.QuickContact#showQuickContact} even if a contact is from the
+             * corp profile.
+             * </p>
+            *
+            * <pre>
+            * Uri lookupUri = Uri.withAppendedPath(Email.ENTERPRISE_CONTENT_LOOKUP_URI,
+            *         Uri.encode(email));
+            * </pre>
+            */
+            public static final Uri ENTERPRISE_CONTENT_LOOKUP_URI =
+                    Uri.withAppendedPath(CONTENT_URI, "lookup_enterprise");
+
+            /**
+             * <p>
+             * The content:// style URL for email lookup using a filter. The filter returns
+             * records of MIME type {@link #CONTENT_ITEM_TYPE}. The filter is applied
+             * to display names as well as email addresses. The filter argument should be passed
+             * as an additional path segment after this URI.
+             * </p>
+             * <p>The query in the following example will return "Robert Parr (bob@incredibles.com)"
+             * as well as "Bob Parr (incredible@android.com)".
+             * <pre>
+             * Uri uri = Uri.withAppendedPath(Email.CONTENT_LOOKUP_URI, Uri.encode("bob"));
+             * Cursor c = getContentResolver().query(uri,
+             *          new String[]{Email.DISPLAY_NAME, Email.DATA},
+             *          null, null, null);
+             * </pre>
+             * </p>
+             */
+            public static final Uri CONTENT_FILTER_URI = Uri.withAppendedPath(CONTENT_URI,
+                    "filter");
+
+            /**
+             * The email address.
+             * <P>Type: TEXT</P>
+             */
+            public static final String ADDRESS = DATA1;
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_WORK = 2;
+            public static final int TYPE_OTHER = 3;
+            public static final int TYPE_MOBILE = 4;
+
+            /**
+             * The display name for the email address
+             * <P>Type: TEXT</P>
+             */
+            public static final String DISPLAY_NAME = DATA4;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.emailTypeHome;
+                    case TYPE_WORK: return com.android.internal.R.string.emailTypeWork;
+                    case TYPE_OTHER: return com.android.internal.R.string.emailTypeOther;
+                    case TYPE_MOBILE: return com.android.internal.R.string.emailTypeMobile;
+                    default: return com.android.internal.R.string.emailTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing a postal addresses.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #FORMATTED_ADDRESS}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #STREET}</td>
+         * <td>{@link #DATA4}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #POBOX}</td>
+         * <td>{@link #DATA5}</td>
+         * <td>Post Office Box number</td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NEIGHBORHOOD}</td>
+         * <td>{@link #DATA6}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #CITY}</td>
+         * <td>{@link #DATA7}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #REGION}</td>
+         * <td>{@link #DATA8}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #POSTCODE}</td>
+         * <td>{@link #DATA9}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #COUNTRY}</td>
+         * <td>{@link #DATA10}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class StructuredPostal implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private StructuredPostal() {
+            }
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE =
+                    "vnd.android.cursor.item/postal-address_v2";
+
+            /**
+             * The MIME type of {@link #CONTENT_URI} providing a directory of
+             * postal addresses.
+             */
+            public static final String CONTENT_TYPE = "vnd.android.cursor.dir/postal-address_v2";
+
+            /**
+             * The content:// style URI for all data records of the
+             * {@link StructuredPostal#CONTENT_ITEM_TYPE} MIME type.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "postals");
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_WORK = 2;
+            public static final int TYPE_OTHER = 3;
+
+            /**
+             * The full, unstructured postal address. <i>This field must be
+             * consistent with any structured data.</i>
+             * <p>
+             * Type: TEXT
+             */
+            public static final String FORMATTED_ADDRESS = DATA;
+
+            /**
+             * Can be street, avenue, road, etc. This element also includes the
+             * house number and room/apartment/flat/floor number.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String STREET = DATA4;
+
+            /**
+             * Covers actual P.O. boxes, drawers, locked bags, etc. This is
+             * usually but not always mutually exclusive with street.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String POBOX = DATA5;
+
+            /**
+             * This is used to disambiguate a street address when a city
+             * contains more than one street with the same name, or to specify a
+             * small place whose mail is routed through a larger postal town. In
+             * China it could be a county or a minor city.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String NEIGHBORHOOD = DATA6;
+
+            /**
+             * Can be city, village, town, borough, etc. This is the postal town
+             * and not necessarily the place of residence or place of business.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String CITY = DATA7;
+
+            /**
+             * A state, province, county (in Ireland), Land (in Germany),
+             * departement (in France), etc.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String REGION = DATA8;
+
+            /**
+             * Postal code. Usually country-wide, but sometimes specific to the
+             * city (e.g. "2" in "Dublin 2, Ireland" addresses).
+             * <p>
+             * Type: TEXT
+             */
+            public static final String POSTCODE = DATA9;
+
+            /**
+             * The name or code of the country.
+             * <p>
+             * Type: TEXT
+             */
+            public static final String COUNTRY = DATA10;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.postalTypeHome;
+                    case TYPE_WORK: return com.android.internal.R.string.postalTypeWork;
+                    case TYPE_OTHER: return com.android.internal.R.string.postalTypeOther;
+                    default: return com.android.internal.R.string.postalTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing an IM address
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #DATA}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PROTOCOL}</td>
+         * <td>{@link #DATA5}</td>
+         * <td>
+         * <p>
+         * Allowed values:
+         * <ul>
+         * <li>{@link #PROTOCOL_CUSTOM}. Also provide the actual protocol name
+         * as {@link #CUSTOM_PROTOCOL}.</li>
+         * <li>{@link #PROTOCOL_AIM}</li>
+         * <li>{@link #PROTOCOL_MSN}</li>
+         * <li>{@link #PROTOCOL_YAHOO}</li>
+         * <li>{@link #PROTOCOL_SKYPE}</li>
+         * <li>{@link #PROTOCOL_QQ}</li>
+         * <li>{@link #PROTOCOL_GOOGLE_TALK}</li>
+         * <li>{@link #PROTOCOL_ICQ}</li>
+         * <li>{@link #PROTOCOL_JABBER}</li>
+         * <li>{@link #PROTOCOL_NETMEETING}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #CUSTOM_PROTOCOL}</td>
+         * <td>{@link #DATA6}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Im implements DataColumnsWithJoins, CommonColumns, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Im() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/im";
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_WORK = 2;
+            public static final int TYPE_OTHER = 3;
+
+            /**
+             * This column should be populated with one of the defined
+             * constants, e.g. {@link #PROTOCOL_YAHOO}. If the value of this
+             * column is {@link #PROTOCOL_CUSTOM}, the {@link #CUSTOM_PROTOCOL}
+             * should contain the name of the custom protocol.
+             */
+            public static final String PROTOCOL = DATA5;
+
+            public static final String CUSTOM_PROTOCOL = DATA6;
+
+            /*
+             * The predefined IM protocol types.
+             */
+            public static final int PROTOCOL_CUSTOM = -1;
+            public static final int PROTOCOL_AIM = 0;
+            public static final int PROTOCOL_MSN = 1;
+            public static final int PROTOCOL_YAHOO = 2;
+            public static final int PROTOCOL_SKYPE = 3;
+            public static final int PROTOCOL_QQ = 4;
+            public static final int PROTOCOL_GOOGLE_TALK = 5;
+            public static final int PROTOCOL_ICQ = 6;
+            public static final int PROTOCOL_JABBER = 7;
+            public static final int PROTOCOL_NETMEETING = 8;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.imTypeHome;
+                    case TYPE_WORK: return com.android.internal.R.string.imTypeWork;
+                    case TYPE_OTHER: return com.android.internal.R.string.imTypeOther;
+                    default: return com.android.internal.R.string.imTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #PROTOCOL}. Will always return a valid resource.
+             */
+            public static final int getProtocolLabelResource(int type) {
+                switch (type) {
+                    case PROTOCOL_AIM: return com.android.internal.R.string.imProtocolAim;
+                    case PROTOCOL_MSN: return com.android.internal.R.string.imProtocolMsn;
+                    case PROTOCOL_YAHOO: return com.android.internal.R.string.imProtocolYahoo;
+                    case PROTOCOL_SKYPE: return com.android.internal.R.string.imProtocolSkype;
+                    case PROTOCOL_QQ: return com.android.internal.R.string.imProtocolQq;
+                    case PROTOCOL_GOOGLE_TALK: return com.android.internal.R.string.imProtocolGoogleTalk;
+                    case PROTOCOL_ICQ: return com.android.internal.R.string.imProtocolIcq;
+                    case PROTOCOL_JABBER: return com.android.internal.R.string.imProtocolJabber;
+                    case PROTOCOL_NETMEETING: return com.android.internal.R.string.imProtocolNetMeeting;
+                    default: return com.android.internal.R.string.imProtocolCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given
+             * protocol, possibly substituting the given
+             * {@link #CUSTOM_PROTOCOL} value for {@link #PROTOCOL_CUSTOM}.
+             */
+            public static final CharSequence getProtocolLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == PROTOCOL_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getProtocolLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing an organization.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #COMPANY}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #TITLE}</td>
+         * <td>{@link #DATA4}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #DEPARTMENT}</td>
+         * <td>{@link #DATA5}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #JOB_DESCRIPTION}</td>
+         * <td>{@link #DATA6}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #SYMBOL}</td>
+         * <td>{@link #DATA7}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #PHONETIC_NAME}</td>
+         * <td>{@link #DATA8}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #OFFICE_LOCATION}</td>
+         * <td>{@link #DATA9}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>PHONETIC_NAME_STYLE</td>
+         * <td>{@link #DATA10}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Organization implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Organization() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/organization";
+
+            public static final int TYPE_WORK = 1;
+            public static final int TYPE_OTHER = 2;
+
+            /**
+             * The company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String COMPANY = DATA;
+
+            /**
+             * The position title at this company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String TITLE = DATA4;
+
+            /**
+             * The department at this company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String DEPARTMENT = DATA5;
+
+            /**
+             * The job description at this company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String JOB_DESCRIPTION = DATA6;
+
+            /**
+             * The symbol of this company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String SYMBOL = DATA7;
+
+            /**
+             * The phonetic name of this company as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String PHONETIC_NAME = DATA8;
+
+            /**
+             * The office location of this organization.
+             * <P>Type: TEXT</P>
+             */
+            public static final String OFFICE_LOCATION = DATA9;
+
+            /**
+             * The alphabet used for capturing the phonetic name.
+             * See {@link ContactsContract.PhoneticNameStyle}.
+             * @hide
+             */
+            public static final String PHONETIC_NAME_STYLE = DATA10;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_WORK: return com.android.internal.R.string.orgTypeWork;
+                    case TYPE_OTHER: return com.android.internal.R.string.orgTypeOther;
+                    default: return com.android.internal.R.string.orgTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing a relation.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NAME}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_ASSISTANT}</li>
+         * <li>{@link #TYPE_BROTHER}</li>
+         * <li>{@link #TYPE_CHILD}</li>
+         * <li>{@link #TYPE_DOMESTIC_PARTNER}</li>
+         * <li>{@link #TYPE_FATHER}</li>
+         * <li>{@link #TYPE_FRIEND}</li>
+         * <li>{@link #TYPE_MANAGER}</li>
+         * <li>{@link #TYPE_MOTHER}</li>
+         * <li>{@link #TYPE_PARENT}</li>
+         * <li>{@link #TYPE_PARTNER}</li>
+         * <li>{@link #TYPE_REFERRED_BY}</li>
+         * <li>{@link #TYPE_RELATIVE}</li>
+         * <li>{@link #TYPE_SISTER}</li>
+         * <li>{@link #TYPE_SPOUSE}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Relation implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Relation() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/relation";
+
+            public static final int TYPE_ASSISTANT = 1;
+            public static final int TYPE_BROTHER = 2;
+            public static final int TYPE_CHILD = 3;
+            public static final int TYPE_DOMESTIC_PARTNER = 4;
+            public static final int TYPE_FATHER = 5;
+            public static final int TYPE_FRIEND = 6;
+            public static final int TYPE_MANAGER = 7;
+            public static final int TYPE_MOTHER = 8;
+            public static final int TYPE_PARENT = 9;
+            public static final int TYPE_PARTNER = 10;
+            public static final int TYPE_REFERRED_BY = 11;
+            public static final int TYPE_RELATIVE = 12;
+            public static final int TYPE_SISTER = 13;
+            public static final int TYPE_SPOUSE = 14;
+
+            /**
+             * The name of the relative as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String NAME = DATA;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_ASSISTANT: return com.android.internal.R.string.relationTypeAssistant;
+                    case TYPE_BROTHER: return com.android.internal.R.string.relationTypeBrother;
+                    case TYPE_CHILD: return com.android.internal.R.string.relationTypeChild;
+                    case TYPE_DOMESTIC_PARTNER:
+                            return com.android.internal.R.string.relationTypeDomesticPartner;
+                    case TYPE_FATHER: return com.android.internal.R.string.relationTypeFather;
+                    case TYPE_FRIEND: return com.android.internal.R.string.relationTypeFriend;
+                    case TYPE_MANAGER: return com.android.internal.R.string.relationTypeManager;
+                    case TYPE_MOTHER: return com.android.internal.R.string.relationTypeMother;
+                    case TYPE_PARENT: return com.android.internal.R.string.relationTypeParent;
+                    case TYPE_PARTNER: return com.android.internal.R.string.relationTypePartner;
+                    case TYPE_REFERRED_BY:
+                            return com.android.internal.R.string.relationTypeReferredBy;
+                    case TYPE_RELATIVE: return com.android.internal.R.string.relationTypeRelative;
+                    case TYPE_SISTER: return com.android.internal.R.string.relationTypeSister;
+                    case TYPE_SPOUSE: return com.android.internal.R.string.relationTypeSpouse;
+                    default: return com.android.internal.R.string.orgTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing an event.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #START_DATE}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_ANNIVERSARY}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * <li>{@link #TYPE_BIRTHDAY}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Event implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Event() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/contact_event";
+
+            public static final int TYPE_ANNIVERSARY = 1;
+            public static final int TYPE_OTHER = 2;
+            public static final int TYPE_BIRTHDAY = 3;
+
+            /**
+             * The event start date as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String START_DATE = DATA;
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static int getTypeResource(Integer type) {
+                if (type == null) {
+                    return com.android.internal.R.string.eventTypeOther;
+                }
+                switch (type) {
+                    case TYPE_ANNIVERSARY:
+                        return com.android.internal.R.string.eventTypeAnniversary;
+                    case TYPE_BIRTHDAY: return com.android.internal.R.string.eventTypeBirthday;
+                    case TYPE_OTHER: return com.android.internal.R.string.eventTypeOther;
+                    default: return com.android.internal.R.string.eventTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * <p>
+         * A data kind representing a photo for the contact.
+         * </p>
+         * <p>
+         * Some sync adapters will choose to download photos in a separate
+         * pass. A common pattern is to use columns {@link ContactsContract.Data#SYNC1}
+         * through {@link ContactsContract.Data#SYNC4} to store temporary
+         * data, e.g. the image URL or ID, state of download, server-side version
+         * of the image.  It is allowed for the {@link #PHOTO} to be null.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>NUMBER</td>
+         * <td>{@link #PHOTO_FILE_ID}</td>
+         * <td>{@link #DATA14}</td>
+         * <td>ID of the hi-res photo file.</td>
+         * </tr>
+         * <tr>
+         * <td>BLOB</td>
+         * <td>{@link #PHOTO}</td>
+         * <td>{@link #DATA15}</td>
+         * <td>By convention, binary data is stored in DATA15.  The thumbnail of the
+         * photo is stored in this column.</td>
+         * </tr>
+         * </table>
+         */
+        public static final class Photo implements DataColumnsWithJoins, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Photo() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/photo";
+
+            /**
+             * Photo file ID for the display photo of the raw contact.
+             * See {@link ContactsContract.DisplayPhoto}.
+             * <p>
+             * Type: NUMBER
+             */
+            public static final String PHOTO_FILE_ID = DATA14;
+
+            /**
+             * Thumbnail photo of the raw contact. This is the raw bytes of an image
+             * that could be inflated using {@link android.graphics.BitmapFactory}.
+             * <p>
+             * Type: BLOB
+             */
+            public static final String PHOTO = DATA15;
+        }
+
+        /**
+         * <p>
+         * Notes about the contact.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NOTE}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Note implements DataColumnsWithJoins, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Note() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/note";
+
+            /**
+             * The note text.
+             * <P>Type: TEXT</P>
+             */
+            public static final String NOTE = DATA1;
+        }
+
+        /**
+         * <p>
+         * Group Membership.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>long</td>
+         * <td>{@link #GROUP_ROW_ID}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #GROUP_SOURCE_ID}</td>
+         * <td>none</td>
+         * <td>
+         * <p>
+         * The sourceid of the group that this group membership refers to.
+         * Exactly one of this or {@link #GROUP_ROW_ID} must be set when
+         * inserting a row.
+         * </p>
+         * <p>
+         * If this field is specified, the provider will first try to
+         * look up a group with this {@link Groups Groups.SOURCE_ID}.  If such a group
+         * is found, it will use the corresponding row id.  If the group is not
+         * found, it will create one.
+         * </td>
+         * </tr>
+         * </table>
+         */
+        public static final class GroupMembership implements DataColumnsWithJoins, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private GroupMembership() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE =
+                    "vnd.android.cursor.item/group_membership";
+
+            /**
+             * The row id of the group that this group membership refers to. Exactly one of
+             * this or {@link #GROUP_SOURCE_ID} must be set when inserting a row.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String GROUP_ROW_ID = DATA1;
+
+            /**
+             * The sourceid of the group that this group membership refers to.  Exactly one of
+             * this or {@link #GROUP_ROW_ID} must be set when inserting a row.
+             * <P>Type: TEXT</P>
+             */
+            public static final String GROUP_SOURCE_ID = "group_sourceid";
+        }
+
+        /**
+         * <p>
+         * A data kind representing a website related to the contact.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #URL}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOMEPAGE}</li>
+         * <li>{@link #TYPE_BLOG}</li>
+         * <li>{@link #TYPE_PROFILE}</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_FTP}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Website implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Website() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/website";
+
+            public static final int TYPE_HOMEPAGE = 1;
+            public static final int TYPE_BLOG = 2;
+            public static final int TYPE_PROFILE = 3;
+            public static final int TYPE_HOME = 4;
+            public static final int TYPE_WORK = 5;
+            public static final int TYPE_FTP = 6;
+            public static final int TYPE_OTHER = 7;
+
+            /**
+             * The website URL string.
+             * <P>Type: TEXT</P>
+             */
+            public static final String URL = DATA;
+        }
+
+        /**
+         * <p>
+         * A data kind representing a SIP address for the contact.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #SIP_ADDRESS}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class SipAddress implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private SipAddress() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/sip_address";
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_WORK = 2;
+            public static final int TYPE_OTHER = 3;
+
+            /**
+             * The SIP address.
+             * <P>Type: TEXT</P>
+             */
+            public static final String SIP_ADDRESS = DATA1;
+            // ...and TYPE and LABEL come from the CommonColumns interface.
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.sipAddressTypeHome;
+                    case TYPE_WORK: return com.android.internal.R.string.sipAddressTypeWork;
+                    case TYPE_OTHER: return com.android.internal.R.string.sipAddressTypeOther;
+                    default: return com.android.internal.R.string.sipAddressTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }
+
+        /**
+         * A data kind representing an Identity related to the contact.
+         * <p>
+         * This can be used as a signal by the aggregator to combine raw contacts into
+         * contacts, e.g. if two contacts have Identity rows with
+         * the same NAMESPACE and IDENTITY values the aggregator can know that they refer
+         * to the same person.
+         * </p>
+         */
+        public static final class Identity implements DataColumnsWithJoins, ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Identity() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/identity";
+
+            /**
+             * The identity string.
+             * <P>Type: TEXT</P>
+             */
+            public static final String IDENTITY = DataColumns.DATA1;
+
+            /**
+             * The namespace of the identity string, e.g. "com.google"
+             * <P>Type: TEXT</P>
+             */
+            public static final String NAMESPACE = DataColumns.DATA2;
+        }
+
+        /**
+         * <p>
+         * Convenient functionalities for "callable" data. Note that, this is NOT a separate data
+         * kind.
+         * </p>
+         * <p>
+         * This URI allows the ContactsProvider to return a unified result for "callable" data
+         * that users can use for calling purposes. {@link Phone} and {@link SipAddress} are the
+         * current examples for "callable", but may be expanded to the other types.
+         * </p>
+         * <p>
+         * Each returned row may have a different MIMETYPE and thus different interpretation for
+         * each column. For example the meaning for {@link Phone}'s type is different than
+         * {@link SipAddress}'s.
+         * </p>
+         */
+        public static final class Callable implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * Similar to {@link Phone#CONTENT_URI}, but returns callable data instead of only
+             * phone numbers.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "callables");
+            /**
+             * Similar to {@link Phone#CONTENT_FILTER_URI}, but allows users to filter callable
+             * data.
+             */
+            public static final Uri CONTENT_FILTER_URI = Uri.withAppendedPath(CONTENT_URI,
+                    "filter");
+        }
+
+        /**
+         * A special class of data items, used to refer to types of data that can be used to attempt
+         * to start communicating with a person ({@link Phone} and {@link Email}). Note that this
+         * is NOT a separate data kind.
+         *
+         * This URI allows the ContactsProvider to return a unified result for data items that users
+         * can use to initiate communications with another contact. {@link Phone} and {@link Email}
+         * are the current data types in this category.
+         */
+        public static final class Contactables implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * The content:// style URI for these data items, which requests a directory of data
+             * rows matching the selection criteria.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "contactables");
+
+            /**
+             * The content:// style URI for these data items, which allows for a query parameter to
+             * be appended onto the end to filter for data items matching the query.
+             */
+            public static final Uri CONTENT_FILTER_URI = Uri.withAppendedPath(
+                    Contactables.CONTENT_URI, "filter");
+
+            /**
+             * A boolean parameter for {@link Data#CONTENT_URI}.
+             * This specifies whether or not the returned data items should be filtered to show
+             * data items belonging to visible contacts only.
+             */
+            public static final String VISIBLE_CONTACTS_ONLY = "visible_contacts_only";
+        }
+    }
+

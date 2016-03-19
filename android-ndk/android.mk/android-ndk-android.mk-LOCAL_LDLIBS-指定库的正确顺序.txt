@@ -1,0 +1,8 @@
+LOCAL_LDLIBS += -Llib -lssl -lcrypto  这样写正确
+
+
+LOCAL_LDLIBS += -Llib -lcrypto -lssl  这样写就出错
+
+lib/libssl.a(s3_srvr.o):
+s3_srvr.c:function ssl3_get_cert_verify: 
+error: undefined reference to 'X509_certificate_type'

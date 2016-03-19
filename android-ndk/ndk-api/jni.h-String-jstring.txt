@@ -1,0 +1,9 @@
+    jstring     (*NewString)(JNIEnv*, const jchar*, jsize);
+    jsize       (*GetStringLength)(JNIEnv*, jstring);
+    const jchar* (*GetStringChars)(JNIEnv*, jstring, jboolean*);
+    void        (*ReleaseStringChars)(JNIEnv*, jstring, const jchar*);
+    jstring     (*NewStringUTF)(JNIEnv*, const char*);
+    jsize       (*GetStringUTFLength)(JNIEnv*, jstring);
+    /* JNI spec says this returns const jbyte*, but that's inconsistent */
+    const char* (*GetStringUTFChars)(JNIEnv*, jstring, jboolean*);
+    void        (*ReleaseStringUTFChars)(JNIEnv*, jstring, const char*);

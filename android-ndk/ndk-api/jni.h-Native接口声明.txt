@@ -1,0 +1,17 @@
+------------------------------------------
+前两个参数是固定的
+------------------------------------------
+
+对应java类的非静态 native 方法
+JNIEXPORT int JNICALL jni_tx_subscribe(JNIEnv *env, jobject clazz);
+
+对应java类的静态 native 方法
+JNIEXPORT int JNICALL jni_tx_subscribe(JNIEnv *env, jclass clazz);
+
+------------------------------------------
+JNIEXPORT JNICALL
+------------------------------------------
+
+#define JNIIMPORT
+#define JNIEXPORT  __attribute__ ((visibility ("default")))
+#define JNICALL __NDK_FPABI__

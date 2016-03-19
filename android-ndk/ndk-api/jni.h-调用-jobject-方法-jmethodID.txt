@@ -1,0 +1,156 @@
+
+
+struct _jmethodID;                      /* opaque structure */
+typedef struct _jmethodID* jmethodID;   /* method IDs */
+
+    jmethodID   (*FromReflectedMethod)(JNIEnv*, jobject);
+    /* spec doesn't show jboolean parameter */
+    jobject     (*ToReflectedMethod)(JNIEnv*, jclass, jmethodID, jboolean);
+    
+    http://blog.csdn.net/ljeagle/article/details/6705327
+    调用构造函数
+    /* Get the method ID for the String(char[]) constructor */  
+        cid = (*env)->GetMethodID(env, stringClass,  
+                              "<init>", "([C)V");
+    /* Construct a java.lang.String object */  
+    result = (*env)->NewObject(env, stringClass, cid, elemArr);
+    jobject     (*NewObject)(JNIEnv*, jclass, jmethodID, ...);
+    jobject     (*NewObjectV)(JNIEnv*, jclass, jmethodID, va_list);
+    jobject     (*NewObjectA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    
+
+    jmethodID   (*GetMethodID)(JNIEnv*, jclass, const char*, const char*);
+
+    jobject     (*CallObjectMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jobject     (*CallObjectMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jobject     (*CallObjectMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jboolean    (*CallBooleanMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jboolean    (*CallBooleanMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jboolean    (*CallBooleanMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jbyte       (*CallByteMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jbyte       (*CallByteMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jbyte       (*CallByteMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jchar       (*CallCharMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jchar       (*CallCharMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jchar       (*CallCharMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jshort      (*CallShortMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jshort      (*CallShortMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jshort      (*CallShortMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jint        (*CallIntMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jint        (*CallIntMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jint        (*CallIntMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jlong       (*CallLongMethod)(JNIEnv*, jobject, jmethodID, ...);
+    jlong       (*CallLongMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    jlong       (*CallLongMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+    jfloat      (*CallFloatMethod)(JNIEnv*, jobject, jmethodID, ...) __NDK_FPABI__;
+    jfloat      (*CallFloatMethodV)(JNIEnv*, jobject, jmethodID, va_list) __NDK_FPABI__;
+    jfloat      (*CallFloatMethodA)(JNIEnv*, jobject, jmethodID, jvalue*) __NDK_FPABI__;
+    jdouble     (*CallDoubleMethod)(JNIEnv*, jobject, jmethodID, ...) __NDK_FPABI__;
+    jdouble     (*CallDoubleMethodV)(JNIEnv*, jobject, jmethodID, va_list) __NDK_FPABI__;
+    jdouble     (*CallDoubleMethodA)(JNIEnv*, jobject, jmethodID, jvalue*) __NDK_FPABI__;
+    void        (*CallVoidMethod)(JNIEnv*, jobject, jmethodID, ...);
+    void        (*CallVoidMethodV)(JNIEnv*, jobject, jmethodID, va_list);
+    void        (*CallVoidMethodA)(JNIEnv*, jobject, jmethodID, jvalue*);
+
+    http://blog.csdn.net/ljeagle/article/details/6705327
+    调用一个超类的实例方法
+    之前我们了解了调用一个类的实例方法和静态方法。
+    这里介绍如何调用一个已经在子类中被覆盖了的超类的方法。
+    JNI提供了一组CallNonvitural<Type>Method函数来实现这个目的
+    jobject     (*CallNonvirtualObjectMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jobject     (*CallNonvirtualObjectMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jobject     (*CallNonvirtualObjectMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jboolean    (*CallNonvirtualBooleanMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jboolean    (*CallNonvirtualBooleanMethodV)(JNIEnv*, jobject, jclass,
+                         jmethodID, va_list);
+    jboolean    (*CallNonvirtualBooleanMethodA)(JNIEnv*, jobject, jclass,
+                         jmethodID, jvalue*);
+    jbyte       (*CallNonvirtualByteMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jbyte       (*CallNonvirtualByteMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jbyte       (*CallNonvirtualByteMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jchar       (*CallNonvirtualCharMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jchar       (*CallNonvirtualCharMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jchar       (*CallNonvirtualCharMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jshort      (*CallNonvirtualShortMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jshort      (*CallNonvirtualShortMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jshort      (*CallNonvirtualShortMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jint        (*CallNonvirtualIntMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jint        (*CallNonvirtualIntMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jint        (*CallNonvirtualIntMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jlong       (*CallNonvirtualLongMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    jlong       (*CallNonvirtualLongMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    jlong       (*CallNonvirtualLongMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+    jfloat      (*CallNonvirtualFloatMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...) __NDK_FPABI__;
+    jfloat      (*CallNonvirtualFloatMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list) __NDK_FPABI__;
+    jfloat      (*CallNonvirtualFloatMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*) __NDK_FPABI__;
+    jdouble     (*CallNonvirtualDoubleMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...) __NDK_FPABI__;
+    jdouble     (*CallNonvirtualDoubleMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list) __NDK_FPABI__;
+    jdouble     (*CallNonvirtualDoubleMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*) __NDK_FPABI__;
+    void        (*CallNonvirtualVoidMethod)(JNIEnv*, jobject, jclass,
+                        jmethodID, ...);
+    void        (*CallNonvirtualVoidMethodV)(JNIEnv*, jobject, jclass,
+                        jmethodID, va_list);
+    void        (*CallNonvirtualVoidMethodA)(JNIEnv*, jobject, jclass,
+                        jmethodID, jvalue*);
+                        
+    静态方法
+    
+    jmethodID   (*GetStaticMethodID)(JNIEnv*, jclass, const char*, const char*);
+
+    jobject     (*CallStaticObjectMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jobject     (*CallStaticObjectMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jobject     (*CallStaticObjectMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jboolean    (*CallStaticBooleanMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jboolean    (*CallStaticBooleanMethodV)(JNIEnv*, jclass, jmethodID,
+                        va_list);
+    jboolean    (*CallStaticBooleanMethodA)(JNIEnv*, jclass, jmethodID,
+                        jvalue*);
+    jbyte       (*CallStaticByteMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jbyte       (*CallStaticByteMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jbyte       (*CallStaticByteMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jchar       (*CallStaticCharMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jchar       (*CallStaticCharMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jchar       (*CallStaticCharMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jshort      (*CallStaticShortMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jshort      (*CallStaticShortMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jshort      (*CallStaticShortMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jint        (*CallStaticIntMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jint        (*CallStaticIntMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jint        (*CallStaticIntMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jlong       (*CallStaticLongMethod)(JNIEnv*, jclass, jmethodID, ...);
+    jlong       (*CallStaticLongMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    jlong       (*CallStaticLongMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);
+    jfloat      (*CallStaticFloatMethod)(JNIEnv*, jclass, jmethodID, ...) __NDK_FPABI__;
+    jfloat      (*CallStaticFloatMethodV)(JNIEnv*, jclass, jmethodID, va_list) __NDK_FPABI__;
+    jfloat      (*CallStaticFloatMethodA)(JNIEnv*, jclass, jmethodID, jvalue*) __NDK_FPABI__;
+    jdouble     (*CallStaticDoubleMethod)(JNIEnv*, jclass, jmethodID, ...) __NDK_FPABI__;
+    jdouble     (*CallStaticDoubleMethodV)(JNIEnv*, jclass, jmethodID, va_list) __NDK_FPABI__;
+    jdouble     (*CallStaticDoubleMethodA)(JNIEnv*, jclass, jmethodID, jvalue*) __NDK_FPABI__;
+    void        (*CallStaticVoidMethod)(JNIEnv*, jclass, jmethodID, ...);
+    void        (*CallStaticVoidMethodV)(JNIEnv*, jclass, jmethodID, va_list);
+    void        (*CallStaticVoidMethodA)(JNIEnv*, jclass, jmethodID, jvalue*);

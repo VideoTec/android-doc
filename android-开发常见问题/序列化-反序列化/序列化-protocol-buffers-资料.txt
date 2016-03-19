@@ -1,0 +1,54 @@
+https://developers.google.com/protocol-buffers/
+
+官方文档
+
+Protocol buffers are a language-neutral, 
+platform-neutral extensible mechanism for serializing structured data.
+
+Protocol buffers are Google's 
+language-neutral, 
+platform-neutral, 
+extensible mechanism for serializing structured data – 
+think XML, but smaller, faster, and simpler. 
+You define how you want your data to be structured once, 
+then you can use special generated source code to easily write and read your structured data 
+to and from a variety of data streams and using a variety of languages.
+
+https://github.com/google/protobuf
+Protocol Buffers - Google's data interchange format
+Protocol Buffers (a.k.a., protobuf) are Google's language-neutral, platform-neutral, 
+extensible mechanism for serializing structured data.
+
+http://wangbt5191-hotmail-com.iteye.com/blog/1914408
+
+Android 下使用 ProtoBuff 的实践和心得。
+
+在最近的 Android 客户端项目中， 
+我们由于节省流量和减少序列化和反序列化运算开销的考虑， 
+我们选择了Protobuff 作为中间传输的序列化的工具。
+
+为了规避编译ProtobufSchema的麻烦， 
+我们使用第三方的开源包 ProtostuffRuntime 来使用Runntime的Protobuf Schema.
+
+https://segmentfault.com/a/1190000000450911
+
+一套序列化方案。
+也就是说，把定义好的数据转换为经过精心安排的二进制形式，或者反过来。
+相较于 XML 或 JSON 更省流量。
+
+不多说，大家可以谷歌一下这方面的资料。
+
+基于 protobuf 的特点，
+我们需要使用 protobuf 的编译器 protoc 
+将我们的数据结构定义文件（*.proto）编译生成对应语言的操作类。
+
+protobuf 编译器机制是，
+一个主命令 protoc，
+下面各个不同的语言（比如 Objective-C）通过插件来扩充。
+这就省去了为了增加一个语言的支持而重新编译编译器（绕口令）的麻烦。
+
+官方版的 protobuf 自带了 Java、Python 和 C++ 的支持。
+而 Android 团队为了照顾移动平台的计算能力，
+还做了 Java micro 和 Java nano 两个精简运行时，
+尽量减少使用一些不是必须的语言特性。
+不过，无论什么语言，它们生成的二进制格式都是一样的。

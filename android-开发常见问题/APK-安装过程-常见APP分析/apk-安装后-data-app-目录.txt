@@ -1,0 +1,11 @@
+http://blog.csdn.net/fengyuzhengfan/article/details/38360017
+
+assets目录下存放的原生资源文件：
+      因为系统在编译的时候不会编译assets下的资源文件，
+      所以我们不能通过R.XXX.ID的方式访问它们。
+      那我么能不能通过该资源的绝对路径去访问它们呢？
+      因为apk安装之后会放在/data/app/**.apk目录下，
+      以apk形式存在，asset/res和被绑定在apk里，
+      并不会解压到/data/data/YourApp目录下去，
+      所以我们无法直接获取到assets的绝对路径，
+      因为它们根本就没有

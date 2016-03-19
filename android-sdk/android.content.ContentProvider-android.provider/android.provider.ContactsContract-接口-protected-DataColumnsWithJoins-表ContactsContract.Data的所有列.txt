@@ -1,0 +1,25 @@
+    /**
+     * Combines all columns returned by {@link ContactsContract.Data} table queries.
+     *
+     * @see ContactsContract.Data
+     */
+    protected interface DataColumnsWithJoins extends BaseColumns, DataColumns, StatusColumns,
+            RawContactsColumns, ContactsColumns, ContactNameColumns, ContactOptionsColumns,
+            ContactStatusColumns, DataUsageStatColumns {
+    }
+    
+Known Indirect Subclasses
+
+ContactsContract.CommonDataKinds.Callable, 
+ContactsContract.CommonDataKinds.CommonColumns, 
+ContactsContract.CommonDataKinds.Contactables, 
+ContactsContract.CommonDataKinds.Email, 
+ContactsContract.CommonDataKinds.Event, 
+ContactsContract.CommonDataKinds.Im, 
+ContactsContract.CommonDataKinds.Nickname, 
+ContactsContract.CommonDataKinds.Organization, 
+ContactsContract.CommonDataKinds.Phone, 
+ContactsContract.CommonDataKinds.Relation, 
+ContactsContract.CommonDataKinds.SipAddress, 
+ContactsContract.CommonDataKinds.StructuredPostal, 
+ContactsContract.CommonDataKinds.Website

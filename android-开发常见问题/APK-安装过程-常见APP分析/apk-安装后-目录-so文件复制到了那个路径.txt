@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/17813300/in-which-path-so-file-will-be-copied-when-application-installed-from-apk-in-an
+
+If your app depends on native shared libraries they will be installed in /data/app-lib/<your-app> 
+which is symlinked to /data/data/<your-app>/lib on a device running 4.2.0. 
+Yes, if you repackage the apk and resign it that is one option you could use to replace the .so file.
+
+Hope that helps.

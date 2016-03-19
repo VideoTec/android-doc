@@ -1,0 +1,28 @@
+application.mk
+APP_ABI := armeabi-v7a x86
+
+所有 ABI 列表：
+armeabi
+armeabi-v7a
+arm64-v8a
+x86
+x86-64
+mips
+mips 64
+
+注意：安装时，会根据系统信息，选择其中一套安装。
+
+http://ph0b.com/android-abis-and-so-files/
+You should provide libraries optimized for each ABIs if possible, 
+but it’s all in or nothing: you shall not mix. 
+You have to provide the full set of the libraries you’re using in each ABI folder.
+
+http://ph0b.com/android-abis-and-so-files/
+
+Seven distinct CPU-architectures are currently supported by the Android OS: 
+ARMv5, ARMv7 (since 2010), 
+x86 (2011), 
+MIPS (2012), 
+ARMv8, 
+MIPS64 and x86_64 (2014). 
+Each of them is associated with a respective ABI.

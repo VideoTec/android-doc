@@ -1,0 +1,34 @@
+jbyteArray    (*NewByteArray)(JNIEnv*, jsize);
+void        (*SetByteArrayRegion)(JNIEnv*, jbyteArray,
+                    jsize, jsize, const jbyte*);
+
+使用方法：
+
+http://bbs.csdn.net/topics/390482350
+
+static jbyteArray
+onSaveInstanceState_native(JNIEnv* env, jobject clazz, jint handle)
+{
+    LOG_TRACE("onSaveInstanceState_native");
+ 
+    jbyteArray array = NULL;
+ 
+    if (handle != 0) {
+        NativeCode* code = (NativeCode*)handle;
+        if (code->callbacks.onSaveInstanceState != NULL) {
+            size_t len = 0;
+            jbyte* state = (jbyte*)code->callbacks.onSaveInstanceState(code, &len);
+            if (len > 0) {
+                array = env->NewByteArray(len);
+                if (array != NULL) {
+                    env->SetByteArrayRegion(array, 0, len, state);
+                }
+            }
+            if (state != NULL) {
+                free(state);
+            }
+        }
+    }
+ 
+    return array;
+}

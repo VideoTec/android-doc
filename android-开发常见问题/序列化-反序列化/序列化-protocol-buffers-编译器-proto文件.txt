@@ -1,0 +1,50 @@
+
+--------------------------------------------------
+https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/
+Google Protocol Buffer 的使用和原理
+--------------------------------------------------
+
+书写 .proto 文件
+
+首先我们需要编写一个 proto 文件，
+定义我们程序中需要处理的结构化数据，在 protobuf 的术语中，结构化数据被称为 Message。
+proto 文件非常类似 java 或者 C 语言的数据定义。
+代码清单 1 显示了例子应用中的 proto 文件内容。
+清单 1. proto 文件
+
+ package lm; 
+ message helloworld 
+ { 
+    required int32     id = 1;  // ID 
+    required string    str = 2;  // str 
+    optional int32     opt = 3;  //optional field 
+ }
+ 
+一个比较好的习惯是认真对待 proto 文件的文件名。
+比如将命名规则定于如下：
+
+ packageName.MessageName.proto
+ 
+在上例中，package 名字叫做 lm，定义了一个消息 helloworld，
+该消息有三个成员，
+类型为 int32 的 id，另一个为
+类型为 string 的成员 str。
+opt 是一个可选的成员，即消息中可以不包含该成员。
+
+编译 .proto 文件
+
+写好 proto 文件之后就可以用 Protobuf 编译器将该文件编译成目标语言了。
+
+本例中我们将使用 C++。
+假设您的 proto 文件存放在 $SRC_DIR 下面，
+您也想把生成的文件放在同一个目录下，则可以使用如下命令：
+
+ protoc -I=$SRC_DIR --cpp_out=$DST_DIR $SRC_DIR/addressbook.proto
+
+命令将生成两个文件：
+lm.helloworld.pb.h ， 定义了 C++ 类的头文件
+lm.helloworld.pb.cc ， C++ 类的实现文件
+
+在生成的头文件中，定义了一个 C++ 类 helloworld，
+后面的 Writer 和 Reader 将使用这个类来对消息进行操作。
+诸如对消息的成员进行赋值，将消息序列化等等都有相应的方法。

@@ -1,0 +1,5 @@
+PREBUILT_STATIC_LIBRARY
+
+This is the same as PREBUILT_SHARED_LIBRARY, 
+but for a static library file instead. 
+See NDK Prebuilt library support for more.

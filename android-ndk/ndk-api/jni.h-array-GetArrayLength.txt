@@ -1,0 +1,17 @@
+jsize       (*GetArrayLength)(JNIEnv*, jarray);
+
+http://stackoverflow.com/questions/6262537/jni-how-to-get-jbytearray-size
+
+You can use GetArrayLength(JNIEnv* env, jbyteArray array) Read here.
+
+Not sure what you want to do, 
+I assume you want the content of jpSeed in bd.data[1]. 
+Anyways, accessing the contents of a byte array, 
+should be done with GetByteArrayElements(...).
+
+http://journals.ecs.soton.ac.uk/java/tutorial/native1.1/implementing/array.html
+
+Accessing Java Arrays
+
+First, obtain the length of the array by calling the JNI function GetArrayLength. 
+Note that, unlike C arrays, Java arrays carry length information.

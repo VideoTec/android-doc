@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/6041934/can-shared-library-call-another-shared-library
+
+LOCAL_LDLIBS += -L$(LOCAL_PATH)/libs/
+LOCAL_LDLIBS += -lutils

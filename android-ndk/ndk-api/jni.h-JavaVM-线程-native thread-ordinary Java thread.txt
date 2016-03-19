@@ -1,0 +1,32 @@
+http://stackoverflow.com/questions/12420463/keeping-a-global-reference-to-the-jnienv-environment
+
+You cannot cache the JNIEnv pointer. Read about it here:
+
+The JNI interface pointer (JNIEnv) is valid only in the current thread. 
+Should another thread need to access the Java VM, 
+it must first call AttachCurrentThread() to attach itself to the VM and obtain a JNI interface pointer. 
+Once attached to the VM, a native thread works just like an ordinary Java thread running inside a native method. 
+The native thread remains attached to the VM until it calls DetachCurrentThread() to detach itself.
+What you can do is to cache the JavaVM pointer instead.
+
+static JavaVM *jvm;
+
+[JNICALL etc] void init(JNIENv* env, [etc])
+{
+   jint rs = (*env)->GetJavaVM(env, &jvm);
+   assert (rs == JNI_OK);
+}
+
+And then whenever you need then JNIEnv pointer from a context where it is not given you do this:
+
+void someCallback() {
+    JNIEnv *env;
+    jint rs = (*jvm)->AttachCurrentThread(jvm, &env, NULL);
+    assert (rs == JNI_OK);
+    // Use the env pointer...
+}
+But whenever you call a native method from Java the env pointer to use is given:
+
+JNIEXPORT jint JNICALL Java_package_Class_method(JNIEnv *env, jobject obj) {
+    // just use the env pointer as is.
+}

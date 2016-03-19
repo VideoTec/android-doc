@@ -1,0 +1,7 @@
+http://blog.csdn.net/ueryueryuery/article/details/17609139
+
+在JNI代码中异步回调Java层方法
+
+http://blog.csdn.net/xnwyd/article/details/7359925
+
+如何在android的jni线程中实现回调

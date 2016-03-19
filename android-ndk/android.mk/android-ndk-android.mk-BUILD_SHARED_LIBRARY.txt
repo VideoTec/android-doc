@@ -1,0 +1,12 @@
+BUILD_SHARED_LIBRARY
+
+Points to a build script that collects all the information 
+about the module you provided in LOCAL_XXX variables and 
+determines how to build a target shared library from the sources you listed. 
+Note that you must have LOCAL_MODULE and LOCAL_SRC_FILES defined, 
+at a minimum before including this file. 
+Example usage:
+
+        include $(BUILD_SHARED_LIBRARY)
+
+note that this will generate a file named lib.so.

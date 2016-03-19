@@ -1,0 +1,10 @@
+        String fileNames[] = context.getAssets().list(oldPath);//获取assets目录下的所有文件及目录名
+
+注意 asset 系统中的目录，不以 / 开头。
+
+调用方法：
+        String scriptPath = cxt.getFilesDir() + "/v6sdk-script";
+        copyFilesFassets(cxt, "/v6sdk", scriptPath);
+这个是不行的需要写成：
+        String scriptPath = cxt.getFilesDir() + "/v6sdk-script";
+        copyFilesFassets(cxt, "v6sdk", scriptPath);

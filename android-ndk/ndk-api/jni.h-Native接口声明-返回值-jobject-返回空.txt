@@ -1,0 +1,50 @@
+15:43 2016/3/19
+例子：
+
+jstring jni_proto_get_string(JNIEnv *env, jobject clazz, jstring key, jint index) {
+  return (jstring)0;
+}
+
+jbyteArray jni_proto_get_bytes(JNIEnv *env, jobject clazz, jstring key, jint index) {
+  return (jbyteArray)0;
+}
+
+jint jni_proto_get_proto_ptr(JNIEnv *env, jobject clazz, jstring key, jint index) {
+  return 0;
+}
+
+http://stackoverflow.com/questions/1166992/returning-null-from-native-methods-using-jni
+
+I do not like the solution to return NULL. If possible you should return some Empty implementations like
+
+return new ArrayList();
+return new byte[0];
+return new EmptySomeObjectImpl();
+Than you do not have worried about NullPointerExceptions
+
+if (error == ERROR) {
+    return env->NewByteArray(0);
+}
+EDIT
+
+Try to return this always if you dont want to implement the EmptyObjects.
+
+if (error == ERROR) {
+     return javaSrray; // Please test it and than return javaSrray always without if else
+}
+else {
+    return javaSrray; // Works perfectly.
+}
+
+https://groups.google.com/forum/#!topic/android-ndk/Za6No6Pjfj4
+
+I have a JNI native function which returns a jobject. Under some circumstances
+it needs to return a (Java) null value. How do I do that?
+
+I couldn't find any doc about that, and I am unsure about returning (C) NULL
+since this is what is used when an exception occur.
+
+JNI NULL is the same as C NULL (zero). 
+
+When a JNI function returns to the VM with an exception pending, the 
+return value is completely ignored. 

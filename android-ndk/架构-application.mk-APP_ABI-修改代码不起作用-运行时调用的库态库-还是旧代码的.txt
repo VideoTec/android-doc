@@ -1,0 +1,6 @@
+APP_ABI := armeabi-v7a
+改成
+APP_ABI := armeabi
+
+工程中的，armeabi-v7a 中的动态库没有删除。
+造成运行时，始终调用，未删除的那个v7a版本的动态库，

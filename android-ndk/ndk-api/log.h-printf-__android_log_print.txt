@@ -1,0 +1,32 @@
+#ifndef __ANDROID__
+#   define LOG_TRACE 10000
+#   define LOG_DEBUG 20000
+#   define LOG_INFO 30000
+#   define LOG_WARN 50000
+#   define LOG_ERROR 80000
+#else
+#   include <android/log.h>
+#   define LOG_TAG "V6SDK"
+#   define printf(fmt, ...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, fmt, __VA_ARGS__)
+#endif
+
+下面代码，出错：
+printf("ddd");
+
+In file included from ./v6sdk_demo.cpp:4:0:
+./v6sdk_demo.cpp: In function 'void on_connect_response(v6_tx*)':
+../v6sdk-code/v6sdk/include/v6_api.h:44:93: error: expected primary-expression before ')' token
+ #   define printf(fmt, ...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, fmt
+, __VA_ARGS__)
+
+             ^
+./v6sdk_demo.cpp:8:3: note: in expansion of macro 'printf'
+   printf("on_connect_response");
+   ^
+   
+应该写成
+#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
+#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
+
+错误的原因是，__android_log_print 声明是：
+int __android_log_print(int prio, const char *tag,  const char *fmt, ...)

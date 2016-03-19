@@ -1,0 +1,5 @@
+System.out.print("this is a test");
+
+在 logcat 中查看：
+
+03-15 16:06:14.675 30770-30770/com.cmcc.sso.service.SsoService I/System.out: this is a testcom.cmcc.sso.service.core.BusinessThread

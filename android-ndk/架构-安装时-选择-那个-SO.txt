@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/27421134/system-loadlibrary-couldnt-find-native-library-in-my-case
+
+Note also that libs aren't mixed between CPU_ABI directories:
+you need the full set of what you're using, 
+a lib that is inside the armeabi folder 
+will not be installed on a armeabi-v7a device 
+if there are any libs inside the armeabi-v7a folder from the APK.
+
+http://ph0b.com/android-abis-and-so-files/
+Seven distinct CPU-architectures are currently supported by the Android OS: 
+ARMv5, ARMv7 (since 2010), 
+x86 (2011), 
+MIPS (2012), 
+ARMv8, 
+MIPS64 and x86_64 (2014). 
+Each of them is associated with a respective ABI.

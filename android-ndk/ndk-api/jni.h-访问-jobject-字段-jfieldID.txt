@@ -1,0 +1,60 @@
+    struct _jfieldID;                       /* opaque structure */
+    typedef struct _jfieldID* jfieldID;     /* field IDs */
+
+    jfieldID    (*FromReflectedField)(JNIEnv*, jobject);
+    /* spec doesn't show jboolean parameter */
+    jobject     (*ToReflectedField)(JNIEnv*, jclass, jfieldID, jboolean);
+    
+    jfieldID    (*GetFieldID)(JNIEnv*, jclass, const char*, const char*);
+    示例：
+    fid = (*env)->GetStaticFieldID(env, cls, "si", "I");
+    fid = (*env)->GetFieldID(env, cls, "s", "Ljava/lang/String;");
+
+    jobject     (*GetObjectField)(JNIEnv*, jobject, jfieldID);
+    jboolean    (*GetBooleanField)(JNIEnv*, jobject, jfieldID);
+    jbyte       (*GetByteField)(JNIEnv*, jobject, jfieldID);
+    jchar       (*GetCharField)(JNIEnv*, jobject, jfieldID);
+    jshort      (*GetShortField)(JNIEnv*, jobject, jfieldID);
+    jint        (*GetIntField)(JNIEnv*, jobject, jfieldID);
+    jlong       (*GetLongField)(JNIEnv*, jobject, jfieldID);
+    jfloat      (*GetFloatField)(JNIEnv*, jobject, jfieldID) __NDK_FPABI__;
+    jdouble     (*GetDoubleField)(JNIEnv*, jobject, jfieldID) __NDK_FPABI__;
+
+    void        (*SetObjectField)(JNIEnv*, jobject, jfieldID, jobject);
+    void        (*SetBooleanField)(JNIEnv*, jobject, jfieldID, jboolean);
+    void        (*SetByteField)(JNIEnv*, jobject, jfieldID, jbyte);
+    void        (*SetCharField)(JNIEnv*, jobject, jfieldID, jchar);
+    void        (*SetShortField)(JNIEnv*, jobject, jfieldID, jshort);
+    
+    void        (*SetIntField)(JNIEnv*, jobject, jfieldID, jint);
+    示例：
+    si = (*env)->GetStaticIntField(env, cls, fid);
+    jstr = (*env)->GetObjectField(env, obj, fid);
+    
+    void        (*SetLongField)(JNIEnv*, jobject, jfieldID, jlong);
+    void        (*SetFloatField)(JNIEnv*, jobject, jfieldID, jfloat) __NDK_FPABI__;
+    void        (*SetDoubleField)(JNIEnv*, jobject, jfieldID, jdouble) __NDK_FPABI__;
+    
+
+    jfieldID    (*GetStaticFieldID)(JNIEnv*, jclass, const char*,
+                        const char*);
+
+    jobject     (*GetStaticObjectField)(JNIEnv*, jclass, jfieldID);
+    jboolean    (*GetStaticBooleanField)(JNIEnv*, jclass, jfieldID);
+    jbyte       (*GetStaticByteField)(JNIEnv*, jclass, jfieldID);
+    jchar       (*GetStaticCharField)(JNIEnv*, jclass, jfieldID);
+    jshort      (*GetStaticShortField)(JNIEnv*, jclass, jfieldID);
+    jint        (*GetStaticIntField)(JNIEnv*, jclass, jfieldID);
+    jlong       (*GetStaticLongField)(JNIEnv*, jclass, jfieldID);
+    jfloat      (*GetStaticFloatField)(JNIEnv*, jclass, jfieldID) __NDK_FPABI__;
+    jdouble     (*GetStaticDoubleField)(JNIEnv*, jclass, jfieldID) __NDK_FPABI__;
+
+    void        (*SetStaticObjectField)(JNIEnv*, jclass, jfieldID, jobject);
+    void        (*SetStaticBooleanField)(JNIEnv*, jclass, jfieldID, jboolean);
+    void        (*SetStaticByteField)(JNIEnv*, jclass, jfieldID, jbyte);
+    void        (*SetStaticCharField)(JNIEnv*, jclass, jfieldID, jchar);
+    void        (*SetStaticShortField)(JNIEnv*, jclass, jfieldID, jshort);
+    void        (*SetStaticIntField)(JNIEnv*, jclass, jfieldID, jint);
+    void        (*SetStaticLongField)(JNIEnv*, jclass, jfieldID, jlong);
+    void        (*SetStaticFloatField)(JNIEnv*, jclass, jfieldID, jfloat) __NDK_FPABI__;
+    void        (*SetStaticDoubleField)(JNIEnv*, jclass, jfieldID, jdouble) __NDK_FPABI__;

@@ -1,0 +1,25 @@
+
+        /**
+         * The base types that all "Typed" data kinds support.
+         */
+        public interface BaseTypes {
+            /**
+             * A custom type. The custom label should be supplied by user.
+             */
+            public static int TYPE_CUSTOM = 0;
+        }
+
+Known Indirect Subclasses
+ContactsContract.CommonDataKinds.Callable, 
+ContactsContract.CommonDataKinds.CommonColumns, 
+ContactsContract.CommonDataKinds.Contactables, 
+ContactsContract.CommonDataKinds.Email, 
+ContactsContract.CommonDataKinds.Event, 
+ContactsContract.CommonDataKinds.Im, 
+ContactsContract.CommonDataKinds.Nickname, 
+ContactsContract.CommonDataKinds.Organization, 
+ContactsContract.CommonDataKinds.Phone, 
+ContactsContract.CommonDataKinds.Relation, 
+ContactsContract.CommonDataKinds.SipAddress, 
+ContactsContract.CommonDataKinds.StructuredPostal, 
+ContactsContract.CommonDataKinds.Website

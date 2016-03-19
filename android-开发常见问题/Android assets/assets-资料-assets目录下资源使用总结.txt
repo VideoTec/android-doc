@@ -1,0 +1,44 @@
+
+http://blog.csdn.net/fengyuzhengfan/article/details/38360017
+第一种是res目录下存放的可编译的资源文件：
+    这种资源文件系统会在R.java里面自动生成该资源文件的ID，
+    所以访问这种资源文件比较简单，通过R.XXX.ID即可
+第二种是assets目录下存放的原生资源文件：
+      因为系统在编译的时候不会编译assets下的资源文件，
+      所以我们不能通过R.XXX.ID的方式访问它们。
+      
+
+访问 assets 文件：
+      那我么能不能通过该资源的绝对路径去访问它们呢？
+      因为apk安装之后会放在/data/app/**.apk目录下，
+      （例如：/data/app/com.feinno.rongfly-1.apk）
+      以apk形式存在，asset/res和被绑定在apk里，
+      并不会解压到/data/data/YourApp目录下去，
+      所以我们无法直接获取到assets的绝对路径，
+      因为它们根本就没有
+
+访问 assets 文件：
+Android系统为我们提供了一个AssetManager工具类
+提供对应用程序的原始资源文件进行访问；
+这个类提供了一个低级别的API，
+它允许你以简单的字节流的形式打开和读取和应用程序绑定在一起的原始资源文件。
+通过getAssets()方法获取AssetManager对象。
+
+final String[]
+list(String path)
+返回指定路径下的所有文件及目录名。
+
+final InputStream
+open(String fileName)
+使用 ACCESS_STREAMING模式打开assets下的指定文件。
+
+final InputStream
+open(String fileName, int accessMode)
+使用显示的访问模式打开assets下的指定文件.
+
+AssetFileDescriptor简介：
+        在AssetManager中一项的文件描述符。
+这提供你自己打开的FileDescriptor可用于读取的数据，
+以及在文件中的偏移量和长度的该项的数据。
+可以通过AssetManager的openFd()的方法
+获取asset目录下指定文件的AssetFileDescriptor对象。

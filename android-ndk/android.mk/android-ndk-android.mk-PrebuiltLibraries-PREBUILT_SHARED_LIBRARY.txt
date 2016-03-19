@@ -1,0 +1,11 @@
+PREBUILT_SHARED_LIBRARY
+
+Points to a build script used to specify a prebuilt shared library. 
+Unlike BUILD_SHARED_LIBRARY and BUILD_STATIC_LIBRARY, 
+the value of LOCAL_SRC_FILES must be 
+a single path to a prebuilt shared library (e.g. foo/libfoo.so), 
+instead of a source file.
+
+You can reference the prebuilt library in another module 
+using the LOCAL_PREBUILTS variable 
+(see NDK Prebuilt Library Support for more information).

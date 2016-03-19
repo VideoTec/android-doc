@@ -1,0 +1,234 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/ContactsContract.CommonDataKinds.Phone.html
+
+java.lang.Object
+   ↳	android.provider.ContactsContract.CommonDataKinds.Phone
+
+A data kind representing a telephone number.
+You can use all columns defined for ContactsContract.Data 
+as well as the following aliases.
+
+源码
+
+
+        /**
+         * <p>
+         * A data kind representing a telephone number.
+         * </p>
+         * <p>
+         * You can use all columns defined for {@link ContactsContract.Data} as
+         * well as the following aliases.
+         * </p>
+         * <h2>Column aliases</h2>
+         * <table class="jd-sumtable">
+         * <tr>
+         * <th>Type</th>
+         * <th>Alias</th><th colspan='2'>Data column</th>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #NUMBER}</td>
+         * <td>{@link #DATA1}</td>
+         * <td></td>
+         * </tr>
+         * <tr>
+         * <td>int</td>
+         * <td>{@link #TYPE}</td>
+         * <td>{@link #DATA2}</td>
+         * <td>Allowed values are:
+         * <p>
+         * <ul>
+         * <li>{@link #TYPE_CUSTOM}. Put the actual type in {@link #LABEL}.</li>
+         * <li>{@link #TYPE_HOME}</li>
+         * <li>{@link #TYPE_MOBILE}</li>
+         * <li>{@link #TYPE_WORK}</li>
+         * <li>{@link #TYPE_FAX_WORK}</li>
+         * <li>{@link #TYPE_FAX_HOME}</li>
+         * <li>{@link #TYPE_PAGER}</li>
+         * <li>{@link #TYPE_OTHER}</li>
+         * <li>{@link #TYPE_CALLBACK}</li>
+         * <li>{@link #TYPE_CAR}</li>
+         * <li>{@link #TYPE_COMPANY_MAIN}</li>
+         * <li>{@link #TYPE_ISDN}</li>
+         * <li>{@link #TYPE_MAIN}</li>
+         * <li>{@link #TYPE_OTHER_FAX}</li>
+         * <li>{@link #TYPE_RADIO}</li>
+         * <li>{@link #TYPE_TELEX}</li>
+         * <li>{@link #TYPE_TTY_TDD}</li>
+         * <li>{@link #TYPE_WORK_MOBILE}</li>
+         * <li>{@link #TYPE_WORK_PAGER}</li>
+         * <li>{@link #TYPE_ASSISTANT}</li>
+         * <li>{@link #TYPE_MMS}</li>
+         * </ul>
+         * </p>
+         * </td>
+         * </tr>
+         * <tr>
+         * <td>String</td>
+         * <td>{@link #LABEL}</td>
+         * <td>{@link #DATA3}</td>
+         * <td></td>
+         * </tr>
+         * </table>
+         */
+        public static final class Phone implements DataColumnsWithJoins, CommonColumns,
+                ContactCounts {
+            /**
+             * This utility class cannot be instantiated
+             */
+            private Phone() {}
+
+            /** MIME type used when storing this in data table. */
+            public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/phone_v2";
+
+            /**
+             * The MIME type of {@link #CONTENT_URI} providing a directory of
+             * phones.
+             */
+            public static final String CONTENT_TYPE = "vnd.android.cursor.dir/phone_v2";
+
+            /**
+             * The content:// style URI for all data records of the
+             * {@link #CONTENT_ITEM_TYPE} MIME type, combined with the
+             * associated raw contact and aggregate contact data.
+             */
+            public static final Uri CONTENT_URI = Uri.withAppendedPath(Data.CONTENT_URI,
+                    "phones");
+
+            /**
+            * URI used for getting all contacts from primary and managed profile.
+            *
+            * It supports the same semantics as {@link #CONTENT_URI} and returns the same
+            * columns.  If the device has no corp profile that is linked to the current profile, it
+            * behaves in the exact same way as {@link #CONTENT_URI}.  If there is a corp profile
+            * linked to the current profile, it will merge corp profile and current profile's
+            * results and return
+            *
+            * @hide
+            */
+            public static final Uri ENTERPRISE_CONTENT_URI =
+                    Uri.withAppendedPath(Data.ENTERPRISE_CONTENT_URI, "phones");
+
+            /**
+             * The content:// style URL for phone lookup using a filter. The filter returns
+             * records of MIME type {@link #CONTENT_ITEM_TYPE}. The filter is applied
+             * to display names as well as phone numbers. The filter argument should be passed
+             * as an additional path segment after this URI.
+             */
+            public static final Uri CONTENT_FILTER_URI = Uri.withAppendedPath(CONTENT_URI,
+                    "filter");
+
+            /**
+             * A boolean query parameter that can be used with {@link #CONTENT_FILTER_URI}.
+             * If "1" or "true", display names are searched.  If "0" or "false", display names
+             * are not searched.  Default is "1".
+             */
+            public static final String SEARCH_DISPLAY_NAME_KEY = "search_display_name";
+
+            /**
+             * A boolean query parameter that can be used with {@link #CONTENT_FILTER_URI}.
+             * If "1" or "true", phone numbers are searched.  If "0" or "false", phone numbers
+             * are not searched.  Default is "1".
+             */
+            public static final String SEARCH_PHONE_NUMBER_KEY = "search_phone_number";
+
+            public static final int TYPE_HOME = 1;
+            public static final int TYPE_MOBILE = 2;
+            public static final int TYPE_WORK = 3;
+            public static final int TYPE_FAX_WORK = 4;
+            public static final int TYPE_FAX_HOME = 5;
+            public static final int TYPE_PAGER = 6;
+            public static final int TYPE_OTHER = 7;
+            public static final int TYPE_CALLBACK = 8;
+            public static final int TYPE_CAR = 9;
+            public static final int TYPE_COMPANY_MAIN = 10;
+            public static final int TYPE_ISDN = 11;
+            public static final int TYPE_MAIN = 12;
+            public static final int TYPE_OTHER_FAX = 13;
+            public static final int TYPE_RADIO = 14;
+            public static final int TYPE_TELEX = 15;
+            public static final int TYPE_TTY_TDD = 16;
+            public static final int TYPE_WORK_MOBILE = 17;
+            public static final int TYPE_WORK_PAGER = 18;
+            public static final int TYPE_ASSISTANT = 19;
+            public static final int TYPE_MMS = 20;
+
+            /**
+             * The phone number as the user entered it.
+             * <P>Type: TEXT</P>
+             */
+            public static final String NUMBER = DATA;
+
+            /**
+             * The phone number's E164 representation. This value can be omitted in which
+             * case the provider will try to automatically infer it.  (It'll be left null if the
+             * provider fails to infer.)
+             * If present, {@link #NUMBER} has to be set as well (it will be ignored otherwise).
+             * <P>Type: TEXT</P>
+             */
+            public static final String NORMALIZED_NUMBER = DATA4;
+
+            /**
+             * @deprecated use {@link #getTypeLabel(Resources, int, CharSequence)} instead.
+             * @hide
+             */
+            @Deprecated
+            public static final CharSequence getDisplayLabel(Context context, int type,
+                    CharSequence label, CharSequence[] labelArray) {
+                return getTypeLabel(context.getResources(), type, label);
+            }
+
+            /**
+             * @deprecated use {@link #getTypeLabel(Resources, int, CharSequence)} instead.
+             * @hide
+             */
+            @Deprecated
+            public static final CharSequence getDisplayLabel(Context context, int type,
+                    CharSequence label) {
+                return getTypeLabel(context.getResources(), type, label);
+            }
+
+            /**
+             * Return the string resource that best describes the given
+             * {@link #TYPE}. Will always return a valid resource.
+             */
+            public static final int getTypeLabelResource(int type) {
+                switch (type) {
+                    case TYPE_HOME: return com.android.internal.R.string.phoneTypeHome;
+                    case TYPE_MOBILE: return com.android.internal.R.string.phoneTypeMobile;
+                    case TYPE_WORK: return com.android.internal.R.string.phoneTypeWork;
+                    case TYPE_FAX_WORK: return com.android.internal.R.string.phoneTypeFaxWork;
+                    case TYPE_FAX_HOME: return com.android.internal.R.string.phoneTypeFaxHome;
+                    case TYPE_PAGER: return com.android.internal.R.string.phoneTypePager;
+                    case TYPE_OTHER: return com.android.internal.R.string.phoneTypeOther;
+                    case TYPE_CALLBACK: return com.android.internal.R.string.phoneTypeCallback;
+                    case TYPE_CAR: return com.android.internal.R.string.phoneTypeCar;
+                    case TYPE_COMPANY_MAIN: return com.android.internal.R.string.phoneTypeCompanyMain;
+                    case TYPE_ISDN: return com.android.internal.R.string.phoneTypeIsdn;
+                    case TYPE_MAIN: return com.android.internal.R.string.phoneTypeMain;
+                    case TYPE_OTHER_FAX: return com.android.internal.R.string.phoneTypeOtherFax;
+                    case TYPE_RADIO: return com.android.internal.R.string.phoneTypeRadio;
+                    case TYPE_TELEX: return com.android.internal.R.string.phoneTypeTelex;
+                    case TYPE_TTY_TDD: return com.android.internal.R.string.phoneTypeTtyTdd;
+                    case TYPE_WORK_MOBILE: return com.android.internal.R.string.phoneTypeWorkMobile;
+                    case TYPE_WORK_PAGER: return com.android.internal.R.string.phoneTypeWorkPager;
+                    case TYPE_ASSISTANT: return com.android.internal.R.string.phoneTypeAssistant;
+                    case TYPE_MMS: return com.android.internal.R.string.phoneTypeMms;
+                    default: return com.android.internal.R.string.phoneTypeCustom;
+                }
+            }
+
+            /**
+             * Return a {@link CharSequence} that best describes the given type,
+             * possibly substituting the given {@link #LABEL} value
+             * for {@link #TYPE_CUSTOM}.
+             */
+            public static final CharSequence getTypeLabel(Resources res, int type,
+                    CharSequence label) {
+                if ((type == TYPE_CUSTOM || type == TYPE_ASSISTANT) && !TextUtils.isEmpty(label)) {
+                    return label;
+                } else {
+                    final int labelRes = getTypeLabelResource(type);
+                    return res.getText(labelRes);
+                }
+            }
+        }

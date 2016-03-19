@@ -1,0 +1,119 @@
+http://blog.csdn.net/fengyuzhengfan/article/details/38360017
+第一种是res目录下存放的可编译的资源文件：
+    这种资源文件系统会在R.java里面自动生成该资源文件的ID，
+    所以访问这种资源文件比较简单，通过R.XXX.ID即可
+第二种是assets目录下存放的原生资源文件：
+      因为系统在编译的时候不会编译assets下的资源文件，
+      所以我们不能通过R.XXX.ID的方式访问它们。
+
+http://stackoverflow.com/questions/5583608/difference-between-res-and-assets-directories
+
+I know that files in 
+the res directory are accessible from R.class while 
+assets behaves like a file system, 
+but I would like to know, in general, 
+when it's best to use one and the other.
+Can anyone help me in knowing the real differences between res and assets?
+
+---------------------------------------
+答案一：
+---------------------------------------
+
+With resources, 
+there's built-in support for providing alternatives 
+for different languages, OS versions, screen orientations, etc., as described here. 
+None of that is available with assets. 
+Also, many parts of the API support the use of resource identifiers. 
+Finally, the names of the resources are turned into constant field names 
+that are checked at compile time, 
+so there's less of an opportunity for mismatches 
+between the code and the resources themselves. 
+None of that applies to assets.
+
+So why have an assets folder at all? 
+If you want to compute the asset you want to use at run time, 
+it's pretty easy. 
+With resources, 
+you would have to declare a list of all the resource IDs 
+that might be used and compute an index into the the list. 
+(This is kind of awkward and introduces opportunities for error 
+if the set of resources changes in the development cycle.) 
+(EDIT: you can retrieve a resource ID by name using getIdentifier, 
+but this loses the benefits of compile-time checking.) 
+Assets can also be organized into a folder hierarchy, 
+which is not supported by resources. 
+It's a different way of managing data. 
+Although resources cover most of the cases, assets have their occasional use.
+
+occasional[英][əˈkeɪʒənl] [美][əˈkeʒənəl]
+adj.偶尔的，不经常的；特殊场合的；临时的
+
+One other difference: 
+resources defined in a library project 
+are automatically imported to application projects 
+that depend on the library. 
+For assets, that doesn't happen; 
+asset files must be present in the assets directory of the application project(s). 
+[EDIT: With Android's new Gradle-based build system (used with Android Studio), 
+this is no longer true. 
+Asset directories for library projects are packaged into the .aar files, 
+so assets defined in library projects are merged into application projects 
+(so they do not have to be present in the application's /assets directory 
+if they are in a referenced library).]
+
+EDIT: Yet another difference arises 
+if you want to package a custom font with your app. 
+There are API calls to create a Typeface from a font file stored 
+in the file system or in your app's assets/ directory. 
+But there is no API to create a Typeface from a font file 
+stored in the res/ directory 
+(or from an InputStream, which would allow use of the res/ directory).
+
+---------------------------------------
+答案二
+---------------------------------------
+Both are pretty similar. 
+The real main difference between the two is that 
+in the res directory each file is given a pre-compiled ID 
+which can be accessed easily through R.id.[res id]. 
+This is useful to quickly and easily access images, sounds, icons...
+
+The assets directory is more like a filesystem and 
+provides more freedom to put any file you would like in there. 
+You then can access each of the files in that system as you would 
+when accessing any file in any file system through Java. 
+This directory is good for things 
+such as game details, dictionaries,...etc. Hope that helps.
+
+---------------------------------------
+答案三
+---------------------------------------
+I know this is old, but just to make it clear, 
+there is an explanation of each in the official android documentation:
+
+from http://developer.android.com/tools/projects/index.html
+
+assets/
+This is empty. 
+You can use it to store raw asset files. 
+Files that you save here are compiled into an .apk file as-is, 
+and the original filename is preserved. 
+You can 
+
+navigate this directory in the same way 
+as a typical file system using URIs and 
+
+read files 
+as a stream of bytes using the AssetManager. 
+
+For example, 
+this is a good location for textures and game data.
+
+res/raw/
+For arbitrary raw asset files. 
+Saving asset files here instead of in the assets/ directory 
+only differs in the way that you access them. 
+These files are processed by aapt and 
+must be referenced from the application using a resource identifier in the R class. 
+For example, 
+this is a good place for media, such as MP3 or Ogg files.

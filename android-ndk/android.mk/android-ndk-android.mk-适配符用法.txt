@@ -1,0 +1,5 @@
+注意，android.mk， 中适配符的用法：
+LOCAL_SRC_FILES  := ../v6sdk-code/v6sdk/src/v6_api.c \
+                    ../v6sdk-code/v6sdk/src/v6_engine.c \
+                    ../v6sdk-code/v6sdk/src/v6_proto.c \
+                    $(wildcard ../v6sdk-code/v6sdk/lualibs/**/*.c)

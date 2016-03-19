@@ -1,0 +1,17 @@
+示例：
+const char *file_name = env->GetStringUTFChars(jni_str, NULL);
+env->ReleaseStringUTFChars(jni_str, file_name);
+
+文档：GetStringUTFChars
+const char * GetStringUTFChars(JNIEnv *env, jstring string,jboolean *isCopy);
+Returns a pointer to an array of bytes representing the string in modified UTF-8 encoding. 
+This array is valid until it is released by ReleaseStringUTFChars().
+If isCopy is not NULL, then *isCopy 
+is set to JNI_TRUE if a copy is made; or it 
+is set to JNI_FALSE if no copy is made.
+Returns a pointer to a modified UTF-8 string, or NULL if the operation fails
+
+声明：<jni.h>
+    /* JNI spec says this returns const jbyte*, but that's inconsistent */
+    const char* (*GetStringUTFChars)(JNIEnv*, jstring, jboolean*);
+    void        (*ReleaseStringUTFChars)(JNIEnv*, jstring, const char*);

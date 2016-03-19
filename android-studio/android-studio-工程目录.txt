@@ -1,0 +1,11 @@
+默认root路径： src/
+
+main/java
+main/jniLibs
+main/assets
+main/res
+main/AndroidManifest.xml
+
+注意：
+没有包含jar库的lib目录，
+这个由gradle脚本中设置依赖关系。

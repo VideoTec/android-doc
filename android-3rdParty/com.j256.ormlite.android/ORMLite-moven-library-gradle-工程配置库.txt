@@ -1,0 +1,10 @@
+https://horaceheaven.com/android-ormlite-tutorial/
+
+    compile 'com.j256.ormlite:ormlite-core:4.48'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    
+https://github.com/stephanenicolas/ormlite-android-gradle-plugin
+
+A Gradle plugin for Android to 
+1）generate an ORMLite configuration file and 
+2）boost DAOs creations.

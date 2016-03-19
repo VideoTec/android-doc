@@ -1,0 +1,3 @@
+http://blog.csdn.net/ljeagle/article/details/6705327
+
+JNI学习笔记（五）——fields和methods
