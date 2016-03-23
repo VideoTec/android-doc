@@ -1,0 +1,6 @@
+http://www.cnblogs.com/tianzhijiexian/p/4296055.html
+
+Android提供了上面的多个测试类，
+可以允许我们对于单个方法、Activity、Service、Application等多个对象进行测试，
+单元测试可以很方便的让我们对代码进行测试，并且方便对重构后的代码进行检查。
+本篇将简要的讲解如何对Android中的对象进行测试。

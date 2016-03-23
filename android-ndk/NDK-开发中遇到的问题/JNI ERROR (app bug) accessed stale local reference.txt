@@ -1,0 +1,23 @@
+代码：
+
+void GetNumberClass(JNIEnv* env, jclass *number_class, jmethodID *number_contructor,
+                    const char *class_name, const char *constructor_signature) {
+  if (!(*number_class)) {
+    *number_class = (*env)->FindClass(env, class_name);
+    printf("Get %s Class: %X", class_name, (jint)*number_class);
+  }
+  if (!(*number_contructor)) {
+    *number_contructor = (*env)->GetMethodID(env, *number_class, "<init>", constructor_signature);
+    printf("Get Long Class Contructor(%s): %X", constructor_signature, (jint)*number_contructor);
+  }
+}
+
+第二次调用时，猜测： jclass 引用造成的？还是工作线程中调用，造成的？
+出错信息：
+
+03-21 17:38:23.256 23722-23942/? E/Watchdog: !@Sync 1067
+03-21 17:38:24.691 8984-9049/com.feinno.rongfly E/dalvikvm: JNI ERROR (app bug): 
+accessed stale local reference 0x1db00009 (index 2 in a table of size 2)
+
+解决方法：
+NewGlobalRef jclass 对象

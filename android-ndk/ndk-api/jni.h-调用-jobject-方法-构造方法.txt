@@ -1,0 +1,36 @@
+http://stackoverflow.com/questions/2495742/jni-new-primitive-types
+
+There is NewString, why not NewInteger, NewCharacter, NewDouble, etc. 
+There is no autoboxing at JNI layer at the moment.
+
+I can go with the NewObject call, 
+but this will be too much overhead to create primitive types.
+
+jobject NewInteger(JNIEnv* env, jint value)
+{
+    jclass cls = FindClass(env, "java/lang/Integer");
+    jmethodID methodID = GetMethodID(env, cls, "<init>", "(I)V", false);
+    return env->NewObject(cls, methodID, value);
+}
+I have wrapper functions to get Class and MethodID.
+
+http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html
+
+NewObject
+NewObjectA
+NewObjectV
+jobject NewObject(JNIEnv *env, jclass clazz,
+jmethodID methodID, ...);
+
+jobject NewObjectA(JNIEnv *env, jclass clazz,
+jmethodID methodID, const jvalue *args);
+
+jobject NewObjectV(JNIEnv *env, jclass clazz,
+jmethodID methodID, va_list args);
+
+Constructs a new Java object. 
+The method ID indicates which constructor method to invoke. 
+This ID must be obtained by calling GetMethodID() 
+with <init> as the method name and void (V) as the return type.
+
+The clazz argument must not refer to an array class.

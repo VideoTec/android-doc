@@ -1,0 +1,21 @@
+primitive[英][ˈprɪmətɪv] [美][ˈprɪmɪtɪv]
+adj.原始的；发展水平低的；落后的；[生物学]原生的
+n.原始人；早期的艺术家（作品）；单纯的人：不世故的人；自学的艺术家
+
+http://stackoverflow.com/questions/2495742/jni-new-primitive-types
+
+There is NewString, why not NewInteger, NewCharacter, NewDouble, etc. 
+There is no autoboxing at JNI layer at the moment.
+
+I can go with the NewObject call, 
+but this will be too much overhead to create primitive types.
+
+jobject NewInteger(JNIEnv* env, jint value)
+{
+    jclass cls = FindClass(env, "java/lang/Integer");
+    jmethodID methodID = GetMethodID(env, cls, "<init>", "(I)V", false);
+    return env->NewObject(cls, methodID, value);
+}
+I have wrapper functions to get Class and MethodID.
+
+可以调用 Integer 的静态方法： valueOf

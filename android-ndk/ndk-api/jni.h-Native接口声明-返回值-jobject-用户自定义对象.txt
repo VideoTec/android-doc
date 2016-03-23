@@ -1,0 +1,9 @@
+JNI层方法签名里写：
+jobject fun();
+
+java层native方法定义写：
+public native MyClass fun();
+
+http://adndevblog.typepad.com/cloud_and_mobile/2013/08/android-ndk-passing-complex-data-to-jni.html
+
+http://www.coderanch.com/t/274504/java/java/Return-Structure-Object-Java-JNI

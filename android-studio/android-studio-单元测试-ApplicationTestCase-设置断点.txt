@@ -1,0 +1,9 @@
+public class ApplicationTest extends ApplicationTestCase<Application> {
+    public ApplicationTest() {
+        super(Application.class);
+        TXTest.Test(getContext());
+    }
+}
+
+Android Instrumentation Tests
+设置断点，debug，不生效。（但是 Unit test 没有问题）

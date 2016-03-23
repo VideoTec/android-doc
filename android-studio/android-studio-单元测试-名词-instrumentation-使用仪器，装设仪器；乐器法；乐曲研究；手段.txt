@@ -1,0 +1,10 @@
+instrumentation[英]
+[ˌɪnstrəmenˈteɪʃn] [美][ˌɪnstrəmɛnˈteʃən]
+
+n.使用仪器，装设仪器；乐器法；乐曲研究；手段
+
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
+    
+    <instrumentation  
+        android:name="android.test.InstrumentationTestRunner"  
+        android:targetPackage="com.kale.androidtest" /> 

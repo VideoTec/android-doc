@@ -1,0 +1,17 @@
+http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html
+
+GetMethodID
+jmethodID GetMethodID(JNIEnv *env, jclass clazz,
+const char *name, const char *sig);
+
+Returns the method ID for an instance (nonstatic) method of a class or interface. 
+The method may be defined in one of the clazz’s superclasses and inherited by clazz. 
+The method is determined by its name and signature.
+
+GetMethodID() causes an uninitialized class to be initialized.
+
+To obtain the method ID of a constructor, 
+supply <init> as the method name and void (V) as the return type.
+
+RETURNS:
+Returns a method ID, or NULL if the specified method cannot be found.
