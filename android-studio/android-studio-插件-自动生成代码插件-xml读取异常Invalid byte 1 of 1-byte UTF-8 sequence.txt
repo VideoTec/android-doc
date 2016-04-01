@@ -1,0 +1,12 @@
+http://blog.csdn.net/chenyanbo/article/details/6866941
+
+xml读取异常Invalid byte 1 of 1-byte UTF-8 sequence
+
+
+
+说简单点当你解析别人的xml格式出现这个错误可能就是别人在生成xml时没有保存为utf-8的字符编码格式。
+
+在中文版的window下java的默认的编码为GBK，
+也就是所虽然我们标识了要将xml保存为utf-8格式但实际上文件是以GBK格式来保存的，
+所以这也就是为什么能够我们使用GBK、GB2312编码来生成xml文件能正确的被解析，
+而以UTF-8格式生成的文件不能被xml解析器所解析的原因。

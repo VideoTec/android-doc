@@ -1,0 +1,6 @@
+http://inthecheesefactory.com/blog/things-you-need-to-know-about-android-m-permission-developer-edition/en
+
+ActivityCompat.shouldShowRequestPermissionRationale() 
+
+If this function is called on pre-M, 
+it will always return false.

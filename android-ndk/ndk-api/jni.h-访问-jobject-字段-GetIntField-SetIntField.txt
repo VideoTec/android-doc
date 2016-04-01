@@ -1,0 +1,8 @@
+
+jint jni_session_configure(JNIEnv *env, jobject clazz) {
+  v6_session *ptr = (v6_session *)(*env)->GetIntField(env, clazz, g_field_session_ptr);
+  printf("jni configure session: %X", (int)ptr);
+  v6_session_configure(ptr);
+}
+
+(*env)->SetIntField(env, clazz, g_field_session_ptr, (jint)ptr);

@@ -1,0 +1,19 @@
+http://inthecheesefactory.com/blog/things-you-need-to-know-about-android-m-permission-developer-edition/en
+
+This new permission system may cause you some panic right now. 
+"Hey ! What's about my application that launched 3 years ago. 
+If it is installed on Android 6.0 device, does this behavior also applied? Will my application also crash?!?"
+
+Don't worry. Android team has already thought about it. 
+If the application's targetSdkVersion is set to less than 23. 
+It will be assumed that application 
+is not tested with new permission system yet and will switch to the same old behavior: 
+user has to accept every single permission at install time and they will be all granted once installed !
+
+当用户主动禁止某个权限后：（返回 Null 或者 0， 不会 crash）
+
+Such a kindness sent from god delivered through the Android team. 
+When we call a function that requires a permission user revoked on application with targetSdkVersion less than 23, 
+no any Exception will be thrown. 
+Instead it will just simply do nothing. 
+For the function that return value, it will return either null or 0 depends on the case.

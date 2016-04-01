@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/12473851/how-i-can-get-the-mime-type-of-a-file-having-its-uri
+http://stackoverflow.com/questions/8589645/how-to-determine-mime-type-of-file-in-android

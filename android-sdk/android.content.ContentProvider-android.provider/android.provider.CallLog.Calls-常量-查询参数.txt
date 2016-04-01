@@ -1,0 +1,41 @@
+
+        /**
+         * The default sort order for this table
+         */
+        public static final String DEFAULT_SORT_ORDER = "date DESC";
+
+        Cursor cursor = resolver.query(
+                CallLog.Calls.CONTENT_URI,
+                new String[] {
+                        CallLog.Calls.NUMBER,
+                        CallLog.Calls.DATE,
+                        CallLog.Calls.DURATION,
+                        CallLog.Calls.TYPE },
+                null, null, "date DESC");  如果最后排序参数是 null，则是升序排列
+        
+        /**
+         * Query parameter used to limit the number of call logs returned.
+         * <p>
+         * TYPE: integer
+         */
+        public static final String LIMIT_PARAM_KEY = "limit";
+
+        /**
+         * Query parameter used to specify the starting record to return.
+         * <p>
+         * TYPE: integer
+         */
+        public static final String OFFSET_PARAM_KEY = "offset";
+
+        /**
+         * An optional URI parameter which instructs the provider to allow the operation to be
+         * applied to voicemail records as well.
+         * <p>
+         * TYPE: Boolean
+         * <p>
+         * Using this parameter with a value of {@code true} will result in a security error if the
+         * calling package does not have appropriate permissions to access voicemails.
+         *
+         * @hide
+         */
+        public static final String ALLOW_VOICEMAILS_PARAM_KEY = "allow_voicemails";

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/transparent">
+
+    <FrameLayout
+        android:id="@+id/realtabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"/>
+
+
+    <android.support.v4.app.FragmentTabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f9f9f9">
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0" />
+    </android.support.v4.app.FragmentTabHost>
+
+</LinearLayout>
+
+代码：
+        //实例化TabHost对象，得到TabHost
+        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+        mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+        //去除分割线
+        mTabHost.getTabWidget().setDividerDrawable(null);
+        //得到fragment的个数
+        int count = mImageArray.length;
+
+        for (int i = 0; i < count; i++) {
+            //为每一个Tab按钮设置图标、文字和内容
+            TabHost.TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i]).setIndicator(getTabItemView(i));
+            //将Tab按钮添加进Tab选项卡中
+            mTabHost.addTab(tabSpec, mFragmentArray[i], null);
+            mTabHost.setBackgroundColor(getResources().getColor(R.color.rf_base_common_bg_color));
+        }
+
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if (!tabId.equalsIgnoreCase("通话")) {
+                    showWindowLeftTitle(getString(R.string.rf_str_app_name));
+                    showWindowRightAllImageView();
+                }
+            }
+        });

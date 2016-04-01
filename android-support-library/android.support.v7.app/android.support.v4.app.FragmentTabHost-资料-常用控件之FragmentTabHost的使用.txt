@@ -1,0 +1,7 @@
+http://blog.csdn.net/deng0zhaotai/article/details/11264643
+
+最近在学TabHost时发现TabActivity在API level 13以后不用了，
+所以就去寻找它的替换类，
+找到FragmentActivity，
+可以把每个Fragment作为子tab添加到FragmentActivity上。
+tab可以放在最上面也可以放在最下面

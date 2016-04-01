@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/app/FragmentTabHost.html
+
+Special TabHost that allows the use of Fragment objects for its tab content. 
+When placing this in a view hierarchy, 
+after inflating the hierarchy you 
+must call setup(Context, FragmentManager, int) 
+to complete the initialization of the tab host.

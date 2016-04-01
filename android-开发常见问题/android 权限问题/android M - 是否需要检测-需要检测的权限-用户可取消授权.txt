@@ -1,0 +1,39 @@
+下面这些权限是不是 Normal Permission
+
+http://stackoverflow.com/questions/32635704/cant-get-the-permission
+
+The big reason for not getting your permission nowadays is 
+because your project has a targetSdkVersion of 23 or higher, 
+and the permission that you are requesting is "dangerous". In Android 6.0, this includes:
+
+ACCESS_COARSE_LOCATION
+ACCESS_FINE_LOCATION
+ADD_VOICEMAIL
+BODY_SENSORS
+CALL_PHONE
+CAMERA
+GET_ACCOUNTS
+PROCESS_OUTGOING_CALLS
+READ_CALENDAR
+READ_CALL_LOG
+READ_CELL_BROADCASTS
+READ_CONTACTS
+READ_EXTERNAL_STORAGE
+READ_PHONE_STATE
+READ_SMS
+RECEIVE_MMS
+RECEIVE_SMS
+RECEIVE_WAP_PUSH
+RECORD_AUDIO
+SEND_SMS
+USE_SIP
+WRITE_CALENDAR
+WRITE_CALL_LOG
+WRITE_CONTACTS
+WRITE_EXTERNAL_STORAGE
+
+For these permissions, not only does your targetSdkVersion 23+ app need to have the <uses-permission> element(s), but you also have to ask for those permissions at runtime from the user on Android 6.0+ devices, using methods like checkSelfPermission() and requestPermissions().
+
+As a temporary workaround, drop your targetSdkVersion below 23.
+
+However, eventually, you will have some reason to want your targetSdkVersion to be 23 or higher. At that time, you will need to adjust your app to use the new runtime permission system. The Android documentation has a page dedicated to this topic.

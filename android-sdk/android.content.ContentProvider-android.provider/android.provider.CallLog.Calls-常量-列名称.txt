@@ -1,0 +1,268 @@
+Unix time (also known as POSIX time or Epoch time) 
+is a system for describing instants in time,
+defined as the number of seconds 
+that have elapsed since 
+00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970,
+not counting leap seconds.
+
+4 public static final String TYPE = "type";
+5 public static final String FEATURES = "features";
+6 public static final int FEATURES_VIDEO = 0x1;
+7 public static final String NUMBER = "number";
+8 public static final String NUMBER_PRESENTATION = "presentation";
+9 public static final String COUNTRY_ISO = "countryiso";
+10 public static final String DATE = "date"; 整数 long in milliseconds since the epoch
+11 public static final String DURATION = "duration"; 整数 in seconds
+12 public static final String DATA_USAGE = "data_usage";
+13 public static final String NEW = "new";
+14 public static final String CACHED_NAME = "name";
+15 public static final String CACHED_NUMBER_TYPE = "numbertype";
+16 public static final String CACHED_NUMBER_LABEL = "numberlabel";
+17 public static final String VOICEMAIL_URI = "voicemail_uri";
+18 public static final String TRANSCRIPTION = "transcription";
+19 public static final String IS_READ = "is_read";
+20 public static final String GEOCODED_LOCATION = "geocoded_location";
+21 public static final String CACHED_LOOKUP_URI = "lookup_uri";
+22 public static final String CACHED_MATCHED_NUMBER = "matched_number";
+23 public static final String CACHED_NORMALIZED_NUMBER = "normalized_number";
+24 public static final String CACHED_PHOTO_ID = "photo_id";
+25 public static final String CACHED_PHOTO_URI = "photo_uri";
+26 public static final String CACHED_FORMATTED_NUMBER = "formatted_number";
+27 public static final String PHONE_ACCOUNT_COMPONENT_NAME = "subscription_component_name";
+28 public static final String PHONE_ACCOUNT_ID = "subscription_id";
+29 public static final String PHONE_ACCOUNT_ADDRESS = "phone_account_address";
+30 public static final String PHONE_ACCOUNT_HIDDEN = "phone_account_hidden";
+31 public static final String SUB_ID = "sub_id";
+        
+        /**
+         * The type of the call (incoming, outgoing or missed).
+         * <P>Type: INTEGER (int)</P>
+         */
+        public static final String TYPE = "type";
+
+        /** Call log type for incoming calls. */
+        public static final int INCOMING_TYPE = 1;
+        /** Call log type for outgoing calls. */
+        public static final int OUTGOING_TYPE = 2;
+        /** Call log type for missed calls. */
+        public static final int MISSED_TYPE = 3;
+        /** Call log type for voicemails. */
+        public static final int VOICEMAIL_TYPE = 4;
+
+        /**
+         * Bit-mask describing features of the call (e.g. video).
+         *
+         * <P>Type: INTEGER (int)</P>
+         */
+        public static final String FEATURES = "features";
+
+        /** Call had video. */
+        public static final int FEATURES_VIDEO = 0x1;
+
+        /**
+         * The phone number as the user entered it.
+         * <P>Type: TEXT</P>
+         */
+        public static final String NUMBER = "number";
+
+        /**
+         * The number presenting rules set by the network.
+         *
+         * <p>
+         * Allowed values:
+         * <ul>
+         * <li>{@link #PRESENTATION_ALLOWED}</li>
+         * <li>{@link #PRESENTATION_RESTRICTED}</li>
+         * <li>{@link #PRESENTATION_UNKNOWN}</li>
+         * <li>{@link #PRESENTATION_PAYPHONE}</li>
+         * </ul>
+         * </p>
+         *
+         * <P>Type: INTEGER</P>
+         */
+        public static final String NUMBER_PRESENTATION = "presentation";
+
+        /** Number is allowed to display for caller id. */
+        public static final int PRESENTATION_ALLOWED = 1;
+        /** Number is blocked by user. */
+        public static final int PRESENTATION_RESTRICTED = 2;
+        /** Number is not specified or unknown by network. */
+        public static final int PRESENTATION_UNKNOWN = 3;
+        /** Number is a pay phone. */
+        public static final int PRESENTATION_PAYPHONE = 4;
+
+        /**
+         * The ISO 3166-1 two letters country code of the country where the
+         * user received or made the call.
+         * <P>
+         * Type: TEXT
+         * </P>
+         */
+        public static final String COUNTRY_ISO = "countryiso";
+
+        /**
+         * The date the call occured, in milliseconds since the epoch
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DATE = "date";
+
+        /**
+         * The duration of the call in seconds
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DURATION = "duration";
+
+        /**
+         * The data usage of the call in bytes.
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DATA_USAGE = "data_usage";
+
+        /**
+         * Whether or not the call has been acknowledged
+         * <P>Type: INTEGER (boolean)</P>
+         */
+        public static final String NEW = "new";
+
+        /**
+         * The cached name associated with the phone number, if it exists.
+         * This value is not guaranteed to be current, if the contact information
+         * associated with this number has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_NAME = "name";
+
+        /**
+         * The cached number type (Home, Work, etc) associated with the
+         * phone number, if it exists.
+         * This value is not guaranteed to be current, if the contact information
+         * associated with this number has changed.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CACHED_NUMBER_TYPE = "numbertype";
+
+        /**
+         * The cached number label, for a custom number type, associated with the
+         * phone number, if it exists.
+         * This value is not guaranteed to be current, if the contact information
+         * associated with this number has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_NUMBER_LABEL = "numberlabel";
+
+        /**
+         * Transcription of the call or voicemail entry. This will only be populated for call log
+         * entries of type {@link #VOICEMAIL_TYPE} that have valid transcriptions.
+         */
+        public static final String TRANSCRIPTION = "transcription";
+
+        /**
+         * Whether this item has been read or otherwise consumed by the user.
+         * <p>
+         * Unlike the {@link #NEW} field, which requires the user to have acknowledged the
+         * existence of the entry, this implies the user has interacted with the entry.
+         * <P>Type: INTEGER (boolean)</P>
+         */
+        public static final String IS_READ = "is_read";
+
+        /**
+         * A geocoded location for the number associated with this call.
+         * <p>
+         * The string represents a city, state, or country associated with the number.
+         * <P>Type: TEXT</P>
+         */
+        public static final String GEOCODED_LOCATION = "geocoded_location";
+
+        /**
+         * The cached URI to look up the contact associated with the phone number, if it exists.
+         * This value may not be current if the contact information associated with this number
+         * has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_LOOKUP_URI = "lookup_uri";
+
+        /**
+         * The cached phone number of the contact which matches this entry, if it exists.
+         * This value may not be current if the contact information associated with this number
+         * has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_MATCHED_NUMBER = "matched_number";
+
+        /**
+         * The cached normalized(E164) version of the phone number, if it exists.
+         * This value may not be current if the contact information associated with this number
+         * has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_NORMALIZED_NUMBER = "normalized_number";
+
+        /**
+         * The cached photo id of the picture associated with the phone number, if it exists.
+         * This value may not be current if the contact information associated with this number
+         * has changed.
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String CACHED_PHOTO_ID = "photo_id";
+
+        /**
+         * The cached photo URI of the picture associated with the phone number, if it exists.
+         * This value may not be current if the contact information associated with this number
+         * has changed.
+         * <P>Type: TEXT (URI)</P>
+         */
+        public static final String CACHED_PHOTO_URI = "photo_uri";
+
+        /**
+         * The cached phone number, formatted with formatting rules based on the country the
+         * user was in when the call was made or received.
+         * This value is not guaranteed to be present, and may not be current if the contact
+         * information associated with this number
+         * has changed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CACHED_FORMATTED_NUMBER = "formatted_number";
+
+        // Note: PHONE_ACCOUNT_* constant values are "subscription_*" due to a historic naming
+        // that was encoded into call log databases.
+
+        /**
+         * The component name of the account used to place or receive the call; in string form.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PHONE_ACCOUNT_COMPONENT_NAME = "subscription_component_name";
+
+        /**
+         * The identifier for the account used to place or receive the call.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PHONE_ACCOUNT_ID = "subscription_id";
+
+        /**
+         * The address associated with the account used to place or receive the call; in string
+         * form. For SIM-based calls, this is the user's own phone number.
+         * <P>Type: TEXT</P>
+         *
+         * @hide
+         */
+        public static final String PHONE_ACCOUNT_ADDRESS = "phone_account_address";
+
+        /**
+         * Indicates that the entry will be hidden from all queries until the associated
+         * {@link android.telecom.PhoneAccount} is registered with the system.
+         * <P>Type: INTEGER</P>
+         *
+         * @hide
+         */
+        public static final String PHONE_ACCOUNT_HIDDEN = "phone_account_hidden";
+
+        /**
+         * The subscription ID used to place this call.  This is no longer used and has been
+         * replaced with PHONE_ACCOUNT_COMPONENT_NAME/PHONE_ACCOUNT_ID.
+         * For ContactsProvider internal use only.
+         * <P>Type: INTEGER</P>
+         *
+         * @Deprecated
+         * @hide
+         */
+        public static final String SUB_ID = "sub_id";

@@ -44,3 +44,13 @@ Activity 可以多次实例化，而每个实例均可属于不同的任务，
 
 注：尽管 Activity 在新任务中启动，
 但是用户按“返回”按钮仍会返回到前一个 Activity。
+
+15:45 2016/3/29
+新建了个类，按回退键后，会销毁(onDestroy)ACT，再次进入，还要走 onCreate
+按后退键的情况，怎么样，不销毁这个ACT呢？
+
+另一个问题：
+从标题栏，pendingintent，也不走 onNewIntent
+加上单独的 android:taskAffinity，之后可以了
+原因是调用了：
+Intent.makeRestartActivityTask(new ComponentName(context, com.example.notificationtest.MainActivity.class))

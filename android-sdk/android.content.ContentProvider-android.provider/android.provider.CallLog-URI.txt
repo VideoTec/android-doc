@@ -1,0 +1,14 @@
+
+    public static final String AUTHORITY = "call_log";
+
+    /**
+     * The content:// style URL for this provider
+     */
+    public static final Uri CONTENT_URI =
+        Uri.parse("content://" + AUTHORITY);
+
+    /**
+     * URI of the voicemail entry. Populated only for {@link #VOICEMAIL_TYPE}.
+     * <P>Type: TEXT</P>
+     */
+    public static final String VOICEMAIL_URI = "voicemail_uri";

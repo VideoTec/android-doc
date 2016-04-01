@@ -1,0 +1,11 @@
+http://developer.android.com/intl/zh-cn/reference/android/content/ContextWrapper.html#checkSelfPermission(java.lang.String)
+
+public int checkSelfPermission (String permission)
+
+Added in API level 23
+Determine whether you have been granted a particular permission.
+
+Parameters
+permission	String: The name of the permission being checked.
+Returns
+int	PERMISSION_GRANTED if you have the permission, or PERMISSION_DENIED if not.

@@ -1,0 +1,5 @@
+http://stormzhang.com/devtools/2014/12/09/android-studio-tutorial3/
+
+Action	        Mac OSX	            Win/Linux
+注释代码(//)	Cmd + /	            Ctrl + /
+注释代码(/**/)	Cmd + Option + /	Ctrl + Shift + /

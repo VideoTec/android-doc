@@ -1,0 +1,62 @@
+10:06 2016/3/25
+
+代码：
+
+static int printlog(lua_State *L)
+{
+    const char *logstr = lua_tostring(L, -1);
+    printf(logstr);
+    return  0;
+}
+
+错误信息：
+
+./../v6sdk/lualibs/nlog/slog.c: In function 'printlog':
+./../v6sdk/lualibs/nlog/slog.c:44:5: error: format not a string literal and no
+ormat arguments [-Werror=format-security]
+     printf(logstr);
+     ^
+cc1.exe: some warnings being treated as errors
+make.exe: *** [obj/local/armeabi/objs/v6sdk/__/v6sdk/lualibs/nlog/slog.o] Error
+
+分析：
+
+http://blog.csdn.net/whu_zhangmin/article/details/28890025
+解决方案：
+在对应项目的jni/Application.mk添加一句话
+
+　　APP_CFLAGS += -Wno-error=format-security
+
+意思就是忽视这个error
+
+【问题】
+为什么在，android.mk，添加 LOCAL_CFLAGS += -std=c99 -Wno-error=format-security 不行，
+在 application.mk 中添加 APP_CFLAGS += -Wno-error=format-security 就可以呢？
+都是添加了一个编译选项啊，这两者有什么区别？
+
+http://www.rtsoft.com/forums/showthread.php?102496-Android-NDK-revision-9-quot-Werror-format-security-quot
+as of Android NDK revision 9, the following should be added to Android.mk as a work-around for the quoted error.
+
+"LOCAL_DISABLE_FORMAT_STRING_CHECKS := true"
+
+android.mk 添加下面的代码，也可以解决这个问题：
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE     := v6sdk
+LOCAL_DISABLE_FORMAT_STRING_CHECKS := true   ---  注意添加这一行
+LOCAL_CFLAGS += -std=c99
+LOCAL_CFLAGS += -Iinclude
+LOCAL_CFLAGS += -I../v6sdk/include
+LOCAL_CFLAGS += -I../v6sdk/lualibs/include
+LOCAL_CFLAGS += -I../v6sdk/lualibs/pbc
+LOCAL_CFLAGS += -I../v6sdk/lualibs/md5
+LOCAL_CFLAGS += -I../v6sdk/lualibs/lxp
+LOCAL_CFLAGS += -I../v6sdk/lualibs/luazlib
+LOCAL_CFLAGS += -I../v6sdk/lualibs/luasocket
+LOCAL_CFLAGS += -I../v6sdk/lualibs/luasec
+LOCAL_CFLAGS += -I../v6sdk/lualibs/luacrypto
+LOCAL_CFLAGS += -I../v6sdk/lualibs/lpeg
+LOCAL_CFLAGS += -I../v6sdk/lualibs/h2-huffman
+LOCAL_CFLAGS += -I../v6sdk/lualibs/expat
+LOCAL_CFLAGS += -I../v6sdk/lualibs/cjson

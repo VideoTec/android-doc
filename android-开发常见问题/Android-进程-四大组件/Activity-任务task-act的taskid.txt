@@ -1,0 +1,15 @@
+
+    /**
+     * Return the identifier of the task this activity is in.  This identifier
+     * will remain the same for the lifetime of the activity.
+     *
+     * @return Task identifier, an opaque integer.
+     */
+    public int getTaskId() {
+        try {
+            return ActivityManagerNative.getDefault()
+                .getTaskForActivity(mToken, false);
+        } catch (RemoteException e) {
+            return -1;
+        }
+    }

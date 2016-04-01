@@ -1,0 +1,1 @@
+http://developer.android.com/intl/zh-cn/training/permissions/requesting.html#perm-check

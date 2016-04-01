@@ -1,0 +1,10 @@
+android.Manifest.permission
+
+public static final String READ_CONTACTS = "android.permission.READ_CONTACTS";
+public static final String WRITE_CONTACTS = "android.permission.WRITE_CONTACTS";
+
+写法：
+    <!-- 读取联系人数据 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 读取联系人数据 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />

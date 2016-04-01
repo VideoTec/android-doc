@@ -1,0 +1,89 @@
+http://developer.android.com/intl/zh-cn/guide/topics/providers/content-provider-creating.html#ContentURI
+
+内容 URI 是用于在提供程序中标识数据的 URI。
+内容 URI 包括整个提供程序的
+1）符号名称（其权限）和一个
+2）指向表或文件的名称（路径）。 
+
+可选 ID 部分指向 表中的单个行。 
+ContentProvider 的每一个数据访问方法都
+将内容 URI 作为参数；
+您可以利用这一点确定要访问的表、行或文件。
+
+内容提供程序基础知识主题中描述了内容 URI 的基础知识。
+
+--------------------------
+设计权限
+--------------------------
+
+提供程序通常具有单一权限，
+该权限充当其 Android 内部名称。
+为避免与其他提供程序发生冲突，
+您应该使用 Internet 域所有权（反向）作为提供程序权限的基础。 
+由于此建议也适用于 Android 软件包名称，
+因此您可以将提供程序权限定义为包含该提供程序的软件包名称的扩展名。
+ 
+例如，
+如果您的 Android 软件包名称为 com.example.<appname>，
+则应为提供程序授予权限 com.example.<appname>.provider。
+
+--------------------------
+设计路径结构
+--------------------------
+
+开发者通常通过追加指向单个表的路径来根据权限创建内容 URI。
+例如，如果您有两个表：table1 和 table2，
+则可以通过合并上一示例中的权限来生成 内容 URI 
+com.example.<appname>.provider/table1 和 
+com.example.<appname>.provider/table2。
+路径并不限定于单个段，
+也无需为每一级路径都创建一个表
+
+--------------------------
+处理内容 URI ID
+--------------------------
+
+按照惯例，
+提供程序通过接受末尾具有行所对应 ID 值的内容 URI 来提供对表中单个行的访问。
+同样按照惯例，提供程序会将该 ID 值与表的 _ID 列进行匹配，
+并对匹配的行执行请求的访问。
+
+这一惯例为访问提供程序的应用的常见设计模式提供了便利。
+应用会对提供程序执行查询，
+并使用 CursorAdapter 以 ListView 显示生成的 Cursor。 
+定义 CursorAdapter 的条件是， Cursor 中的其中一个列必须是 _ID
+
+用户随后从 UI 上显示的行中选取其中一行，以查看或修改数据。 
+应用会从支持 ListView 的 Cursor 中获取对应行，
+获取该行的 _ID 值，
+将其追加到内容 URI，
+然后向提供程序发送访问请求。 
+然后，提供程序便可对用户选取的特定行执行查询或修改。
+
+--------------------------
+内容 URI 模式
+--------------------------
+
+为帮助您选择对传入的内容 URI 执行的操作，
+提供程序 API 加入了实用类 UriMatcher，
+它会将内容 URI“模式”映射到整型值。 
+您可以在一个 switch 语句中使用这些整型值，
+为匹配特定模式的一个或多个内容 URI 选择所需操作。
+
+内容 URI 模式使用通配符匹配内容 URI：
+
+*：匹配由任意长度的任何有效字符组成的字符串
+#：匹配由任意长度的数字字符组成的字符串
+
+以设计和编码内容 URI 处理为例，
+假设一个具有权限 com.example.app.provider 的提供程序能识别以下指向表的内容 URI：
+
+content://com.example.app.provider/table1：一个名为 table1 的表
+content://com.example.app.provider/table2/dataset1：一个名为 dataset1 的表
+content://com.example.app.provider/table2/dataset2：一个名为 dataset2 的表
+content://com.example.app.provider/table3：一个名为 table3 的表
+
+提供程序也能识别追加了行 ID 的内容 URI，
+例如，
+content://com.example.app.provider/table3/1 
+对应由 table3 中 1 标识的行的内容 URI。

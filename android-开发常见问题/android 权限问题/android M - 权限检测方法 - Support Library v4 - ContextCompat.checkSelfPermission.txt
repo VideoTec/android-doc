@@ -1,0 +1,7 @@
+http://inthecheesefactory.com/blog/things-you-need-to-know-about-android-m-permission-developer-edition/en
+
+- ContextCompat.checkSelfPermission()
+
+No matter application is run on M or not. 
+This function will correctly return PERMISSION_GRANTED if the permission is granted. 
+Otherwise PERMISSION_DENIED will be returned.

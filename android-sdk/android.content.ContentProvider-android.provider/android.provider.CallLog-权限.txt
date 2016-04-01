@@ -1,0 +1,43 @@
+android.Manifest.permission
+
+public static final String READ_CALL_LOG = "android.permission.READ_CALL_LOG";
+public static final String WRITE_CALL_LOG = "android.permission.WRITE_CALL_LOG";
+
+写法：
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    
+http://www.oschina.net/question/1270671_157881
+我在androidMainfest.xml加入了READ_CALL_LOG， READ_CONTACTS权限。
+测试过几种机型也没有问题，
+而且奇怪的是他需要android.permission.READ_CONTACTS_CALLS权限，
+网上搜索不到，难道又是因为国内奇葩的android系统造成的？
+
+{  "USER_CRASH_DATE": "2014-05-29T01:03:49.000+08:00", 
+    "STACK_TRACE": "java.lang.SecurityException: Permission Denial: reading com.android.providers.contacts.CallLogProvider uri content://call_log/calls from pid=23429, uid=10094 requires android.permission.READ_CONTACTS_CALLS, or grantUriPermission()
+    at android.os.Parcel.readException(Parcel.java:1431)
+    at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:185)
+    at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:137)
+    at android.content.ContentProviderProxy.query(ContentProviderNative.java:385)
+    at android.content.ContentResolver.query(ContentResolver.java:414)
+    at android.content.ContentResolver.query(ContentResolver.java:357)
+    at com.x.XLLauncher.utils.i.a(ToastSender.java:81)
+    at com.x.XLLauncher.views.ah.c(IndexActivity.java:424)
+    at com.x.XLLauncher.views.IndexActivity_.a(IndexActivity_.java:32)
+    at com.x.XLLauncher.views.aq.a(IndexActivity_.java:137)
+    at org.a.a.b.run(BackgroundExecutor.java:302)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:390)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:234)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:153)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:267)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1080)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:573)
+    at java.lang.Thread.run(Thread.java:841)
+", 
+    "PHONE_MODEL": "GN706L", 
+    "PRODUCT": "GiONEE", 
+    "INSTALLATION_ID": "da60da7e-393b-4837-b0e9-3ff91e154dc9", 
+    "DISPLAY": "
+", 
+    "APP_VERSION_CODE": "140527001"
+}

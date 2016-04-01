@@ -1,0 +1,43 @@
+
+    /**
+     * Return the MIME type of the given content URL.
+     *
+     * @param url A Uri identifying content (either a list or specific type),
+     * using the content:// scheme.
+     * @return A MIME type for the content, or null if the URL is invalid or the type is unknown
+     */
+    public final @Nullable String getType(@NonNull Uri url) {
+        Preconditions.checkNotNull(url, "url");
+
+        // XXX would like to have an acquireExistingUnstableProvider for this.
+        IContentProvider provider = acquireExistingProvider(url);
+        if (provider != null) {
+            try {
+                return provider.getType(url);
+            } catch (RemoteException e) {
+                return null;
+            } catch (java.lang.Exception e) {
+                Log.w(TAG, "Failed to get type for: " + url + " (" + e.getMessage() + ")");
+                return null;
+            } finally {
+                releaseProvider(provider);
+            }
+        }
+
+        if (!SCHEME_CONTENT.equals(url.getScheme())) {
+            return null;
+        }
+
+        try {
+            String type = ActivityManagerNative.getDefault().getProviderMimeType(
+                    ContentProvider.getUriWithoutUserId(url), resolveUserId(url));
+            return type;
+        } catch (RemoteException e) {
+            // Arbitrary and not worth documenting, as Activity
+            // Manager will kill this process shortly anyway.
+            return null;
+        } catch (java.lang.Exception e) {
+            Log.w(TAG, "Failed to get type for: " + url + " (" + e.getMessage() + ")");
+            return null;
+        }
+    }

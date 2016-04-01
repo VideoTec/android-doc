@@ -1,0 +1,4 @@
+http://blog.csdn.net/dfqin/article/details/7481683
+
+ActivityC的launchMode又为默认的，
+此时它的taskAffinity跟task中的Root Activity相同

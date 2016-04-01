@@ -1,0 +1,2 @@
+http://blog.csdn.net/dfqin/article/details/7481683
+singleTask 与 taskAffinity 缠绵的那些事

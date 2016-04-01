@@ -1,0 +1,5 @@
+http://www.cnblogs.com/jerehedu/p/4663494.html
+
+把整个Activity分成两部TabHost和TabContent，
+TabHost包含各个tab，
+tab之间切换将在TabContent所关联的FrameLayout区域中显示各自板块的内容

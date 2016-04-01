@@ -1,0 +1,48 @@
+配置：
+    defaultConfig {
+        applicationId "com.feinno.demo"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+代码：
+
+            Cursor cursor = resolver.query(
+                    CallLog.Calls.CONTENT_URI,
+                    new String[]{CallLog.Calls.NUMBER},
+                    null, null, null);
+
+错误提示：
+Call requires permission which may be rejected by user. 
+Code should explicitly check to see if permission is available. 
+
+解决方法： 参考 android.support.v4.content.ContextCompat
+http://stackoverflow.com/questions/33327984/call-requires-permissions-that-may-be-rejected-by-user
+http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
+
+http://developer.android.com/intl/zh-cn/training/permissions/requesting.html
+http://developer.android.com/intl/zh-cn/reference/android/support/v4/content/ContextCompat.html#checkSelfPermission(android.content.Context, java.lang.String)
+
+修改方法：
+        if (PackageManager.PERMISSION_GRANTED !=
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALL_LOG)){
+            Cursor cursor = resolver.query(
+                    CallLog.Calls.CONTENT_URI,
+                    new String[]{CallLog.Calls.NUMBER},
+                    null, null, null);
+            int count = cursor.getCount();
+            Log.v(TAG, "cursor count: " + count);
+        }
+运行时出错：
+03-25 14:47:23.518 6532-6532/? E/SystemClock: File Open Failed
+03-25 14:47:24.785 6288-7308/? E/DatabaseUtils: Writing exception to parcel
+      java.lang.SecurityException: Permission Denial: get/set setting for user asks to run as user -2 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL
+      at com.android.server.am.ActivityManagerService.handleIncomingUser(ActivityManagerService.java:13140)
+      at android.app.ActivityManager.handleIncomingUser(ActivityManager.java:2038)
+      at com.android.providers.settings.SettingsProvider.callFromPackage(SettingsProvider.java:607)
+      at android.content.ContentProvider$Transport.call(ContentProvider.java:279)
+      at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:273)
+      at android.os.Binder.execTransact(Binder.java:388)
+      at dalvik.system.NativeStart.run(Native Method)

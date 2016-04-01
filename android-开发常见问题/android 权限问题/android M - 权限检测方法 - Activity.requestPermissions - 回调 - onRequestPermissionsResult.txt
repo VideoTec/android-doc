@@ -1,0 +1,19 @@
+http://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#onRequestPermissionsResult(int, java.lang.String[], int[])
+
+public void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)
+
+Added in API level 23
+
+Callback for the result from requesting permissions. 
+This method is invoked for every call on requestPermissions(String[], int).
+
+Note: It is possible that the permissions request interaction with the user is interrupted. 
+In this case you will receive empty permissions and results arrays which should be treated as a cancellation.
+
+Parameters
+requestCode	int: The request code passed in requestPermissions(String[], int).
+permissions	String: The requested permissions. Never null.
+grantResults	int: The grant results for the corresponding permissions which is either PERMISSION_GRANTED or PERMISSION_DENIED. Never null.
+See also:
+
+requestPermissions(String[], int)

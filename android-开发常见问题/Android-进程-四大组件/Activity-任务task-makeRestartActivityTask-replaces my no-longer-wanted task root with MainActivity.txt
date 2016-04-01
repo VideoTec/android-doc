@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/19182233/how-to-use-intentcompat-makerestartactivitytask
+
+This is how I'm using IntentCompat
+
+    Intent intentToBeNewRoot = new Intent(this, MainActivity.class);
+    ComponentName cn = intentToBeNewRoot.getComponent();
+
+    Intent mainIntent = IntentCompat.makeRestartActivityTask(cn);
+
+    startActivity(mainIntent);
+This effectively replaces my no-longer-wanted task root with MainActivity. It works in Gingerbeard and ICS. I haven't seen the "is an undefined symbol" message.

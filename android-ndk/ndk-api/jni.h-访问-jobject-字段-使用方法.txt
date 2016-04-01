@@ -1,3 +1,24 @@
+
+    jobject     (*GetObjectField)(JNIEnv*, jobject, jfieldID);
+    jboolean    (*GetBooleanField)(JNIEnv*, jobject, jfieldID);
+    jbyte       (*GetByteField)(JNIEnv*, jobject, jfieldID);
+    jchar       (*GetCharField)(JNIEnv*, jobject, jfieldID);
+    jshort      (*GetShortField)(JNIEnv*, jobject, jfieldID);
+    jint        (*GetIntField)(JNIEnv*, jobject, jfieldID);
+    jlong       (*GetLongField)(JNIEnv*, jobject, jfieldID);
+    jfloat      (*GetFloatField)(JNIEnv*, jobject, jfieldID) __NDK_FPABI__;
+    jdouble     (*GetDoubleField)(JNIEnv*, jobject, jfieldID) __NDK_FPABI__;
+
+    void        (*SetObjectField)(JNIEnv*, jobject, jfieldID, jobject);
+    void        (*SetBooleanField)(JNIEnv*, jobject, jfieldID, jboolean);
+    void        (*SetByteField)(JNIEnv*, jobject, jfieldID, jbyte);
+    void        (*SetCharField)(JNIEnv*, jobject, jfieldID, jchar);
+    void        (*SetShortField)(JNIEnv*, jobject, jfieldID, jshort);
+    void        (*SetIntField)(JNIEnv*, jobject, jfieldID, jint);
+    void        (*SetLongField)(JNIEnv*, jobject, jfieldID, jlong);
+    void        (*SetFloatField)(JNIEnv*, jobject, jfieldID, jfloat) __NDK_FPABI__;
+    void        (*SetDoubleField)(JNIEnv*, jobject, jfieldID, jdouble) __NDK_FPABI__;
+
 http://journals.ecs.soton.ac.uk/java/tutorial/native1.1/implementing/field.html
 
 Accessing Java Fields

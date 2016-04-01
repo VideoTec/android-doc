@@ -1,0 +1,3 @@
+微信接收的文件在：
+
+sdcard/tencent/MicroMsg/Download
