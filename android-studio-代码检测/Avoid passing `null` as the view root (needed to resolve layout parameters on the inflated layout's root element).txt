@@ -1,0 +1,13 @@
+Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout's root element)
+
+代码：
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.rf_dial_log_detail_item, null);
+            convertView.setTag(new ViewHolder(convertView));
+        }
+        initializeViews(getItem(position), (ViewHolder) convertView.getTag());
+        return convertView;
+    }
