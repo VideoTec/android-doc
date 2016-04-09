@@ -1,0 +1,6 @@
+10:22 2016/3/17
+菜单没找到，
+
+http://stackoverflow.com/questions/20249274/find-and-replace-android-studio
+
+I think the shortcut that you're looking for Ctrl+Shift+R (Cmd+Shift+R on OS X).

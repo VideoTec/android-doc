@@ -1,0 +1,9 @@
+http://developer.android.com/intl/zh-cn/reference/android/widget/AdapterView.html#setOnItemLongClickListener(android.widget.AdapterView.OnItemLongClickListener)
+
+public void setOnItemLongClickListener (AdapterView.OnItemLongClickListener listener)
+
+Added in API level 1
+Register a callback to be invoked when an item in this AdapterView has been clicked and held
+
+Parameters
+listener	AdapterView.OnItemLongClickListener: The callback that will run
