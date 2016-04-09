@@ -1,0 +1,6 @@
+http://www.technotalkative.com/android-volley-library-example/
+
+Volley is a library that makes networking 
+for Android apps easier and most importantly, faster.
+
+So now we can say Volley can be a powerful alternative of AsyncTask.

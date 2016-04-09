@@ -1,0 +1,30 @@
+---------------------------------------
+弹出的第一个对话框：
+---------------------------------------
+
+Updates are available for the Android SDK and Tools:
+
+Android SDK updates ensure you have the latest features and enhancements.
+Android Studio will update the following components:
+    - Android Support Repository revision 29.0.0
+    - Android Support Library revision 23.2.1
+    - Google Repository revision 25
+    - Android SDK Platform 23, rev 3 revision 3
+    - Android TV ARM EABI v7a System Image revision 3
+    - Android TV Intel x86 Atom System Image revision 3
+    - Android Wear ARM EABI v7a System Image revison 3
+    - Android Wear Intel x86 Atom System Image revision 3
+    - Android SDK Tools 25.1.1 revison 25.1.1
+Download Size: 1.61GB
+
+---------------------------------------
+Warning
+---------------------------------------
+Due to your system configuration and the packages to be installed,
+it is likely that the following packages cannot be successfully installed while Android Studio is running.
+
+Please exit and install the following packages using the standalone SDK manager:
+    - Android SDK Platform 23, rev 3
+    - Android Wear ARM EABI v7a Syste Image
+    - Android SDK Tools 25.1.1
+    - Google Repository

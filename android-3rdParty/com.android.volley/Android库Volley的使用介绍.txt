@@ -1,3 +1,6 @@
+volley[英][ˈvɒli] [美][ˈvɑli]
+n.（箭、子弹、抢、炮、等）群射，齐射；（质问，咒骂等的）迸发
+
 https://bxbxbai.github.io/2014/09/14/android-working-with-volley/
 
 Android Volley 是Google开发的一个网络lib，可以让你更加简单并且快速的访问网络数据。
@@ -12,3 +15,9 @@ Volley的优点：
 
 使用volley时，必须要创建一个请求队列RequestQueue，
 使用请求队列的最佳方式就是将它做成一个单例，整个app使用这么一个请求队列
+
+http://blog.csdn.net/gaolu/article/details/38439375
+Google的Android开发团队在2013年推出的一个网络通信框架Volley.
+它的设计目标是进行数据量不大，但通信频繁的网络操作，
+而对于大数据量的网络操作，
+比如下载文件等，Volley的表现就不尽如人意

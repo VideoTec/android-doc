@@ -1,0 +1,26 @@
+http://developer.android.com/intl/zh-cn/tools/revisions/studio.html
+
+Instant Run:
+
+Android Studio now deploys clean builds faster than ever before. 
+Additionally, pushing incremental code changes 
+to the emulator or a physical device is now almost instantaneous. 
+Review your updates without redeploying a new debug build or, 
+in many cases, without restarting the app.
+
+Instant Run supports pushing the following changes to a running app:
+
+1）Changes to the implementation of an existing instance method or static method
+2）Changes to an existing app resource
+3）Changes to structural code, such as a method signature or a static field 
+(requires a target device running API level 21 or higher).
+
+Read the documentation to learn more about Instant Run.
+http://developer.android.com/tools/building/building-studio.html#instant-run
+
+Note: 
+Instant Run is supported only when you deploy the debug build variant, 
+use Android Plugin for Gradle version 2.0.0 or higher, 
+and configure your app's module-level build.gradle file for minSdkVersion 15 or higher. 
+For the best performance, 
+configure your app for minSdkVersion 21 or higher.

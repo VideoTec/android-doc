@@ -7,6 +7,8 @@ Revisions
 The sections below provide notes about successive releases of Android Studio, a
 s denoted by revision number.
 
+Android Studio v2.0.0 (April 2016)
+
 Android Studio v1.5.1 (December 2015)   build 141.2456560
 Android Studio v1.5.0 (November 2015)
 Android Studio v1.4.1 (October 2015)

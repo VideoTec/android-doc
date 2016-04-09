@@ -1,0 +1,13 @@
+http://www.itsalif.info/content/android-volley-tutorial-http-get-post-put
+
+Google released Android Volley Library around May/June 2013, 
+which has been internally used by Google for some time. 
+It is supposed to provide Fast Networking Operations 
+and also takes care of Threads nicely. 
+If you are unfamiliar with Volley, please see Google I/O 2013 Video
+https://www.youtube.com/watch?v=yhv8l9F44qo
+
+Unfortunately, 
+there is almost no documentation on Volley. 
+So, I put together code snippets on 
+how to make Volley HTTP Requests (GET, POST, PUT, DELETE).

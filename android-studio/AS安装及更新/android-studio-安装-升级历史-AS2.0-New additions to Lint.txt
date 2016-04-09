@@ -1,0 +1,33 @@
+New additions to Lint:
+
+1）Inspection of switch statements 
+using @IntDef annotated integers to make sure all constants are handled. 
+To quickly add any missing statements, 
+use the the intention action drop-down menu and select Add Missing @IntDef Constants.
+
+2）Flags for incorrect attempts 
+to use string interpolation to insert version numbers in the build.gradle file.
+
+3）Flags for anonymous classes that extend the Fragment class.
+
+4）Flags for native code in unsafe locations, 
+such as the res/ and asset/ folders. 
+This flag encourages storing native code in the libs/ folder, 
+which is then securely packaged into the application’s data/app-lib/ folder at install time. AOSP: #169950
+
+5）Flags for unsafe calls 
+to Runtime.load() and System.load() calls. AOSP: #179980
+
+6）Find and remove any unused resources by selecting 
+Refactor > Remove Unused Resources from the menu bar. 
+Unused resource detection now supports resources only referenced by unused resources, 
+references in raw files such as .html image references, 
+and tools:keep and tools:discard attributes used by the Gradle resource shrinker, 
+while considering inactive source sets (such as resources used in other build flavors) 
+and properly handling static field imports.
+
+7）Checks that implicit API references are supported on all platforms targeted by minSdkVersion.
+
+8）Flags improper usage of RecyclerView and Parcelable.
+
+9）@IntDef, @IntRange, and @Size inspections are now also checked for int arrays and varargs.

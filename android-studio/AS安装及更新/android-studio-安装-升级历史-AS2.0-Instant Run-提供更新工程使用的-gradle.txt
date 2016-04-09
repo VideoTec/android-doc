@@ -1,0 +1,29 @@
+升级 AS 2.0 后提示：
+
+Android Gradle Plugin Update Recommended:
+
+The project is using an old version of the Android Gradle plugin.
+
+To take advantage of all the latest features, such as Instant Run, we stronly recommend that you update the Android Gradle plugin to version 2.0.0.
+
+You can learn more about this version of the plugin from the release notes.
+
+三个选项：
+
+Update
+Remid me later
+Don't remid me again for this Project
+
+当前工程使用的 gradle 版本号，查看,修改，工程根目录的 build.gradle:
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}

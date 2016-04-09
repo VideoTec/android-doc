@@ -1,0 +1,51 @@
+Additional Improvements:
+
+1）Optimized for Android Emulator 2.0, 
+which is faster than ever before, 
+supports a wider range of virtual devices, 
+and features a drastically improved UI. 
+To learn more about the new emulator, read the SDK Tools release notes.
+
+2）Improvements to the Android Virtual Device Manager:
+    a）System images are now categorized under the following tabs: 
+Recommended, x86, and Other.
+    b）Under advanced settings, 
+you can enable multi-core support and specify the number of cores the emulator can use.
+    c）Under advanced settings, 
+you can determine how graphics are rendered on the emulator by selecting one of the following options:
+Hardware: use you computer's graphics card for faster rendering.
+Software: use software-based rendering.
+Auto: let the emulator decide the best option. This is the default setting.
+
+3）Improved AAPT packaging times by specifying deploy target before the app is built. 
+This allows Android Studio to efficiently package 
+only the resources required by the specified device.
+
+4）Added Cloud Test Lab integration to provide on-demand app testing 
+with the convenience and scalability of a cloud service. 
+Learn more about how you can use Cloud Test Lab with Android Studio.
+
+5）Added a preview of the new GPU Debugger. 
+For graphics intensive applications, 
+you can now visually step through your OpenGL ES code to optimize your app or game.
+
+6）Added support for Google App Indexing integration and testing. 
+Add deep links, app indexing, 
+and search functionality to your apps to help drive more traffic to your app, 
+discover which app content is used most, 
+and attract new users. 
+Test and validate your URL links in your app all within Android Studio. 
+Learn more about implementing and testing Deep Link and App Indexing APIs.
+
+7）Upgrades from the latest IntelliJ 15 release, 
+including improved code analysis and performance. 
+See What's New in IntelliJ for a complete description of the new features and enhancements.
+https://www.jetbrains.com/idea/whatsnew
+
+8）XML editor auto-complete now adds quotations marks when completing attributes. 
+To check if this option is enabled, 
+open the Setting or Preferences dialogue, 
+navigate to Editor > General > Smart Keys, 
+and check the box next to Add quotes for attribute value on attribute completion. Issue: 195113
+
+9）The XML editor now supports code completion for data binding expressions.
