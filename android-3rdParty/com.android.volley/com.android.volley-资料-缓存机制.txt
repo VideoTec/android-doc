@@ -1,0 +1,9 @@
+http://blog.csdn.net/ttdevs/article/details/40260433#t0
+
+volley有完整的一套缓存机制。
+而目前我们想做个简单的需求：
+部分界面（几乎不会改动的）简单的做一定时间的缓存，
+研究了下代码发现很容易修改达到自己的目的（有时间在分析下volley的缓存机制，这个一定要做）。
+简单来说修改一个地方：
+request.parseNetworkResponse中的
+HttpHeaderParser（此处突然感慨volley的设计TMD灵活了，想怎么改就怎么改）
