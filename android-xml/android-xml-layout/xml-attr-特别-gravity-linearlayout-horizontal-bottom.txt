@@ -1,0 +1,30 @@
+http://stackoverflow.com/questions/20632407/how-to-align-parent-bottom-in-android-linear-layout
+
+Actually, you can set the parent element's gravity to bottom
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_bg"
+    android:orientation="vertical"
+    android:gravity="bottom" >
+
+   <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/signup_illu_why" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=""
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_skip_icon" />
+
+</LinearLayout>

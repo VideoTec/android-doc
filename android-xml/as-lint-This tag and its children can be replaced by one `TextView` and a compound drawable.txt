@@ -1,0 +1,31 @@
+compound[英][ˈkɒmpaʊnd] [美][ˈkɑmpaʊnd]
+n.场地；复合物；（筑有围墙的）院子；复合词
+
+            <LinearLayout
+                android:id="@+id/ly_vowifi_send_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/rf_str_vowifi_img_description"
+                    android:src="@drawable/rf_img_vowifi_send_img_disable"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/vowifi_text_color_disable"
+                    android:textSize="@dimen/vowifi_normal_text_size"
+                    android:text="@string/rf_str_vowifi_btn_send_img"/>
+            </LinearLayout>
+            
+            This tag and its children can be replaced by one `<TextView/>` and a compound drawable
+            
+http://stackoverflow.com/questions/8318765/how-do-i-use-a-compound-drawable-instead-of-a-linearlayout-that-contains-an-imag
+TextView comes with 4 compound drawables, 
+one for each of left, top, right and bottom.
+
+In your case, you do not need the LinearLayout and ImageView at all. 
+Just add android:drawableLeft="@drawable/up_count_big" to your TextView.

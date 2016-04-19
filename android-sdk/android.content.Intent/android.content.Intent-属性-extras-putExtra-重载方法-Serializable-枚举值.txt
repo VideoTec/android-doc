@@ -1,0 +1,22 @@
+http://stackoverflow.com/questions/2836256/passing-enum-or-object-through-an-intent-the-best-solution
+
+This is an old question but everybody fails to mention that 
+Enums are actually Serializable and therefore 
+can perfectly be added to an Intent as an extra. 
+
+Like this:
+
+public enum AwesomeEnum {
+  Something, Other;
+};
+
+intent.putExtra("AwesomeEnum", AwesomeEnum.Something);
+
+AwesomeEnum result = (AwesomeEnum) intent.getSerializableExtra("AwesomeEnum");
+
+The suggestion to use static or application wide variables is a really bad idea. 
+This really couples your activities to a state managing system and it is hard to maintain, 
+debug and problem bound.
+
+couple[英][ˈkʌpl] [美][ˈkʌpəl]
+n.对，双；配偶，夫妻；<口>几个，两三个

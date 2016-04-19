@@ -2,6 +2,8 @@ jstring     (*NewStringUTF)(JNIEnv*, const char*);
 
 http://stackoverflow.com/questions/6238785/newstringutf-and-freeing-memory
 
+总结一句话： 需要调用 DeleteLocalRef
+
 The storage for the const char* argument to NewStringUTF() 
 is entirely your responsibility: 
 if you allocated test with malloc(), then you need to free() it. 

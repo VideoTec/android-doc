@@ -1,0 +1,23 @@
+
+    /**
+     * Return the drawable's bounds Rect. Note: for efficiency, the returned
+     * object may be the same object stored in the drawable (though this is not
+     * guaranteed), so if a persistent copy of the bounds is needed, call
+     * copyBounds(rect) instead.
+     * You should also not change the object returned by this method as it may
+     * be the same object stored in the drawable.
+     *
+     * @return The bounds of the drawable (which may change later, so caller
+     *         beware). DO NOT ALTER the returned object as it may change the
+     *         stored bounds of this drawable.
+     *
+     * @see #copyBounds()
+     * @see #copyBounds(android.graphics.Rect) 
+     */
+    public final Rect getBounds() {
+        if (mBounds == ZERO_BOUNDS_RECT) {
+            mBounds = new Rect();
+        }
+
+        return mBounds;
+    }

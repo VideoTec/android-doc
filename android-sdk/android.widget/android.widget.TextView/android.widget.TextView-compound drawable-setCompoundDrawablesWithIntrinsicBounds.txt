@@ -1,0 +1,34 @@
+voerload 方法：
+
+public void setCompoundDrawablesWithIntrinsicBounds(int left, int top, int right, int bottom)
+public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom)
+
+
+    /**
+     * Sets the Drawables (if any) to appear to the left of, above,
+     * to the right of, and below the text.  Use null if you do not
+     * want a Drawable there. The Drawables' bounds will be set to
+     * their intrinsic bounds.
+     *
+     * @attr ref android.R.styleable#TextView_drawableLeft
+     * @attr ref android.R.styleable#TextView_drawableTop
+     * @attr ref android.R.styleable#TextView_drawableRight
+     * @attr ref android.R.styleable#TextView_drawableBottom
+     */
+    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top,
+            Drawable right, Drawable bottom) {
+
+        if (left != null) {
+            left.setBounds(0, 0, left.getIntrinsicWidth(), left.getIntrinsicHeight());
+        }
+        if (right != null) {
+            right.setBounds(0, 0, right.getIntrinsicWidth(), right.getIntrinsicHeight());
+        }
+        if (top != null) {
+            top.setBounds(0, 0, top.getIntrinsicWidth(), top.getIntrinsicHeight());
+        }
+        if (bottom != null) {
+            bottom.setBounds(0, 0, bottom.getIntrinsicWidth(), bottom.getIntrinsicHeight());
+        }
+        setCompoundDrawables(left, top, right, bottom);
+    }

@@ -1,0 +1,18 @@
+intrinsic[英][ɪnˈtrɪnsɪk] [美][ɪnˈtrɪnzɪk, -sɪk]
+adj.固有的，内在的，本质的；[解剖]体内的；本征；先天性
+
+    /**
+     * Return the intrinsic width of the underlying drawable object.  Returns
+     * -1 if it has no intrinsic width, such as with a solid color.
+     */
+    public int getIntrinsicWidth() {
+        return -1;
+    }
+
+    /**
+     * Return the intrinsic height of the underlying drawable object. Returns
+     * -1 if it has no intrinsic height, such as with a solid color.
+     */
+    public int getIntrinsicHeight() {
+        return -1;
+    }

@@ -1,0 +1,30 @@
+
+    /**
+     * Specify a bounding rectangle for the Drawable. This is where the drawable
+     * will draw when its draw() method is called.
+     */
+    public void setBounds(int left, int top, int right, int bottom) {
+        Rect oldBounds = mBounds;
+
+        if (oldBounds == ZERO_BOUNDS_RECT) {
+            oldBounds = mBounds = new Rect();
+        }
+
+        if (oldBounds.left != left || oldBounds.top != top ||
+                oldBounds.right != right || oldBounds.bottom != bottom) {
+            if (!oldBounds.isEmpty()) {
+                // first invalidate the previous bounds
+                invalidateSelf();
+            }
+            mBounds.set(left, top, right, bottom);
+            onBoundsChange(mBounds);
+        }
+    }
+
+    /**
+     * Specify a bounding rectangle for the Drawable. This is where the drawable
+     * will draw when its draw() method is called.
+     */
+    public void setBounds(Rect bounds) {
+        setBounds(bounds.left, bounds.top, bounds.right, bounds.bottom);
+    }

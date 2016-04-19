@@ -1,0 +1,137 @@
+tvVowifiSendImg.setCompoundDrawables(null, sendImageDrawable, null, null);
+
+解决方法一：
+tvVowifiSendImg.setCompoundDrawablesWithIntrinsicBounds(null, sendImageDrawable, null, null);
+
+解决方法二：
+http://www.cnblogs.com/littlepanpc/p/3469371.html
+1 Drawable drawable = getResources().getDrawable(
+2                         R.drawable.edit_icon);
+3 drawable.setBounds(0, 0, drawable.getMinimumWidth(),       先设置边界
+4                         drawable.getMinimumHeight());
+5 commentTV.setCompoundDrawables(drawable, null, null, null);
+
+    /**
+     * Sets the Drawables (if any) to appear to the left of, above,
+     * to the right of, and below the text.  Use null if you do not
+     * want a Drawable there.  The Drawables must already have had
+     * {@link Drawable#setBounds} called.
+     *
+     * @attr ref android.R.styleable#TextView_drawableLeft
+     * @attr ref android.R.styleable#TextView_drawableTop
+     * @attr ref android.R.styleable#TextView_drawableRight
+     * @attr ref android.R.styleable#TextView_drawableBottom
+     */
+    public void setCompoundDrawables(Drawable left, Drawable top,
+                                     Drawable right, Drawable bottom) {
+        Drawables dr = mDrawables;
+
+        final boolean drawables = left != null || top != null
+                || right != null || bottom != null;
+
+        if (!drawables) {
+            // Clearing drawables...  can we free the data structure?
+            if (dr != null) {
+                if (dr.mDrawablePadding == 0) {
+                    mDrawables = null;
+                } else {
+                    // We need to retain the last set padding, so just clear
+                    // out all of the fields in the existing structure.
+                    if (dr.mDrawableLeft != null) dr.mDrawableLeft.setCallback(null);
+                    dr.mDrawableLeft = null;
+                    if (dr.mDrawableTop != null) dr.mDrawableTop.setCallback(null);
+                    dr.mDrawableTop = null;
+                    if (dr.mDrawableRight != null) dr.mDrawableRight.setCallback(null);
+                    dr.mDrawableRight = null;
+                    if (dr.mDrawableBottom != null) dr.mDrawableBottom.setCallback(null);
+                    dr.mDrawableBottom = null;
+                    dr.mDrawableSizeLeft = dr.mDrawableHeightLeft = 0;
+                    dr.mDrawableSizeRight = dr.mDrawableHeightRight = 0;
+                    dr.mDrawableSizeTop = dr.mDrawableWidthTop = 0;
+                    dr.mDrawableSizeBottom = dr.mDrawableWidthBottom = 0;
+                }
+            }
+        } else {
+            if (dr == null) {
+                mDrawables = dr = new Drawables(getContext());
+            }
+
+            mDrawables.mOverride = false;
+
+            if (dr.mDrawableLeft != left && dr.mDrawableLeft != null) {
+                dr.mDrawableLeft.setCallback(null);
+            }
+            dr.mDrawableLeft = left;
+
+            if (dr.mDrawableTop != top && dr.mDrawableTop != null) {
+                dr.mDrawableTop.setCallback(null);
+            }
+            dr.mDrawableTop = top;
+
+            if (dr.mDrawableRight != right && dr.mDrawableRight != null) {
+                dr.mDrawableRight.setCallback(null);
+            }
+            dr.mDrawableRight = right;
+
+            if (dr.mDrawableBottom != bottom && dr.mDrawableBottom != null) {
+                dr.mDrawableBottom.setCallback(null);
+            }
+            dr.mDrawableBottom = bottom;
+
+            final Rect compoundRect = dr.mCompoundRect;
+            int[] state;
+
+            state = getDrawableState();
+
+            if (left != null) {
+                left.setState(state);
+                left.copyBounds(compoundRect);
+                left.setCallback(this);
+                dr.mDrawableSizeLeft = compoundRect.width();
+                dr.mDrawableHeightLeft = compoundRect.height();
+            } else {
+                dr.mDrawableSizeLeft = dr.mDrawableHeightLeft = 0;
+            }
+
+            if (right != null) {
+                right.setState(state);
+                right.copyBounds(compoundRect);
+                right.setCallback(this);
+                dr.mDrawableSizeRight = compoundRect.width();
+                dr.mDrawableHeightRight = compoundRect.height();
+            } else {
+                dr.mDrawableSizeRight = dr.mDrawableHeightRight = 0;
+            }
+
+            if (top != null) {
+                top.setState(state);
+                top.copyBounds(compoundRect);
+                top.setCallback(this);
+                dr.mDrawableSizeTop = compoundRect.height();
+                dr.mDrawableWidthTop = compoundRect.width();
+            } else {
+                dr.mDrawableSizeTop = dr.mDrawableWidthTop = 0;
+            }
+
+            if (bottom != null) {
+                bottom.setState(state);
+                bottom.copyBounds(compoundRect);
+                bottom.setCallback(this);
+                dr.mDrawableSizeBottom = compoundRect.height();
+                dr.mDrawableWidthBottom = compoundRect.width();
+            } else {
+                dr.mDrawableSizeBottom = dr.mDrawableWidthBottom = 0;
+            }
+        }
+
+        // Save initial left/right drawables
+        if (dr != null) {
+            dr.mDrawableLeftInitial = left;
+            dr.mDrawableRightInitial = right;
+        }
+
+        resetResolvedDrawables();
+        resolveDrawables();
+        invalidate();
+        requestLayout();
+    }

@@ -1,0 +1,4 @@
+问题一，设置图片和文本的间隔：
+http://stackoverflow.com/questions/3337371/androiddrawableleft-margin-and-or-padding
+As cephus mentioned android:drawablePadding 
+will only force padding between the text and the drawable if the button is small enough.

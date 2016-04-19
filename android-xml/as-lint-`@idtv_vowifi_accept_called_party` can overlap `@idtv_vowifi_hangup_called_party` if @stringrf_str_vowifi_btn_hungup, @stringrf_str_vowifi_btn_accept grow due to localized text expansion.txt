@@ -1,0 +1,10 @@
+`@idtv_vowifi_accept_called_party` can overlap `@idtv_vowifi_hangup_called_party` if @stringrf_str_vowifi_btn_hungup, @stringrf_str_vowifi_btn_accept grow due to localized text expansion
+
+有可会重叠。
+
+
+overlap[英][ˌəʊvəˈlæp] [美][ˌoʊvərˈlæp]
+
+n.重叠部分；覆盖物，涂盖层；[数]交叠，相交
+vt.重叠；与…部分相同
+vi.互搭，重叠；部分相同；[数]有与…共同的某物

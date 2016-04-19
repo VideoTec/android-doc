@@ -1,0 +1,40 @@
+问题一，设置图片和文本的间隔：
+http://stackoverflow.com/questions/3337371/androiddrawableleft-margin-and-or-padding
+As cephus mentioned android:drawablePadding 
+will only force padding between the text and the drawable if the button is small enough.
+
+问题二，图片和文本居中：
+http://stackoverflow.com/questions/16227252/center-text-and-image-in-compound-drawable
+Add android:gravity="center" to your TextView.
+
+http://developer.android.com/intl/zh-cn/reference/android/widget/TextView.html#setCompoundDrawablesWithIntrinsicBounds%28int,%20int,%20int,%20int%29
+
+public void setCompoundDrawablesWithIntrinsicBounds (int left, int top, int right, int bottom)
+
+Added in API level 3
+Sets the Drawables (if any) to appear to the left of, above, to the right of, and below the text. Use 0 if you do not want a Drawable there. The Drawables' bounds will be set to their intrinsic bounds.
+
+Calling this method will overwrite any Drawables previously set using setCompoundDrawablesRelative(Drawable, Drawable, Drawable, Drawable) or related methods.
+
+Related XML Attributes:
+
+android:drawableLeft
+android:drawableTop
+android:drawableRight
+android:drawableBottom
+
+---------------------------------------
+android:drawableLeft
+---------------------------------------
+
+The drawable to be drawn to the left of the text.
+
+May be a reference to another resource, 
+in the form "@[+][package:]type:name" or to a theme attribute in the form "?[package:][type:]name".
+
+May be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+This corresponds to the global attribute resource symbol drawableLeft.
+
+Related Methods
+setCompoundDrawablesWithIntrinsicBounds(int,int,int,int)

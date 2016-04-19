@@ -1,0 +1,24 @@
+
+    /**
+     * Return a copy of the drawable's bounds in the specified Rect (allocated
+     * by the caller). The bounds specify where this will draw when its draw()
+     * method is called.
+     *
+     * @param bounds Rect to receive the drawable's bounds (allocated by the
+     *               caller).
+     */
+    public final void copyBounds(Rect bounds) {
+        bounds.set(mBounds);
+    }
+
+    /**
+     * Return a copy of the drawable's bounds in a new Rect. This returns the
+     * same values as getBounds(), but the returned object is guaranteed to not
+     * be changed later by the drawable (i.e. it retains no reference to this
+     * rect). If the caller already has a Rect allocated, call copyBounds(rect).
+     *
+     * @return A copy of the drawable's bounds
+     */
+    public final Rect copyBounds() {
+        return new Rect(mBounds);
+    }

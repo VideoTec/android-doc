@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/4818118/how-to-create-drawable-from-resource
+
+Your Activity should have the method getResources. 
+
+Do:
+
+Drawable myIcon = getResources().getDrawable( R.drawable.icon );
