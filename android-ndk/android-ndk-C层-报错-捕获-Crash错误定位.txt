@@ -1,0 +1,10 @@
+http://blog.csdn.net/kevinx_xu/article/details/26253969
+Android dumpstate 工具解析
+
+http://blog.csdn.net/xyang81/article/details/42319789
+Android NDK开发Crash错误定位
+
+http://stackoverflow.com/questions/8115192/android-ndk-getting-the-backtrace
+backtrace() is a non-standard Glibc extension, 
+and even then somewhat shaky on ARM (you need to have built everything with -funwind-tables, 
+I think, and then have a somewhat new Glibc?)

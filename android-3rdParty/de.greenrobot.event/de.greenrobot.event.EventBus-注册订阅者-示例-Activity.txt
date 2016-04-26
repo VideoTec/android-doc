@@ -1,0 +1,18 @@
+  注册
+  @Override  
+  protected void onCreate(Bundle savedInstanceState)  
+  {  
+    super.onCreate(savedInstanceState);  
+    setContentView(R.layout.activity_main);  
+    //注册EventBus  
+    EventBus.getDefault().register(this);  
+  }  
+
+  反注册
+  @Override  
+  protected void onDestroy()  
+  {  
+    //取消注册EventBus  
+    EventBus.getDefault().unregister(this);  
+    super.onDestroy();  
+  }  

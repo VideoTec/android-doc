@@ -1,0 +1,1 @@
+A/libc: Fatal signal 13 (SIGPIPE) at 0x0000530d (code=0), thread 21261 (logcat)

@@ -1,0 +1,25 @@
+    public void register(Object subscriber) {
+        this.register(subscriber, false, 0);
+    }
+    
+    public void register(Object subscriber, int priority) {
+        this.register(subscriber, false, priority);
+    }
+    
+    private synchronized void register(Object subscriber, boolean sticky, int priority) {
+        List subscriberMethods = this.subscriberMethodFinder.findSubscriberMethods(subscriber.getClass());
+        Iterator i$ = subscriberMethods.iterator();
+
+        while(i$.hasNext()) {
+            SubscriberMethod subscriberMethod = (SubscriberMethod)i$.next();
+            this.subscribe(subscriber, subscriberMethod, sticky, priority);
+        }
+
+    }
+
+    http://blog.csdn.net/yuanzeyao/article/details/38174537
+    其实调用的就是同名函数register，它的四个参数意义分别是：
+subscriber：就是要注册的一个订阅者，
+methodName:就是订阅者默认的订阅函数名，其实就是“onEvent”
+sticky:表示是否是粘性的，一般默认都是false，除非你调用registerSticky方法了
+priority：表示事件的优先级，默认就行，

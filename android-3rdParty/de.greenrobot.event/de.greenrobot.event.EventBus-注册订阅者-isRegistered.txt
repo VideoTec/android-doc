@@ -1,0 +1,3 @@
+    public synchronized boolean isRegistered(Object subscriber) {
+        return this.typesBySubscriber.containsKey(subscriber);
+    }

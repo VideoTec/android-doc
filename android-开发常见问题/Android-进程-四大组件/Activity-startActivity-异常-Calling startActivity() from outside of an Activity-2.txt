@@ -1,0 +1,43 @@
+原因：mContext.startActivity 调用者不是当前的 Activity-context
+
+19:40 2016/4/21
+
+代码：
+
+public class BaseActivity extends SwipeBackFragmentActivity {
+
+    private static final String TAG = BaseActivity.class.getSimpleName();
+    protected Context mContext;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getApplicationContext();
+        
+    出错代码：
+                    Intent intent = new Intent(mContext, RFVoWifiVoiceCallActivity.class);
+                    intent.putExtra(RFUIExtraConfig.Extra_VoWifi_AnotherParty_Number, tel);
+                    intent.putExtra(RFUIExtraConfig.Extra_VoWifi_UIState, RFVoWifiVoiceCallActivity.VoiceCallUIState.Outgoing);
+                    mContext.startActivity(intent);
+                    
+异常信息：
+mTag = crash, thread = Thread[main,5,main]
+android.util.AndroidRuntimeException: Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
+at android.app.ContextImpl.startActivity(ContextImpl.java:1128)
+at android.app.ContextImpl.startActivity(ContextImpl.java:1115)
+at android.content.ContextWrapper.startActivity(ContextWrapper.java:311)
+at com.feinno.rongfly.ui.session.activity.BaseChatActivity.clickMultimedia(BaseChatActivity.java:1274)
+at com.feinno.rongfly.ui.session.view.MultimediaViewPager.onItemClick(MultimediaViewPager.java:163)
+at android.widget.AdapterView.performItemClick(AdapterView.java:299)
+at android.widget.AbsListView.performItemClick(AbsListView.java:1115)
+at android.widget.AbsListView$PerformClick.run(AbsListView.java:2930)
+at android.widget.AbsListView$3.run(AbsListView.java:3693)
+at android.os.Handler.handleCallback(Handler.java:733)
+at android.os.Handler.dispatchMessage(Handler.java:95)
+at android.os.Looper.loop(Looper.java:136)
+at android.app.ActivityThread.main(ActivityThread.java:5135)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:515)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:795)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:611)
+at dalvik.system.NativeStart.main(Native Method)

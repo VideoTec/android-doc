@@ -1,0 +1,9 @@
+名词解释：
+Hotswapping 热交换
+
+04/20 20:29:32: Launching app
+No changes.
+
+04/20 20:30:49: Launching app
+Hotswapping changes... - 界面重新加载时会更新
+

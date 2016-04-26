@@ -1,0 +1,22 @@
+造成这个异常的原因是：
+
+public class NotifyReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        这个方法出现了异常
+
+04-20 16:25:09.023 18788-18788/com.feinno.rongfly E/RF_CrashHandler: mTag = crash, thread = Thread[main,5,main]
+                                                                     java.lang.IllegalStateException: Broadcast already finished
+                                                                         at android.content.BroadcastReceiver$PendingResult.sendFinished(BroadcastReceiver.java:410)
+                                                                         at android.content.BroadcastReceiver$PendingResult.finish(BroadcastReceiver.java:389)
+                                                                         at android.app.ActivityThread.handleReceiver(ActivityThread.java:2562)
+                                                                         at android.app.ActivityThread.access$1600(ActivityThread.java:160)
+                                                                         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1393)
+                                                                         at android.os.Handler.dispatchMessage(Handler.java:99)
+                                                                         at android.os.Looper.loop(Looper.java:176)
+                                                                         at android.app.ActivityThread.main(ActivityThread.java:5454)
+                                                                         at java.lang.reflect.Method.invokeNative(Native Method)
+                                                                         at java.lang.reflect.Method.invoke(Method.java:525)
+                                                                         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+                                                                         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+                                                                         at dalvik.system.NativeStart.main(Native Method)

@@ -1,0 +1,14 @@
+public class AsyncEvent  
+{  
+  private static final String TAG = "AsyncEvent";  
+  public String msg;  
+  public AsyncEvent(String msg)  
+  {  
+    this.msg=msg;  
+  }  
+}  
+
+事件有官方基类吗？没有。
+
+有什么必须要实现原规则吗？
+有个字符串或者枚举值来区分，事件的不同类型。

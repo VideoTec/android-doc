@@ -1,0 +1,68 @@
+代码：
+    switch (contentType) {
+        case RFVoWifiMgr.IMContentTypeInvite: {
+            InviteNotify inviteNotify = new InviteNotify();
+            inviteNotify.parseFrom(msg.getContentBuffer());
+            voWifiMgr.onInvite(inviteNotify);
+            
+异常：
+
+04-20 16:45:24.334 20218-20218/com.feinno.rongfly E/ActivityThread: Unable to start receiver com.feinno.rongfly.core.broadcast.NotifyReceiver: java.lang.RuntimeException: Not found class com.feinno.androidprotocol.protobuffer.args.vowifi.InviteNotify ProtobufferBuiler.
+   java.lang.RuntimeException: Not found class com.feinno.androidprotocol.protobuffer.args.vowifi.InviteNotify ProtobufferBuiler.
+     at com.feinno.serialization.protobuf.ProtoBuilderHelper.getProtoBuilder(ProtoManager.java:217)
+     at com.feinno.serialization.protobuf.ProtoManager.parseFrom(ProtoManager.java:137)
+     at com.feinno.serialization.protobuf.ProtoEntity.parseFrom(ProtoEntity.java:128)
+     at com.feinno.rongfly.core.modules.RFCoreManager.handleVoWifiNotify(RFCoreManager.java:254)
+     at com.feinno.rongfly.core.modules.RFCoreManager.onReceivedNotify(RFCoreManager.java:144)
+     at com.feinno.rongfly.core.broadcast.NotifyReceiver.onReceive(NotifyReceiver.java:34)
+     at android.app.ActivityThread.handleReceiver(ActivityThread.java:2532)
+     at android.app.ActivityThread.access$1600(ActivityThread.java:160)
+     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1393)
+     at android.os.Handler.dispatchMessage(Handler.java:99)
+     at android.os.Looper.loop(Looper.java:176)
+     at android.app.ActivityThread.main(ActivityThread.java:5454)
+     at java.lang.reflect.Method.invokeNative(Native Method)
+     at java.lang.reflect.Method.invoke(Method.java:525)
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+     at dalvik.system.NativeStart.main(Native Method)
+     
+产生异常的地方：
+	static <T extends ProtoEntity> ProtoBuilder<T> getProtoBuilder(T t) {
+		ProtoBuilderFactory factory = PROTO_BUILDER_FACTORY_MAP.get(t.getClass());
+		if (factory == null) {
+			logger.info("Not found [{}] ProtoBuilder and ProtoBuilderFactory. Ready to automatically generated.", t
+					.getClass().getName());
+			// 好吧，这个待序列化对象的类型没有找到对应的BuilderFactory，那么在这里在构建一个BuilderFactory，构建的过程就是代码自动生成与编译的过程
+			synchronized (SYNCHRONIZED_OBJECT) {
+				long startTime = System.nanoTime();
+				if (PROTO_BUILDER_FACTORY_MAP.get(t.getClass()) == null) {
+					// 如果没有开启刷新缓存，那么则先从当前类路径中直接取得，当取不到时再创建
+					factory = getProtoBuilderFactory(t.getClass());
+					if (factory == null) {
+						throw new RuntimeException(String.format("Not found %s ProtobufferBuiler.",t.getClass()));
+					}
+
+类加载器，没有加载这个类？
+
+正常的类如：
+BecomeBuddyNotify.class 有对应的类。
+BecomeBuddyNotifyProtoBuilder.class
+BecomeBuddyNotifyProtoBuilderFactory.class
+
+从 *.class 生成 *ProtoBuilder.class 和 *ProtoBuilderFactory.class 的脚本：
+def CodeGenerator() {
+    javaexec {
+        main = "com.feinno.serialization.protobuf.util.AntBuilder"
+        classpath += fileTree(include: '*.jar', dir: 'pbjar')
+        classpath += files('build/intermediates/classes/debug')
+        args = ['com.feinno','build/intermediates/classes/debug']
+    }
+}
+task buildpb() {
+    println 'begin build pb!'
+    CodeGenerator()
+}
+
+但是，InviteNotify ，没有生成对应的类。为什么？
+如果有字段，没有写对应的 set/get 就不能正确的生成这两个类。

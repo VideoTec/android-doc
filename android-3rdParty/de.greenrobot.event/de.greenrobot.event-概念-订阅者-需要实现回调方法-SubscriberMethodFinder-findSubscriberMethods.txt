@@ -1,0 +1,84 @@
+onEvent:
+onEventMainThread:
+onEvnetBackground:  --  难道是 onEventBackgroundThread ? 对
+onEventAsync：
+
+    List<SubscriberMethod> findSubscriberMethods(Class<?> subscriberClass) {
+        String key = subscriberClass.getName();
+        Map clazz = methodCache;
+        List subscriberMethods;
+        synchronized(methodCache) {
+            subscriberMethods = (List)methodCache.get(key);
+        }
+
+        if(subscriberMethods != null) {
+            return subscriberMethods;
+        } else {
+            ArrayList var23 = new ArrayList();
+            Class var24 = subscriberClass;
+            HashSet eventTypesFound = new HashSet();
+
+            for(StringBuilder methodKeyBuilder = new StringBuilder(); var24 != null; var24 = var24.getSuperclass()) {
+                String name = var24.getName();
+                if(name.startsWith("java.") || name.startsWith("javax.") || name.startsWith("android.")) {
+                    break;
+                }
+
+                Method[] methods = var24.getDeclaredMethods();
+                Method[] arr$ = methods;
+                int len$ = methods.length;
+
+                for(int i$ = 0; i$ < len$; ++i$) {
+                    Method method = arr$[i$];
+                    String methodName = method.getName();
+                    if(methodName.startsWith("onEvent")) {
+                        int modifiers = method.getModifiers();
+                        if((modifiers & 1) != 0 && (modifiers & 5192) == 0) {
+                            Class[] parameterTypes = method.getParameterTypes();
+                            if(parameterTypes.length == 1) {
+                                String modifierString = methodName.substring("onEvent".length());
+                                ThreadMode threadMode;
+                                if(modifierString.length() == 0) {
+                                    threadMode = ThreadMode.PostThread;
+                                } else if(modifierString.equals("MainThread")) {
+                                    threadMode = ThreadMode.MainThread;
+                                } else if(modifierString.equals("BackgroundThread")) {
+                                    threadMode = ThreadMode.BackgroundThread;
+                                } else {
+                                    if(!modifierString.equals("Async")) {
+                                        if(!this.skipMethodVerificationForClasses.containsKey(var24)) {
+                                            throw new EventBusException("Illegal onEvent method, check for typos: " + method);
+                                        }
+                                        continue;
+                                    }
+
+                                    threadMode = ThreadMode.Async;
+                                }
+
+                                Class eventType = parameterTypes[0];
+                                methodKeyBuilder.setLength(0);
+                                methodKeyBuilder.append(methodName);
+                                methodKeyBuilder.append('>').append(eventType.getName());
+                                String methodKey = methodKeyBuilder.toString();
+                                if(eventTypesFound.add(methodKey)) {
+                                    var23.add(new SubscriberMethod(method, threadMode, eventType));
+                                }
+                            }
+                        } else if(!this.skipMethodVerificationForClasses.containsKey(var24)) {
+                            Log.d(EventBus.TAG, "Skipping method (not public, static or abstract): " + var24 + "." + methodName);
+                        }
+                    }
+                }
+            }
+
+            if(var23.isEmpty()) {
+                throw new EventBusException("Subscriber " + subscriberClass + " has no public methods called " + "onEvent");
+            } else {
+                Map var25 = methodCache;
+                synchronized(methodCache) {
+                    methodCache.put(key, var23);
+                    return var23;
+                }
+            }
+        }
+    }

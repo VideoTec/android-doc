@@ -1,0 +1,17 @@
+
+    public synchronized void unregister(Object subscriber) {
+        List subscribedTypes = (List)this.typesBySubscriber.get(subscriber);
+        if(subscribedTypes != null) {
+            Iterator i$ = subscribedTypes.iterator();
+
+            while(i$.hasNext()) {
+                Class eventType = (Class)i$.next();
+                this.unubscribeByEventType(subscriber, eventType);
+            }
+
+            this.typesBySubscriber.remove(subscriber);
+        } else {
+            Log.w(TAG, "Subscriber to unregister was not registered before: " + subscriber.getClass());
+        }
+
+    }

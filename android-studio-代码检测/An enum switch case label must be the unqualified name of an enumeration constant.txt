@@ -1,0 +1,49 @@
+代码：
+
+    static public enum EBEventVoWifi {
+        Bye,
+        Accept,
+        Ringing,
+        HttpFailDeleteSession,
+        HttpFailPutAnswerSDP,
+        HttpFailPutOfferSDP,
+        HttpFailAck,
+        HttpFailInvite,
+        HttpFailConferenceInvite,
+        HttpFailCancelSdpChange,
+        HttpFailDeclineSdpChange,
+        HttpFailKeepAlive,
+        HttpFailAcceptPutAnswerSDP,
+        HttpFailAcceptPutSessionStatus,
+        HttpFailRingingPutSessionStatus
+    }
+
+        EBVoWifi.EBEventVoWifi e = event.getEvent();
+        switch (e) {
+            case EBVoWifi.EBEventVoWifi.Accept: {  解决方法：直接写 Accept，编译器会自动关联到对应的枚举类。
+                break;
+            }
+            default: break;
+        }
+        
+unqualified[英][ˌʌnˈkwɒlɪfaɪd] [美][ˌʌnˈkwɑlɪfaɪd]
+adj.不合格的；无资格的；无限制的；不胜任的
+        
+错误提示：
+ An enum switch case label must be the unqualified name of an enumeration constant
+ 
+http://stackoverflow.com/questions/8481635/using-java-enums-from-different-classes
+
+An enum switch case label must be the unqualified name of an enum constant:
+
+switch (test.getStatus()) // returns the current status
+{
+    case Opened:
+        // do something
+        // break and other cases
+}
+
+It doesn't matter that it's defined within another class. 
+In any case, the compiler is able to infer the type of the enum based on your switch statement, 
+and doesn't need the constant names to be qualified. 
+For whatever reason, using qualified names is invalid syntax.

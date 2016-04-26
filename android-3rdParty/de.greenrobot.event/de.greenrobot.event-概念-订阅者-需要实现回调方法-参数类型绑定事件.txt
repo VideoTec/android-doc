@@ -1,0 +1,13 @@
+参看 findSubscriberMethods 源码：
+
+E:\doc\android\android-3rdParty\de.greenrobot.event
+\de.greenrobot.event-概念-订阅者-需要实现回调方法-SubscriberMethodFinder-findSubscriberMethods.txt
+
+Class eventType = parameterTypes[0];
+methodKeyBuilder.setLength(0);
+methodKeyBuilder.append(methodName);
+methodKeyBuilder.append('>').append(eventType.getName());
+String methodKey = methodKeyBuilder.toString();
+if(eventTypesFound.add(methodKey)) {
+    var23.add(new SubscriberMethod(method, threadMode, eventType));
+}

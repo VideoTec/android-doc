@@ -1,0 +1,44 @@
+ I/DEBUG: *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+ I/DEBUG: Build fingerprint: 'samsung/m0zm/m0cmcc:4.3/JSS15J/I9308ZMUBNI1:user/release-keys'
+ I/DEBUG: Revision: '12'
+ I/DEBUG: pid: 22769, tid: 22769, name: no.rongfly:push  >>> com.feinno.rongfly:push <<<
+ I/DEBUG: signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 00000000
+ I/DEBUG:     r0 00000000  r1 00000000  r2 0d3b7952  r3 0d3b7952
+ I/DEBUG:     r4 6171cd38  r5 00000000  r6 beac32a4  r7 616ccc20
+ I/DEBUG:     r8 41eff1e0  r9 40bd91a0  sl 00000001  fp 40bd4c74
+ I/DEBUG:     ip 00000003  sp beac3298  lr 615804db  pc 615804e2  cpsr 60000030
+ I/DEBUG:     d0  000000000000000f  d1  000000000000000f
+ I/DEBUG:     d2  ffffffffffffffff  d3  ffffffffffffffff
+ I/DEBUG:     d4  8000000000000000  d5  3fcef049fb9094d1
+ I/DEBUG:     d6  3f00000000000000  d7  4040000000000003
+ I/DEBUG:     d8  0000000000000000  d9  0000000000000000
+ I/DEBUG:     d10 0000000000000000  d11 0000000000000000
+ I/DEBUG:     d12 0000000000000000  d13 0000000000000000
+ I/DEBUG:     d14 0000000000000000  d15 0000000000000000
+ I/DEBUG:     d16 0000000000000002  d17 3fc999999999999a
+ I/DEBUG:     d18 4146605000000000  d19 0065004e005f0061
+ I/DEBUG:     d20 3f8948b0fcd6e9e0  d21 3fe555b0aaeac752
+ I/DEBUG:     d22 3fd24998d6307188  d23 3fcc7288e957b53b
+ I/DEBUG:     d24 3fc74721cad6b0ed  d25 3fc2f112df3e5244
+ I/DEBUG:     d26 ffffffffffffffff  d27 ffffffffffffffff
+ I/DEBUG:     d28 40008df2d49d41f1  d29 3fb0f4a31edab38b
+ I/DEBUG:     d30 3ff0000000000000  d31 3f4de16b9c24a98f
+ I/DEBUG:     scr 80000010
+ I/DEBUG: backtrace:
+ I/DEBUG:     #00  pc 0004b4e2  /data/app-lib/com.feinno.rongfly-2/libv6sdk.so (JNI_OnLoad+37)
+ I/DEBUG:     #01  pc 000508c7  /system/lib/libdvm.so (dvmLoadNativeCode(char const*, Object*, char**)+474)
+ I/DEBUG:     #02  pc 00067831  /system/lib/libdvm.so
+ I/DEBUG:     #03  pc 00027860  /system/lib/libdvm.so
+ I/DEBUG:     #04  pc 0002be00  /system/lib/libdvm.so (dvmInterpret(Thread*, Method const*, JValue*)+184)
+ I/DEBUG:     #05  pc 00060a6d  /system/lib/libdvm.so (dvmCallMethodV(Thread*, Method const*, Object*, bool, JValue*, std::__va_list)+292)
+ I/DEBUG:     #06  pc 00060a97  /system/lib/libdvm.so (dvmCallMethod(Thread*, Method const*, Object*, JValue*, ...)+20)
+ I/DEBUG:     #07  pc 0006bd9d  /system/lib/libdvm.so (dvmInitClass+1020)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ I/DEBUG: !@dumpstate -k -t -z -d -o /data/log/dumpstate_app_native -m 26458

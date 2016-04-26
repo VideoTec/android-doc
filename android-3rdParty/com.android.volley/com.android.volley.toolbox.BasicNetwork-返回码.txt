@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/21953519/volley-exception-error-when-response-code-304-and-200
+http://blog.zongwu233.com/nonstandard-204-response

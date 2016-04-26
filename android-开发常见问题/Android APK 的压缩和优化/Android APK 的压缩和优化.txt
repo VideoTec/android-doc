@@ -1,0 +1,3 @@
+http://mp.weixin.qq.com/s?__biz=MzAwMTYwNzE2Mg==&mid=2651036594&idx=1&sn=b276c0f76cea713e5d568ab51e3f7f13&scene=0#wechat_redirect
+
+最近 Facebook 开源了一个名为 Redex[1] 的工具包，专门用于 Android 字节码的优化，经过 Redex 转换后的 APK，体积变得更小，运行速度变得更快。Redex 基于管道的方式来优化 Android 的 .dex 文件，一个源 .dex 文件通过管道进行一系列的自定义转换后，将得到一个优化的 .dex 文件。接下来将带大家简单快速的了解 Redex 是什么，以及它的基本原理和使用方法，更详细内容可以参见《optimizing-android-bytecode-with-redex》[

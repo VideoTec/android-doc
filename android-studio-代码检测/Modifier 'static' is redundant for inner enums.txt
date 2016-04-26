@@ -1,0 +1,14 @@
+代码：
+
+public class EBVoWifi extends BaseEvent {
+    static public enum EBEventVoWifi {
+        Bye,
+        Accept,
+        Ringing
+    }
+    
+警告：
+Modifier 'static' is redundant for inner enums
+
+redundant[英][rɪˈdʌndənt] [美][rɪˈdʌndənt]
+adj.多余的，累赘的；（因人员过剩）被解雇的，失业的；重沓；衍

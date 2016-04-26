@@ -1,0 +1,9 @@
+    public static EventBus getDefault() {
+        if(defaultInstance == null) {
+            Class var0 = EventBus.class;
+            synchronized(EventBus.class) {
+                if(defaultInstance == null) {
+                    defaultInstance = new EventBus();
+                }
+            }
+        }

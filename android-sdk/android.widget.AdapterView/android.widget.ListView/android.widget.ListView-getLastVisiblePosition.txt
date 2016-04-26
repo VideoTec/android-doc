@@ -1,0 +1,4 @@
+android.widget.AdapterView<T extends android.widget.Adapter>
+
+int	getLastVisiblePosition()
+Returns the position within the adapter's data set for the last item displayed on screen.

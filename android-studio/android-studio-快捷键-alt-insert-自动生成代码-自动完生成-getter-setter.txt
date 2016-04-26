@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/23897215/how-to-automatically-generate-getters-and-setters-in-android-studio
+
+Android Studio & OSx :
+
+Press cmd+n > Generate > Getter and Setter
+
+Android Studio & Windows :
+
+Press Alt + Insert > Generate > Getter and Setter
