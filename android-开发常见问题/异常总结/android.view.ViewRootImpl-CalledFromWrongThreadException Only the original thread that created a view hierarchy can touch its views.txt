@@ -1,0 +1,18 @@
+ mTag = crash, thread = Thread[vowifi_media_thread,5,main]
+android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:6818)
+at android.view.ViewRootImpl.requestLayout(ViewRootImpl.java:1080)
+at android.view.View.requestLayout(View.java:16775)
+at android.view.View.requestLayout(View.java:16775)
+at android.view.View.requestLayout(View.java:16775)
+at android.view.View.requestLayout(View.java:16775)
+at android.widget.RelativeLayout.requestLayout(RelativeLayout.java:358)
+at android.view.View.requestLayout(View.java:16775)
+at android.view.ViewGroup.addView(ViewGroup.java:3608)
+at android.view.ViewGroup.addView(ViewGroup.java:3555)
+at android.view.ViewGroup.addView(ViewGroup.java:3531)
+at com.feinno.rongfly.core.modules.vowifi.RFVoWifiHelper$6.run(RFVoWifiHelper.java:219)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
