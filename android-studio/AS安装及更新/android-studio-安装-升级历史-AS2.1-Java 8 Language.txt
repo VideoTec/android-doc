@@ -1,0 +1,32 @@
+The primary changes in this update provide 
+support for development with the Android N Preview
+
+The Android N platform adds support for Java 8 language features, 
+which require a new experimental compiler called Jack. 
+The latest version of Jack is currently supported only in Android Studio 2.1. 
+So if you want to use Java 8 language features, 
+you need to use Android Studio 2.1 to build your app.
+
+Instant Run is disabled when you enable the Jack compiler 
+because they currently are not compatible.
+
+Although Android Studio 2.1 is now stable, 
+the Jack compiler is still experimental and 
+you must enable it with the jackOptions property in your build.gradle file.
+
+Other than the changes to support the N Preview, 
+Android Studio 2.1 includes minor bug fixes and the following enhancements:
+
+The Java-aware C++ debugger is now enabled by default 
+when you're using an N device or emulator and 
+select Native debugger mode (in the Debugger tab for your run/debug configuration).
+
+For other build enhancements, 
+including incremental Java compilation and dexing-in-process, 
+update your Android Plugin for Gradle to version 2.1.0.
+
+enhancement
+[英][ɪn'hɑ:nsmənt] 
+[美][ɪnˈhænsmənt]
+
+n.增强；增加；提高；改善
