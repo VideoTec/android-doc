@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
+
+Try:
+
+ import android.os.Vibrator;
+ ...
+ Vibrator v = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+ // Vibrate for 500 milliseconds
+ v.vibrate(500);
+ 
+Note:
+
+Don't forget to include permission in AndroidManifest.xml file:
+
+<uses-permission android:name="android.permission.VIBRATE"/>

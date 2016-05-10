@@ -1,0 +1,7 @@
+http://developer.android.com/intl/zh-cn/reference/android/media/Ringtone.html
+
+Ringtone provides a quick method for 
+playing a ringtone, notification, or other similar types of sounds.
+
+For ways of retrieving Ringtone objects or to show a ringtone picker, 
+see RingtoneManager.

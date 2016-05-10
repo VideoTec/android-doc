@@ -1,0 +1,16 @@
+import android.os.IPowerManager;
+
+IPowerManager mPowerManager;
+mPowerManager = IPowerManager.Stub.asInterface(
+    ServiceManager.getService(Context.POWER_SERVICE));
+    
+
+162            try {
+163                if (mBluetoothManager.showBluetoothIndication()) {
+164                    mPowerManager.setAttentionLight(true, 0x000000ff);
+165                } else {
+166                    mPowerManager.setAttentionLight(true, 0x00ffffff);
+167                }
+168            } catch (RemoteException ex) {
+169                // the other end of this binder call is in the system process.
+170            }

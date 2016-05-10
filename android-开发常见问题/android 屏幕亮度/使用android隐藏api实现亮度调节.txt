@@ -1,0 +1,10 @@
+http://www.cnblogs.com/ziip/archive/2011/03/01/1968388.html
+
+Android 1.5之后将调节亮度的api隐藏了，
+不过android的源码中依然有方法可以实现，如下：
+
+IPowerManager power = IPowerManager.Stub.asInterface
+    (ServiceManager.getService("power"));
+ 
+if (power != null) { 
+   power.setBacklightBrightness(brightness);

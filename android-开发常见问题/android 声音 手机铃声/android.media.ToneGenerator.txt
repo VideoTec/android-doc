@@ -1,0 +1,13 @@
+双音多频信号（Dual-Tone Multi-Frequency, DTMF），
+电话系统中电话机与交换机之间的一种用户信令，
+通常用于发送被叫号码。
+
+http://developer.android.com/intl/zh-cn/reference/android/media/ToneGenerator.html#TONE_SUP_RINGTONE
+
+This class provides methods to play DTMF tones 
+(ITU-T Recommendation Q.23), 
+call supervisory tones (3GPP TS 22.001, CEPT) and 
+proprietary tones (3GPP TS 31.111). 
+Depending on call state and routing options, 
+tones are mixed to the downlink audio or output to the speaker phone or headset. 
+This API is not for generating tones over the uplink audio path.

@@ -1,0 +1,22 @@
+setRouting(int mode, int routes, int mask)
+
+This method was deprecated in API level 4. 
+
+Do not set audio routing directly, use 
+setSpeakerphoneOn(), 
+setBluetoothScoOn() methods instead.
+
+------------------------------------
+理解下面这句：听筒和耳机是自动替换的，他们是一条路。
+------------------------------------
+Wired headset and earpiece work the same way
+
+                case MSG_AUDIO_MANAGER_TURN_ON_SPEAKER: {
+                    boolean on = (msg.arg1 != 0);
+                    // Wired headset and earpiece work the same way
+                    if (mAudioManager.isSpeakerphoneOn() != on) {
+                        Log.i(this, "turning speaker phone %s", on);
+                        mAudioManager.setSpeakerphoneOn(on);
+                    }
+                    break;
+                }

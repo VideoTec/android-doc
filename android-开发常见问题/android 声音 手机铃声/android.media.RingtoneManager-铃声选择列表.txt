@@ -1,0 +1,26 @@
+http://developer.android.com/intl/zh-cn/reference/android/media/RingtoneManager.html
+
+RingtoneManager provides access to ringtones, 
+notification, and other types of sounds. 
+It manages querying the different media providers and 
+combines the results into a single cursor. 
+It also provides a Ringtone for each ringtone. 
+We generically call these sounds ringtones, 
+however the TYPE_RINGTONE refers to the type of sounds that are suitable for the phone ringer.
+
+显示 - 铃声选择列表
+To show a ringtone picker to the user, 
+use the ACTION_RINGTONE_PICKER intent to launch the picker as a subactivity.
+
+http://blog.csdn.net/yelangjueqi/article/details/9140823
+
+RingtoneManager管理
+来电铃声（TYPE_RINGTONE）、
+提示音（TYPE_NOTIFICATION）、
+闹钟铃声（TYPE_ALARM）等，
+
+RingtoneManager的常用方法包括：
+1.getRingtone()    //获取铃声
+2.getDefaultUri()    //获取某一铃声类型的默认铃声
+3.setActualDefaultRingtoneUri()  //为某一铃声类型设置默认铃声
+4.getActualDefaultRingtoneUri(); //获取默认铃声

@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/24652747/what-is-the-difference-between-audiomanagers-stream-types-at-low-level
+
+we can control "Audio Focus" that let other apps stop playback or lower the volumes 
+so we can play a sound clearly on a specific stream, 
+or the sound will not block the other high-prioritized sound like phone ring, 
+navigation voice feedback 
+or something like that.
+
+http://developer.android.com/intl/zh-cn/training/managing-audio/audio-focus.html

@@ -1,0 +1,21 @@
+ringtone[英][ˈrɪŋtəʊn] [美][ˈrɪŋtoʊn]
+手机铃音
+
+The current ringtone mode, one of 
+RINGER_MODE_NORMAL,                 正常
+RINGER_MODE_SILENT, or              静音
+RINGER_MODE_VIBRATE.                震动
+
+-------------------------------------------
+public int getRingerMode ()
+-------------------------------------------
+
+-------------------------------------------
+public void setRingerMode (int ringerMode)
+-------------------------------------------
+Sets the ringer mode.
+Silent mode will mute the volume and will not vibrate. 
+Vibrate mode will mute the volume and vibrate. 
+Normal mode will be audible and may vibrate according to user settings.
+This method has no effect 
+if the device implements a fixed volume policy as indicated by isVolumeFixed().

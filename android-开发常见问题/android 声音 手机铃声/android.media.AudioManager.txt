@@ -1,0 +1,6 @@
+http://developer.android.com/intl/zh-cn/reference/android/media/AudioManager.html
+
+AudioManager provides access to volume and ringer mode control.
+
+Use Context.getSystemService(Context.AUDIO_SERVICE) 
+to get an instance of this class.

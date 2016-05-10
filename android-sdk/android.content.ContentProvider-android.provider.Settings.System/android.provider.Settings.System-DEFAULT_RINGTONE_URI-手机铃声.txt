@@ -1,0 +1,8 @@
+
+// Uri for the ringtone.
+Uri mCustomRingtoneUri = Settings.System.DEFAULT_RINGTONE_URI;
+
+Ê¹ÓÃÊ¾Àý£º
+
+        Ringtone r = RingtoneManager.getRingtone(this, Settings.System.DEFAULT_RINGTONE_URI);
+        r.play();

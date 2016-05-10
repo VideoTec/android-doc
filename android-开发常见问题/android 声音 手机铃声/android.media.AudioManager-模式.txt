@@ -1,0 +1,8 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+
+在setMode()方法中有以下几种对应不同的播放模式:
+
+MODE_NORMAL: 普通模式,既不是铃声模式也不是通话模式
+MODE_RINGTONE:铃声模式
+MODE_IN_CALL:通话模式
+MODE_IN_COMMUNICATION:通信模式,包括音/视频,VoIP通话.(3.0加入的,与通话模式类似)

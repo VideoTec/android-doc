@@ -1,0 +1,11 @@
+Ringtone	getRingtone(int position)
+Gets a Ringtone for the ringtone at the given position in the Cursor.
+
+static Ringtone	getRingtone(Context context, Uri ringtoneUri)
+Returns a Ringtone for a given sound URI.
+
+int	getRingtonePosition(Uri ringtoneUri)
+Gets the position of a Uri within this RingtoneManager.
+
+Uri	getRingtoneUri(int position)
+Gets a Uri for the ringtone at the given position in the Cursor.

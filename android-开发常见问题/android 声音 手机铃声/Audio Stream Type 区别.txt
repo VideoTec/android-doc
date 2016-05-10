@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/24652747/what-is-the-difference-between-audiomanagers-stream-types-at-low-level
+
+Other unmentioned thing is which audio device will produce a sound.
+
+Using STREAM_MUSIC 
+the sound will be produced through one audio device
+(phone speaker, earphone, bluetooth speaker or something else) connected to the phone.
+
+Using STREAM_RING 
+the sound will be produced through all audio device connected to the phone. 
+
+This behaviour might be differed for each devices.

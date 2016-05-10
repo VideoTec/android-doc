@@ -1,0 +1,4 @@
+setRouting(int mode, int routes, int mask)
+This method was deprecated in API level 4. Do not set audio routing directly, use 
+setSpeakerphoneOn(), 
+setBluetoothScoOn() methods instead.

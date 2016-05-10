@@ -1,0 +1,8 @@
+getRouting(int mode)
+This method was deprecated in API level 4. 
+Do not query audio routing directly, use 
+
+isSpeakerphoneOn(), 
+isBluetoothScoOn(), 
+isBluetoothA2dpOn() and 
+isWiredHeadsetOn() methods instead.

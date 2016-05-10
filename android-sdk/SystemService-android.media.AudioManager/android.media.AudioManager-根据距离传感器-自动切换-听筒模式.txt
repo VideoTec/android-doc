@@ -11,6 +11,10 @@ n.扩音器，扬声器；喇叭；扬场器
 headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
 n.戴在头上的耳机或听筒
 
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+最近由于项目需求要做音乐播放模式的切换,
+经过好多次尝试,发现这里面满满的都是坑啊
+
 http://stackoverflow.com/questions/25881889/how-to-use-proximity-sensor-and-audio-manager-to-reduce-volume-in-android-device
 
 传感器的操作是正确的，
@@ -20,7 +24,9 @@ http://stackoverflow.com/questions/11674921/switching-between-earpiece-and-speak
 ---------------------------------
 注意事项一：
 ---------------------------------
-Don't forget to un-register the sensor because android system won't release the sensors automatically after the usage. If you forget to do so music player and other application which uses music player will behave odd.
+Don't forget to un-register the sensor 
+because android system won't release the sensors automatically after the usage. 
+If you forget to do so music player and other application which uses music player will behave odd.
 
 ---------------------------------
 注意事项二：

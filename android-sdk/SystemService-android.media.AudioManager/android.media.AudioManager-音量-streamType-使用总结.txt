@@ -1,0 +1,23 @@
+stream-type:
+
+public static final int STREAM_RING
+
+The stream type to adjust. One of 
+STREAM_VOICE_CALL, 
+STREAM_SYSTEM, 
+STREAM_RING, 
+STREAM_MUSIC or 
+STREAM_ALARM
+
+The audio stream for the phone ring
+
+使用的方法：
+public void adjustStreamVolume (int streamType, int direction, int flags)
+            adjustSuggestedStreamVolume(int direction, int suggestedStreamType, int flags)
+            getStreamMaxVolume(int streamType)
+            getStreamVolume(int streamType)
+            isStreamMute(int streamType)
+            requestAudioFocus(AudioManager.OnAudioFocusChangeListener l, int streamType, int durationHint)
+            setStreamMute(int streamType, boolean state)
+            setStreamSolo(int streamType, boolean state)
+            setStreamVolume(int streamType, int index, int flags)

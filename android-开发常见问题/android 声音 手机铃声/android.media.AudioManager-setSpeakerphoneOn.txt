@@ -1,0 +1,10 @@
+
+                case MSG_AUDIO_MANAGER_TURN_ON_SPEAKER: {
+                    boolean on = (msg.arg1 != 0);
+                    // Wired headset and earpiece work the same way
+                    if (mAudioManager.isSpeakerphoneOn() != on) {
+                        Log.i(this, "turning speaker phone %s", on);
+                        mAudioManager.setSpeakerphoneOn(on);
+                    }
+                    break;
+                }

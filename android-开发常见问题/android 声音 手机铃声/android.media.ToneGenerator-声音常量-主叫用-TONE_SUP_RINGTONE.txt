@@ -1,0 +1,25 @@
+    /**
+     * Call supervisory tone, Ring Tone:
+     *      CEPT, JAPAN:    425Hz, 1s ON, 4s OFF...
+     *      ANSI (IS-95):   440Hz + 480Hz, 2s ON, 4s OFF...
+     *
+     * @see #ToneGenerator(int, int)
+     */
+    public static final int TONE_SUP_RINGTONE = 23;
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                ToneGenerator t = new ToneGenerator(AudioManager.STREAM_VOICE_CALL, 80);
+                synchronized (this) {
+                    t.startTone(ToneGenerator.TONE_SUP_RINGTONE);
+                    try {
+                        wait(Integer.MAX_VALUE - 20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    t.release();
+                }
+            }
+        };
+        thread.start();

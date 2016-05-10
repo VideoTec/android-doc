@@ -1,0 +1,5 @@
+http://developer.android.com/intl/zh-cn/reference/android/provider/Settings.System.html
+
+System settings, containing miscellaneous system preferences. 
+This table holds simple name/value pairs. 
+There are convenience functions for accessing individual settings entries.
