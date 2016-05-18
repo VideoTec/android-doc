@@ -1,0 +1,52 @@
+-----------------------------------------------------------------
+http://blog.csdn.net/scwhy/article/details/8912019
+Android锁屏状态下弹出activity
+-----------------------------------------------------------------
+
+最近一个项目有一个需求：
+
+程序后台跑一个service,当接受到新的消息后弹出一个activity显示。
+
+问题：在锁屏状态下 startActivity(intent) 并不能直接看到activity,
+
+    试过WakeLock跟KeyguardManager配合，都没有达到想要的效果。（其实想要的效果类似与闹钟)
+
+解决方案：
+
+在要弹出的activity的onCreate方法中加入如下代码
+
+getWindow().addFlags(
+        WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
+        WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
+        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+解释：
+
+FLAG_DISMISS_KEYGUARD  权限 
+Window flag: when set the window will cause the keyguard to be dismissed, 
+only if it is not a secure lock keyguard.
+
+FLAG_TURN_SCREEN_ON
+Window flag: when set as a window is being added or made visible, 
+once the window has been shown 
+then the system will poke the power manager's user activity 
+(as if the user had woken up the device) to turn the screen on.
+
+-----------------------------------------------------------------
+http://www.2cto.com/kf/201408/328664.html
+Android锁屏状态下弹出activity
+-----------------------------------------------------------------
+
+super.onCreate(savedInstanceState);
+getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                     |WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+setContentView(R.layout.activity_main);
+
+FLAG_SHOW_WHEN_LOCKED
+Window flag: special flag to let windows be shown when the screen is locked.
+
+【另一个问题】
+添加点击事件，进入app，突破锁屏：
+KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+KeyguardLock keyguardLock = keyguardManager.newKeyguardLock("");
+keyguardLock.disableKeyguard();

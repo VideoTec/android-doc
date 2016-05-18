@@ -1,0 +1,43 @@
+
+    /**
+     * Sets the microphone mute on or off.
+     * <p>
+     * This method should only be used by applications that replace the platform-wide
+     * management of audio settings or the main telephony application.
+     *
+     * @param on set <var>true</var> to mute the microphone;
+     *           <var>false</var> to turn mute off
+     */
+    public void setMicrophoneMute(boolean on){
+        AudioSystem.muteMicrophone(on);
+    }
+    
+    示例代码：
+    E:\android-code\platform\packages\services\Telecomm\src\com\android\server\telecom\CallAudioManager.java
+    
+    case MSG_AUDIO_MANAGER_SET_MICROPHONE_MUTE: {
+        boolean mute = (msg.arg1 != 0);
+        if (mute != mAudioManager.isMicrophoneMute()) {
+            IAudioService audio = getAudioService();
+            Log.i(this, "changing microphone mute state to: %b [serviceIsNull=%b]",
+                    mute, audio == null);
+            if (audio != null) {
+                try {
+                    // We use the audio service directly here so that we can specify
+                    // the current user. Telecom runs in the system_server process which
+                    // may run as a separate user from the foreground user. If we
+                    // used AudioManager directly, we would change mute for the system's
+                    // user and not the current foreground, which we want to avoid.
+                    audio.setMicrophoneMute(
+                            mute, mContext.getOpPackageName(), getCurrentUserId());
+
+                } catch (RemoteException e) {
+                    Log.e(this, e, "Remote exception while toggling mute.");
+                }
+                // TODO: Check microphone state after attempting to set to ensure that
+                // our state corroborates AudioManager's state.
+            }
+        }
+
+        break;
+    }

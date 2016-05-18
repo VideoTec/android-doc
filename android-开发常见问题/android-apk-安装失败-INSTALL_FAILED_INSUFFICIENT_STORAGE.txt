@@ -1,0 +1,3 @@
+http://blog.csdn.net/fulinwsuafcie/article/details/7468400
+
+INSTALL_FAILED_INSUFFICIENT_STORAGE 字面意思是：由于存储空间不足导致安装失败

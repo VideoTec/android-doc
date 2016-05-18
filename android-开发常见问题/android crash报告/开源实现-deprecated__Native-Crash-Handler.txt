@@ -1,0 +1,4 @@
+https://github.com/SalomonBrys/__deprecated__Native-Crash-Handler
+
+A simple set of code to enable JNI Native crashes to be caught 
+by java and throw a meaningfull exception

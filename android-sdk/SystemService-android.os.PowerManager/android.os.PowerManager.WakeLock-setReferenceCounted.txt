@@ -1,4 +1,4 @@
-file:///E:/android-sdk-windows/docs/reference/android/os/PowerManager.WakeLock.html#setReferenceCounted(boolean)
+https://developer.android.com/reference/android/os/PowerManager.WakeLock.html
 
 public void setReferenceCounted (boolean value)
 

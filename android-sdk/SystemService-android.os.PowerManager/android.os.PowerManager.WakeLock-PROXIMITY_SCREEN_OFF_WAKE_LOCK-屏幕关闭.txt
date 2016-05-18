@@ -1,3 +1,9 @@
+proximity[英][prɒkˈsɪməti] [美][prɑkˈsɪməti]
+n.接近，邻近；接近度，距离；亲近
+
+acquire[英][əˈkwaɪə(r)] [美][əˈkwaɪr]
+vt.获得，取得；学到
+
 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
 
 其中第一个参数代表控制级别,可选值有:

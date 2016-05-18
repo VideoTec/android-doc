@@ -1,0 +1,15 @@
+    /**
+     * Checks whether communications use Bluetooth SCO.
+     *
+     * @return true if SCO is used for communications;
+     *         false if otherwise
+     */
+    public boolean isBluetoothScoOn() {
+        IAudioService service = getService();
+        try {
+            return service.isBluetoothScoOn();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in isBluetoothScoOn", e);
+            return false;
+        }
+    }

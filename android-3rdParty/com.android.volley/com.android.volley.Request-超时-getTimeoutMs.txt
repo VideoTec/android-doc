@@ -1,0 +1,8 @@
+    /**
+     * Returns the socket timeout in milliseconds per retry attempt. (This value can be changed
+     * per retry attempt if a backoff is specified via backoffTimeout()). If there are no retry
+     * attempts remaining, this will cause delivery of a {@link TimeoutError} error.
+     */
+    public final int getTimeoutMs() {
+        return mRetryPolicy.getCurrentTimeout();
+    }

@@ -1,0 +1,6 @@
+http://developer.android.com/intl/zh-cn/reference/android/media/AudioManager.html
+
+setStreamMute(int streamType, boolean state)
+
+This method was deprecated in API level 23. 
+Use adjustStreamVolume(int, int, int) with ADJUST_MUTE or ADJUST_UNMUTE instead.

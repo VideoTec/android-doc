@@ -1,0 +1,6 @@
+http://cstriker1407.info/blog/android-application-development-notes-jni-crash-capture-and-google-breakpad/
+
+我们在进行Android的ndk开发时，由于C代码不好调试，
+我们往往采用日志记录的方式进行跟踪调试代码，
+比较麻烦，而且一旦C代码crash，很难直接定位到哪里出了问题。
+这里作者分享一个开源工程【 google-breakpad 】的使用，希望能对大家的C代码调试增加一点思路。

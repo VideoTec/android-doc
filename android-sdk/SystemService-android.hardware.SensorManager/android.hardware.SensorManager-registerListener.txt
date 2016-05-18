@@ -1,0 +1,33 @@
+https://developer.android.com/reference/android/hardware/SensorManager.html#registerListener(android.hardware.SensorListener, int)
+
+重载一：
+boolean registerListener (SensorListener listener, int sensors)
+This method was deprecated in API level 3.
+
+重载二：
+boolean registerListener (SensorEventListener listener, Sensor sensor, int samplingPeriodUs)
+The value must be one of 
+SENSOR_DELAY_NORMAL, 
+SENSOR_DELAY_UI, 
+SENSOR_DELAY_GAME, or 
+SENSOR_DELAY_FASTEST or, 
+the desired delay between events in microseconds. 
+
+
+boolean registerListener (
+                SensorEventListener listener, 
+                Sensor sensor, 
+                int samplingPeriodUs, 
+                Handler handler)
+
+重载三：
+boolean registerListener (SensorEventListener listener, 
+                Sensor sensor, 
+                int samplingPeriodUs, 
+                int maxReportLatencyUs)
+                
+boolean registerListener (SensorEventListener listener, 
+                Sensor sensor, 
+                int samplingPeriodUs, 
+                int maxReportLatencyUs, 
+                Handler handler)

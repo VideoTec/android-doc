@@ -1,0 +1,23 @@
+
+    /**
+     * Sets the volume index for a particular stream.
+     *
+     * @param streamType The stream whose volume index should be set.
+     * @param index The volume index to set. See
+     *            {@link #getStreamMaxVolume(int)} for the largest valid value.
+     * @param flags One or more flags.
+     * @see #getStreamMaxVolume(int)
+     * @see #getStreamVolume(int)
+     */
+    public void setStreamVolume(int streamType, int index, int flags) {
+        IAudioService service = getService();
+        try {
+            if (mUseMasterVolume) {
+                service.setMasterVolume(index, flags, mContext.getOpPackageName());
+            } else {
+                service.setStreamVolume(streamType, index, flags, mContext.getOpPackageName());
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in setStreamVolume", e);
+        }
+    }

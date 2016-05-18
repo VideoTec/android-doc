@@ -1,0 +1,40 @@
+PROXIMITY_SCREEN_OFF_WAKE_LOCK
+
+Added in API level 21
+
+int PROXIMITY_SCREEN_OFF_WAKE_LOCK
+Wake lock level: Turns the screen off when the proximity sensor activates.
+
+If the proximity sensor detects 
+that an object is nearby, the screen turns off immediately. 
+Shortly after the object moves away, the screen turns on again.
+
+A proximity wake lock does not prevent the device from falling asleep 
+unlike FULL_WAKE_LOCK, SCREEN_BRIGHT_WAKE_LOCK and SCREEN_DIM_WAKE_LOCK. 
+If there is no user activity and no other wake locks are held, 
+then the device will fall asleep (and lock) as usual. 
+However, the device will not fall asleep 
+while the screen has been turned off by the proximity sensor 
+because it effectively counts as ongoing user activity.
+
+Since not all devices have proximity sensors, 
+use isWakeLockLevelSupported(int) to determine whether this wake lock level is supported.
+
+Cannot be used with ACQUIRE_CAUSES_WAKEUP.
+
+Constant Value: 32 (0x00000020)
+
+注意：低于 api 21 版本中也可以使用
+                PowerManager pM = (PowerManager) getSystemService(POWER_SERVICE);
+                //public static final int PROXIMITY_SCREEN_OFF_WAKE_LOCK = 0x00000020;
+                mProximityScreenOffWakeLock = pM.newWakeLock(0x00000020, TAG);
+参考：
+http://stackoverflow.com/questions/3018716/android-turn-off-screen-when-close-to-face
+
+Even though it says API level 21 is required, it seems to be backwards compatible, 
+since the flag was always there, just hidden
+
+PROXIMITY_SCREEN_OFF_WAKE_LOCK is public as of API level 21 (Lollipop).
+
+Note that with Android 4.2.1 the method getSupportedWakeLockFlags 
+no longer exists and you need to use isWakeLockLevelSupported

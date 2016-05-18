@@ -1,0 +1,25 @@
+acquire[英][əˈkwaɪə(r)] [美][əˈkwaɪr]
+vt.获得，取得；学到
+
+The Android resource system 
+keeps track of all non-code assets associated with an application. 
+You can use this class to access your application's resources. 
+You can generally acquire the Resources instance associated 
+with your application with getResources().
+
+public class ContextThemeWrapper extends ContextWrapper {
+
+    @Override
+    public Resources getResources() {
+        if (mResources != null) {
+            return mResources;
+        }
+        if (mOverrideConfiguration == null) {
+            mResources = super.getResources();
+            return mResources;
+        } else {
+            Context resc = createConfigurationContext(mOverrideConfiguration);
+            mResources = resc.getResources();
+            return mResources;
+        }
+    }

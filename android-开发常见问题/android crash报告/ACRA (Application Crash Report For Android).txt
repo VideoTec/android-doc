@@ -1,0 +1,6 @@
+http://blog.csdn.net/john_crash/article/details/46877959
+
+ACRA (Application Crash Report For Android)就是为了解决android 应用程序崩溃以后的发送报告的问题。 
+你能在https://github.com/ACRA找到源代码。 
+其中https://github.com/ACRA/acra/wiki/BasicSetup页详细的介绍了使用方法。 
+注意ACRA仅能俘获java的异常，它不能俘获native c/c++异常。 

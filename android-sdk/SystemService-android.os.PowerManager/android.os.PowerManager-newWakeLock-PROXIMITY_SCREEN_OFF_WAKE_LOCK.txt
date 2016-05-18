@@ -1,0 +1,16 @@
+
+需要权限
+android.Manifest.permission.DEVICE_POWER -- 没有这个权限，也不需要
+android.permission.WAKE_LOCK
+
+其中第一个参数代表控制级别,可选值有:
+
+PARTIAL_WAKE_LOCK : CPU运行,屏幕和键盘可能关闭
+SCREEN_DIM_WAKE_LOCK :　屏幕亮,键盘灯可能关闭
+SCREEN_BRIGHT_WAKE_LOCK : 屏幕全亮,键盘灯可能关闭
+FULL_WAKE_LOCK : 屏幕和键盘灯全亮
+PROXIMITY_SCREEN_OFF_WAKE_LOCK : 屏幕关闭,键盘灯关闭,CPU运行
+DOZE_WAKE_LOCK : 屏幕灰显,CPU延缓工作
+
+powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+wakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);

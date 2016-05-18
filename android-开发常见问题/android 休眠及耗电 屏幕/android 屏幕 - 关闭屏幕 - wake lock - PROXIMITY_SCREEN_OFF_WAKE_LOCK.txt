@@ -1,0 +1,63 @@
+proximity[英][prɒkˈsɪməti] [美][prɑkˈsɪməti]
+n.接近，邻近；接近度，距离；亲近
+
+必须和 Sensor.TYPE_PROXIMITY 传感器配合使用。
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+
+需要权限
+android.Manifest.permission.DEVICE_POWER -- 没有这个权限，也不需要
+android.permission.WAKE_LOCK
+
+其中第一个参数代表控制级别,可选值有:
+
+PARTIAL_WAKE_LOCK : CPU运行,屏幕和键盘可能关闭
+SCREEN_DIM_WAKE_LOCK :　屏幕亮,键盘灯可能关闭
+SCREEN_BRIGHT_WAKE_LOCK : 屏幕全亮,键盘灯可能关闭
+FULL_WAKE_LOCK : 屏幕和键盘灯全亮
+PROXIMITY_SCREEN_OFF_WAKE_LOCK : 屏幕关闭,键盘灯关闭,CPU运行
+DOZE_WAKE_LOCK : 屏幕灰显,CPU延缓工作
+
+此处我们选取PROXIMITY_SCREEN_OFF_WAKE_LOCK.WakeLock通过acquire()和release()方法上锁和解锁.
+
+powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+private void setScreenOff() {
+    if (wakeLock == null){
+        wakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);
+        //tag - Your class name (or other tag) for debugging purposes.
+    }
+    wakeLock.acquire();
+}
+ 
+private void setScreenOn(){
+    if (wakeLock != null){
+        wakeLock.setReferenceCounted(false);
+        wakeLock.release();
+        wakeLock = null;
+    }
+}
+
+必须和 TYPE_PROXIMITY 传感器一起使用：
+
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        
+    @Override
+    protected void onPause() {
+        mSensorManager.unregisterListener(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(this, mProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.values[0] < mProximitySensor.getMaximumRange()) {
+            LogFeinno.e(TAG, "靠近了耳朵");
+        } else {
+            LogFeinno.e(TAG, "离开了耳朵");
+        }
+    }

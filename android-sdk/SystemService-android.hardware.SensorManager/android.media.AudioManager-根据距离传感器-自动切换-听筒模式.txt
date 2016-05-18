@@ -20,7 +20,10 @@ http://stackoverflow.com/questions/11674921/switching-between-earpiece-and-speak
 ---------------------------------
 注意事项一：
 ---------------------------------
-Don't forget to un-register the sensor because android system won't release the sensors automatically after the usage. If you forget to do so music player and other application which uses music player will behave odd.
+Don't forget to un-register the sensor 
+because android system won't release the sensors automatically after the usage. 
+If you forget to do so music player and 
+other application which uses music player will behave odd.
 
 ---------------------------------
 注意事项二：

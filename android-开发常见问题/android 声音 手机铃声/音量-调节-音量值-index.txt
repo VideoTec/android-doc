@@ -1,0 +1,5 @@
+public void setStreamVolume (int streamType, int index, int flags)
+
+音量的int值,
+getStreamMaxVolume(int streamType)得到的是该类型音量的最大值,
+可以根据这个值计算你需要的音量,我这里直接调到最大

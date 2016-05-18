@@ -1,0 +1,22 @@
+Note: Beginning with API 19 (KITKAT) alarm delivery is inexact: 
+the OS will shift alarms in order to minimize wakeups and battery use. 
+There are new APIs to support applications which need strict delivery guarantees; 
+
+see 
+setWindow(int, long, long, PendingIntent) and 
+setExact(int, long, PendingIntent). 
+
+Applications whose targetSdkVersion is earlier than API 19 
+will continue to see the previous behavior in which 
+all alarms are delivered exactly when requested.
+
+http://www.cnblogs.com/mengdd/p/3819806.html
+
+另：从API 19开始，alarm的机制都是非准确传递，
+操作系统将会转换闹钟，来最小化唤醒和电池使用。
+
+有一些新的API会支持严格准确的传递，
+见 setWindow(int, long, long, PendingIntent)和setExact(int, long, PendingIntent)。
+
+targetSdkVersion在API 19之前应用仍将继续使用以前的行为，
+所有的闹钟在要求准确传递的情况下都会准确传递。

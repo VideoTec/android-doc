@@ -1,0 +1,30 @@
+
+    /**
+     * @hide
+     * Used internally by telephony package to request audio focus. Will cause the focus request
+     * to be associated with the "voice communication" identifier only used in AudioService
+     * to identify this use case.
+     * @param streamType use STREAM_RING for focus requests when ringing, VOICE_CALL for
+     *    the establishment of the call
+     * @param durationHint the type of focus request. AUDIOFOCUS_GAIN_TRANSIENT is recommended so
+     *    media applications resume after a call
+     */
+    public void requestAudioFocusForCall(int streamType, int durationHint) {
+        IAudioService service = getService();
+        try {
+            service.requestAudioFocus(streamType, durationHint, mICallBack, null,
+                    MediaFocusControl.IN_VOICE_COMM_FOCUS_ID,
+                    mContext.getOpPackageName());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Can't call requestAudioFocusForCall() on AudioService due to "+e);
+        }
+    }
+    
+E:\android-code\platform\packages\services\Telecomm\src\com\android\server\telecom\CallAudioManager.java
+                case MSG_AUDIO_MANAGER_REQUEST_AUDIO_FOCUS_FOR_CALL: {
+                    int stream = msg.arg1;
+                    mAudioManager.requestAudioFocusForCall(
+                            stream,
+                            AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                    break;
+                }

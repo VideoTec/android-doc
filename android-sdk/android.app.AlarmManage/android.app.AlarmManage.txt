@@ -1,0 +1,4 @@
+https://developer.android.com/reference/android/app/AlarmManager.html
+
+You do not instantiate this class directly; instead, retrieve it through Context.getSystemService(Context.ALARM_SERVICE).
+

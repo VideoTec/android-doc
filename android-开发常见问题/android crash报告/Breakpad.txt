@@ -1,0 +1,9 @@
+https://chromium.googlesource.com/breakpad/breakpad
+
+Breakpad is a set of client and server components which implement a crash-reporting system.
+
+Homepage
+Documentation
+Bugs
+Discussion/Questions: google-breakpad-discuss@googlegroups.com
+Developer/Reviews: google-breakpad-dev@googlegroups.com

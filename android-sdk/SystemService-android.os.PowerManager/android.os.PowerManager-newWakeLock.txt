@@ -5,11 +5,20 @@ public PowerManager.WakeLock newWakeLock (int levelAndFlags, String tag)
 Added in API level 1
 Creates a new wake lock with the specified level and flags.
 
-The levelAndFlags parameter specifies a wake lock level and optional flags combined using the logical OR operator.
+The levelAndFlags parameter 
+specifies a wake lock level 
+and optional flags combined using the logical OR operator.
 
-The wake lock levels are: PARTIAL_WAKE_LOCK, FULL_WAKE_LOCK, SCREEN_DIM_WAKE_LOCK and SCREEN_BRIGHT_WAKE_LOCK. Exactly one wake lock level must be specified as part of the levelAndFlags parameter.
+The wake lock levels are: 
+PARTIAL_WAKE_LOCK, 
+FULL_WAKE_LOCK, S
+CREEN_DIM_WAKE_LOCK and 
+SCREEN_BRIGHT_WAKE_LOCK. 
+Exactly one wake lock level must be specified as part of the levelAndFlags parameter.
 
-The wake lock flags are: ACQUIRE_CAUSES_WAKEUP and ON_AFTER_RELEASE. Multiple flags can be combined as part of the levelAndFlags parameters.
+The wake lock flags are: 
+ACQUIRE_CAUSES_WAKEUP and ON_AFTER_RELEASE. 
+Multiple flags can be combined as part of the levelAndFlags parameters.
 
 Call acquire() on the object to acquire the wake lock, and release() when you are done.
 
@@ -23,10 +32,21 @@ PowerManager pm = (PowerManager)mContext.getSystemService(
  // ... do work...
  wl.release();
  
-Although a wake lock can be created without special permissions, the WAKE_LOCK permission is required to actually acquire or release the wake lock that is returned.
+Although a wake lock can be created without special permissions, 
+the WAKE_LOCK permission is required to actually acquire or 
+release the wake lock that is returned.
 
-If using this to keep the screen on, you should strongly consider using FLAG_KEEP_SCREEN_ON instead. This window flag will be correctly managed by the platform as the user moves between applications and doesn't require a special permission.
+If using this to keep the screen on, 
+you should strongly consider using FLAG_KEEP_SCREEN_ON instead. 
+This window flag will be correctly managed 
+by the platform as the user moves between applications and 
+doesn't require a special permission.
 
 Parameters
-levelAndFlags	Combination of wake lock level and flag values defining the requested behavior of the WakeLock.
-tag	Your class name (or other tag) for debugging purposes.
+
+levelAndFlags
+Combination of wake lock level and flag values defining 
+the requested behavior of the WakeLock.
+
+tag
+Your class name (or other tag) for debugging purposes.

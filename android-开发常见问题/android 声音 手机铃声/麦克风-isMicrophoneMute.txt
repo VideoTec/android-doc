@@ -1,0 +1,9 @@
+
+    /**
+     * Checks whether the microphone mute is on or off.
+     *
+     * @return true if microphone is muted, false if it's not
+     */
+    public boolean isMicrophoneMute() {
+        return AudioSystem.isMicrophoneMuted();
+    }

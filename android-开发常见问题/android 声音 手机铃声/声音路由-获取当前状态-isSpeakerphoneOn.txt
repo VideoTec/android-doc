@@ -1,0 +1,14 @@
+    /**
+     * Checks whether the speakerphone is on or off.
+     *
+     * @return true if speakerphone is on, false if it's off
+     */
+    public boolean isSpeakerphoneOn() {
+        IAudioService service = getService();
+        try {
+            return service.isSpeakerphoneOn();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in isSpeakerphoneOn", e);
+            return false;
+        }
+     }

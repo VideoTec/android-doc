@@ -1,0 +1,5 @@
+mAudioManager.setSpeakerphoneOn(true);
+
+二选一
+1）外放
+2）听筒耳机 - 这两个设备的切换，耳机插着时，耳机。

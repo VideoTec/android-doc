@@ -1,6 +1,3 @@
-
-应该是 mode 决定的声音路由
-
 http://stackoverflow.com/questions/24652747/what-is-the-difference-between-audiomanagers-stream-types-at-low-level
 
 Other unmentioned thing is which audio device will produce a sound.
@@ -13,3 +10,13 @@ Using STREAM_RING
 the sound will be produced through all audio device connected to the phone. 
 
 This behaviour might be differed for each devices.
+
+19:13 2016/5/11
+同时 ， mode， 也会影响路由。
+
+MODE_RINGTONE
+MODE_NORMAL  播放铃声时，所有设备都播放
+
+MODE_IN_CALL 播放铃声时，只有一个设备播放 （setSpeakerphoneOn 决定那个设备播放）
+        mAudioManager.setMode(AudioManager.MODE_IN_CALL);
+        mRingtonePlayer.play(mRingtoneUri);

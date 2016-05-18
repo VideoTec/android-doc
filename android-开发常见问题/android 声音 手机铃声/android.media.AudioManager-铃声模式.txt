@@ -1,0 +1,23 @@
+
+    /**
+     * Sets the ringer mode.
+     * <p>
+     * Silent mode will mute the volume and will not vibrate. Vibrate mode will
+     * mute the volume and vibrate. Normal mode will be audible and may vibrate
+     * according to user settings.
+     *
+     * @param ringerMode The ringer mode, one of {@link #RINGER_MODE_NORMAL},
+     *            {@link #RINGER_MODE_SILENT}, or {@link #RINGER_MODE_VIBRATE}.
+     * @see #getRingerMode()
+     */
+    public void setRingerMode(int ringerMode) {
+        if (!isValidRingerMode(ringerMode)) {
+            return;
+        }
+        IAudioService service = getService();
+        try {
+            service.setRingerMode(ringerMode);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in setRingerMode", e);
+        }
+    }

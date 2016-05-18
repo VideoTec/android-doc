@@ -15,6 +15,10 @@ http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
 最近由于项目需求要做音乐播放模式的切换,
 经过好多次尝试,发现这里面满满的都是坑啊
 
+播放模式切换:外放<—->耳机
+播放模式切换:外放<—->听筒
+屏幕操作:亮屏<—->息屏<—->亮屏
+
 http://stackoverflow.com/questions/25881889/how-to-use-proximity-sensor-and-audio-manager-to-reduce-volume-in-android-device
 
 传感器的操作是正确的，

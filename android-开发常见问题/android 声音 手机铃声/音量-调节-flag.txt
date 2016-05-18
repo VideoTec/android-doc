@@ -1,0 +1,70 @@
+第三个flags是一些附加参数,只介绍两个常用的
+FLAG_PLAY_SOUND 调整音量时播放声音
+FLAG_SHOW_UI 调整时显示音量条,就是按音量键出现的那个
+
+
+    // Flags should be powers of 2!
+
+    /**
+     * Show a toast containing the current volume.
+     *
+     * @see #adjustStreamVolume(int, int, int)
+     * @see #adjustVolume(int, int)
+     * @see #setStreamVolume(int, int, int)
+     * @see #setRingerMode(int)
+     */
+    public static final int FLAG_SHOW_UI = 1 << 0;
+
+    /**
+     * Whether to include ringer modes as possible options when changing volume.
+     * For example, if true and volume level is 0 and the volume is adjusted
+     * with {@link #ADJUST_LOWER}, then the ringer mode may switch the silent or
+     * vibrate mode.
+     * <p>
+     * By default this is on for the ring stream. If this flag is included,
+     * this behavior will be present regardless of the stream type being
+     * affected by the ringer mode.
+     *
+     * @see #adjustVolume(int, int)
+     * @see #adjustStreamVolume(int, int, int)
+     */
+    public static final int FLAG_ALLOW_RINGER_MODES = 1 << 1;
+
+    /**
+     * Whether to play a sound when changing the volume.
+     * <p>
+     * If this is given to {@link #adjustVolume(int, int)} or
+     * {@link #adjustSuggestedStreamVolume(int, int, int)}, it may be ignored
+     * in some cases (for example, the decided stream type is not
+     * {@link AudioManager#STREAM_RING}, or the volume is being adjusted
+     * downward).
+     *
+     * @see #adjustStreamVolume(int, int, int)
+     * @see #adjustVolume(int, int)
+     * @see #setStreamVolume(int, int, int)
+     */
+    public static final int FLAG_PLAY_SOUND = 1 << 2;
+
+    /**
+     * Removes any sounds/vibrate that may be in the queue, or are playing (related to
+     * changing volume).
+     */
+    public static final int FLAG_REMOVE_SOUND_AND_VIBRATE = 1 << 3;
+
+    /**
+     * Whether to vibrate if going into the vibrate ringer mode.
+     */
+    public static final int FLAG_VIBRATE = 1 << 4;
+
+    /**
+     * Indicates to VolumePanel that the volume slider should be disabled as user
+     * cannot change the stream volume
+     * @hide
+     */
+    public static final int FLAG_FIXED_VOLUME = 1 << 5;
+
+    /**
+     * Indicates the volume set/adjust call is for Bluetooth absolute volume
+     * @hide
+     */
+    public static final int FLAG_BLUETOOTH_ABS_VOLUME = 1 << 6;

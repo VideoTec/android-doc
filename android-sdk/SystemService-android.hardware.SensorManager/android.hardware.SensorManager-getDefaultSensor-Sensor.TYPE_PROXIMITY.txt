@@ -1,0 +1,32 @@
+public class SensorActivity extends Activity implements SensorEventListener
+
+    mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+    mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+protected void onResume() {
+    super.onResume();  
+    一般使用 SENSOR_DELAY_NORMAL 就可以了
+    mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_FASTEST);
+}
+protected void onPause() {
+    mSensorManager.unregisterListener(this);
+    super.onPause();
+}
+
+
+public void onAccuracyChanged(Sensor sensor, int accuracy) {
+}
+
+public void onSensorChanged(SensorEvent event) {
+    Log.e("distance", String.valueOf(event.values[0]));
+    Log.e("MaximumRange", String.valueOf(mSensor.getMaximumRange()));
+
+    if (event.values[0] < mSensor.getMaximumRange()) {
+        iv.setImageResource(R.drawable.near);
+        mAudioManager.setSpeakerphoneOn(false);
+
+    } else {
+        iv.setImageResource(R.drawable.far);
+        mAudioManager.setSpeakerphoneOn(true);
+    }
+}

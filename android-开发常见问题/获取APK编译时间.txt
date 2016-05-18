@@ -1,0 +1,17 @@
+http://stackoverflow.com/questions/29006388/android-add-date-time-to-gradle-output-apk-filename
+
+这里有个方法，获取APP最后编译的时间，也能实现这个需要。
+我在 RFApplication 用下面的代码，测试了下，是可行的。
+
+try{
+    ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), 0);
+    ZipFile zf = new ZipFile(ai.sourceDir);
+    ZipEntry ze = zf.getEntry("classes.dex");
+    long time = ze.getTime();
+    String s = SimpleDateFormat.getInstance().format(new java.util.Date(time));
+    zf.close();
+    LogFeinno.i(TAG, "class.dex compile time: " + s);
+}catch(Exception e){
+    LogFeinno.i(TAG, "get class.dex compile time exception", e);
+}
+可以写个静态方法，供需要的时候调用
