@@ -1,0 +1,16 @@
+finishActivity
+
+Added in API level 1
+
+void finishActivity (int requestCode)
+
+Force finish another activity 
+that you had previously started with startActivityForResult(Intent, int).
+
+Parameters
+
+requestCode 
+int: The request code of the activity 
+that you had given to startActivityForResult(). 
+If there are multiple activities started with this request code, 
+they will all be finished.

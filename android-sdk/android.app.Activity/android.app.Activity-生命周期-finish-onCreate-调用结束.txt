@@ -1,0 +1,24 @@
+http://stackoverflow.com/questions/8282569/oncreate-flow-continues-after-finish
+
+I'm guessing that it is because finish() doesn't cause the onCreate method to return. 
+You could try simply adding
+
+finish();
+return;
+
+Or use an if else
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.layoutb);
+  if(good data){
+      //do stuff
+  }else{
+      finish();
+  }
+}
+
+http://stackoverflow.com/questions/4151410/closing-an-activity-on-oncreate
+
+Try using the finish() method to close the Activity.

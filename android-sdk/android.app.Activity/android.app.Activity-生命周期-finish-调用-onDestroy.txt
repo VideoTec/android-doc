@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/2590947/about-finish-in-android
+
+Does it exits immediately or completes the function from which it was called ?
+
+The method that called finish() will run to completion. 
+The finish() operation will not even begin until you return control to Android.
