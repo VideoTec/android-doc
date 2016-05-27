@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/19955715/view-looking-for-an-event-like-onviewdestroyed
+A View is added over your activity/fragment/Dialog etc. 
+Therefore it doesn't have its own onDestroy alike event. 
+So instead, 
+use activity's/fragment's onDestroy method to identify when the View is not valid anymore.
+
+http://stackoverflow.com/questions/5419224/destroy-viewlayout
+You can remove a View from a ViewGroup, 
+but there is no way to manually destroy a view.

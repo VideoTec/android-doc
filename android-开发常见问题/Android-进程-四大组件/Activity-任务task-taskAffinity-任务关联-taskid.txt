@@ -1,0 +1,41 @@
+任务 - ACT栈 - 关联名 - act.taskid
+
+affinity[英][əˈfɪnəti] [美][əˈfɪnɪti]
+n.密切关系，姻亲关系；（男女之间的）吸引力，吸引人的异性；类同；类似，近似
+
+https://developer.android.com/guide/topics/manifest/activity-element.html#aff
+
+android:taskAffinity
+
+The task that the activity has an affinity for. 
+Activities with the same affinity conceptually belong to the same task 
+(to the same "application" from the user's perspective). 
+The affinity of a task is determined by the affinity of its root activity.
+
+The affinity determines two things — 
+the task that the activity is re-parented to (see the allowTaskReparenting attribute) and 
+the task that will house the activity when it is launched with the FLAG_ACTIVITY_NEW_TASK flag.
+
+By default, all activities in an application have the same affinity. 
+You can set this attribute to group them differently, 
+and even place activities defined in different applications within the same task. 
+To specify that the activity does not have an affinity for any task, 
+set it to an empty string.
+
+If this attribute is not set, 
+the activity inherits the affinity set for the application 
+(see the <application> element's taskAffinity attribute). 
+The name of the default affinity for an application 
+is the package name set by the <manifest> element.
+
+http://blog.csdn.net/dfqin/article/details/7481683
+
+每个Activity都有taskAffinity属性，
+这个属性指出了它希望进入的Task。
+如果一个Activity没有显式的指明该 Activity的taskAffinity，
+那么它的这个属性就等于Application指明的taskAffinity，
+如果 Application也没有指明，那么该taskAffinity的值就等于包名。
+而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。 
+
+
+taskAffinity的值是个唯一的String字符串，来自于manifest文件中声明的包名

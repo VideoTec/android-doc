@@ -1,0 +1,4 @@
+https://github.com/klinker24/FloatingWindowDemo
+http://stackoverflow.com/questions/18124153/how-to-add-a-floating-view-to-android-window-manager-and-listen-to-system-hardwa
+https://github.com/pingpongboss/StandOut
+http://forum.xda-developers.com/showthread.php?t=1688531

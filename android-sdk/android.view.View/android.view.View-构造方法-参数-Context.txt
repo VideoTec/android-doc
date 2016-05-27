@@ -1,0 +1,85 @@
+1. 这个 Context 可以是 application-context ? 可以
+2. View.getContext 返回的是？
+
+http://stackoverflow.com/questions/14079719/pass-application-context-to-the-view-instead-of-activity-context
+Why use Activity Context 
+while we can use Application Context to load and access resource? 
+Means if I use Application Context instead of Activity Context 
+there is no Exception occur so why use Activity Context?
+
+Example:
+
+In below example if I use getApplicationContext() 
+instead of "this" pointer inside the Activities onCreate() 
+it works fine without any exception.
+
+ Button button = new Button(getApplicationContext());
+ 
+http://stackoverflow.com/questions/987072/using-application-context-everywhere/987503#987503
+
+There are a couple of potential problems with this approach, 
+though in a lot of circumstances (such as your example) it will work well.
+
+In particular you should be careful 
+when dealing with anything that deals with the GUI that requires a Context. 
+For example, 
+if you pass the application Context into the LayoutInflater you will get an Exception. 
+Generally speaking, your approach is excellent: 
+it's good practice to use an Activity's Context within that Activity, 
+and the Application Context 
+when passing a context beyond the scope of an Activity to avoid memory leaks.
+
+Also, as an alternative to your pattern 
+you can use the shortcut of calling getApplicationContext() on a Context object (such as an Activity) 
+to get the Application Context.
+ 
+--------------------------------------
+参考源码：
+--------------------------------------
+
+    /**
+     * Simple constructor to use when creating a view from code.
+     *
+     * @param context The Context the view is running in, through which it can
+     *        access the current theme, resources, etc.
+     */
+    public View(Context context) {
+        mContext = context;
+        mResources = context != null ? context.getResources() : null;
+        mViewFlags = SOUND_EFFECTS_ENABLED | HAPTIC_FEEDBACK_ENABLED;
+        // Set some flags defaults
+        mPrivateFlags2 =
+                (LAYOUT_DIRECTION_DEFAULT << PFLAG2_LAYOUT_DIRECTION_MASK_SHIFT) |
+                (TEXT_DIRECTION_DEFAULT << PFLAG2_TEXT_DIRECTION_MASK_SHIFT) |
+                (PFLAG2_TEXT_DIRECTION_RESOLVED_DEFAULT) |
+                (TEXT_ALIGNMENT_DEFAULT << PFLAG2_TEXT_ALIGNMENT_MASK_SHIFT) |
+                (PFLAG2_TEXT_ALIGNMENT_RESOLVED_DEFAULT) |
+                (IMPORTANT_FOR_ACCESSIBILITY_DEFAULT << PFLAG2_IMPORTANT_FOR_ACCESSIBILITY_SHIFT);
+        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        setOverScrollMode(OVER_SCROLL_IF_CONTENT_SCROLLS);
+        mUserPaddingStart = UNDEFINED_PADDING;
+        mUserPaddingEnd = UNDEFINED_PADDING;
+        mRenderNode = RenderNode.create(getClass().getName(), this);
+
+        if (!sCompatibilityDone && context != null) {
+            final int targetSdkVersion = context.getApplicationInfo().targetSdkVersion;
+
+            // Older apps may need this compatibility hack for measurement.
+            sUseBrokenMakeMeasureSpec = targetSdkVersion <= JELLY_BEAN_MR1;
+
+            // Older apps expect onMeasure() to always be called on a layout pass, regardless
+            // of whether a layout was requested on that View.
+            sIgnoreMeasureCache = targetSdkVersion < KITKAT;
+
+            Canvas.sCompatibilityRestore = targetSdkVersion < M;
+
+            // In M and newer, our widgets can pass a "hint" value in the size
+            // for UNSPECIFIED MeasureSpecs. This lets child views of scrolling containers
+            // know what the expected parent size is going to be, so e.g. list items can size
+            // themselves at 1/3 the size of their container. It breaks older apps though,
+            // specifically apps that use some popular open source libraries.
+            sUseZeroUnspecifiedMeasureSpec = targetSdkVersion < M;
+
+            sCompatibilityDone = true;
+        }
+    }

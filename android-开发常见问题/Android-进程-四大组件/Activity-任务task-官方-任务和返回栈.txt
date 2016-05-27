@@ -1,0 +1,10 @@
+https://developer.android.com/guide/components/tasks-and-back-stack.html
+
+本文内容
+
+保存 Activity 状态
+管理任务
+定义启动模式
+处理关联
+清理返回栈
+启动任务

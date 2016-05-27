@@ -1,0 +1,56 @@
+https://developer.android.com/guide/components/tasks-and-back-stack.html#ActivityState
+
+处理关联
+
+“关联”指示 Activity 优先属于哪个任务。
+默认情况下，同一应用中的所有 Activity 彼此关联。 
+因此，默认情况下，同一应用中的所有 Activity 优先位于相同任务中。 
+不过，您可以修改 Activity 的默认关联。 
+在不同应用中定义的 Activity 可以共享关联，
+或者可为在同一应用中定义的 Activity 分配不同的任务关联。
+
+可以使用 <activity> 元素的 taskAffinity 属性修改任何给定 Activity 的关联。
+
+taskAffinity 属性取字符串值，
+该值必须不同于 在 <manifest> 元素中声明的默认软件包名称，
+因为系统使用该名称标识应用的默认任务关联。
+
+在两种情况下，关联会起作用：
+
+-------------------------------------------------------------------
+启动 Activity 的 Intent 包含 FLAG_ACTIVITY_NEW_TASK 标志。
+-------------------------------------------------------------------
+默认情况下，新 Activity 会启动到调用 startActivity() 的 Activity 任务中。
+它将推入与调用方相同的返回栈。 
+但是，如果传递给 startActivity() 的 Intent 包含 FLAG_ACTIVITY_NEW_TASK 标志，
+则系统会寻找其他任务来储存新 Activity。
+这通常是新任务，但未做强制要求。 
+如果现有任务与新 Activity 具有相同关联，则会将 Activity 启动到该任务中。 
+否则，将开始新任务。
+如果此标志导致 Activity 开始新任务，
+且用户按“主页”按钮离开，则必须为用户提供导航回任务的方式。 
+有些实体（如通知管理器）始终在外部任务中启动 Activity，
+而从不作为其自身的一部分启动 Activity，
+因此它们始终将 FLAG_ACTIVITY_NEW_TASK 放入传递给 startActivity() 的 Intent 中。
+请注意，如果 Activity 能够由可以使用此标志的外部实体调用，
+则用户可以通过独立方式返回到启动的任务，
+例如，使用启动器图标
+（任务的根 Activity 具有 CATEGORY_LAUNCHER Intent 过滤器；请参阅下面的启动任务部分）。
+
+-------------------------------------------------------------------
+Activity 将其 allowTaskReparenting 属性设置为 "true"。
+-------------------------------------------------------------------
+在这种情况下，
+Activity 可以从其启动的任务移动到与其具有关联的任务（如果该任务出现在前台）。
+例如，假设将报告所选城市天气状况的 Activity 定义为旅行应用的一部分。 
+它与同一应用中的其他 Activity 具有相同的关联（默认应用关联），
+并允许利用此属性重定父级。
+当您的一个 Activity 启动天气预报 Activity 时，
+它最初所属的任务与您的 Activity 相同。 
+但是，当旅行应用的任务出现在前台时，
+系统会将天气预报 Activity 重新分配给该任务并显示在其中。
+
+提示：如果从用户的角度来看，
+一个 .apk 文件包含多个“应用”，
+则您可能需要使用 taskAffinity 属性将不同关联分配给与每个“应用”相关的 Activity。
+

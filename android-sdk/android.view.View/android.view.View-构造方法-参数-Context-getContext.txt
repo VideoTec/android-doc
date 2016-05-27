@@ -1,0 +1,58 @@
+    /**
+     * Returns the context the view is running in, through which it can
+     * access the current theme, resources, etc.
+     *
+     * @return The view's Context.
+     */
+    @ViewDebug.CapturedViewProperty
+    public final Context getContext() {
+        return mContext;
+    }
+    
+http://stackoverflow.com/questions/10641144/difference-between-getcontext-getapplicationcontext-getbasecontext-and
+
+View.getContext(): 
+Returns the context the view is currently running in. 
+Usually the currently active Activity.
+
+Activity.getApplicationContext(): 
+Returns the context for the entire application 
+(the process all the Activities are running inside of). 
+Use this instead of the current Activity context 
+if you need a context tied to the lifecycle of the entire application, 
+not just the current Activity.
+
+ContextWrapper.getBaseContext(): 
+If you need access to a Context from within another context, 
+you use a ContextWrapper. 
+The Context referred to from inside 
+that ContextWrapper is accessed via getBaseContext().
+
+http://stackoverflow.com/questions/3572463/what-is-context-on-android
+
+Putting it simply:
+
+As the name suggests, it's the context of current state of the application/object. 
+It lets newly-created objects understand what has been going on. 
+Typically you call it to get information regarding another part of your program 
+(activity and package/application).
+
+You can get the context by invoking 
+getApplicationContext(), getContext(), getBaseContext() or this (when in the activity class).
+
+----------------------------------------
+上下文对象的用处：
+Typical uses of context:
+----------------------------------------
+
+Creating new objects: Creating new views, adapters, listeners:
+TextView tv = new TextView(getContext());
+ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), ...);
+
+Accessing standard common resources: 
+Services like LAYOUT_INFLATER_SERVICE, SharedPreferences:
+context.getSystemService(LAYOUT_INFLATER_SERVICE)
+getApplicationContext().getSharedPreferences(*name*, *mode*);
+
+Accessing components implicitly: Regarding content providers, broadcasts, intent
+getApplicationContext().getContentResolver().query(uri, ...);

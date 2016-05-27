@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/17628670/file-explorer-in-android-studio
+
+You can start Monitor from the Android Studio (green robot icon on the toolbar, 
+to the left of the help icon). 
+From the monitor you can select File Explorer tab.
+
+Maybe they also have a built-in DDMS perspective as they do in Eclipse, but I couldn't find it. –

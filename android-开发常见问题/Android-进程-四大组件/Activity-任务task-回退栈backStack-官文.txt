@@ -1,1 +1,0 @@
-http://developer.android.com/intl/zh-cn/guide/components/tasks-and-back-stack.html

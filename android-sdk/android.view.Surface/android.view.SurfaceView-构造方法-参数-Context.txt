@@ -1,0 +1,11 @@
+SurfaceView (Context context)
+Parameters
+context	Context
+
+这个 Context 可以是 application-context ?
+
+参考构造函数代码：
+    public SurfaceView(Context context) {
+        super(context);  其父类 View
+        init();
+    }
