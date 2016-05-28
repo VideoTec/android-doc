@@ -1,0 +1,24 @@
+moveTaskToFront
+
+Added in API level 16
+void moveTaskToFront (int taskId, 
+                int flags, 
+                Bundle options)
+Ask that the task associated with a given task ID be moved to the front of the stack, 
+so it is now visible to the user. 
+Requires that the caller hold permission REORDER_TASKS or a SecurityException will be thrown.
+
+Parameters
+taskId	int: The identifier of the task to be moved, as found in ActivityManager.RunningTaskInfo or ActivityManager.RecentTaskInfo.
+flags	int: Additional operational flags, 0 or more of MOVE_TASK_WITH_HOME, MOVE_TASK_NO_USER_ACTION.
+options	Bundle: Additional options for the operation, either null or as per Context.startActivity(Intent, Bundle).
+moveTaskToFront
+
+Added in API level 11
+void moveTaskToFront (int taskId, 
+                int flags)
+Equivalent to calling moveTaskToFront(int, int, Bundle) with a null options argument.
+
+Parameters
+taskId	int: The identifier of the task to be moved, as found in ActivityManager.RunningTaskInfo or ActivityManager.RecentTaskInfo.
+flags	int: Additional operational flags, 0 or more of MOVE_TASK_WITH_HOME, MOVE_TASK_NO_USER_ACTION.

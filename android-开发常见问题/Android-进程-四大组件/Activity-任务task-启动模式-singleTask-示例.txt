@@ -1,0 +1,88 @@
+微信 APK 中的例子：
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name=".ui.DataTransferUI"/>
+ 
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:icon="@drawable/icon"
+ android:launchMode="singleTask"
+ android:name=".ui.tools.ShareScreenImgUI">
+    <intent-filter android:label="@string/axp">
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+    </intent-filter>
+</activity>
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:icon="@drawable/a5k"
+ android:launchMode="singleTask"
+ android:name=".ui.tools.ShareScreenToTimeLineUI">
+    <intent-filter android:label="@string/axq">
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+    </intent-filter>
+</activity>
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name=".plugin.freewifi.ui.FreeWifiSuccWebViewUI"/>
+ 
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name=".plugin.nfc_open.ui.NfcWebViewUI"
+ android:process=":tools"
+ android:protectionLevel="signatureOrSystem"
+ android:screenOrientation="sensor">
+    <intent-filter>
+        <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+    </intent-filter>
+    <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/as"/>
+</activity>
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name=".plugin.backup.moveui.BakMoveNewUI"/>
+      
+<activity
+ android:launchMode="singleTask"
+ android:name=".plugin.webview.ui.tools.QQCallbackUI"
+ android:noHistory="true">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="tencent1103188687"/>
+    </intent-filter>
+</activity>  
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name=".plugin.talkroom.ui.TalkRoomUI"
+ android:screenOrientation="portrait"
+ android:theme="@style/kx"/>
+ 
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name="com.tencent.mm.plugin.scanner.ui.BaseScanUI"
+ android:theme="@style/i5"/>
+        
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:launchMode="singleTask"
+ android:name="com.tencent.mm.plugin.scanner.history.ui.ScannerHistoryUI"/>
+
+<activity
+ android:launchMode="singleTask"
+ android:name=".plugin.nfc.biz.idpay.NfcIdPayOpenUI"/>
+ 

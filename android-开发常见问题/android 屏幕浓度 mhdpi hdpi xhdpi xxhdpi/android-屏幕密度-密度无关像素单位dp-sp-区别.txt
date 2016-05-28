@@ -1,0 +1,3 @@
+
+dp Density-independent Pixels  根据 屏幕密度 计算实际的像素数
+sp Scale-independent Pixels    根据 屏幕密度+用户设置 计算实际的像素数

@@ -1,0 +1,26 @@
+http://developer.android.com/intl/zh-cn/guide/practices/screens_support.html
+
+density[英][ˈdensəti] [美][ˈdɛnsɪti]
+n.密度；稠密，浓厚；[物]浓度，比重；愚钝
+
+px = dp * (dpi / 160)
+For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels. 
+You should always use dp units when defining your application's UI, 
+to ensure proper display of your UI on screens with different densities.
+
+A set of six generalized densities:
+ldpi (low) ~120dpi
+mdpi (medium) ~160dpi   ===  dpi  标准
+hdpi (high) ~240dpi
+xhdpi (extra-high) ~320dpi
+xxhdpi (extra-extra-high) ~480dpi
+xxxhdpi (extra-extra-extra-high) ~640dpi
+
+推算出深度倍数
+
+hdpi 是 mdpi 的 1.5 倍           3/2
+xhdpi 是 hdpi 的 1.333 倍        4/3
+xxhdpi 是 xhdpi 的 1.5 倍        3/2
+xxxhdpi 是 xxhdpi 的 1.333 倍    4/3
+
+http://stackoverflow.com/questions/10574363/android-splash-screen-image-sizes-to-fit-all-devices

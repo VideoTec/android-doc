@@ -1,0 +1,12 @@
+参考图片： android-浓度问题产生的问题-示例1.png
+
+三星SM-G3508I
+
+4.3英寸;480×800pix
+
+这个型号的屏幕浓度是：
+WVGA 800*480 (Wide VGA) == "WVGA hdpi "
+
+现在音视频的图标，只有 xhdpi xxhdpi 两种，没有 hdpi 的图标。
+
+需要设设帮忙制作一组 hdpi的图标

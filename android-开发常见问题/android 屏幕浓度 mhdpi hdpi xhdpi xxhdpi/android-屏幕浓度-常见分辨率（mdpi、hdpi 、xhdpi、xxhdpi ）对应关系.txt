@@ -1,0 +1,25 @@
+http://blog.csdn.net/sarsscofy/article/details/9249397
+
+4:3
+VGA     640*480 (Video Graphics Array)
+QVGA  320*240 (Quarter VGA)
+HVGA  480*320 (Half-size VGA)        mdpi
+SVGA  800*600 (Super VGA)
+
+5:3
+WVGA  800*480 (Wide VGA)             hdpi
+
+16:9
+FWVGA 854*480 (Full Wide VGA)        hdpi
+HD        1920*1080 High Definition
+QHD     960*540                      hdpi
+720p    1280*720  标清               xhdpi
+1080p  1920*1080 高清                xxhdpi
+
+分辨率对应DPI
+"HVGA    mdpi"
+"WVGA   hdpi "
+"FWVGA hdpi "
+"QHD      hdpi "
+"720P     xhdpi"
+"1080P   xxhdpi "

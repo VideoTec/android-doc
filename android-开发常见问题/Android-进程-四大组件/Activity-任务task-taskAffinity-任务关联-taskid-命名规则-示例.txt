@@ -1,0 +1,23 @@
+
+微信APK中的例子：
+
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:excludeFromRecents="true"
+ android:name=".ui.transmit.TaskRedirectUI"
+ android:taskAffinity="com.tencent.mm.openapi.taskredirect"
+ android:theme="@style/iu"/>
+ 
+<activity
+ android:configChanges="keyboardHidden|orientation|screenSize"
+ android:excludeFromRecents="true"
+ android:exported="false"
+ android:name=".plugin.game.ui.GameMD5CheckUI"
+ android:taskAffinity="com.tencent.mm.game.md5check"
+ android:theme="@style/is">
+    <intent-filter>
+        <action android:name="com.tencent.mm.game.md5check"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+    </intent-filter>
+</activity>
+

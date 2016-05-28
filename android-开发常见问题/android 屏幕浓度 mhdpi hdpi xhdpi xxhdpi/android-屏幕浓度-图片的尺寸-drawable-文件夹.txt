@@ -1,0 +1,11 @@
+http://blog.csdn.net/sarsscofy/article/details/9249397
+android:anyDensity="true"时，
+应用程序安装在不同密度的终端上时，
+程序会分别加载xxhdpi、xhdpi、hdpi、mdpi、ldpi文件夹中的资源。
+相反，如果设为false，
+即使在文件夹下拥有相同资源，
+应用不会自动地去相应文件夹下寻找资源
+
+a) drawable-hdpi该图片即适用于横屏，也适用于竖屏；
+b) drawable-land-hdpi,当屏幕为横屏，且为高密度时，加载此文件夹的资源；
+c) drawable-port-hdpi,当屏幕为竖屏，且为高密度时，加载此文件夹中的资源。其他同理。
