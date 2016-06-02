@@ -1,0 +1,15 @@
+"alpha"
+"rotation"
+"translationX"  水平方向移动
+"scaleY"
+
+
+参考：
+http://blog.csdn.net/guolin_blog/article/details/43536355
+ObjectAnimator moveIn = ObjectAnimator.ofFloat(textview, "translationX", -500f, 0f);  
+ObjectAnimator rotate = ObjectAnimator.ofFloat(textview, "rotation", 0f, 360f);  
+ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(textview, "alpha", 1f, 0f, 1f);  
+AnimatorSet animSet = new AnimatorSet();  
+animSet.play(rotate).with(fadeInOut).after(moveIn);  
+animSet.setDuration(5000);  
+animSet.start();  

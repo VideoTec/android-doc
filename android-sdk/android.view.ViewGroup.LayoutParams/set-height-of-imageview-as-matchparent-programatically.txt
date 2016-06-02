@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/10310550/set-height-of-imageview-as-matchparent-programatically
+
+imageView.setLayoutParams(
+new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+);

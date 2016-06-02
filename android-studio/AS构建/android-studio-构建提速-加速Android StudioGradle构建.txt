@@ -1,0 +1,7 @@
+http://blog.isming.me/2015/03/18/android-build-speed-up/
+
+已经使用Android Studio进行开发超过一年，随着项目的增大，
+依赖库的增多，构建速度越来越慢，
+现在最慢要6分钟才能build一个release的安装包，
+在网上查找资料，发现可以通过一些配置可以加快速度，这里跟大家分享一下。
+

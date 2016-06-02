@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/16641539/animate-change-width-of-android-relativelayout
+
+imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));

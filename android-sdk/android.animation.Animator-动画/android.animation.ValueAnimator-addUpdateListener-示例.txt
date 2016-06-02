@@ -1,0 +1,15 @@
+    private void onVideoViewClick(final View v) {
+        mBigVideoView = v;
+        ValueAnimator anim = ValueAnimator.ofInt(50, 200);
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                int val = (Integer) valueAnimator.getAnimatedValue();
+                ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+                layoutParams.height= val;
+                v.setLayoutParams(layoutParams);
+            }
+        });
+        anim.setDuration(2 * 1000);
+        anim.start();
+    }

@@ -1,0 +1,9 @@
+https://developer.android.com/reference/android/media/MediaCodec.html
+
+java.lang.Object
+   ↳	android.media.MediaCodec
+
+MediaCodec class can be used to access low-level media codecs, i.e. 
+encoder/decoder components. 
+It is part of the Android low-level multimedia support infrastructure 
+(normally used together with MediaExtractor, MediaSync, MediaMuxer, MediaCrypto, MediaDrm, Image, Surface, and AudioTrack.)

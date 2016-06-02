@@ -5,3 +5,16 @@ Change the z order of the child so it's on top of all other children. This order
 
 Parameters
 child	The child to bring to the top of the z order
+
+
+http://stackoverflow.com/questions/4486034/get-root-view-from-current-activity
+http://stackoverflow.com/questions/5273436/how-to-get-activitys-content-view
+
+this.getWindow().getDecorView().findViewById(android.R.id.content)
+
+or
+
+this.findViewById(android.R.id.content)
+or
+
+this.findViewById(android.R.id.content).getRootView()

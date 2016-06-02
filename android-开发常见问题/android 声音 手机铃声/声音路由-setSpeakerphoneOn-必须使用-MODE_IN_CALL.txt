@@ -1,8 +1,23 @@
 headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
 n.戴在头上的耳机或听筒
 
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+若使用耳机和听筒,则需要先设置模式为MODE_IN_CALL(3.0以前)或MODE_IN_COMMUNICATION(3.0以后).
+
+/**
+ * 切换到听筒
+ */
+public void changeToReceiver(){
+    audioManager.setSpeakerphoneOn(false);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+    } else {
+        audioManager.setMode(AudioManager.MODE_IN_CALL);
+    }
+}
+
 ----------------------------------------------
-注意 5.0 问题
+注意 5.0 问题 - 应该是 3.0
 ----------------------------------------------
 In android Lollipop 
 setAudioMode(AudioManager.MODE_IN_CALL) is restricted. 

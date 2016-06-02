@@ -1,0 +1,16 @@
+这次碰到的是HTC手机。
+
+原因：某些手机在 MODE_IN_CALL 模式下，录音返回的声音数据全为零。
+参考：
+E:\doc\android\android-sdk\SystemService-android.media.AudioManager\android.media.AudioManager-setMode-MODE_IN_CALL-会使一些手机-AudioRecord-不工作.txt
+
+http://cloudstack.blog.163.com/blog/static/18769811720119189564480/
+
+On Samsung tablet GT-P1000 I get stream of 0, 0, 0, 0, ... as microphone input. （AudioRecord.read 的声音数据全为零）
+
+I think the same problem is on Motorola phones (customers complain). 
+After some test I realised that it is caused by 
+AudioManager.setMode(AudioManager.MODE_IN_CALL). 
+
+This causes that microphone does not work on some devices. 
+But I have to call it because otherwise I can not disable speakerphone.

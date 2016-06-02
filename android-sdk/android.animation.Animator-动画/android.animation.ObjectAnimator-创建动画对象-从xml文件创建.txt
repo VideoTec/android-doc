@@ -1,0 +1,9 @@
+http://blog.csdn.net/guolin_blog/article/details/43536355
+
+Animator animator = AnimatorInflater.loadAnimator(context, R.animator.anim_file);  
+animator.setTarget(view);  
+animator.start();  
+
+调用AnimatorInflater的loadAnimator来将XML动画文件加载进来，
+然后再调用setTarget()方法将这个动画设置到某一个对象上面，
+最后再调用start()方法启动动画就可以了，就是这么简单。

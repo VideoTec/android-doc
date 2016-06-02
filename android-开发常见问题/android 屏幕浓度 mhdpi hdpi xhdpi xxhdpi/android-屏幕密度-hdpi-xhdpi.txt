@@ -9,18 +9,19 @@ You should always use dp units when defining your application's UI,
 to ensure proper display of your UI on screens with different densities.
 
 A set of six generalized densities:
-ldpi (low) ~120dpi
-mdpi (medium) ~160dpi   ===  dpi  标准
-hdpi (high) ~240dpi
-xhdpi (extra-high) ~320dpi
-xxhdpi (extra-extra-high) ~480dpi
-xxxhdpi (extra-extra-extra-high) ~640dpi
+ldpi (low) ~120dpi                         低密度    0.75
+mdpi (medium) ~160dpi   ===  dpi  标准     中等密度  1
+hdpi (high) ~240dpi                        高密度    1.5
+xhdpi (extra-high) ~320dpi                           2
+xxhdpi (extra-extra-high) ~480dpi                    3
+xxxhdpi (extra-extra-extra-high) ~640dpi             4
 
 推算出深度倍数
 
-hdpi 是 mdpi 的 1.5 倍           3/2
-xhdpi 是 hdpi 的 1.333 倍        4/3
-xxhdpi 是 xhdpi 的 1.5 倍        3/2
-xxxhdpi 是 xxhdpi 的 1.333 倍    4/3
+mdpi (medium) ~160dpi   ===  dpi  标准
+hdpi    ~240dpi           1.3 * mdpi
+xhdpi   ~320dpi           2   * mdpi
+xxhdpi  ~480dpi           3   * mdpi
+xxxhdpi ~640dpi           4   * mdpi
 
 http://stackoverflow.com/questions/10574363/android-splash-screen-image-sizes-to-fit-all-devices

@@ -8,3 +8,27 @@ AudioManager.setMode(AudioManager.MODE_IN_CALL).
 
 This causes that microphone does not work on some devices. 
 But I have to call it because otherwise I can not disable speakerphone.
+
+总结：需要关闭外放才能录音。
+只有设置成 AudioManager.MODE_IN_CALL 或者 AudioManager.MODE_IN_COMMUNICATION 才能关闭外放。
+判断标准： if (Build.VERSION.SDK_INT >= 21) 应该是 3.0
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+若使用耳机和听筒,则需要先设置模式为MODE_IN_CALL(3.0以前)或MODE_IN_COMMUNICATION(3.0以后).
+
+/**
+ * 切换到听筒
+ */
+public void changeToReceiver(){
+    audioManager.setSpeakerphoneOn(false);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+    } else {
+        audioManager.setMode(AudioManager.MODE_IN_CALL);
+    }
+
+13:04 2016/6/1
+moto-nexus 也出这个问题：
+原因是：mAudioManager.setMicrophoneMute(true); 关闭了麦克风
+
+15:44 2016/6/1
+Letv x800 也需要关闭外放才能录音。

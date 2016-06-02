@@ -1,0 +1,14 @@
+https://developer.android.com/guide/topics/graphics/prop-animation.html
+
+The property animation system is a robust framework 
+that allows you to animate almost anything. 
+You can define an animation to change any object property over time, 
+regardless of whether it draws to the screen or not. 
+A property animation changes a property's (a field in an object) value 
+over a specified length of time. 
+
+To animate something, 
+you specify the object property that you want to animate, 
+such as an object's position on the screen, 
+how long you want to animate it for, 
+and what values you want to animate between.

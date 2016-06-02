@@ -1,0 +1,20 @@
+http://www.voidcn.com/blog/zhaozhihang1234/article/p-5749758.html
+
+安装完 Android Studio 后启动，却报错如下：
+
+
+
+failed to create jvm error code -4
+
+
+
+
+这一般应是内存不够用所致，解决方法参考如下。
+
+1、打开 Android Studio 安装目录下的bin目录，
+查找并打开文件 studio.exe.vmoptions，修改代码：
+-Xmx512m 为 -Xmx256m
+保存后应即可正常打开了。
+
+2、关闭暂时不用的程序或者服务，使内存足够大。
+我亲自试过，可行。

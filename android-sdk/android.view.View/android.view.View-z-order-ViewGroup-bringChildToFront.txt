@@ -1,0 +1,17 @@
+ViewGroup.bringChildToFront
+
+查看源码知道，是把 view 移到，group 的 view 数组的最后一个，
+作用是：数组后面的，后来绘制，所以会显示到前面来。
+    /**
+     * {@inheritDoc}
+     */
+    public void bringChildToFront(View child) {
+        int index = indexOfChild(child);
+        if (index >= 0) {
+            removeFromArray(index);
+            addInArray(child, mChildrenCount);
+            child.mParent = this;
+            requestLayout();
+            invalidate();
+        }
+    }

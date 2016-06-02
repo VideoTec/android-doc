@@ -1,0 +1,11 @@
+
+java.lang.Object
+   ↳	android.animation.Animator
+Known Direct Subclasses
+AnimatorSet, ValueAnimator
+
+https://developer.android.com/reference/android/animation/Animator.html
+
+This is the superclass for classes 
+which provide basic support for animations which can be started, ended, 
+and have AnimatorListeners added to them.

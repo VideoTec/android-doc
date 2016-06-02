@@ -1,0 +1,50 @@
+http://www.cnblogs.com/wangtianxj/archive/2011/03/18/1988358.html
+
+有些时候，我们需要获取Android手机或Pad的屏幕的物理尺寸，
+以便于界面的设计或是其他功能的实现。
+下面就介绍讲一讲如何获取屏幕的物理尺寸：
+
+    从网上找过不少资料，发现获取屏幕尺寸并不是很复杂的编程操作，下面的代码即可获取屏幕的尺寸。
+    在一个Activity的onCreate方法中，写入如下代码：
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        int width = metric.widthPixels;  // 屏幕宽度（像素）
+        int height = metric.heightPixels;  // 屏幕高度（像素）
+        float density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
+        int densityDpi = metric.densityDpi;  // 屏幕密度DPI（120 / 160 / 240）
+    但是，需要注意的是，在一个低密度的小屏手机上，仅靠上面的代码是不能获取正确的尺寸的。比如说，一部240x320像素的低密度手机，如果运行上述代码，获取到的屏幕尺寸是320x427。因此，研究之后发现，若没有设定多分辨率支持的话，Android系统会将240x320的低密度（120）尺寸转换为中等密度（160）对应的尺寸，这样的话就大大影响了程序的编码。所以，需要在工程的AndroidManifest.xml文件中，加入supports-screens节点，具体的内容如下：
+        <supports-screens
+            android:smallScreens="true"
+            android:normalScreens="true"
+            android:largeScreens="true"
+            android:resizeable="true"
+            android:anyDensity="true" />
+    这样的话，当前的Android程序就支持了多种分辨率，那么就可以得到正确的物理尺寸了。
+    
+https://developer.android.com/reference/android/util/DisplayMetrics.html
+
+android.util.DisplayMetrics
+
+    /**
+     * The logical density of the display.  This is a scaling factor for the
+     * Density Independent Pixel unit, where one DIP is one pixel on an
+     * approximately 160 dpi screen (for example a 240x320, 1.5"x2" screen), 
+     * providing the baseline of the system's display. Thus on a 160dpi screen 
+     * this density value will be 1; on a 120 dpi screen it would be .75; etc.
+     *  
+     * <p>This value does not exactly follow the real screen size (as given by 
+     * {@link #xdpi} and {@link #ydpi}, but rather is used to scale the size of
+     * the overall UI in steps based on gross changes in the display dpi.  For 
+     * example, a 240x320 screen will have a density of 1 even if its width is 
+     * 1.8", 1.3", etc. However, if the screen resolution is increased to 
+     * 320x480 but the screen size remained 1.5"x2" then the density would be 
+     * increased (probably to 1.5).
+     *
+     * @see #DENSITY_DEFAULT
+     */
+    public float density;
+    /**
+     * The screen density expressed as dots-per-inch.  May be either
+     * {@link #DENSITY_LOW}, {@link #DENSITY_MEDIUM}, or {@link #DENSITY_HIGH}.
+     */
+    public int densityDpi;

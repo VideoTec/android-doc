@@ -1,0 +1,17 @@
+https://developer.android.com/reference/android/net/rtp/package-summary.html
+
+android.net.rtp
+Provides APIs for RTP (Real-time Transport Protocol), 
+allowing applications to manage on-demand or interactive data streaming. 
+In particular, apps that provide VOIP, 
+push-to-talk, conferencing, and audio streaming can use these APIs to initiate sessions 
+and transmit or receive data streams over any available network.
+
+To support audio conferencing and similar usages, 
+you need to instantiate two classes as endpoints for the stream:
+
+AudioStream specifies a remote endpoint and consists of network mapping and a configured AudioCodec.
+AudioGroup represents the local endpoint for one or more AudioStreams. The AudioGroup mixes all the AudioStreams and optionally interacts with the device speaker and the microphone at the same time.
+The simplest usage involves a single remote endpoint and local endpoint. For more complex usages, refer to the limitations described for AudioGroup.
+
+Note: To use the RTP APIs, you must request the INTERNET and RECORD_AUDIO permissions in your manifest file.

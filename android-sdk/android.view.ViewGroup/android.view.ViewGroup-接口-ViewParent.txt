@@ -1,0 +1,15 @@
+https://developer.android.com/reference/android/view/ViewParent.html
+
+Defines the responsibilities for a class that will be a parent of a View. 
+This is the API that a view sees when it wants to interact with its parent.
+
+http://stackoverflow.com/questions/27760051/is-an-android-viewparent-guaranteed-to-be-a-viewgroup
+
+It's safe. Every single implementation, in the Android SDK, of ViewParent is a ViewGroup.
+
+But remember that instanceof also checks for nullity. You could write :
+
+if (!(getParent() instanceof ViewGroup)){
+  throw new IllegalStateException("View does not have a parent, it cannot be rootview!");
+}
+ViewGroup parent = (ViewGroup) getParent();

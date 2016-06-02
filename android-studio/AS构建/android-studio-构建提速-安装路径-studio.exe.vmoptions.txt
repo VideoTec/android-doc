@@ -1,0 +1,5 @@
+http://www.voidcn.com/blog/zhaozhihang1234/article/p-5749758.html
+
+1、打开 Android Studio 安装目录下的bin目录，
+查找并打开文件 studio.exe.vmoptions，修改代码：
+-Xmx512m 为 -Xmx256m
