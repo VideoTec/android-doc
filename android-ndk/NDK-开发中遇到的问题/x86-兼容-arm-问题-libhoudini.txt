@@ -1,0 +1,8 @@
+https://commonsware.com/blog/2013/11/21/libhoudini-what-it-means-for-developers.html
+libhoudini makes ARM-only NDK binaries usable on x86, 
+giving x86-powered Android devices access to more of the Play Store catalog.
+
+The good news is that SQLCipher for Android runs nicely on 
+libhoudini-equipped x86 hardware, without the x86 binaries.
+
+The bad news is that the test suite takes about three times as long.

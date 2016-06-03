@@ -1,0 +1,33 @@
+飞信LOG
+
+06-03 11:34:05.581 4777-4777/? D/dalvikvm: Trying to load lib /mnt/asec/cn.com.fetion-2/lib/libmsc.so 0x41b4bb80
+06-03 11:34:05.581 4777-4777/? E/linker: bionic/linker/linker.cpp:761| ERROR: not a valid ELF executable: /mnt/asec/cn.com.fetion-2/lib/libmsc.so
+06-03 11:34:05.591 4777-4777/? D/dalvikvm: Added shared lib /mnt/asec/cn.com.fetion-2/lib/libmsc.so 0x41b4bb80
+06-03 11:34:05.591 4777-4777/? D/dalvikvm: No JNI_OnLoad found in /mnt/asec/cn.com.fetion-2/lib/libmsc.so 0x41b4bb80, skipping init
+06-03 11:34:07.251 4777-4777/? D/dalvikvm: Trying to load lib /mnt/asec/cn.com.fetion-2/lib/libbambuser.so 0x41b4bb80
+06-03 11:34:07.251 4777-4777/? E/linker: bionic/linker/linker.cpp:761| ERROR: not a valid ELF executable: /mnt/asec/cn.com.fetion-2/lib/libbambuser.so
+06-03 11:34:07.251 4777-4777/? D/dalvikvm: Added shared lib /mnt/asec/cn.com.fetion-2/lib/libbambuser.so 0x41b4bb80
+06-03 11:34:07.251 4777-4777/? D/dalvikvm: No JNI_OnLoad found in /mnt/asec/cn.com.fetion-2/lib/libbambuser.so 0x41b4bb80, skipping init
+
+碰到的问题：
+
+
+06-03 11:41:21.921 6800-6800/? D/dalvikvm: Trying to load lib /mnt/asec/com.feinno.rongfly-1/lib/libv6sdk.so 0x41b4a970
+06-03 11:41:21.921 6800-6800/? E/linker: bionic/linker/linker.cpp:761| ERROR: not a valid ELF executable: /mnt/asec/com.feinno.rongfly-1/lib/libv6sdk.so
+06-03 11:41:22.011 6800-6800/? E/linker:   144 not unloading 'libc.so', decrementing refcount to 89
+06-03 11:41:22.111 143-143/? I/DEBUG:     #00  pc 000db738  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.121 143-143/? I/DEBUG:     #01  pc 000db752  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.121 143-143/? I/DEBUG:     #02  pc 001840eb  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.121 143-143/? I/DEBUG:     #04  pc 00183481  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.121 143-143/? I/DEBUG:     #06  pc 0013f82e  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.131 143-143/? I/DEBUG:     #08  pc 0015658a  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.131 143-143/? I/DEBUG:     #10  pc 0008c8bc  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.131 143-143/? I/DEBUG:     #11  pc 0007725b  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.131 143-143/? I/DEBUG:     #12  pc 00133953  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.131 143-143/? I/DEBUG:     #14  pc 0013345e  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.141 143-143/? I/DEBUG:     #15  pc 000ca3a8  /mnt/asec/com.feinno.rongfly-1/lib/libv6sdk.so
+06-03 11:41:22.141 143-143/? I/DEBUG:     #16  pc 001331d0  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.141 143-143/? I/DEBUG:     #18  pc 001362ef  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.151 143-143/? I/DEBUG:          1a00fc80  6056c752  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:22.171 143-143/? I/DEBUG:          1a00fca0  606150eb  /system/lib/libhoudini.so.3.3.10.44095
+06-03 11:41:28.611 6836-6836/com.feinno.rongfly:push D/dalvikvm: Trying to load lib /mnt/asec/com.feinno.rongfly-1/lib/libv6sdk.so 0x41b4bef0

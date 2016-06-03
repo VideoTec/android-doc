@@ -1,0 +1,28 @@
+http://blog.csdn.net/lurker0ster/article/details/8957273
+
+oudini 是intel 研发的ARM binary translator。
+它的原理在于把ARM的二进制代码转译为X86指令集，使得可以在X86的CPU上执行。
+Intel是移动市场的新进者，最近出了几款面向移动市场的SOC，面对应用程序支持缺乏的问题，有两条路可以走：
+1.逐家拜访应用开发商，要求他们重新为intel的cpu编译一份应用。
+2.使用二进制转换，使得已有的应用可以运行在intel的cpu上。
+
+该产品并不开源，可以在联想的K900 ROM里面可以找到二进制版本。
+一共有三个文件：libhoudini.so   libdvm_houdini.so  houdini_armlibs.tgz
+
+原理是：
+当Dalvik VM加载lib失败时，
+程序流会再次尝试用libhoudini中的my_dlopen打开。
+该lib类似于QEMU的user mode emulator，
+通过虚拟一个ARM的CPU （包含指令集和寄存器，但是没有外设模拟），
+加载基于ARM指令集的lib。
+目前还不清楚是基于解析执行，还是JIT方式实现。
+
+采用类似技术的产品有valgrind（模拟X86 CPU来检测程序内存泄露），
+qemu user mode（可以在X86 linux下执行mips的elf文件）
+
+类似概念的产品
+为ARM服务器产品准备的二进制翻译软件  （X86转ARM指令集） 
+http://server.chinabyte.com/345/12451845.shtml
+
+FX!32 (X86 windows程序运行在Alpha CPU的Windows NT上) 
+http://en.wikipedia.org/wiki/FX!32
