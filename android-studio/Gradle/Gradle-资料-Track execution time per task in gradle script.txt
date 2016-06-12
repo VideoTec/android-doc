@@ -1,0 +1,10 @@
+http://www.cnblogs.com/jhj117/p/4998854.html
+那么为什么我们每次编译都需要等待那么久？
+事实上我们我们可以gradle中
+添加TaskExecutionListener来监听gradle脚本中每个task的执行时间
+
+http://stackoverflow.com/questions/13031538/track-execution-time-per-task-in-gradle-script
+
+The cleanest solution is to implement a TaskExecutionListener 
+(I'm sure you can handle that part) and 
+register it with gradle.taskGraph.addTaskExecutionListener.

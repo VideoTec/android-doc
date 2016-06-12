@@ -1,3 +1,7 @@
+flavor[英]['fleɪvə] [美][ˈflevɚ]
+n.味；韵味；特点；香料
+vt.给…调味；给…增添风趣
+
 参考
 E:\doc\android\android-sdk-tools-help\android-apkbuilder-官方文档-构建过程.txt
 

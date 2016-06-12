@@ -1,0 +1,43 @@
+错误信息
+
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.c) that doesn\u0027t come with an","sources":[{}]}
+
+资料：
+
+http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=87952
+您好，目前只能从一体化平台打包下载，如果分别导入会造成冲突的，谢谢！
+
+http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=109598
+地图 和 定位都有这个问题，而且这个问题会导致Android studio 2.0编译变慢，
+至少要等3分钟，简直无法接受，百度那些垃圾程序员弄这么个垃圾的sdk出来，
+浪费我的时间，fuck fuck fuck。
+
+http://106.120.159.11/forum.php?mod=viewthread&tid=110755
+地图SDK的混淆是区分大小写的。
+你对jar包做特殊处理了吗？
+
+http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=99855
+
+经过反复研究，查询资料，调试查找发现是百度地图的两个jar包重复了，
+BaiduLBS_Android和locsdk_6.03重复了，
+删除locsdk_6.03即可，
+可是删除后还是出现64位的手机cpu找不到so文件
+
+定位包和导航版一定要版本一致，否则会报错~~

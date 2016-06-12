@@ -1,0 +1,23 @@
+http://www.cnblogs.com/jhj117/p/4998854.html
+
+对于Android开发者而言，随着工程不断的壮大，
+Android项目的编译时间也逐渐变长，
+即便是有时候添加一行代码也需要等待好久才能看见期待的效果。
+之前加快Android编译的工具相对较少，
+其中最具有代表性的开源项目当属FaceBook的Buck和 mmin18的LayoutCast，
+除此之外还有JRebel 和 Jimulabs。
+不过前两天google宣布推出Instant Run加快Android 编译速度，
+相信对其他的工具来说都是一次冲击，这也是写这篇文章的动机。
+
+相对于Buck而言，LayoutCast显得更轻量一些，对项目的侵入性较弱。
+今年8月份的时候，
+花了一个星期左右的时间才完成公司的代码的适配，
+对于一些繁重的项目而言，Buck带来的好处是显而易见的，
+但是适配过程中的坑也是很多的。
+
+Instant Run 对项目的侵入性其实也是比较大的，
+但是这些都不需要用户去操作、配置，
+所以看起来和LayoutCast一样属于轻量型的。
+
+执行脚本可以发现主要的费时在dex(包含preDex)以及install这两个步骤。
+BUCK和LayoutCast的主要工作也是集中于这些费时的步骤上面

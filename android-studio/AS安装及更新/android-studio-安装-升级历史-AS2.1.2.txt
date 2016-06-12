@@ -1,0 +1,5 @@
+This update includes a number of small changes and bug fixes:
+
+Instant Run updates and bug fixes.
+Improvements to LLDB performance and crash notifications.
+Fixed a regression in the Android Studio 2.1.1 security update that caused git rebase to fail.

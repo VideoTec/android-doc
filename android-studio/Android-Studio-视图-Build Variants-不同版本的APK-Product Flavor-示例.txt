@@ -1,0 +1,25 @@
+https://segmentfault.com/a/1190000004962523
+
+flavor[英]['fleɪvə] [美][ˈflevɚ]
+n.味；韵味；特点；香料
+vt.给…调味；给…增添风趣
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.feinno.demo"
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    productFlavors {
+        instant {
+            minSdkVersion 21
+        }
+        flavor1 {
+            minSdkVersion 15
+        }
+    }

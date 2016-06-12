@@ -1,0 +1,24 @@
+https://segmentfault.com/a/1190000004962523
+
+Instant Run要求Gradle的版本在2.0以上，
+minSdkVersion必须为15以上，最好的minSdkVersion是21（后面会解释为什么是21）
+
+Android runtime(ART)是管理runtime和系统服务的技术，
+ART和Dalvik能够读取DEX的二进程文件，
+ART天然地支持multiple DEX文件，
+ART在安装应用的时候扫描所有的DEX文件，
+编译成一个单独的.oat文件提供Android设备运行
+
+利用Build Variant可以定义不同的APK,比如:可以设置不同的version，
+也可以设置不同的minSdkVersion
+
+android {
+    productFlavors {
+        instant {
+            minSdkVersion 21
+        }
+        app {
+            minSdkVersion 17
+        }
+    }
+}

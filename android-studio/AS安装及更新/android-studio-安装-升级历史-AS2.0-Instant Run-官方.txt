@@ -1,0 +1,10 @@
+https://developer.android.com/studio/run/index.html#instant-run
+
+Instant Run pushes updated code and resources 
+to your connected device or emulator by performing a hot swap, warm swap, or cold swap. 
+It automatically determines the type of swap to perform based on the type of change you made. 
+The video above provides interesting detail 
+about how this all works under the hood. 
+For a quick summary of how Instant Run behaves 
+when you push certain code changes to a target device, however, 
+see the following table.

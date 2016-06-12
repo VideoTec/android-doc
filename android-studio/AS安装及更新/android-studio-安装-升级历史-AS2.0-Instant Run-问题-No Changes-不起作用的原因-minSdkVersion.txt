@@ -1,0 +1,35 @@
+api 18 测试结果
+1）layout.xml 修改后，会起作用： Hotswapoing changes....
+2）修改java代码， no changes
+
+原因：
+和 minSdkVersion 无关，和调试用机器的 API版本 相关
+经验证： 
+minSdkVersion = 18  机器 SDK 为 23，可以正常更新运行代码。
+修改java代码后，instant debug：
+    06/12 20:57:08: Launching app
+    $ adb shell am start -D -n "com.feinno.demo/com.example.wangxiangfx.demo.DemoACT" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+    Waiting for application to come online: com.feinno.demo.test | com.feinno.demo
+    Waiting for application to come online: com.feinno.demo.test | com.feinno.demo
+    Waiting for application to come online: com.feinno.demo.test | com.feinno.demo
+    Connecting to com.feinno.demo
+    Connected to the target VM, address: 'localhost:8624', transport: 'socket'
+
+http://stackoverflow.com/questions/36539091/use-android-studio-2-0-tip-that-no-changes-to-deploy
+
+It's gradle bug, you can rebuild project and run it again.
+
+Solved by rebuilding Project (menu Build -> Rebuild project)
+
+http://stackoverflow.com/questions/33902467/android-studio-2-0-why-does-instant-run-not-work-when-modifying-xml-layout-reso
+
++--------------------------------------+-----------------------------------------+
+|           Code Change                |         Instant Run Support             |
++--------------------------------------+-----------------------------------------+
+| Change instance method implementation| Supported                               |
+| Change static method implementation  |                                         |
+| Add or remove a class                |                                         |
+|--------------------------------------|-----------------------------------------|
+| Add, remove, or change               | Supported but requires an Activity      |
+| a string resource                    | restart.                                |
++--------------------------------------+-----------------------------------------+

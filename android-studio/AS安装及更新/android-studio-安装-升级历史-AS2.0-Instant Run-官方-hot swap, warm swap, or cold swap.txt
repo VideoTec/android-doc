@@ -1,0 +1,4 @@
+https://developer.android.com/studio/run/index.html#instant-run
+
+Instant Run pushes updated code and resources 
+to your connected device or emulator by performing a hot swap, warm swap, or cold swap.
