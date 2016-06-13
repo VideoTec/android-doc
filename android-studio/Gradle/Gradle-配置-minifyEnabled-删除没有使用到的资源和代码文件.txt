@@ -1,0 +1,9 @@
+http://www.cnblogs.com/tianzhijiexian/p/4457763.html
+
+一、打包时忽略无用资源
+
+　　我们在打包的时候默认会把没有用到的资源（比如图片）也打包成app，徒增了应用的大小。
+现在我们可以利用Gradle来优雅的去除没有用到的资源文件了！
+
+就是在gradle中配置shrinkResources true。
+这个东西依赖于minifyEnabled，所以minifyEnabled也要为true才行

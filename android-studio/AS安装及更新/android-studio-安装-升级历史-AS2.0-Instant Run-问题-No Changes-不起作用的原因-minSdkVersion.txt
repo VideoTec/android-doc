@@ -4,8 +4,9 @@ api 18 测试结果
 
 原因：
 和 minSdkVersion 无关，和调试用机器的 API版本 相关
+
 经验证： 
-minSdkVersion = 18  机器 SDK 为 23，可以正常更新运行代码。
+minSdkVersion = 18  机器 SDK 为 23,21，可以正常更新运行代码。
 修改java代码后，instant debug：
     06/12 20:57:08: Launching app
     $ adb shell am start -D -n "com.feinno.demo/com.example.wangxiangfx.demo.DemoACT" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
