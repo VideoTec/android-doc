@@ -1,0 +1,39 @@
+sourcecode
+https://chromium.googlesource.com/breakpad/breakpad/
+docs
+https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/
+
+参考：
+E:\doc\linux\Linux平台\Linux-信号机制\应用-android ndk crash 事件-Google Breakpad 项目.txt
+
+http://github.dudukr.com/VWiki/2013/02/21/tombstone-on-android.html
+
+Google Breakpad 是Google开源的跨平台崩溃转储和分析模块，
+他支持Windows，Linux和Mac和Solaris系统，
+并可以编译到Android工程中。
+Google-breakpad的好处在于可以屏蔽了不同平台的差异，
+使用统一的文件格式记录和分析符号文件格式和崩溃栈信息。
+
+在Linux系统上，google-breakpad也是通过信号机制来捕获crash，
+大致过程可以通过源码中的注释了解：
+
+//    The signal flow looks like this:
+
+//  SignalHandler (uses a global stack of ExceptionHandler objects to find
+//        |         one to handle the signal. If the first rejects it, try
+//        |         the second etc...)
+//        V
+//   HandleSignal ----------------------------| (clones a new process which
+//        |                                   |  shares an address space with
+//   (wait for cloned                         |  the crashed process. This
+//     process)                               |  allows us to ptrace the crashed
+//        |                                   |  process)
+//        V                                   V
+//   (set signal handler to             ThreadEntry (static function to bounce
+//    SIG_DFL and rethrow,                    |      back into the object)
+//    killing the crashed                     |
+//    process)                                V
+//                                          DoDump  (writes minidump)
+//                                            |
+//                                            V
+//                                         sys_exit

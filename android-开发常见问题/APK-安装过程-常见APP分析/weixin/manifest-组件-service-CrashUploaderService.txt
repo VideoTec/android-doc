@@ -1,0 +1,6 @@
+<receiver android:exported="false" android:name=".sandbox.monitor.CrashUploadAlarmReceiver"/>
+
+<service 
+        android:exported="false" 
+        android:name=".crash.CrashUploaderService" 
+        android:process=":cuploader"/>

@@ -1,0 +1,5 @@
+格式
+
+  -v <format>     Sets the log print format, where <format> is one of:
+
+                  brief process tag thread raw time threadtime long

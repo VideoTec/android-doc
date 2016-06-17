@@ -1,0 +1,4 @@
+https://developer.android.com/reference/android/view/ViewManager.html
+
+Interface to let you add and remove child views to an Activity. 
+To get an instance of this class, call Context.getSystemService().

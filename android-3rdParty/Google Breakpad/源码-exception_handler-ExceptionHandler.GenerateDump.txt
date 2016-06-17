@@ -1,0 +1,72 @@
+
+// This function may run in a compromised context: see the top of the file.
+bool ExceptionHandler::GenerateDump(CrashContext *context) {
+  if (IsOutOfProcess())
+    return crash_generation_client_->RequestDump(context, sizeof(*context));
+
+  // Allocating too much stack isn't a problem, and better to err on the side
+  // of caution than smash it into random locations.
+  static const unsigned kChildStackSize = 16000;
+  PageAllocator allocator;
+  uint8_t* stack = reinterpret_cast<uint8_t*>(allocator.Alloc(kChildStackSize));
+  if (!stack)
+    return false;
+  // clone() needs the top-most address. (scrub just to be safe)
+  stack += kChildStackSize;
+  my_memset(stack - 16, 0, 16);
+
+  ThreadArgument thread_arg;
+  thread_arg.handler = this;
+  thread_arg.minidump_descriptor = &minidump_descriptor_;
+  thread_arg.pid = getpid();
+  thread_arg.context = context;
+  thread_arg.context_size = sizeof(*context);
+
+  // We need to explicitly enable ptrace of parent processes on some
+  // kernels, but we need to know the PID of the cloned process before we
+  // can do this. Create a pipe here which we can use to block the
+  // cloned process after creating it, until we have explicitly enabled ptrace
+  if (sys_pipe(fdes) == -1) {
+    // Creating the pipe failed. We'll log an error but carry on anyway,
+    // as we'll probably still get a useful crash report. All that will happen
+    // is the write() and read() calls will fail with EBADF
+    static const char no_pipe_msg[] = "ExceptionHandler::GenerateDump "
+                                      "sys_pipe failed:";
+    logger::write(no_pipe_msg, sizeof(no_pipe_msg) - 1);
+    logger::write(strerror(errno), strlen(strerror(errno)));
+    logger::write("\n", 1);
+
+    // Ensure fdes[0] and fdes[1] are invalid file descriptors.
+    fdes[0] = fdes[1] = -1;
+  }
+
+  const pid_t child = sys_clone(
+      ThreadEntry, stack, CLONE_FILES | CLONE_FS | CLONE_UNTRACED,
+      &thread_arg, NULL, NULL, NULL);
+  if (child == -1) {
+    sys_close(fdes[0]);
+    sys_close(fdes[1]);
+    return false;
+  }
+
+  // Allow the child to ptrace us
+  sys_prctl(PR_SET_PTRACER, child, 0, 0, 0);
+  SendContinueSignalToChild();
+  int status;
+  const int r = HANDLE_EINTR(sys_waitpid(child, &status, __WALL));
+
+  sys_close(fdes[0]);
+  sys_close(fdes[1]);
+
+  if (r == -1) {
+    static const char msg[] = "ExceptionHandler::GenerateDump waitpid failed:";
+    logger::write(msg, sizeof(msg) - 1);
+    logger::write(strerror(errno), strlen(strerror(errno)));
+    logger::write("\n", 1);
+  }
+
+  bool success = r != -1 && WIFEXITED(status) && WEXITSTATUS(status) == 0;
+  if (callback_)
+    success = callback_(minidump_descriptor_, callback_context_, success);
+  return success;
+}

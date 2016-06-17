@@ -1,0 +1,29 @@
+特别注意：
+ViewGroup.OnTouchListener.onTouch
+
+http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html
+
+事件响应：public boolean onTouchEvent(MotionEvent ev)
+
+在 
+
+第一种情况：
+dispatchTouchEvent 
+返回 super.dispatchTouchEvent(ev) 并且 
+
+第二种情况：
+onInterceptTouchEvent 
+返回 true 或 返回 super.onInterceptTouchEvent(ev) 的情况下 
+
+onTouchEvent 会被调用。
+
+onTouchEvent 的事件响应逻辑如下：
+
+如果事件传递到当前 View 的 onTouchEvent 方法，而该方法
+返回了 false，那么这个事件会从当前 View 向上传递，
+并且都是由上层 View 的 onTouchEvent 来接收，
+如果传递到上面的 onTouchEvent 也返回 false，这个事件就会“消失”，
+而且接收不到下一次事件。【指：MOVE UP 等等事件】
+
+如果返回了 true 则会接收并消费该事件。
+如果返回 super.onTouchEvent(ev) 默认处理事件的逻辑和返回 false 时相同。

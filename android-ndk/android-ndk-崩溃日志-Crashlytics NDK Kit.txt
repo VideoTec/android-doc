@@ -1,0 +1,22 @@
+https://docs.fabric.io/android/crashlytics/ndk.html#mechanics-of-the-crashlytics-ndk-kit
+
+Mechanics of the Crashlytics NDK Kit
+In the process of initialization via Fabric.with(), 
+the NDK Kit uses System.loadLibrary to load libcrashlytics. 
+The entry point installs a signal handler into the running process. 
+In the spirit of being a good citizen, 
+after a signal is handled, 
+libcrashlytics restores the previous signal handler, 
+enabling the use of alternate signal handling facilities, 
+although running multiple handlers is not recommended. 
+The handler collects necessary information into a temporary file on the filesystem, 
+that gets read and processed once the application is restarted. 
+In some circumstances, 
+the crash report is not processed due to the extremely 
+close proximity of a crash from the start of the application.
+
+In the context of a crash, 
+the Crashlytics signal handler relies on an on-device stack unwinder; 
+libunwind on API levels 21 and above, 
+libcorkscrew for API levels 16-19, and a simple single-frame unwinder for all others. 
+The unwinding library that gets loaded is written to the logcat upon application startup.

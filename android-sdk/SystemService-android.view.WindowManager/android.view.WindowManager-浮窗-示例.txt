@@ -1,0 +1,26 @@
+    /**
+     * 创建一个视频浮窗，初始位置为屏幕的右上角位置。
+     */
+    public static void createVideoFloatWindow(Context context, String phone) {
+        number = phone;
+        if (videoFloatView == null) {
+            WindowManager windowManager = getWindowManager(context);
+            DisplayMetrics metrics = new DisplayMetrics();
+            windowManager.getDefaultDisplay().getMetrics(metrics);
+            videoFloatView = new RFVoWifiVideoFloatView(context);
+            if (videoParams == null) {
+                videoParams = new WindowManager.LayoutParams();
+                videoParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+                videoParams.format = PixelFormat.RGBA_8888;
+                videoParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+                videoParams.gravity = Gravity.LEFT | Gravity.TOP;
+                videoParams.width = RFVoWifiVideoFloatView.windowViewWidth;
+                videoParams.height = RFVoWifiVideoFloatView.windowViewHeight;
+                videoParams.x = metrics.widthPixels;
+                videoParams.y = 0;
+            }
+            videoFloatView.setFloatLayoutParams(videoParams);
+            windowManager.addView(videoFloatView, videoParams);
+            setFloatVideoClickListener(context);
+        }
+    }

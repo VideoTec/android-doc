@@ -1,0 +1,5 @@
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+http://www.jianshu.com/p/167fd5f47d5c
+
+最近UC浏览器中文版出了一个快速搜索的功能, 在使用其他app的时候, 如果复制了一些内容, 屏幕顶部会弹一个窗口, 提示一些操作, 点击后跳转到UC, 显示这个悬浮窗不需要申请android.permission.SYSTEM_ALERT_WINDOW权限.

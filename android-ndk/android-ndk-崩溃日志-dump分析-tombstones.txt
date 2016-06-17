@@ -1,0 +1,14 @@
+http://blog.csdn.net/rambo2188/article/details/6998349
+SIGILL, SIGABRT, SIGBUS, SIGFPE, SIGSEGV, SIGSTKFLT
+Android进程 在退出前，会生成 tombstone 文件，记录该进程退出前的轨迹
+分析tombstone的方法
+
+http://github.dudukr.com/VWiki/2013/02/21/tombstone-on-android.html
+
+Android系统中应用出现nativecrash时，
+会在 /data/tombstones 目录下生成 tombstone_xx 的日志文件，
+记录了应用crash发生时的内存、寄存器、堆栈信息等。
+并且通过logcat将其内容输出。
+
+http://blog.csdn.net/helldevil/article/details/6682211
+http://blog.sina.com.cn/s/blog_702c2db50102vc2h.html

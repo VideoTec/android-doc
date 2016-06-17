@@ -1,0 +1,85 @@
+
+        /**
+         * The general type of window.  There are three main classes of
+         * window types:
+         * <ul>
+         * <li> <strong>Application windows</strong> (ranging from
+         * {@link #FIRST_APPLICATION_WINDOW} to
+         * {@link #LAST_APPLICATION_WINDOW}) are normal top-level application
+         * windows.  For these types of windows, the {@link #token} must be
+         * set to the token of the activity they are a part of (this will
+         * normally be done for you if {@link #token} is null).
+         * <li> <strong>Sub-windows</strong> (ranging from
+         * {@link #FIRST_SUB_WINDOW} to
+         * {@link #LAST_SUB_WINDOW}) are associated with another top-level
+         * window.  For these types of windows, the {@link #token} must be
+         * the token of the window it is attached to.
+         * <li> <strong>System windows</strong> (ranging from
+         * {@link #FIRST_SYSTEM_WINDOW} to
+         * {@link #LAST_SYSTEM_WINDOW}) are special types of windows for
+         * use by the system for specific purposes.  They should not normally
+         * be used by applications, and a special permission is required
+         * to use them.
+         * </ul>
+         * 
+         * @see #TYPE_BASE_APPLICATION
+         * @see #TYPE_APPLICATION
+         * @see #TYPE_APPLICATION_STARTING
+         * @see #TYPE_APPLICATION_PANEL
+         * @see #TYPE_APPLICATION_MEDIA
+         * @see #TYPE_APPLICATION_SUB_PANEL
+         * @see #TYPE_APPLICATION_ATTACHED_DIALOG
+         * @see #TYPE_STATUS_BAR
+         * @see #TYPE_SEARCH_BAR
+         * @see #TYPE_PHONE
+         * @see #TYPE_SYSTEM_ALERT
+         * @see #TYPE_KEYGUARD
+         * @see #TYPE_TOAST
+         * @see #TYPE_SYSTEM_OVERLAY
+         * @see #TYPE_PRIORITY_PHONE
+         * @see #TYPE_STATUS_BAR_PANEL
+         * @see #TYPE_SYSTEM_DIALOG
+         * @see #TYPE_KEYGUARD_DIALOG
+         * @see #TYPE_SYSTEM_ERROR
+         * @see #TYPE_INPUT_METHOD
+         * @see #TYPE_INPUT_METHOD_DIALOG
+         */
+        @ViewDebug.ExportedProperty(mapping = {
+            @ViewDebug.IntToString(from = TYPE_BASE_APPLICATION, to = "TYPE_BASE_APPLICATION"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION, to = "TYPE_APPLICATION"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_STARTING, to = "TYPE_APPLICATION_STARTING"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_PANEL, to = "TYPE_APPLICATION_PANEL"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_MEDIA, to = "TYPE_APPLICATION_MEDIA"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_SUB_PANEL, to = "TYPE_APPLICATION_SUB_PANEL"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_ATTACHED_DIALOG, to = "TYPE_APPLICATION_ATTACHED_DIALOG"),
+            @ViewDebug.IntToString(from = TYPE_APPLICATION_MEDIA_OVERLAY, to = "TYPE_APPLICATION_MEDIA_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_STATUS_BAR, to = "TYPE_STATUS_BAR"),
+            @ViewDebug.IntToString(from = TYPE_SEARCH_BAR, to = "TYPE_SEARCH_BAR"),
+            @ViewDebug.IntToString(from = TYPE_PHONE, to = "TYPE_PHONE"),
+            @ViewDebug.IntToString(from = TYPE_SYSTEM_ALERT, to = "TYPE_SYSTEM_ALERT"),
+            @ViewDebug.IntToString(from = TYPE_KEYGUARD, to = "TYPE_KEYGUARD"),
+            @ViewDebug.IntToString(from = TYPE_TOAST, to = "TYPE_TOAST"),
+            @ViewDebug.IntToString(from = TYPE_SYSTEM_OVERLAY, to = "TYPE_SYSTEM_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_PRIORITY_PHONE, to = "TYPE_PRIORITY_PHONE"),
+            @ViewDebug.IntToString(from = TYPE_SYSTEM_DIALOG, to = "TYPE_SYSTEM_DIALOG"),
+            @ViewDebug.IntToString(from = TYPE_KEYGUARD_DIALOG, to = "TYPE_KEYGUARD_DIALOG"),
+            @ViewDebug.IntToString(from = TYPE_SYSTEM_ERROR, to = "TYPE_SYSTEM_ERROR"),
+            @ViewDebug.IntToString(from = TYPE_INPUT_METHOD, to = "TYPE_INPUT_METHOD"),
+            @ViewDebug.IntToString(from = TYPE_INPUT_METHOD_DIALOG, to = "TYPE_INPUT_METHOD_DIALOG"),
+            @ViewDebug.IntToString(from = TYPE_WALLPAPER, to = "TYPE_WALLPAPER"),
+            @ViewDebug.IntToString(from = TYPE_STATUS_BAR_PANEL, to = "TYPE_STATUS_BAR_PANEL"),
+            @ViewDebug.IntToString(from = TYPE_SECURE_SYSTEM_OVERLAY, to = "TYPE_SECURE_SYSTEM_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_DRAG, to = "TYPE_DRAG"),
+            @ViewDebug.IntToString(from = TYPE_STATUS_BAR_SUB_PANEL, to = "TYPE_STATUS_BAR_SUB_PANEL"),
+            @ViewDebug.IntToString(from = TYPE_POINTER, to = "TYPE_POINTER"),
+            @ViewDebug.IntToString(from = TYPE_NAVIGATION_BAR, to = "TYPE_NAVIGATION_BAR"),
+            @ViewDebug.IntToString(from = TYPE_VOLUME_OVERLAY, to = "TYPE_VOLUME_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_BOOT_PROGRESS, to = "TYPE_BOOT_PROGRESS"),
+            @ViewDebug.IntToString(from = TYPE_HIDDEN_NAV_CONSUMER, to = "TYPE_HIDDEN_NAV_CONSUMER"),
+            @ViewDebug.IntToString(from = TYPE_DREAM, to = "TYPE_DREAM"),
+            @ViewDebug.IntToString(from = TYPE_NAVIGATION_BAR_PANEL, to = "TYPE_NAVIGATION_BAR_PANEL"),
+            @ViewDebug.IntToString(from = TYPE_DISPLAY_OVERLAY, to = "TYPE_DISPLAY_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_MAGNIFICATION_OVERLAY, to = "TYPE_MAGNIFICATION_OVERLAY"),
+            @ViewDebug.IntToString(from = TYPE_PRIVATE_PRESENTATION, to = "TYPE_PRIVATE_PRESENTATION")
+        })
+        public int type;

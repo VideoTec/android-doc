@@ -1,3 +1,15 @@
+14:18 2016/6/17
+google nexus adb interface
+连接手机后，设备管理器，可以看到驱动。
+但是 adb device 查看不到设备
+
+设备上，不弹出允许调试的对话框。
+http://stackoverflow.com/questions/17218953/nexus-4-does-not-show-the-rsa-dialog-when-connecting-usb-in-debug-mode
+
+解决方法：
+1. 撤消 USB 调试授权
+2. 更改 USB 配置。  再更改成 充电 时，弹出授权对话框。
+
 14:14 2015/7/15
 
 设备已经连接，QQ(AndroidServer.exe)，也检测到了。

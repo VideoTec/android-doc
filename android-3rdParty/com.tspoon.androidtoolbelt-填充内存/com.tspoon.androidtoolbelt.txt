@@ -1,1 +1,7 @@
+
 https://github.com/T-Spoon/Android-Developer-Toolbelt
+
+--------------------------
+遇到的过程
+--------------------------
+E:\doc\android\android-开发常见问题\Android low memory situation\模拟资料紧张的情况-开源工具-Toolbelt-构建失败.txt

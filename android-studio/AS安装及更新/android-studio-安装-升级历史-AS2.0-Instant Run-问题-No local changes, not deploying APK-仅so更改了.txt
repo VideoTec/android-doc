@@ -1,0 +1,9 @@
+只是 so 更改了，clean 后再 build，出下面的提示
+
+No local changes, not deploying APK
+
+解决方法：
+Run | Clean and Rerun
+
+https://code.google.com/p/android/issues/detail?id=199522
+Please try again with Studio preview 9 with gradle plugin alpha9

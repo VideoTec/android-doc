@@ -13,6 +13,7 @@ allprojects {
     repositories {
         jcenter()
     }
+    这个不用，是“身边”工程的特殊情况，造成的
     rootProject.buildDir = "${rootProject.projectDir}/ASProjectBuild"
 }
 
@@ -20,7 +21,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'  注意这个 application
 
 android {
     compileSdkVersion 19
@@ -48,6 +49,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    这个也不是必须的，是身边工程的问题造成的
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/LICENSE'
@@ -58,6 +60,5 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'li2', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
 }

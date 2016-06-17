@@ -1,0 +1,7 @@
+LOCAL_PATH := $(call my-dir)/../..
+
+ifneq ($(NDK_MODULE_PATH),)
+  $(call import-module,google_breakpad)
+else
+  include $(LOCAL_PATH)/../../google_breakpad/Android.mk
+endif

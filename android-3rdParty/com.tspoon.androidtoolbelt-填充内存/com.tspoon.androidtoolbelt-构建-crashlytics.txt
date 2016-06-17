@@ -1,0 +1,31 @@
+https://github.com/T-Spoon/Android-Developer-Toolbelt
+
+编译不过，
+git reset --hard
+
+还是出错：
+
+11:39:22 Gradle sync failed: Gradle version 2.2 is required. Current version is 2.10. If using the gradle wrapper, try editing the distributionUrl in E:\opensource\tspoon\gradle\wrapper\gradle-wrapper.properties to gradle-2.2-all.zip.
+         Please fix the project's Gradle settings.
+         Consult IDE log for more details (Help | Show Log)
+解决方法：
+
+修改 compile target min sdk api buildToolsVersion
+
+还是出错：
+
+ERROR - Crashlytics Developer Tools error.
+java.lang.IllegalArgumentException: Crashlytics found an invalid API key: INVALID_KEY. 
+Check the Crashlytics plugin to make sure that the application has been added successfully! 
+Contact support@crashlytics.com for assistance.
+
+查看 AndroidManifest.xml
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="${crashlyticsKey}"/>
+            
+https://fabric.io/kits/android/crashlytics/install
+
+参考：
+E:\doc\android\android-开发常见问题\Android low memory situation\模拟资料紧张的情况-开源工具-Toolbelt-构建失败.txt

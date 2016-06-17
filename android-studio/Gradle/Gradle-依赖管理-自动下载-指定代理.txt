@@ -1,0 +1,25 @@
+https://docs.gradle.org/current/userguide/build_environment.html
+
+11.3. Accessing the web via a proxy
+
+Configuring an HTTP proxy (for downloading dependencies, for example) is done via standard JVM system properties. These properties can be set directly in the build script; for example, setting the proxy host would be done with System.setProperty('http.proxyHost', 'www.somehost.org'). Alternatively, the properties can be specified in a gradle.properties file, either in the build's root directory or in the Gradle home directory.
+
+gradle.properties
+
+指定 http:// 连接的代理
+systemProp.http.proxyHost=www.somehost.org
+systemProp.http.proxyPort=8080
+systemProp.http.proxyUser=userid
+systemProp.http.proxyPassword=password
+systemProp.http.nonProxyHosts=*.nonproxyrepos.com|localhost
+
+指定 https:// 连接的代理
+systemProp.https.proxyHost=www.somehost.org
+systemProp.https.proxyPort=8080
+systemProp.https.proxyUser=userid
+systemProp.https.proxyPassword=password
+systemProp.https.nonProxyHosts=*.nonproxyrepos.com|localhost
+
+17:09 2016/6/14
+遇到的问题，只设置了 http 的代理。
+而指定的包，需要 https 链接下载，所以没走代理，造成无法下载。

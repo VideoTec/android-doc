@@ -1,0 +1,17 @@
+http://discuss.cocos2d-x.org/t/random-crashes-on-android-signal-11-sigsegv-code-1-segv-maperr-fault-addr-00000000/5173
+
+adb logcat | ./ndk-stack -sym $PROJECT_PATH/obj/local/armeabi
+
+http://stackoverflow.com/questions/18436383/how-to-check-crash-log-using-android-ndk-in-cocos2d-x
+
+When you get errors like this on the LogCat, they are saved on $PROJECT_PATH/obj/local/armeabi where $PROJECT_PATH is the path to your cocos2d-x android project. To symbolicate the messages to something understandable, you can use the ndk-stack tool.
+
+http://www.cnblogs.com/jhzhu/p/3801640.html
+
+Usage:
+   ndk-stack -sym <path> [-dump <path>]
+
+      -sym  Contains full path to the root directory for symbols.
+      -dump Contains full path to the file containing the crash dump.
+            This is an optional parameter. If ommited, ndk-stack will
+            read input data from stdin

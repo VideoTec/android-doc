@@ -1,0 +1,14 @@
+http://bigasp.com/archives/450
+
+Google breakpad是一个非常实用的跨平台的崩溃转储和分析模块，
+他支持Windows，Linux和Mac和Solaris。
+由于他本身跨平台，所以很大的减少我们在平台移植时的工作，
+毕竟崩溃转储，每个平台下都不同，使用起来很难统一，
+而Google breakpad就帮我们做到了这一点，
+不管是哪个平台下的崩溃，都能够进行统一的分析。
+
+现在很多工程都在使用他：
+最著名的几个如Chrome，Firefox，Picasa和Google Earth。
+另外他的License是BSD的，
+也就是说，我们即便是在商业软件中使用，也是合法的，哈哈，这么好的东西，
+我们能放过么？现在就让我们来看看这个神奇的软件吧。

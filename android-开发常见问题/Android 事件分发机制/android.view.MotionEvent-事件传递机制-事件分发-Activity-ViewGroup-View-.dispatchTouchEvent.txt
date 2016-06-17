@@ -1,0 +1,45 @@
+https://developer.android.com/reference/android/app/Activity.html#dispatchTouchEvent(android.view.MotionEvent)
+
+boolean dispatchTouchEvent (MotionEvent ev)
+
+Called to process touch screen events. 
+You can override this to intercept all touch screen events 
+before they are dispatched to the window. 
+Be sure to call this implementation for touch screen events 
+that should be handled normally.
+
+https://developer.android.com/reference/android/view/ViewGroup.html#dispatchTouchEvent(android.view.MotionEvent)
+
+boolean dispatchTouchEvent (MotionEvent ev)
+Pass the touch screen motion event down to the target view, 
+or this view if it is the target.
+
+https://developer.android.com/reference/android/view/View.html#dispatchTouchEvent(android.view.MotionEvent)
+
+boolean dispatchTouchEvent (MotionEvent event)
+Pass the touch screen motion event down to the target view, 
+or this view if it is the target.
+
+http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html
+
+事件分发：public boolean dispatchTouchEvent(MotionEvent ev)
+
+Touch 事件发生时 
+Activity 的 dispatchTouchEvent(MotionEvent ev) 方法会以隧道方式
+（从根元素依次往下传递直到最内层子元素或在中间某一元素中由于某一条件停止传递）
+将事件传递给最外层 View 的 dispatchTouchEvent(MotionEvent ev) 方法，
+并由该 View 的 dispatchTouchEvent(MotionEvent ev) 方法对事件进行分发。
+dispatchTouchEvent 的事件分发逻辑如下：
+
+1. 如果 return true，
+事件会分发给当前 View 并由 dispatchTouchEvent 方法进行消费，
+同时事件会停止向下传递；
+
+2. 如果 return false，事件分发分为两种情况：
+如果当前 View 获取的事件直接来自 Activity，
+则会将事件返回给 Activity 的 onTouchEvent 进行消费；
+如果当前 View 获取的事件来自外层父控件，
+则会将事件返回给父 View 的  onTouchEvent 进行消费。
+
+如果返回系统默认的 super.dispatchTouchEvent(ev)，
+事件会自动的分发给当前 View 的 onInterceptTouchEvent 方法。

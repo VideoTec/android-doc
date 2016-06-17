@@ -1,0 +1,21 @@
+
+https://chromium.googlesource.com/breakpad/breakpad/+/master/README.ANDROID
+
+II. Using the client library in Android:
+========================================
+The usage instructions are very similar to the Linux ones that are
+found at https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/linux_starter_guide.md
+1/ You need to include "client/linux/handler/exception_handler.h" from a C++
+   source file.
+2/ If you're not using ndk-build, you also need to:
+   - add the following to your compiler include search paths:
+       $GOOGLE_BREAKPAD_PATH/src
+       $GOOGLE_BREAKPAD_PATH/src/common/android/include
+   - add -llog to your linker flags
+   Note that ndk-build does that for your automatically.
+3/ Keep in mind that there is no /tmp directory on Android.
+   If you use the library from a regular Android applications, specify a
+   path under your app-specific storage directory. An alternative is to
+   store them on the SDCard, but this requires a specific permission.
+For a concrete example, see the sample test application under
+android/sample_app. See its README for more information.

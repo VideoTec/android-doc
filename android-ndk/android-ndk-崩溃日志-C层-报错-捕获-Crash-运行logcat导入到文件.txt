@@ -1,0 +1,41 @@
+http://blog.sina.com.cn/s/blog_749d1a9f0101doy7.html
+
+Runtime.getRuntime().exec(new String[]{"logcat","-d","-t","500","-v","threadtime"});
+
+注意添加权限：
+<uses-permission android:name="android.permission.READ_LOGS" />
+
+问题是读不到其它进程的LOG
+http://stackoverflow.com/questions/16795582/not-all-data-shown-when-android-logcat-is-read-programatically
+However his has not been yet documented 
+(the READ_LOGS permission doesn't report this) and is yet a source of confusion. 
+You can only access your own logs now, and the good news is, 
+you don't need to request permissions for it anymore 
+(if your are targetting Jelly Beans, that's it...).
+
+参考：
+
+https://github.com/chrisboyle/sgtpuzzles/blob/8750.5/android/src/name/boyle/chris/sgtpuzzles/CrashHandler.java
+protected Void doInBackground(Void... v) {
+    try {
+        process = Runtime.getRuntime().exec(new String[]{"logcat","-d","-v","threadtime"});
+        log = SGTPuzzles.readAllOf(process.getInputStream());
+    } catch (IOException e) {
+        e.printStackTrace();
+        Toast.makeText(CrashHandler.this, e.toString(), Toast.LENGTH_LONG).show();
+    }
+    return null;
+}
+
+https://github.com/chrisboyle/sgtpuzzles/blob/8750.5/android/src/name/boyle/chris/sgtpuzzles/SGTPuzzles.java#L462
+static String readAllOf(InputStream s) throws IOException
+{
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(s),8096);
+    String line;
+    StringBuilder log = new StringBuilder();
+    while ((line = bufferedReader.readLine()) != null) {
+        log.append(line);
+        log.append("\n");
+    }
+    return log.toString();
+}

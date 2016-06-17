@@ -2,7 +2,9 @@ http://stackoverflow.com/questions/12692103/read-logcat-programmatically-within-
 
 You can keep reading the logs, just by removing the "-d" flag in your code above.
 
-The "-d" flag instruct to logcat to show log content and exit. If you remove the flag, logcat will not terminate and keeps sending any new line added to it.
+The "-d" flag instruct to logcat to show log content and exit. 
+If you remove the flag, 
+logcat will not terminate and keeps sending any new line added to it.
 
 Just have in mind that this may block your application if not correctly designed.
 

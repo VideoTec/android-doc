@@ -1,0 +1,24 @@
+http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html
+
+Android 中与 Touch 事件相关的方法包括：dispatchTouchEvent(MotionEvent ev)、onInterceptTouchEvent(MotionEvent ev)、onTouchEvent(MotionEvent ev)；能够响应这些方法的控件包括：ViewGroup 及其子类、Activity。方法与控件的对应关系如下表所示：
+
+Touch 事件相关方法                                      方法功能    View  ViewGroup        Activity     
+public boolean dispatchTouchEvent(MotionEvent ev)       事件分发    Yes   Yes               Yes
+public boolean onInterceptTouchEvent(MotionEvent ev)    事件拦截    No    Yes               No
+public boolean onTouchEvent(MotionEvent ev)             事件响应    Yes   Yes               Yes
+
+从这张表中我们可以看到 ViewGroup 及其子类对与 Touch 事件相关的三个方法均能响应，
+而 Activity 对 onInterceptTouchEvent(MotionEvent ev) 也就是事件拦截不进行响应。
+
+另外需要注意的是 View 对 
+dispatchTouchEvent(MotionEvent ev) 和 
+onInterceptTouchEvent(MotionEvent ev) 的响应的前提是可以向该 View 中添加子 View，
+如果当前的 View 已经是一个最小的单元 View（比如 TextView），
+那么就无法向这个最小 View 中添加子 View，
+也就无法向子 View 进行事件的分发和拦截，
+
+所以它没有 【有 dispatchTouchEvent】
+dispatchTouchEvent(MotionEvent ev) 和 
+onInterceptTouchEvent(MotionEvent ev)，
+只有 
+onTouchEvent(MotionEvent ev)。

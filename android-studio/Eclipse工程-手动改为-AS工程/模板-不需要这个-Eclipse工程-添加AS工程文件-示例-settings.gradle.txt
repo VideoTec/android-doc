@@ -1,0 +1,14 @@
+正常情况：
+
+include ':app', ':ultrapower-umcs', ':sendbroadcast', ':testlibrary'
+
+只有一个模块，且，模块在主目录里时，怎么处理？ 不需要这个文件。
+遇到这个问题的原因是：
+build.gradle
+apply plugin: 'com.android.application'
+写成了
+apply plugin: 'com.android.library'
+导致无法调试，构建。
+
+include ':A'
+project(':A').projectDir = new File('../A')

@@ -1,0 +1,5 @@
+https://discuss.gradle.org/t/multi-module-project-with-relative-paths-to-sub-projects/4581
+include ':A'
+project(':A').projectDir = new File('../A')
+include ':B'
+project(':B').projectDir = new File('../B')

@@ -1,0 +1,6 @@
+参考：
+E:\doc\android\android-sdk\android.view.MotionEvent
+
+重点：
+ACTION_DOWN/ACTION_UP 
+都在控件内发生，才会触发这个事件。

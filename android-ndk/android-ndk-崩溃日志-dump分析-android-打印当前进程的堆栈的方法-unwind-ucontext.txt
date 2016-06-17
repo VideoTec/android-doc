@@ -1,0 +1,28 @@
+unwind[英][ˌʌnˈwaɪnd] [美][ʌnˈwaɪnd]
+
+http://stackoverflow.com/questions/18017222/android-unwind-backtrace-inside-sigaction
+
+You can get the stack base address with pthread_getattr_np and pthread_attr_getstack, but what you really need is the PC and SP at the time of the crash. On Linux, you can pull these out of the ucontext.
+
+If you set the SA_SIGINFO flag when you configure the signal handler, your handler function gets three arguments instead of one. The third void* argument is a ucontext pointer. The accepted answer to this question explains a bit more.
+
+Once you've got all that you can unwind the stack. If you don't mind stepping outside the bounds of what the NDK provides, Android's libcorkscrew has functions that can unwind stacks and output the results. This is used by the debuggerd daemon to dump native crashes to the log file.
+
+It may be useful to know that native crashes logged by debuggerd generate stack dumps in /data/tombstones/. The file permissions render it inaccessible to normal apps, but on a modified device you could just pull these out and send them.
+
+http://stackoverflow.com/questions/2663456/how-to-write-a-signal-handler-to-catch-sigsegv
+The ucontext structure is defined in <ucontext.h>. 
+Within the ucontext the field uc_mcontext contains the machine context, 
+and within that, 
+the array gregs contains the general register context. 
+So in your signal handler:
+
+ucontext *u = (ucontext *)unused;
+unsigned char *pc = (unsigned char *)u->uc_mcontext.gregs[REG_RIP];
+
+will give you the pc where the exception occurred. 
+You can read it to figure out what instruction it was that faulted, and do something different.
+
+As far as the portability of calling mprotect in the signal handler is concerned, 
+any system that follows either the SVID spec or the BSD4 spec should be safe -- 
+they allow calling any system call (anything in section 2 of the manual) in a signal handler.

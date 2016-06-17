@@ -1,0 +1,5 @@
+http://blog.csdn.net/ithomer/article/details/8757240
+
+Android MotionEvent中getX()与getRawX()都是获取屏幕坐标（横），但二者又有区别
+getX()           ：   是获取相对当前控件（View）的坐标
+getRawX()   ：   是获取相对显示屏幕左上角的坐标

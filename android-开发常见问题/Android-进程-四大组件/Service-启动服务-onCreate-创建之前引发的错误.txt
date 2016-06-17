@@ -1,0 +1,14 @@
+public class CrashService extends Service {
+    private Handler mHandler = new Handler(getMainLooper());
+    public CrashService() {
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+加载类时会报异常：
+getMainLooper() 返回空
+
+把它写在 onCreate 里，就没有问题了。

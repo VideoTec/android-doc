@@ -1,0 +1,26 @@
+http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html
+
+事件拦截：public boolean onInterceptTouchEvent(MotionEvent ev) 
+
+在外层 View 的 dispatchTouchEvent(MotionEvent ev) 方法
+返回系统默认的 super.dispatchTouchEvent(ev) 情况下，
+
+事件会自动的分发给
+
+当前 View 的 onInterceptTouchEvent 方法。
+
+onInterceptTouchEvent 的事件拦截逻辑如下：
+
+如果 onInterceptTouchEvent 返回 true，则表示
+将事件进行拦截，
+并将拦截到的事件
+交由当前 View 的 onTouchEvent 进行处理；
+
+如果 onInterceptTouchEvent 返回 false，
+则表示将事件放行，当前 View 上的事件会被传递到子 View 上，
+再由子 View 的 dispatchTouchEvent 来开始这个事件的分发；
+
+如果 onInterceptTouchEvent 返回 super.onInterceptTouchEvent(ev)，
+事件默认会被拦截，
+并将拦截到的事件
+交由当前 View 的 onTouchEvent 进行处理。

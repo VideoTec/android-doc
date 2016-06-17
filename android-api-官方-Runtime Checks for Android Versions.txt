@@ -1,0 +1,46 @@
+https://developer.xamarin.com/guides/android/application_fundamentals/understanding_android_api_levels/
+
+应该是： 包名是 android.os
+Build.VERSION.SDK_INT <= 19
+
+if (Android.OS.Build.Version.SdkInt >= Android.OS.BuildVersionCodes.Lollipop) 
+{
+    builder.SetCategory(Notification.CategoryEmail);
+}
+
+if (Android.OS.Build.Version.SdkInt >= Android.OS.BuildVersionCodes.Lollipop) 
+{
+    // Do things the Lollipop way
+}
+else
+{
+    // Do things the pre-Lollipop way
+}
+
+Runtime Checks for Android Versions
+
+As each new version of Android is released, the framework API is updated to provide new or replacement functionality. With few exceptions, API functionality from earlier Android versions is carried forward into newer Android versions without modifications. As a result, if your app runs on a particular Android API level, it will typically be able to run on a later Android API level without modifications. But what if you also want to run your app on earlier versions of Android?
+
+If you select a minimum Android version that is lower than your target framework setting, some APIs may not be available to your app at runtime. However, your app can still run on an earlier device, but with reduced functionality. For each API that is not available on Android platforms corresponding to your minimum Android version setting, your code must explicitly check the value of the Android.OS.Build.Version.SdkInt property to determine the API level of the platform the app is running on. If the API level is lower than the minimum Android version that supports the API you want to call, then your code has to find a way to function properly without making this API call.
+
+For example, let's suppose that we want to use the new NotificationBuilder.SetCategory method to categorize a notification when running on Android 5.0 Lollipop (and later), but we still want our app to run on earlier versions of Android such as Android 4.1 Jelly Bean (where SetCategory is not available). Referring to the Android version table at the beginning of this guide, we see that the build version code for Android 5.0 Lollipop is Android.OS.BuildVersionCodes.Lollipop. To support older versions of Android where SetCategory is not available, our code can detect the API level at runtime and conditionally call SetCategory only when the API level is greater than or equal to the Lollipop build version code:
+
+if (Android.OS.Build.Version.SdkInt >= Android.OS.BuildVersionCodes.Lollipop) 
+{
+    builder.SetCategory(Notification.CategoryEmail);
+}
+
+In this example, our app's target framework is set to Android 5.0 (API Level 21) and its minimum Android version is set to Android 4.1 (API Level 16). Because SetCategory is available in API level Android.OS.BuildVersionCodes.Lollipop and later, this example code will call SetCategory only when it is actually available – it will not attempt to call SetCategory when the API level is 16, 17, 18, 19, or 20. The functionality is reduced on these earlier Android versions only to the extent that notifications are not sorted properly (because they are not categorized by type), yet the notifications are still published to alert the user. Our app still works, but its functionality is slightly diminished.
+
+In general, the build version check helps your code decide at runtime between doing something the new way versus the old way. For example:
+
+if (Android.OS.Build.Version.SdkInt >= Android.OS.BuildVersionCodes.Lollipop) 
+{
+    // Do things the Lollipop way
+}
+else
+{
+    // Do things the pre-Lollipop way
+}
+
+There's no fast and simple rule that explains how to reduce or modify your app's functionality when it runs on older Android versions that are lacking one or more APIs. In some cases (such as in the SetCategory example above), it's sufficient to simply omit the API call when it's not available. However, in other cases, you may need to implement alternate functionality for when Android.OS.Build.Version.SdkInt is detected to be less than the API level that your app needs to present its optimum experience.

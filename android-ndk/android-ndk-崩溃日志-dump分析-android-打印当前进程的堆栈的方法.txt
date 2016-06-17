@@ -1,0 +1,74 @@
+http://blog.csdn.net/freshui/article/details/9456889
+
+C++也是支持异常处理的，异常处理库中，已经包含了获取backtrace的接口，
+Android也是利用这个接口来打印堆栈信息的。
+在Android的C++中，已经集成了一个工具类CallStack，在libutils.so中。使用方法：
+
+#include <utils/CallStack.h>  
+...  
+CallStack stack;  
+stack.update();  
+stack.dump(); 
+
+使用方式比较简单。目前Andoid4.2版本已经将相关信息解析的很到位，
+符号表查找，demangle，偏移位置校正都做好了。
+
+http://grokbase.com/t/gg/android-ndk/13c8jb434s/backtrace-corkscrew-unwind-callstack-does-anything-work
+There is so many of them (in source code of android, or in gcc), 
+it looks like there are multiple different libbacktrace's exist.
+here are some bits that I found so far:
+aosp/system/core/libbacktrace
+aosp/system/core/libcorkscrew
+aosp/external/libunwind
+https://github.com/mirrors/gcc/tree/master/libbacktrace
+https://github.com/xroche/coffeecatch (uses corkscrew or unwind)
+
+First, I would recommend forgetting about using libcorkscrew, it's been
+written for the platform and needs some patching before you can build and
+use it with the NDK. Also, the idea of linking against non-NDK-official
+system libraries is crazy :-)
+
+An unwinding library only deals with traversing the call-frame stack, and
+will thus only generate a list of addresses.
+libgcc.a provides its own unwinding library, external/libunwind/ is an
+alternative implementation to be used with Clang / LLVM. Whatever version
+you use should not matter (as long as you include the proper <unwind.h>,
+which should expose the same interface, and link to the corresponding
+library).
+
+libbacktrace will use the unwinding library to symbolize the stack trace.
+However, it needs access to DWARF entries in your binary.
+By default, these are not available on binaries installed to the device
+(e.g. ndk-build places stripped binaries under libs/$ABI/, to be used in
+your final .apk, and keeps the debug versions under obj/local/$ABI/, to be
+used by ndk-gdb et al).
+
+There is also ndk-stack that can symbolize stack traces on the host, or
+simply calling arm-linux-androideabi-addr2line
+
+If you want to log back traces, 
+I'd recommend writing the addresses in your log, 
+then symbolizing them on the host later.
+
+https://android.googlesource.com/platform/frameworks/native/+/jb-mr0-release/include/utils/CallStack.h
+https://android.googlesource.com/platform/frameworks/native/+/jb-mr0-release/libs/utils/CallStack.cpp
+
+https://groups.google.com/forum/#!topic/android-ndk/MqttqVuaguc
+https://groups.google.com/forum/#!topic/android-platform/VKlX7sNEV10
+/system/lib/libcorkscrew.so
+/system/core/libbacktrace
+
+libcorkscrew was removed because it didn't support aarch64 and was also missing dwarf support. We decided to go with libunwind as the base unwinder for L and beyond, however, there is no guarantee that it will continue to exist forever.
+
+If you need to get backtrace information, I highly recommend that you use system/core/libbacktrace. This was designed to hide the implementation details of whatever unwinder we use and will be supported in to the future. If we delete libunwind in the future, we'll continue to have libbacktrace.
+
+For an example of ways this unwinder is used, see system/core/debuggerd for unwinding a process different from the one you are executing out of. See art/runtime/utils.cc (DumpNativeStack) for unwinding threads in the current process. This code is in aosp master.
+
+http://stackoverflow.com/questions/8115192/android-ndk-getting-the-backtrace
+backtrace() is a non-standard Glibc extension, and even then somewhat shaky on ARM (you need to have built everything with -funwind-tables, I think, and then have a somewhat new Glibc?)
+
+As far as I know, this function is not included in the Bionic C library used by Android.
+
+You could try pulling the source for Glibc backtrace into your project, and then rebuilding the interesting things with the unwind table, but it sounds like hard work to me.
+
+If you have debug info, you could try launching GDB with a script that attaches to your process, and prints a backtrace that way, but I have no idea if GDB works on Android (although Android is basically Linux, so that much id fine, the installation details may be problematic?) You may get further by dumping core somehow (does Bionic support that?) and analysing it after-the-fact.

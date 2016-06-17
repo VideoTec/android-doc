@@ -1,0 +1,15 @@
+explode[英][ɪkˈspləʊd] [美][ɪkˈsploʊd]
+
+vi.爆[突]发，发怒；激增，迅速扩大
+vt.（使）爆炸；突然（发出巨响，活跃起来，迸发感情）；推翻；驳倒
+
+会把依赖的 aar 包导入到构建得时目录里
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.6@aar') {
+        transitive = true;
+    }
+    compile('com.crashlytics.sdk.android:crashlytics-ndk:1.1.3@aar') {
+        transitive = true;
+    }
+    
+E:\opensource\tspoon\app\build\intermediates\exploded-aar

@@ -1,0 +1,2 @@
+参考：
+E:\doc\linux\Linux平台\Linux-信号机制\应用-android ndk crash 事件.txt

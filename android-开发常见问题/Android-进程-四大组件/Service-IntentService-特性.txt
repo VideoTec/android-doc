@@ -1,0 +1,13 @@
+http://blog.csdn.net/gerogelin/article/details/23097013
+
+使用intentService与service有什么不同呢
+
+ （1）直接 创建一个默认的工作线程,该线程执行所有的intent传递给onStartCommand()区别于应用程序的主线程。
+
+ （2）直接创建一个工作队列,将一个意图传递给你onHandleIntent()的实现,所以我们就永远不必担心多线程。
+
+ （3）当请求完成后自己会调用stopSelf()，所以你就不用调用该方法了。
+
+ （4）提供的默认实现onBind()返回null，所以也不需要重写这个方法。so easy啊
+
+ （5）提供了一个默认实现onStartCommand(),将意图工作队列,然后发送到你onHandleIntent()实现。真是太方便了

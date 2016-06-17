@@ -1,0 +1,19 @@
+http://www.jianshu.com/p/167fd5f47d5c
+
+悬浮窗原理
+
+做过悬浮窗功能的人都知道, 要想显示悬浮窗, 
+要有一个服务运行在后台, 
+通过getSystemService(Context.WINDOW_SERVICE)拿到WindowManager, 
+然后向其中addView, 
+addView第二个参数是一个WindowManager.LayoutParams, 
+WindowManager.LayoutParams中有一个成员type, 
+有各种值, 一般设置成TYPE_PHONE就可以悬浮在很多view的上方了, 
+但是调用这个方法需要申请android.permission.SYSTEM_ALERT_WINDOW权限, 
+在很多机型上, 这个权限的名字叫悬浮窗, 
+比如小米手机上默认是禁用这个权限的, 
+有些恶意app会用这个权限弹广告, 而且很难追查是哪个应用弹的. 
+如果这个权限被禁用, 
+那么结果就是悬浮窗无法展示, 比如有道词典的复制查词功能, 
+在小米手机上经常没用, 其实是用户没有授权, 
+而且应用也没有引导用户给它打开授权.

@@ -1,0 +1,1 @@
+-t <count>      print only the most recent <count> lines (implies -d)

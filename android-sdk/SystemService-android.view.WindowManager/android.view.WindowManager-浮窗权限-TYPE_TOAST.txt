@@ -1,0 +1,20 @@
+http://www.jianshu.com/p/167fd5f47d5c
+Android无需权限显示悬浮窗, 兼谈逆向分析app
+
+http://www.jianshu.com/p/634cd056b90c
+Android悬浮窗TYPE_TOAST小结: 源码分析
+
+在API 18及以下TYPE_TOAST的悬浮窗无法接受触摸事件
+
+使用TYPE_TOAST就不需要权限 
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+----------------------------------
+实现代码：
+----------------------------------
+
+if (Build.VERSION.SDK_INT < 19) {
+    voiceParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+} else {
+    voiceParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+}

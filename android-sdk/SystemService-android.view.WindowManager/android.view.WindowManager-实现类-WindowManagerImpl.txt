@@ -1,0 +1,5 @@
+http://www.jianshu.com/p/634cd056b90c
+
+WindowManager是个接口, 
+我们使用的是他的实现类WindowManagerImpl, 
+看看它的addView方法:

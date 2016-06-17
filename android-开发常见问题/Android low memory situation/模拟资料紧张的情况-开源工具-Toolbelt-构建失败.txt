@@ -27,7 +27,34 @@ Crashlytics是基于云的错误报告解决方案，
 其联合创始人Wayne Chang称“Crashlytics可以提取500个崩溃日志，
 然后找到23个问题样本，然后找到你实际需要修复的那个问题”
 
+1）需要安装 Fabric for Android Studio 插件
+   并且安装， crashlytics 插件
+2）注册一个账户 wxc / y 
+
+问题插件是怎么登录和注销的？
+
+构建还是失败，原因是：下载不了
+https://maven.fabric.io/public/io/fabric/tools/gradle/1.21.6/gradle-1.21.6.jar
+解决方法：设置代理
+
+gradle.properties
+
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=1080
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=1080
+
+参考：
+E:\doc\android\android-3rdParty\Android Fabric\Android Fabric-Fabric SDK 的创建经验.txt
+
+http://stackoverflow.com/questions/25700680/crashlytics-found-an-invalid-api-key
+crashlytics.properties
+apiKey=YOUR_API_KEY
+apiSecret=YOUR_API_SECRET
+
 http://support.crashlytics.com/knowledgebase/articles/202938-gradle
 The hosted Crashlytics SDK seamlessly integrates with Gradle
 
 http://stackoverflow.com/questions/25060008/crashlytics-developer-tools-error-when-building-android-gradle-project
+After login in Fabric, download the AndroidStudio plugin and let it configure everything all worked fine.
+(Btw, I really don't like this setup flow)

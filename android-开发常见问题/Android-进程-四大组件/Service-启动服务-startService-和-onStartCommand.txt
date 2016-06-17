@@ -1,0 +1,36 @@
+http://blog.csdn.net/iispring/article/details/47689819
+Android中有两种主要方式使用Service，
+通过调用Context的startService方法或调用Context的bindService方法，
+本文只探讨纯startService的使用，
+不涉及任何bindService方法调用的情况。
+
+onCreate, onStartCommand, onBind 和 onDestroy。
+
+这几个方法都是回调方法，都是由Android操作系统在合适的时机调用的，并且需要注意的是这几个回调方法都是在主线程中被调用的。
+
+onCreate: 执行startService方法时，
+如果Service没有运行的时候会创建该Service并执行Service的onCreate回调方法；
+如果Service已经处于运行中，那么执行startService方法不会执行Service的onCreate方法。
+也就是说如果多次执行了Context的startService方法启动Service，
+Service方法的onCreate方法只会在第一次创建Service的时候调用一次，以后均不会再次调用。
+我们可以在onCreate方法中完成一些Service初始化相关的操作。
+
+onStartCommand: 在执行了startService方法之后，
+有可能会调用Service的onCreate方法，
+在这之后一定会执行Service的onStartCommand回调方法。
+也就是说，如果多次执行了Context的startService方法，
+那么Service的onStartCommand方法也会相应的多次调用。
+onStartCommand方法很重要，
+我们在该方法中根据传入的Intent参数进行实际的操作，
+比如会在此处创建一个线程用于下载数据或播放音乐等。
+
+onBind: Service中的onBind方法是抽象方法，
+所以Service类本身就是抽象类，也就是onBind方法是必须重写的，即使我们用不到。
+在通过startService使用Service时，
+我们在重写onBind方法时，只需要将其返回null即可。
+onBind方法主要是用于给bindService方法调用Service时才会使用到。
+
+onDestroy: 通过startService方法启动的Service会无限期运行，
+只有当调用了Context的stopService或在Service内部调用stopSelf方法时，
+Service才会停止运行并销毁，
+在销毁的时候会执行Service回调函数。

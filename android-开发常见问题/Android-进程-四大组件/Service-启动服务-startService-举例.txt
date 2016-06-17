@@ -1,0 +1,9 @@
+http://blog.csdn.net/iispring/article/details/47689819
+
+        //连续启动Service
+        Intent intent1 = new Intent(this, TestService.class);
+        startService(intent1);
+        Intent intent2 = new Intent(this, TestService.class);
+        startService(intent2);
+        Intent intent3 = new Intent(this, TestService.class);
+        startService(intent3);
