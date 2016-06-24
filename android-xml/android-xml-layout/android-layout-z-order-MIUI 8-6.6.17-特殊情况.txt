@@ -1,0 +1,33 @@
+XML 中先出现的控制，显示在前面。
+MIUI 8-6.6.17
+如下面的布局中， remote 出现在 local 的上面。【不正常】
+
+local 布局是在上面，但是 surfaceview 没有显示出来。
+
+
+        mLocalPreview.addView(mUMCSUtil.getLocalSurfaceView());
+        mRemotePreview.addView(mUMCSUtil.getRemoteSurfaceView());
+        mUMCSUtil.getLocalSurfaceView().setZOrderMediaOverlay(true);  通过这个设置，可以把SurfaceView提到前面来
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.wangxiangfx.demo.ServiceAct">
+    <FrameLayout
+        android:id="@+id/remote_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f45"/>
+    <FrameLayout
+        android:id="@+id/local_preview"
+        android:layout_width="78dp"
+        android:layout_height="130dp"
+        android:background="#345"/>
+
+</FrameLayout>

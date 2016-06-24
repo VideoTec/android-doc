@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/28777449/android-is-onpause-guaranteed-to-be-called-after-finish
+
+onCreate() is to onDestroy() && onStart() is to onStop() && onResume() is to onPause() .. 
+
+onStart() is called when onCreate() finishes its work. 
+if not its not called.. 
+
+onResume() indicates the ui is about to be shown to the user -
+(An Activity's content is the screen the user sees). 
+
+if you call finish() in onCreate(), 
+onPause() will be skipped because onResume() was never called same goes to onStart() .. 
+
+so in some cases you can say its not; but that will be false, 
+because what's an Activity that is not a screen or serve as a container for screens-(Fragment).
+
+and why would you call finish(); directly in your Activity's onCreate()? 
+From how Activities work in general, onPause() will always guarantee is calling..

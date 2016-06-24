@@ -1,0 +1,5 @@
+E:\android\adt\sdk\platform-tools\adb logcat -v threadtime -s VA:V VideoProcessor:V ProgressDialogTask:V DEBUG:V GLSurfaceView:V GLThread:V AndroidRuntime:V MediaPlayer:V ExcecuteProject:V FVideoJNI:V libc:V fvideo:V TestPVideo:V dalvikvm-heap:V dalvikvm:V TTTT:V> c:\logcat.txt
+
+适配符
+
+http://stackoverflow.com/questions/5511433/how-to-exclude-certain-messages-by-tag-name-using-android-adb-logcat

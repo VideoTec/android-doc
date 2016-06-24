@@ -1,0 +1,16 @@
+group.removeAllViews();
+
+group 中有个 SurfaceView。
+removeView 会调用这个回调。
+
+  public synchronized void surfaceDestroyed(SurfaceHolder holder) {
+    Log.d(TAG, "VideoCaptureAndroid::surfaceDestroyed");
+    try {
+      if (camera != null) {
+        camera.setPreviewDisplay(null);
+        ViERenderer.DeleteLocalRenderer();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }

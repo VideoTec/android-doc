@@ -1,0 +1,17 @@
+初始化设置
+
+      int bufSize = width * height * ImageFormat.getBitsPerPixel(format) / 8;
+      for (int i = 0; i < numCaptureBuffers; i++) {
+        camera.addCallbackBuffer(new byte[bufSize]);
+      }
+      
+      回调中调用
+      
+  private native void ProvideCameraFrame(
+      byte[] data, int length, long captureObject);
+
+  public synchronized void onPreviewFrame(byte[] data, Camera camera) {
+    ProvideCameraFrame(data, data.length, native_capturer);
+    camera.addCallbackBuffer(data);
+
+  }

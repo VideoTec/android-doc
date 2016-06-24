@@ -1,0 +1,16 @@
+参考：
+android.view.LayoutInflater
+android.view.ViewStub
+
+http://stackoverflow.com/questions/16022615/how-to-load-programmatically-a-layout-xml-file-in-android
+
+View child1 = LayoutInflater.from(this).inflate(
+                R.layout.child_layout1, null); 
+View child2 = LayoutInflater.from(this).inflate(
+                R.layout.child_layout2, null);
+                
+https://developer.android.com/training/improving-layouts/loading-ondemand.html
+
+Sometimes your layout might require complex views that are rarely used. Whether they are item details, progress indicators, or undo messages, you can reduce memory usage and speed up rendering by loading the views only when they are needed.
+
+ViewStub is a lightweight view with no dimension and doesn’t draw anything or participate in the layout. As such, it's cheap to inflate and cheap to leave in a view hierarchy. Each ViewStub simply needs to include the android:layout attribute to specify the layout to inflate.

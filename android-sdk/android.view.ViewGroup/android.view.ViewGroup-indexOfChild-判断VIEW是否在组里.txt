@@ -1,0 +1,12 @@
+https://developer.android.com/reference/android/view/ViewGroup.html#indexOfChild(android.view.View)
+
+indexOfChild
+
+Added in API level 1
+int indexOfChild (View child)
+Returns the position in the group of the specified child view.
+
+Parameters
+child	View: the view for which to get the position
+Returns
+int	a positive integer representing the position of the view in the group, or -1 if the view does not exist in the group

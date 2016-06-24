@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/14654718/how-to-use-adb-shell-when-multiple-devices-are-connected-fails-with-error-mor
+
+Shouldn't you enter :
+
+adb -s 7f1c864e shell

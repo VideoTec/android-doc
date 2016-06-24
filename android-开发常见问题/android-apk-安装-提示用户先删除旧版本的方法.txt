@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/4020476/how-do-i-most-easily-delete-android-application-data-upon-upgrade-update
+Is there any way to force an application's data to automatically be cleared upon update of the app?
+No, at least for my definition of "automatic".
+
+http://stackoverflow.com/questions/23608943/does-android-autoupdate-uninstall-before-install-of-new-version
+In answer to your question, no, Android does not remove files and preferences when upgrading an application. 

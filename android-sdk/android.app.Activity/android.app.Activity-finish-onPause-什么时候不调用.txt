@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/28777449/android-is-onpause-guaranteed-to-be-called-after-finish
+
+Android will generally call onPause() 
+if you call finish() at some point during your Activity's lifecycle 
+unless you call finish() in your onCreate().

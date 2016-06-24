@@ -1,0 +1,48 @@
+INSTALL_FAILED_UID_CHANGED
+
+12:07 2016/6/21
+【遇到这个问题的手机】
+荣耀6（H60-L01/移动4G）参数
+http://detail.zol.com.cn/384/383798/param.shtml
+Android OS 4.4.2
+
+http://stackoverflow.com/questions/16277422/android-install-failed-uid-changed
+
+For rooted devices:
+
+Run the below command
+
+adb rm -rf /data/data/<your.package.name>
+For non-rooted device:
+
+Change the ApplicationId of the app. Refer this link to change ApplicationId.
+Build and install the app. App will install successfully because it is treated as new app.
+Now uninstall this app. Which will clear the data.
+Now change the ApplicationId to the previous one.
+Build and install. Magic.. It will install.
+
+【测试结果不行】。
+
+http://www.cnblogs.com/JohnTsai/p/4295752.html
+
+而我的手机没有root，自然需要找其他办法。
+最后是通过下面这种方法成功解决了问题：
+
+1 打开手机中的设置--->安全--->未知来源，取消它，重新选中。
+2 重启手机
+3 安装应用，问题成功解决。
+
+【这个方法也不行】
+
+https://code.google.com/p/android/issues/detail?id=65790
+【官方讨论组里的信息】
+Project Member #45 nara...@google.com
+FYI : This issue was raised internally as 17005516 and fixed a few weeks ago on the internal tree. It's impractical to cherry-pick that fix to the open source tree at this point, but it will be fixed with the next platform release.
+
+【微信安装不了的提问】
+http://zhidao.baidu.com/question/615907477338817292.html
+http://ask.zol.com.cn/q/1239495.html
+http://iask.sina.com.cn/b/g2kskslhq.html
+如果您的手机使用SD卡，建议把微信安装在SD卡上，
+如果还是异常，建议您把SD卡格式化一下就可以了。
+http://zhidao.baidu.com/link?url=H-5LgkSiH-BCJpY8p1CgMv4PhqR9o4EPGxfV6uQpkeE9dLd79gPZ3oK1bpTHwTsZgp18z5KbrNENlf3qBiU8YenUQIBG_sZ71ktrUSfMPLu

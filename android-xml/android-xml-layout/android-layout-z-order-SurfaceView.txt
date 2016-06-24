@@ -1,0 +1,20 @@
+【注意】这里说的是一个window里的（包括在不同ViewGroup中的对象），所有SurfaceView的，z-order顺序问题。
+
+https://developer.android.com/reference/android/view/SurfaceView.html#setZOrderMediaOverlay(boolean)
+void setZOrderOnTop (boolean onTop)
+void setZOrderMediaOverlay (boolean isMediaOverlay)
+
+Note that this must be set 
+before the surface view's containing window is attached to the window manager
+
+1. onCreate时设置是有效的。
+
+http://stackoverflow.com/questions/5647824/android-multiple-surfaceviews
+
+You can control the Z-ordering (i.e. "depth") of the SurfaceView surface very loosely. 
+There are four positions, from top to bottom:
+
+SurfaceView + ZOrderOnTop
+(app UI goes here)
+SurfaceView + ZOrderMediaOverlay
+SurfaceView (default)
