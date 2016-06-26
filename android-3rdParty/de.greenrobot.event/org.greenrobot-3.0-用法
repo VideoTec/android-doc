@@ -1,0 +1,8 @@
+3.0 必须使用注解指定回调方法
+使用默认的 onEventMainThread 不使用注解，会报下面的异常：
+
+Caused by: org.greenrobot.eventbus.EventBusException: 
+bscriber class com.example.wangxiang.myapplication.Main2Activity and 
+its super classes have no public methods with the @Subscribe annotation
+
+http://greenrobot.org/eventbus/documentation/how-to-get-started/

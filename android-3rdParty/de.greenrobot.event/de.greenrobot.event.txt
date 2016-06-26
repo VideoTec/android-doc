@@ -1,5 +1,6 @@
 源码：
 https://github.com/greenrobot/EventBus
+git@github.com:greenrobot/EventBus.git
 
 Android optimized event bus that simplifies 
 communication between Activities, Fragments, Threads, Services, etc. 
@@ -16,6 +17,7 @@ Add EventBus to your project
 
 dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0' 添加记录日期：6.26号
 }
 
 EventBus is available on Maven Central. 

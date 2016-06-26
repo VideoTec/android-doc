@@ -1,0 +1,14 @@
+调用了 onDestroy 
+在下次 onCreate 之前
+并不一定会调用 finalize
+
+http://stackoverflow.com/questions/27072575/broadcastreceiver-onreceive-being-called-multiple-times
+
+    @Override
+    protected void finalize() throws Throwable {
+        if (receiver != null) {
+            this.unregisterReceiver(receiver);
+        }
+        super.finalize();
+
+    }

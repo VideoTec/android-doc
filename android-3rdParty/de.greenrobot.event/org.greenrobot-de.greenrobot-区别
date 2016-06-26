@@ -1,0 +1,12 @@
+http://www.2cto.com/kf/201604/499136.html
+
+(1)引入EventBus:
+
+引入eventbus:2.4.0（回顾老版本）
+compile ‘de.greenrobot:eventbus:2.4.0’
+
+引入eventbus:3.0.0-beta1
+compile ‘de.greenrobot:eventbus:3.0.0-beta1’
+
+引入eventbus:3.0.0
+compile ‘org.greenrobot:eventbus:3.0.0’

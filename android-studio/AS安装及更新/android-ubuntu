@@ -1,0 +1,128 @@
+------------------------------------------
+1. 安装 java
+------------------------------------------
+jdk-8u91-linux-x64.rpm	
+sha256: 9fed7d73b2f068d38d01e3c7639362a895a18c4f3845b32a5dcad4ab39d92ca6
+md5: 967d658352ebd7fac8904fed690856c6
+
+md5sum jdk-8u91-linux-x64.rpm 
+967d658352ebd7fac8904fed690856c6  jdk-8u91-linux-x64.rpm
+
+安装 rpm 方法
+下载完成后，进行alien将rpm转化为deb文件，首先安装alien
+sudo apt-get install alien 安装alien
+sudo alien jdk-8u5-linux-x64.rpm 生成了一个deb,
+
+出现下面的错误：
+wangxiang@wangxiang-M68MT-S2P:~/software$ sudo alien jdk-8u91-linux-x64.rpm 
+Warning: Skipping conversion of scripts in package jdk1.8.0_91: postinst postrm prerm
+Warning: Use the --scripts parameter to include the scripts.
+注意：这个命令会执行一段时间，且命令行没有进度提示。
+
+然后使用dpkg进行安装：
+sudo dpkg -i jdk_1.8.005-1_amd64.deb
+
+/usr/java/jdk1.8.0_91
+/usr/java/jdk1.8.0_91/bin
+
+http://www.cnblogs.com/samcn/archive/2011/03/16/1986248.html
+
+1. PATH环境变量。
+作用是指定命令搜索路径，在shell下面执行命令时，
+它会到PATH变量所指定的路径中查找看是否能找到相应的命令程序。
+我们需要把 jdk安装目录下的bin目录增加到现有的PATH变量中，
+bin目录中包含经常要用到的可执行文件如javac/java/javadoc等待，
+设置好 PATH变量后，就可以在任何目录下执行javac/java等工具了。 
+
+2. CLASSPATH环境变量。
+作用是指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，
+JVM就是通过CLASSPTH来寻找类的。
+我们 需要把jdk安装目录下的lib子目录中的dt.jar和tools.jar设置到CLASSPATH中，
+当然，当前目录“.”也必须加入到该变量中。 
+
+3. JAVA_HOME环境变量。
+它指向jdk的安装目录，
+Eclipse/NetBeans/Tomcat等软件就是通过搜索JAVA_HOME变量来找到并使用安装好的jdk。
+
+三种配置环境变量的方法
+1. 修改/etc/profile文件 
+在profile文件末尾加入： 
+export JAVA_HOME=/usr/share/jdk1.6.0_14 
+export PATH=$JAVA_HOME/bin:$PATH 
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
+
+2. 修改.bash_profile文件
+用户目录下的.bash_profile文件 
+在.bash_profile文件末尾加入： 
+export JAVA_HOME=/usr/java/jdk1.8.0_91 
+export PATH=$JAVA_HOME/bin:$PATH 
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
+
+3. 直接在shell下设置变量 
+
+下面的方法不知道是什么版本的系统。
+配置环境变量
+Ubuntu安装的文件一般都在usr或者options下，这里我本机的路径为：/usr/java/jdk1.8.0_05
+sudo gedit /etc/enviroment
+在PATH变量后面加上, /usr/java/jdk1.8.0_05/bin . 注意分隔符为冒号(:)，而不是分号.
+然后通过命令 
+source /stc/enviroment 使环境变量配置生效
+
+wangxiang@wangxiang-M68MT-S2P:/$ java -version
+Error occurred during initialization of VM
+java/lang/NoClassDefFoundError: java/lang/Object
+
+unpack200 lib/tools.pack lib/tools.jar
+unpack200 jre/lib/rt.pack jre/lib/rt.jar
+
+直接 sudo unpack200 提示找不到命令行。
+使用 sudo ../bin/unpack200 就可以了：
+
+/usr/java/jdk1.7.0_60/jre/lib# ../bin/unpack200 rt.pack rt.jar
+/usr/java/jdk1.7.0_60/lib# ../bin/unpack200 tools.pack tools.jar
+
+操作完成后，测试java -version
+
+------------------------------------------
+2. 下载 android-studio 压缩包
+------------------------------------------
+
+------------------------------------------
+3. 把压缩包 mv 到 /usr/local
+------------------------------------------
+
+------------------------------------------
+4.  运行 ./studio.sh
+------------------------------------------
+wangxiang@wangxiang-M68MT-S2P:/usr/local/android-studio/bin$ ./studio.sh
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=350m; support was removed in 8.0
+Exception in thread "main" java.lang.InternalError: internal error: SHA-1 not available.
+	at sun.security.provider.SecureRandom.init(SecureRandom.java:108)
+	at sun.security.provider.SecureRandom.<init>(SecureRandom.java:79)
+	at java.security.SecureRandom.getDefaultPRNG(SecureRandom.java:198)
+	at java.security.SecureRandom.<init>(SecureRandom.java:162)
+	at java.util.UUID$Holder.<clinit>(UUID.java:96)
+	at java.util.UUID.randomUUID(UUID.java:142)
+	at com.intellij.internal.statistic.analytics.StudioCrashDetection.start(StudioCrashDetection.java:46)
+	at com.intellij.idea.Main.main(Main.java:98)
+Caused by: java.security.NoSuchAlgorithmException: SHA MessageDigest not available
+	at sun.security.jca.GetInstance.getInstance(GetInstance.java:159)
+	at java.security.Security.getImpl(Security.java:695)
+	at java.security.MessageDigest.getInstance(MessageDigest.java:167)
+	at sun.security.provider.SecureRandom.init(SecureRandom.java:106)
+	... 7 more
+
+http://blog.csdn.net/gavincook/article/details/27969939
+提示，SHA-1这个算法无法找到，但这个是jdk系统提供的一个算法。包含在JAVA_HOME/jre/lib/jsse.jar中。
+打开想要的目录查看，结果只有一个jsse.pack，而没有jsse.jar。 
+这也是异常抛出的原因了，使用unpack200进行对应jar包的解压。
+wangxiang@wangxiang-M68MT-S2P:/usr/java/jdk1.8.0_91/jre/lib$ sudo ../bin/unpack200 jsse.pack jsse.jar
+
+5. 安装 Android SDK tool 出错：
+Unable to run mksdcard SDK tool.
+one common this is missing 32 bit compatibility libraries.
+Please fix the underlying issue and retry.
+
+http://stackoverflow.com/questions/29282316/android-studio-installation-unable-to-run-mksdcard-sdk-tool-on-32-bit-ubuntu-1
+$ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1
+

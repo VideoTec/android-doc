@@ -1,0 +1,35 @@
+20:04 2016/6/24
+
+视频聊天activity创建时，注册
+EventBus.getDefault().register(this);
+
+点击按钮时发送
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.small_video_view) {
+            //切换大小窗口
+            EventBus.getDefault().post(new EBVoWifi(EBVoWifi.EBEventVoWifi.SwapVideoView));
+        }
+    }
+    
+现象：
+发送一次事件
+activity 重启几次，就会收到几次消息。
+
+http://stackoverflow.com/questions/28120457/events-being-received-multiple-times-greenrobot-eventbus
+Are your register/unregister calls paired correctly? 
+E.g. if you register() in Activity.onResume(), are you calling unregister() in Activity.onPause().
+
+Closing all activities does not kill your process. 
+I.e. all registered classes are still there, 
+you have to explicitly clean up and unregister from the event bus, 
+or reuse them when the Activity comes back.
+
+2016/6/26 测试结果是，不同的 activity 对象收到的事件
+this activity is : com.example.wangxiang.myapplication.Main2Activity@b10eba20
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10229f0
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10a2280
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10a0908
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10887d0
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10cabb8
+receive event: com.example.wangxiang.myapplication.TestEvent@b1105c98; in activity: com.example.wangxiang.myapplication.Main2Activity@b10eba20
