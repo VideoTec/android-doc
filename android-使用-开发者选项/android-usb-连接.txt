@@ -1,0 +1,7 @@
+http://bbs.meizu.cn/thread-4733961-1-1.html
+
+谷歌才将MSC重新拿了回来，实现了MTP、MSC两种传输协议的共存。
+
+如今大多数手机只给消费者提供MTP模式，
+少数考虑周全的厂商则会提供MSC、MTP两种模式
+（尤其是考虑到目前还有不少的Windows XP用户）

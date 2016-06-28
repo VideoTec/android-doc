@@ -1,0 +1,36 @@
+https://www.quora.com/Is-the-Google-Chrome-browser-ever-coming-to-the-Android-OS
+Since the Android web browser is based on WebKit and uses V8 as its javascript engine - 
+it's nearly functionally equivalent to Chrome as it is. 
+
+So, from a technical perspective, 
+Google could slap an icon on it and call it Chrome. 
+If Google added extensions and the Chrome web store on Android, 
+the browser ought to be called Chrome.
+
+https://techcrunch.com/2011/05/17/google-chrome-android/
+
+http://www.zhihujingxuan.com/14415.html
+
+原生浏览器实现性能并非差到不可接受，
+很多Android用户都发现原生浏览器的流畅度其实比Chrome更好，
+js性能也可以接受，
+其最大的痛脚其实是对Html5等新标准的兼容。
+
+而相对Chrome因为构架决定，需要更多的内存，CPU资源才能达到相对流畅，
+这也是Chrome for Android开发时间并不长并没有得到充分优化导致的。
+原生浏览器相比Chrome更加适合现在Android的平均硬件水平。
+如上所说，HTML5新标准兼容是原生浏览器最大的问题，
+但放置于整个Android层面，这是不是一个问题？
+HTML5至今只是个草案，
+移动端开发其实还是以Native为主导，
+而且Google也为Native开发做了大量的优化工作，
+可以这么说，Android甚至于整个移动领域并没有走入HTML5时代。
+没有必要为了兼容HTML5强制推广Chrome。
+
+Google其实并不是没有Chrome取代原生浏览器的尝试，
+比如Google几个亲儿子，反应出第三点。
+Chrome是包含了Google服务的，而Android和Google服务即GMS完全分离，
+Google是不能将闭源的Chrome相关实现加入Android code base。
+将来就算Chrome有可能进入Android的code base，也只能是以Chromium的形式，
+而或许以后某个版本会以Chromium为基准提供Webview控件供app调用，
+我相信这只是个时间问题而已

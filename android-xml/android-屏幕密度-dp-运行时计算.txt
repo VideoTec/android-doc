@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/11010111/how-to-set-the-width-of-a-button-in-dp-during-runtime-in-android
+
+You have to use TypedValue.applyDimension to get the pixel count of dp's. 
+
+Here's an example:
+
+DisplayMetrics dm = getResources().getDisplayMetrics();
+float dpInPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DP, 300, dm);
+That will give the the pixel value of 300dp programmatically.
+
+Cheers

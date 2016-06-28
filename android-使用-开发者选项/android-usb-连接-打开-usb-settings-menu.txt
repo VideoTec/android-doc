@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/31275290/opening-the-android-usb-settings-menu-with-an-intent
+
+adb shell 命令行方法：
+am start -n com.android.settings/.UsbSettings
+
+代码方法：
+ Intent intent = new Intent();
+ intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.UsbSettings"));
+ startActivity(intent);

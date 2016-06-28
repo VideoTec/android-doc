@@ -1,0 +1,17 @@
+http://www.miui.com/thread-3820809-1-1.html
+
+谢谢楼主，我也是不注意把MTP关了，网上找了好久都没有找到方法，
+这个问题还行在2014的就有了，到现在也没有接解决，不知道小米的工程师是怎么想的
+
+2016-5-26 19:44:10
+好几年前，就出现的问题，小米现在都没有修复。。醉了
+
+http://stackoverflow.com/questions/31275290/opening-the-android-usb-settings-menu-with-an-intent
+
+adb shell 命令行方法：
+am start -n com.android.settings/.UsbSettings
+
+代码方法：
+ Intent intent = new Intent();
+ intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.UsbSettings"));
+ startActivity(intent);
