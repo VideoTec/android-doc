@@ -6,6 +6,19 @@ Android悬浮窗TYPE_TOAST小结: 源码分析
 
 在API 18及以下TYPE_TOAST的悬浮窗无法接受触摸事件
 
+17:22 2016/6/29
+【特殊情况】miui 8.6.6.23 - android 4.4.4 也无法接受触摸事件
+
+http://www.liaohuqiu.net/cn/posts/android-windows-manager/
+对于 API level < 19 的机器（MIUI除外），想要达到目的，需要:
+要有 android.permission.SYSTEM_ALERT_WINDOW 权限
+将 type 设置为 
+WindowManager.LayoutParams.TYPE_PHONE 或者 
+WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+http://ju.outofmemory.cn/entry/234705
+(这里是MIUI V5对悬浮窗的特殊处理, 现在的ROM, 包括MIUI V6上, 如果不授权, 无法显示任何悬浮窗) 
+使用 TYPE_TOAST 这个不需要权限的 type 时, 悬浮窗正常显示, 但不能接受触摸事件 .
+
 使用TYPE_TOAST就不需要权限 
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 

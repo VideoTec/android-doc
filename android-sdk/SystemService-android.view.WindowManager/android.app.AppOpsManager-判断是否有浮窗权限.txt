@@ -1,0 +1,8 @@
+http://blog.csdn.net/mzm489321926/article/details/50542065
+Android 原生有自带权限管理的，只是被隐藏了。
+看android源码在android.app下就有个AppOpsManager类。
+
+https://github.com/bunnyblue/AndroidPopWinPermission
+git@github.com:bunnyblue/AndroidPopWinPermission.git
+Android SYSTEM_ALERT PERMISSION CHECK
+【实测】 miui 8.6.6.23|开发版 即使允许了权限，也判断为没有权限。

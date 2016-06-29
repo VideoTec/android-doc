@@ -1,0 +1,16 @@
+http://blog.csdn.net/wh_19910525/article/details/8660416
+
+Android的版本可以在androidmainfest.xml中定义，主要有android:versionCode和android:versionName
+
+android:versionCode:
+主要是用于版本升级所用，是INT类型的，第一个版本定义为1，以后递增，
+这样只要判断该值就能确定是否需要升级，该值不显示给用户。
+
+android:versionName:
+这个是我们常说明的版本号，
+由三部分组成<major>.<minor>.<point>,该值是个字符串，可以显示给用户。
+
+http://stackoverflow.com/questions/9629125/versioncode-vs-versionname-in-android-manifest
+Reading that it's pretty clear that versionName is just something that's shown to the user, 
+versionCode is what matters. 
+Just keep increasing it and everything should be good.

@@ -1,0 +1,39 @@
+示例：
+
+context
+PackageManager getPackageManager () 
+
+return pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED; 
+
+m_allowToReadPhoneState = pm.checkPermission(Manifest.permission.READ_PHONE_STATE, pkgName) == PackageManager.PERMISSION_GRANTED; 
+
+https://github.com/android-cn/android-discuss/issues/185
+至于有人提到的Context.checkSelfPermission( permission_name)
+基本只是check一下你Manifest里给了权限没，
+权限意外被禁这种事它搞不定的
+
+https://developer.android.com/reference/android/content/pm/PackageManager.html#checkPermission(java.lang.String, java.lang.String)
+
+granted[英][ˈgrɑ:ntɪd] [美][ˈgræntɪd]
+conj.假定，就算
+v.（退一步）承认( grant的过去式和过去分词 )；（尤指正式地或法律上）同意；准许；让渡
+
+checkPermission
+
+Added in API level 1
+
+int checkPermission (String permName, String pkgName)
+
+Check whether a particular package has been granted a particular permission.
+
+Parameters
+permName	String: The name of the permission you are checking for.
+pkgName	    String: The name of the package you are checking against.
+
+Returns
+int	If the package has the permission, PERMISSION_GRANTED is returned. If it does not have the permission, PERMISSION_DENIED is returned.
+
+See also:
+
+PERMISSION_GRANTED
+PERMISSION_DENIED

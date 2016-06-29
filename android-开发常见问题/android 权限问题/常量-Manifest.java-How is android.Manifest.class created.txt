@@ -1,0 +1,17 @@
+http://stackoverflow.com/questions/12523542/how-is-android-manifest-class-created
+
+I'm not aware of any android.Manifest.java file, 
+but when compiling AOSP there is a couple of Manifest.java files created automatically.
+
+Perhaps this one is the one you're looking for? 
+It seems to correspond to what's in android.jar (API 16)
+
+Manifest.class
+Manifest$permission.class
+Manifest$permission_group.class
+
+Located at ./out/target/common/R/android/Manifest.java
+
+And there's also a Manifest.java in the sources directory for the API-level 
+(in the SDK); android-sdk\sources\android-16\java\util\jar\, 
+that might be the one you're looking for?

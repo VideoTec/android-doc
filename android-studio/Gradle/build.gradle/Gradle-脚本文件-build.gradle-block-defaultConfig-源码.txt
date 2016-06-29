@@ -1,0 +1,7 @@
+com.android.build.gradle.BaseExtension.class
+com.android.build.gradle.BaseExtension.groovy
+
+    void defaultConfig(Action<DefaultProductFlavor> action) {
+        plugin.checkTasksAlreadyCreated();
+        action.execute(defaultConfig)
+    }

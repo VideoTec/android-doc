@@ -1,0 +1,9 @@
+com.android.build.gradle.BaseExtension.java
+
+    /**
+     * Configures signing configs.
+     */
+    public void signingConfigs(Action<? super NamedDomainObjectContainer<SigningConfig>> action) {
+        checkWritability();
+        action.execute(signingConfigs);
+    }

@@ -1,22 +1,4 @@
-C:\Users\wangxiangfx\.android\debug.keystore
-密码是：
-在Eclipse里面编译生成的APK中有一个签名的，它默认的key是debug.keystore，它默认的路径是：
-C:\Users\<用户名>\.android\debug.keystore
-这个key的密码是：android 
+http://w11h22j33.iteye.com/blog/1740453
 
-alias[英][ˈeɪliəs] [美][ˈeliəs, ˈeljəs] n.别名，化名
-
-Key store password: 
-Key alias: 
-Key password: 
-
-http://stackoverflow.com/questions/18589694/i-have-never-set-any-passwords-to-my-keystore-and-alias-so-how-are-they-created
-Keystore name: "debug.keystore"
-Keystore password: "android"
-Key alias: "androiddebugkey"
-Key password: "android"
-CN: "CN=Android Debug,O=Android,C=US"
-
-usually the debug.keystore password is just "android".
-you can delete it and eclipse will automaticly generate a new one as describe
-http://stackoverflow.com/questions/2194808/debug-certificate-expired-error-in-eclipse-android-plugins/2196397#2196397
+同一个厂商的apk的签名应该是一样的！
+拥有同样的signature以及pubkeyid

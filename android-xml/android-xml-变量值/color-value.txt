@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/6674183/storing-hex-color-values-in-strings-xml
+
+You need to create a set of styles in your xml (regularly in res/values/styles.xml)
+
+<color name="gray">#eaeaea</color>
+<color name="titlebackgroundcolor">#00abd7</color>
+<color name="titlecolor">#666666</color>
+In the layout files you can call to the colors or styles:
+
+android:textColor="@color/titlecolor"

@@ -1,0 +1,24 @@
+http://www.jianshu.com/p/44d40f8e67c9
+
+《自动版本号》
+使用 Git 中 commit 的数量来作为版本号 —— versionCode
+从当期 commit 到距离它最近的 tag 的描述 —— versionName
+
+http://www.race604.com/android-auto-version/
+
+《更优雅的 Android 发布自动版本号方案》
+
+最好的解决方法是：
+
+使用 Git 中 commit 的数量来作为版本号 —— versionCode
+因为在项目开发中，
+我们的往 Git 库中提交的 Commit 的数量应该是只增不减的
+（当然，在极少的情况下有例外），
+而且对应 Commit 的数量直接对应代码当前的版本状态，
+只要你做了代码修改，版本号就应该增加
+
+从当期 commit 到距离它最近的 tag 的描述 —— versionName
+在正常的发布流程中，在发布新版本的时候，都会在版本库中打 tag。
+一般情况下，tag 名就是版本名，而且也建议这么做，
+因为如果某个版本出现 bug，
+也可以正好 checkout 这个 tag 来查看代码。

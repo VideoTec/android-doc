@@ -1,0 +1,38 @@
+    defaultConfig {
+        applicationId "in.srain.cube.demos.uctoast"
+        minSdkVersion 9
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    
+https://developer.android.com/studio/publish/versioning.html
+
+You can define default values for these settings by including them in the defaultConfig {} block, 
+nested inside the android {} block of your module's build.gradle file. 
+You can then override these default values 
+for different versions of your app by defining separate values 
+for individual build types or product flavors. 
+
+The following build.gradle file shows 
+the versionCode and versionName settings in 
+the defaultConfig {} block, as well as 
+the productFlavors {} block.
+
+android {
+  ...
+  defaultConfig {
+    ...
+    versionCode 2
+    versionName "1.1"
+  }
+  productFlavors {
+    demo {
+      ...
+      versionName "1.1-demo"
+    }
+    full {
+      ...
+    }
+  }
+}

@@ -1,0 +1,41 @@
+https://developer.android.com/studio/publish/versioning.html
+
+-------------------------------------
+versionCode — 
+-------------------------------------
+
+An integer used as an internal version number. 
+This number is used only to determine whether one version is more recent than another, 
+with higher numbers indicating more recent versions. 
+This is not the version number shown to users; 
+that number is set by the versionName setting, below.
+
+The value is an integer so that other apps can programmatically evaluate it, 
+for example to check an upgrade or downgrade relationship. 
+You can set the value to any integer you want, 
+however you should make sure that each successive release of your app uses a greater value. 
+The system does not enforce this behavior, 
+but increasing the value with successive releases is normative.
+
+Typically, 
+you would release the first version of your app with versionCode set to 1, 
+then monotonically increase the value with each release, 
+regardless whether the release constitutes a major or minor release. 
+This means that the versionCode value does not necessarily have a strong resemblance 
+to the app release version that is visible to the user (see versionName, below). 
+Apps and publishing services should not display this version value to users.
+
+Warning: 
+The greatest possible value for versionCode is MAXINT (2147483647). 
+However, if you upload an app with this value, your app can't ever be updated.
+
+-------------------------------------
+versionName
+-------------------------------------
+A string used as the version number shown to users. 
+This setting can be specified as a raw string or as a reference to a string resource.
+
+The value is a string so that you can describe the app version as a 
+<major>.<minor>.<point> string, 
+or as any other type of absolute or relative version identifier. 
+The versionName has no purpose other than to be displayed to users.

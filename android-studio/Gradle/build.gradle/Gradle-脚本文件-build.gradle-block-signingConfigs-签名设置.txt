@@ -1,0 +1,8 @@
+    signingConfigs {
+        releaseConfig{
+            storeFile file("../rongfly.jks")
+            storePassword "123456"
+            keyAlias "rongfly"
+            keyPassword "123456"
+        }
+    }

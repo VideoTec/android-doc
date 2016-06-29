@@ -20,6 +20,11 @@ onInterceptTouchEvent 的事件拦截逻辑如下：
 则表示将事件放行，当前 View 上的事件会被传递到子 View 上，
 再由子 View 的 dispatchTouchEvent 来开始这个事件的分发；
 
+【还是看源码吧】super.onInterceptTouchEvent 返回的是 false
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return false;
+    }
+
 如果 onInterceptTouchEvent 返回 super.onInterceptTouchEvent(ev)，
 事件默认会被拦截，
 并将拦截到的事件
