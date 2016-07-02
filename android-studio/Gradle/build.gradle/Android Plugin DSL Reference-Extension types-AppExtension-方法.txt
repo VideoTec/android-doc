@@ -1,0 +1,12 @@
+dimension[英][daɪˈmenʃn] [美][dɪˈmɛnʃən, daɪ-]
+n.尺寸；[复]面积，范围；[物]量纲；[数]次元，度，维
+
+flavor[英]['fleɪvə] [美][ˈflevɚ]
+n.味；韵味；特点；香料
+vt.给…调味；给…增添风趣
+
+http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html
+
+flavorDimensions(dimensions)	Specifies names of flavor dimensions.
+useLibrary(name)	        Request the use a of Library. The library is then added to the classpath.
+useLibrary(name, required)	Request the use a of Library. The library is then added to the classpath.

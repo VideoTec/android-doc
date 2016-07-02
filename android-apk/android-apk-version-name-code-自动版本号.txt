@@ -22,3 +22,11 @@ http://www.race604.com/android-auto-version/
 一般情况下，tag 名就是版本名，而且也建议这么做，
 因为如果某个版本出现 bug，
 也可以正好 checkout 这个 tag 来查看代码。
+
+【注意】 不需要修改 git describe 的输出值
+git describe 的结果是：
+v1.1-1-gXXXXXX，
+其中 1 表示当前代码距离最近的 tag v1.1 一个 commit，
+最新的 commit 的 id 是 XXXXXX
+
+【如果，在tag所在提交，会不会有后缀。】

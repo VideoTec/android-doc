@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/22058210/why-unaligned-apk-is-needed
+
+It is a two step process. The unaligned apk is just an intermediate product.
+
+the unaligned apk is generated
+the unaligned gets aligned and produces the aligned apk
+
+Right. Some IDEs produce it as end product for the debug build to speed up the build process.
+it's basically the same content as the aligned zip file, only that file boundaries are not aligned to 4b blocks
+
+http://stackoverflow.com/questions/30366905/difference-between-app-debug-apk-and-app-debug-unaligned-apk
+
+Short Answer:
+app-debug-unaligned.apk = Unaligned Signed APK 
+app-debug.apk = Aligned Signed APK (RAM optimized using zipalign)

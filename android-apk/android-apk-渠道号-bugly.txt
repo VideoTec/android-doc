@@ -1,0 +1,18 @@
+    /**
+     * 初始化Bugly
+     * @param isMainProcess  是否是主进程
+     */
+    private  void initBugly(boolean isMainProcess){
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());
+        strategy.setAppPackageName(getApplicationContext().getPackageName());
+        strategy.setAppChannel("rongfly");  设置渠道号
+        CrashReport.initCrashReport(getApplicationContext(), "3799821e4b", false, strategy);
+
+        if(isMainProcess){
+            RFLoginBean bean = RFLoginMgr.getInstance().getLoginBean();
+            CrashReport.putUserData(getApplicationContext(), "version", sAPKCompileTime);
+            CrashReport.putUserData(getApplicationContext(), "userId", bean.getLoginId());
+            CrashReport.putUserData(getApplicationContext(), "mobile", Long.toString(bean.getMobileNum()));
+            CrashReport.putUserData(getApplicationContext(), "nickname", bean.getNickName());
+        }
+    }

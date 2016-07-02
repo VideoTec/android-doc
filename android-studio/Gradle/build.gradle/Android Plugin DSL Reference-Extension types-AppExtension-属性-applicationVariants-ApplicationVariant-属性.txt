@@ -1,0 +1,121 @@
+
+    productFlavors {
+        instant {
+            minSdkVersion 15
+        }
+        flavor1 {
+            minSdkVersion 15
+        }
+    }
+    
+    android.applicationVariants.all { variant ->
+        if (variant.buildType.name.equals('release')) {
+            variant.mergedFlavor.versionCode = gitVersionCode();
+        }
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    "rongflymqtt_"
+                            + variant.flavorName +"_v"
+                            + defaultConfig.versionName + "_"
+                            + getDateTime() + "_"
+                            + gitBuildVersion() + ".apk");
+        }
+    }
+
+http://blog.csdn.net/qinxiandiqi/article/details/37925629
+
+com.android.build.gradle.internal.ApplicationVariant.groovy
+求 flavorName
+
+这三个variant类都共享下面的属性：
+属性名	                属性类型	        说明
+
+name	                String	            Variant的名字，必须是唯一的。 
+这个是productFlavors指定的名字+BuildType，如下面的：instantRelease flavor1Release
+
+description	            String	            Variant的描述说明。
+这个是productFlavors指定的名字+BuildType，如下面的[其中flavor name是feinno]：ReleaseFeinno build
+
+dirName	                String	            Variant的子文件夹名，必须也是唯一的。
+可能也会有不止一个子文件夹，例如“googleplay/debug”
+
+baseName	            String	            Variant输出的基础名字，必须唯一。
+这个是productFlavors指定的名字+BuildType，如下面的：instant-release flavor1-release
+
+outputFile	            File	            Variant的输出，这是一个可读可写的属性。
+应该是 outputs 吧？
+variant.outputs.each { out -> out.outputFile = }
+
+processManifest	        ProcessManifest	    处理Manifest的task。
+用法：
+http://stackoverflow.com/questions/17465353/how-to-replace-a-string-for-a-buildvariant-with-gradle-in-android-studio
+android.applicationVariants.each{ variant -> 
+    variant.processManifest.doLast{ 
+        copy{
+            from("${buildDir}/manifests"){
+                include "${variant.dirName}/AndroidManifest.xml"
+            }
+            into("${buildDir}/manifests/$variant.name")
+
+            // define a variable for your key:
+            def gmaps_key = "<your-key>"
+
+            filter{
+                String line -> line.replaceAll("<meta-data android:name=\"com.google.android.maps.v2.API_KEY\" android:value=\"\"/>",
+                                               "<meta-data android:name=\"com.google.android.maps.v2.API_KEY\" android:value=\"" + gmaps_key + "\"/>")
+            }
+
+            // set the path to the modified Manifest:
+            variant.processResources.manifestFile = file("${buildDir}/manifests/${variant.name}/${variant.dirName}/AndroidManifest.xml")
+        }    
+   }
+}
+
+aidlCompile	            AidlCompile	        编译AIDL文件的task。
+renderscriptCompile	    RenderscriptCompile	编译Renderscript文件的task。
+mergeResources	        MergeResources	    混合资源文件的task。
+mergeAssets	            MergeAssets	        混合asset的task。
+processResources	    ProcessAndroidResources	处理并编译资源文件的task。
+generateBuildConfig	    GenerateBuildConfig	    生成BuildConfig类的task。
+javaCompile	            JavaCompile	            编译Java源代码的task。
+processJavaResources	Copy	                处理Java资源的task。
+assemble	            DefaultTask	            Variant的标志性assemble task。
+
+ApplicationVariant类还有以下附加属性：
+
+buildType	        BuildType	        Variant的BuildType。
+用法：
+    applicationVariants.all { var ->
+        if (var.buildType.name.equals('release')) {
+            var.mergedFlavor.versionCode = gitVersionCode();
+            var.mergedFlavor.manifestPlaceholders = [gitHashCode:"h-" + gitLastHash()];
+            var.outputs.each { out ->
+                out.outputFile = new File(out.outputFile.parent, var.name + "test-" + gitVersionCode() + "-" + gitLastHash() + ".apk");
+            }
+        }
+    }
+
+productFlavors	    List<ProductFlavor>	Variant的ProductFlavor。一般不为空但也允许空值。
+
+mergedFlavor	    ProductFlavor	    
+android.defaultConfig和variant.productFlavors的合并。
+使用示例：
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals('release')) {
+            variant.mergedFlavor.versionCode = gitVersionCode()
+            variant.mergedFlavor.versionName = gitVersionTag()
+        }
+    }
+
+signingConfig	    SigningConfig	    Variant使用的SigningConfig对象。
+isSigningReady	    boolean	            如果是true则表明这个Variant已经具备了所有需要签名的信息。
+testVariant	        BuildVariant	    将会测试这个Variant的TestVariant。
+dex	                Dex	                将代码打包成dex的task。如果这个Variant是个库，这个值可以为空。
+packageApplication	PackageApplication	打包最终APK的task。如果这个Variant是个库，这个值可以为空。
+
+zipAlign	        ZipAlign	        zip压缩APK的task。
+如果这个Variant是个库或者APK不能被签名，这个值可以为空。
+
+install	            DefaultTask	        负责安装的task，不能为空。
+uninstall	        DefaultTask	        负责卸载的task。

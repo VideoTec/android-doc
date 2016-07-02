@@ -1,0 +1,3 @@
+
+    ExecResult javaexec(Closure var1);
+    ExecResult javaexec(Action<? super JavaExecSpec> var1);

@@ -1,3 +1,11 @@
 http://developer.android.com/intl/zh-cn/tools/building/plugin-for-gradle.html
 
-The Android build system consists of an Android plugin for Gradle. Gradle is an advanced build toolkit that manages dependencies and allows you to define custom build logic. Android Studio uses a Gradle wrapper to fully integrate the Android plugin for Gradle. The Android plugin for Gradle also runs independent of Android Studio. This means that you can build your Android apps from within Android Studio and from the command line on your machine or on machines where Android Studio is not installed (such as continuous integration servers).
+The Android build system consists of an Android plugin for Gradle. 
+Gradle is an advanced build toolkit that manages dependencies and 
+allows you to define custom build logic. 
+
+Android Studio uses a Gradle wrapper to fully integrate the Android plugin for Gradle. 
+The Android plugin for Gradle also runs independent of Android Studio. 
+This means that you can build your Android apps from within Android Studio and 
+from the command line on your machine or 
+on machines where Android Studio is not installed (such as continuous integration servers).

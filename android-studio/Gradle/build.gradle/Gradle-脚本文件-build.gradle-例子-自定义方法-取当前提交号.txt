@@ -1,0 +1,6 @@
+注意，引号中的双引号，用法
+
+def gitLastHash() {
+    def cmd = 'git log -1 --format="%h"'
+    cmd.execute().text.trim();
+}

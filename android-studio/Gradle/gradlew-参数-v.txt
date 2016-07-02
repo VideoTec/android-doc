@@ -1,0 +1,16 @@
+wangxiangfx@wangxiangfx MINGW64 /d/work/rongfly-sip (mqtt)
+$ ./gradlew -v
+
+------------------------------------------------------------
+Gradle 2.8
+------------------------------------------------------------
+
+Build time:   2015-10-20 03:46:36 UTC
+Build number: none
+Revision:     b463d7980c40d44c4657dc80025275b84a29e31f
+
+Groovy:       2.4.4
+Ant:          Apache Ant(TM) version 1.9.3 compiled on December 23 2013
+JVM:          1.7.0_60 (Oracle Corporation 24.60-b09)
+OS:           Windows 7 6.1 amd64
+

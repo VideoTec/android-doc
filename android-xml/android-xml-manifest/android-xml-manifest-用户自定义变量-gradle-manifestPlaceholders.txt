@@ -1,0 +1,17 @@
+https://developer.android.com/studio/build/manifest-merge.html
+
+Injecting Build Values into a Manifest
+
+<activity android:name=".MainActivity" android:label="${activityLabel}" >
+
+android {
+    defaultConfig {
+        manifestPlaceholders = [ activityLabel:"defaultName"]
+    }
+    productFlavors {
+        free {
+        }
+        pro {
+            manifestPlaceholders = [ activityLabel:"proName" ]
+        }
+    }

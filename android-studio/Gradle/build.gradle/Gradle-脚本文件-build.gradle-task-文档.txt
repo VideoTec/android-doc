@@ -1,0 +1,55 @@
+org.gradle.api.Task
+
+public interface Task extends Comparable<Task>, ExtensionAware {
+
+Project.task的定义：
+    Task task(String var1) throws InvalidUserDataException;
+    Task task(Map<String, ?> var1, String var2) throws InvalidUserDataException;
+    Task task(Map<String, ?> var1, String var2, Closure var3);
+    Task task(String var1, Closure var2);
+
+https://docs.gradle.org/current/userguide/more_about_tasks.html
+
+Example 17.1. Defining tasks
+task(hello) << {
+    println "hello"
+}
+
+task(copy, type: Copy) {
+    from(file('srcDir'))
+    into(buildDir)
+}
+
+Example 17.2. Defining tasks - using strings for task names
+task('hello') <<
+{
+    println "hello"
+}
+
+task('copy', type: Copy) {
+    from(file('srcDir'))
+    into(buildDir)
+}
+
+Example 17.3. Defining tasks with alternative syntax
+tasks.create(name: 'hello') << {
+    println "hello"
+}
+
+tasks.create(name: 'copy', type: Copy) {
+    from(file('srcDir'))
+    into(buildDir)
+}
+
+http://ju.outofmemory.cn/entry/62238
+
+我们在build.gradle中直接定义了Task的类型，
+这样将Task的定义和使用混在一起。
+在需要定义的Task类型不多时，我们可以采用这种方法，
+但是在项目中存在大量的自定义Task类型时，这就不见得是中好的做法了。
+一种改进方法是在另外的一个gradle文件中定义这些Task，
+然后再apply到build.gradle文件中。
+这里，我们将使用另一种方法：
+在buildSrc目录下定义Task类型，
+Gradle在执行时，会自动地查找该目录下所定义的Task类型，
+并首先编译该目录下的groovy代码以供build.gradle文件使用

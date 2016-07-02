@@ -1,0 +1,13 @@
+http://www.jianshu.com/p/44d40f8e67c9
+
+这里注意的是 ./gradlew build 命令把debug、release环境的包都打出来，
+生成的包在目录HelloWord/app/build/outputs/apk/下。
+如果正式发布只需要打release的包，该怎么办呢，下面介绍一个很有用的命令 assemble, 如
+
+./gradlew assembleDebug 编译并打Debug包
+./gradlew assemblexiaomiDebug 编译并打xiaomi的debug包，其他类似
+./gradlew assembleRelease 编译并打Release的包
+./gradlew assemblexiaomiRelease 编译并打xiaomi的Release包，其他类似
+
+./gradlew installRelease Release模式打包并安装
+./gradlew uninstallRelease 卸载Release模式包

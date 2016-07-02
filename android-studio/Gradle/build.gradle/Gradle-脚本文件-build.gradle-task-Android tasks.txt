@@ -1,0 +1,10 @@
+http://avatarqing.github.io/Gradle-Plugin-User-Guide-Chinese-Verision/basic_project/android_tasks.html
+
+Android plugin使用相同的约定以兼容其他插件，并且附加了自己的标识性task，包括：
+
+assemble 这个task用于组合项目中的所有输出。
+check 这个task用于执行所有检查。
+connectedCheck 这个task将会在一个指定的设备或者模拟器上执行检查，它们可以同时在所有连接的设备上执行。
+deviceCheck 通过APIs连接远程设备来执行检查，这是在CL服务器上使用的。
+build 这个task执行assemble和check的所有工作。
+clean 这个task清空项目的所有输出。

@@ -1,3 +1,6 @@
+参考：
+E:\doc\android\android-apk\android-apk-version-name-code.txt
+
     defaultConfig {
         applicationId "in.srain.cube.demos.uctoast"
         minSdkVersion 9

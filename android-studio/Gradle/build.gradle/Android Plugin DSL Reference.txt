@@ -1,0 +1,4 @@
+http://google.github.io/android-gradle-dsl/current/
+
+This is the DSL reference for Android Gradle Plugin.
+Start reading by finding the right extension type for the plugin you are using, e.g. AppExtension

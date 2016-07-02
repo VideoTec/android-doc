@@ -1,0 +1,8 @@
+http://www.jianshu.com/p/44d40f8e67c9
+
+使用gradle wrapper是gradle官方推荐的build方式，
+而gradlew正是运行了wrapper task之后生成的（运行wrapper task是Android Studio自动做的）。
+使用gralde wrapper的一个好处就是每个项目可以依赖不同版本的gradle，
+构建的时候gradle wrapper会帮你自动下载所依赖的版本的gradle。
+而如果你使用gradle build的话，同时你又有多个项目使用不同版本的gradle，
+那就需要你手动在自己的机器上配置多个版本的gradle，稍微麻烦一些

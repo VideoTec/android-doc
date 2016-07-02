@@ -10,8 +10,13 @@ buildscript {
 
 http://developer.android.com/intl/zh-cn/tools/revisions/gradle-plugin.html
 
-The Android build system uses the Android Plugin for Gradle to support building Android applications with the Gradle build toolkit. The plugin runs independent of Android Studio so the plugin and the Gradle build system can be updated independently of Android Studio.
+The Android build system uses the Android Plugin for Gradle 
+to support building Android applications with the Gradle build toolkit. 
+The plugin runs independent of Android Studio so the plugin and 
+the Gradle build system can be updated independently of Android Studio.
 
+Android Plugin for Gradle, Revision 2.1.0 (April 2016)
+Android Plugin for Gradle, Revision 2.0.0 (April 2016)
 Android Plugin for Gradle, Revision 1.5.0 (November 2015)
 Android Plugin for Gradle, Revision 1.3.1 (August 2015)
 Android Plugin for Gradle, Revision 1.3.0 (July 2015)

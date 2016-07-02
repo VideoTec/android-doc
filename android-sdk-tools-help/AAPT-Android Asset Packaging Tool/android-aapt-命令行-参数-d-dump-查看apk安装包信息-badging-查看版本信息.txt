@@ -1,0 +1,1 @@
+badging          Print the label and icon for the app declared in APK.

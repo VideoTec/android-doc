@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/32878383/gradle-how-to-run-custom-task-after-an-android-library-is-built
+
+assembleRelease.doLast {
+   copy {
+      from('../build/outputs/aar') {
+        include '*-release.aar'
+      }
+      into '../AscendonSDKSamples/libs'
+   }
+}

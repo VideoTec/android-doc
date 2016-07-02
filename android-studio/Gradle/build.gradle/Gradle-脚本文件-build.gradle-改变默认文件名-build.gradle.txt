@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/12246215/gradle-multiproject-change-defaut-build-filename-build-gradle
+
+In settings.gradle:
+
+String myFileName="build2.gradle"
+
+rootProject.buildFileName = "${myFileName}"
+rootProject.children.each {project ->
+    project.buildFileName = "${myFileName}"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.isFile()
+}

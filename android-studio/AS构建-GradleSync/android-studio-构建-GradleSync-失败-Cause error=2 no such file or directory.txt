@@ -1,0 +1,68 @@
+
+------------------------------------------------------
+错误描述
+------------------------------------------------------
+环境： macosx 10.8.5
+       Android Studio 2.0
+
+只有从 macosx android studio 界面启动构建会报错
+从命令行 ./gradlew assemableFeinnoRelease 可以正常输出
+根据错误信息： Cannot run program "git": error=2, No such file or directory
+
+应该是 git 路径不在环境变量里【最终确实如此】
+但是，终端里，可以正常运行 git
+且从终端打印环境变量，有git所在目录： /usr/local/git/bin
+
+结果是，只有从 macosx android studio 界面启动构建，时环境变量没有git目录。
+
+参考：
+E:\doc\software\操作系统维护\MACOSX\mac-os-x-环境变量-为GUI程序设定环境变量.txt
+http://zodiacg.net/2013/05/set-path-under-mac/
+
+osx10.8.5 为GUI程序设置环境变量的方法（PATH也有效）
+修改 /etc/launchd.conf 文件，添加下面的代码：
+setenv PATH /usr/bin:/bin:/usr/sbin:/sbin:/Users/leoliu/.nvm/v0.8.22/bin
+
+注意一：这个文件 /etc/launchd.conf 默认并不存在，可以自己建立
+注意二：代码里不能用 环境变量的引用 如： $PATH 等等，需要全部输入
+注意三：环境变量的内容中也不允许出现空格
+注意四：PATH 变量只有重启系统才生效
+
+参考：
+E:\doc\software\操作系统维护\MACOSX\mac-os-x-环境变量-为GUI程序设定环境变量-应该从命令行启动.txt
+
+http://stackoverflow.com/questions/135688/setting-environment-variables-in-os-x/588442#588442
+Bruno is right on track. I've done extensive research and 
+if you want to set variables that are available in all GUI apps, 
+your only option is /etc/launchd.conf
+
+------------------------------------------------------
+解决过程：
+------------------------------------------------------
+
+gradle.build 脚本代码，调用了 git 命令
+
+def gitVersionCode() {
+    //def cmd = 'git rev-list HEAD --count'
+    def cmd = 'git --version'
+    cmd.execute().text.trim().toInteger();
+}
+
+def gitBuildVersion() {
+    def cmd = 'git log -1 --format="%h"'
+    return 'v-' + cmd.execute().text.trim();
+}
+
+错误信息：
+
+Error:(9, 0) Cause: error=2, No such file or directory
+<a href="openFile:/Users/ganshoucong/AndroidStudioProjects/androidrongflysip/rongflymqtt/build.gradle">Open File</a>
+
+Caused by: java.lang.RuntimeException: java.io.IOException: Cannot run program "git": error=2, No such file or directory
+
+查看执行时的PATH环境变量 - Environment Variables
+【查看方法，参考：E:\doc\android\android-studio\AS构建-GradleSync\android-studio-构建-GradleSync-输出log的技巧.txt】
+"/usr/bin:/bin:/usr/sbin:/sbin"
+找到错误原因，没有 GIT 所在的路径 /usr/local/git/bin
+
+

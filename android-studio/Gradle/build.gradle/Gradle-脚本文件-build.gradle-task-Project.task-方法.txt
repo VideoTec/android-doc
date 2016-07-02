@@ -1,0 +1,10 @@
+这些自定义的任务，会加在所有的任务之前执行，
+按照在脚本中出现的顺序执行
+
+http://www.flysnow.org/2015/03/30/manage-your-android-project-with-gradle.html
+
+task hello {
+    doLast {
+        println 'Hello world!'
+    }
+}

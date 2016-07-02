@@ -1,0 +1,30 @@
+http://stackoverflow.com/questions/31191898/android-studio-gradle-dynamic-apk-name-out-of-sync
+
+You then can setup the global environment variable CI_BUILD on the CI Server 
+which will trigger the APK rename, yet Android Studio would use an APK named as it normally would be.
+
+If you want to run a local build and have the APK renamed then build via command line and add -PCI_BUILD=true
+
+./gradlew clean assemble -PCI_BUILD=true
+
+gradle 代码：
+
+apply plugin: 'com.android.application'
+...
+def isCIBuild() {
+    return System.getenv('CI_BUILD') != null || hasProperty('CI_BUILD');
+}
+...
+android {
+...
+
+    if(isCIBuild()){
+        def clientBuildDate = new Date().format('yyMMddHHmm')
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                output.outputFile = new File(output.outputFile.parent, "myapp-" + versionName.replace(".","_") + "-" + clientBuildDate + ".apk")
+            }
+        }
+    }
+...
+}

@@ -1,0 +1,8 @@
+D:\adb>aapt.exe dump badging D:\work\Demo\app\build\outputs\apk\app-flavor1-release-unaligned.apk | more
+package: name='com.feinno.demo' versionCode='1' versionName='1.0' platformBuildV
+ersionName='6.0-2704002'
+sdkVersion:'15'
+targetSdkVersion:'23'
+
+参考：
+E:\doc\android\android-sdk-tools-help\AAPT-Android Asset Packaging Tool\android-aapt-命令行-参数-d-dump-查看apk安装包信息-badging-查看版本信息.txt

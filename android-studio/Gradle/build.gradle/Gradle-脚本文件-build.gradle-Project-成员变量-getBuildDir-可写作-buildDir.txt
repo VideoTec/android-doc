@@ -1,0 +1,6 @@
+File getBuildDir();
+
+返回的是 File
+
+getPath  Returns the path of this file
+getParent Returns the pathname of the parent of this file

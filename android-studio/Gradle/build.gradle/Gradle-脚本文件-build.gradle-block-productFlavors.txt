@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-studio\Android-Studio-视图-Build Variants-不同版本的APK-Product Flavor.txt

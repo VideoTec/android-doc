@@ -1,0 +1,5 @@
+https://docs.gradle.org/current/groovydoc/
+java.io.File
+
+https://docs.gradle.org/current/groovydoc/org/gradle/api/file/FileTree.html
+https://docs.oracle.com/javase/6/docs/api/java/io/File.html

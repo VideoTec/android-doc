@@ -1,0 +1,33 @@
+错误: 找不到或无法加载主类 com.feinno.serialization.protobuf.util.AntBuilder
+
+代码：
+
+    android.applicationVariants.all { variant ->
+        def flavorName = variant.flavorName;
+        variant.javaCompile.doLast {
+            println 'after java compile############################!'
+            javaexec {
+                main = "com.feinno.serialization.protobuf.util.AntBuilder"
+                classpath += fileTree(include: '*.jar', dir: 'pbjar')
+                classpath += files('${buildDir}/intermediates/classes/${variant.dirName}')
+                args = ['com.feinno','${buildDir}/intermediates/classes/${variant.dirName}']
+            }
+        }
+        
+错误原因：
+classpath += fileTree(include: '*.jar', dir: 'pbjar') 路径不正确
+
+注意： '' 中的 ${buildDir} 不会转成字符
+
+注意： variant.javaCompile.doLast 里直接调用 javaexec 会出错
+Execution failed for task ':rongflymqtt:compileGoogleplayDebugJavaWithJavac'.
+> Could not find method javaexec() for arguments [build_7iptmb8x7k3g5f6xbz1giw8iw$_run_closure1$_closure15$_closure23$_closure25@4606d753] on task ':rongflymqtt:compileGoogleplayDebugJavaWithJavac'.
+解决方法： 定义一个方法调用
+def CodeGenerator(String classPath) {
+    javaexec {
+        main = "com.feinno.serialization.protobuf.util.AntBuilder"
+        classpath += fileTree(include: '*.jar', dir: 'pbjar')
+        classpath += files(classPath)
+        args = ['com.feinno', classPath]
+    }
+}

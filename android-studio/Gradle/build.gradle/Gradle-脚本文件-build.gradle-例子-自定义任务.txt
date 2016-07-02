@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/26260239/gradle-javaexec-task-failing-with-library-class-not-found-error-in-android-studi
+
+dependencies {
+    orm 'com.j256.ormlite:ormlite-android:4.48'
+}
+...
+task "${databaseTaskName}" (type: JavaExec) {
+    main = 'com.barclaycard.bespoke.android.data.local.DatabaseConfigUtil'
+
+    classpath configurations.orm + files("${buildDir}/intermediates/classes/${variant.dirName}")
+
+...
+}

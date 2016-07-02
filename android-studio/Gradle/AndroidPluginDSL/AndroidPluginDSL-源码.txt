@@ -1,6 +1,11 @@
 https://android.googlesource.com/platform/tools/build/+/android-6.0.0_r7
+https://android.googlesource.com/platform/tools/build/
 
-两个工程：
+git clone https://android.googlesource.com/platform/tools/build
+
+-------------------------------
+两个工程： 两个工程是一个吧
+-------------------------------
 
 https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle
 

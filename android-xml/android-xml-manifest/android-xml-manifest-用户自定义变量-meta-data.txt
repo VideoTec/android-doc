@@ -1,0 +1,64 @@
+1. 查看 apk-manifest 中的 meta-data值 ？ 没有找到方法：直接打开 anroidManifest.xml 查看。
+2. meta-data 指定类型？
+
+http://stackoverflow.com/questions/7928105/how-do-you-add-user-defined-properties-values-in-to-the-android-manifest-file
+
+You can add meta-data to your AndroidManifest.xml file and then read that in your application.
+
+Write the data like so:
+
+<meta-data android:value="bar" android:name="foo"></meta-data>
+And read the data like so:
+
+ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+Object value = (Object)ai.metaData.get("foo");
+
+示例：
+        try {
+            ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            String hash = (String) ai.metaData.get("gitHashCode");
+            Log.e(TAG, "git commit hash: " + hash);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+------------------------------------------
+See http://developer.android.com/guide/topics/manifest/meta-data-element.html
+------------------------------------------
+
+<meta-data android:name="string"
+           android:resource="resource specification"
+           android:value="string" />
+android:value
+The value assigned to the item. The data types that can be assigned as values and the Bundle methods that components use to retrieve those values are listed in the following table:
+Type	Bundle method
+String value, using double backslashes (\\) to escape characters — such as "\\n" and "\\uxxxxx" for a Unicode character.	getString()
+Integer value, such as "100"	getInt()
+Boolean value, either "true" or "false"	getBoolean()
+Color value, in the form "#rgb", "#argb", "#rrggbb", or "#aarrggbb"	getInt()
+Float value, such as "1.23"
+
+------------------------------------------
+gradle 中定义这个值
+------------------------------------------
+
+参考：om.tspoon.androidtoolbelt 工程：
+
+androidmanifest.xml
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="${crashlyticsKey}"/>
+            
+build.gradle
+    defaultConfig {
+        applicationId "com.tspoon.androidtoolbelt"
+        minSdkVersion 9
+        targetSdkVersion 22
+        versionCode 3
+        versionName "1.0.2"
+        manifestPlaceholders = [ crashlyticsKey:crashlyticsKey ]
+    }
+    
+    当多个值时： manifestPlaceholders = [encoding: "some value", version: cityVersion]
+    
+http://blog.csdn.net/xx326664162/article/details/49247815

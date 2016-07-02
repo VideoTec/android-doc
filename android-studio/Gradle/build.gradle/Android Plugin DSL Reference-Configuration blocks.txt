@@ -1,0 +1,19 @@
+http://google.github.io/android-gradle-dsl/current/
+
+Listed below are the configuration blocks available within android
+
+defaultConfig { }	The default configuration, inherited by all product flavors (if any are defined).
+aaptOptions { }	Configures aapt options.
+adbOptions { }	Configures adb options.
+buildTypes { }	Configures build types.
+compileOptions { }	Configures compile options.
+dataBinding { }	Configures data binding options.
+dexOptions { }	Configures dex options.
+jacoco { }	Configures JaCoCo options.
+lintOptions { }	Configures lint options.
+packagingOptions { }	Configures packaging options.
+productFlavors { }	Configures product flavors.
+signingConfigs { }	Configures signing configs.
+sourceSets { }	Configures source sets.
+splits { }	Configures APK splits.
+testOptions { }	Configures test options.

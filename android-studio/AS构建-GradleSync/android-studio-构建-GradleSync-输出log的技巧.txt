@@ -1,0 +1,9 @@
+Gradle Sync 过程中的代码，print 不会显示出来。
+
+但是下面的代码，会造成错误，会显示出来错误信息：
+
+def cmd = "$System.env.PATH";
+cmd.toInteger();  这行会输出错误信息，包含， cmd 字符串
+
+Error:(9, 0) For input string: "/usr/bin:/bin:/usr/sbin:/sbin"
+<a href="openFile:/Users/ganshoucong/AndroidStudioProjects/androidrongflysip/rongflymqtt/build.gradle">Open File</a>

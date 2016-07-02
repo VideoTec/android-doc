@@ -1,0 +1,11 @@
+E:\doc\android\android-apk\android-apk-version-name-code-自动版本号.txt
+
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --count'
+    cmd.execute().text.trim().toInteger()
+}
+
+def gitLastHash() {
+    def cmd = 'git log -1 --format="%h"'
+    cmd.execute().text.trim();
+}
