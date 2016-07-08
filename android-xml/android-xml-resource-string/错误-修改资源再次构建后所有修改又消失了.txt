@@ -1,0 +1,12 @@
+14:45 2016/7/8
+
+修改下面的字符串，重新构建后，所有修改都没有了
+    <string name="rf_str_vowifi_tip_duration_less_than_one_hour">时长%1$d分%d秒</string>
+    <string name="rf_str_vowifi_tip_duration_less_than_one_minute">时长%d秒</string>
+    <string name="rf_str_vowifi_tip_duration_less_than_one_second">通话时长不足1秒</string>
+    <string name="rf_str_vowifi_tip_duration_more_than_one_hour">时长%d小时%d分%d秒</string>
+    
+原因是：修改的是临时文件
+D:\work\androidrongflysip\rongflymqtt\build\intermediates\res\merged\dev\debug\values\values.xml
+
+进入这个文件的原因是，编译时出错，双击错误，进入到这个文件里

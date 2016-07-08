@@ -1,0 +1,18 @@
+String	getString(int id, Object... formatArgs)
+
+Return the string value associated with a particular resource ID, 
+substituting the format arguments as defined in Formatter and format(String, Object...). 
+It will be stripped of any styled text information.
+
+String	getString(int id)
+
+Return the string value associated with a particular resource ID. 
+It will be stripped of any styled text information.
+
+注一：如果没有对应的字符串资源抛异常
+Resources.NotFoundException	Throws NotFoundException if the given ID does not exist.
+
+注二：Formatter 字符串资料的写法
+<string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+https://developer.android.com/guide/topics/resources/string-resource.html?hl=zh-cn#String
+Formatting strings

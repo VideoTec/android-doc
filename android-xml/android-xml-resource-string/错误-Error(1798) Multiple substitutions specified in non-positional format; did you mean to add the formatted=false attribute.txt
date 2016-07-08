@@ -1,0 +1,20 @@
+代码：
+<string name="rf_str_vowifi_tip_duration_less_than_one_hour">时长%d分%d秒</string>
+
+错误：
+Error:(1798) Multiple substitutions specified in non-positional format; 
+did you mean to add the formatted="false" attribute?
+
+原因：
+字符串有 % 号造成的。
+
+http://web.wikl.net/321517.html
+
+解决方法一：如果不需要格式化，只是需要显示 %
+<string name="test" formatted="false">时长%d分%d秒</string>
+
+解决方法二：如果需要格式化，需要转义符
+用%%来表示1个%，和转意符号 \ 的用法相同
+<string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+参考：
+E:\doc\android\android-xml\android-xml-resource-string\String Resources-格式化-Formatting strings.txt

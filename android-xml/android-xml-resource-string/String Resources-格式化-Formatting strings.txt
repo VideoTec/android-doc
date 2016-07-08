@@ -1,0 +1,19 @@
+https://developer.android.com/guide/topics/resources/string-resource.html?hl=zh-cn#String
+
+Formatting strings
+If you need to format your strings using String.format(String, Object...), 
+then you can do so by putting your format arguments in the string resource. 
+For example, with the following resource:
+
+<string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+
+In this example, the format string has two arguments: 
+%1$s is a string and %2$d is a decimal number. 
+You can format the string with arguments from your application like this:
+
+Resources res = getResources();
+String text = String.format(res.getString(R.string.welcome_messages), username, mailCount);
+
+关于格式化，参见下面的文章
+http://web.wikl.net/321517.html
+http://bobkerns.typepad.com/bob_kerns_thinking/2010/12/dear-java-better-text-formatting-please.html

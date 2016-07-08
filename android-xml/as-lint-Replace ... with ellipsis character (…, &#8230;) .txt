@@ -1,0 +1,23 @@
+<string name="rf_str_vowifi_tip_voice_callling">语音通话呼叫中...</string>
+
+警告信息：
+Replace "..." with ellipsis character (…, &#8230;) ?
+
+正确使用方法：
+<string name="rf_str_vowifi_tip_voice_callling">语音通话呼叫中&#8230;</string>
+tvVoWifiVoiceCallingTip.setText(R.string.rf_str_vowifi_tip_voice_callling);
+
+注意： 
+tvVoWifiVoiceCallingTip.setText("语音通话呼叫中&#8230;")   这个是十进制的数
+这样写是不正确的，应该写成
+tvVoWifiVoiceCallingTip.setText("语音通话呼叫中\u2026")    这个是十六进制的数
+
+参考：
+E:\doc\lang\charset\charset-UNICODE-编译语言中的写法.txt
+HTML Entity (decimal)	            &#8230;
+C/C++/Java source code	            "\u2026"
+
+http://stackoverflow.com/questions/8536375/android-replace-with-ellipsis-character
+
+&#8230; is the unicode for "…" so just replace it. 
+It's better to have it as one char/symbol than three dots.

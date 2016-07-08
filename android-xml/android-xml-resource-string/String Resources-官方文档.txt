@@ -1,0 +1,18 @@
+https://developer.android.com/guide/topics/resources/string-resource.html?hl=zh-cn
+
+String Resources
+A string resource provides text strings for your application with optional text styling and formatting. 
+There are three types of resources that can provide your application with strings:
+
+String
+XML resource that provides a single string.
+
+String Array
+XML resource that provides an array of strings.
+
+Quantity Strings (Plurals)
+XML resource that carries different strings for pluralization.
+
+All strings are capable of applying some styling markup and formatting arguments. 
+For information about styling and formatting strings, 
+see the section about Formatting and Styling.
