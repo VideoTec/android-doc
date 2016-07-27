@@ -1,0 +1,31 @@
+异常信息：
+
+mTag = RF_CrashHandler, thread = Thread[main,5,main]
+ android.view.WindowManager$BadTokenException: Unable to add window -- token null is not for an application
+     at android.view.ViewRootImpl.setView(ViewRootImpl.java:800)
+     at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:288)
+     at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:73)
+     at android.app.Dialog.show(Dialog.java:287)
+     
+http://trinea.iteye.com/blog/1142122
+
+异常原因：AlertDialog创建语句
+Java代码  收藏代码
+public AlertDialog.Builder (Context context) 中，
+不能使用getApplicationContext()得到的context，而必须使用Activity，所以解决如下
+
+http://stackoverflow.com/questions/5181432/android-alertdialog-box-windowmanagerbadtokenexception-problem
+
+I believe the problem could be on this line:
+
+AlertDialog.Builder builder = new AlertDialog.Builder(this);
+Try modifying it to:
+
+AlertDialog.Builder builder = new AlertDialog.Builder(MyActivityName.this);
+Replacing MyActivityName with the name of your activity.
+
+Did that fix the error?
+
+http://stackoverflow.com/questions/5796611/dialog-throwing-unable-to-add-window-token-null-is-not-for-an-application-wi
+
+Instead of getApplicationContext(), just use ActivityName.this.

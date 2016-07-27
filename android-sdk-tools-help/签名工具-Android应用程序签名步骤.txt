@@ -1,0 +1,9 @@
+http://dev.xiaomi.com/doc/p=70/index.html
+
+给apk签名一共要用到3个工具，或者说3个命令，
+分别是：keytool、jarsigner和zipalign，下面是对这3个工具的简单介绍：
+
+keytool：生成数字证书，即密钥，也就是上面说到的扩展名为.keystore的那类文件；
+jarsigner：使用数字证书给apk文件签名；
+zipalign：对签名后的apk进行优化，提高与Android系统交互的效率(Android SDK1.6版本开始包含此工具)
+

@@ -15,3 +15,17 @@ Note that you can sign an APK multiple times with different keys.
 $ jarsigner -verify -verbose -certs my_application.apk
 
 http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html
+
+http://dev.xiaomi.com/doc/p=70/index.html
+
+使用jarsigner工具为Android应用程序签名
+
+jarsigner -verbose -keystore liufeng.keystore -signedjar notepad_signed.apk notepad.apk liufeng.keystore
+
+说明：
+
+jarsigner是工具名称，
+-verbose表示将签名过程中的详细信息打印出来，显示在dos窗口中；
+-keystore liufeng.keystore 表示签名所使用的数字证书所在位置，这里没有写路径，表示在当前目录下；
+-signedjar notepad_signed.apk notepad.apk 表示给notepad.apk文件签名，签名后的文件名称为notepad_signed.apk；
+-liufeng.keystore（最后面的）表示证书的别名，对应于生成数字证书时-alias 参数后面的名称

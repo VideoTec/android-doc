@@ -11,3 +11,20 @@ relative to the start of the file,
 which reduces the amount of RAM consumed by an app.
 
 http://developer.android.com/intl/zh-cn/tools/help/zipalign.html
+
+http://dev.xiaomi.com/doc/p=70/index.html
+keytool：生成数字证书，即密钥，也就是上面说到的扩展名为.keystore的那类文件；
+jarsigner：使用数字证书给apk文件签名；
+zipalign：对签名后的apk进行优化，提高与Android系统交互的效率(Android SDK1.6版本开始包含此工具)
+
+4. 使用zipalign工具优化已签名的apk（非必须但建议这么做）
+
+zipalign -v 4 notepad_signed.apk notepad_signed_aligned.apk
+
+说明：
+
+zipalign是工具名称，
+-v 表示在DOS窗口打印出详细的优化信息；
+notepad_signed.apk notepad_signed_aligned.apk 
+表示对已签名文件notepad_signed.apk进行优化，
+优化后的文件名为notepad_signed_aligned.apk

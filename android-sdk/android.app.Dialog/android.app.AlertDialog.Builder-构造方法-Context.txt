@@ -1,0 +1,18 @@
+好像：
+只能传递activity-ctx, 且，activity-finish 后，对话框随之消失
+
+https://developer.android.com/reference/android/app/AlertDialog.Builder.html?hl=zh-cn#AlertDialog.Builder(android.content.Context)
+
+AlertDialog.Builder
+
+Added in API level 1
+AlertDialog.Builder (Context context)
+Creates a builder for an alert dialog that uses the default alert dialog theme.
+
+The default alert dialog theme is defined by alertDialogTheme within the parent context's theme.
+
+Parameters
+context	Context: the parent context
+
+参考：
+E:\doc\android\android-sdk\android.app.Dialog\android.app.Dialog-显示-show-异常-BadTokenException.txt

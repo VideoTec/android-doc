@@ -1,0 +1,49 @@
+代码：
+
+Intent intent =  new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+context.startActivity(intent);
+
+错误信息：
+
+07-26 16:04:46.365 1759-1759/com.feinno.rongfly E/RF_CrashHandler: mTag = RF_CrashHandler, thread = Thread[main,5,main]
+ android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.settings.AIRPLANE_MODE_SETTINGS }
+at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1669)
+at android.app.Instrumentation.execStartActivity(Instrumentation.java:1441)
+at android.app.Activity.startActivityForResult(Activity.java:3464)
+at android.app.Activity.startActivityForResult(Activity.java:3425)
+at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:820)
+at android.app.Activity.startActivity(Activity.java:3661)
+at android.app.Activity.startActivity(Activity.java:3629)
+at com.feinno.rongfly.core.modules.vowifi.RFVoWifiMgr$7.onPositive(RFVoWifiMgr.java:582)
+at com.feinno.rongfly.core.modules.vowifi.RFVoWifiMgr$11.onClick(RFVoWifiMgr.java:676)
+at com.feinno.rongfly.ui.uibase.dialog.ConfirmDialog$Builder$1.onClick(ConfirmDialog.java:148)
+at android.view.View.performClick(View.java:4475)
+at android.view.View$PerformClick.run(View.java:18786)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:176)
+at android.app.ActivityThread.main(ActivityThread.java:5454)
+at java.lang.reflect.Method.invokeNative(Native Method)
+at java.lang.reflect.Method.invoke(Method.java:525)
+at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+at dalvik.system.NativeStart.main(Native Method)
+
+http://stackoverflow.com/questions/21782171/how-should-i-programmatically-open-the-flight-mode-setting-page-on-samsung-devic
+
+if (android.os.Build.VERSION.SDK_INT < 17){
+    try{
+        Intent intentAirplaneMode = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+        intentAirplaneMode.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intentAirplaneMode);
+    }
+    catch (ActivityNotFoundException e){
+        Log.e("exception", e + "");
+    }
+} else {
+    Intent intent1 = new Intent("android.settings.WIRELESS_SETTINGS");
+    intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+    startActivity(intent1);
+}
+
+try this code hope it will work.

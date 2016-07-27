@@ -1,0 +1,44 @@
+代码： android.webkit.DownloadListener
+
+    @Override
+    public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+        Log.i(TAG, "url=" + url);
+        Log.i(TAG, "userAgent=" + userAgent);
+        Log.i(TAG, "contentDisposition=" + contentDisposition);
+        Log.i(TAG, "mimetype=" + mimetype);
+        Log.i(TAG, "contentLength=" + contentLength);
+
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory("android.intent.category.DEFAULT");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(uri, mimetype);
+        mContext.startActivity(intent);
+    }
+    
+异常日志
+
+07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: url=https://download.feixin.10086.cn/rcsx/android/RCS1.X_Android.apk
+07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: userAgent=Mozilla/5.0 (Linux; U; Android 4.3; zh-cn; GT-I9308 Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: contentDisposition=
+07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: mimetype=application/vnd.android.package-archive
+07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: contentLength=18502857
+07-26 11:40:08.295 23252-23252/com.feinno.rongfly:tools E/AndroidRuntime: FATAL EXCEPTION: main
+     oid.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW cat=[android.intent.category.DEFAULT] dat=https://download.feixin.10086.cn/rcsx/android/RCS1.X_Android.apk typ=application/vnd.android.package-archive flg=0x10000000 }
+     at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1669)
+     at android.app.Instrumentation.execStartActivity(Instrumentation.java:1441)
+     at android.app.Activity.startActivityForResult(Activity.java:3464)
+     at android.app.Activity.startActivityForResult(Activity.java:3425)
+     at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:820)
+     at android.app.Activity.startActivity(Activity.java:3661)
+     at android.app.Activity.startActivity(Activity.java:3629)
+     at com.feinno.rongfly.ui.uibase.view.webview.com.github.lzyzsd.jsbridge.BridgeDownloadListener.onDownloadStart(BridgeDownloadListener.java:35)
+     at android.webkit.CallbackProxy.handleMessage(CallbackProxy.java:575)
+     at android.os.Handler.dispatchMessage(Handler.java:99)
+     at android.os.Looper.loop(Looper.java:176)
+     at android.app.ActivityThread.main(ActivityThread.java:5454)
+     at java.lang.reflect.Method.invokeNative(Native Method)
+     at java.lang.reflect.Method.invoke(Method.java:525)
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+     at dalvik.system.NativeStart.main(Native Method)

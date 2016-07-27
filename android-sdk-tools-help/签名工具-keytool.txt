@@ -24,8 +24,33 @@ C:\Program Files\Java\jre1.8.0_66\bin>keytool
 
 使用 "keytool -command_name -help" 获取 command_name 的用法
 
+------------------------------------------------------------------------
 http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html
+------------------------------------------------------------------------
 
 keytool - Key and Certificate Management Tool
 Manages a keystore (database) of 
 cryptographic keys, X.509 certificate chains, and trusted certificates.
+
+------------------------------------------------------------------------
+http://yushan.iteye.com/blog/434955
+------------------------------------------------------------------------
+
+使用方法
+
+1、keystore的生成： 
+
+分阶段生成：
+     keytool -genkey -alias yushan(别名) -keypass yushan(别名密码) -keyalg RSA(算法) -keysize 1024(密钥长度) -validity 365(有效期，天单位) -keystore         
+     e:\yushan.keystore(指定生成证书的位置和证书名称) -storepass 123456(获取keystore信息的密码)；回车输入相关信息即可；
+     
+一次性生成：
+     keytool -genkey -alias yushan -keypass yushan -keyalg RSA -keysize 1024 -validity 365 -keystore  e:\yushan.keystore -storepass 123456 -dname "CN=(名字与姓氏), OU=(组织单位名称), O=(组织名称), L=(城市或区域名称), ST=(州或省份名称), C=(单位的两字母国家代码)";(中英文即可)
+     
+------------------------------------------------------------------------
+https://www.chinassl.net/ssltools/keytool-commands.html
+------------------------------------------------------------------------
+Java keytool是密钥和证书管理工具。
+它使用户能够管理自己的公钥/私钥对及相关证书，
+用于（通过数字签名）自我认证（用户向别的用户/服务认证自己）或数据完整性以及认证服务。
+它还允许用户储存他们的通信对等者的公钥（以证书形式）。
