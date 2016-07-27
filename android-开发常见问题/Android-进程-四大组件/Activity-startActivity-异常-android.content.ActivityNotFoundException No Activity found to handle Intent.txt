@@ -16,6 +16,13 @@
         mContext.startActivity(intent);
     }
     
+    修改成
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        mContext.startActivity(intent);
+    就不会出异常了。奇怪啊
+    
+    
 异常日志
 
 07-26 11:40:08.145 23252-23252/com.feinno.rongfly:tools I/BridgeDownloadListener: url=https://download.feixin.10086.cn/rcsx/android/RCS1.X_Android.apk

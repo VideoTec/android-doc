@@ -1,0 +1,7 @@
+https://github.com/lzyzsd/JsBridge
+android java and javascript bridge, inspired by wechat webview jsbridge
+inspire[英][ɪnˈspaɪə(r)] [美][ɪnˈspaɪr]
+vt.鼓舞；激励；赋予灵感；启迪
+
+源码：
+git@github.com:lzyzsd/JsBridge.git

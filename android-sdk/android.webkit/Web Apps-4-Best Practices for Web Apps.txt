@@ -1,0 +1,50 @@
+practice[英][ˈpræktɪs] [美][ˈpræktɪs]
+n.练习；实践；（医生或律师的）业务；惯例
+
+Best Practices for Web Apps
+A list of practices you should follow, 
+in order to provide an effective web application on Android-powered devices.
+
+https://developer.android.com/guide/webapps/best-practices.html
+
+Developing web pages and web applications for mobile devices 
+presents a different set of challenges compared to 
+developing a web page for the typical desktop web browser. 
+To help you get started, 
+the following is a list of practices you should follow 
+in order to provide the most effective web application 
+for Android and other mobile devices.
+
+----------------------------------------------------------------------------
+Redirect mobile devices to a dedicated mobile version of your web site
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+Use a valid markup DOCTYPE that's appropriate for mobile devices
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+Use viewport meta data to properly resize your web page
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+Avoid multiple file requests
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+Use a vertical linear layout
+----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+其它参考资料
+----------------------------------------------------------------------------
+
+For a more thorough guide to creating great mobile web applications, 
+see the W3C's Mobile Web Best Practices
+http://www.w3.org/TR/mobile-bp/
+
+For other guidance on improving the speed of your web site (for mobile and desktop), 
+see Yahoo!'s guide to Exceptional Performance and 
+http://developer.yahoo.com/performance/index.html#rules
+Google's speed tutorials in Let's make the web faster.
+http://code.google.com/speed/articles/

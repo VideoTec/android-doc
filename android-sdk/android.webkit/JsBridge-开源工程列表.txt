@@ -1,0 +1,24 @@
+https://github.com/marcuswestin/WebViewJavascriptBridge
+An iOS/OSX bridge for sending messages between Obj-C and JavaScript 
+in UIWebViews/WebViews http://marcuswest.in
+
+http://blog.csdn.net/Folish_Audi/article/details/44591733
+WebViewJavascriptBridge 原理分析
+http://www.jianshu.com/p/8bd6aeb719ff
+WebViewJavascriptBridge机制解析
+
+https://github.com/lzyzsd/JsBridge
+android java and javascript bridge, inspired by wechat webview jsbridge
+inspire[英][ɪnˈspaɪə(r)] [美][ɪnˈspaɪr]
+vt.鼓舞；激励；赋予灵感；启迪
+E:\doc\android\android-3rdParty\com.github.lzyzsd.jsbridge\com.github.lzyzsd.jsbridge.txt
+http://www.jianshu.com/p/52071a3d07b4
+Android JsBridge实战 打造专属你的Hybrid APP
+
+http://blog.aaapei.com/article/2013/12/wei-xin-de-jsbridgeshi-xian
+微信的jsbridge实现
+
+https://github.com/jesse01/WebViewJavascriptBridge
+WebViewJavascriptBridge for Android 是 WebViewJavascriptBridge for iOS/OSX的Android 实现, 
+项目里的WebViewJavascriptBridge.js.txt, 及测试网页ExampleApp.html 
+直接来自 WebViewJavascriptBridge for iOS/OSX.

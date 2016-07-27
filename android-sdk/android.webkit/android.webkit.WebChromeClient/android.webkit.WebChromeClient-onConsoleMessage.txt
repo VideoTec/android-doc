@@ -1,0 +1,11 @@
+For example:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+myWebView.setWebChromeClient(new WebChromeClient() {
+  public boolean onConsoleMessage(ConsoleMessage cm) {
+    Log.d("MyApplication", cm.message() + " -- From line "
+                         + cm.lineNumber() + " of "
+                         + cm.sourceId() );
+    return true;
+  }
+});
