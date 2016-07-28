@@ -17,7 +17,8 @@ they must include enough information for the system to determine which of the av
 
 理解Intent的关键之一是理解清楚Intent的两种基本用法：
 一种是   显式的Intent，  即在构造Intent对象时就指定接收者；
-另一种是 隐式的Intent，  即Intent的发送者在构造Intent对象时，并不知道也不关心接收者是谁，有利于降低发送者和接收者之间的耦合
+另一种是 隐式的Intent，  即Intent的发送者在构造Intent对象时，
+并不知道也不关心接收者是谁，有利于降低发送者和接收者之间的耦合
 
 隐式，即不是像显式的那样直接指定需要调用的Activity，
 隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。
@@ -29,7 +30,8 @@ Android需要解析的是那些隐式Intent，
 
 Intent解析机制主要是通过
 查找已注册在AndroidManifest.xml中的所有IntentFilter及其中定义的Intent，最终找到匹配的Intent。
-在这个解析过程中，Android是通过Intent的action、type、category这三个属性来进行判断的，判断方法如下：
+在这个解析过程中，Android是通过Intent的action、type、category这三个属性来进行判断的，
+判断方法如下：
 
 如果Intent指明定了action，
 则目标组件的IntentFilter的action列表中就必须包含有这个action，否则不能匹配；

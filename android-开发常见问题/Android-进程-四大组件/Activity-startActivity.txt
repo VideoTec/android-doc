@@ -1,0 +1,13 @@
+https://developer.android.com/reference/android/content/Context.html#startActivity(android.content.Intent)
+
+startActivity
+
+Added in API level 1
+void startActivity (Intent intent)
+Same as startActivity(Intent, Bundle) with no options specified.
+
+Parameters
+intent	Intent: The description of the activity to start.
+
+Throws
+ActivityNotFoundException	  `

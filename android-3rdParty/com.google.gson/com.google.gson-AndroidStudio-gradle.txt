@@ -1,0 +1,20 @@
+代码：
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library')
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.google.code.gson:gson:2.3.1'
+}
+
+错误信息：
+
+Error:(25, 13) Failed to resolve: com.google.code.gson:gson:2.3.1
+<a href="openFile:E:/opensource/JsBridge/example/build.gradle">Show in File</a><br><a href="open.dependency.in.project.structure">Show in Project Structure dialog</a>
+
+最后找到原因是，把工程的 build.gradle 下面的代码注释了
+allprojects {
+    repositories {
+        jcenter()
+    }
+}

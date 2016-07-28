@@ -1,0 +1,46 @@
+
+        <activity
+            android:name=".utils.media.VideoRecorderActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.feinno.rongfly.action.VideoRecorder" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        第三方调用
+        startActivity(new Intent("com.feinno.rongfly.action.VideoRecorder"));
+
+https://developer.android.com/guide/components/intents-filters.html
+
+隐式 Intent ：
+
+不会指定特定的组件，而是声明要执行的常规操作，
+从而允许其他应用中的组件来处理它。
+
+例如，如需在地图上向用户显示位置，
+则可以使用隐式 Intent，
+请求另一具有此功能的应用在地图上显示指定的位置。
+
+创建隐式 Intent 时，
+Android 系统通过将 Intent 的内容
+与在设备上其他应用的清单文件中声明的 Intent 过滤器进行比较，
+从而找到要启动的相应组件。
+Intent如果 Intent 与 Intent 过滤器匹配，则系统将启动该组件，并将其传递给对象。
+如果多个 Intent 过滤器兼容，
+则系统会显示一个对话框，支持用户选取要使用的应用。
+
+Intent 过滤器是应用清单文件中的一个表达式，
+它指定该组件要接收的 Intent 类型。
+例如，通过为 Activity 声明 Intent 过滤器，
+您可以使其他应用能够直接使用某一特定类型的 Intent 启动 Activity。
+同样，如果您没有为 Activity 声明任何 Intent 过滤器，
+则 Activity 只能通过显式 Intent 启动。
+
+警告：
+为了确保应用的安全性，启动 Service 时，请始终使用显式 Intent，
+且不要为服务声明 Intent 过滤器。
+使用隐式 Intent 启动服务存在安全隐患，
+因为您无法确定哪些服务将响应 Intent，且用户无法看到哪些服务已启动。
+从 Android 5.0（API 级别 21）开始，
+如果使用隐式 Intent 调用 bindService()，系统会抛出异常。

@@ -1,0 +1,10 @@
+https://developer.android.com/guide/components/intents-filters.html
+
+为了避免无意中运行不同应用的 Service，
+请始终使用显式 Intent 启动您自己的服务，
+且不必为该服务声明 Intent 过滤器。
+
+对于所有 Activity，您必须在清单文件中声明 Intent 过滤器。
+但是，广播接收器的过滤器可以通过调用 registerReceiver() 动态注册。
+稍后，您可以使用 unregisterReceiver() 注销该接收器。
+这样一来，应用便可仅在应用运行时的某一指定时间段内侦听特定的广播。

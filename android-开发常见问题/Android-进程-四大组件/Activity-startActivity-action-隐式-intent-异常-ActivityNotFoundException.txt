@@ -1,0 +1,45 @@
+activity 定义
+
+        <activity
+            android:name=".utils.media.VideoRecorderActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.feinno.rongfly.action.VideoRecorder" />
+            </intent-filter>
+        </activity>
+
+第三方调用
+startActivity(new Intent("com.feinno.rongfly.action.VideoRecorder"));
+
+出现异常：
+No Activity found to handle Intent
+
+解决方法：
+添加 <category android:name="android.intent.category.DEFAULT" />
+
+https://developer.android.com/guide/components/intents-filters.html#Building
+为了接收隐式 Intent，必须将 CATEGORY_DEFAULT 类别包括在 Intent 过滤器中。
+方法 startActivity() 和 startActivityForResult() 
+将按照已申明 CATEGORY_DEFAULT 类别的方式处理所有 Intent。 
+如果未在 Intent 过滤器中声明此类别，则隐式 Intent 不会解析为您的 Activity。
+
+https://developer.android.com/guide/components/intents-filters.html
+Android 会自动将 CATEGORY_DEFAULT 类别应用于
+传递给 startActivity() 和 startActivityForResult() 的所有隐式 Intent。
+因此，如需 Activity 接收隐式 Intent，
+则必须将 "android.intent.category.DEFAULT" 的类别包括在其 Intent 过滤器中
+
+https://developer.android.com/reference/android/content/Intent.html#CATEGORY_DEFAULT
+String CATEGORY_DEFAULT
+
+Set if the activity should be an option 
+for the default action (center press) to perform on a piece of data. 
+
+Setting this will hide from the user any activities 
+without it set when performing an action on some data. 
+
+Note that this is normally -not- 
+set in the Intent when initiating an action -- 
+it is for use in intent filters specified in packages.
+
+Constant Value: "android.intent.category.DEFAULT"
