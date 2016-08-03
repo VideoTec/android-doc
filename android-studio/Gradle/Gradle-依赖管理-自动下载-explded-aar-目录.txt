@@ -1,0 +1,9 @@
+在工程的临时目录里，存储着依赖库：
+
+如：
+D:\work\androidrongflysip\rongflymqtt\build\intermediates\exploded-aar\com.facebook.fresco
+D:\work\androidrongflysip\rongflymqtt\build\intermediates\exploded-aar\com.android.support
+D:\work\androidrongflysip\rongflymqtt\build\intermediates\exploded-aar\androidrongflysip 下面是子工程
+D:\work\androidrongflysip\rongflymqtt\build\intermediates\exploded-aar\com.tencent.bugly
+
+/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/" + "$FRESCO_LIB_VERSION" + "/jni/", excludes: ['**/armeabi/**', '**/x86/**'])

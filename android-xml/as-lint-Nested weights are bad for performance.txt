@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/9430764/why-are-nested-weights-bad-for-performance-alternatives
+
+Nested weights are bad for performance because:
+
+Layout weights require a widget to be measured twice. 
+When a LinearLayout with non-zero weights is nested inside another LinearLayout with non-zero weights, 
+then the number of measurements increase exponentially.
+
+It's always better to use RelativeLayouts 
+and adjust your view according to 
+the places of other views without using specific dpi values.

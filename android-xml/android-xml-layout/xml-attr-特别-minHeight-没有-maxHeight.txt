@@ -1,0 +1,38 @@
+http://stackoverflow.com/questions/4054567/android-why-is-there-no-maxheight-for-a-view
+
+View's have a minHeight but somehow are lacking a maxHeight:
+
+What I'm trying to achieve is having some items (views) filling up a ScrollView. When there are 1..3 items I want to display them directly. Meaning the ScrollView has the height of either 1, 2 or 3 items.
+
+When there are 4 or more items I want the ScrollView to stop expanding (thus a maxHeight) and start providing scrolling.
+
+However, there is unfortunately no way to set a maxHeight. So I probably have to set my ScrollView height programmatically to either WRAP_CONTENT when there are 1..3 items and set the height to 3*sizeOf(View) when there are 4 or more items.
+
+Can anyone explain why there is no maxHeight provided, when there is already a minHeight?
+
+(BTW: some views, like ImageView have a maxHeight implemented.)
+
+-------------------------------------
+解决方法一：
+-------------------------------------
+In order to create a ScrollView or ListView with a maxHeight 
+you just need to create a Transparent LinearLayout 
+around it with a height of what you want the maxHeight to be. 
+You then set the ScrollView's Height to wrap_content. 
+This creates a ScrollView that appears to grow 
+until its height is equal to the parent LinearLayout.
+
+-------------------------------------
+解决方法二：
+-------------------------------------
+None of these solutions worked for what I needed which was a ScrollView set to wrap_content but having a maxHeight so it would stop expanding after a certain point and start scrolling. I just simply overrode the onMeasure method in ScrollView.
+
+@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    heightMeasureSpec = MeasureSpec.makeMeasureSpec(300, MeasureSpec.AT_MOST);
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+}
+
+This might not work in all situations, but it certainly gives me the results needed for my layout. And it also addresses the comment by madhu.
+
+If some layout present below the scrollview then this trick wont work – madhu Mar 5 at 4:36

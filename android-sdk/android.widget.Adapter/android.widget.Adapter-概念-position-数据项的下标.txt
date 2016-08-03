@@ -1,0 +1,7 @@
+
+http://stackoverflow.com/questions/12965817/practical-difference-between-position-and-row-id-in-onlistitemclick
+If your list has a header item, it will be at position 0.
+So the first "real" item in the list will have:
+position = 1
+id = 0
+In general, position = id + number_of_header_views

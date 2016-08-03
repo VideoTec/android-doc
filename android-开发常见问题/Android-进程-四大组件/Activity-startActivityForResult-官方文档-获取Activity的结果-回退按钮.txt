@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/2679250/setresult-does-not-work-when-back-button-pressed
+
+You need to overide the onBackPressed() method 
+and set the result before the call to superclass, i.e
+
+@Override
+public void onBackPressed() {
+    Bundle bundle = new Bundle();
+    bundle.putString(FIELD_A, mA.getText().toString());
+
+    Intent mIntent = new Intent();
+    mIntent.putExtras(bundle);
+    setResult(RESULT_OK, mIntent);
+    super.onBackPressed();
+}

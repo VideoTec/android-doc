@@ -10,6 +10,10 @@
         
         第三方调用
         startActivity(new Intent("com.feinno.rongfly.action.VideoRecorder"));
+        
+        ActivityNotFoundException 异常处理
+        1) try catch
+        2) getApplicationContext().getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
 https://developer.android.com/guide/components/intents-filters.html
 

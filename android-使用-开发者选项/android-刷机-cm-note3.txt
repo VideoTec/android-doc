@@ -1,0 +1,30 @@
+note3 的设备类型
+Samsung Galaxy Note 3 LTE hlte
+Samsung Galaxy Note 3 (International) hltexx
+Samsung Galaxy Note 3 (Sprint) hltespr
+Samsung Galaxy Note 3 (T-Mobile) hltetmo
+Samsung Galaxy Note 3 (US Cellular) hlteusc
+Samsung Galaxy Note 3 (Verizon) hltevzw
+
+CyanogenMod Recovery
+CyanogenMod Build
+ 
+http://forum.xda-developers.com/showthread.php?t=2614214
+Difference between HLTE and HLTEXX?
+
+hlte refers to many models, including N9002, N9005, N9006, N9008, N9009
+while hltexx is N9005
+
+https://wiki.cyanogenmod.org/w/Known_Issues_page_for_hlte
+
+http://bbs.zhiyoo.com/thread-9036484-1-1.html
+刷CM无信号无基带无串号的解决方法
+assert(getprop("ro.product.device") == "hltexx" || getprop("ro.build.product") == "hltexx" || 
+       getprop("ro.product.device") == "hltespr" || getprop("ro.build.product") == "hltespr" || 
+       getprop("ro.product.device") == "hltetmo" || getprop("ro.build.product") == "hltetmo" || 
+       getprop("ro.product.device") == "SM-N900T" || getprop("ro.build.product") == "SM-N900T" || 
+       getprop("ro.product.device") == "hltecan" || getprop("ro.build.product") == "hltecan" || 
+       getprop("ro.product.device") == "hlteatt" || getprop("ro.build.product") == "hlteatt" || 
+       getprop("ro.product.device") == "hltevzw" || getprop("ro.build.product") == "hltevzw" || 
+       getprop("ro.product.device") == "hlteusc" || getprop("ro.build.product") == "hlteusc" || 
+       getprop("ro.product.device") == "hlte" || getprop("ro.build.product") == "hlte" || abort("This package is for \"hltexx,hltespr,hltetmo,SM-N900T,hltecan,hlteatt,hltevzw,hlteusc,hlte\" devices; this is a \"" + getprop("ro.product.device") + "\"."););

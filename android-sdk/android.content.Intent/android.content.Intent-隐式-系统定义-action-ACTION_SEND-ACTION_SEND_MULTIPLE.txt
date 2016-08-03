@@ -1,0 +1,84 @@
+E:\doc\android\android-开发常见问题\Android-进程-四大组件\Activity-startActivity-action-隐式-intent-ACTION_SEND_异常-ActivityNotFoundException.txt
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");  -------------  没有指定这个，造成异常: 
+        intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
+        intent.putExtra(Intent.EXTRA_TEXT, "你好");
+        intent.putExtra(Intent.EXTRA_TITLE, "我是标题");
+        startActivity(Intent.createChooser(intent, "请选择"));
+
+    /**
+     * Activity Action: Deliver some data to someone else.  Who the data is
+     * being delivered to is not specified; it is up to the receiver of this
+     * action to ask the user where the data should be sent.
+     * <p>
+     * When launching a SEND intent, you should usually wrap it in a chooser
+     * (through {@link #createChooser}), which will give the proper interface
+     * for the user to pick how to send your data and allow you to specify
+     * a prompt indicating what they are doing.
+     * <p>
+     * Input: {@link #getType} is the MIME type of the data being sent.
+     * get*Extra can have either a {@link #EXTRA_TEXT}
+     * or {@link #EXTRA_STREAM} field, containing the data to be sent.  If
+     * using EXTRA_TEXT, the MIME type should be "text/plain"; otherwise it
+     * should be the MIME type of the data in EXTRA_STREAM.  Use {@literal *}/*
+     * if the MIME type is unknown (this will only allow senders that can
+     * handle generic data streams).  If using {@link #EXTRA_TEXT}, you can
+     * also optionally supply {@link #EXTRA_HTML_TEXT} for clients to retrieve
+     * your text with HTML formatting.
+     * <p>
+     * As of {@link android.os.Build.VERSION_CODES#JELLY_BEAN}, the data
+     * being sent can be supplied through {@link #setClipData(ClipData)}.  This
+     * allows you to use {@link #FLAG_GRANT_READ_URI_PERMISSION} when sharing
+     * content: URIs and other advanced features of {@link ClipData}.  If
+     * using this approach, you still must supply the same data through the
+     * {@link #EXTRA_TEXT} or {@link #EXTRA_STREAM} fields described below
+     * for compatibility with old applications.  If you don't set a ClipData,
+     * it will be copied there for you when calling {@link Context#startActivity(Intent)}.
+     * <p>
+     * Optional standard extras, which may be interpreted by some recipients as
+     * appropriate, are: {@link #EXTRA_EMAIL}, {@link #EXTRA_CC},
+     * {@link #EXTRA_BCC}, {@link #EXTRA_SUBJECT}.
+     * <p>
+     * Output: nothing.
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_SEND = "android.intent.action.SEND";
+    
+    /**
+     * Activity Action: Deliver multiple data to someone else.
+     * <p>
+     * Like {@link #ACTION_SEND}, except the data is multiple.
+     * <p>
+     * Input: {@link #getType} is the MIME type of the data being sent.
+     * get*ArrayListExtra can have either a {@link #EXTRA_TEXT} or {@link
+     * #EXTRA_STREAM} field, containing the data to be sent.  If using
+     * {@link #EXTRA_TEXT}, you can also optionally supply {@link #EXTRA_HTML_TEXT}
+     * for clients to retrieve your text with HTML formatting.
+     * <p>
+     * Multiple types are supported, and receivers should handle mixed types
+     * whenever possible. The right way for the receiver to check them is to
+     * use the content resolver on each URI. The intent sender should try to
+     * put the most concrete mime type in the intent type, but it can fall
+     * back to {@literal <type>/*} or {@literal *}/* as needed.
+     * <p>
+     * e.g. if you are sending image/jpg and image/jpg, the intent's type can
+     * be image/jpg, but if you are sending image/jpg and image/png, then the
+     * intent's type should be image/*.
+     * <p>
+     * As of {@link android.os.Build.VERSION_CODES#JELLY_BEAN}, the data
+     * being sent can be supplied through {@link #setClipData(ClipData)}.  This
+     * allows you to use {@link #FLAG_GRANT_READ_URI_PERMISSION} when sharing
+     * content: URIs and other advanced features of {@link ClipData}.  If
+     * using this approach, you still must supply the same data through the
+     * {@link #EXTRA_TEXT} or {@link #EXTRA_STREAM} fields described below
+     * for compatibility with old applications.  If you don't set a ClipData,
+     * it will be copied there for you when calling {@link Context#startActivity(Intent)}.
+     * <p>
+     * Optional standard extras, which may be interpreted by some recipients as
+     * appropriate, are: {@link #EXTRA_EMAIL}, {@link #EXTRA_CC},
+     * {@link #EXTRA_BCC}, {@link #EXTRA_SUBJECT}.
+     * <p>
+     * Output: nothing.
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_SEND_MULTIPLE = "android.intent.action.SEND_MULTIPLE";

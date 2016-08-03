@@ -1,0 +1,28 @@
+https://github.com/google/battery-historian
+
+Battery Historian is a tool to analyze battery consumers using Android "bugreport" files.
+
+Battery Historian is a tool to 
+inspect battery related information and 
+events on an Android device running Android 5.0 Lollipop (API level 21) and later, 
+while the device was on battery. 
+
+It allows application developers 
+to visualize system and application level events on a timeline 
+with panning and zooming functionality, 
+easily see various aggregated statistics since the device was last fully charged, 
+and select an application and inspect the metrics 
+that impact battery specific to the chosen application. 
+
+It also allows an A/B comparison of two bugreports, 
+highlighting differences in key battery related metrics.
+
+https://developer.android.com/studio/profile/battery-historian.html
+
+Batterystats collects battery data from your device, 
+and Battery Historian converts that data into an HTML visualization 
+that you can view in your Browser. 
+
+Batterystats is part of the Android framework, and 
+Battery Historian is open-sourced and 
+available on GitHub at https://github.com/google/battery-historian.

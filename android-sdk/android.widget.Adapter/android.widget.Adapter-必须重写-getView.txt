@@ -8,6 +8,14 @@ position
 The position of the item within the adapter's data set of the item whose view we want.
 ListView 这个 position 从 0 开始，对应 list-item-index
 
+onItemClick 的 position 参数：
+http://stackoverflow.com/questions/12965817/practical-difference-between-position-and-row-id-in-onlistitemclick
+If your list has a header item, it will be at position 0.
+So the first "real" item in the list will have:
+position = 1
+id = 0
+In general, position = id + number_of_header_views
+
 convertView
 The old view to reuse, if possible. Note: You should check that this view is non-null and of an appropriate type before using. If it is not possible to convert this view to display the correct data, this method can create a new view. Heterogeneous lists can specify their number of view types, so that this View is always of the right type (see getViewTypeCount() and getItemViewType(int)).
 

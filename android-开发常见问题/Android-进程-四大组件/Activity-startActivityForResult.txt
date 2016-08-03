@@ -1,0 +1,19 @@
+https://developer.android.com/reference/android/app/Activity.html?hl=zh-cn#startActivityForResult(android.content.Intent, int)
+
+startActivityForResult
+
+void startActivityForResult (Intent intent, 
+                int requestCode)
+
+Same as calling startActivityForResult(Intent, int, Bundle) with no options.
+
+Parameters
+
+intent
+Intent: The intent to start.
+
+requestCode
+int: If >= 0, this code will be returned in onActivityResult() when the activity exits.
+
+Throws
+android.content.ActivityNotFoundException

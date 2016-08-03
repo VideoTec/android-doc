@@ -1,0 +1,122 @@
+https://developer.android.com/training/basics/intents/result.html?hl=zh-cn
+
+开始并不一定是单向的另一个Activity。
+您还可以开始另一个Activity并 接收返回的结果。
+要接收结果，
+请调用 startActivityForResult()（而不是 startActivity()）。
+
+例如，您的应用可启动照相机应用并接收拍摄的照片作为结果。
+或者，您可以启动“联系人”应用以便用户选择联系人，
+并且您将接收联系人详细信息作为结果。
+
+当然，响应的Activity必须设计为返回结果。
+当它这样做时，它会作为另一 Intent 对象发送结果。
+您的Activity在 onActivityResult() 回调中接收它。
+
+注意：
+当您调用 startActivityForResult() 时，
+您可以使用明确或隐含意向。
+当开始您自己的Activity以接收结果时，
+您应使用明确意向确保您可收到预期结果
+
+-------------------------------
+开始Activity
+-------------------------------
+
+开始针对结果的Activity时，
+您所使用的 Intent 对象并没有什么特别之处，
+但您需要向 startActivityForResult() 方法传递额外的整数参数。
+
+该整数参数是识别您的请求的“请求代码”。
+当您收到结果Intent 时，回调提供相同的请求代码，
+以便您的应用可以正确识别结果并确定如何处理它。
+
+例如，此处显示如何开始允许用户选择联系人的Activity：
+
+static final int PICK_CONTACT_REQUEST = 1;  // The request code
+...
+private void pickContact() {
+    Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
+    pickContactIntent.setType(Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
+    startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+}
+
+-------------------------------
+接收结果
+-------------------------------
+
+当用户完成后续Activity并且返回时，
+系统会调用您的Activity onActivityResult() 的方法。
+
+此方法包括三个参数：
+
+1）您向 startActivityForResult() 传递的请求代码。
+2）第二个Activity指定的结果代码。
+如果操作成功，这是 RESULT_OK；
+如果用户退出或操作出于某种原因失败，则是 RESULT_CANCELED 。
+参考：Activity-startActivityForResult-官方文档-获取Activity的结果-回退按钮.txt
+3）传送结果数据的 Intent。
+
+本例说明您可以如何处理“选择联系人”意向的结果。
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    // Check which request we're responding to
+    if (requestCode == PICK_CONTACT_REQUEST) {
+        // Make sure the request was successful
+        if (resultCode == RESULT_OK) {
+            // The user picked a contact.
+            // The Intent's data Uri identifies which contact was selected.
+
+            // Do something with the contact here (bigger example below)
+        }
+    }
+}
+
+在本例中， Android 的“联系人”应用返回的结果 Intent 提供识别用户所选联系人的内容 Uri。
+
+为了成功处理结果，您必须了解结果的 Intent 的格式。
+当返回结果的Activity是您自己的Activity之一时，这便非常容易。 
+Andriod 平台附带的应用提供它们自己的 API，您可用这些 API 获取特定结果数据。 
+例如，“联系人” 应用（在一些较旧的版本中是 Contacts 应用）
+始终返回带内容 URI（识别所选联系人）的结果，
+并且“照相机” 应用在 "data" 额外项中返回 Bitmap（请参阅有关 拍摄照片的课程）。
+
+-------------------------------
+奖励：接收联系人数据
+-------------------------------
+
+显示如何从“联系人”应用获取结果的代码不会详细说明如何实际从结果读取数据，
+但它需要对内容提供商进行更深入的探讨。 
+但是，如果您很好奇，此处提供了更多的代码向您展示如何查询结果数据，
+从所选联系人获取电话号码：
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    // Check which request it is that we're responding to
+    if (requestCode == PICK_CONTACT_REQUEST) {
+        // Make sure the request was successful
+        if (resultCode == RESULT_OK) {
+            // Get the URI that points to the selected contact
+            Uri contactUri = data.getData();
+            // We only need the NUMBER column, because there will be only one row in the result
+            String[] projection = {Phone.NUMBER};
+
+            // Perform the query on the contact to get the NUMBER column
+            // We don't need a selection or sort order (there's only one result for the given URI)
+            // CAUTION: The query() method should be called from a separate thread to avoid blocking
+            // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
+            // Consider using CursorLoader to perform the query.
+            Cursor cursor = getContentResolver()
+                    .query(contactUri, projection, null, null, null);
+            cursor.moveToFirst();
+
+            // Retrieve the phone number from the NUMBER column
+            int column = cursor.getColumnIndex(Phone.NUMBER);
+            String number = cursor.getString(column);
+
+            // Do something with the phone number...
+        }
+    }
+}
+注意：在 Android 2.3（API 级别 9）之前， 在 Contacts Provider 上执行查询（如以上所示）需要您的应用声明 READ_CONTACTS 权限（请参阅安全与权限）。 但是，自 Android 2.3 版本开始，“联系人”应用授予您的应用在联系人提供商向您返回结果时从联系人提供商临时读取信息的权限。 该临时权限仅适用于所请求的特定联系人，因此您只能查询意向的 Uri 指定的联系人，除非您声明 READ_CONTACTS 权限。

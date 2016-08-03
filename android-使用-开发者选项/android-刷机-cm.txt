@@ -1,0 +1,12 @@
+https://zh.wikipedia.org/wiki/CyanogenMod
+
+CyanogenMod（英语发音：/saɪ.ˈæn.oʊ.ˌdʒɛn.mɒd/），缩写作“CM”，
+是一个基于Android，供智能手机和平板电脑使用的操作系统固件。
+它是基于Google发布的Android源码，
+再加上原创或第三方程式码而开发的开放源代码软件，并使用滚动更新开发模式。
+
+2013年11月6日，Cyanogen团队宣布开始着手基于Android 4.4的CyanogenMod 11开发工作
+2014年11月13日，Cyanogen团队宣布开始着手基于Android 5.0的CyanogenMod 12开发工作。[23] 
+2015年1月5日，Cyanogenmod宣布开始构建“每夜版”的Cyanogenmod 12，首批支持共有31款机器。
+CyanogenMod 12.1以Android 5.1进行开发
+CyanogenMod 13，基于Android 6.0 “Marshmallow”

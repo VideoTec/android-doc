@@ -1,0 +1,37 @@
+https://developer.android.com/reference/android/content/Intent.html#createChooser(android.content.Intent, java.lang.CharSequence, android.content.IntentSender)
+
+-------------------------------------------
+createChooser
+-------------------------------------------
+
+Added in API level 1
+Intent createChooser (Intent target, 
+                CharSequence title)
+Convenience function for creating a ACTION_CHOOSER Intent.
+
+Builds a new ACTION_CHOOSER Intent that wraps the given target intent, 
+also optionally supplying a title. 
+If the target intent has specified 
+
+FLAG_GRANT_READ_URI_PERMISSION or 
+FLAG_GRANT_WRITE_URI_PERMISSION, 
+
+then these flags will also be set in the returned chooser intent, 
+with its ClipData set appropriately: 
+either a direct reflection of getClipData() if that is non-null, 
+or a new ClipData built from getData().
+
+-------------------------------------------
+createChooser
+-------------------------------------------
+
+Added in API level 22
+Intent createChooser (Intent target, 
+                CharSequence title, 
+                IntentSender sender)
+                
+Convenience function for creating a ACTION_CHOOSER Intent.
+
+Builds a new ACTION_CHOOSER Intent that wraps the given target intent, also optionally supplying a title. If the target intent has specified FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION, then these flags will also be set in the returned chooser intent, with its ClipData set appropriately: either a direct reflection of getClipData() if that is non-null, or a new ClipData built from getData().
+
+The caller may optionally supply an IntentSender to receive a callback when the user makes a choice. This can be useful if the calling application wants to remember the last chosen target and surface it as a more prominent or one-touch affordance elsewhere in the UI for next time.

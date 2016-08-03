@@ -1,0 +1,49 @@
+
+    /**
+     * Activity Action: Display an activity chooser, allowing the user to pick
+     * what they want to before proceeding.  This can be used as an alternative
+     * to the standard activity picker that is displayed by the system when
+     * you try to start an activity with multiple possible matches, with these
+     * differences in behavior:
+     * <ul>
+     * <li>You can specify the title that will appear in the activity chooser.
+     * <li>The user does not have the option to make one of the matching
+     * activities a preferred activity, and all possible activities will
+     * always be shown even if one of them is currently marked as the
+     * preferred activity.
+     * </ul>
+     * <p>
+     * This action should be used when the user will naturally expect to
+     * select an activity in order to proceed.  An example if when not to use
+     * it is when the user clicks on a "mailto:" link.  They would naturally
+     * expect to go directly to their mail app, so startActivity() should be
+     * called directly: it will
+     * either launch the current preferred app, or put up a dialog allowing the
+     * user to pick an app to use and optionally marking that as preferred.
+     * <p>
+     * In contrast, if the user is selecting a menu item to send a picture
+     * they are viewing to someone else, there are many different things they
+     * may want to do at this point: send it through e-mail, upload it to a
+     * web service, etc.  In this case the CHOOSER action should be used, to
+     * always present to the user a list of the things they can do, with a
+     * nice title given by the caller such as "Send this photo with:".
+     * <p>
+     * If you need to grant URI permissions through a chooser, you must specify
+     * the permissions to be granted on the ACTION_CHOOSER Intent
+     * <em>in addition</em> to the EXTRA_INTENT inside.  This means using
+     * {@link #setClipData} to specify the URIs to be granted as well as
+     * {@link #FLAG_GRANT_READ_URI_PERMISSION} and/or
+     * {@link #FLAG_GRANT_WRITE_URI_PERMISSION} as appropriate.
+     * <p>
+     * As a convenience, an Intent of this form can be created with the
+     * {@link #createChooser} function.
+     * <p>
+     * Input: No data should be specified.  get*Extra must have
+     * a {@link #EXTRA_INTENT} field containing the Intent being executed,
+     * and can optionally have a {@link #EXTRA_TITLE} field containing the
+     * title text to display in the chooser.
+     * <p>
+     * Output: Depends on the protocol of {@link #EXTRA_INTENT}.
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_CHOOSER = "android.intent.action.CHOOSER";

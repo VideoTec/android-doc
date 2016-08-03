@@ -7,3 +7,39 @@ Register a callback to be invoked when an item in this AdapterView has been clic
 
 Parameters
 listener	AdapterView.OnItemClickListener: The callback that will be invoked.
+
+--------------------------------------------------
+AdapterView.OnItemClickListener
+--------------------------------------------------
+
+问题： position 适配器里的位置，从 1 开始计数？ 从0开始计数
+问题： id 行ID   --  BaseAdapter.getItemId
+
+http://stackoverflow.com/questions/12965817/practical-difference-between-position-and-row-id-in-onlistitemclick
+If your list has a header item, it will be at position 0.
+So the first "real" item in the list will have:
+position = 1
+id = 0
+In general, position = id + number_of_header_views
+
+    /**
+     * Interface definition for a callback to be invoked when an item in this
+     * AdapterView has been clicked.
+     */
+    public interface OnItemClickListener {
+
+        /**
+         * Callback method to be invoked when an item in this AdapterView has
+         * been clicked.
+         * <p>
+         * Implementers can call getItemAtPosition(position) if they need
+         * to access the data associated with the selected item.
+         *
+         * @param parent The AdapterView where the click happened.
+         * @param view The view within the AdapterView that was clicked (this
+         *            will be a view provided by the adapter)
+         * @param position The position of the view in the adapter.
+         * @param id The row id of the item that was clicked.
+         */
+        void onItemClick(AdapterView<?> parent, View view, int position, long id);
+    }

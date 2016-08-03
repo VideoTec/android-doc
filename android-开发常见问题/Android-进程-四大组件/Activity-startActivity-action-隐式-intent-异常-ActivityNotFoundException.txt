@@ -5,6 +5,7 @@ activity 定义
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.feinno.rongfly.action.VideoRecorder" />
+                需要指定 android.intent.category.DEFAULT 类型
             </intent-filter>
         </activity>
 

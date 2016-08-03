@@ -1,0 +1,26 @@
+https://developer.android.com/reference/android/content/Intent.html
+
+These are the current standard actions 
+that Intent defines for launching activities (usually through startActivity(Intent). 
+The most important, and by far most frequently used, are ACTION_MAIN and ACTION_EDIT.
+
+ACTION_MAIN
+ACTION_VIEW
+ACTION_ATTACH_DATA
+ACTION_EDIT
+ACTION_PICK
+ACTION_CHOOSER
+ACTION_GET_CONTENT
+ACTION_DIAL
+ACTION_CALL
+ACTION_SEND
+ACTION_SENDTO
+ACTION_ANSWER
+ACTION_INSERT
+ACTION_DELETE
+ACTION_RUN
+ACTION_SYNC
+ACTION_PICK_ACTIVITY
+ACTION_SEARCH
+ACTION_WEB_SEARCH
+ACTION_FACTORY_TEST

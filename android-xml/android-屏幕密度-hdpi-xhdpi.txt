@@ -10,7 +10,7 @@ to ensure proper display of your UI on screens with different densities.
 
 A set of six generalized densities:
 ldpi (low) ~120dpi
-mdpi (medium) ~160dpi   ===  dpi  标准
+mdpi (medium) ~160dpi   ===  dp  标准
 hdpi (high) ~240dpi
 xhdpi (extra-high) ~320dpi
 xxhdpi (extra-extra-high) ~480dpi

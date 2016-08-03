@@ -1,0 +1,60 @@
+action
+<action android:name="android.intent.action.SEND"/>
+
+categrory
+<category android:name="android.intent.category.DEFAULT"/>
+
+data-mimeType
+<data android:mimeType="image/*"/>
+
+E:\doc\android\android-开发常见问题\APK-安装过程-常见APP分析\weixin\weixin638android680-AndroidManifest.xml
+
+.ui.tools.ShareImgUI
+.ui.tools.AddFavoriteUI
+.ui.tools.ShareToTimeLineUI
+
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:icon="@drawable/icon" android:name=".ui.tools.ShareImgUI">
+            <intent-filter android:label="@string/axp">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="text/*"/>
+                <data android:mimeType="application/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/axp">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:icon="@drawable/aa2" android:name=".ui.tools.AddFavoriteUI">
+            <intent-filter android:label="@string/axr">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="text/*"/>
+                <data android:mimeType="application/*"/>
+                <data android:mimeType="audio/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/axr">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:icon="@drawable/a5k" android:name=".ui.tools.ShareToTimeLineUI">
+            <intent-filter android:label="@string/axq">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/axq">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>

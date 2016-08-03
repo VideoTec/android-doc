@@ -1,3 +1,6 @@
+activity-intent-filter action 参考：
+E:\doc\android\android-开发常见问题\Android-进程-四大组件\Activity-startActivity-action-隐式-intent
+
 http://developer.android.com/guide/topics/manifest/intent-filter-element.html
 
 <intent-filter android:icon="drawable resource"

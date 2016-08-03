@@ -1,0 +1,7 @@
+代码：
+android:paddingLeft="53.5dp"
+
+警告：
+Consider adding `android:paddingStart="53.5dp"` to better support right-to-left layouts. 
+When you define `paddingLeft` you should probably also define `paddingRight` for right-to-left symmetry.
+symmetry 对称性 

@@ -1,0 +1,93 @@
+14:12 2016/8/2
+
+lib\x86_64\
+lib\x86\
+lib\armeabi-v7a\
+lib\armeabi\
+
+lib\arm64-v8a\     
+原来没有，因为增加了 compile 'com.squareup.picasso:picasso:2.5.2' 输出的APK自动添加的
+造成64位的手机会找不到其它的 so
+
+解决方法：
+
+正确的解决方法
+http://jp1017.github.io/2016/03/18/%E5%AE%89%E5%8D%93%20jni%20%E5%BC%80%E5%8F%91%20%E2%80%94%E2%80%94%20Android%20Studio%20%E6%89%93%E5%8C%85%20so%20%E7%9A%84%E5%9D%91/
+利用 flavor 和 abiFilter 解决
+http://blog.csdn.net/justfwd/article/details/49308199
+一、需要在build.gradle的android里添加如下内容:
+productFlavors {  
+    necess {  
+        ndk {  
+            abiFilters "armeabi-v7a"  
+            abiFilters "x86"  
+            abiFilters "armeabi"  
+        }  
+    }  
+    abiall {  
+        ndk {  
+            abiFilters "armeabi-v7a"  
+            abiFilters "x86"  
+            abiFilters "armeabi"  
+            abiFilters "arm64-v8a"  
+            abiFilters "x86_64"  
+        }  
+    }  
+}  
+
+二、使用全局设置，这种方法对一般需求来说可能更为实用
+defaultConfig {  
+    ndk {  
+        abiFilters "armeabi", "armeabi-v7a", "x86"  
+    }  
+}  
+
+http://frescolib.org/docs/multiple-apks.html#_
+http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
+
+android {
+  // rest of your app's logic
+  splits {
+    abi {
+        enable true
+        reset()
+        include 'x86', 'x86_64', 'arm64-v8a', 'armeabi-v7a', 'armeabi'
+        universalApk false  --   这个为true会打一个包，且包含所有的架构so
+    }
+  }
+}
+
+生成单独的几个包 
+xxx-armeabi 
+xxx-armeabi-v7a
+....
+
+ABIs Splits
+
+android {
+  ...
+  splits {
+    abi {
+      enable true
+      reset()
+      include 'x86', 'armeabi-v7a', 'mips'
+      universalApk true
+    }
+  }
+}
+
+enable: enables the ABIs split mechanism
+exclude: By default all ABIs are included, you can remove some ABIs.
+include: indicate which ABIs to be included
+reset(): reset the list of ABIs to be included to an empty string (this allows, in conjunctions with include, to indicate which one to use rather than which ones to ignore)
+universalApk: indicates whether to package a universal version (with all ABIs) or not. Default is false.
+
+http://www.jacpy.com/2016/05/10/gradle-compile-exclude-third-library-arm64-x86-64.html
+
+fresco框架中提供了各个CPU架构的SO库，包括64位的，
+而自己的应用其他第三方带有SO库的框架A还没有使用64位的SO库，
+如果不做处理，应用运行在64位手机上，当使用框架A的时候应用就会闪退，
+因为框架A没有64位的库。
+那么解决办法只有将fresco库的64位SO库都删除，只保留框架A的相同目录下面的SO库
+
+/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/" + "$FRESCO_LIB_VERSION" + "/jni/", excludes: ['**/armeabi/**', '**/x86/**'])

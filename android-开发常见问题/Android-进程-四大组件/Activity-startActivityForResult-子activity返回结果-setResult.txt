@@ -1,0 +1,44 @@
+setResult(RESULT_OK, intent); //intent为A传来的带有Bundle的intent，当然也可以自己定义新的Bundle
+finish();//此处一定要调用finish()方法
+
+-----------------------------------------------------
+setResult
+-----------------------------------------------------
+
+Added in API level 1
+void setResult (int resultCode, 
+                Intent data)
+
+Call this to set the result that your activity will return to its caller.
+
+下面这一大段，参考：
+Activity-startActivityForResult-官方文档-获取Activity的结果.txt
+最后的例子，startActivityForResult 获取用户选择的联系人的 uri
+再用 uri 获取用户的电话号码
+
+As of GINGERBREAD, 
+the Intent you supply here can have 
+Intent.FLAG_GRANT_READ_URI_PERMISSION and/or 
+Intent.FLAG_GRANT_WRITE_URI_PERMISSION set. 
+
+This will grant the Activity 
+receiving the result access to the specific URIs in the Intent. 
+Access will remain until the Activity has finished 
+(it will remain across the hosting process being killed and other temporary destruction) 
+and will be added to any existing set of URI permissions it already holds.
+
+Parameters
+
+resultCode
+int: The result code to propagate back to the originating activity, 
+often RESULT_CANCELED or RESULT_OK
+
+data
+Intent: The data to propagate back to the originating activity.
+
+See also:
+
+RESULT_CANCELED
+RESULT_OK
+RESULT_FIRST_USER
+setResult(int)

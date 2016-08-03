@@ -1,0 +1,8 @@
+android:layout_centerHorizontal    If true, centers this child horizontally within its parent. 
+android:layout_centerInParent    If true, centers this child horizontally and vertically within its parent. 
+android:layout_centerVertical    If true, centers this child vertically within its parent. 
+
+这三个参数设置可以更好解决居中问题
+
+gravity 参数是把整个 relative 为一块，居中。
+其中各个子view在这个居中的块中相对位置，不可控制。
