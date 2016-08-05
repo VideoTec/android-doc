@@ -1,0 +1,69 @@
+authority[英][ɔ:ˈθɒrəti] [美][əˈθɔrəti]  --  典据 [典据，意义是掌管，占据]
+n.权威；权力；学术权威；[复数]当权者
+naming authority 名称机构
+更合适的是翻译是 当局
+https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+
+scheme[英][ski:m] [美][skim]  -- 协议名
+n.计划；体系；阴谋
+
+http://sspai.com/31500
+Schemes，表示的是一个 URL 中的一个位置——最初始的位置，
+即 ://之前的那段字符。
+比如 http://www.apple.com 这个网址的 Schemes 是 http。
+
+例子：下面的 url 的 
+authority 部分是 username:password@example.com:123
+schemes 是 abc://
+abc://username:password@example.com:123/path/data?key=value&key2=value2#fragid1
+
+http://en.wikipedia.org/wiki/URI#Examples_of_URI_references （
+"http" 指定协议名, 
+"en.wikipedia.org"是“典据”, 
+"/wiki/URI"是指向英文维基页面的“路径”，而
+"#Examples_of_URI_references"是指向英文维基页面相应片段的“片段”。)
+
+A generic URI is of the form:
+scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]
+
+https://developer.android.com/guide/topics/manifest/provider-element.html
+
+Declares a content provider component. 
+A content provider is a subclass of ContentProvider 
+that supplies structured access to data managed by the application. 
+
+All content providers in your application 
+must be defined in a <provider> element in the manifest file; 
+otherwise, the system is unaware of them and doesn't run them.
+
+You only declare content providers 
+that are part of your application. 
+Content providers in other applications 
+that you use in your application should not be declared.
+
+The Android system stores references to content providers 
+according to an authority string, 
+part of the provider's content URI. 
+
+For example, 
+suppose you want to access a content provider 
+that stores information about health care professionals. 
+
+To do this, 
+you call the method ContentResolver.query(), 
+which among other arguments takes a URI that identifies the provider:
+
+content://com.example.project.healthcareprovider/nurses/rn
+
+The content: 
+scheme identifies the URI as a content URI pointing to an Android content provider. 
+The authority com.example.project.healthcareprovider identifies the provider itself; 
+the Android system looks up the authority in its list of known providers and their authorities. 
+The substring nurses/rn is a path, 
+which the content provider can use to identify subsets of the provider data.
+
+Notice that when you define your provider in the <provider> element, 
+you don't include the scheme or the path in the android:name argument, 
+only the authority.
+
+For information on using and developing content providers, see the API Guide, Content Providers.

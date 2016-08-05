@@ -1,0 +1,9 @@
+https://code.google.com/p/android/issues/detail?id=172387
+http://stackoverflow.com/questions/17834821/android-studio-background-task-running-indefinitely
+
+Unplug all the phones and plug them again, it gets working. 
+It is related to adb as stated here : 
+https://code.google.com/p/android/issues/detail?id=172387 
+and a known bug that is to be fixed in the future
+
+移除连接的设备。

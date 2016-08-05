@@ -1,0 +1,68 @@
+https://developer.android.com/guide/topics/providers/content-provider-creating.html?hl=zh-cn#Permissions
+
+----------------------------------------------
+统一读写提供程序级别权限
+----------------------------------------------
+一个同时控制对整个提供程序读取和写入访问的权限，通过 <provider> 元素的 android:permission 属性指定
+
+----------------------------------------------
+单独的读取和写入提供程序级别权限针对整个提供程序的读取权限和写入权限。
+----------------------------------------------
+您可以通过 <provider> 元素的 
+android:readPermission 属性和 
+android:writePermission 属性 指定它们。
+它们优先于 android:permission 所需的权限。
+
+----------------------------------------------
+路径级别权限
+----------------------------------------------
+针对提供程序中内容 URI 的读取、写入或读取/写入权限。
+您可以通过 <provider> 元素的 <path-permission> 子元素指定您想控制的每个 URI。
+对于您指定的每个内容 URI，您都可以指定读取/写入权限、读取权限或写入权限，或同时指定所有三种权限。 
+读取权限和写入权限优先于读取/写入权限。 此外，路径级别权限优先于提供程序级别权限。
+
+----------------------------------------------
+临时权限
+----------------------------------------------
+
+一种权限级别，即使应用不具备通常需要的权限，该级别也能授予对应用的临时访问权限。 
+临时访问功能可减少应用需要在其清单文件中请求的权限数量。 
+当您启用临时权限时，只有持续访问您的所有数据的应用才需要“永久性”提供程序访问权限。
+
+假设您需要实现电子邮件提供程序和应用的权限，
+如果您想允许外部图像查看器应用显示您的提供程序中的照片附件， 
+为了在不请求权限的情况下为图像查看器提供必要的访问权限，
+可以为照片的内容 URI 设置临时权限。 
+对您的电子邮件应用进行相应设计，
+使应用能够在用户想要显示照片时向图像查看器发送一个 Intent，
+其中包含照片的内容 URI 以及权限标志。 
+图像查看器可随后查询您的电子邮件提供程序以检索照片，
+即使查看器不具备对您提供程序的正常读取权限，
+也不受影响。
+
+要想启用临时权限，
+请设置 <provider> 元素的 android:grantUriPermissions 属性，
+或者向您的 <provider> 元素添加一个或多个 <grant-uri-permission> 子元素。
+如果您使用了临时权限，
+则每当您从提供程序中移除对某个内容 URI 的支持，
+并且该内容 URI 关联了临时权限时，
+都需要调用 Context.revokeUriPermission()。
+
+http://wangkuiwu.github.io/2014/07/06/ContentProvider-Permission/
+
+<permission
+    android:name="com.skw.permission.myprovider"
+    android:protectionLevel="normal"
+    android:label="@string/permission_label"
+    android:description="@string/permission_description"
+    />
+    
+android:protectionLevel: 必需的。权限的安全级别，
+共包括"normal, dangerous, signature, signatureOrSystem"四种。
+    normal 表示权限是低风险的，不会对系统、用户或其他应用程序造成危害；
+    dangerous 表示权限是高风险的，系统将可能要求用户输入相关信息，才会授予此权限；
+    signature 表示只有当应用程序所用数字签名与声明引权限的应用程序所用数字签名相同时，才能将权限授给它；
+    signatureOrSystem 表示将权限授给具有相同数字签名的应用程序或android 包类。
+    
+在需要使用ContentProvider的APK的manifest中需要声明使用该权限。声明方法如下：
+<uses-permission android:name="com.skw.permission.myprovider" />

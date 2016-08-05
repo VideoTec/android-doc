@@ -1,0 +1,47 @@
+http://stackoverflow.com/questions/22264711/matrixcursor-with-non-db-content-provider
+
+public class MyContentProvider extends ContentProvider {
+
+List<Item> items = new ArrayList<Item>();
+
+@Override
+public boolean onCreate() {
+    // initial list of items
+    items.add(new Item("Coffe", 3f));
+    items.add(new Item("Coffe Latte", 3.5f));
+    items.add(new Item("Macchiato", 4f));
+    items.add(new Item("Frapuccion", 4.25f));
+    items.add(new Item("Te", 3f));
+
+    return true;
+}
+
+
+ @Override
+public Cursor query(Uri uri, String[] projection, String selection,
+        String[] selectionArgs, String sortOrder) {
+
+    MatrixCursor cursor = new MatrixCursor(new String[] { "name", "price"});
+
+    for (Item item : items) {
+        RowBuilder builder = cursor.newRow();
+        builder.add("name", item.name);
+        builder.add("price", item.price);
+    }
+
+    cursor.setNotificationUri(getContext().getContentResolver(),uri);
+
+    return cursor;
+}
+
+
+@Override
+public Uri insert(Uri uri, ContentValues values) {
+    items.add(new Item(values.getAsString("name"),values.getAsFloat("price")))
+
+    //THE MAGIC COMES HERE !!!! when notify change and its observers registred make a requery so they are going to call query on the content provider and now we are going to get a new Cursor with the new item
+
+    getContext().getContentResolver().notifyChange(uri, null);
+
+    return uri;
+}

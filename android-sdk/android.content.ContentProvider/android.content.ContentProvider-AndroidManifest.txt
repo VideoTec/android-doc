@@ -1,0 +1,54 @@
+        <provider
+            android:name="com.feinno.beside.provider.BesideProvider"
+            android:authorities="com.feinno.beside"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:writePermission="com.feinno.beside.permission.WRITE_SCHEDULE" />
+            
+        <provider
+            android:name="com.chinamobile.icloud.im.sync.provider.SyncStateProvider"
+            android:authorities="com.chinamobile.icloud.im.feixin.sync"
+            android:enabled="true"
+            android:exported="true" />
+
+https://developer.android.com/guide/topics/manifest/provider-element.html
+
+<provider 
+
+android:authorities="list"
+Typically, it's the name of the ContentProvider subclass that implements the provider
+
+android:enabled=["true" | "false"]
+Whether or not the content provider can be instantiated by the system — 
+"true" if it can be, and 
+"false" if not. 
+The default value is "true"
+
+android:exported=["true" | "false"]
+Whether the content provider is available for other applications to use
+
+          android:grantUriPermissions=["true" | "false"]
+          android:icon="drawable resource"
+          
+android:initOrder="integer"
+The order in which the content provider should be instantiated, 
+relative to other content providers hosted by the same process.
+The value is a simple integer, with higher numbers being initialized first.
+         
+         android:label="string resource"
+          
+android:multiprocess=["true" | "false"]
+Whether or not an instance of the content provider can be created in every client process 
+
+          android:name="string"
+          android:permission="string"
+          android:process="string"
+          android:readPermission="string"
+          
+android:syncable=["true" | "false"]
+Whether or not the data under the content provider's control 
+is to be synchronized with data on a server 
+          
+          android:writePermission="string" >
+    . . .
+</provider>

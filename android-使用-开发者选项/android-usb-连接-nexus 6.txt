@@ -1,0 +1,13 @@
+连接 nexus 6 的问题。
+
+设备管理器显示正常安装了，
+Google Nexus ADB Interface 不是 Android ADB Interface
+但是
+adb devices 找不到设备。
+
+http://www.makeuseof.com/tag/android-wont-connect-windows-adb-fix-it-three-steps/
+注意：卸载驱动程序时的-删除此设备的驱动程序软件复选框
+
+1. 删除 Google Nexus ADB Interface 驱动
+2. 再次连接设备，自动安装上 Android Composite ADB Interface 驱动
+   此时就可以找到设备了

@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/15147765/can-android-padding-be-made-to-be-not-clickable
+使padding区域不可点击，没有办法做到。

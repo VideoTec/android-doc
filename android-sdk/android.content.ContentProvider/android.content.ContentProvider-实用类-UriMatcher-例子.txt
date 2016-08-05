@@ -1,0 +1,36 @@
+http://justsee.iteye.com/blog/936612
+
+定义：
+    private static final UriMatcher sMatcher = new UriMatcher(UriMatcher.NO_MATCH);  
+    static {  
+        sMatcher.addURI("com.jbridge.provider.personprovider", "person", ALLPERSON);  
+        sMatcher.addURI("com.jbridge.provider.personprovider", "person/#", PERSON);  
+    } 
+    
+    *：匹配由任意长度的任何有效字符组成的字符串
+    #：匹配由任意长度的数字字符组成的字符串
+
+使用：
+@Override  
+public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {  
+    SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+    switch (sMatcher.match(uri)) {
+        case ALLPERSON:// com.jbridge.provider.personprovider/person  
+            return db.query("person",projection, selection, selectionArgs,null, null, sortOrder);  
+        case PERSON:// com.jbridge.provider.personprovider/person/10  
+            long personid=ContentUris.parseId(uri);  
+            //防止他输入时String selection, String[] selectionArgs参数为空，这样就会修改表的所有数据了  
+            String where=TextUtils.isEmpty(selection)?"personid=?":selection+" and personid=?";  
+            String[] params=new String[]{String.valueOf(personid)};   
+            if (!TextUtils.isEmpty(selection)&&selectionArgs!=null) {  
+                params=new String[selectionArgs.length+1];  
+                for (int i=0;i<selectionArgs.length;i++) {  
+                    params[i]=selectionArgs[i];  
+                }  
+                params[selectionArgs.length]=String.valueOf(personid);  
+            }  
+            return db.query("person",projection, where, params,null, null, sortOrder);  
+        default:  
+            throw new IllegalArgumentException("Unknow Uri:" + uri);
+    }
+}
