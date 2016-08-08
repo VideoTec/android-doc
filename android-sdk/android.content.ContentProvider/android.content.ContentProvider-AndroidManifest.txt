@@ -17,6 +17,10 @@ https://developer.android.com/guide/topics/manifest/provider-element.html
 
 android:authorities="list"
 Typically, it's the name of the ContentProvider subclass that implements the provider
+1. 这里指定的 “机构” 名称需要整个系统唯一，重名时，安装不了：INSTALL_FAILED_CONFLICTING_PROVIDER
+2. “机构” 名称一般使用 java 包命名规则
+3. 这个名字是随意的，只要不和系统中其它的 provide-authorities 冲突就可以了。
+4. getContentResolver().query，使用的 uri 中的 authority 区域，必须是这里声明的。
 
 android:enabled=["true" | "false"]
 Whether or not the content provider can be instantiated by the system — 

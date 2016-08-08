@@ -1,0 +1,18 @@
+代码：
+        <provider
+            android:authorities="com.baidu"
+            android:name=".data.FlavorsProvider"
+            android:exported="true"
+            android:enabled="false"/>
+--------------------------------------------------------
+android:enabled="false" 引发这个错误
+--------------------------------------------------------
+08-08 10:11:43.590 22815-22815/com.sam_chordas.android.androidflavors E/ActivityThread: 
+Failed to find provider info for com.baidu
+
+--------------------------------------------------------
+getContentResolver().query 和 AndroidManifest.xml-provider-authorities 不一致
+--------------------------------------------------------
+
+getContentResolver().query 错误的使用了 android:name 当 uri 的 authority。
+造成找不到的错误

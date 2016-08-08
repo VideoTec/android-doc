@@ -1,3 +1,7 @@
+----------------------------------
+ContentProvider 子类
+----------------------------------
+
 public class MyContentProvider extends ContentProvider {
     public MyContentProvider() {
     }
@@ -34,3 +38,24 @@ public class MyContentProvider extends ContentProvider {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }
+
+----------------------------------
+AndroidManifest.xml 声明
+----------------------------------
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="com.example.wangxiangfx.provider"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
+
+----------------------------------
+getContentResolver().query 调用
+----------------------------------
+
+第一次写 provider 时，因为query的url使用了 provider-android-name，
+造成找不到 provider 错误，引起一堆无关的疑问。
+
+Cursor cursor = getContentResolver().query(
+    Uri.parse("content://com.example.wangxiangfx.provider/account"), 
+    null, null, null, null);

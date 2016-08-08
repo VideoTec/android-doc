@@ -35,6 +35,7 @@ uri
 The URI, using the content:// scheme, for the content to retrieve.
 
 projection
+指定需要返回的字段
 A list of which columns to return. 
 Passing null will return all columns, which is inefficient.
 相当于 SQL 语句中的 select 如：

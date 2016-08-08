@@ -1,0 +1,10 @@
+$ adb push E:\opensource\TestRFInterface\app\build\outputs\apk\app-debug.apk /data/local/tmp/com.example.wangxiangfx.testrfinterface
+$ adb shell pm install -r "/data/local/tmp/com.example.wangxiangfx.testrfinterface"
+	pkg: /data/local/tmp/com.example.wangxiangfx.testrfinterface
+Failure [INSTALL_FAILED_CONFLICTING_PROVIDER]
+
+        <provider
+            android:authorities="com.baidu.sub" --- 这个值，在整个系统中，全局唯一，否则安装不上
+            android:name="com.example.wangxiangfx.testrfinterface.MyContentProvider"
+            android:exported="false" >
+        </provider>
