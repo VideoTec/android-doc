@@ -1,3 +1,16 @@
+MatrixCursor 简单用法：
+
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection,
+                        String[] selectionArgs, String sortOrder) {
+        // TODO: Implement this to handle query requests from clients.
+        //throw new UnsupportedOperationException("Not yet implemented");
+        MatrixCursor cursor = new MatrixCursor(new String[]{"name", "age"});
+        cursor.addRow(new String[] {"wangxiang", "33"});
+        cursor.addRow(new String[] {"wx", "35"});
+        return cursor;
+    }
+
 http://stackoverflow.com/questions/22264711/matrixcursor-with-non-db-content-provider
 
 public class MyContentProvider extends ContentProvider {
@@ -27,6 +40,8 @@ public Cursor query(Uri uri, String[] projection, String selection,
         RowBuilder builder = cursor.newRow();
         builder.add("name", item.name);
         builder.add("price", item.price);
+        问题：
+        Call requires API level 19 (current min is 16): android.database.MatrixCursor.RowBuilder#add
     }
 
     cursor.setNotificationUri(getContext().getContentResolver(),uri);

@@ -1,0 +1,27 @@
+https://trac.ffmpeg.org/ticket/4928
+
+https://github.com/wseemann/FFmpegMediaPlayer/issues/64
+
+http://www.csto.com/p/82766
+
+--------------------------------------------------
+错误日志：
+--------------------------------------------------
+
+java.lang.UnsatisfiedLinkError: dlopen failed: /data/app/com.chinasofti.rcs-1/lib/arm/libconvert.so: has text relocations
+	at java.lang.Runtime.loadLibrary(Runtime.java:372)
+	at java.lang.System.loadLibrary(System.java:1076)
+	at com.sea_monster.video.record.MediaRecorder.<clinit>(MediaRecorder.java:89)
+	at com.feinno.circles.ui.activity.VideoRecordActivity.onCreate(VideoRecordActivity.java:320)
+	at android.app.Activity.performCreate(Activity.java:6876)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1135)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3206)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3349)
+	at android.app.ActivityThread.access$1100(ActivityThread.java:221)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1794)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loop(Looper.java:158)
+	at android.app.ActivityThread.main(ActivityThread.java:7224)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)

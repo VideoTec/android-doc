@@ -1,6 +1,9 @@
 http://justsee.iteye.com/blog/936612
 
 定义：
+	// Codes for the UriMatcher //////
+	private static final int ALLPERSON = 100;
+	private static final int PERSON = 200;
     private static final UriMatcher sMatcher = new UriMatcher(UriMatcher.NO_MATCH);  
     static {  
         sMatcher.addURI("com.jbridge.provider.personprovider", "person", ALLPERSON);  

@@ -1,0 +1,23 @@
+https://developer.android.com/reference/android/database/MatrixCursor.RowBuilder.html
+
+Builds a row of values using either of these approaches:
+
+1）Values can be added with explicit column ordering using add(Object), 
+which starts from the left-most column and adds one column value at a time. 
+This follows the same ordering as the column names specified at cursor construction time.
+
+2）Column and value pairs can be offered for possible inclusion using add(String, Object). 
+If the cursor includes the given column, 
+the value will be set for that column, 
+otherwise the value is ignored. 
+This approach is useful when matching data to a custom projection.
+
+Undefined values are left as null.
+
+MatrixCursor.RowBuilder	add(Object columnValue)
+Added in API level 1
+Sets the next column value in this row.
+
+MatrixCursor.RowBuilder	add(String columnName, Object value)
+Added in API level 19
+Offer value for possible inclusion if this cursor defines the given column.

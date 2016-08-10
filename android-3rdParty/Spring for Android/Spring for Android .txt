@@ -1,0 +1,14 @@
+https://github.com/spring-projects/spring-android
+
+Spring for Android
+
+Spring for Android is a library that is designed to provide components of the Spring Framework family of projects for use in native Android applications.
+
+Code of Conduct
+
+This project adheres to the Contributor Covenant code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to spring-code-of-conduct@pivotal.io.
+
+Features
+
+A REST client for Android
+Auth support for accessing secure APIs

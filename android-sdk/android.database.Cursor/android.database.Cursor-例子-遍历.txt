@@ -1,0 +1,32 @@
+http://stackoverflow.com/questions/10723770/whats-the-best-way-to-iterate-an-android-cursor
+
+The simplest way is this:
+
+while (cursor.moveToNext()) {
+    ...
+    问题，这样写，会不会把每一项给忽略了？
+}
+
+The cursor starts before the first result row, 
+so on the first iteration this moves to the first result if it exists. 
+If the cursor is empty, or the last row has already been processed, 
+then the loop exits neatly.
+
+Of course, don't forget to close the cursor once you're done with it, preferably in a finally clause.
+
+Cursor cursor = db.rawQuery(...);
+try {
+    while (cursor.moveToNext()) {
+        ...
+    }
+} finally {
+    cursor.close();
+}
+
+If you target API 19+, you can use try-with-resources.
+
+try (Cursor cursor = db.rawQuery(...)) {
+    while (cursor.moveToNext()) {
+        ...
+    }
+}

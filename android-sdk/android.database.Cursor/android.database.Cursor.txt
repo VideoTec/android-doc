@@ -1,8 +1,72 @@
+cursor[英][ˈkɜ:sə(r)] [美][ˈkɜrsə(r)] n.光标
+
 http://developer.android.com/intl/zh-cn/reference/android/database/Cursor.html
+
+Cursor
+public interface Cursor 
+implements Closeable
+android.database.Cursor
+
+Known Indirect Subclasses
+AbstractCursor, 
+AbstractWindowedCursor, 
+CrossProcessCursor, 
+CrossProcessCursorWrapper, 
+CursorWrapper, 
+MatrixCursor, 
+MergeCursor, 
+MockCursor, 
+SQLiteCursor
 
 This interface provides random read-write access to the result set returned by a database query.
 
 Cursor implementations are not required to be synchronized 
-so code using a Cursor from multiple threads should perform its own synchronization when using the Cursor.
+so code using a Cursor from multiple threads 
+should perform its own synchronization when using the Cursor.
 
+Uri getNotificationUri ()
 Implementations should subclass AbstractCursor.
+
+接口总结：
+
+getCount()
+getColumnIndex(String columnName)
+getColumnIndexOrThrow(String columnName)
+
+getNotificationUri ()
+setNotificationUri(ContentResolver cr, Uri uri)
+
+getExtras()
+setExtras(Bundle extras)
+
+getType(int columnIndex)
+copyStringToBuffer(int columnIndex, CharArrayBuffer buffer)
+getBlob(int columnIndex)
+getColumnName(int columnIndex)  getColumnNames()
+getDouble(int columnIndex)
+getFloat(int columnIndex)
+getInt(int columnIndex)
+getLong(int columnIndex)
+getShort(int columnIndex)
+getString(int columnIndex)
+
+isAfterLast()
+isBeforeFirst()
+isFirst()
+isLast()
+
+close()
+isClosed()
+isNull(int columnIndex)
+
+move(int offset)
+moveToFirst()
+moveToLast()
+moveToNext()
+moveToPrevious()
+moveToPosition(int position)
+
+registerContentObserver(ContentObserver observer)
+registerDataSetObserver(DataSetObserver observer)
+unregisterContentObserver(ContentObserver observer)
+unregisterDataSetObserver(DataSetObserver observer)
