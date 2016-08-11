@@ -1,0 +1,4 @@
+HTML5 Video support
+
+In order to support inline HTML5 video in your application 
+you need to have hardware acceleration turned on.

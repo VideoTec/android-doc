@@ -1,0 +1,8 @@
+出错的链接
+http://gz.feixin.10086.cn/HttpInterface/SMsg/show/sdx/MTE2MDI2NTcxMw==/idx/MjM5NjE0/tk/c02ea4510cf65616e2acb360bd77f1ca/inx/0/fclient/pc?mobile=18510628902
+
+errorCode -9
+description 页面包含的服务器重定向太多
+
+参考：
+E:\doc\android\android-sdk\android.webkit\android.webkit.WebViewClient\android.webkit.WebViewClient-错误代码.txt

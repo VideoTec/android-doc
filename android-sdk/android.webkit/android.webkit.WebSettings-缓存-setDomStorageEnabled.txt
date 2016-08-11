@@ -1,0 +1,33 @@
+https://developer.android.com/reference/android/webkit/WebSettings.html#setDomStorageEnabled(boolean)
+
+setDomStorageEnabled
+
+Added in API level 7
+
+void setDomStorageEnabled (boolean flag)
+Sets whether the DOM storage API is enabled. 
+The default value is false.
+
+Parameters
+flag
+boolean: true if the WebView should use the DOM storage API
+
+http://gold.xitu.io/entry/5709c96979bc44004c6cd5ca
+
+WebView的缓存可以分为页面缓存和数据缓存
+
+数据缓存分为两种：AppCache和DOM Storage（Web Storage）。
+他们是因为页面开发者的直接行为而产生。
+所有的缓存数据都由开发者直接完全地掌控
+
+AppCache使我们能够有选择的缓冲web浏览器中所有的东西，
+从页面、图片到脚本、css等等。
+尤其在涉及到应用于网站的多个页面上的CSS和JavaScript文件的时候非常有用
+
+在Android中可以
+手动开启DOM Storage（setDomStorageEnabled），
+设置存储路径（setDatabasePath）
+
+Android中Webkit会为DOM Storage产生两个文件
+my_path/localstorage/http_h5.m.taobao.com_0.localstorage和
+my_path/localstorage/Databases.db

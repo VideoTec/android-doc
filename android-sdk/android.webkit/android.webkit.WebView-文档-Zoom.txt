@@ -1,0 +1,10 @@
+https://developer.android.com/reference/android/webkit/WebView.html
+
+Zoom
+
+To enable the built-in zoom, 
+set WebSettings.setBuiltInZoomControls(boolean) (introduced in API level CUPCAKE).
+
+NOTE: 
+Using zoom if either the height or width is set to WRAP_CONTENT 
+may lead to undefined behavior and should be avoided.

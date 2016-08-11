@@ -1,0 +1,15 @@
+https://developer.android.com/reference/android/webkit/WebView.html
+
+Full screen support
+
+In order to support full screen — for video or other HTML content — 
+you need to set a WebChromeClient and 
+implement both 
+onShowCustomView(View, WebChromeClient.CustomViewCallback) and 
+onHideCustomView(). 
+If the implementation of either of these two methods is missing 
+then the web contents will not be allowed to enter full screen. 
+
+Optionally you can implement 
+getVideoLoadingProgressView() 
+to customize the View displayed whilst a video is loading.

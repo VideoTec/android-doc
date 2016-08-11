@@ -1,0 +1,19 @@
+https://developer.android.com/reference/android/webkit/WebSettings.html#setUserAgentString(java.lang.String)
+
+setBuiltInZoomControls
+
+Added in API level 3
+
+void setBuiltInZoomControls (boolean enabled)
+Sets whether the WebView should use its built-in zoom mechanisms. 
+The built-in zoom mechanisms comprise on-screen zoom controls, 
+which are displayed over the WebView's content, 
+and the use of a pinch gesture to control zooming. 
+Whether or not these on-screen controls are displayed can be set with setDisplayZoomControls(boolean). 
+The default is false.
+
+The built-in mechanisms are the only currently supported zoom mechanisms, 
+so it is recommended that this setting is always enabled.
+
+Parameters
+enabled	boolean: whether the WebView should use its built-in zoom mechanisms

@@ -1,0 +1,14 @@
+https://whitelaning.github.io/2015/05/07/Clear_the_WebView_Cache.html
+
+所以单独的webView.clearCache(true)是不能成功的，
+还需要清除webView的Cookie才行。
+所以我最终的解决方法是在Activity的onDestroy()方法中添加如下代码：
+
+//清空所有Cookie
+CookieSyncManager.createInstance(QzmobileApp.getContext());  //Create a singleton CookieSyncManager within a context
+CookieManager cookieManager = CookieManager.getInstance(); // the singleton CookieManager instance
+cookieManager.removeAllCookie();// Removes all cookies.
+CookieSyncManager.getInstance().sync(); // forces sync manager to sync now
+
+https://developer.android.com/reference/android/webkit/CookieManager.html
+

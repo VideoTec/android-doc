@@ -1,0 +1,56 @@
+https://developer.android.com/reference/android/webkit/WebView.html
+
+Building web pages to support different screen densities
+The screen density of a device is based on the screen resolution. 
+A screen with low density has fewer available pixels per inch, 
+where a screen with high density has more — sometimes significantly more — pixels per inch. 
+The density of a screen is important because, other things being equal, 
+a UI element (such as a button) whose height and width 
+are defined in terms of screen pixels 
+will appear larger on the lower density screen and smaller on the higher density screen. 
+
+For simplicity, 
+Android collapses all actual screen densities into three generalized densities: 
+high, medium, and low.
+
+By default, WebView scales a web page 
+so that it is drawn at a size 
+that matches the default appearance on a medium density screen. 
+So, it applies 
+1.5x scaling on a high density screen (because its pixels are smaller) and 
+0.75x scaling on a low density screen (because its pixels are bigger). 
+Starting with API level ECLAIR, 
+WebView supports DOM, CSS, and meta tag features 
+to help you (as a web developer) target screens with different screen densities.
+
+Here's a summary of the features you can use to handle different screen densities:
+
+1) The window.devicePixelRatio DOM property. 
+The value of this property specifies the default scaling factor used for the current device. 
+
+For example, 
+
+if the value of window.devicePixelRatio is "1.0", 
+then the device is considered a medium density (mdpi) device 
+and default scaling is not applied to the web page; 
+
+if the value is "1.5", 
+then the device is considered a high density device (hdpi) 
+and the page content is scaled 1.5x; 
+
+if the value is "0.75", 
+then the device is considered a low density device (ldpi) 
+and the content is scaled 0.75x.
+
+2) The -webkit-device-pixel-ratio CSS media query. 
+Use this to specify the screen densities for which this style sheet is to be used. 
+The corresponding value should be either "0.75", "1", or "1.5", 
+to indicate that the styles are for devices 
+with low density, medium density, or high density screens, respectively. 
+
+For example:
+
+<link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio:1.5)" href="hdpi.css" />
+
+The hdpi.css stylesheet is only used for devices with a screen pixel ration of 1.5, 
+which is the high density pixel ratio.

@@ -1,0 +1,7 @@
+http://gold.xitu.io/entry/5709c96979bc44004c6cd5ca
+
+原因：
+webview加载 服务端的网页，为了减少访问压力，
+用html5缓存技术，本地建了数据库，
+在手机浏览器里  可以显示页面，换成webView就不行了。
+

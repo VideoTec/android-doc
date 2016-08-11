@@ -1,0 +1,29 @@
+loadUrl
+
+Added in API level 8
+void loadUrl (String url, 
+                Map<String, String> additionalHttpHeaders)
+                
+Loads the given URL with the specified additional HTTP headers.
+
+Also see compatibility note on evaluateJavascript(String, ValueCallback).
+
+Parameters
+
+url
+String: the URL of the resource to load
+
+additionalHttpHeadersMap: 
+the additional headers to be used in the HTTP request for this URL, 
+specified as a map from name to value. 
+Note that if this map contains any of the headers that are set by default by this WebView, 
+such as those controlling caching, accept types or the User-Agent, 
+their values may be overriden by this WebView's defaults.
+
+http://stackoverflow.com/questions/7610790/add-custom-headers-to-webview-resource-requests-android
+
+Try
+
+loadUrl(String url, Map<String, String> extraHeaders)
+
+Unfortunately this only works on API8+.

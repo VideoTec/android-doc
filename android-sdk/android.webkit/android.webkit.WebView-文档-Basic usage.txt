@@ -1,0 +1,85 @@
+https://developer.android.com/reference/android/webkit/WebView.html
+
+By default, 
+a WebView provides no browser-like widgets, 
+does not enable JavaScript and web page errors are ignored. 
+If your goal is only to display some HTML as a part of your UI, 
+this is probably fine; 
+
+the user won't need to interact with the web page beyond reading it, 
+and the web page won't need to interact with the user. 
+If you actually want a full-blown web browser, 
+then you probably want to 
+invoke the Browser application with a URL Intent rather than show it with a WebView. 
+
+For example:
+
+ Uri uri = Uri.parse("http://www.example.com");
+ Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+ startActivity(intent);
+ 
+To provide a WebView in your own Activity, 
+include a <WebView> in your layout, 
+or set the entire Activity window as a WebView during onCreate():
+
+ WebView webview = new WebView(this);
+ setContentView(webview);
+ 
+Then load the desired web page:
+
+ // Simplest usage: note that an exception will NOT be thrown
+ // if there is an error loading this page (see below).
+ webview.loadUrl("http://slashdot.org/");
+
+ // OR, you can also load from an HTML string:
+ String summary = "<html><body>You scored <b>192</b> points.</body></html>";
+ webview.loadData(summary, "text/html", null);
+ // ... although note that there are restrictions on what this HTML can do.
+ // See the JavaDocs for loadData() and loadDataWithBaseURL() for more info.
+ 
+A WebView has several customization points 
+where you can add your own behavior. 
+These are:
+
+1) Creating and setting a WebChromeClient subclass. 
+This class is called when something that might impact a browser UI happens, 
+for instance, 
+progress updates and JavaScript alerts are sent here (see Debugging Tasks).
+
+2) Creating and setting a WebViewClient subclass. 
+It will be called when things happen that impact the rendering of the content, eg, 
+errors or form submissions. 
+You can also intercept URL loading here (via shouldOverrideUrlLoading()).
+
+3) Modifying the WebSettings, 
+such as enabling JavaScript with setJavaScriptEnabled().
+
+4) Injecting Java objects into the WebView 
+using the addJavascriptInterface(Object, String) method. 
+This method allows you to inject Java objects into a page's JavaScript context, 
+so that they can be accessed by JavaScript in the page.
+
+Here's a more complicated example, 
+showing error handling, settings, and progress notification:
+
+ // Let's display the progress in the activity title bar, like the
+ // browser app does.
+ getWindow().requestFeature(Window.FEATURE_PROGRESS);
+
+ webview.getSettings().setJavaScriptEnabled(true);
+
+ final Activity activity = this;
+ webview.setWebChromeClient(new WebChromeClient() {
+   public void onProgressChanged(WebView view, int progress) {
+     // Activities and WebViews measure progress with different scales.
+     // The progress meter will automatically disappear when we reach 100%
+     activity.setProgress(progress * 1000);
+   }
+ });
+ webview.setWebViewClient(new WebViewClient() {
+   public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+     Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+   }
+ });
+
+ webview.loadUrl("http://developer.android.com/");

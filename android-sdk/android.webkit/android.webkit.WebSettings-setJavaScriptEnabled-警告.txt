@@ -1,0 +1,20 @@
+代码：
+settings.setJavaScriptEnabled(true);//设置是否支持javascript
+
+警告：
+Using `setJavaScriptEnabled` can introduce XSS vulnerabilities into you application, review carefully.
+
+http://blog.csdn.net/huanongjingchao/article/details/18261611
+
+如果访问的页面中有Javascript，或者需要通过js和页面交互，
+则webview必须设置支持Javascript，方法如下：
+
+webview.getSettings().setJavaScriptEnabled(true);  
+
+Using setJavaScriptEnabled can introduce XSS vulnerabilities into you application, review carefully.
+可以添加@SuppressLint("SetJavaScriptEnabled")
+
+错误的写法：
+        @SuppressLint("SetJavaScriptEnabled")     错误信息：Annotations are not allowed here
+        settings.setJavaScriptEnabled(true);//设置是否支持javascript
+正确的写法是，把注解写到成员方法上。

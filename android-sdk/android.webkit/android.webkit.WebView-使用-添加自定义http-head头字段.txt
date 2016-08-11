@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/7610790/add-custom-headers-to-webview-resource-requests-android
+
+Try
+
+loadUrl(String url, Map<String, String> extraHeaders)
+
+Unfortunately this only works on API8+.

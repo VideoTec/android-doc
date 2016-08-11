@@ -1,0 +1,19 @@
+https://wiki.whatwg.org/wiki/URL_schemes#javascript:_URLs
+
+https://tools.ietf.org/html/draft-hoehrmann-javascript-scheme-03
+
+javascript: URLs
+javascript: URLs represent a JavaScript script.
+
+To obtain a script from a javascript: URL, run these steps:
+
+Let input be the concatenation of URL's scheme data, 
+followed by "?" and URL's query if URL's query is non-null, 
+followed by "#" and URL's fragment if URL's fragment is non-null.
+
+Set input to the result of percent decoding input.
+If input starts with a U+FEFF, remove a single occurrence from the start of input.
+
+Return input.
+
+See also The 'javascript' resource identifier scheme which this wiki page obsoletes.

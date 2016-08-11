@@ -1,0 +1,32 @@
+Using JavaScript in WebView
+
+If the web page you plan to load in your WebView use JavaScript, 
+you must enable JavaScript for your WebView. 
+
+Once JavaScript is enabled, 
+you can also create interfaces between your application code and your JavaScript code.
+
+------------------------------------------------
+Enabling JavaScript
+------------------------------------------------
+
+JavaScript is disabled in a WebView by default. 
+You can enable it through the WebSettings attached to your WebView. 
+You can retrieve WebSettings with getSettings(), 
+then enable JavaScript with setJavaScriptEnabled().
+
+For example:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+WebSettings webSettings = myWebView.getSettings();
+webSettings.setJavaScriptEnabled(true);
+
+WebSettings provides access to a variety of other settings 
+that you might find useful. 
+
+For example, 
+if you're developing a web application 
+that's designed specifically for the WebView in your Android application, 
+then you can define a custom user agent string with setUserAgentString(), 
+then query the custom user agent in your web page 
+to verify that the client requesting your web page is actually your Android application

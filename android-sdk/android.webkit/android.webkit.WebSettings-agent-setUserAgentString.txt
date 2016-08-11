@@ -1,0 +1,15 @@
+https://developer.android.com/reference/android/webkit/WebSettings.html#setUserAgentString(java.lang.String)
+
+setUserAgentString
+
+Added in API level 3
+
+void setUserAgentString (String ua)
+
+Sets the WebView's user-agent string. 
+If the string is null or empty, the system default value will be used. 
+Note that starting from KITKAT Android version, 
+changing the user-agent while loading a web page causes WebView to initiate loading once again.
+
+Parameters
+ua	String: new user-agent string

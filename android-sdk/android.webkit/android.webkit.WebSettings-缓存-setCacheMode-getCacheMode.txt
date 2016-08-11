@@ -1,0 +1,62 @@
+https://developer.android.com/reference/android/webkit/WebSettings.html
+
+setCacheMode
+
+Added in API level 1
+
+void setCacheMode (int mode)
+Overrides the way the cache is used. 
+The way the cache is used is based on the navigation type. 
+For a normal page load, the cache is checked and content is re-validated as needed. 
+When navigating back, content is not revalidated, 
+instead the content is just retrieved from the cache. 
+This method allows the client to override this behavior by specifying one of 
+
+LOAD_DEFAULT, 
+LOAD_CACHE_ELSE_NETWORK, 
+LOAD_NO_CACHE or 
+LOAD_CACHE_ONLY. 
+
+The default value is LOAD_DEFAULT.
+
+https://whitelaning.github.io/2015/05/07/Clear_the_WebView_Cache.html
+
+其实如果你只是想要每次用webView.loadUrl(url)加载新的页面显示，
+那么调用
+webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE)就可以实现了，
+并不需要去删除缓存文件什么的
+
+http://blog.csdn.net/t12x3456/article/details/13745553
+
+缓存模式(5种)
+LOAD_CACHE_ONLY:  
+不使用网络，只读取本地缓存数据
+
+LOAD_DEFAULT:  
+根据cache-control决定是否从网络上取数据。
+
+LOAD_CACHE_NORMAL: 
+API level 17中已经废弃, 
+从API level 11开始作用同LOAD_DEFAULT模式
+
+LOAD_NO_CACHE: 
+不使用缓存，只从网络获取数据.
+
+LOAD_CACHE_ELSE_NETWORK，
+只要本地有，无论是否过期，
+或者no-cache，都使用缓存中的数据。
+
+如：
+www.taobao.com的cache-control为no-cache，
+在模式LOAD_DEFAULT下，
+无论如何都会从网络上取数据，如果没有网络，
+就会出现错误页面；在LOAD_CACHE_ELSE_NETWORK模式下，
+无论是否有网络，只要本地有缓存，都使用缓存。
+本地没有缓存时才从网络上获取。
+www.360.com.cn的cache-control为max-age=60，
+在两种模式下都使用本地缓存数据。
+
+总结：
+根据以上两种模式，建议缓存策略为，判断是否有网络，
+有的话，使用LOAD_DEFAULT，
+无网络时，使用LOAD_CACHE_ELSE_NETWORK。

@@ -1,0 +1,10 @@
+HTML5 Geolocation API support
+
+For applications targeting Android N and later releases (API level > M) 
+the geolocation api is only supported on secure origins such as https. 
+
+For such applications requests to geolocation api on non-secure origins 
+are automatically denied without 
+invoking the corresponding 
+onGeolocationPermissionsShowPrompt(String, GeolocationPermissions.Callback) 
+method.

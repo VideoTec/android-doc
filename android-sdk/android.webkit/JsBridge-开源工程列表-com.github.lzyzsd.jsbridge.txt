@@ -1,0 +1,35 @@
+
+这个是现在工程里使用的开源工程
+https://github.com/lzyzsd/JsBridge
+android java and javascript bridge, inspired by wechat webview jsbridge
+inspire[英][ɪnˈspaɪə(r)] [美][ɪnˈspaɪr]
+vt.鼓舞；激励；赋予灵感；启迪
+E:\doc\android\android-3rdParty\com.github.lzyzsd.jsbridge\com.github.lzyzsd.jsbridge.txt
+http://www.jianshu.com/p/52071a3d07b4
+Android JsBridge实战 打造专属你的Hybrid APP
+
+--------------------------------------------------------------------
+会向 js 中注入一个对象： WebViewJavascriptBridge
+--------------------------------------------------------------------
+This lib will inject a WebViewJavascriptBridge Object to window object. 
+So in your js, before use WebViewJavascriptBridge, 
+you must detect if WebViewJavascriptBridge exist. 
+If WebViewJavascriptBridge does not exit, 
+you can listen to WebViewJavascriptBridgeReady event, 
+as the blow code shows:
+
+    if (window.WebViewJavascriptBridge) {
+        //do your work here
+    } else {
+        document.addEventListener(
+            'WebViewJavascriptBridgeReady'
+            , function() {
+                //do your work here
+            },
+            false
+        );
+    }
+    
+怎么注入的： onPageFinished 时加载 WebViewJavascriptBridge.js 
+       String jsContent = assetFile2Str(view.getContext(), path);
+       view.loadUrl("javascript:" + jsContent);

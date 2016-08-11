@@ -1,0 +1,87 @@
+When the user clicks a link from a web page in your WebView, 
+the default behavior is for Android to launch an application that handles URLs. 
+Usually, the default web browser opens and loads the destination URL. 
+However, you can override this behavior for your WebView, 
+so links open within your WebView. 
+
+You can then allow the user 
+to navigate backward and forward through their web page history 
+that's maintained by your WebView.
+
+To open links clicked by the user, 
+simply provide a WebViewClient for your WebView, 
+using setWebViewClient(). 
+
+For example:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+myWebView.setWebViewClient(new WebViewClient());
+
+That's it. 
+Now all links the user clicks load in your WebView.
+
+If you want more control over where a clicked link load, 
+create your own WebViewClient 
+that overrides the shouldOverrideUrlLoading() method. 
+
+For example:
+
+private class MyWebViewClient extends WebViewClient {
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (Uri.parse(url).getHost().equals("www.example.com")) {
+            // This is my web site, so do not override; let my WebView load the page
+            return false;
+        }
+        // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+        return true;
+    }
+}
+
+Then create an instance of this new WebViewClient for the WebView:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+myWebView.setWebViewClient(new MyWebViewClient());
+
+Now when the user clicks a link, 
+the system calls shouldOverrideUrlLoading(), 
+which checks whether the URL host matches a specific domain (as defined above). 
+
+If it does match, 
+then the method returns false in order to not override the URL loading 
+(it allows the WebView to load the URL as usual). 
+
+If the URL host does not match, 
+then an Intent is created to launch the default Activity for handling URLs 
+(which resolves to the user's default web browser)
+
+后退按钮的处理
+Navigating web page history
+
+When your WebView overrides URL loading, 
+it automatically accumulates a history of visited web pages. 
+You can navigate backward and forward through the history with goBack() and goForward().
+
+For example, 
+here's how your Activity can use the device Back button to navigate backward:
+
+@Override
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+    // Check if the key event was the Back button and if there's history
+    if ((keyCode == KeyEvent.KEYCODE_BACK) && myWebView.canGoBack()) {
+        myWebView.goBack();
+        return true;
+    }
+    // If it wasn't the Back key or there's no web page history, bubble up to the default
+    // system behavior (probably exit the activity)
+    return super.onKeyDown(keyCode, event);
+}
+
+The canGoBack() method returns true if there is actually web page history for the user to visit. 
+Likewise, 
+you can use canGoForward() to check whether there is a forward history. 
+If you don't perform this check, 
+then once the user reaches the end of the history, 
+goBack() or goForward() does nothing.
