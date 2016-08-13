@@ -1,0 +1,19 @@
+例子：
+http://gz.feixin.10086.cn/go2/pFNPl
+
+网页加载失败 网址： 
+http://221.176.28.125/HttpInterface/SMsg/show/sdx/MTIwNTYwODM3OQ%3D%3D/idx/MjM5ODUw/tk/7dddfd337d66c4560997b3e2bc95535a/inx/0/fclient/pc?mobile=tel:+15801633188; 
+错误信息：页面包含的服务器重定向太多; 错误代码: -9
+
+http://stackoverflow.com/questions/4066438/android-webview-how-to-handle-redirects-in-app-instead-of-opening-a-browser
+
+Create a WebViewClient, and override the shouldOverrideUrlLoading method.
+
+webview.setWebViewClient(new WebViewClient() {
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        // do your handling codes here, which url is the requested url
+        // probably you need to open that url rather than redirect:
+        view.loadUrl(url);
+        return false; // then it is not handled by default action
+   }
+});

@@ -1,0 +1,46 @@
+https://developer.android.com/reference/android/webkit/WebView.html
+
+This method can be used to allow JavaScript to control the host application. 
+This is a powerful feature, 
+but also presents a security risk for apps targeting JELLY_BEAN or earlier. 
+Apps that target a version later than JELLY_BEAN 
+are still vulnerable if the app runs on a device running Android earlier than 4.2. 
+
+The most secure way to use this method is to target JELLY_BEAN_MR1 and 
+to ensure the method is called only when running on Android 4.2 or later. 
+With these older versions, 
+JavaScript could use reflection to access an injected object's public fields. 
+Use of this method in a WebView containing untrusted content 
+could allow an attacker to manipulate the host application in unintended ways, 
+executing Java code with the permissions of the host application. 
+Use extreme care when using this method in a WebView which could contain untrusted content.
+ 
+http://blog.csdn.net/leehong2005/article/details/11808557
+
+简单说明一下
+
+1，请看execute()这个方法，它遍历所有window的对象，
+然后找到包含getClass方法的对象，利用这个对象的类，找到java.lang.Runtime对象，
+然后调用“getRuntime”静态方法方法得到Runtime的实例，再调用exec()方法来执行某段命令。
+
+2，getContents()方法，从流中读取内容，显示在界面上。
+3，关键的代码就是以下两句
+
+return window[obj].getClass().forName("java.lang.Runtime")
+    .getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);  
+    
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1106/1920.html
+
+使用addJavascriptInterface()的注意事项
+从Android4.2开始。
+只有添加  @JavascriptInterface 声明的Java方法才可以被JavaScript调用，
+
+例如：
+
+ class JsObject {
+    @JavascriptInterface
+    public String toString() { return "injectedObject"; }
+ }
+ webView.addJavascriptInterface(new JsObject(), "injectedObject");
+ webView.loadData("", "text/html", null);
+ webView.loadUrl("javascript:alert(injectedObject.toString())");

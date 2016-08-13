@@ -1,0 +1,47 @@
+
+例子：HM2A
+08-12 11:06:52.103 网页加载完成: http://sina.com/
+08-12 11:06:52.203 网页开始加载: http://sina.com/
+08-12 11:06:52.203 网页开始加载: http://sina.com/
+08-12 11:06:54.163 网页开始加载: http://www.sina.com/
+08-12 11:06:54.173 OverrideUrlLoading: http://www.sina.com/
+08-12 11:06:54.393 网页开始加载: http://www.sina.com.cn/
+08-12 11:06:54.403 OverrideUrlLoading: http://www.sina.com.cn/
+08-12 11:06:54.553 网页开始加载: http://data.api.sina.cn/api/redirect/pc_to_wap.php?ref=http%3A%2F%2Fwww.sina.com.cn%2F
+08-12 11:06:54.563 OverrideUrlLoading: http://data.api.sina.cn/api/redirect/pc_to_wap.php?ref=http://www.sina.com.cn/
+08-12 11:06:55.023 网页开始加载: http://interface.sina.cn/pc_to_wap.d.html?ref=http://www.sina.com.cn/
+08-12 11:06:55.033 OverrideUrlLoading: http://interface.sina.cn/pc_to_wap.d.html?ref=http://www.sina.com.cn/
+08-12 11:06:55.233 网页开始加载: http://sina.cn/?from=wap
+08-12 11:06:55.243 OverrideUrlLoading: http://sina.cn/?from=wap
+08-12 11:06:57.553 [object Object] -- From line 4 of http://mjs.sinaimg.cn//wap/online/home/v7/dest/js/home-77ce2b0855.min.js
+08-12 11:06:57.593 willful but rich 1 -- From line 4 of http://mjs.sinaimg.cn//wap/online/home/v7/dest/js/home-77ce2b0855.min.js
+08-12 11:07:04.923 loadThing Called 1 -- From line 4 of http://mjs.sinaimg.cn//wap/online/home/v7/dest/js/home-77ce2b0855.min.js
+08-12 11:07:05.333 网页加载完成: http://sina.cn/?from=wap
+
+例子：HM2A
+08-12 11:04:37.543 网页加载完成: http://dict.baidu.com/
+08-12 11:04:37.593 网页开始加载: http://dict.baidu.com/
+08-12 11:04:37.613 网页开始加载: http://dict.baidu.com/
+08-12 11:04:39.203 网页加载完成: http://dict.baidu.com/
+
+例子： che2-TL00
+荣耀畅玩4X Che2-TL00(2G RAM)
+android 4.4.2
+emui 3.0
+
+08-12 11:36:17.520 网页开始加载: http://baidu.com/
+08-12 11:36:17.520 网页加载完成: http://baidu.com/
+08-12 11:36:17.540 网页开始加载: http://baidu.com/
+08-12 11:36:17.540 网页开始加载: https://www.baidu.com/
+08-12 11:36:17.600 OverrideUrlLoading: https://www.baidu.com/
+08-12 11:36:18.330 网页加载完成: https://www.baidu.com/
+08-12 11:36:19.130 The page at https://www.baidu.com/ ran insecure content from http://127.0.0.1:7777/geolocation?timeout=10000&callback=jsonp2&gps=1&t=0.18428784422576427&_=1470972979133.
+                    -- From line 0 of https://www.baidu.com/
+08-12 11:36:19.250 网页加载完成: https://www.baidu.com/
+08-12 11:36:19.330 网页加载完成: https://www.baidu.com/
+08-12 11:36:19.390 网页加载完成: https://www.baidu.com/
+08-12 11:36:19.470 网页加载完成: https://www.baidu.com/
+
+http://www.chrisdanielson.com/2010/05/04/android-webview-and-the-indeterminant-progress-solution/
+https://code.google.com/p/android/issues/detail?id=62100
+http://prog3.com/sbdm/blog/cljfqyd/article/details/36440739

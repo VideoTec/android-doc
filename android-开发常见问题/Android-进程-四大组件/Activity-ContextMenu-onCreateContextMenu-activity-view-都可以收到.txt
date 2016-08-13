@@ -1,0 +1,32 @@
+https://developer.android.com/reference/android/app/Activity.html#onCreateContextMenu(android.view.ContextMenu, android.view.View, android.view.ContextMenu.ContextMenuInfo)
+
+onCreateContextMenu
+
+Added in API level 1
+void onCreateContextMenu (ContextMenu menu, 
+                View v, 
+                ContextMenu.ContextMenuInfo menuInfo)
+                
+Called when a context menu for the view is about to be shown. 
+Unlike onCreateOptionsMenu(Menu), 
+this will be called every time the context menu 
+is about to be shown and should be populated for the view 
+(or item inside the view for AdapterView subclasses, this can be found in the menuInfo)).
+
+Use onContextItemSelected(android.view.MenuItem) 
+to know when an item has been selected.
+
+It is not safe to hold onto the context menu after this method returns.
+
+Parameters
+
+menu
+ContextMenu: The context menu that is being built
+
+v
+View: The view for which the context menu is being built
+
+menuInfo
+ContextMenu.ContextMenuInfo: 
+Extra information about the item for which the context menu should be shown. 
+This information will vary depending on the class of v.

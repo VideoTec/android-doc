@@ -1,0 +1,51 @@
+https://developer.android.com/reference/android/view/MenuItem.html#setOnMenuItemClickListener(android.view.MenuItem.OnMenuItemClickListener)
+
+setOnMenuItemClickListener
+
+Added in API level 1
+
+MenuItem setOnMenuItemClickListener (MenuItem.OnMenuItemClickListener menuItemClickListener)
+
+Set a custom listener for invocation of this menu item. 
+In most situations, 
+it is more efficient and easier to use 
+onOptionsItemSelected(MenuItem) or 
+onContextItemSelected(MenuItem).
+
+Parameters
+menuItemClickListener	
+MenuItem.OnMenuItemClickListener: The object to receive invokations.
+
+Returns
+MenuItem	
+This Item so additional setters can be called.
+
+https://developer.android.com/reference/android/view/MenuItem.OnMenuItemClickListener.html
+
+public static interface MenuItem.OnMenuItemClickListene
+
+onMenuItemClick
+
+Added in API level 1
+
+boolean onMenuItemClick (MenuItem item)
+
+Called when a menu item has been invoked. 
+This is the first code that is executed; 
+if it returns true, no other callbacks will be executed.
+
+Parameters
+item	MenuItem: The menu item that was invoked.
+
+Returns
+boolean	Return true to consume this click and prevent others from executing.
+
+Р§згЃК
+http://stackoverflow.com/questions/3449098/enable-longclick-in-webview
+
+    MenuItem.OnMenuItemClickListener handler = new MenuItem.OnMenuItemClickListener() {
+        public boolean onMenuItemClick(MenuItem item) {
+                // do the menu action
+                return true;
+        }
+    };

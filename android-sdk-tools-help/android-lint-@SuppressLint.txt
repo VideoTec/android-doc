@@ -1,0 +1,18 @@
+@SuppressLint("SetJavaScriptEnabled") class method
+@SuppressWarnings("unused") class method field
+
+--------------------------
+例子： @SuppressWarnings("unused")
+--------------------------
+@SuppressWarnings("unused")
+private String unusedString;
+
+@SuppressWarnings("unused")
+private void unusedMethod() {
+
+}
+
+@SuppressWarnings("unused")
+private class UnUsedClass {
+
+}

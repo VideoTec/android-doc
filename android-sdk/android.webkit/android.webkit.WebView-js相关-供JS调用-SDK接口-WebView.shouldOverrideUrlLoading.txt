@@ -1,0 +1,7 @@
+http://gold.xitu.io/entry/573534f82e958a0069b27646
+
+在Android开发中，能实现Js调用Java，有4种方法：
+1.JavascriptInterface
+2.WebViewClient.shouldOverrideUrlLoading()
+3.WebChromeClient.onConsoleMessage()
+4.WebChromeClient.onJsPrompt()

@@ -1,0 +1,21 @@
+
+activity 的 onTouchEvent 不触发的原因是：
+被子窗口拦载了 - 子窗口是个 webview
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
+    }
+    
+解决方法：
+        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            public void onLongPress(MotionEvent e) {
+                Log.e("", "Longpress detected");
+            }
+        });
+        webView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return gestureDetector.onTouchEvent(event);
+            }
+        });

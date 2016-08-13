@@ -1,0 +1,4 @@
+https://groups.google.com/forum/#!topic/android-developers/GY9DFX2H-Bc
+
+You can't customize the context menu, AFAIK.
+You can roll your own using an AlertDialog with a listview as gaurav implied above.

@@ -1,0 +1,44 @@
+https://developer.android.com/guide/topics/ui/menus.html#xml
+
+要定义菜单，请在项目 res/menu/ 目录内创建一个 XML 文件
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/file"
+          android:title="@string/file" >
+        <!-- "file" submenu -->
+        <menu>
+            <item android:id="@+id/create_new"
+                  android:title="@string/create_new" />
+            <item android:id="@+id/open"
+                  android:title="@string/open" />
+        </menu>
+    </item>
+</menu>
+
+要在 Activity 中使用菜单，
+您需要使用 MenuInflater.inflate() 扩充菜单资源（将 XML 资源转换为可编程对象）。
+在下文中，您将了解如何扩充每种类型的菜单
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.game_menu, menu);
+    return true;
+}
+
+以下是名为 game_menu.xml 的菜单示例：
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/new_game"
+          android:icon="@drawable/ic_new_game"
+          android:title="@string/new_game"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/help"
+          android:icon="@drawable/ic_help"
+          android:title="@string/help" />
+</menu>
+
+<item> 元素支持多个属性，
+您可使用这些属性定义项目的外观和行为。

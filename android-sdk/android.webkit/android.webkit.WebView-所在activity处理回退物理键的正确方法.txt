@@ -1,0 +1,9 @@
+http://www.cnblogs.com/lianghui66/archive/2013/03/28/2987176.html
+
+public boolean onKeyDown(int keyCode, KeyEvent event) {       
+    if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {       
+        mWebView.goBack();       
+        return true;       
+    }       
+    return super.onKeyDown(keyCode, event);       
+}  

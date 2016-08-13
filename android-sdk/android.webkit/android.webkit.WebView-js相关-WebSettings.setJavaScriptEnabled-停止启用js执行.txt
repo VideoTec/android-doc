@@ -1,0 +1,25 @@
+1。需要在 ACT 暂停的时候停止js执行吗？
+2. web.getSettings().setJavaScriptEnabled(false) 能够停止js执行吗？
+
+http://www.lifemichael.com/en/2012/07/pausing-resuming-java-script-execution-in-web-view-pro/
+
+ As you can see, the activity includes code for 
+ pausing and resuming the java script execution in according with its life cycle.
+ 
+ public class HybridActivity extends Activity
+{
+    private WebView web;
+ 
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        web.getSettings().setJavaScriptEnabled(false);
+    }   
+ 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        web.getSettings().setJavaScriptEnabled(true);
+    }

@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/29888395/images-not-loading-in-android-webview
+web.getSettings().setDomStorageEnabled(true);
+
+开启后，还是不行。
+
+最后查到原因是：
+在一个 4.2 手机测试的，下面的代码造成不能打开图片
+/*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+            mWebView.getSettings().setLoadsImagesAutomatically(true);
+        } else {
+            mWebView.getSettings().setLoadsImagesAutomatically(false);
+        }
+*/

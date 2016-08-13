@@ -1,0 +1,6 @@
+http://blog.csdn.net/leehong2005/article/details/11808557
+
+mWebView = (WebView) findViewById(R.id.webview);  
+mWebView.getSettings().setJavaScriptEnabled(true);  
+mWebView.addJavascriptInterface(new JSInterface(), "jsInterface");  
+mWebView.loadUrl("file:///android_asset/html/test.html"); 

@@ -1,0 +1,13 @@
+http://blog.csdn.net/leehong2005/article/details/11808557
+
+JS与Java进行交互我们知道，有以下几种，比prompt, alert
+WebChromeClient类中相应的方法，
+对于prompt，它对应的方法是 onJsPrompt 方法
+
+让JS调用一个Javascript方法，这个方法中是调用 prompt 方法，
+通过prompt把JS中的信息传递过来，
+这些信息应该是我们组合成的一段有意义的文本，
+可能包含：特定标识，方法名称，参数等。
+在onJsPrompt方法中，我们去解析传递过来的文本，得到方法名，参数等，
+再通过反射机制，调用指定的方法，
+从而调用到Java对象的方法。

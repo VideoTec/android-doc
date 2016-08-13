@@ -1,0 +1,74 @@
+https://developer.android.com/reference/android/webkit/WebChromeClient.html#onJsPrompt(android.webkit.WebView, java.lang.String, java.lang.String, java.lang.String, android.webkit.JsPromptResult)
+
+appropriate[英][??pr??pri?t] [美][??pro?pri?t]
+adj.适当的；恰当的；合适的
+v.盗用；侵吞；拨（专款等）
+
+onJsPrompt
+
+prompt[英][pr?mpt] [美][prɑmpt]
+n.激励；提示符；提词；提示
+
+Added in API level 1
+boolean onJsPrompt (WebView view, 
+                String url, 
+                String message, 
+                String defaultValue, 
+                JsPromptResult result)
+
+Tell the client to display a prompt dialog to the user. 
+If the client returns true, 
+WebView will assume that the client will handle the prompt dialog 
+and call the appropriate JsPromptResult method. 
+
+If the client returns false, 
+a default value of false will be returned to to javascript. 
+The default behavior is to return false.
+
+http://blog.csdn.net/leehong2005/article/details/11808557
+
+Android 4.2以下的系统
+这个问题比较难解决，但也不是不能解决。
+首先，我们肯定不能再调用addJavascriptInterface方法了。
+
+关于这个问题，最核心的就是要知道JS事件这一个动作，
+JS与Java进行交互我们知道，有以下几种，比prompt, alert等，
+这样的动作都会对应到WebChromeClient类中相应的方法，对于prompt，
+它对应的方法是onJsPrompt方法，这个方法的声明如下：
+
+public boolean onJsPrompt(WebView view, String url, String message,   
+    String defaultValue, JsPromptResult result) 
+    
+通过这个方法，JS能把信息（文本）传递到Java，
+而Java也能把信息（文本）传递到JS中，
+通知这个思路我们能不能找到解决方案呢？
+
+经过一番尝试与分析，找到一种比较可行的方案，请看下面几个小点：
+
+【1】让JS调用一个Javascript方法，这个方法中是调用prompt方法，
+通过prompt把JS中的信息传递过来，
+这些信息应该是我们组合成的一段有意义的文本，
+可能包含：特定标识，方法名称，参数等。
+在onJsPrompt方法中，我们去解析传递过来的文本，得到方法名，参数等，
+再通过反射机制，调用指定的方法，从而调用到Java对象的方法。
+
+http://www.cnblogs.com/lianghui66/archive/2013/03/28/2987176.html
+
+在WebChromeClient类里可以重写这三个方法，
+此时WebView中加载的html中如果执行
+
+alert("alert....");    
+confirm("confirm...");  
+prompt("prompt...", "defaultValue");
+
+这三个方法，
+该类就会监听到执行对应的三个方法。
+我们可以让这三个方法的返回值为true ，即自定义此方法。
+在里面写入自己定义的Dialog，便可实现html与Activity交互。
+
+注意 JsResult 此类需要在操作时，如果
+操作则 result.cofirm(). 
+取消则 result.cancel();    
+还必须这每一个方法中写入 dialog.setOnkeyListener(); 方法来监听Back键，
+listener中 要写 result.cancel();   
+否则系统没有消费这个事件，会出错。

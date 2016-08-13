@@ -1,0 +1,25 @@
+http://stackoverflow.com/questions/24608655/onpagefinished-is-firing-before-page-is-loaded
+
+onPageFinished is firing before page is loaded
+
+http://stackoverflow.com/questions/20001035/android-webview-window-onload-event-issue
+
+The challenge I am facing is 
+I want to get notified when webview finish rendering entire html page.
+I want to get notified when webpage is 100% loaded.
+
+I reffered various forums and also tried using
+
+window.onload function
+
+as well as
+
+public void onPageFinished(WebView view, String url)
+
+But I did not get desire output,
+I get callback before html page is completely loaded.
+I am looking for way so that I will get notified only 
+when webpage has finished rendering all the images present in web page.
+( i.e Webpage is 100% loaded.)
+
+I am not looking for complete answer even hints will be appreciated.

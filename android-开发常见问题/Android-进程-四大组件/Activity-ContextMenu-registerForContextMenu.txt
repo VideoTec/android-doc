@@ -1,0 +1,27 @@
+https://developer.android.com/reference/android/app/Activity.html
+
+registerForContextMenu
+
+Added in API level 1
+void registerForContextMenu (View view)
+Registers a context menu to be shown for the given view 
+(multiple views can show the context menu). 
+
+This method will set the View.OnCreateContextMenuListener on the view to this activity, 
+so onCreateContextMenu(ContextMenu, View, ContextMenuInfo) 
+will be called when it is time to show the context menu.
+
+Parameters
+view	View: The view that should show a context menu.
+
+unregisterForContextMenu
+
+Added in API level 1
+void unregisterForContextMenu (View view)
+
+Prevents a context menu to be shown for the given view. 
+This method will remove the View.OnCreateContextMenuListener on the view.
+
+Parameters
+view
+View: The view that should stop showing a context menu.

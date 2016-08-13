@@ -1,0 +1,32 @@
+http://blog.isming.me/2015/10/18/webview-use/
+
+private void evaluateJavascript(String js) {  
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        mWebview.evaluateJavascript(js, null);
+    } else {
+        mWebview.loadUrl(js);
+    }
+}
+
+fx代码示例：
+	@TargetApi(Build.VERSION_CODES.KITKAT)
+	private void loadShareJsHigh() {
+		mWebView.evaluateJavascript("javascript:customShare()", new ValueCallback<String>() {
+			@Override
+			public void onReceiveValue(String s) {
+				LogF.d("testAms", "test s=" + s);
+				if (s.equals("null")) {
+					shareUrl = null;
+					shareContent = null;
+					shareTitle = null;
+					shareThumbUrl = null;
+					shareFrom = null;
+					hasShareJs = false;
+					if (shareObject.getOnClickResource() == POP_SHARE_TO_BESIDE) {
+						shareToBesideFriendsGroup();
+					} else if (shareObject.getOnClickResource() == POP_SHARE_TO_FRIEND) {
+						forwardToConversation();
+					}
+				}
+			}
+		

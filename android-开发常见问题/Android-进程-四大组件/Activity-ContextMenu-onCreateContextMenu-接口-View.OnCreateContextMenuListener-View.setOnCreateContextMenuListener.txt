@@ -1,0 +1,14 @@
+https://developer.android.com/reference/android/view/View.html#setOnCreateContextMenuListener(android.view.View.OnCreateContextMenuListener)
+
+setOnCreateContextMenuListener
+
+Added in API level 1
+
+void setOnCreateContextMenuListener (View.OnCreateContextMenuListener l)
+
+Register a callback to be invoked 
+when the context menu for this view is being built. 
+If this view is not long clickable, it becomes long clickable.
+
+Parameters
+View.OnCreateContextMenuListener: The callback that will run

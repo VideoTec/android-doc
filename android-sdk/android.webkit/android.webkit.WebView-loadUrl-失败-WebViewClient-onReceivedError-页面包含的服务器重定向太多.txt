@@ -9,3 +9,19 @@ description 页面包含的服务器重定向太多
 
 参考：
 E:\doc\android\android-sdk\android.webkit\android.webkit.WebViewClient\android.webkit.WebViewClient-错误代码.txt
+
+https://developer.android.com/reference/android/webkit/WebViewClient.html
+
+onTooManyRedirects
+
+Added in API level 1
+void onTooManyRedirects (WebView view, 
+                Message cancelMsg, 
+                Message continueMsg)
+This method was deprecated in API level 8.
+
+Notify the host application that there have been an excessive number of HTTP redirects.
+
+这个错误和系统相关？
+GT-I9308    有问题
+HM2A        没有问题

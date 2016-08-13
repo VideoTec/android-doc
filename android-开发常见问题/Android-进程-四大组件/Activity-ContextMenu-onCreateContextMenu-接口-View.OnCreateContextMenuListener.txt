@@ -1,0 +1,21 @@
+
+---------------------------------------------------
+onCreateContextMenuListener 的接口
+---------------------------------------------------
+
+onCreateContextMenu
+
+Added in API level 1
+void onCreateContextMenu (ContextMenu menu, 
+                View v, 
+                ContextMenu.ContextMenuInfo menuInfo)
+                
+Called when the context menu for this view is being built. 
+It is not safe to hold onto the menu after this method returns.
+
+Parameters
+menu	ContextMenu: The context menu that is being built
+v	View: The view for which the context menu is being built
+menuInfo	ContextMenu.ContextMenuInfo: 
+Extra information about the item for which the context menu should be shown. 
+This information will vary depending on the class of v.

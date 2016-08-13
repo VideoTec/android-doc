@@ -8,9 +8,69 @@ E:\doc\android\android-3rdParty\com.github.lzyzsd.jsbridge\com.github.lzyzsd.jsb
 http://www.jianshu.com/p/52071a3d07b4
 Android JsBridge实战 打造专属你的Hybrid APP
 
+原理：
+java 调用 js javascript:codexxxx
+js 调用 java iframe.src='' 触发一个http请求， shouldOverrideUrlLoading
+
+第一次使用时的错误
+1. js调用java callHandler 错误的使用了 send
+2. java 调用 js 必须先调用下 WebViewJavascriptBridge.init
+3. 
+   if (window.WebViewJavascriptBridge) {
+        console.log('WebViewJavascriptBridge 对象已经存在');
+        return;
+    }
+    关闭程序后，再次打开 webview 时，这个对象已经在 js 运行空间里了。
+    存在那？怎么再关闭后清空呢？
+    先把这个注释了吧，不知道会产生什么后果
+
 --------------------------------------------------------------------
 会向 js 中注入一个对象： WebViewJavascriptBridge
 --------------------------------------------------------------------
+js 中的调用
+
+    window.WebViewJavascriptBridge.send(  //这个传到 webView.setDefaultHandler
+        data
+        , function(responseData) { -- 从java返回数据给javascript
+            document.getElementById("show").innerHTML = "repsonseData from java, data = " + responseData
+        }
+    );
+    或者 --- 注意是 callHandler 不是 send
+    WebViewJavascriptBridge.callHandler( //webView.registerHandler("submitFromWeb", new BridgeHandler() {
+        'submitFromWeb'        这个是 java 中注册
+        , {'param': str1}
+        , function(responseData) {
+            document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+        }
+    );
+    
+--------------------------------------------------------------------
+java 调用 js 方法
+--------------------------------------------------------------------
+
+Register a JavaScript handler function so that Java can call
+
+    WebViewJavascriptBridge.registerHandler("functionInJs", function(data, responseCallback) {
+        document.getElementById("show").innerHTML = ("data from Java: = " + data);
+        var responseData = "Javascript Says Right back aka!";
+        responseCallback(responseData);
+    });
+    
+Java can call this js handler function "functionInJs" through:
+
+    webView.callHandler("functionInJs", new Gson().toJson(user), new CallBackFunction() {
+        @Override
+        public void onCallBack(String data) {
+
+        }
+    });
+    
+javascript:WebViewJavascriptBridge._handleMessageFromNative('{\"handlerName\":\"fetchHtmlContent\",\"callbackId\":\"JAVA_CB_1_1913\"}');
+    
+--------------------------------------------------------------------
+完成注入的事件
+--------------------------------------------------------------------
+
 This lib will inject a WebViewJavascriptBridge Object to window object. 
 So in your js, before use WebViewJavascriptBridge, 
 you must detect if WebViewJavascriptBridge exist. 

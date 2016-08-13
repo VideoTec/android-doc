@@ -1,0 +1,42 @@
+variation[英][ˌveəriˈeɪʃn] [美][ˌveriˈeɪʃn]
+n.变化，变动；变异，演变；变奏曲；变量
+
+https://developer.android.com/reference/android/view/Menu.html
+
+abstract MenuItem	add(int groupId, int itemId, int order, CharSequence title)
+Add a new item to the menu.
+
+abstract MenuItem	add(int titleRes)
+Add a new item to the menu.
+
+abstract MenuItem	add(CharSequence title)
+Add a new item to the menu.
+
+abstract MenuItem	add(int groupId, int itemId, int order, int titleRes)
+Variation on add(int, int, int, CharSequence) 
+that takes a string resource identifier instead of the string itself.
+
+--------------------------------
+参数说明
+--------------------------------
+
+groupId	int: 
+The group identifier that this item should be part of. 
+This can be used to define groups of items for batch state changes. 
+Normally use NONE if an item should not be in a group.
+
+itemId	int: 
+Unique item ID. 
+Use NONE if you do not need a unique ID.
+
+order	int: 
+The order for the item. 
+Use NONE if you do not care about the order. See getOrder().
+
+title	CharSequence: 
+The text to display for the item.
+
+--------------------------------
+返回值
+--------------------------------
+MenuItem	The newly added menu item.

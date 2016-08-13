@@ -18,3 +18,4 @@ Using setJavaScriptEnabled can introduce XSS vulnerabilities into you applicatio
         @SuppressLint("SetJavaScriptEnabled")     错误信息：Annotations are not allowed here
         settings.setJavaScriptEnabled(true);//设置是否支持javascript
 正确的写法是，把注解写到成员方法上。
+也可以设置在类名上

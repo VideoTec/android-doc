@@ -1,0 +1,15 @@
+http://blog.csdn.net/leehong2005/article/details/11808557
+
+生成Js方法后，加载这段Js的时机是什么？
+刚开始时在当WebView正常加载URL后去加载Js，
+但发现会存在问题，如果当WebView跳转到下一个页面时，
+之前加载的Js就可能无效了，所以需要再次加载。
+这个问题经过尝试，需要在以下几个方法中加载Js，
+它们是WebChromeClient和WebViewClient的方法：
+
+onLoadResource
+doUpdateVisitedHistory
+onPageStarted
+onPageFinished
+onReceivedTitle
+onProgressChanged

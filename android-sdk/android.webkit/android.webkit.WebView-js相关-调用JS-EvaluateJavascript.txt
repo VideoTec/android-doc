@@ -1,0 +1,53 @@
+https://developer.android.com/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>)
+
+evaluateJavascript
+
+Added in API level 19
+
+void evaluateJavascript (String script, 
+                ValueCallback<String> resultCallback)
+                
+Asynchronously evaluates JavaScript in the context of the currently displayed page. 
+If non-null, |resultCallback| will be invoked with any result returned from that execution. 
+This method must be called on the UI thread 
+and the callback will be made on the UI thread.
+
+persist[英][pəˈsɪst] [美][pərˈsɪst]
+v.坚持；固执；存留；继续存在
+
+Compatibility note. 
+Applications targeting N or later, 
+JavaScript state from an empty WebView is no longer persisted across navigations like loadUrl(String). 
+
+For example, 
+global variables and functions defined before calling loadUrl(String) will not exist in the loaded page. 
+Applications should use addJavascriptInterface(Object, String) 
+instead to persist JavaScript objects across navigations.
+
+Parameters
+
+script	String: the JavaScript to execute.
+
+resultCallback	ValueCallback: 
+A callback to be invoked when the script execution completes with the result of the execution (if any). 
+May be null if no notificaion of the result is required.
+
+https://developer.android.com/reference/android/webkit/ValueCallback.html
+
+public interface ValueCallback 
+android.webkit.ValueCallback<T>
+
+A callback interface used to provide values asynchronously.
+
+abstract void	onReceiveValue(T value)
+Invoked when the value is available.
+
+onReceiveValue
+
+Added in API level 7
+
+void onReceiveValue (T value)
+Invoked when the value is available.
+
+Parameters
+value	T: The value.

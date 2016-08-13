@@ -1,0 +1,52 @@
+成功
+webView.loadUrl("javascript:alert(injectedObject.toString())");
+mWebView.loadUrl("javascript:console.log('hello world!!!!!!!!!!!');");
+
+失败： 
+fetchWebPageInfo 是在 onPageFinished 时 
+view.loadUrl("javascript:" + jsContent); 加载进入的方法
+mWebView.loadUrl("javascript:fetchWebPageInfo();");
+错误信息：
+08-13 17:34:02.605 Uncaught ReferenceError: fetchWebPageInfo is not defined -- From line 1 of null
+需要定义成变量-对象-window.obj，这样就可以找到了
+    var RFJsObject = window.RFJsObject = {
+        fetchWebPageInfo: fetchWebPageInfo
+    }
+mWebView.loadUrl("javascript:RFJsObject.fetchWebPageInfo();");
+并且需要在注入时检查，对象是否已经存在了。
+    if (window.RFJsObject) {
+        console.log("RFJsObject 已经存在了");
+        return;
+    }
+
+把文本文件转成，loadUrl 能接受的字符串
+    public static String assetFile2Str(Context c, String urlStr){
+        InputStream in = null;
+        try{
+            in = c.getAssets().open(urlStr);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            StringBuilder sb = new StringBuilder();
+            do {
+                line = bufferedReader.readLine();
+                if (line != null && !line.matches("^\\s*\\/\\/.*")) {
+                    sb.append(line);
+                }
+            } while (line != null);
+
+            bufferedReader.close();
+            in.close();
+
+            return sb.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                }
+            }
+        }
+        return null;
+    }

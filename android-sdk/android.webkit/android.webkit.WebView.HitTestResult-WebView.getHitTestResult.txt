@@ -1,0 +1,36 @@
+https://developer.android.com/reference/android/webkit/WebView.html#getHitTestResult()
+
+getHitTestResult
+
+Added in API level 1
+WebView.HitTestResult getHitTestResult ()
+
+Gets a HitTestResult based on the current cursor node. 
+
+If a HTML::a tag is found and the anchor has a non-JavaScript URL, 
+the HitTestResult type is set to SRC_ANCHOR_TYPE and 
+the URL is set in the "extra" field. 
+
+If the anchor does not have a URL or if it is a JavaScript URL, 
+the type will be UNKNOWN_TYPE and 
+the URL has to be retrieved through requestFocusNodeHref(Message) asynchronously. 
+
+If a HTML::img tag is found, 
+the HitTestResult type is set to IMAGE_TYPE and 
+the URL is set in the "extra" field.
+A type of SRC_IMAGE_ANCHOR_TYPE indicates an anchor with a URL 
+that has an image as a child node. 
+
+If a phone number is found, 
+the HitTestResult type is set to PHONE_TYPE and 
+the phone number is set in the "extra" field of HitTestResult. 
+
+If a map address is found, 
+the HitTestResult type is set to GEO_TYPE and 
+the address is set in the "extra" field of HitTestResult. 
+
+If an email address is found, 
+the HitTestResult type is set to EMAIL_TYPE and 
+the email is set in the "extra" field of HitTestResult. 
+
+Otherwise, HitTestResult type is set to UNKNOWN_TYPE.

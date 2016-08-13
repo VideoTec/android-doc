@@ -1,0 +1,44 @@
+http://stackoverflow.com/questions/11373491/android-logcat-is-not-working-for-js-console-log
+
+For just android native & html5 (not phonegap/cordova) 
+this covers how to display console messages in logcat. 
+http://developer.android.com/guide/webapps/debugging.html#WebView
+
+An alternative is to use jsconsole.com. 
+Remote debugging is covered at http://jsconsole.com/remote-debugging.html
+
+https://developer.android.com/guide/webapps/debugging.html#WebView
+
+js
+console.log("Hello World");
+
+All the console APIs shown above are also supported when debugging in WebView. 
+If you're targeting Android 2.1 (API level 7) and higher, 
+you must provide a WebChromeClient that implements the onConsoleMessage() method 
+in order for console messages to appear in logcat. 
+Then, apply the WebChromeClient to your WebView with setWebChromeClient().
+
+For example, to support API level 7, 
+this is how your code for onConsoleMessage(String, int, String) might look:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+myWebView.setWebChromeClient(new WebChromeClient() {
+  public void onConsoleMessage(String message, int lineNumber, String sourceID) {
+    Log.d("MyApplication", message + " -- From line "
+                         + lineNumber + " of "
+                         + sourceID);
+  }
+});
+
+However, if your lowest supported version is API level 8 or higher, 
+you should instead implement onConsoleMessage(ConsoleMessage). For example:
+
+WebView myWebView = (WebView) findViewById(R.id.webview);
+myWebView.setWebChromeClient(new WebChromeClient() {
+  public boolean onConsoleMessage(ConsoleMessage cm) {
+    Log.d("MyApplication", cm.message() + " -- From line "
+                         + cm.lineNumber() + " of "
+                         + cm.sourceId() );
+    return true;
+  }
+});

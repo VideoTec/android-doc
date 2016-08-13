@@ -1,0 +1,9 @@
+http://stackoverflow.com/questions/8193239/how-to-get-loaded-web-page-title-in-android-webview
+
+    WebView mWebView = (WebView) findViewById(R.id.mwebview);
+    mWebView.setWebViewClient(new WebViewClient() {
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            ExperimentingActivity.this.setTitle(view.getTitle());
+        }
+    });

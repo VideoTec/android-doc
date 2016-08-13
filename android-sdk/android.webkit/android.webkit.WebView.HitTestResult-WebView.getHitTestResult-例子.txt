@@ -1,0 +1,36 @@
+http://stackoverflow.com/questions/3449098/enable-longclick-in-webview
+
+You have to implement each one yourself. 
+What I did was to register the WebView for context menus 
+with activity.registerForContextMenu(webView). 
+Then I subclassed the WebView and overrode this method:
+
+@Override
+protected void onCreateContextMenu(ContextMenu menu) {
+    super.onCreateContextMenu(menu);
+
+    HitTestResult result = getHitTestResult();
+
+    MenuItem.OnMenuItemClickListener handler = new MenuItem.OnMenuItemClickListener() {
+        public boolean onMenuItemClick(MenuItem item) {
+                // do the menu action
+                return true;
+        }
+    };
+
+    if (result.getType() == HitTestResult.IMAGE_TYPE ||
+            result.getType() == HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+        // Menu options for an image.
+        //set the header title to the image url
+        menu.setHeaderTitle(result.getExtra());
+        menu.add(0, ID_SAVEIMAGE, 0, "Save Image").setOnMenuItemClickListener(handler);
+        menu.add(0, ID_VIEWIMAGE, 0, "View Image").setOnMenuItemClickListener(handler);
+    } else if (result.getType() == HitTestResult.ANCHOR_TYPE ||
+            result.getType() == HitTestResult.SRC_ANCHOR_TYPE) {
+        // Menu options for a hyperlink.
+        //set the header title to the link url
+        menu.setHeaderTitle(result.getExtra());
+        menu.add(0, ID_SAVELINK, 0, "Save Link").setOnMenuItemClickListener(handler);
+        menu.add(0, ID_SHARELINK, 0, "Share Link").setOnMenuItemClickListener(handler);
+    }
+}

@@ -1,0 +1,42 @@
+https://developer.android.com/reference/android/webkit/WebView.HitTestResult.html
+
+String	getExtra()
+Gets additional type-dependant information about the result.
+
+int	getType()
+Gets the type of the hit test result.
+
+--------------------------------------------------------------
+常量类型
+--------------------------------------------------------------
+
+int	ANCHOR_TYPE
+This constant was deprecated in API level 14. This type is no longer used.
+
+int	EDIT_TEXT_TYPE
+HitTestResult for hitting an edit text area.
+
+int	EMAIL_TYPE
+HitTestResult for hitting an email address.
+
+int	GEO_TYPE
+HitTestResult for hitting a map address.
+
+int	IMAGE_ANCHOR_TYPE
+This constant was deprecated in API level 14. 
+This type is no longer used.
+
+int	IMAGE_TYPE
+HitTestResult for hitting an HTML::img tag.
+
+int	PHONE_TYPE
+HitTestResult for hitting a phone number.
+
+int	SRC_ANCHOR_TYPE
+HitTestResult for hitting a HTML::a tag with src=http.
+
+int	SRC_IMAGE_ANCHOR_TYPE
+HitTestResult for hitting a HTML::a tag with src=http + HTML::img.
+
+int	UNKNOWN_TYPE
+Default HitTestResult, where the target is unknown.

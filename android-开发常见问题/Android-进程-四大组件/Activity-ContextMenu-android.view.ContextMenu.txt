@@ -1,0 +1,29 @@
+https://developer.android.com/reference/android/view/ContextMenu.html
+
+Extension of Menu for context menus 
+providing functionality to modify the header of the context menu.
+
+Context menus do not support item shortcuts and item icons.
+
+To show a context menu on long click, 
+most clients will want to call 
+registerForContextMenu(View) and override 
+onCreateContextMenu(ContextMenu, View, ContextMenu.ContextMenuInfo).
+
+abstract void	clearHeader()
+Clears the header of the context menu.
+
+abstract ContextMenu	setHeaderIcon(int iconRes)
+Sets the context menu header's icon to the icon given in iconRes resource id.
+
+abstract ContextMenu	setHeaderIcon(Drawable icon)
+Sets the context menu header's icon to the icon given in icon Drawable.
+
+abstract ContextMenu	setHeaderTitle(int titleRes)
+Sets the context menu header's title to the title given in titleRes resource identifier.
+
+abstract ContextMenu	setHeaderTitle(CharSequence title)
+Sets the context menu header's title to the title given in title.
+
+abstract ContextMenu	setHeaderView(View view)
+Sets the header of the context menu to the View given in view.

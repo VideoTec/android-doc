@@ -6,11 +6,9 @@ that is calling Android methods through the addJavascriptInterface method:
 myWebview.addJavascriptInterface(new JavascriptBridge(), "Android");
 
 public class JavascriptBridge {
-
     public String getAString() {
         return "my_str";
-    }
-}
+    }}
 
 this works fine.
 

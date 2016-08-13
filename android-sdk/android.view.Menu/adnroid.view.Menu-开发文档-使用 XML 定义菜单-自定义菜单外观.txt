@@ -1,0 +1,27 @@
+https://groups.google.com/forum/#!topic/android-developers/84UCxKZ_lIk
+Don't think so - 
+there's not much you can do with a context menu, style-wise.
+
+http://club.huawei.com/thread-8364653-1-1.html
+
+
+手机： 华为P8 Mate EMUI3.0 EMUI4.0
+问题描述：应用想自定义Context Menu的显示样式，但是修改没有作用
+我采用的是下面的方式
+<style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowSoftInputMode">stateHidden</item>
+    <item name="android:divider">@color/divide_color</item>
+
+    <item name="android:popupMenuStyle">@style/myPopupMenuStyle</item>
+    <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
+    <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
+   
+</style>同样的方式在三星，小米手机上都能起作用，但是在华为p8 mate手机上Context Menu样式没有丝毫变化？
+
+请问大牛，在 EMUI上应该怎么修改呢？
+
+https://groups.google.com/forum/#!topic/android-developers/GY9DFX2H-Bc
+
+You can't customize the context menu, AFAIK.
+You can roll your own using an AlertDialog with a listview as gaurav implied above.

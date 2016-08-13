@@ -1,3 +1,13 @@
+注意一：
+注入的对象绑定到 javascript 中的 window 对象中。
+webView.addJavascriptInterface(new JsObject(), "injectedObject");
+理解 javascript 全局作用域的概念
+http://stackoverflow.com/questions/22822952/javascript-is-the-windows-object-a-default-object
+In Javascript, there is something called the Global scope. 
+On Browsers, the global scope object is window. 
+If you create a variable outside of a function, 
+it goes by default into the global scope, which is window.
+
 http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object, java.lang.String)
 
 public void addJavascriptInterface (Object object, String name)
@@ -24,7 +34,7 @@ For example:
 
  class JsObject {
     @JavascriptInterface
-    public String toString() { return "injectedObject"; }
+    public String toString() { return "injectedObject"; } 问题：必须是 public 吗？
  }
  webView.addJavascriptInterface(new JsObject(), "injectedObject");
  webView.loadData("", "text/html", null);
@@ -69,3 +79,36 @@ the Java object to inject into this WebView's JavaScript context. Null values ar
 
 name
 the name used to expose the object in JavaScript
+
+---------------------------------------
+例子：错误
+---------------------------------------
+
+    class RFJSInterface {
+        @SuppressWarnings("unused")
+        @JavascriptInterface
+        public void onWebPageInfo(String infoJson) {
+            LogFeinno.i(TAG, "[from js]" + infoJson);
+        }
+    }
+    mWebView.addJavascriptInterface(new RFJSInterface(), "RFNativeObj"); //todo: api < 17 时的安全问题
+    
+    js 代码：
+    
+    function fetchWebPageInfo() {
+        var description = getMetaData('description');
+        var icon = getIcon();
+        RFNativeObj.onWebPageInfo({'description': description, 'icon': icon}); 注意这里的参数 JSON
+    }
+
+    var RFJsObject = window.RFJsObject = {
+        fetchWebPageInfo: fetchWebPageInfo
+    }
+    
+    java 中调用：
+    
+    mWebView.loadUrl("javascript:RFJsObject.fetchWebPageInfo();");
+    
+    结果，onWebPageInfo 接收到一个 undefined 字符串
+    原因是没有搞清楚 js 中的 json 对象的含义：
+    var json = JSON.stringify({'description': getMetaData('description'), 'icon': getIcon()});
