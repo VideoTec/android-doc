@@ -1,0 +1,52 @@
+https://developer.android.com/reference/android/app/Service.html
+
+Remote Messenger Service Sample
+
+If you need to be able to write a Service 
+that can perform complicated communication with clients in remote processes 
+(beyond simply the use of Context.startService to send commands to it), 
+then you can use the Messenger class instead of writing full AIDL files.
+
+An example of a Service that uses Messenger as its client interface is shown here. 
+First is the Service itself, 
+publishing a Messenger to an internal Handler when bound:
+
+https://developer.android.com/reference/android/os/Messenger.html
+
+messenger[英][ˈmesɪndʒə(r)] [美][ˈmɛsəndʒɚ]
+n.信使，信差；先驱；[军]通信兵，传令兵
+
+Reference to a Handler, 
+which others can use to send messages to it. 
+This allows for the implementation of message-based communication across processes, 
+by creating a Messenger pointing to a Handler in one process, 
+and handing that Messenger to another process.
+
+Note: the implementation underneath is just a simple wrapper around a Binder 
+that is used to perform the communication. 
+This means semantically you should treat it as such: 
+this class does not impact process lifecycle management 
+(you must be using some higher-level component 
+to tell the system that your process needs to continue running), 
+the connection will break if your process goes away for any reason, etc.
+
+关键代码：
+服务端 onBind 时返回 return Messenger.getBinder();
+客户端 onServiceConnected 时创建 mClientMessenger = new Messenger(service);
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0723/3216.html
+
+在客户端发送一个 Message 给服务端，
+在服务端的 handler 中会接收到客户端的消息，然后进行对应的处理，
+处理完成后，再将结果等数据封装成 Message ，发送给客户端，
+客户端的 handler 中会接收到处理的结果。
+
+这样的进程间通信是不是很爽呢？
+
+1) 基于Message，相信大家都很熟悉
+2) 支持回调的方式，也就是服务端处理完成长任务可以和客户端交互
+3) 不需要编写aidl文件
+
+服务端就一个Service，可以看到代码相当的简单，
+只需要去声明一个Messenger对象，
+然后 onBind 方法返回 mMessenger.getBinder()；

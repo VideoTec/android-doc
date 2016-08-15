@@ -1,0 +1,26 @@
+https://developer.android.com/guide/components/aidl.html#Calling
+
+You must include an import statement for each additional type not listed above, 
+even if they are defined in the same package as your interface.
+
+When defining your service interface, be aware that:
+
+1）Methods can take zero or more parameters, and return a value or void.
+
+2）All non-primitive parameters require 
+a directional tag indicating which way the data goes. 
+Either in, out, or inout (see the example below).
+Primitives are in by default, and cannot be otherwise.
+
+Caution: You should limit the direction to what is truly needed, 
+because marshalling parameters is expensive.
+
+marshalling[英]['mɑ:ʃəlɪŋ] [美]['mɑʃəlɪŋ]
+adj.编组的，集结待发的
+
+3）All code comments included in the .aidl file 
+are included in the generated IBinder interface 
+(except for comments before the import and package statements).
+
+4）Only methods are supported; 
+you cannot expose static fields in AIDL.

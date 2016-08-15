@@ -1,0 +1,10 @@
+https://developer.android.com/guide/components/aidl.html
+
+目录：
+
+Defining an AIDL Interface
+    Create the .aidl file
+    Implement the interface
+    Expose the interface to clients
+Passing Objects over IPC
+Calling an IPC Method

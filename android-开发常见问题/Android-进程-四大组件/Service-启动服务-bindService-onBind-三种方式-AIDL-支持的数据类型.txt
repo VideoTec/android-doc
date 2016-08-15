@@ -1,0 +1,28 @@
+https://developer.android.com/guide/components/aidl.html#Calling
+
+By default, AIDL supports the following data types:
+
+All primitive types in the Java programming language (such as int, long, char, boolean, and so on)
+
+String
+CharSequence
+
+List
+
+All elements in the List must be 
+one of the supported data types in this list 
+or 
+one of the other AIDL-generated interfaces or parcelables you've declared. 
+
+A List may optionally be used as a "generic" class (for example, List<String>). 
+The actual concrete class that the other side receives is always an ArrayList,
+although the method is generated to use the List interface.
+
+Map
+
+All elements in the Map must be 
+one of the supported data types in this list or 
+one of the other AIDL-generated interfaces or parcelables you've declared. Generic maps, 
+(such as those of the form Map<String,Integer> are not supported. 
+The actual concrete class that the other side receives is always a HashMap, 
+although the method is generated to use the Map interface.

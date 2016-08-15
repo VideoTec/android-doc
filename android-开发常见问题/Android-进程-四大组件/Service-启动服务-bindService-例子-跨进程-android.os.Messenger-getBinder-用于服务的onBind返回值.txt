@@ -1,0 +1,50 @@
+getBinder
+
+Added in API level 1
+
+IBinder getBinder ()
+Retrieve the IBinder that this Messenger 
+is using to communicate with its associated Handler.
+
+Returns
+IBinder	Returns the IBinder backing this Messenger.
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0723/3216.html
+
+messenger[英][ˈmesɪndʒə(r)] [美][ˈmɛsəndʒɚ]
+n.信使，信差；先驱；[军]通信兵，传令兵
+
+------------------------------------------------------------
+服务器端 onBind 时返回 Messenger
+------------------------------------------------------------
+
+public class TestService extends Service {
+    public TestService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        // throw new UnsupportedOperationException("Not yet implemented");
+        return mMessenger.getBinder();
+    }
+
+    private Messenger mMessenger = new Messenger(new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    });
+}
+
+androidManifest.xml 注册服务
+
+        <service
+            android:name=".TestService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.wangxiangfx.testservice" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>

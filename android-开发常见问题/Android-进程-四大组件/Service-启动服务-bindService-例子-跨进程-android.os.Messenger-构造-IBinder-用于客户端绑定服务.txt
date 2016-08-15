@@ -1,0 +1,50 @@
+Messenger
+
+Added in API level 1
+
+Messenger (IBinder target)
+Create a Messenger from a raw IBinder, 
+which had previously been retrieved with getBinder().
+
+Parameters
+target	IBinder: The IBinder this Messenger should communicate with.
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0723/3216.html
+
+绑定服务
+
+    private void bindServiceInvoked()
+    {
+        Intent intent = new Intent();
+        intent.setAction("com.zhy.aidl.calc");
+        bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+        Log.e(TAG, "bindService invoked !");
+    }
+    
+    private Messenger mService;
+    private ServiceConnection mConn = new ServiceConnection()
+    {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
+            mService = new Messenger(service);
+            isConn = true;
+            mTvState.setText("connected!");
+        }
+ 
+        @Override
+        public void onServiceDisconnected(ComponentName name)
+        {
+            mService = null;
+            isConn = false;
+            mTvState.setText("disconnected!");
+        }
+    };
+    
+    Message msgFromClient = Message.obtain(null, MSG_SUM, a, b);
+    msgFromClient.replyTo = mMessenger;
+    if (isConn)
+    {
+        //往服务端发送消息
+        mService.send(msgFromClient);
+    }

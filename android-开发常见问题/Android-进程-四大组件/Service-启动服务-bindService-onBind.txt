@@ -1,0 +1,25 @@
+https://developer.android.com/reference/android/app/Service.html
+
+onBind
+
+Added in API level 1
+
+IBinder onBind (Intent intent)
+Return the communication channel to the service. 
+May return null if clients can not bind to the service. 
+The returned IBinder is usually for a complex interface that has been described using aidl.
+
+Note that unlike other application components, 
+calls on to the IBinder interface returned here 
+may not happen on the main thread of the process. 
+More information about the main thread can be found in Processes and Threads.
+
+Parameters
+
+intent	Intent: 
+The Intent that was used to bind to this service, 
+as given to Context.bindService. 
+Note that any extras that were included with the Intent at that point will not be seen here.
+
+Returns
+IBinder	Return an IBinder through which clients can call on to the service.

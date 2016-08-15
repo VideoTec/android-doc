@@ -1,0 +1,24 @@
+
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0723/3216.html
+
+messenger[英][ˈmesɪndʒə(r)] [美][ˈmɛsəndʒɚ]
+n.信使，信差；先驱；[军]通信兵，传令兵
+
+public class TestService extends Service {
+    public TestService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        // throw new UnsupportedOperationException("Not yet implemented");
+        return mMessenger.getBinder();
+    }
+
+    private Messenger mMessenger = new Messenger(new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    });
+}
