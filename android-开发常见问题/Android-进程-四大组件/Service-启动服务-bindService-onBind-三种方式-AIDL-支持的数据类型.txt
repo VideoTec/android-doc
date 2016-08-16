@@ -2,7 +2,8 @@ https://developer.android.com/guide/components/aidl.html#Calling
 
 By default, AIDL supports the following data types:
 
-All primitive types in the Java programming language (such as int, long, char, boolean, and so on)
+All primitive types in the Java programming language
+ (such as int, long, char, boolean, and so on)
 
 String
 CharSequence
