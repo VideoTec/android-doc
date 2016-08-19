@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/20152635/get-all-images-from-a-webview-in-android
+
+In short: no. 
+There's no API to access the downloaded resources from the WebView from Java. 
+You'll need to roll your own solution.
+
+In the case of images, 
+the only way I can think of 
+to avoid re-downloading the resource would be to write some javascript 
+that copied the image once it was loaded into a <canvas> element 
+and then read the bytes back as a data URL. 
+You'd then be able to recreate the image 
+on the Java side from that data URL 
+(by passing it to Java via a JavaScript interface in your WebView) 
+and save it to disk or work with it otherwise.

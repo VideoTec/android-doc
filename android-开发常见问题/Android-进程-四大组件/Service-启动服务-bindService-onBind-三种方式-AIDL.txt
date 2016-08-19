@@ -1,3 +1,7 @@
+理解 bindService 的关键是
+1. 服务端 onBind 返回的 IBinder 对象怎么创建的
+2. 客户端 onServiceConnected 怎么处理绑定的 IBinder 对象
+
 https://developer.android.com/guide/components/aidl.html
 
 目录：

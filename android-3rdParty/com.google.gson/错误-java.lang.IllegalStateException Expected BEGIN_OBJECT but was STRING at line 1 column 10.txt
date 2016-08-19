@@ -1,0 +1,10 @@
+异常信息：
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 10
+at com.google.gson.stream.JsonReader.expect(JsonReader.java:339)
+at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:322)
+at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+
+代码：
+String imgPath = "\"imgpath\":\"/sdcard/photo.png\"";
+
+原因：少加了大括号

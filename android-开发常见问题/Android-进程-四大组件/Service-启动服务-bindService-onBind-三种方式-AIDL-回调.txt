@@ -1,0 +1,26 @@
+http://blog.csdn.net/songjinshi/article/details/22918405
+
+Android中使用AIDL时的跨进程回调—Server回调Client
+
+ITaskCallback.aidl 用于存放要回调client端的方法 -- 客户端实现
+
+package com.cmcc.demo.server;   
+  
+interface ITaskCallback {   
+    void actionPerformed(int actionId);  
+}   
+
+ITaskBinder.aidl 用于存放供给client端调用的方法
+
+package com.cmcc.demo.server;   
+  
+import com.cmcc.demo.server.ITaskCallback;    
+【注意1】即使同一个包名也得写全路径
+【注意1】ITaskCallback 后面不包括 .aidl 后缀
+  
+interface ITaskBinder {   
+    boolean isTaskRunning();   
+    void stopRunningTask();   
+    void registerCallback(ITaskCallback cb);   
+    void unregisterCallback(ITaskCallback cb);   
+}  

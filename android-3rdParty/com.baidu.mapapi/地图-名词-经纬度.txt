@@ -1,0 +1,14 @@
+地图查看界面
+
+latitude[英][ˈlætɪtju:d] [美][ˈlætɪtud]
+n.纬度；范围；[天]黄纬
+
+longitude[英][ˈlɒŋgɪtju:d] [美][ˈlɑndʒətud]
+n.经度，经线；[天]黄经
+
+传入三个浮点值
+        Intent intent = new Intent("com.feinno.rongfly.location.show");
+        intent.putExtra("location_show_latitude", 39.913828);      经度
+        intent.putExtra("location_show_longitude", 116.404269); 纬度
+        intent.putExtra("location_show_zoom", 16);  地图放大倍数
+        startActivity(intent);

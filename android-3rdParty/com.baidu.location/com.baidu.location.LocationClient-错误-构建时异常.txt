@@ -1,0 +1,27 @@
+mLocationClient = new LocationClient(mContext);
+
+异常信息：
+
+08-19 13:56:36.900 22467-22481/com.feinno.rongfly E/JavaBinder: *** Uncaught remote exception!  (Exceptions are not yet supported across processes.)
+     java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
+         at android.os.Handler.<init>(Handler.java:197)
+         at android.os.Handler.<init>(Handler.java:111)
+         at com.baidu.location.LocationClient$a.<init>(Unknown Source)
+         at com.baidu.location.LocationClient$a.<init>(Unknown Source)
+         at com.baidu.location.LocationClient.<init>(Unknown Source)
+         at com.feinno.rongfly.utils.map.BaiduMapUtilByRacer.locateByBaiduMap(BaiduMapUtilByRacer.java:332)
+         at com.feinno.rongfly.core.service.RFServiceFor3th$1.getLocationInfo(RFServiceFor3th.java:116)
+         at com.feinno.rongfly.core.service.IRFServiceFor3th$Stub.onTransact(IRFServiceFor3th.java:90)
+         at android.os.Binder.execTransact(Binder.java:388)
+         at dalvik.system.NativeStart.run(Native Method)
+         
+http://bbs.lbsyun.baidu.com/forum.php?mod=viewthread&tid=11204
+
+http://www.apkbus.com/blog-209098-53449.html
+用百度地图无法定位
+ mLocClient.registerLocationListener(new MyLocationListenner());
+ //注册监听，这里new MyLocationListenner()，没有调用
+ 
+ 
+将mLocClient = new LocationClient(this);
+改成以下就解决问题了：mLocClient = new LocationClient(getApplicationContext());
