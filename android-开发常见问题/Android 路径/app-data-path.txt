@@ -1,0 +1,19 @@
+http://android.stackexchange.com/questions/47924/where-android-apps-store-data
+
+All apps (root or not) have a default data directory, 
+which is /data/data/<package_name>. 
+
+By default, the apps databases, 
+settings, and all other data go here. 
+
+If an app expects huge amounts of data to be stored, 
+or for other reasons wants to "be nice to internal storage", 
+there's a corresponding directory on the SDCard (Android/data/<package_name>).
+
+/data/data/<package_name> (and corresponding SD-part):
+
+databases/: here go the app's databases
+lib/: libraries and helpers for the app
+files/: other related files
+shared_prefs/: preferences and settings
+cache/: well, caches

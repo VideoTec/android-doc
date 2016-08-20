@@ -1,0 +1,34 @@
+public abstract class AsyncTask<Params, Progress, Result> {
+
+注意，类型必须是 object 派生类。不能是基本类型 int(需要使用Integer), void(需要使用Void)等等 ...
+
+http://blog.sina.com.cn/s/blog_629b701e0100wpf0.html
+
+AsyncTask定义了三种泛型类型 Params，Progress和Result。
+Params 启动任务执行的输入参数，比如HTTP请求的URL。  doInBackground(String... params)
+Progress 后台任务执行的百分比。                     
+Result 后台执行任务最终返回的结果，比如String.      onPostExecute(String result)
+
+    @WorkerThread
+    protected abstract Result doInBackground(Params... params);
+    @MainThread
+    public final AsyncTask<Params, Progress, Result> execute(Params... params) {
+        return executeOnExecutor(sDefaultExecutor, params);
+    }
+    
+    @WorkerThread
+    protected final void publishProgress(Progress... values) {
+        if (!isCancelled()) {
+            getHandler().obtainMessage(MESSAGE_POST_PROGRESS,
+                    new AsyncTaskResult<Progress>(this, values)).sendToTarget();
+        }
+    }
+    @SuppressWarnings({"UnusedDeclaration"})
+    @MainThread
+    protected void onProgressUpdate(Progress... values) {
+    }
+    
+    @SuppressWarnings({"UnusedDeclaration"})
+    @MainThread
+    protected void onPostExecute(Result result) {
+    }

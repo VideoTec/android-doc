@@ -1,0 +1,17 @@
+    
+    /**
+     * Full path to a directory assigned to the package for its persistent
+     * data.
+     */
+    public String dataDir;
+    
+    有 context 时：
+    String dataDir = this.getApplicationInfo().dataDir;
+    
+    无 context 时：
+    PackageManager m = getPackageManager(); 【这个也需要 context 吧】
+    String s = getPackageName();
+    PackageInfo p = m.getPackageInfo(s, 0);
+    s = p.applicationInfo.dataDir;
+    总结：
+    dataDir = this.getPackageManager().getPackageInfo(getPackageName(), 0).applicationInfo.dataDir;
