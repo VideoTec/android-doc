@@ -25,3 +25,61 @@ http://www.apkbus.com/blog-209098-53449.html
  
 将mLocClient = new LocationClient(this);
 改成以下就解决问题了：mLocClient = new LocationClient(getApplicationContext());
+
+解决方法：
+
+增加 new Handler(getApplicationContext().getMainLooper()).post 设置主进程的 looper 就可以了。
+好奇怪，本来就在主进程里，为什么还需要设置 getMainLooper 呢？
+
+        class PositionInfoFor3th {
+            double latitude;
+            double longitude;
+            String province;
+            String city;
+        }
+        @Override
+        public void getLocationInfo(final IRFServiceFor3thCallbackMap cb) throws RemoteException {
+            new Handler(getApplicationContext().getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    BaiduMapUtilByRacer.locateByBaiduMap(getApplicationContext(), 1000,
+                            new BaiduMapUtilByRacer.LocateListener() {
+                                @Override
+                                public void onLocateSucceed(LocationBean locationBean) {
+                                    try {
+                                        PositionInfoFor3th pos = new PositionInfoFor3th();
+                                        pos.city = locationBean.getCity();
+                                        pos.province = locationBean.getProvince();
+                                        pos.latitude = locationBean.getLatitude();
+                                        pos.longitude = locationBean.getLongitude();
+                                        String json = new Gson().toJson(pos);
+                                        cb.onLocateSucceed(json);
+
+                                    } catch (RemoteException e) {
+                                        LogFeinno.e(TAG, "开放接口获取地址回调异常", e);
+                                    }
+                                }
+
+                                @Override
+                                public void onLocateFiled() {
+                                    try {
+                                        cb.onLocateFiled();
+                                    } catch (RemoteException e) {
+                                        LogFeinno.e(TAG, "开放接口获取地址回调异常", e);
+                                    }
+                                }
+
+                                @Override
+                                public void onLocating() {
+                                    try {
+                                        cb.onLocating();
+                                    } catch (RemoteException e) {
+                                        LogFeinno.e(TAG, "开放接口获取地址回调异常", e);
+                                    }
+                                }
+                            });
+                }
+            });
+
+
+        }

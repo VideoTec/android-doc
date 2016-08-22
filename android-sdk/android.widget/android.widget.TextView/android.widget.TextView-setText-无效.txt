@@ -1,0 +1,11 @@
+代码： setText("更新文本");
+结果： 控件的文件不变化
+原因：在工作线程里调用的。
+
+修改：
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showWindowMiddleTitle(title);
+                }
+            });

@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/4381296/android-wait-on-user-input-from-dialog
+
+Is this possible?
+No. There is no blocking UI model in Android. Everything is asynchronous.
+
+UPDATE
+
+In response to some of your comments on the question itself, 
+you cannot display a UI from a background thread. 
+As I wrote in this answer, 
+there is no blocking UI model in Android. 
+Just put your code in the button handler for your dialog 
+that you want to have executed when the dialog is accepted, 
+such as in this sample project.
