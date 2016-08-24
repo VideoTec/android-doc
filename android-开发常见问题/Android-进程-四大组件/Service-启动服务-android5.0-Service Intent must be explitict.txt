@@ -1,0 +1,26 @@
+E:\doc\android\android-开发常见问题\Android-进程-四大组件\Activity-startActivity-action-隐式-intent-隐式转显示.txt
+
+异常：
+Caused by: java.lang.IllegalArgumentException: Service Intent must be explicit: Intent { act=com.example.wangxiangfx.testservice }
+
+代码：
+        Intent intent = new Intent("com.example.wangxiangfx.testservice");
+        bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+
+修改方法： 由隐式转为显示
+        Intent intent = new Intent("com.example.wangxiangfx.testservice");
+        intent.setPackage("com.example.wangxiangfx.testrfinterface");
+        bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+
+http://www.eoeandroid.com/thread-568853-1-1.html?_dsign=b1761e1b
+
+http://blog.csdn.net/shenzhonglaoxu/article/details/42675287
+ Service Intent must be explicit的解决方法
+ 
+final Intent intent = new Intent();  
+intent.setAction("com.example.user.firstapp.FIRST_SERVICE");  
+bindService(intent,coon,Service.BIND_AUTO_CREATE); 
+ 
+这时候会报错：
+IllegalArgumentException: Service Intent must be explicit
+经过查找相关资料，发现是因为Android5.0中service的intent一定要显性声明，当这样绑定的时候不会报错。

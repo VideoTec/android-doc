@@ -1,0 +1,191 @@
+boolean bindService (Intent service, 
+                ServiceConnection conn, 
+                int flags)
+                
+---------------------------------------------------
+参数: int flags  flags == 0 的含义
+---------------------------------------------------
+http://stackoverflow.com/questions/14746245/use-0-or-bind-auto-create-for-bindservices-flag
+
+For method bindService(Intent, ServiceConnection, flag) 
+
+if flag Context.BIND_AUTO_CREATE is used 
+it will bind the service and start the service, but 
+
+if "0" is used, method will return true and 
+will not start service until a call like startService(Intent) is made to start the service. 
+
+One of the common use of "0" is in the case 
+where an activity to connect to a local service if that service is running, 
+otherwise you can start the service.
+
+Context.BIND_AUTO_CREATE does not start the service, it only creates it.
+
+Semantically, use BIND_AUTO_CREATE 
+if you're binding to a service 
+whose lifetime is only valid for as long as it has clients bound to it. 
+That's because the minute all clients have unbound from it, it will go down.
+
+Do not use BIND_AUTO_CREATE - or perhaps I should rephrase: 
+there's no point in using BIND_AUTO_CREATE, 
+if you're really just temporarily binding to a service in order to query or control it, 
+and it is reasonable that this service would live on after you're done. 
+For those cases, binding is for establishing a connection, 
+and the service' lifecycle should be managed 
+using startService() and stopService() (or stopSelf() in some cases).
+
+---------------------------------------------------
+参数: int flags 
+---------------------------------------------------
+
+flags	int: 
+Operation options for the binding. 
+May be 
+0, 
+BIND_AUTO_CREATE, 
+BIND_DEBUG_UNBIND, 
+BIND_NOT_FOREGROUND, 
+BIND_ABOVE_CLIENT, 
+BIND_ALLOW_OOM_MANAGEMENT, or 
+BIND_WAIVE_PRIORITY.
+
+    /** @hide */
+    @IntDef(flag = true,
+            value = {
+                BIND_AUTO_CREATE,
+                BIND_AUTO_CREATE,
+                BIND_DEBUG_UNBIND,
+                BIND_NOT_FOREGROUND,
+                BIND_ABOVE_CLIENT,
+                BIND_ALLOW_OOM_MANAGEMENT,
+                BIND_WAIVE_PRIORITY
+            })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface BindServiceFlags {}
+
+    /**
+     * Flag for {@link #bindService}: automatically create the service as long
+     * as the binding exists.  Note that while this will create the service,
+     * its {@link android.app.Service#onStartCommand}
+     * method will still only be called due to an
+     * explicit call to {@link #startService}.  Even without that, though,
+     * this still provides you with access to the service object while the
+     * service is created.
+     *
+     * <p>Note that prior to {@link android.os.Build.VERSION_CODES#ICE_CREAM_SANDWICH},
+     * not supplying this flag would also impact how important the system
+     * consider's the target service's process to be.  When set, the only way
+     * for it to be raised was by binding from a service in which case it will
+     * only be important when that activity is in the foreground.  Now to
+     * achieve this behavior you must explicitly supply the new flag
+     * {@link #BIND_ADJUST_WITH_ACTIVITY}.  For compatibility, old applications
+     * that don't specify {@link #BIND_AUTO_CREATE} will automatically have
+     * the flags {@link #BIND_WAIVE_PRIORITY} and
+     * {@link #BIND_ADJUST_WITH_ACTIVITY} set for them in order to achieve
+     * the same result.
+     */
+    public static final int BIND_AUTO_CREATE = 0x0001;
+
+    /**
+     * Flag for {@link #bindService}: include debugging help for mismatched
+     * calls to unbind.  When this flag is set, the callstack of the following
+     * {@link #unbindService} call is retained, to be printed if a later
+     * incorrect unbind call is made.  Note that doing this requires retaining
+     * information about the binding that was made for the lifetime of the app,
+     * resulting in a leak -- this should only be used for debugging.
+     */
+    public static final int BIND_DEBUG_UNBIND = 0x0002;
+
+    /**
+     * Flag for {@link #bindService}: don't allow this binding to raise
+     * the target service's process to the foreground scheduling priority.
+     * It will still be raised to at least the same memory priority
+     * as the client (so that its process will not be killable in any
+     * situation where the client is not killable), but for CPU scheduling
+     * purposes it may be left in the background.  This only has an impact
+     * in the situation where the binding client is a foreground process
+     * and the target service is in a background process.
+     */
+    public static final int BIND_NOT_FOREGROUND = 0x0004;
+
+    /**
+     * Flag for {@link #bindService}: indicates that the client application
+     * binding to this service considers the service to be more important than
+     * the app itself.  When set, the platform will try to have the out of
+     * memory killer kill the app before it kills the service it is bound to, though
+     * this is not guaranteed to be the case.
+     */
+    public static final int BIND_ABOVE_CLIENT = 0x0008;
+
+    /**
+     * Flag for {@link #bindService}: allow the process hosting the bound
+     * service to go through its normal memory management.  It will be
+     * treated more like a running service, allowing the system to
+     * (temporarily) expunge the process if low on memory or for some other
+     * whim it may have, and being more aggressive about making it a candidate
+     * to be killed (and restarted) if running for a long time.
+     */
+    public static final int BIND_ALLOW_OOM_MANAGEMENT = 0x0010;
+
+    /**
+     * Flag for {@link #bindService}: don't impact the scheduling or
+     * memory management priority of the target service's hosting process.
+     * Allows the service's process to be managed on the background LRU list
+     * just like a regular application process in the background.
+     */
+    public static final int BIND_WAIVE_PRIORITY = 0x0020;
+
+    /**
+     * Flag for {@link #bindService}: this service is very important to
+     * the client, so should be brought to the foreground process level
+     * when the client is.  Normally a process can only be raised to the
+     * visibility level by a client, even if that client is in the foreground.
+     */
+    public static final int BIND_IMPORTANT = 0x0040;
+
+    /**
+     * Flag for {@link #bindService}: If binding from an activity, allow the
+     * target service's process importance to be raised based on whether the
+     * activity is visible to the user, regardless whether another flag is
+     * used to reduce the amount that the client process's overall importance
+     * is used to impact it.
+     */
+    public static final int BIND_ADJUST_WITH_ACTIVITY = 0x0080;
+
+    /**
+     * @hide Flag for {@link #bindService}: Treat the binding as hosting
+     * an activity, an unbinding as the activity going in the background.
+     * That is, when unbinding, the process when empty will go on the activity
+     * LRU list instead of the regular one, keeping it around more aggressively
+     * than it otherwise would be.  This is intended for use with IMEs to try
+     * to keep IME processes around for faster keyboard switching.
+     */
+    public static final int BIND_TREAT_LIKE_ACTIVITY = 0x08000000;
+
+    /**
+     * @hide An idea that is not yet implemented.
+     * Flag for {@link #bindService}: If binding from an activity, consider
+     * this service to be visible like the binding activity is.  That is,
+     * it will be treated as something more important to keep around than
+     * invisible background activities.  This will impact the number of
+     * recent activities the user can switch between without having them
+     * restart.  There is no guarantee this will be respected, as the system
+     * tries to balance such requests from one app vs. the importantance of
+     * keeping other apps around.
+     */
+    public static final int BIND_VISIBLE = 0x10000000;
+
+    /**
+     * @hide
+     * Flag for {@link #bindService}: Consider this binding to be causing the target
+     * process to be showing UI, so it will be do a UI_HIDDEN memory trim when it goes
+     * away.
+     */
+    public static final int BIND_SHOWING_UI = 0x20000000;
+
+    /**
+     * Flag for {@link #bindService}: Don't consider the bound service to be
+     * visible, even if the caller is visible.
+     * @hide
+     */
+    public static final int BIND_NOT_VISIBLE = 0x40000000;

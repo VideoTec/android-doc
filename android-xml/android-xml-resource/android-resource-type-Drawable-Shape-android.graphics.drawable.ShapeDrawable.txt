@@ -16,6 +16,18 @@ RESOURCE REFERENCE:
 In Java: R.drawable.filename
 In XML: @[package:]drawable/filename
 
+oval[英][ˈəʊvl] [美][ˈoʊvl]
+n.椭圆形；椭圆运动场（等）；椭圆，美式足球用球；[物]卵形线
+
+ring[英][rɪŋ] [美][rɪŋ]
+n.戒指，指环；铃声，钟声；环形物；拳击场
+
+rectangle[英][ˈrektæŋgl] [美][ˈrɛkˌtæŋɡəl]
+n.[数]长方形，矩形
+
+stroke[英][strəʊk] [美][stroʊk]
+（铅笔、刷子的）一笔，一挥，笔画
+
 SYNTAX:
 <?xml version="1.0" encoding="utf-8"?>
 <shape
@@ -46,8 +58,8 @@ SYNTAX:
         android:width="integer"
         android:height="integer" />
     <solid
-        android:color="color" />
-    <stroke
+        android:color="color" />  A solid color to fill the shape.
+    <stroke                       A stroke line for the shape.
         android:width="integer"
         android:color="color"
         android:dashWidth="integer"
@@ -55,9 +67,6 @@ SYNTAX:
 </shape>
 
 ELEMENTS:
-
-stroke[英][strəʊk] [美][stroʊk]
-（铅笔、刷子的）一笔，一挥，笔画
 
 ---------------------------
 <shape>

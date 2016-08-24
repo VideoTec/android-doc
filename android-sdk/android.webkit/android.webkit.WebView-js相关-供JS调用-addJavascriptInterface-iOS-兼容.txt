@@ -1,0 +1,9 @@
+mWebView.addJavascriptInterface(new WebKitNativeObject(), "webkit.messageHandlers.nativeObject");
+
+这样写有效果吗？好像没用。
+addJavascriptInterface 相当于扩展浏览器功能，只能往 window 中注入对象
+
+http://www.joshuakehn.com/2014/10/29/using-javascript-with-wkwebview-in-ios-8.html
+
+window.webkit.messageHandlers.NAME.postMessage function where NAME is 
+whatever you call the script handler.

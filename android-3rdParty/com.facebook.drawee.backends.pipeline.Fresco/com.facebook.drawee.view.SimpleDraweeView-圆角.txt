@@ -1,0 +1,5 @@
+http://fresco-cn.org/docs/rounded-corners-and-circles.html
+
+圆角实际有2种呈现方式:
+圆圈 - 设置roundAsCircle为true
+圆角 - 设置roundedCornerRadius

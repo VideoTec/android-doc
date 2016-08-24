@@ -1,3 +1,14 @@
+回调接口类的扩展 - 一定要加上 .Stub 否则，服务端收到的引用为空
+
+    class OnContactInfoCallback extends IRFServiceFor3thContactInfoCallback.Stub {
+
+        @Override
+        public void onContactInfoCallback(String jsonInfos) throws RemoteException {
+            Log.i(TAG, "返回的用户信息：" + jsonInfos);
+        }
+    }
+
+
 http://blog.csdn.net/songjinshi/article/details/22918405
 
 Android中使用AIDL时的跨进程回调—Server回调Client

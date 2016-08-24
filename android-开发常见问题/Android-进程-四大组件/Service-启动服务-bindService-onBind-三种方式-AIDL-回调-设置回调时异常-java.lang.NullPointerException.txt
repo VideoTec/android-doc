@@ -1,0 +1,90 @@
+代码：
+
+回调接口实现
+    class OnContactInfoCallback extends IRFServiceFor3thContactInfoCallback.Stub {
+        @Override
+        public void onContactInfoCallback(String jsonInfos) throws RemoteException {
+            Log.i(TAG, "返回的用户信息：" + jsonInfos);
+        }
+
+        @Override
+        public IBinder asBinder() {
+            return null;  这样会
+        }
+    }
+    
+    ***************************************************************************************
+    最终找到原因是：
+    服务端的 aidl 定义的接口数量 和 客户端用的 aidl 定义的接口数量不一致造成的
+    ***************************************************************************************
+    
+这样写也不会崩
+
+原代码：点一个按钮来绑服务
+
+public void initAPP(View view) {
+        Intent intent3 = new Intent("com.feinno.rongfly.interface");
+        intent3.setPackage("com.feinno.rongfly");
+        bindService(intent3, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                mRFServiceInterface = IRFServiceFor3th.Stub.asInterface(service);
+                try {
+                    mRFServiceInterface.registerContactInfoCallback(new IRFServiceFor3thContactInfoCallback.Stub() {
+                        @Override
+                        public void onContactInfoCallback(String jsonInfos) {
+                            Log.e("profile","返回的用户信息：" + jsonInfos);
+                        }
+
+                        @Override
+                        public IBinder asBinder() {
+                            return null;
+                        }
+                    });
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mRFServiceInterface = null;
+            }
+        }, Context.BIND_AUTO_CREATE);
+    }
+
+异常信息：
+java.lang.NullPointerException: Attempt to invoke virtual method 'char[] java.lang.String.toCharArray()' on a null object reference
+   at android.os.Parcel.readException(Parcel.java:1552)
+   at android.os.Parcel.readException(Parcel.java:1499)
+   at com.feinno.rongfly.core.service.IRFServiceFor3th$Stub$Proxy.registerContactInfoCallback(IRFServiceFor3th.java:255)
+   at com.feinno.test.demo.MainActivity$1.onServiceConnected(MainActivity.java:78)
+   at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1279)
+   at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1296)
+   at android.os.Handler.handleCallback(Handler.java:815)
+   at android.os.Handler.dispatchMessage(Handler.java:104)
+   at android.os.Looper.loop(Looper.java:194)
+   at android.app.ActivityThread.main(ActivityThread.java:5759)
+   at java.lang.reflect.Method.invoke(Native Method)
+   at java.lang.reflect.Method.invoke(Method.java:372)
+   at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1042)
+   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:837)
+   
+异常信息：
+08-24 20:29:48.007 13250-13250/com.feinno.test.demo E/AndroidRuntime: FATAL EXCEPTION: main
+ java.lang.NullPointerException
+     at android.os.Parcel.readException(Parcel.java:1437)
+     at android.os.Parcel.readException(Parcel.java:1385)
+     at com.feinno.rongfly.core.service.IRFServiceFor3th$Stub$Proxy.registerContactInfoCallback(IRFServiceFor3th.java:255)
+     at com.feinno.test.demo.MainActivity$1.onServiceConnected(MainActivity.java:78)
+     at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1124)
+     at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1141)
+     at android.os.Handler.handleCallback(Handler.java:730)
+     at android.os.Handler.dispatchMessage(Handler.java:92)
+     at android.os.Looper.loop(Looper.java:176)
+     at android.app.ActivityThread.main(ActivityThread.java:5454)
+     at java.lang.reflect.Method.invokeNative(Native Method)
+     at java.lang.reflect.Method.invoke(Method.java:525)
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+     at dalvik.system.NativeStart.main(Native Method)

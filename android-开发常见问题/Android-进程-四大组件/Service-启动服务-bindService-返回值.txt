@@ -1,0 +1,15 @@
+boolean bindService (Intent service, 
+                ServiceConnection conn, 
+                int flags)
+                
+http://stackoverflow.com/questions/26127129/doubts-about-bindservice
+
+The documentation is incorrect. 
+When returned boolean is false this means that 
+no further attempts to establish connection are made. 
+When true is returned this means that system tries to establish a connection and 
+this can succeed or fail.
+
+Look at answer for this question: "in what case does bindservice return false". 
+Basically bindservice returns false 
+when it does not find a service to even attempt to bind to.

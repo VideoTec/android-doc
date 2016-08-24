@@ -1,0 +1,175 @@
+http://blog.csdn.net/qinde025/article/details/6828723
+http://blog.csdn.net/leibinleibin/article/details/6744193
+
+一、线程
+二、延时器 timer.schedule(task, delay);
+三、android消息处理  new Handler().postDelayed
+四、利用AlarmManager
+
+----------------------------------------------------
+----------------------------------------------------
+开启新线程
+new Thread(new Runnable(){
+    public void run(){
+        Thread.sleep(XXXX);
+        handler.sendMessage();----告诉主线程执行任务
+    }
+}).start
+
+----------------------------------------------------
+----------------------------------------------------
+https://developer.android.com/reference/java/util/Timer.html
+java.util.Timer
+
+cancel()
+Terminates this timer, discarding any currently scheduled tasks.
+
+purge()
+purge[英][pɜ:dʒ] [美][pɜrdʒ]
+vt.清除，（使）净化；（使）通便；肃清
+Removes all cancelled tasks from this timer's task queue.
+
+TimerTask task = new TimerTask(){
+    public void run(){
+    //execute the task 
+    }
+};
+
+Timer timer = new Timer();
+timer.schedule(task, delay);
+
+----------------------------------------------------
+----------------------------------------------------
+https://developer.android.com/reference/android/os/Handler.html
+android.os.Handler
+
+new Handler().postDelayed(new Runnable(){
+    public void run() {
+    //execute the task
+    }
+ }, delay);
+ 
+ How to cancel handler.postDelayed?
+ http://stackoverflow.com/questions/7407242/how-to-cancel-handler-postdelayed
+ http://stackoverflow.com/questions/4378533/cancelling-a-handler-postdelayed-process
+ 
+I do this to cancel postDelays, per the Android: 
+removeCallbacks removes any pending posts of Runnable r that are in the message queue.
+
+handler.removeCallbacks(runnableRunner);
+or use to remove all messages and callbacks
+handler.removeCallbacksAndMessages(null);
+
+myHandler.postDelayed(myRunnable, SPLASH_DISPLAY_LENGTH); 
+I do this to post a delayed runnable.
+And this to remove it. myHandler.removeCallbacks(myRunnable);
+
+void removeCallbacks (Runnable r)
+void removeCallbacks (Runnable r, Object token)
+void removeCallbacksAndMessages (Object token)
+
+--------------------------------------------------------------------------
+问题一：多次 postDelayed 同一个 runnable 对象会怎样？
+--------------------------------------------------------------------------
+    public final boolean postDelayed(Runnable r, long delayMillis)
+    {
+        return sendMessageDelayed(getPostMessage(r), delayMillis);
+    }
+    private static Message getPostMessage(Runnable r) {
+        Message m = Message.obtain();
+        m.callback = r;
+        return m;
+    }
+    public final boolean sendMessageDelayed(Message msg, long delayMillis)
+    {
+        if (delayMillis < 0) {
+            delayMillis = 0;
+        }
+        return sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis);
+    }
+    public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
+        MessageQueue queue = mQueue;
+        if (queue == null) {
+            RuntimeException e = new RuntimeException(
+                    this + " sendMessageAtTime() called with no mQueue");
+            Log.w("Looper", e.getMessage(), e);
+            return false;
+        }
+        return enqueueMessage(queue, msg, uptimeMillis);
+    }
+    private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) {
+        msg.target = this;
+        if (mAsynchronous) {
+            msg.setAsynchronous(true);
+        }
+        return queue.enqueueMessage(msg, uptimeMillis);
+    }
+    MessageQueue
+    boolean enqueueMessage(Message msg, long when) {
+        if (msg.target == null) {
+            throw new IllegalArgumentException("Message must have a target.");
+        }
+        if (msg.isInUse()) {
+            throw new IllegalStateException(msg + " This message is already in use.");
+        }
+
+        synchronized (this) {
+            if (mQuitting) {
+                IllegalStateException e = new IllegalStateException(
+                        msg.target + " sending message to a Handler on a dead thread");
+                Log.w("MessageQueue", e.getMessage(), e);
+                msg.recycle();
+                return false;
+            }
+
+            msg.markInUse();
+            msg.when = when;
+            Message p = mMessages;
+            boolean needWake;
+            if (p == null || when == 0 || when < p.when) {
+                // New head, wake up the event queue if blocked.
+                msg.next = p;
+                mMessages = msg;
+                needWake = mBlocked;
+            } else {
+                // Inserted within the middle of the queue.  Usually we don't have to wake
+                // up the event queue unless there is a barrier at the head of the queue
+                // and the message is the earliest asynchronous message in the queue.
+                needWake = mBlocked && p.target == null && msg.isAsynchronous();
+                Message prev;
+                for (;;) {
+                    prev = p;
+                    p = p.next;
+                    if (p == null || when < p.when) {
+                        break;
+                    }
+                    if (needWake && p.isAsynchronous()) {
+                        needWake = false;
+                    }
+                }
+                msg.next = p; // invariant: p == prev.next
+                prev.next = msg;
+            }
+
+            // We can assume mPtr != 0 because mQuitting is false.
+            if (needWake) {
+                nativeWake(mPtr);
+            }
+        }
+        return true;
+    }
+
+--------------------------------------------------------------------------
+问题二：Object token 是什么意思？ 
+--------------------------------------------------------------------------
+android.os.Message 的 public Object obj; 字段相关
+http://gaoxuxu.github.io/2013/02/android-e4-b9-8bhandler
+post系列方法，都是封装的对应的send系列方法
+（将Runnable对象（msg.callback）和一个Object对象（即msg.object，如果有的话）
+通过getPostMessage方法拿到一个Message，然后send）
+private final Message getPostMessage(Runnable r, Object token) {
+    Message m = Message.obtain();
+    m.obj = token;
+    m.callback = r;
+    return m;
+}

@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-xml\android-xml-layout\android.view-问题-添加边框的方法.txt

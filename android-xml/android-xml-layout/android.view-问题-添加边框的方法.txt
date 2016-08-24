@@ -1,0 +1,52 @@
+http://stackoverflow.com/questions/3263611/border-for-an-image-view-in-android
+
+第一种方法：
+Following is the code that i used to have black border. 
+Note that i have not used extra xml file for border.
+
+<ImageView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/red_minus_icon"
+android:background="#000000"
+android:padding="1dp"/>
+
+第二种方法：参考：E:\doc\android\android-xml\android-xml-resource\android-resource-type-Drawable-Shape
+
+I set the below xml to the background of the Image View as Drawable. It works.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<solid android:color="#FFFFFF" />
+<stroke android:width="1dp" android:color="#000000" />
+<padding android:left="1dp" android:top="1dp" android:right="1dp"
+    android:bottom="1dp" />
+</shape>
+
+And then add android:background="@drawable/yourXmlFileName" to ImageView 放在 drawabl 里
+
+-------------------------------------------------
+问题：圆角的 shape
+-------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="5dp" />
+    <solid android:color="#ffffffff" />
+    <padding android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp" />
+</shape>
+
+<com.feinno.rongfly.utils.bitmap.fresco.InstrumentedDraweeView
+    android:id="@+id/iv_vowifi_video_calling_avatar"
+    android:layout_width="125dp"
+    android:layout_height="125dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/rf_vowifi_portrait_bk_shape"
+    fresco:roundedCornerRadius="5dp"
+    fresco:actualImageScaleType="focusCrop"
+    fresco:fadeDuration="300"
+    fresco:failureImage="@drawable/rf_img_chat_contact_default"
+    fresco:failureImageScaleType="centerInside"
+    fresco:placeholderImage="@drawable/rf_img_chat_contact_default"
+    fresco:placeholderImageScaleType="fitCenter" />
