@@ -1,0 +1,2 @@
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mWebViewFontSize = mSharedPreferences.getInt(WebViewFontPreferenceKey, 100);

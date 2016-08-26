@@ -1,0 +1,44 @@
+原因就是：platform.nativeInvoker = window.nativeObject.jsToNative 不能引用本地对象的方法
+
+javascript 代码：
+
+if (platform.getType() == 'android') {
+  platform.nativeInvoker = window.nativeObject.jsToNative || null;
+} else if (platform.getType() == 'ios') {
+  platform.nativeInvoker = (window.webkit && window.webkit.messageHandlers.jsToNative && window.webkit.messageHandlers.jsToNative.postMessage) || null;
+}
+
+platform.nativeInvoker("{'action':'setBrowserTitleLeftView','data':'backToTopic','script':'window.nativeToJs.backButtonFunc'}");
+
+最后一行代码出错：
+
+Uncaught ReferenceError: NPMethod called on non-NPObject -- 
+From line 42 of http://220.231.2.29:7668/replyable/v6/statics/js/tools.js
+
+原因就是：platform.nativeInvoker = window.nativeObject.jsToNative 不能引用本地对象的方法
+
+http://timnew.me/blog/2013/12/16/npmethod-called-on-non-npobject-wrapped-jsobject/
+
+http://stackoverflow.com/questions/2464256/how-to-fix-npmethod-called-on-non-npobject-wrapped-jsobject-error
+
+This error occures when you try set flash function(native code) 
+to some variable and then call this variable. As an example take your functions:
+
+function getColorNP() { // this will call error
+ var func = mymovie.getColor;
+ func();
+}
+
+function getColorNP() { //this will work
+ mymovie.getColor();
+}
+
+Any way if you need to save your flash function to some variable 
+you should wrap it with lambda function. Like so:
+
+function getColorNP() { // this will work also
+ var func = function(){mymovie.getColor()};
+ func();
+}
+
+So when you use flash function in javascript you should not braking then links chain.

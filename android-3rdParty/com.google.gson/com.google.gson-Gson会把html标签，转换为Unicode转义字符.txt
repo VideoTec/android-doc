@@ -1,0 +1,4 @@
+http://blog.csdn.net/u013628152/article/details/47001799
+http://www.jfox.info/gson%E7%A6%81%E6%AD%A2%E8%BD%AC%E4%B9%89json%E7%AD%89%E5%8F%B7%E5%A4%A7%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2
+
+Gson gson = new GsonBuilder().disableHtmlEscaping().create();

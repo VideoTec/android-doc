@@ -1,0 +1,34 @@
+
+----------------------------------------------------
+javascript 端代码，输出 log
+----------------------------------------------------
+
+console.log(xxx);
+
+----------------------------------------------------
+java 端代码，处理 javascript 打印的 log
+----------------------------------------------------
+
+    class RFChromeWebClient extends WebChromeClient {
+        private int oldProgress;
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            if (mType == 0) {
+                if (title.length() > 10) {
+                    String substring = title.substring(0, 10);
+                    showWindowMiddleTitle(substring + "...");
+                } else {
+                    showWindowMiddleTitle(title);
+                }
+            }
+        }
+
+        @Override
+        public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+            Log.i(TAG, consoleMessage.message() + " -- From line "
+                    + consoleMessage.lineNumber() + " of "
+                    + consoleMessage.sourceId() );
+            return true;
+        }

@@ -6,6 +6,11 @@ Android平台给我们提供了一个SharedPreferences类，
 
 private SharedPreferences sharedPreferences; 
 sharedPreferences = this.getSharedPreferences("test",MODE_WORLD_READABLE); 
+
+工具类：
+
+PreferenceManager.getDefaultSharedPreferences(context)
+
 问题:
 1. 路径在那？一般这个文件存储在/data/data/<package name>/shared_prefs
    为什么在DDMS的File Explorer不能查看这个目录?

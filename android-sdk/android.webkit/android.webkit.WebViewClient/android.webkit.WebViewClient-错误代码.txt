@@ -30,3 +30,22 @@
     public static final int ERROR_FILE_NOT_FOUND = -14;
     /** Too many requests during this load */
     public static final int ERROR_TOO_MANY_REQUESTS = -15;
+
+---------------------------------------------------------------------------
+错误处理代码
+---------------------------------------------------------------------------
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            LogFeinno.i(TAG, "网页加载失败 网址： " + failingUrl + "; 错误信息：" + description + "; 错误代码: " + errorCode);
+
+            if (errorCode != -9) {
+                view.stopLoading();
+                view.clearView();
+                //错误时加载自定义错误去页面
+                String data = "Page NO FOUND！";
+                callJsCode("javascript:document.body.innerHTML=\"" + data + "\"", null);
+            }
+        }
+    }

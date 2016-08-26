@@ -1,0 +1,46 @@
+异常原因是：解码 json 串时，data 字段不是定义的 String。
+解决方法：把 data 定义成 Object
+
+    class JSCallParam {
+        String action; // 操作码
+        String data;
+        String script;
+    }
+    
+    {"action":"setBrowserTitleRightView","data":"sendTopic","script":"window.platform.nativeCallbacks.cb1472117003271Func"}
+    
+    解析js参数时异常
+     com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 7
+         at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+         at com.google.gson.Gson.fromJson(Gson.java:795)
+         at com.google.gson.Gson.fromJson(Gson.java:761)
+         at com.google.gson.Gson.fromJson(Gson.java:710)
+         at com.google.gson.Gson.fromJson(Gson.java:682)
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity.onJSCall(RFBrowserActivity.java:679)
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity.access$1500(RFBrowserActivity.java:75)
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity$NativeObject$1.run(RFBrowserActivity.java:662)
+         at android.os.Handler.handleCallback(Handler.java:730)
+         at android.os.Handler.dispatchMessage(Handler.java:92)
+         at android.os.Looper.loop(Looper.java:176)
+         at android.app.ActivityThread.main(ActivityThread.java:5454)
+         at java.lang.reflect.Method.invokeNative(Native Method)
+         at java.lang.reflect.Method.invoke(Method.java:525)
+         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+         at dalvik.system.NativeStart.main(Native Method)
+      Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 7
+         at com.google.gson.stream.JsonReader.expect(JsonReader.java:339)
+         at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:322)
+         at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+         at com.google.gson.Gson.fromJson(Gson.java:795) 
+         at com.google.gson.Gson.fromJson(Gson.java:761) 
+         at com.google.gson.Gson.fromJson(Gson.java:710) 
+         at com.google.gson.Gson.fromJson(Gson.java:682) 
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity.onJSCall(RFBrowserActivity.java:679) 
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity.access$1500(RFBrowserActivity.java:75) 
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity$NativeObject$1.run(RFBrowserActivity.java:662) 
+         at android.os.Handler.handleCallback(Handler.java:730) 
+         at android.os.Handler.dispatchMessage(Handler.java:92) 
+         at android.os.Looper.loop(Looper.java:176) 
+         at android.app.ActivityThread.main(ActivityThread.java:5454) 
+         at java.lang.reflect.Method.invokeNative(Native Method) 

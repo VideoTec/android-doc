@@ -19,5 +19,10 @@ private void saveNav2Cache(String content) {
     SharedPreferences preferences = mContext.getSharedPreferences("nav_dis", Context.MODE_PRIVATE);
     Editor edit = preferences.edit();
     edit.putString("content", content);
-    edit.commit();
+    edit.commit();  --- 替换成 edit.apply();
 }
+
+警告：
+Consider using `apply()` instead; 
+`commit` writes its data to persistent storage immediately, 
+whereas `apply` will handle it in the background

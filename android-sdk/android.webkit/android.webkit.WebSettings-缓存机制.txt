@@ -1,3 +1,8 @@
+网页数据缓存 相关接口：
+1） webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE)
+    不使用缓存，只从网络获取数据
+2） mWebView.getSettings().setDomStorageEnabled(true)
+
 http://blog.csdn.net/t12x3456/article/details/13745553
 
 WebView中存在着两种缓存：

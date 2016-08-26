@@ -1,0 +1,11 @@
+                SharedPreferences.Editor editor = mSharedPreferences.edit();
+                if (seekBar.getProgress() == 0) {
+                    editor.putInt(WebViewFontPreferenceKey, 75);
+                } else if (seekBar.getProgress() == 32) {
+                    editor.putInt(WebViewFontPreferenceKey, 100);
+                } else if (seekBar.getProgress() == 65) {
+                    editor.putInt(WebViewFontPreferenceKey, 120);
+                } else if (seekBar.getProgress() == 100) {
+                    editor.putInt(WebViewFontPreferenceKey, 150);
+                }
+                editor.apply();

@@ -1,0 +1,9 @@
+https://google.github.io/gson/apidocs/com/google/gson/JsonElement.html
+
+public abstract class JsonElement
+extends Object
+A class representing an element of Json. 
+It could either be a JsonObject, a JsonArray, a JsonPrimitive or a JsonNull.
+
+Author:
+Inderjeet Singh, Joel Leitch

@@ -25,7 +25,7 @@ AppCache使我们能够有选择的缓冲web浏览器中所有的东西，
 尤其在涉及到应用于网站的多个页面上的CSS和JavaScript文件的时候非常有用
 
 在Android中可以
-手动开启DOM Storage（setDomStorageEnabled），
+手动开启DOM Storage（ setDomStorageEnabled ），
 设置存储路径（setDatabasePath）
 
 Android中Webkit会为DOM Storage产生两个文件

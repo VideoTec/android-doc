@@ -1,0 +1,10 @@
+   class JSCallParam {
+        String action; // 操作码
+        JsonElement data;
+        String script;
+    }
+    
+    使用示例：
+    setBrowserTitleRightView(param.data.toString(), param.script);
+    toString 理解错误，字符串对象会在外面再加引号，""backToTopic""
+    应该使用：param.data.getAsString()
