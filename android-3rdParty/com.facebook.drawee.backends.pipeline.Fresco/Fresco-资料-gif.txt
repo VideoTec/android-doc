@@ -1,0 +1,60 @@
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        fresco:placeholderImage="@mipmap/android_icon" 先给占位符，加载成功后再播放
+        android:id="@+id/xml_gif_iv_show"/>
+        
+        
+Uri uri = Uri.parse("http://img.huofar.com/data/jiankangrenwu/shizi.gif");
+DraweeController  draweeController =
+                Fresco.newDraweeControllerBuilder()
+                        .setUri(uri)
+                        .setAutoPlayAnimations(true) // 设置加载图片完成后是否直接进行播放
+                        .build();
+img.setController(draweeController);
+        
+问题，如果是本地的资料呢？
+
+http://www.jianshu.com/p/04a6433dd456
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/dv_welcome"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp" />
+</LinearLayout>
+
+public class MainActivity extends AppCompatActivity {
+    private SimpleDraweeView dvWelcome;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Fresco.initialize(this);//放在加载布局之前
+        setContentView(R.layout.activity_main);
+
+         dvWelcome= (SimpleDraweeView) findViewById(R.id.dv_welcome);
+        /**
+         * 下面是主要代码：
+         */
+        DraweeController draweeController = Fresco.newDraweeControllerBuilder()
+                .setAutoPlayAnimations(true)//自动播放动画
+                .setUri(Uri.parse("asset://com.gz01.baochen.testgif/a.gif"))//路径
+                .build();
+        dvWelcome.setController(draweeController);
+    }
+}
+
+http://stackoverflow.com/questions/31111163/how-to-use-fresco-to-read-any-packages-gif-image-in-the-assets-directory/34892610
+
+At the moment, Fresco supports the following:
+Uri uri = Uri.parse("asset:///image.png");
+
+Which gets translated into:
+AssetManager.openFd("image.png");

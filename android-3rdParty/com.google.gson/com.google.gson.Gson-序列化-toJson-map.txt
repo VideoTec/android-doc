@@ -1,0 +1,9 @@
+http://blog.csdn.net/lk_blog/article/details/7685210
+
+ Json转换利器Gson之实例三-Map处理(上)
+ 
+Map的存储结构式Key/Value形式,Key 和 Value可以是普通类型,
+也可以是自己写的JavaBean(本文),还可以是带有泛型的List(下一篇博客).
+本例中您要重点看如何将Json转回为普通JavaBean对象时TypeToken的定义.
+
+Map<Point, String> retMap = gson.fromJson(s, new TypeToken<Map<Point, String>>() {}.getType());  

@@ -1,0 +1,77 @@
+下面的代码转出来的 base64 在 html 中不能用
+
+                        try {
+                            int fileSize = (int) portraitFile.length();
+                            if (fileSize > 0) {
+                                FileInputStream fis = new FileInputStream(portraitFile);
+                                byte[] imgData = new byte[fileSize];
+                                if (fis.read(imgData) == fileSize) {
+                                    portrait = PREFIX_BASE64 + Base64.encodeToString(imgData, Base64.DEFAULT);
+                                }
+                                fis.close();
+                            }
+                        } catch (Exception e) {
+                            LogFeinno.e(TAG, "读取头像时异常", e);
+                        }
+                        问题出现这里，转成 json 串时转义了
+                        callJsCode(mUserThumbsJSCallback, new Gson().toJson(result));
+                        解决方法：
+                        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+                        这种方法不能解决：
+                        https://gist.github.com/orip/3635246
+                        return new JsonPrimitive(Base64.encodeToString(src, Base64.NO_WRAP));
+                        http://blog.csdn.net/jikeiliu/article/details/7096535
+                        String base64 = Base64.encodeToString(src, 0, src.length, Base64.DEFAULT);         
+                        return new JsonPrimitive(base64);
+                        使用这个对象，也不能解决这个问题
+                        
+                        【这个问题最终解决方法】
+                        JsonPrimitive(Base64.encodeToString(src, Base64.NO_WRAP)); 不输出换行符
+                        Gson gson = new GsonBuilder().disableHtmlEscaping().create() 不转义等号
+                        【另一个问题】
+                        不过需要解码成bmp，可直接编码 png 文件。
+                        
+http://stackoverflow.com/questions/4830711/how-to-convert-a-image-into-base64-string
+http://stackoverflow.com/questions/14840214/how-to-encode-jpeg-png-to-base64-without-decoding-to-bitmap-using-less-memory
+
+InputStream inputStream = new FileInputStream(fileName);//You can get an inputStream using any IO API
+byte[] bytes;
+byte[] buffer = new byte[8192];
+int bytesRead;
+ByteArrayOutputStream output = new ByteArrayOutputStream();
+try {
+    while ((bytesRead = inputStream.read(buffer)) != -1) {
+    output.write(buffer, 0, bytesRead);
+}
+} catch (IOException e) {
+e.printStackTrace();
+}
+bytes = output.toByteArray();  可能需要多次读取
+String encodedString = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+必须要先解压成 bitmap 再压缩，再编码才行吗？
+
+Bitmap bm = BitmapFactory.decodeFile("/path/to/image.jpg");
+ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object   
+byte[] b = baos.toByteArray(); 
+
+String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+
+http://wiki.jikexueyuan.com/project/android-actual-combat-skills/picture-basesixtyfour-coding-and-decoding.html
+将图片转换成 bitmap 并编码
+
+private void encode(String path) {
+                    //decode to bitmap
+                    Bitmap bitmap = BitmapFactory.decodeFile(path);
+                    Log.d(TAG, "bitmap width: " + bitmap.getWidth() + " height: " + bitmap.getHeight());
+                    //convert to byte array
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    byte[] bytes = baos.toByteArray();
+
+                    //base64 encode
+                    byte[] encode = Base64.encode(bytes,Base64.DEFAULT);
+                    String encodeString = new String(encode);
+                    mTvShow.setText(encodeString);
+    }

@@ -1,0 +1,24 @@
+http://www.cnblogs.com/0616--ataozhijia/p/4314409.html
+
+String base64Token = Base64.encodeToString(token.trim().getBytes(), Base64.NO_WRAP);
+byte[] mmmm = Base64.decode(base64Token,Base64.DEFAULT);
+
+1）CRLF 这个参数看起来比较眼熟，它就是Win风格的换行符，意思就是使用CR LF这一对作为一行的结尾而不是Unix风格的LF
+
+1）DEFAULT 这个参数是默认，使用默认的方法来加密
+
+2）NO_PADDING 这个参数是略去加密字符串最后的”=”
+
+3）NO_WRAP 这个参数意思是略去所有的换行符（设置后CRLF就没用了）
+
+4）URL_SAFE 这个参数意思是加密时不使用对URL和文件名有特殊意义的字符来作为加密字符，
+具体就是以-和_取代+和/
+
+http://www.cnblogs.com/qualitysong/archive/2012/10/27/2742665.html
+
+base64.encodestring返回的字符串默认结尾带"\n"，
+而且产生的base64编码字符串每76个字符就会用"\n"隔开，所以最安全的方法不是strip去掉结尾的\n，
+而是用replace去掉其中所有的\n。
+
+为啥base64.ecodestring每76字符就换行，
+这个是mime协议的规定，用于email发送，具体查看mime协议吧

@@ -1,0 +1,16 @@
+第一步：
+vowifi_calling.gif 图放在 assets 目录下
+
+第二步：布局文件定义
+<com.facebook.drawee.view.SimpleDraweeView
+    android:id="@+id/fr_calling_gif_voice"
+    android:layout_width="41dp"
+    android:layout_height="12dp" />
+
+第三步：加载GIF
+frCallingGifVoice = (SimpleDraweeView) findViewById(R.id.fr_calling_gif_voice);
+DraweeController draweeController = Fresco.newDraweeControllerBuilder()
+        .setAutoPlayAnimations(true)
+        .setUri(Uri.parse("asset:///vowifi_calling.gif"))
+        .build();
+frCallingGifVoice.setController(draweeController);

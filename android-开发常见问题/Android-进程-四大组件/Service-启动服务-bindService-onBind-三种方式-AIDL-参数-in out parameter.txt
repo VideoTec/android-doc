@@ -1,0 +1,25 @@
+void onCircelMsg(List<byte[]> msgs);
+
+构建时出错：
+
+parameter 1: 'byte msg' can be an out parameter, so you must declare it as in, out or inout.
+
+
+http://stackoverflow.com/questions/4700225/in-out-inout-in-a-aidl-interface-parameter-value
+
+In AIDL, the "out" tag specifies an output-only parameter. 
+In other words, it's a parameter that contains no interesting data on input, 
+but will be filled with data during the method.
+
+For example, 
+a method that copies an array of bytes might be specified like this:
+
+void copyArray(in byte[] source, out byte[] dest);
+
+The "inout" tag indicates that the parameter has meaning on both input and output. For example:
+
+void charsToUpper(inout char[] chars);
+
+This is important because the contents of every parameter must be marshalled 
+(serialized, transmitted, received, and deserialized). 
+The in/out tags allow the Binder to skip the marshalling step for better performance.

@@ -1,0 +1,36 @@
+
+从字符串获取list数据
+List<RFMultSelectInfo> list = 
+gson.fromJson(multSeleJsonStr, new TypeToken<List<RFMultSelectInfo>>() {}.getType());
+
+MyClass[] mcArray = gson.fromJson(jsonString, MyClass[].class);
+
+用list数据生成字符串
+private List<RFMultSelectInfo> seledList = new ArrayList<RFMultSelectInfo>();
+String resultStr = gson.toJson(seledList);
+
+http://stackoverflow.com/questions/5554217/google-gson-deserialize-listclass-object-generic-type
+
+第一种方法，使用 Type
+
+Method to deserialize generic collection:
+
+Type listType = new TypeToken<ArrayList<YourClass>>(){}.getType();
+List<YourClass> yourClassList = new Gson().fromJson(jsonArray, listType);
+
+Import : import java.lang.reflect.Type;
+
+第二种方法，转成普通数组对象
+
+Another way is to use an array as a type, e.g.:
+MyClass[] mcArray = gson.fromJson(jsonString, MyClass[].class);
+This way you avoid all the hassle with the Type object
+
+if you really need a list you can always convert the array to a list by:
+List<MyClass> mcList = Arrays.asList(mcArray);
+IMHO this is much more readable.
+
+And to make it be an actual list 
+(that can be modified, see limitations of Arrays.asList()) 
+then just do the following:
+List<MyClass> mcList = new ArrayList<>(Arrays.asList(mcArray));

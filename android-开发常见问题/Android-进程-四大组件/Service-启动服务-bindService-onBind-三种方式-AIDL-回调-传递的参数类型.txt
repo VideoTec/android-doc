@@ -1,0 +1,69 @@
+interface RFServiceFor3thOnCircleMsg {
+    void onCircelMsg(List<byte[]> msgs);
+}
+
+构建时错误：
+
+syntax error
+syntax error in parameter list
+syntax error in parameter list
+syntax error in parameter list
+syntax error in parameter list
+syntax error in parameter list
+
+改成
+
+void onCircelMsg(List<byte[]> msgs);
+
+构建时出错：
+
+parameter 1: 'byte msg' can be an out parameter, so you must declare it as in, out or inout.
+
+http://stackoverflow.com/questions/4700225/in-out-inout-in-a-aidl-interface-parameter-value
+
+In AIDL, the "out" tag specifies an output-only parameter. 
+In other words, it's a parameter that contains no interesting data on input, 
+but will be filled with data during the method.
+
+For example, 
+a method that copies an array of bytes might be specified like this:
+
+void copyArray(in byte[] source, out byte[] dest);
+
+The "inout" tag indicates that the parameter has meaning on both input and output. For example:
+
+void charsToUpper(inout char[] chars);
+
+This is important because the contents of every parameter must be marshalled 
+(serialized, transmitted, received, and deserialized). 
+The in/out tags allow the Binder to skip the marshalling step for better performance.
+
+https://developer.android.com/guide/components/aidl.html
+
+By default, AIDL supports the following data types:
+
+All primitive types in the Java programming language
+ (such as int, long, char, boolean, and so on)
+
+String
+CharSequence
+
+List
+
+All elements in the List must be 
+one of the supported data types in this list 
+or 
+one of the other AIDL-generated interfaces or parcelables you've declared. 
+
+A List may optionally be used as a "generic" class (for example, List<String>). 
+The actual concrete class that the other side receives is always an ArrayList,
+although the method is generated to use the List interface.
+
+Map
+
+All elements in the Map must be 
+one of the supported data types in this list or 
+one of the other AIDL-generated interfaces or parcelables you've declared. Generic maps, 
+(such as those of the form Map<String,Integer> are not supported. 
+The actual concrete class that the other side receives is always a HashMap, 
+although the method is generated to use the Map interface.

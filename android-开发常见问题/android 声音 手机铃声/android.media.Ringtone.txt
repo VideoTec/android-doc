@@ -1,3 +1,6 @@
+参考：
+E:\doc\android\android-sdk\android.media.Ringtone\android.media.Ringtone.txt
+
 http://developer.android.com/intl/zh-cn/reference/android/media/Ringtone.html
 
 Ringtone provides a quick method for 

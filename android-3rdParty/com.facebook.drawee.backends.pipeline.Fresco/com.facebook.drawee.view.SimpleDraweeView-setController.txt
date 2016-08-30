@@ -1,0 +1,35 @@
+
+
+com.facebook.drawee.view.DraweeView
+
+  /** Sets the controller. */
+  public void setController(@Nullable DraweeController draweeController) {
+    mDraweeHolder.setController(draweeController);
+    super.setImageDrawable(mDraweeHolder.getTopLevelDrawable()); 其 super 是 ImageView
+  }
+  
+  mDraweeHolder 定义
+  public class DraweeView<DH extends DraweeHierarchy> extends ImageView {
+
+      private final AspectRatioMeasure.Spec mMeasureSpec = new AspectRatioMeasure.Spec();
+      private float mAspectRatio = 0;
+      private DraweeHolder<DH> mDraweeHolder;
+      
+com.facebook.drawee.view.DraweeHolder
+  /**
+   * Gets the top-level drawable if hierarchy is set, null otherwise.
+   */
+  public Drawable getTopLevelDrawable() {
+    return mHierarchy == null ? null : mHierarchy.getTopLevelDrawable();
+  }
+  
+public class DraweeHolder<DH extends DraweeHierarchy>
+    implements VisibilityCallback, MemoryUiTrimmable {
+
+  private boolean mIsControllerAttached = false;
+  private boolean mIsHolderAttached = false;
+  private boolean mIsVisible = true;
+  private boolean mTrimmed = false;
+  private DH mHierarchy;
+
+  private DraweeController mController = null;

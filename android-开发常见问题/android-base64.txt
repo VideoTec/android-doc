@@ -1,0 +1,6 @@
+https://developer.android.com/reference/android/util/Base64.html
+android.util.Base64
+android.util.Base64OutputStream
+    
+Utilities for encoding and decoding the Base64 representation of binary data. 
+See RFCs 2045 and 3548.

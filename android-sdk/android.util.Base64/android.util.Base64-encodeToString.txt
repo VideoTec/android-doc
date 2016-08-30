@@ -1,0 +1,32 @@
+String imageEncoded = Base64.encodeToString(b,Base64.DEFAULT);
+
+    /**
+     * Base64-encode the given data and return a newly allocated
+     * String with the result.
+     *
+     * @param input  the data to encode
+     * @param flags  controls certain features of the encoded output.
+     *               Passing {@code DEFAULT} results in output that
+     *               adheres to RFC 2045.
+     */
+    public static String encodeToString(byte[] input, int flags) {
+        try {
+            return new String(encode(input, flags), "US-ASCII");
+        } catch (UnsupportedEncodingException e) {
+            // US-ASCII is guaranteed to be available.
+            throw new AssertionError(e);
+        }
+    }
+    
+    /**
+     * Base64-encode the given data and return a newly allocated
+     * byte[] with the result.
+     *
+     * @param input  the data to encode
+     * @param flags  controls certain features of the encoded output.
+     *               Passing {@code DEFAULT} results in output that
+     *               adheres to RFC 2045.
+     */
+    public static byte[] encode(byte[] input, int flags) {
+        return encode(input, 0, input.length, flags);
+    }

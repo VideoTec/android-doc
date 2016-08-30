@@ -1,0 +1,5 @@
+转换后的，base64字符串，不能使用：
+最终发现和 gson 没有多大关系
+
+参考：
+E:\doc\android\android-sdk\android.util.Base64\android.util.Base64-encodeToString-例子-png文件-转成-base64.txt

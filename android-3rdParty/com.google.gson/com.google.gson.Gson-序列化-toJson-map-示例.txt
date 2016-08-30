@@ -1,0 +1,28 @@
+    class ContactInfoCallback extends IRFServiceFor3thContactInfoCallback.Stub {
+        @Override
+        public void onContactInfoCallback(String jsonInfos) throws RemoteException {
+            //callJsCode(mUserThumbsJSCallback, );
+            H5UserThumb[] thumbs = new Gson().fromJson(jsonInfos, H5UserThumb[].class);
+            H5UserThumbResult result = new H5UserThumbResult();
+            result.msg = "success";
+            for (H5UserThumb thumb : thumbs) {
+                String portrait = thumb.portrait;
+                if (portrait == null)
+                    portrait = "";
+                result.data.put(thumb.contactUserId, portrait);
+            }
+            LogFeinno.i(TAG, "头像结果 " + new Gson().toJson(result));
+        }
+    }
+
+    class H5UserThumb {
+        int contactUserId;
+        String portrait;
+    }
+    class H5UserThumbResult {
+        String msg;
+        Map<Integer, String> data = new HashMap<>();
+    }
+    
+    结果：
+    {"data":{"202929973":"/storage/emulated/0/Android/data/com.feinno.rongfly/files/portrait/649040293.png","100497292":"/storage/emulated/0/Android/data/com.feinno.rongfly/files/portrait/3730261208.png","200059928":"/storage/emulated/0/Android/data/com.feinno.rongfly/files/portrait/684277083.png","200306038":"/storage/emulated/0/Android/data/com.feinno.rongfly/files/portrait/3562842990.png"},"msg":"success"}

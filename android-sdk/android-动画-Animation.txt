@@ -1,0 +1,27 @@
+https://developer.android.com/guide/topics/graphics/view-animation.html
+
+View Animation
+You can use the view animation system to perform tweened animation on Views. 
+Tween animation calculates the animation with information 
+such as the start point, end point, size, rotation, 
+and other common aspects of an animation.
+
+https://developer.android.com/reference/android/view/animation/package-summary.html
+android.view.animation
+
+Provides classes that handle tweened animations.
+
+Android provides two mechanisms that you can use to create simple animations: 
+
+1) tweened animation, 
+in which you tell Android to perform a series of simple transformations 
+(position, size, rotation, and so on) to the content of a View; and 
+
+2)frame-by-frame animation, 
+which loads a series of Drawable resources one after the other. 
+Both animation types can be used in any View object to provide simple rotating timers, 
+activity icons, and other useful UI elements. 
+Tweened animation is handled by this package (android.view.animation); 
+frame-by-frame animation is handled by the AnimationDrawable class.
+
+For more information on creating tweened or frame-by-frame animations, read the discussion in the 2D Graphics Dev Guide.

@@ -1,0 +1,48 @@
+http://m.blog.csdn.net/article/details?id=51785566
+
+-------------------------------------------------------
+加载assets文件夹下的动态图片(gif格式),也可以改为网络地址
+-------------------------------------------------------
+
+Uri uri=Uri.parse("asset:///aa.gif");
+DraweeController controller=Fresco.newDraweeControllerBuilder()
+        .setUri(uri)
+        .setAutoPlayAnimations(true)
+        .build();
+simple.setController(controller);
+
+-------------------------------------------------------
+加载res目录下的资源文件(图片)
+-------------------------------------------------------
+
+Uri uri = Uri.parse("res:///" + R.mipmap.bb113);
+DraweeController controller = Fresco.newDraweeControllerBuilder()
+        .setUri(uri)
+        .setTapToRetryEnabled(true)
+        .build();
+simple.setController(controller);
+
+-------------------------------------------------------
+加载SD卡上面的图片,注意格式：
+-------------------------------------------------------
+
+String uri= "file:///storage/emulated/0/DCIM/Camera/IMG_20160227_133717_904.jpg";
+DraweeController controller=Fresco.newDraweeControllerBuilder()
+            .setUri(uri)
+            .setAutoPlayAnimations(true)
+            .build();
+simple.setController(controller);
+
+-------------------------------------------------------
+加载网络图片，在SimpleDraweeView控件显示
+-------------------------------------------------------
+
+String url = "http://img4.imgtn.bdimg.com/it/u=1738110171,2299636339&fm=21&gp=0.jpg";//正确网址
+simple = (SimpleDraweeView) findViewById(R.id.simpledraweeview);
+simple.setImageURI(uri);//开始下载
+//重试,创建DraweeController对象
+DraweeController controller = Fresco.newDraweeControllerBuilder()
+        .setUri(url)//URL地址
+        .setTapToRetryEnabled(true)//开启点击重试
+        .build();//构建
+simple.setController(controller);

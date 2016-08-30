@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/8648616/webview-javascript-cross-domain-from-a-local-html-file

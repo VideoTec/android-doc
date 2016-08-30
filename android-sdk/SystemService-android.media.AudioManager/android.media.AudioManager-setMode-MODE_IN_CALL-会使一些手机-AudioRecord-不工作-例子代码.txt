@@ -1,0 +1,51 @@
+WebRtcAudioTrack
+
+    @SuppressWarnings("unused")
+    private int SetPlayoutSpeaker(boolean loudspeakerOn) {
+        // create audio manager if needed
+    	Log.i("WebTrcAudio Track", "SetPlayoutSpeaker"+loudspeakerOn);
+        if (_audioManager == null && _context != null) {
+            _audioManager = (AudioManager)
+                _context.getSystemService(Context.AUDIO_SERVICE);
+        }
+
+        if (_audioManager == null) {
+            DoLogErr("Could not change audio routing - no audio manager");
+            return -1;
+        }
+
+        int apiLevel = android.os.Build.VERSION.SDK_INT;
+
+        if ((3 == apiLevel) || (4 == apiLevel)) {
+            // 1.5 and 1.6 devices
+            if (loudspeakerOn) {
+                // route audio to back speaker
+                _audioManager.setMode(AudioManager.MODE_NORMAL);
+            } else {
+                // route audio to earpiece
+                _audioManager.setMode(AudioManager.MODE_IN_CALL);
+            }
+        } else {
+            // 2.x devices
+            if ((android.os.Build.BRAND.equals("Samsung") ||
+                            android.os.Build.BRAND.equals("samsung")) &&
+                            ((5 == apiLevel) || (6 == apiLevel) ||
+                            (7 == apiLevel))) {
+                // Samsung 2.0, 2.0.1 and 2.1 devices
+                if (loudspeakerOn) {
+                    // route audio to back speaker
+                    _audioManager.setMode(AudioManager.MODE_IN_CALL);
+                    _audioManager.setSpeakerphoneOn(loudspeakerOn);
+                } else {
+                    // route audio to earpiece
+                    _audioManager.setSpeakerphoneOn(loudspeakerOn);
+                    _audioManager.setMode(AudioManager.MODE_NORMAL);
+                }
+            } else {
+                // Non-Samsung and Samsung 2.2 and up devices
+                _audioManager.setSpeakerphoneOn(loudspeakerOn);
+            }
+        }
+
+        return 0;
+    }

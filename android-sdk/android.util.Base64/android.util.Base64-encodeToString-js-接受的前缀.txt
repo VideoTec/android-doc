@@ -1,0 +1,30 @@
+String imageEncoded = Base64.encodeToString(b,Base64.DEFAULT);
+返回的结果没有前缀
+
+var emptyBase64Img = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==";
+var errorBase64Img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAGCAYAAACmekziAAAAAXNSR0IArs4c6QAAALRJREFUKBW9ksEJAjEQRaOwnu3A8562C0+ihdiEB7GAbWHZq1XYgy1407MK+j7kQ5DxEsEPjxnyJ5OQSUopzWGAK5xhA9Yv3p4mOzjAGiz1DD1d4lVwJ29BqvV0kA60tiTuGXpTClauzrEhLnNe6z3Zf8s9FEZwz9DTRS6q/JDXHEvba46RNysXyRfg+q+e/oTG4fGcyPUqUq2nP6FxaDwd9OCeoTehQNL89HS69REeYP3FewNs80oS/QS60QAAAABJRU5ErkJggg==";
+
+https://www.fancycoding.com/using-base64-with-html5/
+
+神奇的HTML5与Base64
+
+var mp3 = {
+    prefix: "data:audio/mp3;base64,",
+    sound: "SUQzAwAAAAALClRJVDIAAABkAAAAAAAAAG.....省略n多"
+    };
+    
+var player = document.createElement("audio");
+player.src = mp3.prefix + mp3.sound;
+document.getElementsByTagName('body')[0].appendChild(container);
+player.play();
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA 
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO 
+9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+
+<audio controls src="data:audio/ogg;base64" + BASE64_STRING />
+
+<video controls> 
+  <source type="video/webm" src="data:video/webm;base64," + BASE64_STRING> 
+  <source type="video/mp4" src="data:video/mp4;base64," + BASE64_STRING> 
+</video>

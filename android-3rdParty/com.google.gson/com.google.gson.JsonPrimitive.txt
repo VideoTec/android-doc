@@ -1,0 +1,23 @@
+https://google.github.io/gson/apidocs/com/google/gson/JsonPrimitive.html
+
+java.lang.Object
+    com.google.gson.JsonElement
+        com.google.gson.JsonPrimitive
+        
+A class representing a Json primitive value. 
+A primitive value is either a String, 
+a Java primitive, or a Java primitive wrapper type.
+
+Constructor and Description
+
+JsonPrimitive(Boolean bool)
+Create a primitive containing a boolean value.
+
+JsonPrimitive(Character c)
+Create a primitive containing a character.
+
+JsonPrimitive(Number number)
+Create a primitive containing a Number.
+
+JsonPrimitive(String string)
+Create a primitive containing a String value.

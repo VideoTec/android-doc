@@ -1,0 +1,8 @@
+http://fresco-cn.org/docs/concepts.html
+
+DraweeController
+DraweeController 负责和 image loader 交互
+（ Fresco 中默认为 image pipeline, 当然你也可以指定别的），
+可以创建一个这个类的实例，来实现对所要显示的图片做更多的控制。
+
+如果你还需要对Uri加载到的图片做一些额外的处理，那么你会需要这个类的。

@@ -1,0 +1,40 @@
+http://stackoverflow.com/questions/30887615/loading-drawable-image-resource-in-frescos-simpledraweeview
+
+o get the URI of the resource image to be loaded in Fresco, 
+use "res:/" 
+
+import com.facebook.common.util.UriUtil;
+
+Uri uri = new Uri.Builder()
+    .scheme(UriUtil.LOCAL_RESOURCE_SCHEME) // "res"
+    .path(String.valueOf(resId))
+    .build();
+// uri looks like res:/123456789
+simpleDraweeView.setImageURI(uri);
+You should be able to use that URI with a DraweeController too.
+
+Here are Fresco’s supported URIs.
+
+http://stackoverflow.com/questions/31111163/how-to-use-fresco-to-read-any-packages-gif-image-in-the-assets-directory/34892610
+
+At the moment, Fresco supports the following:
+Uri uri = Uri.parse("asset:///image.png");
+
+Which gets translated into:
+AssetManager.openFd("image.png");
+
+----------------------------------------------------------
+注释：系统定义 uri
+----------------------------------------------------------
+
+http://stackoverflow.com/questions/4896223/how-to-get-an-uri-of-an-image-resource-in-android
+
+instead of ContentResolver.SCHEME_ANDROID_RESOURCE, 
+which is used for URIs in a normal case. 
+系统定义 uri:
+"android.resource://[package]/[res id]"
+
+[package] is your package name
+[res id] is value of the resource ID, e.g. R.drawable.sample_1
+to stitch it together, use
+Uri path = Uri.parse("android.resource://your.package.name/" + R.drawable.sample_1);

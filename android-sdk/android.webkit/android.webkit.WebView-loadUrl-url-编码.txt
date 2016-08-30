@@ -1,0 +1,30 @@
+问题，WebView.loadUrl 应该自动编码方法。
+
+http://stackoverflow.com/questions/9238277/url-with-parameter-in-webview-not-working-in-android
+
+Welcome to a horrible known bug, that Google doesn't feel like fixing, or even addressing.
+http://code.google.com/p/android/issues/detail?id=17535
+
+change your url to:
+
+StringBuffer buffer=new StringBuffer("http://stage.realtylog.net/iPhone/functions.php?");
+buffer.append("?username="+URLEncoder.encode("xxxxxxx"));
+buffer.append("&id="+URLEncoder.encode("xxxxxxxx"));
+buffer.append("act="+URLEncoder.encode("readFileAndPrint"));
+webView.loadUrl(buffer.toString());
+
+http://stackoverflow.com/questions/3286067/url-encoding-in-android
+
+You don't encode the entire URL, only parts of it that come from "unreliable sources".
+
+String query = URLEncoder.encode("apples oranges", "utf-8");
+String url = "http://stackoverflow.com/search?q=" + query;
+Alternatively, you can use Strings.urlEncode(String str) of DroidParts that doesn't throw checked exceptions.
+
+Or use something like
+
+String uri = Uri.parse("http://...")
+                .buildUpon()
+                .appendQueryParameter("key", "val")
+                .build().toString();
+                

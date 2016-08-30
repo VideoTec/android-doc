@@ -1,0 +1,8 @@
+问题，
+        frCallingGifVoice = (SimpleDraweeView) findViewById(R.id.fr_calling_gif_voice);
+        frCallingGifVoice.setController(draweeController);
+        
+        frCallingGifVideo = (SimpleDraweeView) findViewById(R.id.fr_calling_gif_video);
+        frCallingGifVideo.setController(draweeController);
+        这里两个 drawee 对象设置了同一个 controller，先设置的就不显示了
+        后设置的，使，先设置的失效了。

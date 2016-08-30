@@ -1,0 +1,22 @@
+举例：
+
+"data":["200306038","100497292","200059928","202929973","100497578","202810758","100497270","202909790","100490991","100497306","100497678","202911423","201266528","100391586","100497468","100391850","202810756","100497579","202897132"]
+
+    private void getUserThumbs(JsonElement users, String cb) {
+        mUserThumbsJSCallback = "javascript:" + cb;
+        users.getAsJsonArray()
+    }
+
+更好的方法，参考：
+E:\doc\android\android-3rdParty\com.google.gson\com.google.gson.Gson-反序列化-fromJson-数组.txt
+String[] userIds = new Gson().fromJson(users, String[].class);
+
+https://google.github.io/gson/apidocs/com/google/gson/JsonArray.html
+
+java.lang.Object
+    com.google.gson.JsonElement
+        com.google.gson.JsonArray
+        
+A class representing an array type in Json. 
+An array is a list of JsonElements each of which can be of a different type. 
+This is an ordered list, meaning that the order in which elements are added is preserved.

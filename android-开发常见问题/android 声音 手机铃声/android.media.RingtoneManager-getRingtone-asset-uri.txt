@@ -1,0 +1,32 @@
+参考：
+E:\doc\android\android-sdk\android.net.Uri\android.net.Uri-raw-assets-drawable-资料引用.txt
+E:\doc\android\android-开发常见问题\android 声音 手机铃声
+
+例子：这个对吗？可以正常播放
+private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);
+
+http://stackoverflow.com/questions/8801122/set-notification-sound-from-assets-folder
+
+put ur mp3 file in res->raw folder, try to fetch sound file from raw folder.
+
+Uri path = Uri.parse("android.resource://com.androidbook.samplevideo/" + R.raw.myvideo);
+OR
+Uri path = Uri.parse("android.resource://com.androidbook.samplevideo/raw/myvideo");
+
+http://stackoverflow.com/questions/7976141/get-uri-of-mp3-file-stored-in-res-raw-folder-in-android
+
+Finally after searching a lot i found the solution.
+
+If you want to get any resource URI then there are two ways :
+
+Using Resource Name
+Syntax : android.resource://[package]/[res type]/[res name]
+Example :  Uri.parse("android.resource://com.my.package/drawable/icon");
+
+Using Resource Id
+Syntax : android.resource://[package]/[resource_id]
+Example : Uri.parse("android.resource://com.my.package/" + R.drawable.icon);
+
+This were the examples to get the URI of any image file stored in drawable folder.
+Similarly you can get URIs of res/raw folder.
+In my case i used 1st way ie. Using Resource Name

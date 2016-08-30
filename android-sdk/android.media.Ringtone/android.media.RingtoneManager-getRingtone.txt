@@ -1,0 +1,20 @@
+static Ringtone	getRingtone(Context context, Uri ringtoneUri)
+Returns a Ringtone for a given sound URI.
+
+Ringtone	getRingtone(int position)
+Gets a Ringtone for the ringtone at the given position in the Cursor.
+
+例子：
+Ringtone ringtone = RingtoneManager.getRingtone(mContext, ringtoneUri);
+
+private Ringtone getRingtone(Uri ringtoneUri) {
+    if (ringtoneUri == null) {
+        ringtoneUri = Settings.System.DEFAULT_RINGTONE_URI;
+    }
+
+    Ringtone ringtone = RingtoneManager.getRingtone(mContext, ringtoneUri);
+    if (ringtone != null) {
+        ringtone.setStreamType(AudioManager.STREAM_RING);
+    }
+    return ringtone;
+}
