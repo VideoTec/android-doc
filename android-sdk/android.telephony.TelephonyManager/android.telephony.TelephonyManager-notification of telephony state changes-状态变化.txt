@@ -1,0 +1,9 @@
+http://blog.csdn.net/yihongyuelan/article/details/32324335
+
+Phone状态对于三方应用来讲主要包括：
+
+TelephonyManager.CALL_STATE_IDLE
+TelephonyManager.CALL_STATE_RINGING
+TelephonyManager.CALL_STATE_OFFHOOK
+
+三种

@@ -1,0 +1,35 @@
+https://groups.google.com/forum/#!topic/google-gson/XPQerLWrgSI
+I'm working on integrating GSON into our Android app as well. 
+I think the main difference is that org.json just does simple json encoding/decoding 
+and not full object data binding.
+
+http://stackoverflow.com/questions/8121758/android-jsonobject-vs-gson
+GSON can use the Object definition to directly create an object of the desired type. 
+JSONObject needs to be parsed manually. 
+Thats the main difference.
+
+Another difference is that GSON can't fetch key values which sometimes can be a bother. 
+An easy workaround is to use one of them and 
+when you need the other just use toString() to switch them over.
+这句是说，当键名，不是合法的标识符的情况吗？如 "123":"str"
+
+as the others said, GSON should make mapping JSON to POJO much easier, 
+BUT, the latest GSON version (as I write, 2.2.2) 
+has serious issues with the latest Android API 17 (Android 4.2).
+Check this for information: http://code.google.com/p/google-gson/issues/detail?id=496
+If you are doing a new project now, 
+and want it to be compatible with Android 4.2, 
+either use an older GSON (1.7.1 works fine with Android 4.2, but is slower), 
+or find another solution.
+
+http://www.cnblogs.com/zhangcybb/p/3510246.html
+
+org.json.JSONObject与com.google.gson.Gson
+org.json库为JSON创始人编写的解析JSON的java库，
+Gson为Google为我们提供的解析JSON格式数据的库。
+
+Gson里最重要的对象有2个Gson 和GsonBuilder。
+
+Gson有2个最基本的方法
+1) toJson() – 转换java 对象到JSON
+2) fromJson() – 转换JSON到java对象

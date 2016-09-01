@@ -1,5 +1,6 @@
 参考：
 E:\doc\android\android-sdk\android.media.Ringtone\android.media.RingtoneManager-getRingtone-asset-uri.txt
+E:\doc\android\android-sdk\android.net.Uri\android.net.Uri-静态方法-parse-字符串类型-android.resource-res.txt
 
 http://stackoverflow.com/questions/8801122/set-notification-sound-from-assets-folder
 

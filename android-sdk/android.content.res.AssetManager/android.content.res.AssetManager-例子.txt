@@ -1,0 +1,188 @@
+package com.feinno.v6sdk;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.feinno.androidbase.utils.log.LogFeinno;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
+/**
+ * 内部用工具类
+ * Created by wangxiangfx on 2016/3/18.
+ */
+class V6SDKUtils {
+    static final String TAG_BASE = "RF_V6SDK_";
+    static final String TAG = TAG_BASE + V6SDKUtils.class.getSimpleName();
+
+    //按文件逐个复制
+    static void copyAssetsFileListTo(Context ctx, String dir) {
+        for(int i = 0; i < mScriptList.length; i++) {
+            File newFile = new File(dir + "/" + mScriptList[i]);
+            String oldFile = "v6sdk/" + mScriptList[i];
+            try {
+                if (!newFile.getParentFile().exists()) {
+                    newFile.getParentFile().mkdirs();
+                }
+                InputStream is = ctx.getAssets().open(oldFile);
+                FileOutputStream fos = new FileOutputStream(newFile);
+                byte[] buffer = new byte[1024];
+                int byteCount = 0;
+                while ((byteCount = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, byteCount);
+                }
+                fos.flush();
+                is.close();
+                fos.close();
+            } catch(Exception ex) {
+                LogFeinno.e(TAG, "copyAssetsFileListTo exception: " + ex.getMessage());
+            }
+        }
+    }
+    //递归复制
+    static void copyFilesFassets(Context context,String oldPath,String newPath) {
+        try {
+            String fileNames[] = context.getAssets().list(oldPath);
+            if (fileNames.length > 0) {
+                File file = new File(newPath);
+                file.mkdirs();
+                for (String fileName : fileNames) {
+                    copyFilesFassets(context,oldPath + "/" + fileName,newPath+"/"+fileName);
+                }
+            } else {
+                InputStream is = context.getAssets().open(oldPath);
+                FileOutputStream fos = new FileOutputStream(new File(newPath));
+                byte[] buffer = new byte[1024];
+                int byteCount=0;
+                while((byteCount=is.read(buffer))!=-1) {
+                    fos.write(buffer, 0, byteCount);
+                }
+                fos.flush();
+                is.close();
+                fos.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private static String[] mScriptList = {
+            "api.lua",
+            //"api.pb",
+            "all.pb",
+            "hex-toolkit.lua",
+            "log.lua",
+            "mqtt-3_1_1.lua",
+            "mqtt-codec-utils.lua",
+            "mqtt-ngcc-v6.lua",
+            "mqtt_client.lua",
+            //"notify.pb",
+            "protobuf.lua",
+            "utils.lua",
+            //"v6.pb",
+            //"message.pb",
+            "libs/binary_heap.lua",
+            "libs/copas.lua",
+            "libs/copas.lua.rongtalk",
+            "libs/copas_send_test.lua",
+            "libs/coxpcall.lua",
+            "libs/coxpcall.lua.rongtalk",
+            "libs/date.lua",
+            "libs/dkjson.lua",
+            "libs/httpd.lua",
+            "libs/httpd_test.lua",
+            "libs/https.lua",
+            "libs/json.lua",
+            "libs/ltn12.lua",
+            "libs/mbox.lua",
+            "libs/md5.lua",
+            "libs/mime.lua",
+            "libs/ml.lua",
+            "libs/nrepl.lua",
+            "libs/nrepl-client.lua",
+            "libs/nrepl_test.lua",
+            "libs/options.lua",
+            "libs/re.lua",
+            "libs/slaxdom.lua",
+            "libs/slaxml.lua",
+            "libs/smtp.lua",
+            "libs/socket.lua",
+            "libs/ssl.lua",
+            "libs/test.lua",
+            "libs/uuid.lua",
+            "libs/json/decode.lua",
+            "libs/json/encode.lua",
+            "libs/json/util.lua",
+            "libs/json/decode/composite.lua",
+            "libs/json/decode/number.lua",
+            "libs/json/decode/others.lua",
+            "libs/json/decode/state.lua",
+            "libs/json/decode/strings.lua",
+            "libs/json/decode/util.lua",
+            "libs/json/encode/array.lua",
+            "libs/json/encode/calls.lua",
+            "libs/json/encode/number.lua",
+            "libs/json/encode/object.lua",
+            "libs/json/encode/others.lua",
+            "libs/json/encode/output.lua",
+            "libs/json/encode/output_utility.lua",
+            "libs/json/encode/strings.lua",
+            "libs/nrepl/blocktest",
+            "libs/nrepl/client.lua",
+            "libs/nrepl/evaltest",
+            "libs/nrepl/ext.lua",
+            "libs/nrepl/FormatBeautiful.lua",
+            "libs/nrepl/html.lua",
+            "libs/nrepl/luarc.lua",
+            "libs/nrepl/ParseLua.lua",
+            "libs/nrepl/Scope.lua",
+            "libs/nrepl/srv.lua",
+            "libs/nrepl/Util.lua",
+            "libs/pl/app.lua",
+            "libs/pl/array2d.lua",
+            "libs/pl/class.lua",
+            "libs/pl/compat.lua",
+            "libs/pl/comprehension.lua",
+            "libs/pl/config.lua",
+            "libs/pl/data.lua",
+            "libs/pl/Date.lua",
+            "libs/pl/dir.lua",
+            "libs/pl/file.lua",
+            "libs/pl/func.lua",
+            "libs/pl/import_into.lua",
+            "libs/pl/init.lua",
+            "libs/pl/input.lua",
+            "libs/pl/lapp.lua",
+            "libs/pl/lexer.lua",
+            "libs/pl/List.lua",
+            "libs/pl/luabalanced.lua",
+            "libs/pl/Map.lua",
+            "libs/pl/MultiMap.lua",
+            "libs/pl/operator.lua",
+            "libs/pl/OrderedMap.lua",
+            "libs/pl/path.lua",
+            "libs/pl/permute.lua",
+            "libs/pl/pretty.lua",
+            "libs/pl/seq.lua",
+            "libs/pl/Set.lua",
+            "libs/pl/sip.lua",
+            "libs/pl/strict.lua",
+            "libs/pl/stringio.lua",
+            "libs/pl/stringx.lua",
+            "libs/pl/tablex.lua",
+            "libs/pl/template.lua",
+            "libs/pl/test.lua",
+            "libs/pl/text.lua",
+            "libs/pl/types.lua",
+            "libs/pl/url.lua",
+            "libs/pl/utils.lua",
+            "libs/pl/xml.lua",
+            "libs/socket/ftp.lua",
+            "libs/socket/headers.lua",
+            "libs/socket/http.lua",
+            "libs/socket/tp.lua",
+            "libs/socket/url.lua",
+            "libs/ssl/https.lua"
+    };
+}

@@ -1,0 +1,7 @@
+E:\doc\android\android-sdk\android.net.Uri\android.net.Uri-raw-assets-drawable-资料引用.txt
+
+put ur mp3 file in res->raw folder, try to fetch sound file from raw folder.
+
+Uri path = Uri.parse("android.resource://com.androidbook.samplevideo/" + R.raw.myvideo);
+OR
+Uri path = Uri.parse("android.resource://com.androidbook.samplevideo/raw/myvideo");

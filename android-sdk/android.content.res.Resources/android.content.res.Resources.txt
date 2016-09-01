@@ -1,6 +1,7 @@
 http://developer.android.com/intl/zh-cn/reference/android/content/res/Resources.html
 
 处于 asset 管理类之上
+
 Class for accessing an application's resources. 
 This sits on top of the asset manager of the application 
 (accessible through getAssets()) and 

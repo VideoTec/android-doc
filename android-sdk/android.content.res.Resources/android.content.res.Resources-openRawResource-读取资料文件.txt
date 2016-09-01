@@ -1,0 +1,13 @@
+参考：
+E:\doc\android\android-xml\android-xml-resource\android-resource-type-raw-读取文件.txt
+
+InputStream	openRawResource(int id, TypedValue value)
+Open a data stream for reading a raw resource.
+
+InputStream	openRawResource(int id)
+Open a data stream for reading a raw resource.
+
+Open a data stream for reading a raw resource. 
+This can only be used with resources whose value is the name of an asset file -- 
+that is, it can be used to open drawable, sound, and raw resources; 
+it will fail on string and color resources.

@@ -1,0 +1,12 @@
+http://stackoverflow.com/questions/6463580/how-to-print-the-data-in-byte-array-as-characters/6463665
+
+How about Arrays.toString(byteArray)?
+
+Here's some compilable code:
+
+byte[] byteArray = new byte[] { -1, -128, 1, 127 };
+System.out.println(Arrays.toString(byteArray));
+Output:
+
+[-1, -128, 1, 127]
+Why re-invent the wheel...

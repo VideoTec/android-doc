@@ -1,6 +1,7 @@
 参考：
 E:\doc\android\android-sdk\android.net.Uri\android.net.Uri-raw-assets-drawable-资料引用.txt
 E:\doc\android\android-开发常见问题\android 声音 手机铃声
+E:\doc\android\android-sdk\android.net.Uri\android.net.Uri-静态方法-parse-字符串类型-android.resource-res.txt
 
 例子：这个对吗？可以正常播放
 private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);

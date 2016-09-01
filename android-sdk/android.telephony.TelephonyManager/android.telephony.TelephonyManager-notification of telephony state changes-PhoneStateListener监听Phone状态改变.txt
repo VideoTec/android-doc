@@ -1,0 +1,31 @@
+http://blog.csdn.net/yihongyuelan/article/details/32324335
+
+通过广播的方式可以监听"去电状态"和"Phone状态"改变，
+而如果通过PhoneStateListener则只能监听Phone状态改变
+
+@Override  
+protected void onCreate(Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+    setContentView(R.layout.activity_main);  
+    //TELEPHONY_SERVICE equals "phone"  
+    TelephonyManager mTelephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);  
+    mTelephonyManager.listen(new PhoneStateListener(){  
+    @Override  
+    public void onCallStateChanged(int state, String incomingNumber) {  
+        switch (state) {  
+        case TelephonyManager.CALL_STATE_IDLE:  
+            Log.i("Seven","Call state is IDLE");  
+            break;  
+        case TelephonyManager.CALL_STATE_RINGING:  
+            Log.i("Seven","Call state is RINGING");  
+            break;  
+        case TelephonyManager.CALL_STATE_OFFHOOK:  
+            Log.i("Seven","Call state is OFFHOOK");  
+            break;  
+        default:  
+            break;  
+        }  
+        super.onCallStateChanged(state, incomingNumber);  
+    }  
+     }, PhoneStateListener.LISTEN_CALL_STATE);  
+}  

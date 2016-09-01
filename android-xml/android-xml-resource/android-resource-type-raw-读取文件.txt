@@ -1,0 +1,17 @@
+http://stackoverflow.com/questions/9563373/the-reason-for-assets-and-raw-resources-in-android
+
+From the Android documentation, the raw/ directory is used for:
+
+Arbitrary files to save in their raw form. 
+To open these resources with a raw InputStream, 
+call Resources.openRawResource() with the resource ID, which is R.raw.filename.
+
+However, if you need access to original file names and file hierarchy, 
+you might consider saving some resources in the assets/ directory (instead of res/raw/). 
+Files in assets/ are not given a resource ID, 
+so you can read them only using AssetManager.
+
+In one line, 
+the files in the raw/ directory are not compiled by the platform, 
+are assigned a resource ID and cannot be grouped into sub-folders whereas 
+if you want the otherwise use the assets/ directory.

@@ -1,0 +1,33 @@
+示例：
+private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);
+
+http://stackoverflow.com/questions/8110236/get-file-path-for-uri-parse-in-android
+
+pass the path to your URI path like as follows.may be in two ways:
+
+1.Uri path=Uri.parse("android.resource://" + PACKAGE_NAME + "/" + R.drawable.image);
+2. Uri path=uri.parse("android.resource://"+PACKAGE_NAME+"/"+"drawable/image"
+
+Uri path = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.image));
+
+另：
+https://developer.android.com/reference/android/content/ContentResolver.html#SCHEME_ANDROID_RESOURCE
+ContentResolver.
+String SCHEME_ANDROID_RESOURCE
+Constant Value: "android.resource"
+
+另：
+https://developer.android.com/reference/android/content/res/Resources.html#getResourcePackageName(int)
+
+getResourcePackageName
+
+Added in API level 1
+String getResourcePackageName (int resid)
+Return the package name for a given resource identifier.
+
+http://www.aplesson.com/?p=658
+Resources myResources = getResources（）；  
+Uri uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+    + myResources.getResourcePackageName(R.drawable.calendar_days_01) + "/"
+    + myResources.getResourceTypeName(R.drawable.calendar_days_01) + "/"
+    + myResources.getResourceEntryName(R.drawable.calendar_days_01));

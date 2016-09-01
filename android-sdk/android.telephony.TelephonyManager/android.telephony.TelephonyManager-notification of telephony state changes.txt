@@ -1,0 +1,48 @@
+String	ACTION_PHONE_STATE_CHANGED
+Broadcast intent action indicating that the call state on the device has changed.
+
+String	EXTRA_INCOMING_NUMBER
+The lookup key used with the ACTION_PHONE_STATE_CHANGED broadcast 
+for a String containing the incoming phone number.
+
+String	EXTRA_STATE
+The lookup key used with the ACTION_PHONE_STATE_CHANGED broadcast 
+for a String containing the new call state
+
+------------------------------------------------------
+状态 tManager.getCallState
+------------------------------------------------------
+
+int CALL_STATE_RINGING
+Device call state: Ringing. 
+A new call arrived and is ringing or waiting. 
+In the latter case, another call is already active.
+
+int CALL_STATE_OFFHOOK
+Device call state: Off-hook. 
+At least one call exists that is dialing, active, 
+or on hold, and no calls are ringing or waiting.
+
+int CALL_STATE_IDLE
+Device call state: No activity.
+
+------------------------------------------------------
+ACTION_PHONE_STATE_CHANGED
+------------------------------------------------------
+
+Added in API level 3
+String ACTION_PHONE_STATE_CHANGED
+
+Broadcast intent action indicating that the call state on the device has changed.
+
+The EXTRA_STATE extra indicates the new call state. 
+If the new state is RINGING, 
+a second extra EXTRA_INCOMING_NUMBER provides the incoming phone number as a String.
+
+Requires the READ_PHONE_STATE permission.
+
+sticky[英][ˈstɪki] [美][ˈstɪki]
+adj.粘性的；热湿的，闷热的；极不愉快的；不动的
+
+This was a sticky broadcast in version 1.0, but it is no longer sticky. 
+Instead, use getCallState() to synchronously query the current call state.

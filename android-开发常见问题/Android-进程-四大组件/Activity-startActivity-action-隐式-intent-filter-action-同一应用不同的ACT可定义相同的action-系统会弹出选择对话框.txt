@@ -1,0 +1,39 @@
+圈子调用选择图片接口时，弹出选择框，且是两个 1.x 的选择。
+
+Intent intent = new Intent("com.feinno.rongfly.select.image");
+intent.putExtra("Extra_Session_Select_Image_For3th", true);
+startActivityForResult(intent, 1);
+
+返回结果
+if (RESULT_OK == resultCode) {
+    String[] imgs = data.getStringArrayExtra("CompressFiles");
+    for (String img : imgs) {
+        Log.i(TAG, "选择的图片是: " + img);
+    }
+}
+
+原因是： rongfly 的 androidmanifest.xml 中定义了两个相同action的ACT
+
+
+        <activity
+            android:name=".ui.select.image.activity.SelectLocalImageActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.feinno.rongfly.select.image" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!--选择图片 start-->
+        <activity
+            android:name=".ui.select.picker.ui.ImageGridActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImagePickerTheme">
+            <intent-filter>
+                <action android:name="com.feinno.rongfly.select.image" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>

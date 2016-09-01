@@ -1,0 +1,2 @@
+E:\doc\android\android-sdk\android.content.res.Resources
+E:\doc\android\android-sdk\android.content.res.AssetManager

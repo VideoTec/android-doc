@@ -1,0 +1,57 @@
+http://blog.csdn.net/yihongyuelan/article/details/32324335
+
+动态注册广播
+        //Dynamic register the broadcast  
+        IntentFilter filter = new IntentFilter(); 
+        //"android.intent.action.PHONE_STATE"  
+        filter.addAction(TelephonyManager.ACTION_PHONE_STATE_CHANGED);         //"android.intent.action.NEW_OUTGOING_CALL"  
+        filter.addAction(Intent.ACTION_NEW_OUTGOING_CALL);         
+        mPhoneStateChangedReceiver = new PhoneStateChangedReceiver();  
+        registerReceiver(mPhoneStateChangedReceiver, filter);  
+        
+静态注册广播
+//1.2 静态注册广播  
+//与动态注册的区别主要是需要在AndroidManifest.xml中添加<receiver>标签  
+<receiver   
+    android:name="com.seven.androidphonestatelistenerdemo.MainActivity$PhoneStateChangedReceiver" >  
+    <intent-filter>  
+        <action android:name="android.intent.action.PHONE_STATE" />  
+        <action android:name="android.intent.action.NEW_OUTGOING_CALL" />  
+    </intent-filter>  
+</receiver>  
+  
+//注意：无论是静态还是动态注册均需要添加相应的权限  
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />  
+<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />  
+        
+--------------------------------------------------------------------------------------------------
+https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL
+--------------------------------------------------------------------------------------------------
+
+Broadcast Action: An outgoing call is about to be placed.
+
+The Intent will have the following extra value:
+EXTRA_PHONE_NUMBER - the phone number originally intended to be dialed.
+
+
+------------------------------------------------------
+https://developer.android.com/reference/android/telephony/TelephonyManager.html
+ACTION_PHONE_STATE_CHANGED
+------------------------------------------------------
+
+Added in API level 3
+String ACTION_PHONE_STATE_CHANGED
+
+Broadcast intent action indicating that the call state on the device has changed.
+
+The EXTRA_STATE extra indicates the new call state. 
+If the new state is RINGING, 
+a second extra EXTRA_INCOMING_NUMBER provides the incoming phone number as a String.
+
+Requires the READ_PHONE_STATE permission.
+
+sticky[英][ˈstɪki] [美][ˈstɪki]
+adj.粘性的；热湿的，闷热的；极不愉快的；不动的
+
+This was a sticky broadcast in version 1.0, but it is no longer sticky. 
+Instead, use getCallState() to synchronously query the current call state.

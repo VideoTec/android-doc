@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/19575474/gradle-how-to-exclude-a-particular-package-from-a-jar
+
+If you have some sources that you don't want to be compiled, you have to declare a filter for the sources, not for the class files that are put in the Jar. Something like:
+
+sourceSets {
+    main {
+        java {
+            include 'com/ourcompany/somepackage/activityadapter/**'
+            include 'com/ourcompany/someotherpackage/**'
+            exclude 'com/ourcompany/someotherpackage/polling/**'
+        }
+    }
+}

@@ -1,0 +1,23 @@
+参考：
+E:\doc\android\android-sdk\android.content.res.AssetManager
+
+http://stackoverflow.com/questions/9563373/the-reason-for-assets-and-raw-resources-in-android
+
+The main differences between the raw folder and the Assets folder.
+
+1) Since raw is a subfolder of Resources (res), 
+Android will automatically generate an ID for any file located inside it. 
+This ID is then stored an the R class that will act as a reference to a file, 
+meaning it can be easily accessed 
+from other Android classes and methods and even in Android XML files. 
+Using the automatically generated ID 
+is the fastest way to have access to a file in Android.
+
+2) The Assets folder is an “appendix” directory. 
+The R class does not generate IDs for the files placed there, 
+so its less compatible with some Android classes and methods. 
+Also, it’s much slower to access a file inside it, 
+since you will need to get a handle to it based on a String. 
+However some operations are more easily done by placing files in this folder, 
+like copying a database file to the system’s memory. 
+There’s no (easy) way to create an Android XML reference to files inside the Assets folder.

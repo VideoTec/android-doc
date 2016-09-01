@@ -1,0 +1,36 @@
+教训：
+e.getMessage 有可能返回空
+
+代码：
+    public void onGetToken(View v) {
+        try {
+            String token = mRFServiceInterface.getToken();
+            boolean isLogin = mRFServiceInterface.isLogin();
+            Log.i(TAG, "token: " + token);
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+crash 日志
+
+Caused by: java.lang.NullPointerException: println needs a message
+at android.util.Log.println_native(Native Method)
+at android.util.Log.e(Log.java:232)
+at com.example.wangxiangfx.testrfinterface.MainActivity.onGetToken(MainActivity.java:269)
+at java.lang.reflect.Method.invokeNative(Native Method) 
+
+http://stackoverflow.com/questions/11449589/java-lang-nullpointerexception-println-needs-a-message
+
+Maybe when you do
+
+Log.d("sql_id", cursor.getString(0)); 
+cursor.getString(0) return null, and then it crash.
+
+Try to do :
+
+if(cursor.getString(0) != null) {
+    Log.d("sql_id", cursor.getString(0)); 
+}
+
+Else show us de.bodprod.dkr.BosLstDetailMap.onCreate(BosLstDetailMap.java:43)

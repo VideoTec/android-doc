@@ -1,0 +1,46 @@
+http://stackoverflow.com/questions/25075369/broadcastreceiver-onreceive-not-firing
+
+可能的原因是：
+You might try uninstalling/reinstalling your app since you've removed Hangouts. 
+Hangouts somehow is able to hijack and take control of the priority chain, 
+so it may still have some funky effect leftover. 
+Otherwise, your code and setup seem right. 
+Oh, and reboot your device, too.
+
+---------------------------------------------------
+出错的代码 - 删除应用，重新安装也没用。最后重启机器，就好了
+---------------------------------------------------
+    private void broadCastNotify(FtProtocolNotify notify){
+        LogFeinno.e(TAG, "broadCastNotify : " + notify);
+        try{
+            Intent intent = new Intent();
+            intent.setAction(FTProtocolConfig.Action_FtProtocol_Broadcast);
+            intent.putExtra(FTProtocolConfig.Extra_FtProtocol_Notify,notify);
+            mContext.sendBroadcast(intent);
+        }catch(Throwable e){
+            LogFeinno.e(TAG, "broadCastNotify Throwable: ",e);
+        }
+
+    }
+    
+public class NotifyReceiver extends BroadcastReceiver {
+    private static final String TAG = RFModuleConfig.RFLogLogin+ NotifyReceiver.class.getSimpleName();
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        LogFeinno.e(TAG, "onReceive action = " + intent.getAction());
+        
+AndroidManifetst.xml
+        <receiver
+            android:name=".core.broadcast.NotifyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.feinno.androidprotocol.Notify" />
+                <action android:name="com.feinno.androidprotocol.NetChanged" />
+                <action android:name="com.feinno.androidprotocol.SDKStatusChanged" />
+                <action android:name="com.feinno.androidprotocol.Disconnect" />
+                <action android:name="com.feinno.androidprotocol.StartMainProcess" />
+                <action android:name="com.feinno.androidprotocol.StartPushProcess" />
+            </intent-filter>
+        </receiver>

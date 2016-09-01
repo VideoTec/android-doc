@@ -1,0 +1,16 @@
+https://developer.android.com/reference/android/net/Uri.html#parse(java.lang.String)
+
+parse
+
+Added in API level 1
+Uri parse (String uriString)
+Creates a Uri which parses the given encoded URI string.
+
+Parameters
+uriString	String: an RFC 2396-compliant, encoded URI
+
+Returns
+Uri	Uri for this given uri string
+
+Throws
+NullPointerException	if uriString is null
