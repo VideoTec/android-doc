@@ -1,0 +1,6 @@
+http://stackoverflow.com/questions/34919587/is-it-possible-to-detect-if-android-webviews-goback-will-load-content-from-ca
+
+If the load isn't from the cache, 
+then it will go through WebViewClient.shouldInterceptRequest. 
+Note that in the case of goBack, the shouldOverrideUrlLoading will not be called, 
+as it is not called for navigations started via the Java API calls.

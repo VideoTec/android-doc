@@ -1,0 +1,10 @@
+Android Studio v2.1.3 (August 2016)
+
+This update adds compatibility with Gradle 2.14.1, 
+which includes performance improvements, new features, and an important security fix. 
+For more details, see the Gradle release notes.
+
+By default, new projects in Android Studio 2.1.3 use Gradle 2.14.1. 
+For existing projects, the IDE prompts you to upgrade to Gradle 2.14.1 and 
+Android Plugin for Gradle 2.1.3, 
+which is required when using Gradle 2.14.1 and higher.

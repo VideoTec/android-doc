@@ -1,0 +1,1 @@
+E:\doc\android\android-开发常见问题\异常总结\android.view.InflateException Binary XML file line #13 Error inflating class android.support.v7.widget.CardView.txt

@@ -1,0 +1,5 @@
+ios 有在开始加载网页内容前有个事件
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
+
+没有找到。
+WebChromeClient.onCreateWindow 不知道，什么时候调用，没有测试出来。

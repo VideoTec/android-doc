@@ -1,0 +1,110 @@
+融飞 集成 圈子时问题
+
+--------------------------------------------
+解决方法
+--------------------------------------------
+AndroidManifest.xml
+
+    <application
+        android:name=".application.RFApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"> 
+        
+styles.xml
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme"> 改成 Theme.AppCompat.Light
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+--------------------------------------------
+异常信息
+--------------------------------------------
+Process: com.feinno.rongfly:circle, PID: 18796
+  java.lang.RuntimeException: Unable to start activity ComponentInfo{com.feinno.rongfly/com.feinno.circle.mvp.launch.StartActivity}: android.view.InflateException: Binary XML file line #13: Error inflating class android.support.v7.widget.CardView
+      at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2484)
+      at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2546)
+      at android.app.ActivityThread.access$800(ActivityThread.java:154)
+      at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1430)
+      at android.os.Handler.dispatchMessage(Handler.java:102)
+      at android.os.Looper.loop(Looper.java:135)
+      at android.app.ActivityThread.main(ActivityThread.java:5453)
+      at java.lang.reflect.Method.invoke(Native Method)
+      at java.lang.reflect.Method.invoke(Method.java:372)
+      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:952)
+      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:747)
+   Caused by: android.view.InflateException: Binary XML file line #13: Error inflating class android.support.v7.widget.CardView
+      at android.view.LayoutInflater.createView(LayoutInflater.java:639)
+      at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:749)
+      at android.view.LayoutInflater.rInflate(LayoutInflater.java:812)
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:510)
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:420)
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:371)
+      at com.feinno.publibrary.base.BaseActivity.onCreate(BaseActivity.java:73)
+      at android.app.Activity.performCreate(Activity.java:6053)
+      at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1109)
+      at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2437)
+      at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2546) 
+      at android.app.ActivityThread.access$800(ActivityThread.java:154) 
+      at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1430) 
+      at android.os.Handler.dispatchMessage(Handler.java:102) 
+      at android.os.Looper.loop(Looper.java:135) 
+      at android.app.ActivityThread.main(ActivityThread.java:5453) 
+      at java.lang.reflect.Method.invoke(Native Method) 
+      at java.lang.reflect.Method.invoke(Method.java:372) 
+      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:952) 
+      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:747) 
+   Caused by: java.lang.reflect.InvocationTargetException
+      at java.lang.reflect.Constructor.newInstance(Native Method)
+      at java.lang.reflect.Constructor.newInstance(Constructor.java:288)
+      at android.view.LayoutInflater.createView(LayoutInflater.java:613)
+      at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:749) 
+      at android.view.LayoutInflater.rInflate(LayoutInflater.java:812) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:510) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:420) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:371) 
+      at com.feinno.publibrary.base.BaseActivity.onCreate(BaseActivity.java:73) 
+      at android.app.Activity.performCreate(Activity.java:6053) 
+      at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1109) 
+      at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2437) 
+      at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2546) 
+      at android.app.ActivityThread.access$800(ActivityThread.java:154) 
+      at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1430) 
+      at android.os.Handler.dispatchMessage(Handler.java:102) 
+      at android.os.Looper.loop(Looper.java:135) 
+      at android.app.ActivityThread.main(ActivityThread.java:5453) 
+      at java.lang.reflect.Method.invoke(Native Method) 
+      at java.lang.reflect.Method.invoke(Method.java:372) 
+      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:952) 
+      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:747) 
+   Caused by: java.lang.RuntimeException: Failed to resolve attribute at index 0
+      at android.content.res.TypedArray.getDrawable(TypedArray.java:747)
+      at android.widget.FrameLayout.<init>(FrameLayout.java:123)
+      at android.widget.FrameLayout.<init>(FrameLayout.java:111)
+      at android.widget.FrameLayout.<init>(FrameLayout.java:107)
+      at android.support.v7.widget.CardView.<init>(CardView.java:109)
+      at java.lang.reflect.Constructor.newInstance(Native Method) 
+      at java.lang.reflect.Constructor.newInstance(Constructor.java:288) 
+      at android.view.LayoutInflater.createView(LayoutInflater.java:613) 
+      at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:749) 
+      at android.view.LayoutInflater.rInflate(LayoutInflater.java:812) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:510) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:420) 
+      at android.view.LayoutInflater.inflate(LayoutInflater.java:371) 
+      at com.feinno.publibrary.base.BaseActivity.onCreate(BaseActivity.java:73) 
+      at android.app.Activity.performCreate(Activity.java:6053) 
+      at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1109) 
+      at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2437) 
+      at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2546) 
+      at android.app.ActivityThread.access$800(ActivityThread.java:154) 
+      at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1430) 
+      at android.os.Handler.dispatchMessage(Handler.java:102) 
+      at android.os.Looper.loop(Looper.java:135) 
+      at android.app.ActivityThread.main(ActivityThread.java:5453) 
+      at java.lang.reflect.Method.invoke(Native Method) 
+      at java.lang.reflect.Method.invoke(Method.java:372) 
+      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:952) 
+      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:747) 
