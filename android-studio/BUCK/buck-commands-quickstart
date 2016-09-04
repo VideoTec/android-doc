@@ -1,0 +1,23 @@
+touch .buckconfig
+buck quickstart --type android --dest-dir .
+
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project/buck-out/gen/apps/myapp$ buck quickstart --help
+ --android-sdk VAL                      : Android SDK directory
+ --dest-dir VAL                         : Destination project directory
+ --help                                 : Prints the available options and
+                                          exits.
+ --load-limit (-L) N                    : [Float] Do not start new jobs when
+                                          system load is above this level. See
+                                          uptime(1).
+ --no-cache                             : Whether to ignore the [cache]
+                                          declared in .buckconfig.
+ --num-threads (-j) N                   : Default is 1.25 * num processors.
+ --output-test-events-to-file           : Serialize test-related event-bus
+ (--output-events-to-file) VAL            events to the given file as
+                                          line-oriented JSON objects.
+ --profile-buck-parser                  : Enable profiling of buck.py internals
+                                          (not the target being compiled) in
+                                          the debuglog and trace.
+ --type [ANDROID | IOS]                 : Type of project
+ --verbose (-v) N                       : Specify a number between 1 and 10.
+

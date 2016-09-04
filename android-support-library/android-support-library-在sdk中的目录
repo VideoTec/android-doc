@@ -1,0 +1,34 @@
+/home/wangxiang/Android/Sdk/extras/android/m2repository/com/android/support
+
+wangxiang@wangxiang-M68MT-S2P:~/Android/Sdk/extras/android/m2repository/com/android/support$ ls -l
+总用量 116
+drwxrwxr-x 13 wangxiang wangxiang 4096 9月   4 11:10 animated-vector-drawable
+drwxrwxr-x 30 wangxiang wangxiang 4096 9月   4 11:10 appcompat-v7
+drwxrwxr-x 25 wangxiang wangxiang 4096 9月   4 11:10 cardview-v7
+drwxrwxr-x  4 wangxiang wangxiang 4096 9月   4 11:10 constraint
+drwxrwxr-x 17 wangxiang wangxiang 4096 9月   4 11:10 customtabs
+drwxrwxr-x 19 wangxiang wangxiang 4096 9月   4 11:10 design
+drwxrwxr-x 31 wangxiang wangxiang 4096 9月   4 11:10 gridlayout-v7
+drwxrwxr-x 25 wangxiang wangxiang 4096 9月   4 11:10 leanback-v17
+drwxrwxr-x 30 wangxiang wangxiang 4096 9月   4 11:10 mediarouter-v7
+drwxrwxr-x  4 wangxiang wangxiang 4096 9月   4 11:10 multidex
+drwxrwxr-x  4 wangxiang wangxiang 4096 9月   4 11:10 multidex-instrumentation
+drwxrwxr-x 25 wangxiang wangxiang 4096 9月   4 11:10 palette-v7
+drwxrwxr-x 18 wangxiang wangxiang 4096 9月   4 11:10 percent
+drwxrwxr-x 17 wangxiang wangxiang 4096 9月   4 11:10 preference-leanback-v17
+drwxrwxr-x 17 wangxiang wangxiang 4096 9月   4 11:10 preference-v14
+drwxrwxr-x 17 wangxiang wangxiang 4096 9月   4 11:10 preference-v7
+drwxrwxr-x 16 wangxiang wangxiang 4096 9月   4 11:10 recommendation
+drwxrwxr-x 25 wangxiang wangxiang 4096 9月   4 11:10 recyclerview-v7
+drwxrwxr-x 27 wangxiang wangxiang 4096 9月   4 11:10 support-annotations
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 support-compat
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 support-core-ui
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 support-core-utils
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 support-fragment
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 support-media-compat
+drwxrwxr-x 31 wangxiang wangxiang 4096 9月   4 11:10 support-v13
+drwxrwxr-x 31 wangxiang wangxiang 4096 9月   4 11:10 support-v4
+drwxrwxr-x 13 wangxiang wangxiang 4096 9月   4 11:10 support-vector-drawable
+drwxrwxr-x  9 wangxiang wangxiang 4096 9月   4 11:10 test
+drwxrwxr-x  3 wangxiang wangxiang 4096 9月   4 11:10 transition
+

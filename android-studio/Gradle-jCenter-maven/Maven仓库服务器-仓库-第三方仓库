@@ -1,0 +1,11 @@
+Twitter的Fabric.io 就是这种情况，
+它们在https://maven.fabric.io/public上维护了一个自己的Maven仓库。
+如果你想使用Fabric.io的library，你必须自己如下定义仓库的url
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    compile 'com.crashlytics.sdk.android:crashlytics:2.2.4@aar'
+}

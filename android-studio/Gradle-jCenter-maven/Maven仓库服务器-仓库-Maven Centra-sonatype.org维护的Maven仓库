@@ -1,0 +1,8 @@
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+整个仓库
+https://oss.sonatype.org/content/repositories/releases/

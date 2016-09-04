@@ -1,0 +1,8 @@
+AS 2.1.3 可以自动连接到设备。不需要特殊的设置。
+
+wangxiang@wangxiang-M68MT-S2P:~/Android/Sdk/platform-tools$ ./adb devices
+List of devices attached
+6O5809A30476	device
+
+注意，连接设备后，会弹出一个窗口。自动挂载到系统中。
+当关闭这个窗口时，会断开连接。

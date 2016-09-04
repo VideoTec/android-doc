@@ -1,0 +1,53 @@
+What happens when services.gradle.org does down?
+
+它和Groovy里的Grape类似。如果目标机器上没有Gradle，包装器将先下载安装合适版本的Gradle，然后再运行相应的任务。
+如果有，但是版本不同，它也可以保证构建工具本身的版本相同。
+
+出发点是好的，但是现实确实复杂的。
+因为默认下载的地址http://services.gradle.org/在中国访问速度很慢很慢，
+而且需要下载的文件大小还很大，一般有40+M,基本上是不能下载成功的。
+
+Wrapper任务有一个名为distributionUrl的属性，直接修改它指定新的下载地址就行了
+可以在build.gradle中修改，比如
+
+task prepareWrapper(type: Wrapper) {
+  gradleVersion ='1.12'
+  distributionUrl ='alternative.location'
+}
+
+或者创建gradle-wrapper.properties文件
+distributionUrl=http://some.location.net/gradle-distributions/gradle-1.12-bin.zip
+
+修改 Android Studio项目下的 gradle\wrapper\gradle-wrapper.properties文件
+
+------------------------------------------------
+Gradle Repositories
+------------------------------------------------
+
+Gradle中的依赖会根据配置自动解析，而
+Libgdx Gradle模板使用了mavenCentral(),这是maven的中央仓库，速度实在一般，使用镜像替换之。
+
+Oschina提供了镜像，地址为
+http://maven.oschina.net/content/groups/public/。
+
+用以下语句替换mavenCentral()就可以了。
+
+maven {
+url'http://maven.oschina.net/content/groups/public/'
+}
+
+可以使用gradlew tasks来检测依赖是否下载成功。
+
+---------------------------------------------------------------------------------
+https\://services.gradle.org/distributions/gradle-2.10-all.zip
+---------------------------------------------------------------------------------
+下载不了 gradle-2.10-all.zip 的解决方法，使用百度云离线下载，再从云上下载下来。
+注意 ： 下载时指定 http://services.gradle.org/distributions/ 非ssl连接
+再按照 上面 说的复制 到 gradle/wrapper 上下，
+并修改 gradle-wrapper.properties 的 distributionUrl。
+
+重新同步 gradle 文件，因为使用了 
+'com.android.tools.build:gradle:2.1.3'
+提示要更新 gradle 工具，至 gradle-2.14.1-all.zip，点同意，修改了 gradle-wrapper.properties
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.14.1-all.zip
+这个文件就自动下载下来。没有被墙。[可能是 用 http 访问了次的原因吧]

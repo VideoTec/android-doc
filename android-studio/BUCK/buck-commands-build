@@ -1,0 +1,72 @@
+
+
+Thanks for installing Buck!
+
+In this quickstart project, the file apps/myapp/BUCK defines the build rules. 
+
+At this point, you should move into the project directory and try running:
+
+    buck build //apps/myapp:app
+
+or:
+
+    buck build app
+
+See .buckconfig for a full list of aliases.
+
+If you have an Android device connected to your computer, you can also try:
+
+    buck install app
+
+This information is located in the file README.md if you need to access it
+later.
+
+----------------------------------------------------------------------------------------------------------
+https://buckbuild.com/command/build.html
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ buck build --help
+----------------------------------------------------------------------------------------------------------
+ --build-report PATH                    : File where build report will be
+                                          written.
+ --deep                                 : Perform a "deep" build, which makes
+                                          the output of all transitive
+                                          dependencies available.
+ --help                                 : Prints the available options and
+                                          exits.
+ --keep-going                           : Keep going when some targets can't be
+                                          made.
+ --load-limit (-L) N                    : [Float] Do not start new jobs when
+                                          system load is above this level. See
+                                          uptime(1).
+ --no-cache                             : Whether to ignore the [cache]
+                                          declared in .buckconfig.
+ --num-threads (-j) N                   : Default is 1.25 * num processors.
+ --output-test-events-to-file           : Serialize test-related event-bus
+ (--output-events-to-file) VAL            events to the given file as
+                                          line-oriented JSON objects.
+ --populate-cache                       : Performs a cache population, which
+                                          makes the output of all unchanged
+                                          transitive dependencies available (if
+                                          these outputs are available in the
+                                          remote cache). Does not build changed
+                                          or unavailable dependencies locally.
+ --profile-buck-parser                  : Enable profiling of buck.py internals
+                                          (not the target being compiled) in
+                                          the debuglog and trace.
+ --report-absolute-paths                : Reports errors using absolute paths
+                                          to the source files instead of
+                                          relative paths.
+ --shallow                              : Perform a "shallow" build, which only
+                                          makes the output of all explicitly
+                                          listed targets available.
+ --show-full-output                     : Print the absolute path to the output
+                                          for each of the built rules.
+ --show-output                          : Print the path to the output for each
+                                          of the built rules relative to the
+                                          cell.
+ --show-rulekey                         : Print the rulekey for each of the
+                                          built rules.
+ --verbose (-v) N                       : Specify a number between 1 and 10.
+

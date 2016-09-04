@@ -1,0 +1,52 @@
+android_resource(
+  name = 'res',
+  res = './app/src/main/res',
+  package = 'com.example.wangxiang.myapplication',
+  visibility = ['PUBLIC'],
+)
+
+--------------------------------------
+build //:res 出错
+--------------------------------------
+
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/MyApplication$ buck build //:res
+The following resources were not found when processing /home/wangxiang/AndroidStudioProjects/MyApplication/app/src/main/res: 
+RDotTxtEntry{idType=int, type=string, name=appbar_scrolling_view_behavior, idValue=0x00000000}
+
+BUILD FAILED: //:res failed with exit code 1:
+generate_resource_ids
+[-] PROCESSING BUCK FILES...FINISHED 0.0s
+[-] DOWNLOADING... (0.00 B/S AVG, TOTAL: 0.00 B, 0 Artifacts)
+[-] BUILDING...FINISHED 0.1s [100%] (1/1 JOBS, 0 UPDATED, 0 [0.0%] CACHE MISS)
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/MyApplication$ 
+
+https://buckbuild.com/javadoc/com/facebook/buck/android/aapt/RDotTxtEntry.IdType.html
+java.lang.Object
+java.lang.Enum<RDotTxtEntry.IdType>
+com.facebook.buck.android.aapt.RDotTxtEntry.IdType
+
+
+--------------------------------------
+分析原因
+--------------------------------------
+name=appbar_scrolling_view_behavior
+
+android.support.design.R
+
+--------------------------------------
+解决方法，为资源规则，添加依赖
+--------------------------------------
+
+android_prebuilt_aar(
+    name = 'design',
+    aar = 'libs/design-24.2.0.aar',
+)
+
+android_resource(
+  name = 'res',
+  res = './app/src/main/res',
+  package = 'com.example.wangxiang.myapplication',
+  deps = [':design'],
+  visibility = ['PUBLIC'],
+)
+

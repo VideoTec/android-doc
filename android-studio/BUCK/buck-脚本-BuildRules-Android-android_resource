@@ -1,0 +1,23 @@
+http://www.blogjava.net/xiaomage234/archive/2014/10/22/418951.html
+
+android_resource(
+   name = 'mylibrary-res',
+   res = './libs/MyLibrary/res',
+   package = 'com.my.library',
+   visibility = [ 'PUBLIC' ], 
+)  
+
+android_library(
+   name = 'mylibrary-src',
+   srcs = glob(['./libs/MyLibrary/src/**/*.java']),
+   deps = [     ':mylibrary-res',     ':android-support-v4',   ],
+   visibility = [ 'PUBLIC' ], 
+) 
+
+第一段 android_resource 定义的是库的资源目录，
+由 res 一项配置指定路径，
+由 package 指定库的包名，
+
+被下一段android_library 中的 deps 引用后即可生效。
+如果你的库没有资源目录，那么请不要写 android_resource 一段，
+同时将android_library 一段中对资源的引用 :mylibrary-res 删除

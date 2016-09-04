@@ -1,0 +1,26 @@
+
+./studio.sh
+直接锁定在启动栏，就好了。
+
+http://blog.csdn.net/qibin0506/article/details/50755202
+
+现在直接进入./android-studio/bin/目录下会看到一个studio.sh的执行文件,
+在命令行里运行这个执行文件就可以启动android studio了,是不是很容易,
+不过有没有发现,我们每次启动android studio都需要在命令里去启动,甚是麻烦,
+多希望可以想windows那样给一个启动的图标,双击就可以启动.
+
+恩,是可以的,下面我们就制作一个启动图标,并发到ubuntu的启动栏里.
+我们将这个启动图标直接放到~/bin/android-studio目录下.
+
+首先在~/bin/android-studio目录下新建一个Studio.desktop文件,并用gedit打开,然后将下面的内容复制进去并修改.
+
+[Desktop Entry] 
+Name=AndroidStudio 
+Type=Application 
+Icon=你的AndroidStudio解压目录的绝对路径/android-studio/bin/studio.png 
+Exec=sh 你的AndroidStudio解压目录的绝对路径/android-studio/bin/studio.sh
+
+内容填写好后保存退出(复制的时候注意每一行后面都不能有空格,很多同学制作失败就是因为copy上空格了),
+不过此时这个快捷方式还不能使用,你会发现图标并没有发生变化,双击也会出错.
+
+这个时候不要着急,右键该文件>属性>权限>选择允许作为程序执行文件,ok,这个时候你会发现,图标神奇的变了,

@@ -1,0 +1,76 @@
+
+--------------------------------------------------
+工程文件 /home/wangxiang/AndroidStudioProjects/my-project/.buckconfig
+--------------------------------------------------
+
+[alias]
+    app = //apps/myapp:app
+[java]
+    src_roots = /java/
+[project]
+    # IntelliJ requires that every Android module have an
+    # AndroidManifest.xml file associated with it. In practice,
+    # most of this is unnecessary boilerplate, so we create one
+    # "shared" AndroidManifest.xml file that can be used as a default.
+    default_android_manifest = //res/AndroidManifest.xml
+[android]
+    target = Google Inc.:Google APIs:23
+
+--------------------------------------------------
+http://blog.csdn.net/fei20121106/article/details/51264900
+--------------------------------------------------
+
+[alias]
+    app = //:myapp
+[java]
+    # 代码目录
+    src_roots = //src/
+[project]
+    # 默认AndroidManifest.xml文件位置
+    default_android_manifest = //app/AndroidManifest.xml
+    ignore = .git, **/.svn,
+[android]
+    build_tools_version = 23.0.2
+    target = android-23
+
+--------------------------------------------------
+https://buckbuild.com/concept/buckconfig.html
+--------------------------------------------------
+
+The root of your project may contain a configuration file named .buckconfig. 
+If present, Buck will read this file before executing its business logic 
+so that any customizations specified in .buckconfig will take effect. 
+This file uses the INI file formatwith a few extensions discussed below.
+
+Sections
+
+The following sections are recognized by Buck:
+[adb]
+[alias]
+[android]
+[apple]
+[build]
+[buildfile]
+[cache]
+[color]
+[credentials]
+[cxx]
+[d]
+[download]
+[go]
+[groovy]
+[halide]
+[java]
+[httpserver]
+[log]
+[lua]
+[maven_repositories]
+[ndk]
+[project]
+[python]
+[rust]
+[test]
+[thrift]
+[tools]
+[ui]
+[unknown_flavors_messages]

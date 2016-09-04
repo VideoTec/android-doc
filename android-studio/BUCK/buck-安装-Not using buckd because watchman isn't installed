@@ -1,0 +1,23 @@
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects$ cd my-project
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ ls
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ touch .buckconfig
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ buck quickstart --type android --des-dir .
+Not using buckd because watchman isn't installed.
+"--des-dir" is not a valid option
+For help see 'buck --help'.
+
+----------------------------------------------------------------
+http://bravissimolabs.com/installing-watchman-on-ubuntu-14-04/
+----------------------------------------------------------------
+https://github.com/facebook/watchman.git
+
+sudo apt-get install -y autoconf automake build-essential python-dev
+
+$ ./autogen.sh 
+$ ./configure 
+$ make
+$ sudo make install
+
+wangxiang@wangxiang-M68MT-S2P:~/code/watchman$ watchman --version
+4.7.0
+

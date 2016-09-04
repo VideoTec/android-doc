@@ -1,0 +1,34 @@
+http://nick.codes/posts/why-buck-is-awesome/
+
+Non-recursive recursive[英][rɪˈkɜ:sɪv] [美][rɪˈkɜrsɪv] 回归的，递归的
+File based instead of task based
+Fast!
+Extensible.
+Easy to use.
+Really really fast! No really!
+Buck has cool output while building
+
+Buck is Easy to Use
+
+extensive[英][ɪkˈstensɪv] [美][ɪkˈstɛnsɪv]
+adj.广阔的，广大的；范围广泛的；[物]广延的；[逻]外延的
+
+Buck is pretty easy to use too. I was able to convert our extensive build system to use buck much faster than I was able to convert to Gradle, even with the Eclipse export option. The export option barely worked, and I spent forever chasing down issues. Not to mention that Gradle wants you to reorganize you source tree from the way that Eclipse does it. If you still need to support Eclipse, you are left to jump through Gradle hoops to get everything working, and you can’t take advantage of all of Gradle’s features.
+
+Buck on the other hand was pretty easy to setup. I just had to think through the files that buck needed to build and tell Buck how to build those. For my way of thinking about building it was super easy. Specify the files that make up the artifact and any dependent artifacts and you are done.
+
+I also recently made use of Bucks include_defs() feature in our build system which allowed me to reduce many of our build files to a single declaration. We have a lot of library projects and applications which are all built in similar ways with similar file structures. In most cases I now have simple declarations like for library projects. Apps are only slightly more complicated for specifying the AndroidManifest.xml file.
+
+android_library_project(
+    name = 'some-library-project',
+    package = 'some.library.project.package',
+    srcs = glob(['src/main/java/**/*.java']),
+    deps = ['//some-other-library-project:some-other-library-project'],
+    )
+
+If that isn’t easy to use, I don’t know what is!
+
+In addition it is easy to use Buck from the command line. Targets are named based on the directory they are in, and if your BUCK file has a target with the same name as the directory then it is used as the default target. This means you can use tab completion to specify most targets you want. Want a debug version? Tab complete the directory, delete the slash and add :debug! (Assuming your debug target is named debug within your BUCK file, which I suggest.)
+
+
+

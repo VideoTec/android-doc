@@ -1,0 +1,8 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+整个仓库的内容
+http://jcenter.bintray.com/

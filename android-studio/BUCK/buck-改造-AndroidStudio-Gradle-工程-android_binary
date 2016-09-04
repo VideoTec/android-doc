@@ -1,0 +1,63 @@
+
+代码：
+android_binary(
+  name = 'myapp',
+  deps = [':src'],
+  visibility = ['PUBLIC'], 
+)
+
+错误：
+TypeError: android_binary() takes at least 3 arguments (4 given)
+
+正确的代码：
+
+keystore(
+  name = 'debug_keystore',
+  store = './keystore/debug.keystore',
+  properties = './keystore/debug.keystore.properties',
+)
+
+android_binary(
+  name = 'myapp',
+  deps = [':src'],
+  manifest = './app/src/main/AndroidManifest.xml',
+  keystore = ':debug_keystore',
+)
+
+--------------------------------------
+添加： [这个是必须的]
+--------------------------------------
+   manifest = './app/src/main/AndroidManifest.xml',
+
+--------------------------------------
+添加：不行 [这个是可先的]
+--------------------------------------
+   package_type = 'DEBUG',
+
+--------------------------------------
+添加：没有这个属性
+--------------------------------------
+  target = 'android-19',
+android_binary() got an unexpected keyword argument 'target'
+
+--------------------------------------
+添加：这个需要添加一个 keystore() 规则  [这个是必须的]
+--------------------------------------
+  keystore = ':debug_keystore',
+
+keystore(
+  name = 'debug_keystore',
+  store = './keystore/debug.keystore',
+  properties = './keystore/debug.keystore.properties',
+)
+
+复制 debug.keystore 文件
+mkdir keystore
+cp ~/.android/debug.keystore keystore/debug.keystore
+
+编辑 debug.keystore.properties 内容
+key.alias=androiddebugkey
+key.store.password=android
+key.alias.password=android
+
+

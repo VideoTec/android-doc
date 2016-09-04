@@ -1,0 +1,39 @@
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ buck query --help
+ --dot                                  : Print result as Dot graph
+ --help                                 : Prints the available options and
+                                          exits.
+ --json                                 : Output in JSON format
+ --load-limit (-L) N                    : [Float] Do not start new jobs when
+                                          system load is above this level. See
+                                          uptime(1).
+ --no-cache                             : Whether to ignore the [cache]
+                                          declared in .buckconfig.
+ --num-threads (-j) N                   : Default is 1.25 * num processors.
+ --output-attributes SET<STRING>        : List of attributes to output,
+                                          --output-attributes attr1 att2 ...
+                                          attrN. Attributes can be regular
+                                          expressions.
+ --output-test-events-to-file           : Serialize test-related event-bus
+ (--output-events-to-file) VAL            events to the given file as
+                                          line-oriented JSON objects.
+ --profile-buck-parser                  : Enable profiling of buck.py internals
+                                          (not the target being compiled) in
+                                          the debuglog and trace.
+ --verbose (-v) N                       : Specify a number between 1 and 10.
+
+https://buckbuild.com/article/query_cheat_sheet.html
+
+Q: How do I find the existing targets in a package?
+buck query "//path/to/dir/..."
+
+Q: How do I get the content in the attributes of the targets resulting from a query?
+buck query "deps(//foo:bar)" --output-attributes 'name' 'exported_headers'
+
+Q: How do I find the dependencies of a target?
+buck query "deps('//foo:bar')"
+buck query "deps('//foo:bar', 1)"
+buck query "deps(set('//foo:bar' '//foo:lib' '//foo/baz:util'))"
+
+----------------------------------------------------------------------------------------------------------
+https://buckbuild.com/command/query.html
+----------------------------------------------------------------------------------------------------------

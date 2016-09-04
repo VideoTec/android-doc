@@ -1,0 +1,120 @@
+http://blog.csdn.net/fei20121106/article/details/51264900
+
+mkdir my-project
+cd my-project
+touch .buckconfig
+buck quickstart --type android --dest-dir .
+//根据提示输入android sdk路径
+buck build app
+
+执行结果：
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ buck build app
+[-] PROCESSING BUCK FILES...FINISHED 0.0s [100%] 🐌  Environment variable changes: [PATH, ANDROID_SDK]
+[-] DOWNLOADING... (0.00 B/S AVG, TOTAL: 0.00 B, 0 Artifacts)
+[-] BUILDING...FINISHED 3.2s [100%] (12/12 JOBS, 9 UPDATED, 9 [75.0%] CACHE MISS)
+wangxiang@wangxiang-M68MT-S2P:~/AndroidStudioProjects/my-project$ buck build //apps/myapp:app
+[-] PROCESSING BUCK FILES...FINISHED 0.0s 🐇  
+[-] DOWNLOADING... (0.00 B/S AVG, TOTAL: 0.00 B, 0 Artifacts)
+[-] BUILDING...FINISHED 0.1s [100%] (1/1 JOBS, 0 UPDATED, 0 [0.0%] CACHE MISS)
+
+--------------------------------------------------
+工程文件 README
+--------------------------------------------------
+Thanks for installing Buck!
+
+In this quickstart project, the file apps/myapp/BUCK defines the build rules. 
+
+At this point, you should move into the project directory and try running:
+
+    buck build //apps/myapp:app
+
+or:
+
+    buck build app
+
+See .buckconfig for a full list of aliases.
+
+If you have an Android device connected to your computer, you can also try:
+
+    buck install app
+
+This information is located in the file README.md if you need to access it later.
+
+--------------------------------------------------
+工程文件 /home/wangxiang/AndroidStudioProjects/my-project/.buckconfig
+--------------------------------------------------
+
+[alias]
+    app = //apps/myapp:app
+[java]
+    src_roots = /java/
+[project]
+    # IntelliJ requires that every Android module have an
+    # AndroidManifest.xml file associated with it. In practice,
+    # most of this is unnecessary boilerplate, so we create one
+    # "shared" AndroidManifest.xml file that can be used as a default.
+    default_android_manifest = //res/AndroidManifest.xml
+[android]
+    target = Google Inc.:Google APIs:23
+
+
+--------------------------------------------------
+工程文件 /home/wangxiang/AndroidStudioProjects/my-project/apps/myapp/BUCK
+签名，AndroidManifest.xml，签名等等文件 
+--------------------------------------------------
+
+android_binary(
+  name = 'app',
+  manifest = 'AndroidManifest.xml',
+  keystore = ':debug_keystore',
+  deps = [
+    '//java/com/example/activity:activity',  找到对应目录的buck文件，再执行对应的目标
+  ],
+)
+
+keystore(
+  name = 'debug_keystore',
+  store = 'debug.keystore',
+  properties = 'debug.keystore.properties',
+)
+
+project_config(
+  src_target = ':app',
+)
+
+--------------------------------------------------
+工程文件 /home/wangxiang/AndroidStudioProjects/my-project/java/com/example/activity/BUCK
+源文件 //java/com/example/activity:activity 路径的 buck 文件
+--------------------------------------------------
+
+android_library(
+  name = 'activity',
+  srcs = glob(['*.java']),
+  deps = [
+    '//res/com/example/activity:res',
+  ],
+  visibility = [ 'PUBLIC' ],
+)
+
+project_config(
+  src_target = ':activity',
+)
+
+--------------------------------------------------
+工程文件 /home/wangxiang/AndroidStudioProjects/my-project/res/com/example/activity/BUCK
+源文件 //res/com/example/activity 路径的 buck 文件
+--------------------------------------------------
+android_resource(
+  name = 'res',
+  res = 'res',
+  package = 'com.example',
+  visibility = [
+    '//java/com/example/activity:',
+  ],
+)
+
+project_config(
+  src_target = ':res',
+  src_roots = None,
+)
+

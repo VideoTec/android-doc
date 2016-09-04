@@ -1,0 +1,128 @@
+http://zgssheng.cn/2014/03/facebook-buck%E7%BC%96%E8%AF%91apk%E5%8C%85/
+
+#打包Android资源文件,一般生成R.java文件
+android_resource(
+  name = 'res',
+  res = 'res',
+  assets = 'assets',
+  deps = [
+     '//depend_project_1/workspace:ITelephony',  #依赖工程
+   ],
+  package = 'com.XX.android.XX',   #资源包名称
+)
+ 
+#输出目标是一个包含了以及编译的class文件和资源文件的jar包
+android_library(
+  name = 'mainsrc',
+  srcs = glob(['src/**/*.java']),
+  visibility = [ 'PUBLIC' ],
+  deps = [
+    ':res',
+    ':support',
+    ':zxing-core',
+    ':aidl',
+    ':IPackageStatsObserver',
+    ':IInAppBillingService',
+    ':AnyShare',
+    ':universal',
+    ':GetJarSDK',
+    ':FlurryAgent',
+    '//depend_project_1/workspace:google',
+    '//depend_project_1/workspace:ITelephony',   
+  ]
+)
+ 
+#生成一个Android APK
+android_binary(
+   name = 'main',
+   manifest = 'AndroidManifest.xml',
+   target = 'Google Inc.:Google APIs:19',
+   keystore = ':debug_keystore',
+   package_type = 'release',
+   proguard_config = 'proguard.cfg',  #混淆
+   deps = [
+     ':mainsrc',
+   ],
+)
+ 
+ 
+#apk包签名
+keystore(
+  name = 'debug_keystore',
+  store = 'debug.keystore',
+  properties = 'debug.keystore.properties',
+)
+ 
+#aidl文件编译成java
+gen_aidl(
+    name = 'aidl',
+    aidl = 'src/android/content/pm/IPackageDataObserver.aidl',
+    import_path = 'main_project/workspace/src',
+    visibility = [ 'PUBLIC' ],
+)
+ 
+gen_aidl(
+    name = 'PackageStats',
+    aidl = 'src/android/content/pm/PackageStats.aidl',
+    import_path = 'main_project/workspace/src/android/content/pm/',
+    visibility = [ 'PUBLIC' ],
+ )
+ 
+gen_aidl(
+    name = 'IPackageStatsObserver',
+    aidl = 'src/android/content/pm/IPackageStatsObserver.aidl',
+    import_path = 'main_project/workspace/src/',
+    visibility = [ 'PUBLIC' ],
+)
+ 
+gen_aidl(
+   name = 'IInAppBillingService',
+   aidl = 'src/com/android/vending/billing/IInAppBillingService.aidl',
+   import_path = 'main_project/workspace/src/',
+   visibility = [ 'PUBLIC' ],
+)
+ 
+#用来指向一个第三方的jar文件（比如junit.jar）并且用作java_library()规则的依赖
+ 
+prebuilt_jar(
+  name = 'support',
+  binary_jar = 'libs/android-support-v4.jar',
+)
+prebuilt_jar(
+  name = 'libammsdk',
+  binary_jar = 'libs/libammsdk.jar',
+)
+ 
+prebuilt_jar(
+   name = 'weibo',
+   binary_jar = 'libs/weibo.sdk.android.sso.jar',
+)
+ 
+prebuilt_jar(
+   name = 'AnyShare',
+   binary_jar = 'libs/AnyShare-FullSDK.jar',
+)
+ 
+prebuilt_jar(
+   name = 'universal',
+   binary_jar = 'libs/universal-image-loader-1.8.4-with-sources.jar',
+)   
+ 
+prebuilt_jar(
+   name = 'GetJarSDK',
+   binary_jar = 'libs/GetJarSDK-3.4.4.20130503.06.jar',
+) 
+ 
+prebuilt_jar(
+   name = 'FlurryAgent',
+   binary_jar = 'libs/FlurryAgent.jar',
+)
+prebuilt_jar(
+   name = 'zxing-core',
+   binary_jar = 'libs/zxing-core.jar',
+)
+ 
+#生成定义路径，生成apk名字是main.apk
+project_config(
+   src_target = ':main',
+)

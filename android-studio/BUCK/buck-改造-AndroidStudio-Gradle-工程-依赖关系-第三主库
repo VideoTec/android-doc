@@ -1,0 +1,42 @@
+Unlike Gradle, Buck requires that all files 
+that contribute to the project live under the project root (which is defined by the presence of a .buckconfig file). 
+
+Instead of downloading third party JARs 
+from the Maven Central Repository as part of the build process (like Gradle), 
+
+Buck expects such dependencies to live in version control, 
+just like application code. 
+This ensures that builds are reproducible and hermetic
+
+把所有依赖库都复制到工程的 libs 目录下，用来引用
+可以是 jar 或者 aar
+
+prebuilt_jar(
+   name = 'weibo',
+   binary_jar = 'libs/weibo.sdk.android.sso.jar',
+)
+ 
+prebuilt_jar(
+   name = 'AnyShare',
+   binary_jar = 'libs/AnyShare-FullSDK.jar',
+)
+ 
+android_prebuilt_aar(
+    name = 'v4',
+    aar = 'libs/support-v4-24.2.0.aar',
+)
+android_prebuilt_aar(
+    name = 'design',
+    aar = 'libs/design-24.2.0.aar',
+)
+android_prebuilt_aar(
+    name = 'v7',
+    aar = 'libs/appcompat-v7-24.2.0.aar',
+)
+
+下载 aar 的方法：
+http://jcenter.bintray.com/ 从这个网下载
+
+例如：compile 'de.greenrobot:eventbus:2.4.0'
+http://jcenter.bintray.com/de/greenrobot/eventbus/2.4.0/
+找到 eventbus-2.4.0.jar

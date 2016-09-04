@@ -1,0 +1,68 @@
+https://buckbuild.com/concept/build_rule.html
+
+Build Rule
+
+A build rule is a procedure for producing an output file from a set of input files.
+Buck comes with a number of built-in build rules, 
+as there are many common procedures when building Android code. 
+
+For example, 
+compiling Java code against the Android SDK is one of the most common operations, 
+so the build rule android_library exists to facilitate that. 
+Similarly, the primary objective of most Android developers is to create an APK, 
+so the build rule android_binary can be used to do that.
+
+Build rules are defined using built-in Python functions in a build file. 
+(Both the Python function to define the rule and 
+the corresponding Java object that is ultimately created to carry out the procedure 
+are referred to as "the build rule," 
+even though they are technically different things.) 
+Every build rule takes at least the following three arguments:
+
+1) name The name of the build rule, 
+which must be unique within a build file.
+
+2) deps The build rule's dependencies, 
+expressed as a list of build targets.
+
+3) visibility The set of build rules 
+that are allowed to claim this rule as a dependency, 
+expressed as a list of build target patterns.
+
+In Buck, every build rule can produce zero or one output files. 
+These output files can be used by other rules 
+that declare the rule responsible for the output file as a dependency. 
+
+For example, 
+the output of an android_library is a JAR file, 
+so an android_binary that declares the android_library as a dependency 
+can include the .class files from the android_library's JAR file in its resulting APK. 
+Or when one android_library depends on another, 
+the JAR of dependent rule will be included on the classpath 
+when the rule that depends on it compiles its Java code. 
+Check the documentation for each build rule to see how it uses its deps. 
+Note that no matter how a rule uses its deps, 
+every rule in a rule's deps is guaranteed to be built before the rule attempts to build itself.
+
+acyclic[英][ˌeɪˈsaɪklɪk] [美][eˈsaɪklɪk, eˈsɪklɪk]
+adj.非循环的，无环的，脂肪族的；非周期
+
+Build rules and their dependencies define a directed graph. 
+Buck requires that this graph be acyclic. 
+This helps Buck build efficiently, 
+as it makes it easier to build independent subgraphs in parallel.
+
+Although Buck tries to provide a rich set of built-in build rules for Android developers, 
+it will not be able to address all possible needs. 
+As an "escape hatch," Buck also provides a vanilla build rule called a genrule, 
+which can be used to build an arbitrary file using a Bash script.
+
+evaluated[英][ɪ'væljʊeɪtɪd] [美][ɪ'væljʊeɪtɪd]
+v.评价( evaluate的过去式和过去分词 )；求…的值（或数）；对…评价；[数学、逻辑学]求…的数值
+
+Finally, note that build files are evaluated as Python files. 
+This means that you can define your own functions within build files that generate build rules. 
+This should not be something that you need to do often, 
+but taking advantage of this may help you add something to Buck's build process without editing its source code. 
+For more details on this topic, see the article on macros.
+https://buckbuild.com/extending/macros.html

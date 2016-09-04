@@ -1,0 +1,38 @@
+需要先安装 java jdk
+wangxiang@wangxiang-M68MT-S2P:/usr/local/android-studio$ java -version
+java version "1.8.0_91"
+Java(TM) SE Runtime Environment (build 1.8.0_91-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.91-b14, mixed mode)
+
+再下载AS压缩包
+https://developer.android.com/studio/install.html
+android-studio-ide-143.3101438-linux.zip
+
+1. Unpack the .zip file you downloaded to an appropriate location for your applications, 
+such as within /usr/local/ for your user profile, or /opt/ for shared users.
+注意 ：解压到，任意目录都可以。
+
+2. To launch Android Studio, open a terminal, 
+navigate to the android-studio/bin/ directory, and execute studio.sh.
+Tip: Add android-studio/bin/ to your PATH environment variable 
+so you can start Android Studio from any directory.
+
+3. Select whether you want to import previous Android Studio settings or not, 
+then click OK.
+
+4. The Android Studio Setup Wizard guides you though the rest of the setup, 
+which includes downloading Android SDK components that are required for development.
+
+安装后，启动：
+./studio.sh
+
+注意 安装依赖库：
+
+Note: If you are running a 64-bit version of Ubuntu, 
+you need to install some 32-bit libraries with the following command:
+
+sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
+
+If you are running 64-bit Fedora, the command is:
+
+sudo yum install zlib.i686 ncurses-libs.i686 bzip2-libs.i686

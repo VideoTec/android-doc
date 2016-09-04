@@ -1,0 +1,76 @@
+https://buckbuild.com/concept/build_target.html
+
+Build Target
+
+A build target is a string that is used to identify a build rule in your project.
+Here is an example of a fully-qualified build target:
+
+//java/com/facebook/share:ui
+
+A fully-qualified build target has three components:
+
+1) The // prefix indicates that this path is relative to the root of your project.
+
+2) The java/com/facebook/share component between the // prefix and the colon (:) 
+indicates that the build file can be found in the java/com/facebook/share directory.
+
+3) The ui after the colon (:) indicates the name of the build rule 
+within the build file in which it is defines. 
+Build rule names must be unique within a build file.
+
+A relative build target can be used to reference another build target within the same build file. 
+A relative build target starts with a colon (:) 
+and is followed by only the third component (or "short name") of the fully-qualified build target. 
+
+For example, within java/com/facebook/share/BUCK, 
+:ui can be used to reference //java/com/facebook/share:ui:
+
+# This is in java/com/facebook/share/BUCK.
+java_binary(
+  name = 'ui_jar',
+  deps = [
+    # This would be the same as using:
+    # '//java/com/facebook/share:ui'
+    ':ui',
+  ],
+)
+
+Build targets are frequently used as arguments to build rules and to the command-line interface for Buck.
+
+Command-line Protip
+
+When specifying a build target on the command-line, it can be tedious to type:
+
+buck build //java/com/facebook/share:share
+
+tedious[英][ˈti:diəs] [美][ˈtidiəs]
+adj.单调沉闷的；冗长乏味的；令人生厌的
+
+Fortunately, Buck is loose with its parsing of build targets on the command-line 
+(but is always strict when parsing them in build files). 
+Specifically, the leading // is optional on the command line, 
+so the above could be:
+
+buck build java/com/facebook/share:share
+
+Also, if there is a forward slash before the colon, 
+it is ignored, so this could also be written as:
+
+buck build java/com/facebook/share/:share
+
+This looks odd until you realize that the red text 
+can be produced by tab-completing the path to the directory, 
+which dramatically reduces how much you need to type:
+
+buck build java/com/facebook/share/:share
+
+Finally, if the final path element matches the value specified after the colon, 
+it can be omitted from the command line:
+
+# This is treated as //java/com/facebook/share:share.
+buck build java/com/facebook/share/
+
+Note that this is even easier to tab-complete! For this reason, 
+the name of the build rule for the primary deliverable in a build file 
+is often named the same thing as the parent directory 
+so it can be built from the command-line with less typing.
