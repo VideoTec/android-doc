@@ -1,0 +1,85 @@
+
+--------------------------------------------------------------------------
+/home/wangxiang/AndroidStudioProjects/MyApplication/.buckconfig
+--------------------------------------------------------------------------
+
+[alias]
+[java]
+    src_roots = //app/src/main/java
+[project]
+    default_android_manifest = //app/src/main/AndroidManifest.xml
+[android]
+    build_tools_version = 24.0.0
+    target = android-24
+
+--------------------------------------------------------------------------
+/home/wangxiang/AndroidStudioProjects/MyApplication/BUCK
+--------------------------------------------------------------------------
+
+android_prebuilt_aar(
+    name = 'v4',
+    aar = 'libs/support-v4-24.0.0.aar',
+)
+android_prebuilt_aar(
+    name = 'design',
+    aar = 'libs/design-24.0.0.aar',
+)
+android_prebuilt_aar(
+    name = 'v7',
+    aar = 'libs/appcompat-v7-24.0.0.aar',
+)
+android_prebuilt_aar(
+    name = 'animated-vector',
+    aar = 'libs/animated-vector-drawable-24.0.0.aar',
+)
+android_prebuilt_aar(
+    name = 'vector',
+    aar = 'libs/support-vector-drawable-24.0.0.aar',
+)
+android_prebuilt_aar(
+    name = 'recyclerview',
+    aar = 'libs/recyclerview-v7-24.0.0.aar',
+)
+prebuilt_jar(
+  name = 'annotations',
+  binary_jar = 'libs/support-annotations-24.0.0.jar',
+)
+prebuilt_jar(
+  name = 'green-event-bus',
+  binary_jar = 'libs/eventbus-2.4.0.jar',
+)
+
+android_resource(
+  name = 'res',
+  res = './app/src/main/res',
+  package = 'com.example.wangxiang.myapplication',
+  deps = [':design',':v7'],
+  visibility = ['PUBLIC'],
+)
+
+android_library(
+   name = 'src',
+   srcs = glob(['./app/src/main/java/**/*.java']),
+   deps = [':v4',':design',':v7',':recyclerview',':annotations',':vector',':animated-vector',':green-event-bus',':res'],
+   visibility = ['PUBLIC'], 
+) 
+
+keystore(
+  name = 'debug_keystore',
+  store = './keystore/debug.keystore',
+  properties = './keystore/debug.keystore.properties',
+)
+
+android_binary(
+  name = 'myapp',
+  deps = [':src'],
+  manifest = './app/src/main/AndroidManifest.xml',
+  keystore = ':debug_keystore',
+    manifest_entries = {
+        'version_code': 1,
+        'version_name': '2.0',
+        'min_sdk_version': 15,
+        'target_sdk_version': 24,
+        'debug_mode': True,
+    }
+)
