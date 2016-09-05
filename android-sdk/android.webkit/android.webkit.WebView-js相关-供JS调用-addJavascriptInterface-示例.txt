@@ -1,0 +1,18 @@
+    /***************************************************************************************
+     * 用于可回复消息体的 javascript 本地对象
+     */
+    class NativeObject {
+        @SuppressWarnings("unused")
+        @JavascriptInterface
+        public void jsToNative(final String json) {
+            LogFeinno.i(TAG, "[from js: NativeObject]" + json);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    onJSCall(json);
+                }
+            });
+        }
+    }
+    
+    mWebView.addJavascriptInterface(new NativeObject(), "nativeObject");

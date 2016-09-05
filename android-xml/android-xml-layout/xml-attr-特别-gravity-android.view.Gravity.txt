@@ -1,0 +1,6 @@
+https://developer.android.com/reference/android/view/Gravity.html
+
+android.view.Gravity
+
+Standard constants and tools for placing 
+an object within a potentially larger container.

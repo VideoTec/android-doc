@@ -1,0 +1,15 @@
+1. SDK 是区别平台的
+Windows
+installer_r24.4.1-windows.exe 144 MB (151659917 bytes)	f9b59d72413649d31e633207e31f456443e7ea0b
+android-sdk_r24.4.1-windows.zip 无安装程序	190 MB (199701062 bytes)	66b6a6433053c152b22bf8cab19c0f3fef4eba49
+
+Mac OS X
+android-sdk_r24.4.1-macosx.zip	98 MB (102781947 bytes)	85a9cccb0b1f9e6f1f616335c5f07107553840cd
+
+Linux
+android-sdk_r24.4.1-linux.tgz	311 MB (326412652 bytes)	725bb360f0f7d04eaccff5a2d57abdd49061326d
+
+2. https://developer.android.com/studio/index.html?hl=zh-cn
+仅获取命令行工具
+如果您不需要 Android Studio，则可以从下面下载基本的 Android 命令行工具
+

@@ -1,0 +1,7 @@
+frameLayout 
+设置无效，其中的子控件，不会调整位置
+
+http://stackoverflow.com/questions/3482742/gravity-and-layout-gravity-on-android
+Their names should help you:
+android:gravity sets the gravity of the content of the View its used on.
+android:layout_gravity sets the gravity of the View or Layout in its parent.

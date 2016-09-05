@@ -1,3 +1,11 @@
+关键问题，js中没有类型，java返回值有类型。
+怎么匹配？
+返回的 JSON 字符串，JS中是对象字面量。
+返回的 整数，JS中是什么？
+返回的 "true" "false"，JS中是布尔值
+返回的 null，JS中是什么？
+返回的 ""，JS中是什么？
+
 http://stackoverflow.com/questions/9105059/what-are-valid-return-values-for-an-javascript-interface-on-an-android-webview
 
 I have an Android Webview that has javascript 
@@ -11,6 +19,35 @@ public class JavascriptBridge {
     }}
 
 this works fine.
+
+---------------------------------------------------------------
+返回null，javascript 中会收到什么数据？
+---------------------------------------------------------------
+        @SuppressWarnings("unused")
+        @JavascriptInterface
+        public String getUserInfo() {
+            if (isPublicPlatformHistoryPage(mWebView.getUrl())) {
+                PublicPlatformUserInfo info = new PublicPlatformUserInfo();
+                info.paUuid = mPublicPlatformUuid;
+                info.type = "Android-1.X";
+                info.userId = "tel:+86" + mPhoneNumber;
+                info.token = "UA token=" + getToken();
+                Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+                return gson.toJson(info);
+            }
+            return null; ？
+        }
+
+---------------------------------------------------------------
+从 java 返回的 json 串，在js中是，字面量对象吗？
+---------------------------------------------------------------
+http://stackoverflow.com/questions/15619976/passing-value-from-activity-to-android-webview-for-javascript-method
+The values string might need to be in quotes 
+for the javascript function to be able to parse it too. 
+
+In other words:
+
+return "'" + values + "'";
 
 ---------------------------------------------------------------
 通过 JSON 串传递所有类型

@@ -1,0 +1,43 @@
+        <TextView
+            android:id="@+id/tv_on_cs_call_hungup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginBottom="126.5dp"
+            android:text="结束通话"
+            android:gravity="center" 
+            android:background="@drawable/rf_img_vowifi_in_cs_call_hungup" />
+            
+            
+结果：android:gravity="center"
+这样做没有效果，水平居中了，垂直没有居中，原因是 wrap_content
+
+实际结果，水平，垂直都居中了。原因是，背景图，低下为阴影，
+文字应该在图片稍上位置才行
+
+解决方法：换成 FrameLayout + textView
+
+解决方法：xml-attr-特别-TextView-drawableTop-drawablePadding 解决不了
+As cephus mentioned android:drawablePadding will only force 
+padding between the text and the drawable if the button is small enough.
+
+        <TextView
+            android:id="@+id/tv_on_cs_call_resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="37dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="126.5dp"
+            android:text="恢复通话"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:drawableBottom="@drawable/rf_img_vowifi_in_cs_call_resume"
+            android:drawablePadding="-38dp" />  这个负值会把背景给截了

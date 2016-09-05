@@ -1,0 +1,99 @@
+- update sdk          : Updates the SDK by suggesting new platforms to install
+                        if available.
+
+--------------------------------------------------------------
+E:\android-sdk-windows\tools>android.bat update sdk --help
+--------------------------------------------------------------
+
+Error: Flag '--help' is not valid for 'update sdk'.
+
+       Usage:
+       android [global options] update sdk [action options]
+       Global options:
+  -h --help       : Help on a specific command.
+  -v --verbose    : Verbose mode, shows errors, warnings and all messages.
+     --clear-cache: Clear the SDK Manager repository manifest cache.
+  -s --silent     : Silent mode, shows errors only.
+
+                     Action "update sdk":
+  Updates the SDK by suggesting new platforms to install if available.
+Options:
+     --proxy-port: HTTP/HTTPS proxy port (overrides settings if defined)
+     --proxy-host: HTTP/HTTPS proxy host (overrides settings if defined)
+  -s --no-https  : Uses HTTP instead of HTTPS (the default) for downloads.
+  -a --all       : Includes all packages (such as obsolete and non-dependent
+                   ones.)
+  -f --force     : Forces replacement of a package or its parts, even if
+                   something has been modified.
+  -u --no-ui     : Updates from command-line (does not display the GUI)
+  -p --obsolete  : Deprecated. Please use --all instead.
+  -t --filter    : A filter that limits the update to the specified types of
+                   packages in the form of a comma-separated list of
+                   [platform, system-image, tool, platform-tool, doc, sample,
+                   source]. This also accepts the identifiers returned by
+                   'list sdk --extended'.
+  -n --dry-mode  : Simulates the update but does not download or install
+                   anything.
+--------------------------------------------------------------
+E:\android-sdk-windows\tools>android.bat --help
+--------------------------------------------------------------
+
+       Usage:
+       android [global options] action [action options]
+       Global options:
+  -h --help       : Help on a specific command.
+  -v --verbose    : Verbose mode, shows errors, warnings and all messages.
+     --clear-cache: Clear the SDK Manager repository manifest cache.
+  -s --silent     : Silent mode, shows errors only.
+
+                                                                    Valid
+                                                                    actions
+                                                                    are
+                                                                    composed
+                                                                    of a verb
+                                                                    and an
+                                                                    optional
+                                                                    direct
+                                                                    object:
+-    sdk              : Displays the SDK Manager window.
+-    avd              : Displays the AVD Manager window.
+-   list              : Lists existing targets or virtual devices.
+-   list avd          : Lists existing Android Virtual Devices.
+-   list target       : Lists existing targets.
+-   list device       : Lists existing devices.
+-   list sdk          : Lists remote SDK repository.
+- create avd          : Creates a new Android Virtual Device.
+-   move avd          : Moves or renames an Android Virtual Device.
+- delete avd          : Deletes an Android Virtual Device.
+- update avd          : Updates an Android Virtual Device to match the folders
+                        of a new SDK.
+- create project      : Creates a new Android project.
+- update project      : Updates an Android project (must already have an
+                        AndroidManifest.xml).
+- create test-project : Creates a new Android project for a test package.
+- update test-project : Updates the Android project for a test package (must
+                        already have an AndroidManifest.xml).
+- create lib-project  : Creates a new Android library project.
+- update lib-project  : Updates an Android library project (must already have
+                        an AndroidManifest.xml).
+- create uitest-project: Creates a new UI test project.
+- update adb          : Updates adb to support the USB devices declared in the
+                        SDK add-ons.
+- update sdk          : Updates the SDK by suggesting new platforms to install
+                        if available.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

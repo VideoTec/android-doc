@@ -1,0 +1,11 @@
+                <TextView
+                    android:id="@+id/tv_vowifi_video_to_voice_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/vowifi_padding_between_img_text"
+                    android:drawableTop="@drawable/rf_img_vowifi_video_to_audio"
+                    android:gravity="center_horizontal"
+                    android:text="@string/rf_str_vowifi_btn_voice_chat"
+                    android:textColor="@color/vowifi_text_color"
+                    android:textSize="@dimen/vowifi_normal_text_size" />

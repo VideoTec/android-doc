@@ -1,6 +1,12 @@
 需要添加单引号吗？
 11:13 2015/12/4
-最后验证，不用加单引号，也可以。
+最后验证，不用加单引号，也可以。 
+
+10:30 2016/9/5
+不加单引号，js 收到的是一个 javascript-object 字面量
+
+加单引号，js 需要调用, var obj = JSON.parse(param);
+不加单引号，js 需要调用, var obj = param;
 
 http://stackoverflow.com/questions/5797293/trying-to-push-data-into-js-function-within-webview
 
