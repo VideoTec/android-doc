@@ -4,17 +4,34 @@ public abstract SharedPreferences getSharedPreferences (String name, int mode)
 
 Added in API level 1
 
-Retrieve and hold the contents of the preferences file 'name', returning a SharedPreferences through which you can retrieve and modify its values. Only one instance of the SharedPreferences object is returned to any callers for the same name, meaning they will see each other's edits as soon as they are made.
+Retrieve and hold the contents of the preferences file 'name', 
+returning a SharedPreferences through which you can retrieve and modify its values. 
+
+Only one instance of the SharedPreferences object 
+is returned to any callers for the same name, 
+meaning they will see each other's edits as soon as they are made.
 
 Parameters
 
-name	Desired preferences file. If a preferences file by this name does not exist, it will be created when you retrieve an editor (SharedPreferences.edit()) and then commit changes (Editor.commit()).
+name	
+Desired preferences file. 
+If a preferences file by this name does not exist, 
+it will be created when you retrieve an editor (SharedPreferences.edit()) 
+and then commit changes (Editor.commit()).
 
-mode	Operating mode. Use 0 or MODE_PRIVATE for the default operation, MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE to control permissions. The bit MODE_MULTI_PROCESS can also be used if multiple processes are mutating the same SharedPreferences file. MODE_MULTI_PROCESS is always on in apps targeting Gingerbread (Android 2.3) and below, and off by default in later versions.
+mode	
+Operating mode. 
+Use 0 or MODE_PRIVATE for the default operation, 
+MODE_WORLD_READABLE and MODE_WORLD_WRITEABLE to control permissions. 
+The bit MODE_MULTI_PROCESS can also be used 
+if multiple processes are mutating the same SharedPreferences file. 
+MODE_MULTI_PROCESS is always on in apps targeting Gingerbread (Android 2.3) and below, 
+and off by default in later versions.
 
 Returns
 
-The single SharedPreferences instance that can be used to retrieve and modify the preference values.
+The single SharedPreferences instance 
+that can be used to retrieve and modify the preference values.
 
 See Also
 

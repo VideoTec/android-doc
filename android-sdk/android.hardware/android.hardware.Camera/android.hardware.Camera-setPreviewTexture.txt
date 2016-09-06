@@ -1,0 +1,7 @@
+参考
+TextureView
+SurfaceTexture
+
+资料
+http://tangzm.com/blog/?p=20
+https://github.com/fortdam/t_rtf_camera

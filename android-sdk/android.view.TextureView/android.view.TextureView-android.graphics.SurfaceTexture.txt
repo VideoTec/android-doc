@@ -1,0 +1,29 @@
+TextureView
+SurfaceTexture
+camera.setPreviewTexture(sfv);
+
+之间的关系
+http://tangzm.com/blog/?p=20
+https://github.com/fortdam/t_rtf_camera
+
+---------------------------------------------------------
+TextureView.SurfaceTextureListener
+---------------------------------------------------------
+
+abstract void	onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height)
+Invoked when a TextureView's SurfaceTexture is ready for use.
+
+abstract boolean	onSurfaceTextureDestroyed(SurfaceTexture surface)
+Invoked when the specified SurfaceTexture is about to be destroyed.
+
+abstract void	onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
+Invoked when the SurfaceTexture's buffers size changed.
+
+abstract void	onSurfaceTextureUpdated(SurfaceTexture surface)
+Invoked when the specified SurfaceTexture is updated through updateTexImage().
+
+---------------------------------------------------------
+https://developer.android.com/reference/android/hardware/Camera.html
+---------------------------------------------------------
+final void	setPreviewTexture(SurfaceTexture surfaceTexture)
+Sets the SurfaceTexture to be used for live preview.

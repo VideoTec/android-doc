@@ -1,0 +1,8 @@
+http://stackoverflow.com/questions/8384067/how-to-dismiss-the-dialog-with-click-on-outside-of-the-dialog
+
+You can use dialog.setCanceledOnTouchOutside(true); which will close the dialog if you touch outside of the dialog.
+
+Something like,
+
+  Dialog dialog = new Dialog(context)
+  dialog.setCanceledOnTouchOutside(true);

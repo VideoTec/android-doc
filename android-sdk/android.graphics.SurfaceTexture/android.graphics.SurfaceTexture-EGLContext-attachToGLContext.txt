@@ -1,0 +1,27 @@
+https://developer.android.com/reference/android/graphics/SurfaceTexture.html#attachToGLContext(int)
+
+attachToGLContext
+
+Added in API level 16
+
+void attachToGLContext (int texName)
+
+Attach the SurfaceTexture to the OpenGL ES context 
+that is current on the calling thread. 
+
+A new OpenGL ES texture object is created and 
+populated with the SurfaceTexture image frame 
+that was current at the time of the last call to detachFromGLContext(). 
+This new texture is bound to the GL_TEXTURE_EXTERNAL_OES texture target. 
+This can be used to access the SurfaceTexture image contents from multiple OpenGL ES contexts.
+ 
+Note, however, 
+that the image contents are only accessible from one OpenGL ES context at a time.
+
+Parameters
+
+texName	int: 
+
+The name of the OpenGL ES texture that will be created. 
+This texture name must be unusued in the OpenGL ES context 
+that is current on the calling thread.

@@ -1,0 +1,7 @@
+http://tangzm.com/blog/?p=20
+
+和GLSurfaceView不同，
+TextureView并没有自动为我们创建GL 上下文，render surface和 GL thread.
+
+因此，
+如果我们需要在TextureView中用OpenGL进行绘制，必须手动地做这些事。

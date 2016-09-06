@@ -1,0 +1,22 @@
+RFBrowserActivity.openWebView(mContext, content); 
+因为这个 CONTEXT 不是 activity
+
+android.util.AndroidRuntimeException: Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?
+    at android.app.ContextImpl.startActivity(ContextImpl.java:1324)
+    at android.app.ContextImpl.startActivity(ContextImpl.java:1311)
+    at android.content.ContextWrapper.startActivity(ContextWrapper.java:297)
+    at com.feinno.rongfly.ui.browser.RFBrowserActivity.openWebView(RFBrowserActivity.java:212)
+    at com.feinno.rongfly.ui.browser.RFBrowserActivity.openWebView(RFBrowserActivity.java:188)
+    at com.feinno.rongfly.ui.browser.RFBrowserActivity.openWebView(RFBrowserActivity.java:123)
+    at com.feinno.rongfly.ui.publicplatform.activity.RFPublicChatActivity$1.onClick(RFPublicChatActivity.java:213)
+    at android.view.View.performClick(View.java:4475)
+    at android.view.View$PerformClick.run(View.java:18786)
+    at android.os.Handler.handleCallback(Handler.java:730)
+    at android.os.Handler.dispatchMessage(Handler.java:92)
+    at android.os.Looper.loop(Looper.java:176)
+    at android.app.ActivityThread.main(ActivityThread.java:5454)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:525)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+    at dalvik.system.NativeStart.main(Native Method)

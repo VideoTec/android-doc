@@ -1,0 +1,5 @@
+http://tangzm.com/blog/?p=20
+
+每个OpenGL的上下文和单独的线程绑定，
+因此，如果我们需要在屏幕上绘制多个TextureView的话，
+必须要为每个View创建单独的线程

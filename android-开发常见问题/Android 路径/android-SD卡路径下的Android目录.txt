@@ -1,0 +1,95 @@
+File 获取路径：
+File.getAbsolutePath()
+
+/sdcard/Android/data/package-name/files
+/sdcard/Android/data/package-name/cache
+
+https://developer.android.com/reference/android/content/Context.html
+abstract File getExternalCacheDir()
+abstract File getFileStreamPath(String name)
+abstract File getFilesDir()
+abstract File getExternalFilesDir(String type)
+
+abstract File[] getExternalCacheDirs()
+abstract File[] getExternalFilesDirs(String type)
+abstract File[] getExternalMediaDirs()
+
+-------------------------------
+应用示例
+-------------------------------
+    public synchronized void clearAllData(final SQLiteDatabase db) {
+
+        try {
+            LogFeinno.e(TAG, "Destroying old data during upgrade start");
+            SharedPreferenceUtils.clearSharedPreference();
+            LogFeinno.e(TAG,"account:"+ RFAccountMgr.getInstance().currentAccount().toString());
+            long beg = System.currentTimeMillis();
+            long consum = 0;
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.Contact);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.ContactLable);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.GroupList);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.ContactMessage);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.BlackInfo);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.BuddyOpt);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.GroupInfo);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.GroupMember);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.PublicPlatform);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.PersonalInfo);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.Version);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.GroupInvite);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.CallLogs);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.GroupPortraitInfo);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.PortraitInfo);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.PublicInbox);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.OffLineMsg);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.OnLineMsg);
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.MassMsg);
+            clearAllMsgDB();
+            db.execSQL("DROP TABLE IF EXISTS " + Tables.Inbox);
+            onCreate(db);
+
+            File databasePath = mContext.getExternalFilesDir("database");
+            FileUtil.deleteFolder(databasePath.getAbsolutePath());
+
+            File spPath = mContext.getExternalFilesDir("spconfig");
+            FileUtil.deleteFolder(spPath.getAbsolutePath());
+
+            FileUtil.deleteFile(new File(mContext.getFilesDir(), "environmentConfig"));
+
+            consum = System.currentTimeMillis() - beg;
+            LogFeinno.e(TAG, "Destroying old data,consume = " + consum);
+            LogFeinno.e(TAG, "Destroying old data during upgrade end");
+        } catch (Throwable e) {
+            LogFeinno.e(TAG, "Destroying old data during upgrade", e);
+
+        }
+
+
+    }
+
+public class DatabaseContext extends ContextWrapper {
+
+    private Context mContext;
+
+    public DatabaseContext(Context base) {
+        super(base);
+        mContext = base;
+    }
+
+    @Override
+    public File getDatabasePath(String name) {
+        File dir = mContext.getExternalFilesDir("database");
+        if (dir != null && !dir.exists()) {
+            dir.mkdirs();
+        }
+        String dbPath = dir.getAbsolutePath() + "/" + name;
+        File file = new File(dbPath);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return file;
+    }

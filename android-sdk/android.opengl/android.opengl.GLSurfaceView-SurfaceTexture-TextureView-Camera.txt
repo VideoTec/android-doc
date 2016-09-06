@@ -1,0 +1,7 @@
+TextureView
+SurfaceTexture
+camera.setPreviewTexture(sfv);
+
+之间的关系
+http://tangzm.com/blog/?p=20
+https://github.com/fortdam/t_rtf_camera

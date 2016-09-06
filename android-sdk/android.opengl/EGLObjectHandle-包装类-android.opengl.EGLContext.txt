@@ -1,0 +1,11 @@
+https://developer.android.com/reference/android/opengl/EGLContext.html
+
+EGLContext
+public class EGLContext 
+extends EGLObjectHandle 
+
+java.lang.Object
+   ↳	android.opengl.EGLObjectHandle
+ 	   ↳	android.opengl.EGLContext
+       
+Wrapper class for native EGLContext objects.
