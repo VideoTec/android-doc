@@ -1,0 +1,18 @@
+http://stackoverflow.com/questions/4830474/how-to-keep-exclude-a-particular-package-path-when-using-proguard
+
+You don't specify in what way it doesn't work. 
+Your configuration keeps the names of all public classes in the specified package:
+
+-keep public class com.myapp.customcomponents.*
+
+The following configuration keeps the names 
+of all public classes in the specified package and its subpackages:
+
+-keep public class com.myapp.customcomponents.**
+
+The following configuration keeps the names 
+of all public/protected classes/fields/methods in the specified package and its subpackages:
+
+-keep public class com.myapp.customcomponents.** {
+  public protected *;
+}

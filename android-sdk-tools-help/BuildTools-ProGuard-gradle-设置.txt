@@ -1,0 +1,44 @@
+
+    buildTypes {
+        release {
+            minifyEnabled false 这个为 true，才启动混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    http://blog.csdn.net/zuiwuyuan/article/details/48552701
+    
+    buildTypes {  
+       debug {  
+           // 显示Log  
+           buildConfigField "boolean", "LOG_DEBUG", "true"  
+  
+  
+           versionNameSuffix "-debug"  
+           minifyEnabled false  
+           zipAlignEnabled false  
+           shrinkResources false  
+           signingConfig signingConfigs.assist  
+       }  
+  
+  
+       release {  
+           // 不显示Log  
+           buildConfigField "boolean", "LOG_DEBUG", "false"  
+  
+           //混淆  
+           minifyEnabled true  
+  
+           //Zipalign优化  
+           zipAlignEnabled true  
+  
+  
+           // 移除无用的resource文件  
+           shrinkResources true  
+           //加载默认混淆配置文件  
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  
+           //签名  
+           signingConfig signingConfigs.<span style="font-family: Arial, Helvetica, sans-serif;">assist</span>  
+  
+       }  
+   }  

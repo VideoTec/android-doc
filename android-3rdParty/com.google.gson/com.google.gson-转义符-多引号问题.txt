@@ -1,0 +1,88 @@
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Test t = new Test();
+        t.value = "name \"ok\"";
+        Log.i("tag", new Gson().toJson(t));     输出  {"value":"name \"ok\""}
+        GsonBuilder gb = new GsonBuilder().disableHtmlEscaping();
+        Gson gson = gb.create();
+        Log.i("tag", gson.toJson(t));           输出  {"value":"name \"ok\""}
+        
+        String jsonString = gson.toJson(t);
+        Test t2 = new Gson().fromJson(jsonString, Test.class);
+        这个可以正常运行，需要正确理解 {"value":"name \"ok\""} 中的 \" 的转义，字面量应该 "\\\""
+
+        String jsonString = "\"value\":\"name \"ok\"\"";
+        异常： java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 2
+               异常的原因是 没有加大括号
+               
+         String jsonString = "{\"value\":\"name \"ok\"\"}";
+         异常： Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 18 path $.value
+               
+        String jsonString = "{\"value\":\"name \\\"ok\\\"\"}";
+        这个可以正常解， value 为 name "ok"
+        
+        Test fromJson = new Gson().fromJson(jsonString, Test.class);  
+        Log.i("tag", fromJson.value);
+    }
+    
+-------------------------------------------
+-------------------------------------------
+http://stackoverflow.com/questions/24592841/is-there-any-difference-in-json-key-when-using-single-quote-and-double-quote
+
+In JSON only double quotes are valid.
+
+You can find the standard on JSON.org
+
+A value can be a string in double quotes, or a number, or true or false or null, 
+or an object or an array. These structures can be nested.
+
+In other words, no strings in single quotes.
+    
+------------------------------------------------
+异常信息
+------------------------------------------------
+    Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 2 path $
+ at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:387)
+ at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:189)
+ at com.google.gson.Gson.fromJson(Gson.java:810) 
+ at com.google.gson.Gson.fromJson(Gson.java:775) 
+ at com.google.gson.Gson.fromJson(Gson.java:724) 
+ at com.google.gson.Gson.fromJson(Gson.java:696) 
+ at com.example.wangxiangfx.myapplication2.MainActivity.onCreate(MainActivity.java:30) 
+ at android.app.Activity.performCreate(Activity.java:5356) 
+ at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087) 
+ at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2163) 
+ at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2258) 
+ at android.app.ActivityThread.access$800(ActivityThread.java:147) 
+ at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1211) 
+ at android.os.Handler.dispatchMessage(Handler.java:102) 
+ at android.os.Looper.loop(Looper.java:136) 
+ at android.app.ActivityThread.main(ActivityThread.java:5135) 
+ at java.lang.reflect.Method.invokeNative(Native Method) 
+ at java.lang.reflect.Method.invoke(Method.java:515) 
+ 
+------------------------------------------------
+异常信息
+------------------------------------------------
+ Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 18 path $.value
+  at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1573)
+  at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:495)
+  at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:418)
+  at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:190)
+  at com.google.gson.Gson.fromJson(Gson.java:810)
+  at com.google.gson.Gson.fromJson(Gson.java:775) 
+  at com.google.gson.Gson.fromJson(Gson.java:724) 
+  at com.google.gson.Gson.fromJson(Gson.java:696) 
+  at com.example.wangxiangfx.myapplication2.MainActivity.onCreate(MainActivity.java:31) 
+  at android.app.Activity.performCreate(Activity.java:5356) 
+  at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087) 
+  at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2163) 
+  at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2258) 
+  at android.app.ActivityThread.access$800(ActivityThread.java:147) 
+  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1211) 
+  at android.os.Handler.dispatchMessage(Handler.java:102) 
+  at android.os.Looper.loop(Looper.java:136) 
+  at android.app.ActivityThread.main(ActivityThread.java:5135) 
+  at java.lang.reflect.Method.invokeNative(Native Method) 

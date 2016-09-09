@@ -1,0 +1,8 @@
+----------------------------------------
+gradle 中添加自定义 config 变量
+E:\doc\android\android-studio\AS构建-输出\构建时生成的类-BuildConfig.java.txt
+----------------------------------------
+
+http://blog.csdn.net/axuanqq/article/details/50681119
+
+buildConfigField "boolean", "log_debug, "true/false" 

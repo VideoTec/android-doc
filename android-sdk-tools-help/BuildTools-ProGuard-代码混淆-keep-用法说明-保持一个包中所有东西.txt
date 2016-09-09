@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/7464035/how-to-tell-proguard-to-keep-everything-in-a-particular-package
+
+My application has many activities and uses native library too. 
+With the default ProGuard configuration 
+which Eclipse generates ProGuard removes many things - 
+OnClick methods, 
+static members, 
+callback methods which my native library uses... 
+
+Is it there a simple way to instruct ProGuard to NOT remove anything from my package? 
+Removing things saves only about 2.5% of the application size, 
+but breaks my application completely. 
+Configuring, testing and maintaining it class by class in ProGuard configuration would be a pain.
+

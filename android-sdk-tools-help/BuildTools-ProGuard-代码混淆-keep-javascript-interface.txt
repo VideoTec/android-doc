@@ -1,0 +1,5 @@
+http://hunankeda110.iteye.com/blog/1672957
+
+-keep public class yourpackagename.JavascriptInterface {
+  void getSomething(java.lang.String)
+}

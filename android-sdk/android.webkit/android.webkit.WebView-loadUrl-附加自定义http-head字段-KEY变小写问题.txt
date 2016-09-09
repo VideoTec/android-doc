@@ -1,0 +1,12 @@
+https://code.google.com/p/android/issues/detail?id=66497
+
+1.call webView.loadUrl(String url, Map<String, String> additionalHttpHeaders) with header "USER-NAME : bill".
+
+2.get the header on server is changed to "user-name : bill".
+
+just happened on Android 4.4, because Android 4.4 change webview core to chromium, I think this problem is caused by this change.
+
+Why this happened?
+
+It doesn't matter - the rfc states the case is not important: http://stackoverflow.com/questions/5258977/are-http-headers-case-sensitive 
+Your server should be performing a case-insensitive match. If it isn't then it's clearly in violation of the rules of http in the first place

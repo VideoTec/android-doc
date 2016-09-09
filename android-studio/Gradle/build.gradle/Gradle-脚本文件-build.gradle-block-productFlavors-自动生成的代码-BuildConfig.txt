@@ -1,0 +1,16 @@
+E:\doc\android\android-studio\AS构建-输出\构建时生成的类-BuildConfig.java.txt
+
+自动生成的代码示例：
+
+D:\work\androidrongflysip\rongflymqtt\build\generated\source\buildConfig\dev\debug\com\feinno\rongfly\BuildConfig.java
+
+package com.feinno.rongfly;
+
+public final class BuildConfig {
+  public static final boolean DEBUG = Boolean.parseBoolean("true");
+  public static final String APPLICATION_ID = "com.feinno.rongfly";
+  public static final String BUILD_TYPE = "debug";
+  public static final String FLAVOR = "dev";
+  public static final int VERSION_CODE = 4207;
+  public static final String VERSION_NAME = "1.6.1.0010";
+}

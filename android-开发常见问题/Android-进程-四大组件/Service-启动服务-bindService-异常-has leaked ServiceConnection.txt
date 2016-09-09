@@ -1,0 +1,64 @@
+原因是 act oncreate 里调用了 bind 但是在 act-ondestroy 没有调用对应的 unbind
+退出，ACT 时产生异常
+
+绑定代码：
+
+/************************************************************
+         * 绑定主进程的接口
+         */
+        bindService(new Intent(this, RFServiceFor3th.class), new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                mRFService = IRFServiceFor3th.Stub.asInterface(service);
+                if (mType == TypeReplyableView) {
+                    try {
+                        mRFService.registerContactInfoCallback(new ContactInfoCallback());
+                        LogFeinno.i(TAG, "注册头像回调方法");
+                    } catch (RemoteException e) {
+                        LogFeinno.e(TAG, "注册头像回调方法失败", e);
+                    }
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mRFService = null;
+            }
+        }, Context.BIND_AUTO_CREATE);
+        
+-------------------------------------------
+异常日志 - 可能的原因，覆盖安装造成的
+-------------------------------------------
+
+09-07 20:32:54.995 1789-1789/com.feinno.rongfly:tools E/ActivityThread: Activity com.feinno.rongfly.ui.browser.RFBrowserActivity has leaked ServiceConnection com.feinno.rongfly.ui.browser.RFBrowserActivity$1@424b9010 that was originally bound here
+     android.app.ServiceConnectionLeaked: Activity com.feinno.rongfly.ui.browser.RFBrowserActivity has leaked ServiceConnection com.feinno.rongfly.ui.browser.RFBrowserActivity$1@424b9010 that was originally bound here
+         at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:972)
+         at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:866)
+         at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1655)
+         at android.app.ContextImpl.bindService(ContextImpl.java:1638)
+         at android.content.ContextWrapper.bindService(ContextWrapper.java:517)
+         at com.feinno.rongfly.ui.browser.RFBrowserActivity.onCreate(RFBrowserActivity.java:300)
+         at android.app.Activity.performCreate(Activity.java:5356)
+         at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1087)
+         at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2163)
+         at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2258)
+         at android.app.ActivityThread.access$800(ActivityThread.java:147)
+         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1211)
+         at android.os.Handler.dispatchMessage(Handler.java:102)
+         at android.os.Looper.loop(Looper.java:136)
+         at android.app.ActivityThread.main(ActivityThread.java:5135)
+         at java.lang.reflect.Method.invokeNative(Native Method)
+         at java.lang.reflect.Method.invoke(Method.java:515)
+         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:798)
+         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:614)
+         at dalvik.system.NativeStart.main(Native Method)
+         
+http://stackoverflow.com/questions/18575903/serviceconnectionleaked-in-android
+
+You're calling doBindService() in both onCreate() and onResume(), 
+trying calling it just in onResume() to match your call to doUnbindService() in onPause()
+
+http://blog.csdn.net/harry_helei/article/details/8923809
+
+看提示是ServiceConnection在使用的时候出现泄露了，原因是由于bind到service后，没有调用unbind进行释放。
+这个跟C/C++里的内存泄露应该是一类问题，资源使用完没有释放。

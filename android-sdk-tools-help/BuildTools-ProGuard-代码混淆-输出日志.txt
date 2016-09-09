@@ -1,0 +1,63 @@
+总结：所有问题，通过忽略警告可以打包成功：
+-ignorewarnings
+
+ProGuard, version 5.2.1
+Reading input...
+Reading program jar [D:\work\androidrongflysip\rongflymqtt\libs\eventbus-2.4.0.jar] (filtered)
+Reading program jar [D:\work\androidrongflysip\rongflymqtt\libs\pinyin4j-2.5.0.jar] (filtered)
+Reading program jar [D:\work\androidrongflysip\rongflymqtt\libs\StrangeCallsSdk_rcs_20160728.jar] (filtered)
+Reading program jar [D:\work\androidrongflysip\rongflymqtt\libs\ormlite-core-4.49-SNAPSHOT.jar] (filtered)
+Reading program jar [D:\work\androidrongflysip\rongflymqtt\libs\ormlite-android-4.49-SNAPSHOT.jar] (filtered)
+
+http://acheng1314.cn/?p=187
+其实上面的信息都可以不看，无非是一大堆报错信息。
+上网百度了下，首先要将引用的第三方类库全部过滤掉
+
+Note: duplicate definition of library class [org.json.JSONObject]
+Note: duplicate definition of library class [org.json.JSONArray]
+Note: duplicate definition of library class [org.json.JSONStringer]
+Note: duplicate definition of library class [org.json.JSONException]
+Note: duplicate definition of library class [org.json.JSONTokener]
+Note: duplicate definition of library class [org.apache.http.params.CoreConnectionPNames]
+Note: duplicate definition of library class [org.apache.http.params.HttpParams]
+Note: duplicate definition of library class [org.apache.http.params.HttpConnectionParams]
+Reading library jar [E:\android-sdk-windows\platforms\android-23\optional\org.apache.http.legacy.jar]
+Note: duplicate definition of library class [android.net.http.SslCertificate]
+Note: duplicate definition of library class [android.net.http.SslError]
+
+Initializing...
+Note: the configuration refers to the unknown class 'com.google.vending.licensing.ILicensingService'
+Note: the configuration refers to the unknown class 'com.android.vending.licensing.ILicensingService'
+Note: the configuration refers to the unknown class 'com.example.wangxiangfx.v6sdk.MainActivity'
+      Maybe you meant the fully qualified name 'com.feinno.rongfly.MainActivity'?
+Note: the configuration refers to the unknown class 'com.feinno.publibrary.widget.CustomRelativeWrapper'
+Note: the configuration refers to the unknown class 'com.feinno.rongfly.ui.uibase.view.CustomListView'
+      Maybe you meant the fully qualified name 'com.feinno.rongfly.ui.session.view.CustomListView'?
+Note: the configuration refers to the unknown class 'mail139.umcsdk.broadcastreceiver.SsoSyncReceiver'
+
+Warning: com.feinno.circle.mvp.home.HomeFragment: can't find referenced method 'void setOnParallaxScroll(com.feinno.publibrary.view.SortDataSource$OnParallaxScroll)' in program class com.feinno.publibrary.view.SortDataSource
+Warning: com.feinno.circle.mvp.home.HomeFragment: can't find referenced method 'void setOnActionDownEvent(com.feinno.publibrary.view.ZRecyclerView$onActionDownEvent)' in program class com.feinno.publibrary.view.ZRecyclerView
+Warning: com.feinno.circle.mvp.home.HomeFragment: can't find referenced class com.feinno.publibrary.view.SortDataSource$OnParallaxScroll
+Warning: com.feinno.circle.mvp.home.HomeFragment: can't find referenced class com.feinno.publibrary.view.ZRecyclerView$onActionDownEvent
+Warning: com.feinno.circle.mvp.home.HomeFragment$10: can't find referenced class com.feinno.publibrary.view.ZRecyclerView$onActionDownEvent
+Warning: com.feinno.circle.mvp.home.HomeFragment$3: can't find referenced method 'com.feinno.publibrary.view.ob.ObservableRecyclerView getRecyclerView()' in program class com.feinno.publibrary.view.ZRecyclerView
+Warning: com.feinno.circle.mvp.home.HomeFragment$3: can't find referenced class com.feinno.publibrary.view.ob.ObservableRecyclerView
+Warning: com.feinno.circle.mvp.home.HomeFragment$3: can't find referenced class com.feinno.publibrary.view.ob.ObservableRecyclerView
+Warning: com.feinno.circle.mvp.home.HomeFragment$9: can't find referenced class com.feinno.publibrary.view.SortDataSource$OnParallaxScroll
+
+-keep 某个包后：
+Note: the configuration keeps the entry point 'com.baidu.mapapi.map.MapView { MapView(android.content.Context,com.baidu.mapapi.map.BaiduMapOptions); }', but not the descriptor class 'com.baidu.mapapi.map.BaiduMapOptions'
+Note: the configuration keeps the entry point 'com.baidu.mapapi.map.MapView { void setLogoPosition(com.baidu.mapapi.map.LogoPosition); }', but not the descriptor class 'com.baidu.mapapi.map.LogoPosition'
+Note: the configuration keeps the entry point 'com.baidu.mapapi.map.TextureMapView { void setLogoPosition(com.baidu.mapapi.map.LogoPosition); }', but not the descriptor class 'com.baidu.mapapi.map.LogoPosition'
+Note: the configuration keeps the entry point 'com.baidu.platform.comjni.map.basemap.JNIBaseMap { int SetCallback(long,com.baidu.platform.comjni.map.basemap.BaseMapCallback); }', but not the descriptor class 'com.baidu.platform.comjni.map.basemap.BaseMapCallback'
+Note: the configuration keeps the entry point 'com.facebook.drawee.view.DraweeView { void setHierarchy(com.facebook.drawee.interfaces.DraweeHierarchy); }', but not the descriptor class 'com.facebook.drawee.interfaces.DraweeHierarchy'
+Note: the configuration keeps the entry point 'com.feinno.publibrary.http.ErrorHandlingCallAdapter$CircleCallAdapter$1 { void onResponse(retrofit2.Call,retrofit2.Response); }', but not the descriptor class 'retrofit2.Call'
+Note: the configuration keeps the entry point 'com.feinno.publibrary.http.ErrorHandlingCallAdapter$CircleCallAdapter$1 { void onResponse(retrofit2.Call,retrofit2.Response); }', but not the descriptor class 'retrofit2.Response'
+Note: the configuration keeps the entry point 'com.feinno.publibrary.http.ErrorHandlingCallAdapter$CircleCallAdapter$1 { void onFailure(retrofit2.Call,java.lang.Throwable); }', but not the descriptor class 'retrofit2.Call'
+
+添加 -libraryjars libs/StrangeCallsSdk_rcs_20160728.jar 后
+解决方法，注释掉这个 -libraryjars , 这句会再次引用 jar 包
+
+* What went wrong:
+Execution failed for task ':rongflymqtt:transformClassesAndResourcesWithProguardForFeinnoRelease'.
+> java.io.IOException: The same input jar [D:\work\androidrongflysip\rongflymqtt\libs\StrangeCallsSdk_rcs_20160728.jar] is specified twice.

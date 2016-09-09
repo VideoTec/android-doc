@@ -1,0 +1,124 @@
+http://stackoverflow.com/questions/34981241/set-a-value-based-on-current-build-flavor-settings
+
+As already explained in the comment, 
+when building your buildscript both terms get evaluated and the latter one sets the value.
+
+To do this, you can make use of the ext object that every task / item has. 
+If you assign your value to it, you can later execute the right step in your actual build.
+
+The following is one way to do it, 
+and there sure is a better way to do this using afterEvaluate or something, 
+but this works for me in a similar usecase.
+
+-------------------------------------------------
+正确的方法
+-------------------------------------------------
+
+    productFlavors {
+        dev {
+            ext.tagid = "100";
+        }
+        feinno {
+            ext.tagid = "200";
+        }
+
+        online {
+            ext.tagid = "3";
+        }
+
+        m360 {
+            ext.tagid = "1";
+        }
+
+        tencent {
+            ext.tagid = "2";
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        def flavorName = variant.flavorName;
+        variant.javaCompile.doLast {
+            String srcClassPath = buildDir.name + '/intermediates/classes/' + variant.dirName;
+            println 'begin build pb after java compile ############################ ' + srcClassPath;
+            CodeGenerator(srcClassPath);
+        }
+        def versionCode = gitVersionCode();
+        variant.mergedFlavor.versionCode = versionCode;
+        variant.productFlavors.each { flavor ->
+            variant.mergedFlavor.manifestPlaceholders =
+                    [channelName: flavorName, buildVersion: gitBuildVersion(), channelTagID: flavor.ext.tagid]
+        }
+        if (!flavorName.equals('dev') && variant.buildType.name.equals('release')) {
+            String outDir = System.getProperty("user.home") \
+                   + File.separator + 'RongFlyRelease' + File.separator + getDayStr();
+
+            variant.outputs.each { output ->
+                String apkFileName = "FetionX_Android_" + variant.flavorName \
+                       + "_v" + defaultConfig.versionName \
+                       + "_" + getDateTimeStr() \
+                       + "_v" + versionCode \
+                       + "_" + variant.buildType.name + ".apk";
+                File outAPKFile = new File(outDir, apkFileName);
+                if (!outAPKFile.getParentFile().exists()) {
+                    outAPKFile.getParentFile().mkdirs();
+                }
+                output.outputFile = outAPKFile;
+            }
+        }
+    }
+    
+-------------------------------------------------
+错误的方法
+-------------------------------------------------
+    def channel_tag_id;
+    productFlavors {
+        dev {
+            channel_tag_id = "100";
+        }
+        feinno {
+            channel_tag_id = "200";
+        }
+
+        online {
+            channel_tag_id = "3";
+        }
+
+        m360 {
+            channel_tag_id = "1";
+        }
+
+        tencent {
+            channel_tag_id = "2";
+        }
+    }
+    
+        android.applicationVariants.all { variant ->
+        def flavorName = variant.flavorName;
+        variant.javaCompile.doLast {
+            String srcClassPath = buildDir.name + '/intermediates/classes/' + variant.dirName;
+            println 'begin build pb after java compile ############################ ' + srcClassPath;
+            CodeGenerator(srcClassPath);
+        }
+        def versionCode = gitVersionCode();
+        variant.mergedFlavor.versionCode = versionCode;
+        variant.mergedFlavor.manifestPlaceholders =
+                [channelName: flavorName, buildVersion: gitBuildVersion(), channelTagID: channel_tag_id]
+                这时候取得的值，始终是 2，即最后一个值
+        if (!flavorName.equals('dev') && variant.buildType.name.equals('release')) {
+            String outDir = System.getProperty("user.home") \
+                   + File.separator + 'RongFlyRelease' + File.separator + getDayStr();
+
+            variant.outputs.each { output ->
+                String apkFileName = "FetionX_Android_" + variant.flavorName \
+                       + "_v" + defaultConfig.versionName \
+                       + "_" + getDateTimeStr() \
+                       + "_v" + versionCode \
+                       + "_" + variant.buildType.name + ".apk";
+                File outAPKFile = new File(outDir, apkFileName);
+                if (!outAPKFile.getParentFile().exists()) {
+                    outAPKFile.getParentFile().mkdirs();
+                }
+                output.outputFile = outAPKFile;
+            }
+        }
+    }

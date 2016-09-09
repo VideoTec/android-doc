@@ -1,0 +1,26 @@
+http://stackoverflow.com/questions/17880565/with-proguard-how-do-i-obfuscate-just-one-class
+
+Obfuscating a single class won't have much effect: 
+it may change the class name and a few field names and methods names, 
+and it may optimize some code. 
+Obfuscation tends to be less effective for hiding small pieces of information. 
+The more application code you obfuscate, 
+the more difficult it becomes to understand.
+
+That being said, you can specify:
+
+-keep class !com.acme.Algorithm { *; }
+
+It keeps all classes/fields/methods outside of com.acme.Algorithm.
+
+http://stackoverflow.com/questions/4536016/how-can-i-obfuscate-only-com-foo-and-com-bar-proguard
+
+This should work
+
+-keep class !com.foo.**,!com.bar.** { *; }
+
+You can find a summary of the various -keep options 
+at http://proguard.sourceforge.net/manual/usage.html#keepoverview
+
+You can find the explanation of ProGuard's regular expressions 
+at http://proguard.sourceforge.net/manual/usage.html#filters

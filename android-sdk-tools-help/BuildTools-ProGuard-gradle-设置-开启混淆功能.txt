@@ -1,0 +1,4 @@
+
+           //混淆  
+           minifyEnabled true  
+  

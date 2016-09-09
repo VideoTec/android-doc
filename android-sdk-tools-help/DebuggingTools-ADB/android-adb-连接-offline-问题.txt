@@ -1,0 +1,7 @@
+http://www.eoeandroid.com/thread-321821-1-1.html?_dsign=2a247561
+还有一种，usb调试关闭再打开
+第二种是把线拔了重插，这种成功率貌似比上一种高。
+
+方法一：执行 #adb kill-server
+             #adb start-server
+             #adb devices

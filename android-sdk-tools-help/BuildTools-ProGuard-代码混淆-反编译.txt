@@ -1,0 +1,19 @@
+http://blog.csdn.net/vipzjyno1/article/details/21039349
+工具介绍：
+apktool  
+     作用：资源文件获取，可以提取出图片文件和布局文件进行使用查看
+     E:\tools>java -jar apktool_2.0.1.jar d -f xxx.apk -o d:/apk
+     [返编译代码时不需要这步]
+     
+dex2jar
+     把 apk 里的 classes.dex 解压出来
+     作用：将apk反编译成java源码（classes.dex转化成jar文件）
+     https://github.com/pxb1988/dex2jar/releases
+     dex2jar.bat classes.dex
+     会生成一个 jar 包。
+     
+jd-gui
+     作用：查看APK中classes.dex转化成出的jar文件，即源码文件
+     一种方法：https://github.com/java-decompiler/jd-gui/releases
+     另一种方法：AS bytecode version 50
+     https://github.com/Konloch/bytecode-viewer

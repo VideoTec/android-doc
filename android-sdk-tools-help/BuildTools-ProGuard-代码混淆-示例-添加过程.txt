@@ -1,0 +1,36 @@
+编辑 proguard-rules.pro 过程
+
+总结：
+1. 开启混淆
+2. 编译，排除错误。主要是把找不到的 类 keep 住
+3. 必须要 设置 -ignorewarnings
+
+--------------------------------
+只添加
+--------------------------------
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+报错：
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':v6sdk:transformClassesAndResourcesWithProguardForRelease'.
+> java.io.IOException: The output jar is empty. Did you specify the proper '-keep' options?
+
+原因是混淆文件没有keep到一个外界调用jar包的入口，比如一些public的方法，修改混淆文件proguard.cfg，比如加上一句：
+
+-keep class com.example.android.InitUtils{ public *;}
+
+--------------------------------
+只添加
+--------------------------------
+
+-keepclasseswithmembernames class * { native <methods>; }
+-keep public class * { public protected *; }
+
+公有成员变量还是混淆了
+单写一行keep并不能让proguard不做成员变量的混淆处理，而只是不被删掉

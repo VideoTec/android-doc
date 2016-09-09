@@ -1,0 +1,14 @@
+http://stackoverflow.com/questions/4830474/how-to-keep-exclude-a-particular-package-path-when-using-proguard
+
+Add following lines at the bottom of proguard.config
+
+-keep class com.facebook.** { *; }
+-dontwarn com.facebook.**
+
+Replace package name accordingly, 
+here com.facebook will be excluded from proguard
+
+ if I right - 
+ if app do not use com.facebook package, 
+ then on build will be shown note "the configuration refers to the unknown class ...". 
+ -dontwarn disable this note.

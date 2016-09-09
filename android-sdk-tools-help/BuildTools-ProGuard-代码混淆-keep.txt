@@ -1,0 +1,38 @@
+http://blog.sina.com.cn/s/blog_4e1e357d0101gigq.html
+
+１．保护某个类【只是该类的类名被ｋｅｅｐ】，ｃｌａｓｓ里面的成员变量，方法依然会被混淆掉
+-keep class com.ali.trip.util.ReflectionUtils
+
+２．保护某个类中的内容【相当于这个类的ｃｌａｓｓ｛｝里的内容不会被混淆】
+
+-keep class com.ali.trip.util.ReflectionUtils { 
+*; 
+
+３．保护ｊａｒ包，这里实际就是ｋｅｅｐ某一级包目录下的所有内容不会混淆
+
+-keep class com.j256.ormlite.**{*;}
+
+4.保护内部类
+-keep public class com.taobao.trip.ui.webview.FlightEventsWebviewActivity$* {
+   *;
+} 
+
+5.保护实现某接口的类
+-keep public class * implements java.io.Serializable {*;}
+
+http://www.cnitblog.com/zouzheng/archive/2014/10/31/72639.html
+保留选项 
+
+-keep {Modifier} {class_specification}    保护指定的类文件和类的成员 
+
+-keepclassmembers {modifier} {class_specification}    保护指定类的成员，如果此类受到保护他们会保护的更好 
+
+-keepclasseswithmembers {class_specification}    保护指定的类和类的成员，但条件是所有指定的类和类成员是要存在。 
+
+-keepnames {class_specification}    保护指定的类和类的成员的名称（如果他们不会压缩步骤中删除） 
+
+-keepclassmembernames {class_specification}    保护指定的类的成员的名称（如果他们不会压缩步骤中删除） 
+
+-keepclasseswithmembernames {class_specification}    保护指定的类和类的成员的名称，如果所有指定的类成员出席（在压缩步骤之后） 
+
+-printseeds {filename}    列出类和类的成员-keep选项的清单，标准输出到给定的文件 

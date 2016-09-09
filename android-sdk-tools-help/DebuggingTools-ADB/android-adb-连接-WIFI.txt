@@ -1,0 +1,22 @@
+http://stormzhang.com/android/2014/08/27/adb-over-wifi/
+
+http://vjson.com/wordpress/adb%E9%80%9A%E8%BF%87wifi%E8%BF%9E%E6%8E%A5android%E8%AE%BE%E5%A4%87.html
+
+用USB线连接Android设备。连接上之后你的电脑就会检查到设备并且ADB将会以USB模式启动。
+可以通过adb devices命令检查连接上的设备，
+用adb usb命令确认adb是运行在usb模式下面。
+D:\adb>adb usb
+adb server is out of date.  killing...
+* daemon started successfully *
+restarting in USB mode
+
+用adb tcpip模式重启adb
+adb tcpip 5555
+
+用adb connect命令通过IP和端口号连接ADB了
+adb connect 192.168.1.3:5555
+
+http://stackoverflow.com/questions/2604727/how-can-i-connect-to-android-with-adb-over-tcp
+
+To tell the ADB daemon return to listening over USB
+adb usb

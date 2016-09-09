@@ -1,4 +1,10 @@
-每个工程里都有一个 proguard-project.txt 文件
+obfuscate[英][ˈɒbfʌskeɪt] [美][ˈɑbfʌskeɪt]
+vt.使模糊，使混乱；使糊涂
+
+每个工程里都有一个 proguard-project.txt 文件。
+
+但是
+主工程，编译时会混淆所有的引用包的类。
 
 D:\fvideo\Android\feinnovideo\OpenSLTest\proguard-project.txt
 

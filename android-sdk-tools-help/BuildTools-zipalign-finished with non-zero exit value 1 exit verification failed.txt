@@ -1,0 +1,15 @@
+打包 错误信息
+
+'/Users/yanlina/RongFlyRelease/20160908/FetionX_Android_feinno_v6.0.1.1_20160908152419_v4304_release.apk' for verification FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':rongflymqtt:zipalignFeinnoRelease'.
+> Process 'command '/Users/yanlina/Tools/android_sdk/build-tools/23.0.2/zipalign'' finished with non-zero exit value 1
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+Widows 本机，打包没有问题。
+MAC Genkins 下打包出错。

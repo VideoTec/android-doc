@@ -1,0 +1,36 @@
+实例
+
+    def channel_tag_id;
+    productFlavors {
+        dev {
+            channel_tag_id = "100";
+        }
+        feinno {
+            channel_tag_id = "200";
+        }
+
+        online {
+            channel_tag_id = "3";
+        }
+
+        m360 {
+            channel_tag_id = "1";
+        }
+
+        tencent {
+            channel_tag_id = "2";
+        }
+    }
+    
+    
+    variant.mergedFlavor.manifestPlaceholders =
+            [channelName: flavorName, buildVersion: gitBuildVersion(), channelTagID: channel_tag_id]
+                
+         AndroidManifest.xml 占位符
+        <!-- zhugeSDK start -->
+        <meta-data
+            android:name="ZHUGE_APPKEY"
+            android:value="500e40c6653d42c2bcc235d56854c867" />
+        <meta-data
+            android:name="ZHUGE_CHANNEL"
+            android:value="${channelTagID}" />

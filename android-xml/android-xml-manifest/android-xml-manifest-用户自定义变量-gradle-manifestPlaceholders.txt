@@ -1,3 +1,5 @@
+E:\doc\android\android-studio\Gradle\Gradle-定义变量.txt
+
 https://developer.android.com/studio/build/manifest-merge.html
 
 Injecting Build Values into a Manifest
