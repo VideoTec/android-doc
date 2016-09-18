@@ -1,0 +1,42 @@
+http://stackoverflow.com/questions/15926260/set-uiwebview-content-not-to-move-when-keyboard-is-shown
+
+If you want to disable ALL scrolling, 
+including the auto-scroll when you navigate between form fields, 
+setting webView.scrollView.scrollEnabled=NO doesn't quite cover everything. 
+That stops normal tap-and-drag scrolling, 
+but not the automatic bring-field-into-view scrolling when you navigate around a web form.
+
+Also, watching for UIKeyboardWillShowNotification will let you prevent scrolling when the keyboard appears, 
+but that will do nothing if the keyboard is already up from editing a different form field.
+
+Here's how to prevent ALL scrolling in three simple steps:
+
+1) After you create the UIWebView, disable normal scrolling:
+
+myWebView.scrollView.scrollEnabled = NO;
+
+2) Then register your view controller as the scrollView's delegate:
+
+myWebView.scrollView.delegate = self;
+(And make sure to add <UIScrollViewDelegate> to your class's @interface definition to prevent compiler warnings)
+
+3) Capture and undo all scroll events:
+
+// UIScrollViewDelegate method
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    scrollView.bounds = myWebView.bounds;
+}
+
+http://stackoverflow.com/questions/13820088/how-to-prevent-keyboard-push-up-webview-at-ios-app-using-phonegap
+
+On focus, set window.scrollTo(0,0); This prevents keyboard from pushing up webview completely
+
+$('input').on('focus', function(e) {
+    e.preventDefault(); e.stopPropagation();
+    window.scrollTo(0,0); 
+    //the second 0 marks the Y scroll pos. Setting this to i.e. 100 will push the screen up by 100px. 
+});
+
+If you don't want to set a static value for your Y scroll position, feel free to use this short plugin I've written that automatically aligns the keyboard underneath the input field. It's not perfect, but it does the job. Just call this on focus as shown above:
+
+setKeyboardPos(e.target.id);
