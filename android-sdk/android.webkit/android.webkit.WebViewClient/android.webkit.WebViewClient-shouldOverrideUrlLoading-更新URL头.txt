@@ -1,0 +1,10 @@
+https://github.com/delight-im/Android-AdvancedWebView/issues/27
+
+webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url, getExtraHeaders());
+                return true;
+
+            }
+        });

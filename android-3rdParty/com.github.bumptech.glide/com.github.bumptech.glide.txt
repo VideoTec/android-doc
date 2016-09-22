@@ -1,0 +1,13 @@
+https://github.com/bumptech/glide
+
+lide is a fast and efficient open source media management and image loading framework for Android 
+that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
+
+repositories {
+  mavenCentral() // jcenter() works as well because it pulls from Maven Central
+}
+
+dependencies {
+  compile 'com.github.bumptech.glide:glide:3.7.0'
+  compile 'com.android.support:support-v4:19.1.0'
+}

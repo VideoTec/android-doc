@@ -1,0 +1,30 @@
+AsyncRingtonePlayer
+/**
+ * Plays the default ringtone. Uses {@link Ringtone} in a separate thread so that this class can be
+ * used from the main thread.
+ */
+ 
+    // The interval in which to restart the ringer.
+    private static final int RESTART_RINGER_MILLIS = 3000;
+
+    private void handleRepeat() {
+        if (mRingtone == null) {
+            return;
+        }
+
+        if (mRingtone.isPlaying()) {
+            LogFeinno.i(TAG, "Ringtone already playing.");
+        } else {
+            AudioManager manager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+            manager.setMode(AudioManager.MODE_RINGTONE);
+            mRingtone.play();
+            LogFeinno.i(TAG, "Repeat ringtone.");
+        }
+
+        // Repost event to restart ringer in {@link RESTART_RINGER_MILLIS}.
+        synchronized(this) {
+            if (!mHandler.hasMessages(EVENT_REPEAT)) {
+                mHandler.sendEmptyMessageDelayed(EVENT_REPEAT, RESTART_RINGER_MILLIS);
+            }
+        }
+    }

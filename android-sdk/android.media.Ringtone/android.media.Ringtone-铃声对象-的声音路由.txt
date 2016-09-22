@@ -1,0 +1,27 @@
+参考：
+E:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.AudioManager-模式-影响声音路由.txt
+
+MODE_RINGTONE
+MODE_NORMAL  播放铃声时，所有设备都播放
+
+MODE_IN_CALL 播放铃声时，只有一个设备播放 （setSpeakerphoneOn 决定那个设备播放）
+        mAudioManager.setMode(AudioManager.MODE_IN_CALL);
+        mRingtonePlayer.play(mRingtoneUri);
+        
+-----------------------------------------------------------------------------------
+问题： MODE_RINGTONE 状态下，播放铃声，只有一个设备播放，听筒或者扬声器
+-----------------------------------------------------------------------------------
+
+和声音源也没有关系。下面两个都不能正常路由到所有播放设备。
+private Uri mRingtoneUri = Settings.System.DEFAULT_RINGTONE_URI;
+private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);
+
+播放之前，设置 MODE_RINGTONE 也不行。
+AudioManager manager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+manager.setMode(AudioManager.MODE_RINGTONE);
+mRingtone.play();
+
+最后发现原因是： webrtc mMediaEngine.createAudioSession 开始工作，录音及播放
+WebRtcAudioTrack.java
+private int PlayAudio(int lengthInBytes)
+这个方法会把应用播放的声音，收集过来，再播放

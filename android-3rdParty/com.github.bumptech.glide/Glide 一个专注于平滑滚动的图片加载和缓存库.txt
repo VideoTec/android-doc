@@ -1,0 +1,17 @@
+http://www.jianshu.com/p/4a3177b57949
+
+下面我来谈一下个人对这些图片加载库的理解，如有错误，还望指教。
+
+Universal Image Loader：一个强大的图片加载库，包含各种各样的配置，最老牌，使用也最广泛。
+
+Picasso: Square出品，必属精品。和OkHttp搭配起来更配呦！
+
+Volley ImageLoader：Google官方出品，可惜不能加载本地图片~
+
+Fresco：Facebook出的，天生骄傲！不是一般的强大。
+
+Glide：Google推荐的图片加载库，专注于流畅的滚动。
+
+文／倾城_之泪（简书作者）
+原文链接：http://www.jianshu.com/p/4a3177b57949
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。

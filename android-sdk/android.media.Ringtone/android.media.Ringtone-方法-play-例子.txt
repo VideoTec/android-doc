@@ -1,0 +1,15 @@
+    public void onPlayRingtone(View v) {
+        Ringtone ringtone = RingtoneManager.getRingtone(this, Settings.System.DEFAULT_RINGTONE_URI);
+        ringtone.play();
+    }
+    1. 只要ACT在前台就一直播放，不会停止
+    2. ACT 到后台，过一会就停止播放了，再进入，得重新 play 才会播放
+    3. 正常路由到所有 播放设备
+    
+    public void onPlayRingtone(View v) {
+        //Ringtone ringtone = RingtoneManager.getRingtone(this, Settings.System.DEFAULT_RINGTONE_URI);
+        Ringtone ringtone = RingtoneManager.getRingtone(this, Uri.parse("android.resource://com.example.wangxiangfx.myapplication2/" + R.raw.ringing));
+        ringtone.play();
+    }
+    1. 播放完wav文件，就结束，不会循环播放
+    3. 正常路由到所有 播放设备

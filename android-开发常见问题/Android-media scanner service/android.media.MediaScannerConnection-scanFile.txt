@@ -1,0 +1,32 @@
+重载
+
+-----------------------------------------------------------
+void	scanFile(String path, String mimeType)
+-----------------------------------------------------------
+Requests the media scanner to scan a file.
+
+-----------------------------------------------------------
+static void	scanFile(Context context, String[] paths, String[] mimeTypes, MediaScannerConnection.OnScanCompletedListener callback)
+-----------------------------------------------------------
+Convenience for constructing a MediaScannerConnection, calling connect() on it, 
+and calling scanFile(Context, String[], String[], MediaScannerConnection.OnScanCompletedListener) 
+with the given path and mimeType when the connection is established.
+回调可以为空
+
+例子：
+MediaScannerConnection.scanFile(context, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+
+                @Override
+                public void onScanCompleted(String path, Uri uri) {
+                    LogFeinno.e("RF_", "保存图片更新图库");
+                }
+            });
+            
+-----------------------------------------------------------
+https://developer.android.com/reference/android/media/MediaScannerConnection.OnScanCompletedListener.html
+-----------------------------------------------------------
+
+android.media.MediaScannerConnection.OnScanCompletedListener
+
+abstract void	onScanCompleted(String path, Uri uri)
+Called to notify the client when the media scanner has finished scanning a file.

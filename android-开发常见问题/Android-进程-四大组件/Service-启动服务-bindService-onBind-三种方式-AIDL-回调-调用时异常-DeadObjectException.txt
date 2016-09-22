@@ -1,0 +1,15 @@
+返回用户信息查询结果时异常
+android.os.DeadObjectException
+at android.os.BinderProxy.transactNative(Native Method)
+at android.os.BinderProxy.transact(Binder.java:615)
+at com.feinno.rongfly.core.service.IRFServiceFor3thContactInfoCallback$Stub$Proxy.onContactInfoCallback(IRFServiceFor3thContactInfoCallback.java:79)
+at com.feinno.rongfly.core.service.RFServiceFor3th$1$3.run(RFServiceFor3th.java:283)
+at android.os.Handler.handleCallback(Handler.java:751)
+at android.os.Handler.dispatchMessage(Handler.java:95)
+at android.os.Looper.loop(Looper.java:154)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+
+代码：
+
+原因：
+是对方进程，crash了，再调用之前设置的 回调方法时，就 crash 了。

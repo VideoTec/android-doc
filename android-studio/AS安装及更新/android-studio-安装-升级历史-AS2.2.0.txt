@@ -1,0 +1,66 @@
+Android Studio v2.2.0 (September 2016)
+
+New
+All new Layout Editor with tools custom-built to support ConstraintLayout.
+New Layout Inspector lets you examine snapshots of your layout hierarchy while your app is running on the emulator or a device.
+New Assistant window to help you integrate Firebase services into your app.
+New APK Analyzer tool so you can inspect the contents of your packaged app.
+New Espresso Test Recorder tool (currently in beta) to help you create UI tests by recording your own interactions.
+New build cache (currently experimental) to speed up build performance.
+New C/C++ build integration with CMake and ndk-build. Compile and build new or existing native code into libraries packaged into your APK, and debug using lldb. For new projects, Android Studio uses CMake by default, but also supports ndk-build for existing projects. To learn how to include native code in your Android application, read Add C and C++ Code to Your Project. To learn how to debug native code with lldb, see Debug Native Code.
+New Samples Browser so you can easily look up Google Android sample code from within Android Studio to jump start app development.
+New Merged Manifest Viewer to help you diagnose how your manifest file merges with your app dependencies across project build variants.
+The Run window now contains log messages for the current running app. Note that you can configure the logcat Monitor display, but not the Run window.
+New Android Emulator features:
+Added new Virtual Sensors and Cellular > Signal Strength controls.
+Added an LTE option to the Cellular > Network type control.
+Added simulated vertical swipes for scrolling through vertical menus with a mouse wheel.
+New Run/Debug Configuration features:
+The Debugger tab of the Android App and Android Tests templates now contain several new options for debugging with LLDB.
+The Profiling tab of the Android App and Android Tests templates now contain a Capture GPU Commands option for enabling GPU tracing. You can display GPU traces in the GPU Debugger (a beta feature).
+The Android Tests template now has a Firebase Test Lab Device Matrix option for the Deployment Target.
+The Native Application template has been deprecated. If you use this template in a project, Android Studio automatically converts it to the Android App template.
+The Android Application template has been renamed to Android App.
+Improved installation, configuration, performance, and UI features in the GPU Debugger (currently in beta).
+
+Android Studio now comes bundled with OpenJDK 8. Existing projects 
+still use the JDK specified in File > Project Structure > SDK Location. 
+You can switch to use the new bundled JDK by clicking File > Project Structure > SDK Location 
+and checking the Use embedded JDK checkbox.
+
+¿Ó£ºPlease choose JDK8 or newer
+
+Added new help menus and buttons in the UI so you can more easily find the online documentation.
+Changes
+Updated the IDE codebase from IntelliJ 15 to IntelliJ 2016.1
+Instant Run now requires the platform SDK corresponding to the target device API level to be installed.
+Instant Run will automatically disabled if user is running the app under a work profile or as a secondary user.
+Fixed many reliability issues for Instant Run where changes were not getting deployed or the app would crash:
+Some app assets were not deployed to your running app. ( Bug: #213454)
+App crashes when user transitions between Instant Run and non Instant Run sessions where a Serializable class does not have serialVersionUID defined. (Bug: #209006)
+Style changes aren¡¯t reflected with Instant Run. (Bug: #210851)
+Instant Run session is unreliable and causes FileNotFoundException. (Bug: #213083)
+Changes to drawables not reflected until full rebuild is performed for KitKat. (Bug: #21530)
+Resource changes aren¡¯t reflected with Instant Run when custom sourceSets contain nested paths. (Bug: #219145)
+Hot and warm swap don't work if changed class contains annotation with enum value. (Bug: #209047)
+Changes to annotation data not reflected with Instant Run. (Bug: #210089)
+Instant Run doesn't pick up code changes if you make changes outside the IDE. (Bug: #213205)
+Instant Run session is unreliable due to mismatch security token. (Bug: #211989
+Cold swap fails for devices that doesn¡¯t properly support run-as. (Bug: #210875)
+App crash after instant run restart. (Bug: #219744)
+ClassNotFoundException observed when switching from Instant Run to Instant Debug. (Bug: #215805)
+Improved performance for Gradle sync within the IDE, especially for large projects.
+Improved build times for both full and incremental builds with new app packaging code.
+Improved Jack compiler performance and features, including support for annotation processors and dexing in process. To learn more, read the Android plugin for Gradle 2.2.0 release notes.
+Added an updated AccelerometerPlay sample so you can try out the emulator Accelerometer control. Select File > New > Import Sample to import the project.
+Removed the Scale AVD property from the AVD Manager.
+The Android Emulator -port and -ports command-line options now report which ports and serial number the emulator instance is using, and warn if there are any issues with the values you provided.
+Improved the Create New Class dialog and the corresponding file templates. Note: If you've previously customized the AnnotationType, Class, Enum, Interface, or Singleton file templates, you need to modify your templates to comply with the new templates or you won¡¯t be able to use the new fields in the Create New Class dialog.
+Improved the Vector Asset Studio user interface and added support for Adobe Photoshop Document (PSD) files.
+Improved the Image Asset Studio user interface.
+Improved the Theme Editor's Resource Picker.
+Fixed memory leaks and reduced overall memory usage in Android Studio.
+Added a Background button in the SDK Manager so you can get back to work and install your packages in the background.
+Improved Accessibility features, including support for screen readers and keyboard navigation.
+Enhanced Code Analysis includes code quality checks for Java 8 language usage and more cross-file analysis.
+Several toolbar icons have changed.

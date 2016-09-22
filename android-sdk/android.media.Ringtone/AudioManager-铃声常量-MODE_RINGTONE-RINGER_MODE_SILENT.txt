@@ -1,0 +1,33 @@
+    /**
+     * Ringing audio mode. An incoming is being signaled.
+     */
+    public static final int MODE_RINGTONE           = AudioSystem.MODE_RINGTONE;
+    
+    /**
+     * Ringer mode that may be audible and may vibrate. It will be audible if
+     * the volume before changing out of this mode was audible. It will vibrate
+     * if the vibrate setting is on.
+     *
+     * @see #setRingerMode(int)
+     * @see #getRingerMode()
+     */
+    public static final int RINGER_MODE_SILENT = 0;
+    public static final int RINGER_MODE_VIBRATE = 1;
+    public static final int RINGER_MODE_NORMAL = 2;
+    
+    /**
+     * Maximum valid ringer mode value. Values must start from 0 and be contiguous.
+     * @hide
+     */
+    public static final int RINGER_MODE_MAX = RINGER_MODE_NORMAL;
+    
+    /**
+     * Vibrate type that corresponds to the ringer.
+     *
+     * @see #setVibrateSetting(int, int)
+     * @see #getVibrateSetting(int)
+     * @see #shouldVibrate(int)
+     * @deprecated Applications should maintain their own vibrate policy based on
+     * current ringer mode that can be queried via {@link #getRingerMode()}.
+     */
+    public static final int VIBRATE_TYPE_RINGER = 0;

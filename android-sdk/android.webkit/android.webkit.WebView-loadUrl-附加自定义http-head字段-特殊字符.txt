@@ -1,0 +1,16 @@
+"epid":"APP;uuid\u003d355065051730467;version\u003d1.6.1.1000;os\u003dandroid;type\u003d16"
+
+\u003d 是 =
+
+不用转义的字符：
+分号 等号
+
+----------------------------------------
+附 header 示例
+----------------------------------------
+Content-Type: text/json;charset=UTF-8
+User-Agent: Dalvik/1.6.0 (Linux; U; Android 4.3; GT-I9308 Build/JSS15J)
+Host: v6navtest.fetiononline.com:8080
+Connection: Keep-Alive
+Accept-Encoding: gzip
+Content-Length: 206

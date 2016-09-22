@@ -1,0 +1,18 @@
+参考：
+E:\doc\android\android-开发常见问题\android 声音 手机铃声
+
+--------------------------------
+示例代码：
+--------------------------------
+
+    private Ringtone getRingtone(Uri ringtoneUri) {
+        if (ringtoneUri == null) {
+            ringtoneUri = Settings.System.DEFAULT_RINGTONE_URI;
+        }
+
+        Ringtone ringtone = RingtoneManager.getRingtone(mContext, ringtoneUri);
+        if (ringtone != null) {
+            ringtone.setStreamType(AudioManager.STREAM_RING);
+        }
+        return ringtone;
+    }

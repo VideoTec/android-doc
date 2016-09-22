@@ -1,2 +1,0 @@
-    /** Failed to connect to the server */
-    public static final int ERROR_CONNECT = -6;

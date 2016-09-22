@@ -1,0 +1,6 @@
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.v(TAG, "com.feinno.rongfly.editlabel");
+            }}, new IntentFilter("com.feinno.rongfly.editlabel"));

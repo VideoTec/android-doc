@@ -1,0 +1,29 @@
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    
+    同级工程
+    compile project(':androidbase')
+    
+    怎么找到这个包的，在那里指定的搜索路径
+    见：指定依赖库所在路径
+    compile(name: 'redpaper-debug', ext: 'aar')
+    
+    compile 'com.android.support:design:23.2.0'
+
+排除依赖中的依赖问题
+    compile ('cn.dreamtobe.kpswitch:library:1.6.0'){
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }
+    
+指定依赖库所在路径
+android {
+
+.........
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    } 
+}

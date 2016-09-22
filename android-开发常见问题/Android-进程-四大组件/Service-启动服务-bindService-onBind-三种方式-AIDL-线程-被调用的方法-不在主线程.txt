@@ -1,0 +1,75 @@
+RPC:
+Remote procedure call (RPC) is an Inter-process communication technology 
+that allows a computer program to cause a subroutine or procedure to execute in another address space 
+(commonly on another computer on a shared network) 
+without the programmer explicitly coding the details for this remote interaction.
+
+IPC:
+Inter-process communication (IPC) is a set of techniques 
+for the exchange of data among multiple threads in one or more processes. 
+Processes may be running on one or more computers connected by a network.
+
+So, RPC is just one kind of IPC.
+
+https://developer.android.com/guide/components/aidl.html
+
+    /**
+     * This implementation is used to receive callbacks from the remote
+     * service.
+     */
+    private IRemoteServiceCallback mCallback = new IRemoteServiceCallback.Stub() {
+        /**
+         * This is called by the remote service regularly to tell us about
+         * new values.  Note that IPC calls are dispatched through a thread
+         * pool running in each process, so the code executing here will
+         * NOT be running in our main thread like most other things -- so,
+         * to update the UI, we need to use a Handler to hop over there.
+         */
+        public void valueChanged(int value) {
+            mHandler.sendMessage(mHandler.obtainMessage(BUMP_MSG, value, 0));
+        }
+    };
+    
+There are a few rules you should be aware of when implementing your AIDL interface:
+
+1) Incoming calls are not guaranteed to be executed on the main thread, 
+so you need to think about multithreading from the start 
+and properly build your service to be thread-safe.
+
+2) By default, RPC calls are synchronous. 
+If you know that the service takes more than a few milliseconds to complete a request, 
+you should not call it from the activity's main thread, 
+because it might hang the application 
+(Android might display an "Application is Not Responding" dialog) —
+you should usually call them from a separate thread in the client.
+
+3) No exceptions that you throw are sent back to the callerDS
+
+Before you begin designing your AIDL interface, 
+be aware that calls to an AIDL interface are direct function calls. 
+You should not make assumptions about the thread in which the call occurs. 
+What happens is different depending on whether the call is from a thread 
+in the local process or a remote process. Specifically:
+
+1) local call - 同进程程调用
+Calls made from the local process are executed in the same thread that is making the call. 
+If this is your main UI thread, 
+that thread continues to execute in the AIDL interface. 
+If it is another thread, 
+that is the one that executes your code in the service. 
+Thus, if only local threads are accessing the service, 
+you can completely control which threads are executing in it 
+(but if that is the case, then you shouldn't be using AIDL at all, 
+but should instead create the interface by implementing a Binder).
+
+2) remote call - 跨进程调用
+Calls from a remote process are dispatched from a thread pool the platform maintains inside of your own process. 
+You must be prepared for incoming calls from unknown threads, 
+with multiple calls happening at the same time. 
+In other words, an implementation of an AIDL interface must be completely thread-safe.
+
+3) 关键字 - oneway
+The oneway keyword modifies the behavior of remote calls. 
+When used, a remote call does not block; it simply sends the transaction data and immediately returns. 
+The implementation of the interface eventually receives this as a regular call from the Binder thread pool as a normal remote call. 
+If oneway is used with a local call, there is no impact and the call is still synchronous.
