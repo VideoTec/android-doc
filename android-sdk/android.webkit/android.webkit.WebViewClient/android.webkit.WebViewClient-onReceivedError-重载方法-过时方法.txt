@@ -1,0 +1,5 @@
+@Deprecated
+public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+
+替换方法：
+public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)

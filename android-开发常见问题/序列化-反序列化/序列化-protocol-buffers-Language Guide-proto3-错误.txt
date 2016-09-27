@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+Required fields are not allowed in proto3.
+http://stackoverflow.com/questions/31801257/why-required-and-optional-is-removed-in-protocol-buffers-3
+The usefulness of required has been at the heart of many a debate and flame war.
+
+https://github.com/google/protobuf/releases
+Explicit "optional" keyword are disallowed in proto3 syntax, 
+as fields are optional by default; 
+required fields are no longer supported.
+
+option java_outer_classname = "AddressBookProtos"; 
+不能与指定的 Message 名字相同
+Cannot generate Java output because the file's outer class name, "Content", 
+matches the name of one of the types declared inside it.  
+Please either rename the type or use the java_outer_classname option 
+to specify a different outer class name for the .proto file.

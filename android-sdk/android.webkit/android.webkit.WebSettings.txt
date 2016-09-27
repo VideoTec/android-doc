@@ -1,3 +1,25 @@
+    /**
+     * Sets whether the WebView loads pages in overview mode, that is,
+     * zooms out the content to fit on screen by width. This setting is
+     * taken into account when the content width is greater than the width
+     * of the WebView control, for example, when {@link #getUseWideViewPort}
+     * is enabled. The default is false.
+     */
+    public abstract void setLoadWithOverviewMode(boolean overview);
+    
+    /**
+     * Sets whether the WebView should enable support for the &quot;viewport&quot;
+     * HTML meta tag or should use a wide viewport.
+     * When the value of the setting is false, the layout width is always set to the
+     * width of the WebView control in device-independent (CSS) pixels.
+     * When the value is true and the page contains the viewport meta tag, the value
+     * of the width specified in the tag is used. If the page does not contain the tag or
+     * does not provide a width, then a wide viewport will be used.
+     *
+     * @param use whether to enable support for the viewport meta tag
+     */
+    public abstract void setUseWideViewPort(boolean use);
+
 http://developer.android.com/reference/android/webkit/WebSettings.html
 
 java.lang.Object

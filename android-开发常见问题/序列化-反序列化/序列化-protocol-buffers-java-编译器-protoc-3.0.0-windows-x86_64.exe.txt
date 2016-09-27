@@ -1,0 +1,95 @@
+:app:compileDebugRenderscript UP-TO-DATE
+:app:generateDebugBuildConfig UP-TO-DATE
+:app:extractDebugProto UP-TO-DATE
+:app:extractIncludeDebugProto UP-TO-DATE
+:app:extractIncludeProto UP-TO-DATE
+:app:extractProto UP-TO-DATE
+:app:generateDebugProto
+Download https://jcenter.bintray.com/com/google/protobuf/protoc/3.0.0/protoc-3.0.0.pom
+Download https://jcenter.bintray.com/com/google/protobuf/protoc/3.0.0/protoc-3.0.0-windows-x86_64.exe
+:app:generateDebugProto FAILED
+
+编译 proto 失败
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:generateDebugProto'.
+> protoc: stdout: . stderr: D:\work\ProtoBuffer\app\build\extracted-protos\main: warning: directory does not exist.
+D:\work\ProtoBuffer\app\build\extracted-include-protos\main: warning: directory does not exist.
+D:\work\ProtoBuffer\app\src\debug\proto: warning: directory does not exist.
+D:\work\ProtoBuffer\app\build\extracted-protos\debug: warning: directory does not exist.
+D:\work\ProtoBuffer\app\build\extracted-include-protos\debug: warning: directory does not exist.
+D:\work\ProtoBuffer\app\src\debug\proto: warning: directory does not exist.
+D:\work\ProtoBuffer\app\build\extracted-protos\debug: warning: directory does not exist.
+D:\work\ProtoBuffer\app\build\extracted-include-protos\debug: warning: directory does not exist.
+Missing output directives.
+
+https://github.com/google/protobuf-gradle-plugin
+
+Android projects: no default output will be added. 
+Since Protobuf 3.0.0, protobuf-lite is the recommended Protobuf library for Android, 
+and you will need to add it as a codegen plugin.
+
+正确的例子，见
+https://github.com/google/protobuf-gradle-plugin/blob/master/testProjectAndroid/build.gradle
+
+自己写的 脚本
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "com.feinno.protobuffer"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.protobuf:protobuf-lite:3.0.0'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.0.0-pre2'
+        }
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            javalite { }
+        }
+        ofNonTest()*.plugins {
+            grpc {
+                // Options added to --grpc_out
+                option 'lite'
+            }
+        }
+    }
+}

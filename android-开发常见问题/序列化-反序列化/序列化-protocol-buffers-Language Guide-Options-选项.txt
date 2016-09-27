@@ -1,0 +1,18 @@
+https://developers.google.com/protocol-buffers/docs/proto#options
+
+option java_package = "com.example.foo";
+option java_outer_classname = "Ponycopter";
+option optimize_for = CODE_SIZE;
+
+// This file relies on plugins to generate service code.
+option cc_generic_services = false;
+option java_generic_services = false;
+option py_generic_services = false;
+
+message Foo {
+  option message_set_wire_format = true;
+  extensions 4 to max;
+}
+
+repeated int32 samples = 4 [packed=true];
+optional int32 old_field = 6 [deprecated=true];

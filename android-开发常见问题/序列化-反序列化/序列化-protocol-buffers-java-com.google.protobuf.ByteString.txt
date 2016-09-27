@@ -1,0 +1,36 @@
+message Content {
+    optional string uuid = 1;
+    optional string fromUri = 2;
+    optional string fromEpid = 3;
+    optional bytes fromNickname = 4;
+    optional string contentType = 5;
+    optional bytes contentBuffer = 6;
+    repeated Receiver receivers = 10;           // receivers对接收方不可见, 仅出现在发送方的报文中
+    repeated Extension extensions = 11;
+}
+
+optional bytes contentBuffer = 6; 这个会转变成 
+com.google.protobuf.ByteString
+
+https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/ByteString
+
+创建 ByteString 的方法
+copyFrom(String text, String charsetName)
+
+例子：
+contentBuilder.setContentBuffer(ByteString.copyFrom(msg.content, "UTF-8"));
+
+http://stackoverflow.com/questions/29018411/google-protobuf-bytestring-vs-byte
+
+immutable[英][ɪˈmju:təbl] [美][ɪˈmjutəbəl] adj.不可改变的
+mutable[英][ˈmju:təbl] [美][ˈmjutəbəl] adj.易变的，性情不定的
+
+You can think of ByteString as an immutable byte array. 
+That's pretty much it. 
+It's a byte[] which you can use in a protobuf. 
+Protobuf does not let you use Java arrays because they're mutable.
+
+ByteString exists because String 
+is not suitable for representing arbitrary sequences of bytes. 
+String is specifically for character data.
+

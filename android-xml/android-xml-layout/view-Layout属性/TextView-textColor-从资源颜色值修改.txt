@@ -1,0 +1,14 @@
+mTitleRightTextView.setTextColor(R.color.rf_base_titlebar_right_text_color);
+错误提示：
+Should pass resolved color instead of resource id here: `getResources().getColor(R.color.rf_base_titlebar_right_text_color)`
+
+
+mTitleRightTextView.setTextColor(getResources().getColor(R.color.rf_base_titlebar_right_text_color));
+警告：
+'getColor(int)' is deprecated
+
+http://stackoverflow.com/questions/31590714/getcolorint-id-deprecated-on-android-6-0-marshmallow-api-23
+So, just call:
+ContextCompat.getColor(context, R.color.your_color);
+
+mTitleRightTextView.setTextColor(ContextCompat.getColor(this, R.color.rf_base_titlebar_right_text_color));

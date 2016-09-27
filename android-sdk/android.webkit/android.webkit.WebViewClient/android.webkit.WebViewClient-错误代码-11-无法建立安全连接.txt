@@ -1,0 +1,11 @@
+    /** Failed to perform SSL handshake */
+    public static final int ERROR_FAILED_SSL_HANDSHAKE = -11;
+    
+		mWebView.setWebViewClient(new WebViewClient() {
+			private boolean Jump;
+
+			@Override
+			public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+				handler.proceed(); // 接受所有网站的证书
+				super.onReceivedSslError(view, handler, error);
+			}

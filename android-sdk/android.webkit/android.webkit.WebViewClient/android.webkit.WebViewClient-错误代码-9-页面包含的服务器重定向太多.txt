@@ -4,5 +4,50 @@ http://gz.feixin.10086.cn/HttpInterface/SMsg/show/sdx/MTE2MDI2NTcxMw==/idx/MjM5N
 errorCode -9
 description 页面包含的服务器重定向太多
 
+注意：重定向，不会调用重新加载页面接口（正常情况下会调这个接口的）
+public boolean shouldOverrideUrlLoading(WebView view, String url)
+HTTP/1.1 302 Found
+Location: http://www.iana.org/domains/example/  
+如果这个 地址 和请求的地址一样时，就不走 shouldOverrideUrlLoading 地址了。
+
 参考：
 E:\doc\android\android-sdk\android.webkit\android.webkit.WebViewClient\android.webkit.WebViewClient-错误代码.txt
+
+http 302
+加了token就会产生这个问题，
+如果不加token就没问题
+
+302 Found 是HTTP协议中的一个状态码(Status Code)。
+可以简单的理解为该资源原本确实存在，但已经被临时改变了位置；
+或者换个说法，就是临时的存在于某个临时URL下[1]。
+通常会发送Header来暂时重定向到新的新位置
+
+https://en.wikipedia.org/wiki/HTTP_302
+
+The HTTP response status code 302 Found is a common way of performing URL redirection.
+
+HTTP/1.1 302 Found
+Location: http://www.iana.org/domains/example/
+
+15:53 2016/9/27 遇到一个服务器，重定向到原网址的情况
+android webview 会被循环重定向这个地址，
+过一段时间，就出
+description 页面包含的服务器重定向太多的问题。
+
+请求网址：
+http://gz.feixin.10086.cn/HttpInterface/SMsg/show/sdx/MTE2MDI2NTcxMw==/idx/MjQ3NzI0/tk/f86b517d203735c79f76a84bfeee03ae/inx/0/fclient/pc
+
+重定向返回结果：
+HTTP/1.1 302 Moved Temporarily
+Server: nginx
+Date: Tue, 27 Sep 2016 07:43:43 GMT
+Content-Type: text/html; charset=utf-8
+Location: http://gz.feixin.10086.cn/HttpInterface/SMsg/show/sdx/MTE2MDI2NTcxMw==/idx/MjQ3NzI0/tk/f86b517d203735c79f76a84bfeee03ae/inx/0/fclient/pc
+
+-----------------------------------------
+怎么禁止 webview 重定向
+-----------------------------------------
+onTooManyRedirects(WebView view, Message cancelMsg, Message continueMsg)
+This method was deprecated in API level 8. 
+This method is no longer called. 
+When the WebView encounters a redirect loop, it will cancel the load.

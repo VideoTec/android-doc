@@ -1,0 +1,6 @@
+https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Message.Builder
+
+public static interface Message.Builder
+extends MessageLite.Builder, MessageOrBuilder
+
+Abstract interface implemented by Protocol Message builders.

@@ -1,0 +1,25 @@
+https://developers.google.com/protocol-buffers/docs/javatutorial
+
+This tutorial provides a basic Java programmer's introduction to working with protocol buffers. 
+By walking through creating a simple example application, 
+it shows you how to
+
+1) Define message formats in a .proto file.
+
+2) Use the protocol buffer compiler.
+protoc -I=$SRC_DIR --java_out=$DST_DIR $SRC_DIR/addressbook.proto
+This generates com/example/tutorial/AddressBookProtos.java in your specified destination directory.
+https://developers.google.com/protocol-buffers/docs/downloads.html
+https://github.com/google/protobuf/releases/tag/v3.0.0
+
+3) Use the Java protocol buffer API to write and read messages.
+byte[] toByteArray();                       : serializes the message and returns a byte array containing its raw bytes.
+static Person parseFrom(byte[] data);       : parses a message from the given byte array.
+void writeTo(OutputStream output);          : serializes the message and writes it to an OutputStream.
+static Person parseFrom(InputStream input); : reads and parses a message from an InputStream.
+
+This isn't a comprehensive guide to using protocol buffers in Java. 
+For more detailed reference information, see the Protocol Buffer Language Guide,
+ the Java API Reference, 
+ the Java Generated Code Guide, and 
+ the Encoding Reference.

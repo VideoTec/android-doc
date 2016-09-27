@@ -3,3 +3,5 @@
     
     网址： http://221.176.28.96/HttpInterface/SMsg/json/sdx/NTU5ODgzMTE1/idx/NzA2OTg=/tk/d5b265524756f206814ba4f402c1da94/inx/0/fclient/pc; 
     错误信息：net::ERR_CONNECTION_REFUSED; 错误代码: -6
+    
+    与服务器的连接不成功

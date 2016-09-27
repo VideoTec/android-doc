@@ -1,0 +1,25 @@
+https://github.com/protostuff/protobuf-jetbrains-plugin
+
+Protobuf Support for JetBrains IDEs 
+https://plugins.jetbrains.com/plugin/8277
+
+Protobuf Support Plugin for IntelliJ IDEA & other JetBrains products.
+
+Based on antlr4-jetbrains-adapter and ANTLR 4 grammar from protostuff-compiler.
+
+Plugin is compatible with IntelliJ IDEA 2016.1. 
+Other JetBrains IDEs of the same or higher version should be supported as well.
+
+https://plugins.jetbrains.com/plugin/8277
+Features:
+Full Proto3 support.
+Custom include path for proto files.
+Reference support.
+Usage search for messages/enums.
+Syntax highlighting and validation.
+Error checks for reserved/duplicated field tags and names.
+Fonts & Colors configuration.
+Structure View.
+Brace matching.
+Line and block commenting.
+Code formatting.

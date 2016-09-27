@@ -1,0 +1,51 @@
+http://tools.android.com/download/studio/stable
+所有版本的下载列表
+
+---------------------------------------------------------------------
+http://tools.android.com/download/studio/builds/android-studio-2-2-stable
+---------------------------------------------------------------------
+
+Zip Files
+
+Windows: https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-windows.zip (275.8 MiB)
+Mac: https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-mac.zip (274.3 MiB)
+Linux: https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-linux.zip (273.4 MiB)
+
+SHA-1 Checksums:
+fe47002865b292d5ed8e14acc64731dbc57251c0 android-studio-ide-145.3276617-windows.zip
+38c4322418dbddc8e6b397b734d6f1657cfb3fa7 android-studio-ide-145.3276617-mac.zip
+4eec979ad4d216fd591ebe0112367c746cedb114 android-studio-ide-145.3276617-linux.zip
+
+---------------------------------------------------------------------
+http://tools.android.com/download/studio/builds/2-1-3
+---------------------------------------------------------------------
+
+Zip Files
+
+Windows: 
+https://dl.google.com/dl/android/studio/ide-zips/2.1.3.0/android-studio-ide-143.3101438-windows.zip (275.8 MiB)
+
+Mac: 
+https://dl.google.com/dl/android/studio/ide-zips/2.1.3.0/android-studio-ide-143.3101438-mac.zip (274.3 MiB)
+
+Linux:
+https://dl.google.com/dl/android/studio/ide-zips/2.1.3.0/android-studio-ide-143.3101438-linux.zip (273.4 MiB)
+
+SHA-1 Checksums:
+8ad212c55c7f4dc7ab490e4b7e77ec48001ae224 android-studio-ide-143.3101438-windows.zip
+6d601fb4ec95b0cf4744d34dd65dd5cf330a80e2 android-studio-ide-143.3101438-mac.zip
+8729e6f2f1fa58f04df9f8d1caac2f5be9dfc549 android-studio-ide-143.3101438-linux.zip
+
+---------------------------------------------------------------------
+http://tools.android.com/download/studio/builds/android-studio-2-1-2
+---------------------------------------------------------------------
+
+Zip Files
+Windows: https://dl.google.com/dl/android/studio/ide-zips/2.1.2.0/android-studio-ide-143.2915827-windows.zip (293.4 MiB)
+Mac: https://dl.google.com/dl/android/studio/ide-zips/2.1.2.0/android-studio-ide-143.2915827-mac.zip (291.9 MiB)
+Linux: https://dl.google.com/dl/android/studio/ide-zips/2.1.2.0/android-studio-ide-143.2915827-linux.zip (291.0 MiB)
+
+SHA-1 Checksums:
+2aa610308b23ee938dbd1f821675db763d68912c android-studio-ide-143.2915827-windows.zip
+251ebb4b49f20b02a0ea51687e1c7598005546a0 android-studio-ide-143.2915827-mac.zip
+d34c75ae2ca1cf472e21eb5301f43603082c6fd0 android-studio-ide-143.2915827-linux.zip

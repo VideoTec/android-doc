@@ -1,0 +1,15 @@
+https://developers.google.com/protocol-buffers/docs/proto#other
+
+----------------------------------------------
+Importing Definitions
+----------------------------------------------
+
+第一种：
+import "myproject/other_protos.proto";
+
+第二种：
+import public "new.proto"; 公共导入 --- 会导入到引用这个 proto 文件的 proto 文件
+import "other.proto";
+
+import public dependencies can be transitively relied upon 
+by anyone importing the proto containing the import public statement.

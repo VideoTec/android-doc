@@ -1,0 +1,10 @@
+https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Message
+
+public interface Message
+extends MessageLite, MessageOrBuilder
+Abstract interface implemented by Protocol Message objects.
+
+See also MessageLite, which defines most of the methods that typical users care about.
+Message adds to it methods that are not available in the "lite" runtime. 
+The biggest added features are introspection and reflection -- i.e., 
+getting descriptors for the message type and accessing the field values dynamically.

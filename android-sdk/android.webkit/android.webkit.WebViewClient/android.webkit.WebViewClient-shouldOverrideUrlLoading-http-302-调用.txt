@@ -1,0 +1,16 @@
+HTTP/1.1 302 Found
+Location: http://www.iana.org/domains/example/
+
+（正常情况下会调这个接口的）
+public boolean shouldOverrideUrlLoading(WebView view, String url)
+HTTP/1.1 302 Found
+Location: http://www.iana.org/domains/example/  
+如果这个 地址 和请求的地址一样时，就不走 shouldOverrideUrlLoading 地址了。
+
+https://bugs.chromium.org/p/chromium/issues/detail?id=499331
+However, that changed Android System WebView 43.0.2357.121, 
+where now a server-side redirect loads the new URL into the WebView itself.
+
+As of Android System WebView 43.0.2357.121, the default behavior has changed, 
+and it now loads the link or redirected-to URL into the WebView. 
+This also occurs if your shouldOverrideUrlLoading() implementation returns false.
