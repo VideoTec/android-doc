@@ -1,0 +1,6 @@
+版本号
+@TargetApi(Build.VERSION_CODES.M)
+public void requestDrawOverLays() {
+}
+参考：
+E:\doc\android\android-开发常见问题\android-版本号.txt

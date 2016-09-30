@@ -1,0 +1,61 @@
+https://developer.android.com/reference/android/provider/Settings.html#canDrawOverlays(android.content.Context)
+
+android.provider.Settings
+静态方法：
+canDrawOverlays
+
+注意，23 版本才添加的接口
+Added in API level 23
+
+static boolean canDrawOverlays (Context context)
+Checks if the specified context can draw on top of other apps. 
+As of API level 23, 
+an app cannot draw on top of other apps unless 
+it declares the SYSTEM_ALERT_WINDOW permission in its manifest, 
+and the user specifically grants the app this capability. 
+
+To prompt the user to grant this approval, 
+the app must send an intent with the action ACTION_MANAGE_OVERLAY_PERMISSION, 
+which causes the system to display a permission management screen.
+
+返回值：
+boolean	
+true if the specified context can draw on top of other apps, 
+false otherwise
+
+示例一：
+http://www.jianshu.com/p/2746a627c6d2
+
+public static int OVERLAY_PERMISSION_REQ_CODE = 1234;
+@TargetApi(Build.VERSION_CODES.M)
+public void requestDrawOverLays() {
+    if (!Settings.canDrawOverlays(MainActivity.this)) {
+        Toast.makeText(this, "can not DrawOverlays", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + MainActivity.this.getPackageName()));
+        startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
+    } else {
+      // Already hold the SYSTEM_ALERT_WINDOW permission, do addview or something.
+    }
+}
+
+@TargetApi(Build.VERSION_CODES.M)
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+        if (!Settings.canDrawOverlays(this)) {
+            // SYSTEM_ALERT_WINDOW permission not granted...
+            Toast.makeText(this, "Permission Denieddd by user.Please Check it in Settings", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Permission Allowed", Toast.LENGTH_SHORT).show();
+            // Already hold the SYSTEM_ALERT_WINDOW permission, do addview or something.
+        }
+    }
+}
+
+示例代码2：
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    permission = Settings.canDrawOverlays(context);
+}
+if(callingType.isInCall() && permission) {
+    initFloatView(visibility);
+}

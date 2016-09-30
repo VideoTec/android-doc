@@ -9,3 +9,7 @@
 				handler.proceed(); // 接受所有网站的证书
 				super.onReceivedSslError(view, handler, error);
 			}
+            
+错误处理：
+public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+再次重新打开

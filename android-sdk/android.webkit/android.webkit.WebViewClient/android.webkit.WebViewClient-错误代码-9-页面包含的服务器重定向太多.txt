@@ -9,6 +9,7 @@ public boolean shouldOverrideUrlLoading(WebView view, String url)
 HTTP/1.1 302 Found
 Location: http://www.iana.org/domains/example/  
 如果这个 地址 和请求的地址一样时，就不走 shouldOverrideUrlLoading 地址了。
+发现是特定的版本会这样，
 
 参考：
 E:\doc\android\android-sdk\android.webkit\android.webkit.WebViewClient\android.webkit.WebViewClient-错误代码.txt

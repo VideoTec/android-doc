@@ -1,0 +1,21 @@
+代码：
+windowManager.addView(voiceFloatView, voiceParams);
+
+异常：
+
+java.lang.RuntimeException: Error receiving broadcast Intent { act=RFNewCallingService.show flg=0x10 pkg=com.feinno.rongfly bqHint=4 VirtualScreenParam=Params{mDisplayId=-1, null, mFlags=0x00000000)} (has extras) } in com.feinno.rongfly.core.service.RFNewCallingService$FloatVisibleReceiver@be5a2f5
+    at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:1007)
+    at android.os.Handler.handleCallback(Handler.java:739)
+    at android.os.Handler.dispatchMessage(Handler.java:95)
+    at android.os.Looper.loop(Looper.java:148)
+    at android.app.ActivityThread.main(ActivityThread.java:7325)
+    at java.lang.reflect.Method.invoke(Native Method)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)
+ Caused by: android.view.WindowManager$BadTokenException: Unable to add window android.view.ViewRootImpl$W@224d743 -- permission denied for this window type
+    at android.view.ViewRootImpl.setView(ViewRootImpl.java:920)
+    at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:337)
+    at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:109)
+    at com.feinno.rongfly.ui.vowifi.RFWindowManager.createVoiceFloatWindow(RFWindowManager.java:89)
+    at com.feinno.rongfly.core.service.RFNewCallingService.initFloatView(RFNewCallingService.java:125)
+    at com.feinno.rongfly.core.service.RFNewCallingService.access$600(RFNewCallingService.java:35)
