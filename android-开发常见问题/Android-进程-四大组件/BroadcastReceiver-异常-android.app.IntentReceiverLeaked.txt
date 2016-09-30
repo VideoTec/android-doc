@@ -1,0 +1,15 @@
+android.app.IntentReceiverLeaked: 
+Activity com.feinno.rongfly.ui.browser.RFBrowserActivity 
+has leaked IntentReceiver android.widget.ZoomButtonsController$1@2c45740 
+that was originally registered here. Are you missing a call to unregisterReceiver()?
+
+http://stackoverflow.com/questions/23851201/why-intentreceiverleaked
+
+The first line of LogCat says:
+
+Are you missing a call to unregisterReceiver()?
+It simply means that you need to check the API documentation of BroadcastReceiver for help, which says:
+
+Note: If registering a receiver in your Activity.onResume() implementation, 
+you should unregister it in Activity.onPause(). 
+(You won't receive intents when paused, and this will cut down on unnecessary system overhead). Do not unregister in Activity.onSaveInstanceState(), because this won't be called if the user moves back in the history stack.
