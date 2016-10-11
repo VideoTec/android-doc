@@ -1,0 +1,7 @@
+E:\doc\android\android-使用-开发者选项\android-toast-弹不出的问题.txt
+
+http://www.cnblogs.com/cxsy/p/5843406.html
+
+解决的方法,在手机的设置 
+-> (某些手机前面可能有一项安全与隐私)通知中心 
+-> 将所运行的应用的状态栏开启就ok了
