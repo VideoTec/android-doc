@@ -1,0 +1,21 @@
+http response 不会产生错误的响应码
+
+所有的HTTP错误码，都不会非触发 onReceiveError 事件。
+
+https://code.google.com/p/android/issues/detail?id=968
+关于 webview 不能获取 http error response code 的问题
+
+https://code.google.com/p/android/issues/detail?id=968
+
+public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+
+This method is only called when network errors occur, 
+but never when HTTP errors are received by WebView. 
+If there is a network error, 
+there cannot be a HTTP error code transmitted. 
+Either the documentation is ambiguous or this is bug
+
+For being notified about HTTP errors, 
+please use the new callback introduced in Android M, API 23:
+void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)
+The WebResourceResponse contains the status code.

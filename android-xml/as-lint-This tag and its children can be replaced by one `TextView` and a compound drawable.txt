@@ -23,6 +23,9 @@ n.场地；复合物；（筑有围墙的）院子；复合词
             
             This tag and its children can be replaced by one `<TextView/>` and a compound drawable
             
+            参数：
+            android:drawableLeft="@drawable/up_count_big"
+            
 http://stackoverflow.com/questions/8318765/how-do-i-use-a-compound-drawable-instead-of-a-linearlayout-that-contains-an-imag
 TextView comes with 4 compound drawables, 
 one for each of left, top, right and bottom.

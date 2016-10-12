@@ -1,0 +1,35 @@
+android.view.View
+
+    /**
+     * Gets the parent of this view. Note that the parent is a
+     * ViewParent and not necessarily a View.
+     *
+     * @return Parent of this view.
+     */
+    public final ViewParent getParent() {
+        return mParent;
+    }
+    
+接口
+android.view.ViewParent
+/**
+ * Defines the responsibilities for a class that will be a parent of a View.
+ * This is the API that a view sees when it wants to interact with its parent.
+ * 
+ */
+
+http://stackoverflow.com/questions/17879743/get-parents-view-from-a-layout
+
+The getParent method returns a ViewParent, not a View. 
+You need to cast the first call to getParent() also:
+
+RelativeLayout r = (RelativeLayout) ((ViewGroup) this.getParent()).getParent();
+
+http://stackoverflow.com/questions/14112044/android-how-to-get-the-id-of-a-parent-view
+
+ViewParent is just an interface that any View that can have children implements. 
+Most of the times the class you get back will be an instance of a ViewGroup, 
+like LinearLayout or RelativeLayout. 
+I'm not exactly sure what you mean by "name" 
+but if you want to get the class name you can do so like always: 
+view.getParent().getClass().getName()

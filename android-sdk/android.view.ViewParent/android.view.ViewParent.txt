@@ -1,0 +1,13 @@
+https://developer.android.com/reference/android/view/ViewParent.html
+
+Defines the responsibilities for a class that will be a parent of a View. 
+This is the API that a view sees when it wants to interact with its parent.
+
+有 64 个子类：
+
+ViewGroup
+ViewPager
+
+参考：
+E:\doc\android\android-xml\android-view-hierarchy-求父VIEW-android.view.ViewParent-接口.txt
+E:\doc\android\android-xml\android-view-hierarchy-求父VIEW.txt

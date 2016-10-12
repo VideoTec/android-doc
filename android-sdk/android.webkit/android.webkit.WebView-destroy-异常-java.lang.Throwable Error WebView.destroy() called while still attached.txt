@@ -1,0 +1,46 @@
+代码：
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mWebView.removeAllViews();
+        mWebView.destroy();
+        if (mRFServiceConn != null) {
+            unbindService(mRFServiceConn);
+        }
+    }
+    
+异常：
+
+10-12 18:16:49.885 29046-29046/com.feinno.rongfly:tools E/webview: 
+java.lang.Throwable: Error: WebView.destroy() called while still attached!
+ at android.webkit.WebViewClassic.destroy(WebViewClassic.java:4161)
+ at android.webkit.WebView.destroy(WebView.java:707)
+ at com.feinno.rongfly.ui.browser.RFBrowserActivity.onDestroy(RFBrowserActivity.java:273)
+ at android.app.Activity.performDestroy(Activity.java:5543)
+ at android.app.Instrumentation.callActivityOnDestroy(Instrumentation.java:1134)
+ at android.app.ActivityThread.performDestroyActivity(ActivityThread.java:3645)
+ at android.app.ActivityThread.handleDestroyActivity(ActivityThread.java:3680)
+ at android.app.ActivityThread.access$1300(ActivityThread.java:160)
+ at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1370)
+ at android.os.Handler.dispatchMessage(Handler.java:99)
+ at android.os.Looper.loop(Looper.java:176)
+ at android.app.ActivityThread.main(ActivityThread.java:5454)
+ at java.lang.reflect.Method.invokeNative(Native Method)
+ at java.lang.reflect.Method.invoke(Method.java:525)
+ at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1209)
+ at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1025)
+ at dalvik.system.NativeStart.main(Native Method)
+ 
+修改方法：
+
+ 
+http://blog.csdn.net/geekpark/article/details/14524673
+
+@Override  
+protected void onDestroy() {  
+    super.onDestroy();  
+    _layout.removeView(webView);   先从父VIEW中移除WEBVIEW
+    webView.removeAllViews();  
+    webView.destroy();  
+}  

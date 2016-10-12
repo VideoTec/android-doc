@@ -1,0 +1,9 @@
+    /**
+     * Destroys the internal state of this WebView. This method should be called
+     * after this WebView has been removed from the view system. No other
+     * methods may be called on this WebView after destroy.
+     */
+    public void destroy() {
+        checkThread();
+        mProvider.destroy();
+    }

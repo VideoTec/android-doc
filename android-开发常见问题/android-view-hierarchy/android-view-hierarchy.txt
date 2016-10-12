@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-xml\android-view-hierarchy-求父VIEW.txt
