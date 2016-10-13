@@ -1,0 +1,2 @@
+参考：
+E:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.AudioManager-Audio harware modes-声音路由的关系.txt

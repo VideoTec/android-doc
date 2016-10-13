@@ -1,3 +1,6 @@
+20:46 2016/10/13 setMode 需要权限
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 
+
 这次碰到的是HTC手机。
 
 原因：某些手机在 MODE_IN_CALL 模式下，录音返回的声音数据全为零。

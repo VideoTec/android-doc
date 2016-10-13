@@ -1,0 +1,5 @@
+http://forums.androidcentral.com/samsung-galaxy-s5/427930-notification-sounds-not-muted-when-headphones-plugged.html
+
+Notification sounds weren't disabled at all. 
+Calls, and texts sounds are audible through the device speaker 
+even when I plug my headphones in.

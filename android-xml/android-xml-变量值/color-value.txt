@@ -8,3 +8,6 @@ You need to create a set of styles in your xml (regularly in res/values/styles.x
 In the layout files you can call to the colors or styles:
 
 android:textColor="@color/titlecolor"
+
+系统常量：
+@android:color/white

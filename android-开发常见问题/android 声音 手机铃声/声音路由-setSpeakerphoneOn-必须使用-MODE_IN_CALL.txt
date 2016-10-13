@@ -1,6 +1,9 @@
 headset[英][ˈhedset] [美][ˈhɛdˌsɛt]
 n.戴在头上的耳机或听筒
 
+20:46 2016/10/13 setMode 需要权限
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 
+
 http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
 若使用耳机和听筒,则需要先设置模式为MODE_IN_CALL(3.0以前)或MODE_IN_COMMUNICATION(3.0以后).
 

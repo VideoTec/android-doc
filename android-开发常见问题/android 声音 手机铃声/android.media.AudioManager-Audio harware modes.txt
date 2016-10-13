@@ -1,0 +1,61 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1007/3548.html
+
+在setMode()方法中有以下几种对应不同的播放模式:
+
+MODE_NORMAL: 普通模式,既不是铃声模式也不是通话模式
+MODE_RINGTONE:铃声模式
+MODE_IN_CALL:通话模式
+MODE_IN_COMMUNICATION:通信模式,包括音/视频,VoIP通话.(3.0加入的,与通话模式类似)
+
+三种模式：
+参考: android.media.AudioManager-Audio harware modes-setMode-模式状态变迁图.gif
+1）通话模式
+2）铃声模式
+3）正常模式
+
+怎么进入通话模式？
+
+-------------------------------------------
+AudioManager 常量：
+-------------------------------------------
+
+    /* modes for setMode/getMode/setRoute/getRoute */
+    /**
+     * Audio harware modes.
+     */
+    /**
+     * Invalid audio mode.
+     */
+    public static final int MODE_INVALID            = AudioSystem.MODE_INVALID;
+    /**
+     * Current audio mode. Used to apply audio routing to current mode.
+     */
+    public static final int MODE_CURRENT            = AudioSystem.MODE_CURRENT;
+    /**
+     * Normal audio mode: not ringing and no call established.
+     */
+    public static final int MODE_NORMAL             = AudioSystem.MODE_NORMAL;
+    /**
+     * Ringing audio mode. An incoming is being signaled.
+     */
+    public static final int MODE_RINGTONE           = AudioSystem.MODE_RINGTONE;
+    /**
+     * In call audio mode. A telephony call is established.
+     */
+    public static final int MODE_IN_CALL            = AudioSystem.MODE_IN_CALL;
+    /**
+     * In communication audio mode. An audio/video chat or VoIP call is established.
+     */
+    public static final int MODE_IN_COMMUNICATION   = AudioSystem.MODE_IN_COMMUNICATION;
+    
+其值定义在：
+android.media.AudioSystem
+
+    /* modes for setPhoneState, must match AudioSystem.h audio_mode */
+    public static final int MODE_INVALID            = -2;
+    public static final int MODE_CURRENT            = -1;
+    public static final int MODE_NORMAL             = 0;
+    public static final int MODE_RINGTONE           = 1;
+    public static final int MODE_IN_CALL            = 2;
+    public static final int MODE_IN_COMMUNICATION   = 3;
+    public static final int NUM_MODES               = 4;

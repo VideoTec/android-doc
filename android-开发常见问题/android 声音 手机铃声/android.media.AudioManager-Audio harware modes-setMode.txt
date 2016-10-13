@@ -1,0 +1,26 @@
+    /**
+     * Sets the audio mode.
+     * <p>
+     * The audio mode encompasses audio routing AND the behavior of
+     * the telephony layer. Therefore this method should only be used by applications that
+     * replace the platform-wide management of audio settings or the main telephony application.
+     * In particular, the {@link #MODE_IN_CALL} mode should only be used by the telephony
+     * application when it places a phone call, as it will cause signals from the radio layer
+     * to feed the platform mixer.
+     *
+     * @param mode  the requested audio mode ({@link #MODE_NORMAL}, {@link #MODE_RINGTONE},
+     *              {@link #MODE_IN_CALL} or {@link #MODE_IN_COMMUNICATION}).
+     *              Informs the HAL about the current audio state so that
+     *              it can route the audio appropriately.
+     */
+    public void setMode(int mode) {
+        IAudioService service = getService();
+        try {
+            service.setMode(mode, mICallBack, mApplicationContext.getOpPackageName());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Dead object in setMode", e);
+        }
+    }
+    
+    特别注意：需要权限，否则无效
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 

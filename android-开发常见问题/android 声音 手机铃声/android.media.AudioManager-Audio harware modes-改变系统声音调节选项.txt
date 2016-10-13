@@ -1,0 +1,32 @@
+系统音量调用对话框中：
+
+1）通话音量/铃声音量  --- 问题这两个怎么变换的？
+AudioManager.STREAM_VOICE_CALL
+AudioManager.STREAM_RING
+
+2）媒体 AudioManager.STREAM_MUSIC
+3）通知 AudioManager.STREAM_ALARM
+4）系统 AudioManager.STREAM_SYSTEM
+
+http://www.apkbus.com/blog-91485-42069.html
+
+//通话音量 
+int max = mAudioManager.getStreamMaxVolume( AudioManager.STREAM_VOICE_CALL ); 
+int current = mAudioManager.getStreamVolume( AudioManager.STREAM_VOICE_CALL ); 
+Log.d(”VIOCE_CALL”, “max : ” + max + ” current : ” + current); 
+//系统音量 
+max = mAudioManager.getStreamMaxVolume( AudioManager.STREAM_SYSTEM ); 
+current = mAudioManager.getStreamVolume( AudioManager.STREAM_SYSTEM ); 
+Log.d(”SYSTEM”, “max : ” + max + ” current : ” + current); 
+//铃声音量 
+max = mAudioManager.getStreamMaxVolume( AudioManager.STREAM_RING ); 
+current = mAudioManager.getStreamVolume( AudioManager.STREAM_RING ); 
+Log.d(”RING”, “max : ” + max + ” current : ” + current); 
+//音乐音量 
+max = mAudioManager.getStreamMaxVolume( AudioManager.STREAM_MUSIC ); 
+current = mAudioManager.getStreamVolume( AudioManager.STREAM_MUSIC ); 
+Log.d(”MUSIC”, “max : ” + max + ” current : ” + current); 
+//提示声音音量 
+max = mAudioManager.getStreamMaxVolume( AudioManager.STREAM_ALARM ); 
+current = mAudioManager.getStreamVolume( AudioManager.STREAM_ALARM ); 
+Log.d(”ALARM”, “max : ” + max + ” current : ” + current); 

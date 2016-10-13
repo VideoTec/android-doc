@@ -1,0 +1,10 @@
+        audioManager.setMode(AudioManager.MODE_RINGTONE);
+        int mode = audioManager.getMode();
+        结果，设置没有变为 AudioManager.MODE_RINGTONE-1 
+        还是保持原来的 AudioManager.MODE_IN_COMMUNICATION-3
+        if (mode != AudioManager.MODE_RINGTONE) {
+            Log.e("ACT", "ERROR");
+        }
+        
+        原因是没有权限：
+        <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 
