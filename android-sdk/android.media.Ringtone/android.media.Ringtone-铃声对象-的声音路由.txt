@@ -1,5 +1,6 @@
 参考：
 E:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.AudioManager-模式-影响声音路由.txt
+E:\doc\android\android-开发常见问题\android 声音 手机铃声\声音路由-Ringtone-外放和耳机-都有声音.txt
 
 MODE_RINGTONE
 MODE_NORMAL  播放铃声时，所有设备都播放

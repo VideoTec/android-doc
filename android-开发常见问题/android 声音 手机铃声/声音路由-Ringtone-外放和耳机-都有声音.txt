@@ -3,3 +3,15 @@ http://forums.androidcentral.com/samsung-galaxy-s5/427930-notification-sounds-no
 Notification sounds weren't disabled at all. 
 Calls, and texts sounds are audible through the device speaker 
 even when I plug my headphones in.
+
+参考：
+E:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.Ringtone-声音路由和Audio harware modes-关系.txt
+
+1）通话模式
+铃声只在一个设备中播放，二选一：
+听筒（耳机） 或者 扬声器播放
+
+2）铃声模式
+3）正常模式
+铃声在两设备中同时播放：
+听筒（耳机） 或者 扬声器播放
