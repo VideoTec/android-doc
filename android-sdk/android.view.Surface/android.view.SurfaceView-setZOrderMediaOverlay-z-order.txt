@@ -1,0 +1,22 @@
+underlying[英][ˌʌndəˈlaɪɪŋ] [美][ˌʌndərˈlaɪɪŋ]
+adj.潜在的，含蓄的；基础的；表面下的，下层的；[法]优先的
+
+setZOrderMediaOverlay
+
+Added in API level 5
+void setZOrderMediaOverlay (boolean isMediaOverlay)
+
+Control whether the surface view's surface 
+is placed on top of another regular surface view in the window 
+(but still behind the window itself). 
+
+This is typically used to place overlays on top of an underlying media surface view.
+
+必须在，add 到 android-view-hierarchy 之前，设置有效
+Note that this must be set 
+before the surface view's containing window is attached to the window manager.
+
+Calling this overrides any previous call to setZOrderOnTop(boolean).
+
+Parameters
+isMediaOverlay	boolean

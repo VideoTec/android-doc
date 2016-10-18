@@ -1,0 +1,20 @@
+public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height);
+public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height);
+
+public boolean onSurfaceTextureDestroyed(SurfaceTexture surface);
+public void onSurfaceTextureUpdated(SurfaceTexture surface);
+
+不走下面两个回调
+onSurfaceTextureAvailable
+onSurfaceTextureSizeChanged
+
+但是会走
+onSurfaceTextureDestroyed
+onSurfaceTextureUpdated
+
+原因是：
+设置回调即调用 setSurfaceTextureListener 时 TextureView 已经 available 了
+
+解决方法：
+在 setSurfaceTextureListener 时，判断 TextureView.isAvailable。
+如果已经 available 了，就做相应的处理。

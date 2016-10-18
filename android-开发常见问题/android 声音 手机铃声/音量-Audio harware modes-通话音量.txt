@@ -1,0 +1,1 @@
+当设置为 MODE_IN_COMMUNICATION 音量不会为零

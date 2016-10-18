@@ -1,0 +1,6 @@
+http://blog.csdn.net/xiaowei_cqu/article/details/26471527
+
+【图像处理】透视变换 Perspective Transformation
+
+透视变换(Perspective Transformation)
+是将图片投影到一个新的视平面(Viewing Plane)，也称作投影映射(Projective Mapping)

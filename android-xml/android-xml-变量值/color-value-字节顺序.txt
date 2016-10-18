@@ -1,0 +1,20 @@
+0xAARRGGBB
+
+²Î¿¼£º
+E:\doc\android\android-sdk\android.graphics.Color\android.graphics.Color.txt
+@ColorInt public static final int BLACK       = 0xFF000000;
+
+    /**
+     * Sets the background color for this view.
+     * @param color the color of the background
+     */
+    @RemotableViewMethod
+    public void setBackgroundColor(@ColorInt int color) {
+        if (mBackground instanceof ColorDrawable) {
+            ((ColorDrawable) mBackground.mutate()).setColor(color);
+            computeOpaqueFlags();
+            mBackgroundResource = 0;
+        } else {
+            setBackground(new ColorDrawable(color));
+        }
+    }

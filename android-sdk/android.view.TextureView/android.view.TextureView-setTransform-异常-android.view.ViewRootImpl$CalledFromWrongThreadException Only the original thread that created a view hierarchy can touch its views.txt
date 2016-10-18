@@ -1,0 +1,26 @@
+异常：
+
+android.view.ViewRootImpl$CalledFromWrongThreadException: 
+Only the original thread that created a view hierarchy can touch its views.
+
+at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:6818)
+at android.view.ViewRootImpl.invalidateChildInParent(ViewRootImpl.java:1112)
+at android.view.ViewGroup.invalidateChild(ViewGroup.java:4484)
+at android.view.View.invalidate(View.java:11396)
+at android.view.View.invalidateParentIfNeeded(View.java:11482)
+at android.view.TextureView.setTransform(TextureView.java:481)
+at com.ultrapower.umcs.video.VideoCaptureAndroid.setLocalViewTransform(VideoCaptureAndroid.java:254)
+at com.ultrapower.umcs.video.VideoCaptureAndroid.startCapture(VideoCaptureAndroid.java:74)
+at com.ultrapower.umcs.VideoSession.nativeOpenCamera(Native Method)
+at com.ultrapower.umcs.VideoSession.openCamera(VideoSession.java:149)
+at com.feinno.rongfly.core.modules.vowifi.RFVoWifiMediaHelper$1.run(RFVoWifiMediaHelper.java:128)
+at android.os.Handler.handleCallback(Handler.java:730)
+at android.os.Handler.dispatchMessage(Handler.java:92)
+at android.os.Looper.loop(Looper.java:176)
+at android.os.HandlerThread.run(HandlerThread.java:61)
+
+http://stackoverflow.com/questions/3413544/calledfromwrongthreadexception
+
+I think you can't do view modifications from another thread than the UI thread, 
+so either create handlers in the oncreate and post your thread to it, 
+or use AsyncTask, or runOnUIThread method to send portions of code directly to the UI thread.

@@ -1,0 +1,26 @@
+调用时机：
+
+TextureView.SurfaceTextureListener::onSurfaceTextureAvailable
+
+调用方法：
+Matrix matrix = new Matrix();
+matrix.setScale(scaleX, scaleY, width/2, height/2);
+Log.d(TAG, "onSurfaceTextureAvailable setScale x="+scaleX + " scaleY="+scaleY);
+localView.setTransform(matrix);
+
+参考：
+E:\doc\android\android-sdk\android.graphics.Matrix\android.graphics.Matrix.txt
+
+setScale
+
+Added in API level 1
+void setScale (float sx, 
+                float sy, 
+                float px, 
+                float py)
+                
+pivot[英][ˈpɪvət] [美][ˈpɪvət]
+n.枢轴；中心点，中枢；[物]支点，支枢；[体]回转运动
+
+Set the matrix to scale by sx and sy, with a pivot point at (px, py). 
+The pivot point is the coordinate that should remain unchanged by the specified transformation.

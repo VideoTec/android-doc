@@ -1,0 +1,26 @@
+TextureView
+
+TextureView(Context context)
+Creates a new TextureView.
+
+TextureView(Context context, AttributeSet attrs)
+Creates a new TextureView.
+
+TextureView(Context context, AttributeSet attrs, int defStyleAttr)
+Creates a new TextureView.
+
+TextureView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
+Creates a new TextureView.
+
+E:\doc\android\android-sdk\android.view.TextureView\android.view.TextureView-例子-camera-preview.txt
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main2);
+        //mTextureView = (TextureView) findViewById(R.id.textureView);
+        mTextureView = new TextureView(this);
+        mTextureView.setSurfaceTextureListener(this);
+        mTextureView.setAlpha(0.5f);
+        setContentView(mTextureView);
+    }

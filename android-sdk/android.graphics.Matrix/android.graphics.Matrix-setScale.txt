@@ -1,0 +1,6 @@
+void	setScale(float sx, float sy)
+Set the matrix to scale by sx and sy.
+
+void	setScale(float sx, float sy, float px, float py)
+Set the matrix to scale by sx and sy, with a pivot point at (px, py).
+

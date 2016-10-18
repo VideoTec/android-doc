@@ -1,0 +1,11 @@
+异常数据：
+
+10-17 16:30:22.990 20426-20426/com.example.wangxiangfx.myapplication2 E/AndroidRuntime: FATAL EXCEPTION: main
+   java.lang.RuntimeException: Fail to connect to camera service
+       at android.hardware.Camera.native_setup(Native Method)
+       at android.hardware.Camera.<init>(Camera.java:413)
+       at android.hardware.Camera.open(Camera.java:384)
+       at com.example.wangxiangfx.myapplication2.Main2Activity.onSurfaceTextureAvailable(Main2Activity.java:27)
+
+需要权限：
+<uses-permission android:name="android.permission.CAMERA" />

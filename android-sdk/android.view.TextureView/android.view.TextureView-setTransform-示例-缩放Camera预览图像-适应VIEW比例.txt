@@ -1,0 +1,35 @@
+确定 View 的长宽。
+确定 预览 画面，对应 View 的长宽值。
+
+初始状态，预览画面，充满 TextureView 窗口。
+目标：充满 TextureView，且比例不变。
+方法：放大 TextureView 中画面的 长或者宽
+
+代码实例：
+
+    private void setLocalViewTransform(int width, int height) {
+        // 自适应界面尺寸
+        Size pSize = camera.getParameters().getPreviewSize();
+        float xScale = 1f, yScale = 1f;
+        Log.d(TAG, "onSurfaceTextureAvailable view with=" + width + " height=" + height);
+        Log.d(TAG, "onSurfaceTextureAvailable rotation=" + mRotation);
+
+        boolean exchangeVideoWH = mRotation == 90 || mRotation == 270;
+        int exchangedVideoW = exchangeVideoWH ? pSize.height : pSize.width;
+        int exchangedVideoH = exchangeVideoWH ? pSize.width : pSize.height;
+        float xScaled = (float) width / exchangedVideoW;
+        float yScaled = (float) height / exchangedVideoH;
+
+        if (xScaled > yScaled) {
+            yScale = exchangedVideoH * xScaled / height;
+        } else if (xScaled < yScaled) {
+            xScale = exchangedVideoW * yScaled / width;
+        } else {
+            return;
+        }
+
+        Matrix matrix = new Matrix();
+        matrix.setScale(xScale, yScale, width/2, height/2);
+        Log.d(TAG, "onSurfaceTextureAvailable setScale x=" + xScale + " scaleY=" + yScale);
+        localView.setTransform(matrix);
+    }

@@ -1,0 +1,28 @@
+可能原因：
+关闭摄像头，再次打开，使用相同的 TextureView
+
+解决方法：
+
+源码：
+https://android.googlesource.com/platform/frameworks/base/+/master/core/jni/android_hardware_Camera.cpp
+
+static void android_hardware_Camera_setPreviewTexture(JNIEnv *env,
+        jobject thiz, jobject jSurfaceTexture)
+{
+    ALOGV("setPreviewTexture");
+    sp<Camera> camera = get_native_camera(env, thiz, NULL);
+    if (camera == 0) return;
+    sp<IGraphicBufferProducer> producer = NULL;
+    if (jSurfaceTexture != NULL) {
+        producer = SurfaceTexture_getProducer(env, jSurfaceTexture);
+        if (producer == NULL) {
+            jniThrowException(env, "java/lang/IllegalArgumentException",
+                    "SurfaceTexture already released in setPreviewTexture");
+            return;
+        }
+    }
+    if (camera->setPreviewTarget(producer) != NO_ERROR) {
+        jniThrowException(env, "java/io/IOException",
+                "setPreviewTexture failed");
+    }
+}

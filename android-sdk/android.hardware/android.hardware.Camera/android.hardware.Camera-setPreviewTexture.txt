@@ -5,3 +5,40 @@ SurfaceTexture
 资料
 http://tangzm.com/blog/?p=20
 https://github.com/fortdam/t_rtf_camera
+
+
+    /**
+     * Sets the {@link SurfaceTexture} to be used for live preview.
+     * Either a surface or surface texture is necessary for preview, and
+     * preview is necessary to take pictures.  The same surface texture can be
+     * re-set without harm.  Setting a preview surface texture will un-set any
+     * preview surface that was set via {@link #setPreviewDisplay}.
+     *
+     * <p>This method must be called before {@link #startPreview()}.  The
+     * one exception is that if the preview surface texture is not set (or set
+     * to null) before startPreview() is called, then this method may be called
+     * once with a non-null parameter to set the preview surface.  (This allows
+     * camera setup and surface creation to happen in parallel, saving time.)
+     * The preview surface texture may not otherwise change while preview is
+     * running.
+     *
+     * <p>The timestamps provided by {@link SurfaceTexture#getTimestamp()} for a
+     * SurfaceTexture set as the preview texture have an unspecified zero point,
+     * and cannot be directly compared between different cameras or different
+     * instances of the same camera, or across multiple runs of the same
+     * program.
+     *
+     * <p>If you are using the preview data to create video or still images,
+     * strongly consider using {@link android.media.MediaActionSound} to
+     * properly indicate image capture or recording start/stop to the user.</p>
+     *
+     * @see android.media.MediaActionSound
+     * @see android.graphics.SurfaceTexture
+     * @see android.view.TextureView
+     * @param surfaceTexture the {@link SurfaceTexture} to which the preview
+     *     images are to be sent or null to remove the current preview surface
+     *     texture
+     * @throws IOException if the method fails (for example, if the surface
+     *     texture is unavailable or unsuitable).
+     */
+    public native final void setPreviewTexture(SurfaceTexture surfaceTexture) throws IOException;

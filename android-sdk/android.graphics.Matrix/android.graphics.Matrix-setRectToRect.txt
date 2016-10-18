@@ -1,0 +1,37 @@
+setRectToRect
+
+Added in API level 1
+
+boolean setRectToRect (RectF src, 
+                RectF dst, 
+                Matrix.ScaleToFit stf)
+
+Set the matrix to the scale and translate values 
+that map the source rectangle to the destination rectangle, 
+returning true if the the result can be represented.
+
+Parameters
+src	RectF: the source rectangle to map from.
+dst	RectF: the destination rectangle to map to.
+stf	Matrix.ScaleToFit: the ScaleToFit option
+
+Returns
+boolean	true if the matrix can be represented by the rectangle mapping.
+
+注释：
+Matrix.ScaleToFit 有四个值
+
+Matrix.ScaleToFit 	CENTER
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst. 
+
+Matrix.ScaleToFit 	END
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst.
+
+Matrix.ScaleToFit 	FILL
+Scale in X and Y independently, so that src matches dst exactly. 
+
+Matrix.ScaleToFit 	START
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst.

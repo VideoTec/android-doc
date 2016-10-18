@@ -1,0 +1,25 @@
+transform[英][trænsˈfɔ:m] [美][trænsˈfɔrm]
+n.[数]变换式
+
+    /**
+     * <p>Sets the transform to associate with this texture view.
+     * The specified transform applies to the underlying surface
+     * texture and does not affect the size or position of the view
+     * itself, only of its content.</p>
+     *
+     * <p>Some transforms might prevent the content from drawing
+     * all the pixels contained within this view's bounds. In such
+     * situations, make sure this texture view is not marked opaque.</p>
+     *
+     * @param transform The transform to apply to the content of
+     *        this view.
+     *
+     * @see #getTransform(android.graphics.Matrix)
+     * @see #isOpaque()
+     * @see #setOpaque(boolean)
+     */
+    public void setTransform(Matrix transform) {
+        mMatrix.set(transform);
+        mMatrixChanged = true;
+        invalidateParentIfNeeded();
+    }

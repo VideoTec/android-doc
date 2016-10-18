@@ -1,0 +1,13 @@
+The logging tag can be at most 23 characters, was 29 (RF_VoWifi_VideoCaptureAndroid)
+
+http://stackoverflow.com/questions/28168622/the-logging-tag-can-be-at-most-23-characters
+
+No, it's not a bug. However, it seems your TAG's text length exceed 23 characters.
+
+You can disable the lint checking by following Terence's answer. 
+However, take note that Android may change the behavior of these methods 
+and might throw the exception in the future.
+
+关闭这个警告
+http://stackoverflow.com/questions/28168622/the-logging-tag-can-be-at-most-23-characters/28738249#28738249
+In Android Studio, Analyze->Inspect Code.

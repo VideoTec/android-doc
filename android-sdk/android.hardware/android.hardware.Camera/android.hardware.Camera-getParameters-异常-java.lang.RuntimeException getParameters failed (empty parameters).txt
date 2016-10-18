@@ -1,0 +1,12 @@
+10-18 17:57:06.235 1957-1957/com.feinno.rongfly E/MtaSDK: java.lang.RuntimeException: getParameters failed (empty parameters)
+at android.hardware.Camera.native_getParameters(Native Method)
+at android.hardware.Camera.getParameters(Camera.java:1581)
+at com.ultrapower.umcs.video.VideoCaptureAndroid.setLocalViewTransform(VideoCaptureAndroid.java:233)
+at com.ultrapower.umcs.video.VideoCaptureAndroid.onSurfaceTextureAvailable(VideoCaptureAndroid.java:224)
+at android.view.TextureView.getHardwareLayer(TextureView.java:377)
+
+http://stackoverflow.com/questions/14941625/correct-handling-of-exception-getparameters-failed-empty-parameters
+
+In my case I was getting 'getParameters failed (empty parameters)' error 
+when I called getParameters() after unlocking the camera. 
+So, please call getParameters() before you call camera.unlock().

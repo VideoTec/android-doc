@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/28168622/the-logging-tag-can-be-at-most-23-characters/28738249#28738249
+
+You can disable it if you so choose.
+In Android Studio, Analyze->Inspect Code.

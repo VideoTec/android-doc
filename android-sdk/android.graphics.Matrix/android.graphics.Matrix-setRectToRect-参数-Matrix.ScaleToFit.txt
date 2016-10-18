@@ -1,0 +1,36 @@
+https://developer.android.com/reference/android/graphics/Matrix.ScaleToFit.html
+
+Controlls how the src rect should align into the dst rect for setRectToRect().
+
+CENTER
+
+Added in API level 1
+Matrix.ScaleToFit CENTER
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst. 
+At least one axis (X or Y) will fit exactly. The result is centered inside dst.
+
+END
+
+Added in API level 1
+Matrix.ScaleToFit END
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst. 
+At least one axis (X or Y) will fit exactly. 
+END aligns the result to the right and bottom edges of dst.
+
+FILL
+
+Added in API level 1
+Matrix.ScaleToFit FILL
+Scale in X and Y independently, so that src matches dst exactly. 
+This may change the aspect ratio of the src.
+
+START
+
+Added in API level 1
+Matrix.ScaleToFit START
+Compute a scale that will maintain the original src aspect ratio, 
+but will also ensure that src fits entirely inside dst. 
+At least one axis (X or Y) will fit exactly. 
+START aligns the result to the left and top edges of dst.
