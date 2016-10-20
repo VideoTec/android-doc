@@ -1,0 +1,24 @@
+nudge[英][nʌdʒ] [美][nʌdʒ]
+n.用肘轻推；推动
+vt.（用肘）轻推；推进
+
+http://stackoverflow.com/questions/2506876/how-to-change-position-of-toast-in-android
+
+toast.setGravity(Gravity.TOP|Gravity.LEFT, 0, 0);
+
+Positioning your Toast
+
+A standard toast notification appears near the bottom of 
+the screen, centered horizontally. 
+You can change this position with the  setGravity(int, int, int) method.
+This accepts three parameters: 
+a  Gravity constant, an x-position offset, and a y-position offset.
+
+For example, if you decide that the toast should appear in the top-left corner, 
+you can set the gravity like this:
+
+toast.setGravity(Gravity.TOP|Gravity.LEFT, 0, 0);
+
+If you want to nudge the position to the right, 
+increase the value of the second parameter. 
+To nudge it down, increase the value of the last parameter.

@@ -8,24 +8,55 @@ with correct PERMISSION_GRANTED or PERMISSION_DENIED result.
 
 http://developer.android.com/intl/zh-cn/reference/android/support/v4/app/ActivityCompat.html#requestPermissions(android.app.Activity, java.lang.String[], int)
 
-public static void requestPermissions (Activity activity, String[] permissions, int requestCode - 用来区分请求来源)
+public static void requestPermissions 
+(Activity activity, String[] permissions, int requestCode - 用来区分请求来源)
 
-Requests permissions to be granted to this application. These permissions must be requested in your manifest, they should not be granted to your app, and they should have protection level #PROTECTION_DANGEROUS dangerous, regardless whether they are declared by the platform or a third-party app.
+Requests permissions to be granted to this application. 
+These permissions must be requested in your manifest, 
+they should not be granted to your app, 
+and they should have protection level #PROTECTION_DANGEROUS dangerous, 
+regardless whether they are declared by the platform or a third-party app.
 
-Normal permissions PROTECTION_NORMAL are granted at install time if requested in the manifest. Signature permissions PROTECTION_SIGNATURE are granted at install time if requested in the manifest and the signature of your app matches the signature of the app declaring the permissions.
+Normal permissions PROTECTION_NORMAL 
+are granted at install time if requested in the manifest. 
+Signature permissions PROTECTION_SIGNATURE are granted at install time 
+if requested in the manifest and the signature of your app 
+matches the signature of the app declaring the permissions.
 
-If your app does not have the requested permissions the user will be presented with UI for accepting them. After the user has accepted or rejected the requested permissions you will receive a callback reporting whether the permissions were granted or not. Your activity has to implement ActivityCompat.OnRequestPermissionsResultCallback and the results of permission requests will be delivered to its onRequestPermissionsResult(int, String[], int[]) method.
+If your app does not have the requested permissions 
+the user will be presented with UI for accepting them. 
+After the user has accepted or rejected the requested permissions 
+you will receive a callback reporting whether the permissions were granted or not. 
+Your activity has to implement ActivityCompat.OnRequestPermissionsResultCallback and 
+the results of permission requests will be delivered 
+to its onRequestPermissionsResult(int, String[], int[]) method.
 
-Note that requesting a permission does not guarantee it will be granted and your app should be able to run without having this permission.
+Note that requesting a permission does not guarantee 
+it will be granted and your app should be able to run without having this permission.
 
-This method may start an activity allowing the user to choose which permissions to grant and which to reject. Hence, you should be prepared that your activity may be paused and resumed. Further, granting some permissions may require a restart of you application. In such a case, the system will recreate the activity stack before delivering the result to your onRequestPermissionsResult( int, String[], int[]).
+This method 
+may start an activity allowing the user to choose 
+which permissions to grant and which to reject. 
+Hence, you should be prepared that your activity may be paused and resumed. 
+Further, granting some permissions may require a restart of you application. 
+In such a case, 
+the system will recreate the activity stack 
+before delivering the result to your onRequestPermissionsResult( int, String[], int[]).
 
-When checking whether you have a permission you should use checkSelfPermission(android.content.Context, String).
+When checking whether you have a permission 
+you should use checkSelfPermission(android.content.Context, String).
 
 Parameters
-activity	Activity: The target activity.
-permissions	String: The requested permissions.
-requestCode	int: Application specific request code to match with a result reported to onRequestPermissionsResult(int, String[], int[]).
+
+activity
+Activity: The target activity.
+
+permissions
+String: The requested permissions.
+
+requestCode
+int: Application specific request code to match 
+with a result reported to onRequestPermissionsResult(int, String[], int[]).
 See also:
 
 checkSelfPermission(android.content.Context, String)

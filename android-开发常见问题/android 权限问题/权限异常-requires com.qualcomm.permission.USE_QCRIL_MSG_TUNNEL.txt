@@ -1,0 +1,32 @@
+10-19 16:49:45.638 17273-17273/com.feinno.rongfly E/RF_CrashHandler: mTag = RF_CrashHandler, thread = Thread[main,5,main]
+     java.lang.RuntimeException: Unable to create application com.feinno.rongfly.application.RFApplication: java.lang.SecurityException: Not allowed to start service Intent { cmp=com.feinno.rongfly/.core.service.RFNewCallingService } without permission com.qualcomm.permission.USE_QCRIL_MSG_TUNNEL
+         at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4624)
+         at android.app.ActivityThread.access$1500(ActivityThread.java:154)
+         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1384)
+         at android.os.Handler.dispatchMessage(Handler.java:102)
+         at android.os.Looper.loop(Looper.java:135)
+         at android.app.ActivityThread.main(ActivityThread.java:5336)
+         at java.lang.reflect.Method.invoke(Native Method)
+         at java.lang.reflect.Method.invoke(Method.java:372)
+         at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:904)
+         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:699)
+      Caused by: java.lang.SecurityException: Not allowed to start service Intent { cmp=com.feinno.rongfly/.core.service.RFNewCallingService } without permission com.qualcomm.permission.USE_QCRIL_MSG_TUNNEL
+         at android.app.ContextImpl.startServiceCommon(ContextImpl.java:1805)
+         at android.app.ContextImpl.startService(ContextImpl.java:1782)
+         at android.content.ContextWrapper.startService(ContextWrapper.java:515)
+         at com.feinno.rongfly.core.service.RFNewCallingService.startRFNewCallingService(RFNewCallingService.java:121)
+         at com.feinno.rongfly.application.RFApplication.initMainProcessData(RFApplication.java:214)
+         at com.feinno.rongfly.application.RFApplication.onCreate(RFApplication.java:111)
+         at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1011)
+         at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4621)
+         at android.app.ActivityThread.access$1500(ActivityThread.java:154) 
+         at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1384) 
+         at android.os.Handler.dispatchMessage(Handler.java:102) 
+         at android.os.Looper.loop(Looper.java:135) 
+         at android.app.ActivityThread.main(ActivityThread.java:5336) 
+         at java.lang.reflect.Method.invoke(Native Method) 
+         
+http://www.it1me.com/it-answers?id=30795980&s=Denial%20of%20service&ttl=Permission+Denial%3A+Accessing+service+ComponentInfo
+
+signatureOrSystem means 
+you need run the code in System or in a apk signed with system certificate
