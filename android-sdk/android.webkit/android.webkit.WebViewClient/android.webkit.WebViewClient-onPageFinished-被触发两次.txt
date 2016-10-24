@@ -1,0 +1,44 @@
+加载失败后，(复现条件，断网)，
+onReceivedError 网页加载失败 网址： http://baidu.com/; 错误信息：无法打开网页; 错误代码: -2
+
+接着调用两遍下面的方法：
+onPageStarted   网页开始加载: http://baidu.com/
+onPageFinished  网页加载完成: http://baidu.com/
+onPageStarted   网页开始加载: http://baidu.com/
+onPageFinished  网页加载完成: http://baidu.com/
+但是不走 onReceivedError 了
+
+解决方法：
+自定义一个 loadUrl 让所有的加载网页，都走这个方法。
+在这里做些，加载前的初始化工作。
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            super.onReceivedError(view, errorCode, description, failingUrl);
+            LogFeinno.i(TAG, "网页加载失败 网址： " + failingUrl + "; 错误信息：" + description + "; 错误代码: " + errorCode);
+
+            mWebFinishedError = true;
+            if (errorCode == -9) {
+                mPreUrl = failingUrl;
+                view.loadUrl(failingUrl); 
+            } else if (errorCode == -11) {
+                LogFeinno.i(TAG, "无法建立安全连接 不做处理" );
+            } else {
+                showErrorUI(true);
+                /*
+                view.stopLoading();
+                //view.clearView();
+                //错误时加载自定义错误去页面
+                String data = "Page NO FOUND！";
+                if (mType == TypeReplyableView || mType == TypeReplyableCreate) {
+                    data = "";
+                }
+                callJsCode("javascript:document.body.innerHTML=\"" + data + "\"", null, true);
+                */
+            }
+        }
+http://stackoverflow.com/questions/23808868/is-onpagefinished-is-called-after-onreceivederror-in-anyway
+		
+http://stackoverflow.com/questions/5476797/webviewclient-onpagestarted-called-twice-when-specifying-non-existent-url-via
+
+http://stackoverflow.com/questions/18282892/android-webview-onpagefinished-called-twice

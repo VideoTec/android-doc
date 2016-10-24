@@ -1,0 +1,64 @@
+android.widget.LinearLayout-水平布局-不同元素高度不一样时-底对齐的方式
+
+例子：
+
+
+            <LinearLayout
+                android:id="@+id/ly_vowifi_video_in_call_ui_first_line_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|bottom">  这个 bottom 没有起作用，为什么？原因见下面。
+				这个 bottom 是有效果的，只是子元素错误的设置了 margin 造成的。
+
+                <TextView
+                    android:id="@+id/tv_vowifi_video_send_img"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    android:drawablePadding="@dimen/vowifi_padding_between_img_text"
+                    android:drawableTop="@drawable/rf_img_vowifi_send_img_disable"
+                    android:gravity="center_horizontal"
+                    android:text="@string/rf_str_vowifi_btn_send_img"
+                    android:textColor="@color/vowifi_text_color_disable"
+                    android:textSize="@dimen/vowifi_normal_text_size" />
+					
+                <TextView   同一行里，这个元素高度最小，默认，对齐到上部。正确的写法见下面。
+                    android:id="@+id/tv_vowifi_video_calling_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center_horizontal|bottom" 其中 bottom 没用用。
+                    android:visibility="invisible"
+                    android:text="@string/rf_str_vowifi_text_duration_format"
+                    android:textColor="@color/vowifi_text_color"
+                    android:textSize="@dimen/vowifi_middle_text_size" />
+
+                <TextView
+                    android:id="@+id/tv_vowifi_video_to_voice_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/vowifi_padding_between_img_text"
+                    android:drawableTop="@drawable/rf_img_vowifi_video_to_audio"
+                    android:gravity="center_horizontal"
+                    android:text="@string/rf_str_vowifi_btn_voice_chat"
+                    android:textColor="@color/vowifi_text_color"
+                    android:textSize="@dimen/vowifi_normal_text_size" />
+            </LinearLayout>
+			
+这里遇到的情况，是，TextView 设置的 layout_marginBottom 造成的。
+正确的写法：去掉 layout_marginBottom 就好了。
+                <TextView
+                    android:id="@+id/tv_vowifi_video_calling_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:visibility="invisible"
+                    android:text="@string/rf_str_vowifi_text_duration_format"
+                    android:textColor="@color/vowifi_text_color"
+                    android:textSize="@dimen/vowifi_middle_text_size" />
+			
+http://stackoverflow.com/questions/6575409/linearlayout-layout-gravity-bottom-not-working-on-horizontal-linearlayout

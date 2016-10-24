@@ -1,0 +1,7 @@
+        Resources resources = getResources();
+        int textColor = resources.getColor(R.color.vowifi_text_color);
+		
+		警告：
+		'getColor(int)' is deprecated
+		应该使用：
+		Use {@link #getColor(int, Theme)} instead.

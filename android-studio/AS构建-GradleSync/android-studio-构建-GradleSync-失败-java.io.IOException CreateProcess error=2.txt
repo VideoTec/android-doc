@@ -1,0 +1,25 @@
+错误代码：
+def gitVersionCode() {
+    def cmd = 'git rev-list HEAD --count'
+    cmd.execute().text.trim().toInteger();
+}
+
+错误信息：
+Caused by: java.io.IOException: Cannot run program "git": CreateProcess error=2, ?????????
+	at build_2w3pwk3bj5gqarr7zo1u5jx18.gitVersionCode(D:\work\androidrongflysip\rongflymqtt\build.gradle:8)
+	at build_2w3pwk3bj5gqarr7zo1u5jx18$_run_closure1$_closure14.doCall(D:\work\androidrongflysip\rongflymqtt\build.gradle:133)
+	at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:67)
+	at org.gradle.listener.ActionBroadcast.execute(ActionBroadcast.java:39)
+	at org.gradle.api.internal.DefaultDomainObjectCollection.doAdd(DefaultDomainObjectCollection.java:165)
+	at org.gradle.api.internal.DefaultDomainObjectCollection.add(DefaultDomainObjectCollection.java:159)
+	at com.android.build.gradle.AppExtension.addVariant(AppExtension.java:47)
+	at com.android.build.gradle.internal.ApiObjectFactory.create(ApiObjectFactory.java:113)
+	at com.android.build.gradle.BasePlugin$12.call(BasePlugin.java:654)
+	at com.android.build.gradle.BasePlugin$12.call(BasePlugin.java:647)
+	at com.android.builder.profile.ThreadRecorder$1.record(ThreadRecorder.java:55)
+	... 70 more
+Caused by: java.io.IOException: CreateProcess error=2, ?????????
+	... 81 more
+
+原因是：git.exe 不在环境变量里。
+设置完环境变量后，需要重新启动 AS。

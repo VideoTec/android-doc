@@ -1,0 +1,8 @@
+http://stackoverflow.com/questions/3060619/how-to-get-the-visible-size-on-an-activity
+
+I think you'll want to look at Activity.getWindow() and Window.getDecorView(), 
+and get the width/height of that.
+
+Activity.getWindow().getDecorView
+
+You are calling it too early it doesn't have a height during onCreate().

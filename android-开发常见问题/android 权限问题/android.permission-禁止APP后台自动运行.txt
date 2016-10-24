@@ -1,0 +1,18 @@
+这个权限，各个厂商都自己定制。android 系统没有提供标准
+
+http://bbs.hiapk.com/thread-15184227-1-1.html
+
+教你打开三星隐藏的权限管理、开机自启功能。
+
+三星在这次的4.4上学*了HTC，把相近机型的所有功能全部做到了一起，
+使用Others.xml和build.prop开控制功能的开启。
+前些天火了的把UI改成S5的UI就是使用这一原理。
+
+今天带来的是：【教你如何打开三星ROM自带的程序权限管理和开机自启管理功能】（感谢xiaolu大神！）
+
+第一步：
+    打开\system\csc\others.xml文件，加入以下代码：
+       <CscFeature_Common_ConfigLocalSecurityPolicy>ChinaNalSecurity</CscFeature_Common_ConfigLocalSecurityPolicy>
+	   
+第二步：
+    下载我下面提供的APK，更改权限为"rw-r--r--"，放到\system\app\下，重启手机

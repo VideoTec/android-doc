@@ -1,3 +1,6 @@
+ctl + shift + f 不管用了 
+原因是，输入法的问题。
+
 http://stackoverflow.com/questions/26574277/how-to-override-method-via-keyboard-shortcut-in-android-studio
 
 you can not remember all shortcuts :)

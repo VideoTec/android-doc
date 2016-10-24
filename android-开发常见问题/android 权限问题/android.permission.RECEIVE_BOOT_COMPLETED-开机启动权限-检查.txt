@@ -1,0 +1,9 @@
+http://blog.csdn.net/yangwen123/article/details/42418681
+
+开机自动允许	android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行
+
+https://www.aswifter.com/2015/11/04/android-6-permission/
+
+以下权限只需要在AndroidManifest.xml中声明即可使用
+
+android.permission.RECEIVE_BOOT_COMPLETED
