@@ -33,3 +33,17 @@ SYNTAX:
 String string = getString(R.string.hello);
 You can use either getString(int) or getText(int) to retrieve a string. 
 getText(int) will retain any rich text styling applied to the string.
+
+通过 application-context 获取字符串资源
+
+    public static String resStr(int strID) {
+        if (mRFApplication == null) {
+            return "application not create";
+        }
+        try {
+            return mRFApplication.getResources().getString(strID);
+        } catch (Resources.NotFoundException ex) {
+            LogFeinno.e(TAG, "没找到指定的字符串资源", ex);
+            return "NotFoundStringResource";
+        }
+    }

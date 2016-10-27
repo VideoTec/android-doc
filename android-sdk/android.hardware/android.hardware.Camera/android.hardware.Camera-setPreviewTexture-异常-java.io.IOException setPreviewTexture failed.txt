@@ -1,6 +1,80 @@
 可能原因：
 关闭摄像头，再次打开，使用相同的 TextureView
 
+代码：
+  @Override
+  public synchronized void onSurfaceTextureAvailable(final SurfaceTexture surface, int width, int height) {
+	  Log.d(TAG, "onSurfaceTextureAvailable");
+	  try {
+		  if (camera != null) {
+			  camera.setPreviewTexture(surface);
+			  setLocalViewTransform(width, height);
+		  }
+	  } catch (IOException e) {
+	      //throw new RuntimeException(e); 原来把这个异常扔出去了
+		  Log.e(TAG, "onSurfaceTextureAvailable exception", e); 捕获住这个异常，就可以了。
+	  }
+  }
+  
+异常：
+10-25 13:03:01.568 7105-7105/com.feinno.rongfly E/RF_VoWifi_VideoCapture: onSurfaceTextureAvailable exception
+ java.io.IOException: setPreviewTexture failed
+  at android.hardware.Camera.setPreviewTexture(Native Method)
+  at com.ultrapower.umcs.video.VideoCaptureAndroid.onSurfaceTextureAvailable(VideoCaptureAndroid.java:220)
+  at android.view.TextureView.getHardwareLayer(TextureView.java:368)
+  at android.view.View.updateDisplayListIfDirty(View.java:16494)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.draw(View.java:17527)
+  at android.view.View.updateDisplayListIfDirty(View.java:16517)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.updateDisplayListIfDirty(View.java:16512)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.updateDisplayListIfDirty(View.java:16512)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.draw(View.java:17527)
+  at android.view.View.updateDisplayListIfDirty(View.java:16517)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.updateDisplayListIfDirty(View.java:16512)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.updateDisplayListIfDirty(View.java:16512)
+  at android.view.View.draw(View.java:17293)
+  at android.view.ViewGroup.drawChild(ViewGroup.java:3926)
+  at android.view.ViewGroup.dispatchDraw(ViewGroup.java:3716)
+  at android.view.View.draw(View.java:17527)
+  at com.android.internal.policy.PhoneWindow$DecorView.draw(PhoneWindow.java:3184)
+  at android.view.View.updateDisplayListIfDirty(View.java:16517)
+  at android.view.ThreadedRenderer.updateViewTreeDisplayList(ThreadedRenderer.java:325)
+  at android.view.ThreadedRenderer.updateRootDisplayList(ThreadedRenderer.java:331)
+  at android.view.ThreadedRenderer.draw(ThreadedRenderer.java:366)
+  at android.view.ViewRootImpl.draw(ViewRootImpl.java:3234)
+  at android.view.ViewRootImpl.performDraw(ViewRootImpl.java:3033)
+  at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2615)
+  at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1528)
+  at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:7530)
+  at android.view.Choreographer$CallbackRecord.run(Choreographer.java:911)
+  at android.view.Choreographer.doCallbacks(Choreographer.java:686)
+  at android.view.Choreographer.doFrame(Choreographer.java:622)
+  at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:897)
+  at android.os.Handler.handleCallback(Handler.java:739)
+  at android.os.Handler.dispatchMessage(Handler.java:95)
+  at android.os.Looper.loop(Looper.java:148)
+  at android.app.ActivityThread.main(ActivityThread.java:7325)
+  at java.lang.reflect.Method.invoke(Native Method)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1230)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1120)
+
 解决方法：
 
 源码：

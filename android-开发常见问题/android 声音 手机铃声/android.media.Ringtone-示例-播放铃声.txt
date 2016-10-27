@@ -1,0 +1,17 @@
+private Uri mRingtoneUri = Settings.System.DEFAULT_RINGTONE_URI
+private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);
+
+private Ringtone mRingtone;
+mRingtone = getRingtone(ringtoneUri);
+Ringtone ringtone = RingtoneManager.getRingtone(mContext, ringtoneUri);
+
+        if (mRingtone.isPlaying()) {
+            LogFeinno.i(TAG, "Ringtone already playing.");
+        } else {
+            AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+            am.setMode(AudioManager.MODE_RINGTONE);
+            mRingtone.play();
+            LogFeinno.i(TAG, "Repeat ringtone.");
+        }
+
+mRingtone.stop();
