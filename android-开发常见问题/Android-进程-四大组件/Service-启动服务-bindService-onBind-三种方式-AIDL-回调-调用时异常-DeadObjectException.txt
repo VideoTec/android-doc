@@ -13,3 +13,7 @@ at android.os.HandlerThread.run(HandlerThread.java:61)
 
 原因：
 是对方进程，crash了，再调用之前设置的 回调方法时，就 crash 了。
+
+这时能做什么？
+第一种方法：发个广播，让对方的进程，再起来。
+第二种方法：使用广播，替换回调

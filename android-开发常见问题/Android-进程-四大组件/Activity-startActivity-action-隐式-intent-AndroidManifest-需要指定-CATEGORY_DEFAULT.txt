@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-开发常见问题\Android-进程-四大组件\Activity-startActivity-action-隐式-intent-异常-ActivityNotFoundException.txt

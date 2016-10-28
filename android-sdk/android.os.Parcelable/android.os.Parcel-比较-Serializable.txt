@@ -1,0 +1,3 @@
+http://www.developerphil.com/parcelable-vs-serializable/
+
+Parcelable, the Speed King

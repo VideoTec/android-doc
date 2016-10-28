@@ -1,0 +1,14 @@
+http://www.survivingwithandroid.com/2012/09/passing-data-between-activities-2.html
+
+One of the most important aspect in developing android application is 
+passing data between activities. 
+Usually an Android app is made by several activities that work together. 
+These activities are pieces of code independent each other and 
+we need to exchange information between them.
+
+There are several strategies that can be applied to achieve this aim:
+
+Shared Preferences
+Database
+Static class
+Intents

@@ -1,0 +1,1 @@
+D:\doc\android\android-studio\AS构建-GradleSync\android-studio-构建-GradleSync-失败-Cause error=2 no such file or directory.txt

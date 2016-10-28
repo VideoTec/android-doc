@@ -1,0 +1,28 @@
+https://developer.android.com/reference/android/os/Parcel.html
+
+android.os.Parcel
+
+Container for a message (data and object references) 
+that can be sent through an IBinder. 
+
+A Parcel can contain both 
+
+1）flattened data 
+that will be unflattened on the other side of the IPC 
+(using the various methods here for writing specific types, or the general Parcelable interface), and 
+
+2）references to live IBinder objects 
+that will result in the other side receiving a proxy IBinder connected with the original IBinder in the Parcel.
+
+bulk[英][bʌlk] [美][bʌlk]
+n.（大）体积；大块，大量；大多数，大部分；主体
+The bulk of the Parcel API revolves around reading and writing data of various types. 
+There are six major classes of such functions available.
+
+六类序列化数据：
+1）Primitives
+2）Primitive Arrays
+3）Parcelables
+4）Bundles
+5）Active Objects
+6）Untyped Containers

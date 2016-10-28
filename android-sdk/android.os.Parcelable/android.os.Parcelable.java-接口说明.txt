@@ -1,0 +1,14 @@
+Parcelable 类需要实现下面方法
+
+第一个：
+public int describeContents()
+
+第二个：
+public void writeToParcel(Parcel out, int flags)
+
+第三个：需要定义一个静态成员变量
+public interface Creator<T>
+public interface ClassLoaderCreator<T> extends Creator<T>
+
+第四个：
+需要定义一个构造方法，参数是 Parcel 类型

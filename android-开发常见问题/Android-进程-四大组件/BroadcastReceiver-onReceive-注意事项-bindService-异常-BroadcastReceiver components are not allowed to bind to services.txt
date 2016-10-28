@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-开发常见问题\Android-进程-四大组件\Service-启动服务-bindService-异常-BroadcastReceiver components are not allowed to bind to services.txt

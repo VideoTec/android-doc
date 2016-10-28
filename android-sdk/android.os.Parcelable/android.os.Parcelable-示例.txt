@@ -9,10 +9,12 @@ A typical implementation of Parcelable is:
          return 0;
      }
 
+	 //序列化
      public void writeToParcel(Parcel out, int flags) {
          out.writeInt(mData);
      }
 
+	 //反序列化，用于：create an instance of the class from the Parcel data
      public static final Parcelable.Creator<MyParcelable> CREATOR
              = new Parcelable.Creator<MyParcelable>() {
          public MyParcelable createFromParcel(Parcel in) {
@@ -23,7 +25,7 @@ A typical implementation of Parcelable is:
              return new MyParcelable[size];
          }
      };
-     
+     //反序列化，
      private MyParcelable(Parcel in) {
          mData = in.readInt();
      }

@@ -1,0 +1,36 @@
+http://www.survivingwithandroid.com/2015/05/android-parcelable-tutorial-list-class-2.html
+
+-------------------------------------------
+Android Parcelable List
+-------------------------------------------
+
+List<ContactInfo> cList = createContactList(); 
+i.putParcelableArrayListExtra("contact", (ArrayList) cList);
+
+<ContactInfo> ciArr = (List) i.getParcelableArrayListExtra("contact");
+
+-------------------------------------------
+Android Parcel inner class
+-------------------------------------------
+
+public class ContactInfo implements Parcelable {
+ 
+  private String name;
+  private String surname;
+  private int idx;
+  private Address address;
+ 
+  ...
+  // Inner class
+  public static class Address {
+    private String street;
+    private String city;
+    private int number;
+ 
+    // get and set methods
+  }
+}
+
+Now, the first thing is making the inner class parcelable:
+Notice that the inner class is now static otherwise it is not parcelable, 
+second in the outer 
