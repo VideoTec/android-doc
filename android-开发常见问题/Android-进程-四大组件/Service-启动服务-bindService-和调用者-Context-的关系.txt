@@ -1,0 +1,9 @@
+https://developer.android.com/reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)
+
+The service will be considered required 
+by the system only for as long as the calling context exists. 
+For example, 
+if this Context is an Activity that is stopped, 
+the service will not be required to continue running until the Activity is resumed.
+
+http://meiyitianabc.blog.163.com/blog/static/10502212720112213727841/

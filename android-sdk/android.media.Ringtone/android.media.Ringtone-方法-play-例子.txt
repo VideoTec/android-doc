@@ -13,3 +13,6 @@
     }
     1. 播放完wav文件，就结束，不会循环播放
     3. 正常路由到所有 播放设备
+	
+	参考：
+	D:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.Ringtone-示例-播放铃声.txt

@@ -1,0 +1,90 @@
+http://stackoverflow.com/questions/21864098/how-to-download-files-from-webview-android
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // handle different requests for different type of files
+                // this example handles downloads requests for .apk and .mp3 files
+                // everything else the webview can handle normally
+                if (url.endsWith(".apk")) {
+                    Uri source = Uri.parse(url);
+                    // Make a new request pointing to the .apk url
+                    DownloadManager.Request request = new DownloadManager.Request(source);
+                    // appears the same in Notification bar while downloading
+                    request.setDescription("Description for the DownloadManager Bar");
+                    request.setTitle("YourApp.apk");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    }
+                    // save the file in the "Downloads" folder of SDCARD
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "SmartPigs.apk");
+                    // get download service and enqueue file
+                    DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                    manager.enqueue(request);
+                }
+                else if(url.endsWith(".mp3")) {
+                    // if the link points to an .mp3 resource do something else
+                }
+                // if there is a link to anything else than .apk or .mp3 load the URL in the webview
+                else view.loadUrl(url);
+                return true;                
+        }
+		
+http://stackoverflow.com/questions/10069050/download-file-inside-webview/31128811#31128811
+		
+https://developer.android.com/reference/android/webkit/WebView.html#setDownloadListener(android.webkit.DownloadListener)
+
+setDownloadListener
+
+Added in API level 1
+
+void setDownloadListener (DownloadListener listener)
+
+Registers the interface to be used when content can not be handled by the rendering engine, 
+and should be downloaded instead. 
+This will replace the current handler.
+
+Parameters
+listener	DownloadListener: an implementation of DownloadListener
+
+https://developer.android.com/reference/android/webkit/DownloadListener.html
+
+void onDownloadStart (String url, 
+                String userAgent, 
+                String contentDisposition, 
+                String mimetype, 
+                long contentLength)
+Notify the host application that a file should be downloaded
+
+-----------------------------------
+例子：
+-----------------------------------
+
+            mWebView.setDownloadListener(new DownloadListener() {
+                @Override
+                public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                    LogFeinno.i(TAG, "下载文件: " + url);
+                    if (!TextUtils.isEmpty(url)) {
+                        Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                        Uri uri = Uri.parse(url);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    }
+                }
+            });
+			
+            mWebView.setDownloadListener(new DownloadListener() {
+                @Override
+                public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                    LogFeinno.i(TAG, "下载文件: " + url);
+					的系统浏览器里下载
+                Intent intent = new Intent();
+                intent.setAction("android.intent.action.VIEW"); android.content.Intent.ACTION_VIEW
+                if (TextUtils.isEmpty(mWebView.getUrl())) {
+                    return;
+                }
+                Uri content_url = Uri.parse(mWebView.getUrl());
+                intent.setData(content_url);
+                startActivity(intent);
+                }
+            });

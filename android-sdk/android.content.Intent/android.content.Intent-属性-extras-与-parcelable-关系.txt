@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-sdk\android.os.Parcelable\android.os.Parcelable-示例-Intent.putExtra-.txt

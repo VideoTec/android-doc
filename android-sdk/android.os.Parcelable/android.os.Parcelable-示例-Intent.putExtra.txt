@@ -1,0 +1,35 @@
+https://developer.android.com/reference/android/content/Intent.html
+
+-----------------------------------------
+提取 parcelable
+-----------------------------------------
+
+getParcelableExtra
+getParcelableArrayExtra
+getParcelableArrayListExtra
+
+Parcelable[]	getParcelableArrayExtra(String name)
+Retrieve extended data from the intent.
+
+<T extends Parcelable> ArrayList<T>	getParcelableArrayListExtra(String name)
+Retrieve extended data from the intent.
+
+<T extends Parcelable> T	getParcelableExtra(String name)
+Retrieve extended data from the intent.
+
+-----------------------------------------
+序列化 
+-----------------------------------------
+
+putExtra(String name, Parcelable value)
+putExtra(String name, Parcelable[] value)
+putParcelableArrayListExtra(String name, ArrayList<? extends Parcelable> value)
+
+Intent	putExtra(String name, Parcelable value)
+Add extended data to the intent.
+
+Intent	putExtra(String name, Parcelable[] value)
+Add extended data to the intent.
+
+Intent	putParcelableArrayListExtra(String name, ArrayList<? extends Parcelable> value)
+Add extended data to the intent.

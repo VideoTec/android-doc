@@ -1,6 +1,9 @@
 private Uri mRingtoneUri = Settings.System.DEFAULT_RINGTONE_URI
 private Uri mRingtoneCaller = Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing);
 
+Settings.System.DEFAULT_RINGTONE_URI 这个铃声，会循环播放
+Uri.parse("android.resource://com.feinno.rongfly/" + R.raw.ringing) 这个铃声，播放完就停了
+
 private Ringtone mRingtone;
 mRingtone = getRingtone(ringtoneUri);
 Ringtone ringtone = RingtoneManager.getRingtone(mContext, ringtoneUri);

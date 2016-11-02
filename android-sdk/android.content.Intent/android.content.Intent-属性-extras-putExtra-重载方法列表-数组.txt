@@ -1,0 +1,32 @@
+Intent	putExtra(String name, boolean[] value)
+Intent	putExtra(String name, boolean value)
+
+Intent	putExtra(String name, byte value)
+Intent	putExtra(String name, byte[] value)
+Intent	putExtra(String name, char[] value)
+Intent	putExtra(String name, char value)
+
+Intent	putExtra(String name, short[] value)
+Intent	putExtra(String name, short value)
+
+Intent	putExtra(String name, int[] value)
+Intent	putExtra(String name, int value)
+
+Intent	putExtra(String name, long value)
+Intent	putExtra(String name, long[] value)
+
+Intent	putExtra(String name, float[] value)
+Intent	putExtra(String name, float value)
+Intent	putExtra(String name, double[] value)
+Intent	putExtra(String name, double value)
+
+Intent	putExtra(String name, String[] value)
+Intent	putExtra(String name, String value)
+Intent	putExtra(String name, CharSequence[] value)
+Intent	putExtra(String name, CharSequence value)
+
+Intent	putExtra(String name, Parcelable[] value)
+Intent	putExtra(String name, Parcelable value)
+
+Intent	putExtra(String name, Bundle value)
+Intent	putExtra(String name, Serializable value)

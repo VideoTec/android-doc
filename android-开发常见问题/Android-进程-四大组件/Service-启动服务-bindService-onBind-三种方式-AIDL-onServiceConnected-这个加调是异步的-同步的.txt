@@ -1,0 +1,39 @@
+bindService 是异步调用 onServiceConnected 的。
+1. ServiceConnection.onServiceConnected() is called on UI thread at some point in the future
+2. bindService() 方法会立即无值返回
+
+http://stackoverflow.com/questions/10802456/when-exactly-onserviceconnected-for-bounded-service-will-be-called
+
+It hasn't been clearly stated in the official dev guide, 
+the Context.bindService() is indeed an asynchronous call, 
+this also explain why ServiceConnection.onServiceConnected() is implemented as a callback. 
+Check out the dev guide:
+
+A client can bind to the service by calling bindService(). 
+When it does, it must provide an implementation of ServiceConnection, 
+which monitors the connection with the service. 
+The bindService() method returns immediately without a value, 
+but when the Android system creates the connection between the client and service, 
+it calls onServiceConnected() on the ServiceConnection, 
+to deliver the IBinder that the client can use to communicate with the service.
+
+ServiceConnection.onServiceConnected() is called on UI thread 
+at some point in the future (not immediately after calling Context.bindService()), 
+once connection to service is properly established.
+
+https://developer.android.com/guide/components/bound-services.html#Basics
+
+客户端可通过调用 bindService() 绑定到服务。
+调用时，它必须提供 ServiceConnection 的实现，后者会监控与服务的连接。
+bindService() 方法会立即无值返回，
+但当 Android 系统创建客户端与服务之间的连接时，
+会调用 ServiceConnection 上的 onServiceConnected()，
+向客户端传递用来与服务通信的 IBinder。
+
+http://stackoverflow.com/questions/3055599/android-how-do-i-wait-until-a-service-is-actually-connected
+
+http://stackoverflow.com/questions/6472345/can-bindservice-be-made-to-block
+You cannot have bindService() block. 
+However, your ServiceConnection (2nd parameter to bindService) 
+has callbacks to tell you when the service is connected and disconnected, 
+so you can have other code block until your onServiceConnected() method unblocks it.

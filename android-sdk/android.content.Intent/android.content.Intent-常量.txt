@@ -1,0 +1,4 @@
+android.content.Intent.ACTION_VIEW
+
+@SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+public static final String ACTION_VIEW = "android.intent.action.VIEW";

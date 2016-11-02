@@ -1,0 +1,10 @@
+http://meiyitianabc.blog.163.com/blog/static/10502212720112213727841/
+
+In the startService (Intent service) documentation it says:
+
+Using startService() overrides the default service lifetime that is managed bybindService(Intent, ServiceConnection, int): 
+it requires the service to remain running until stopService(Intent) is called, 
+regardless of whether any clients are connected to it. 
+Note that calls to startService() are not nesting: 
+no matter how many times you callstartService(), 
+a single call to stopService(Intent) will stop it.
