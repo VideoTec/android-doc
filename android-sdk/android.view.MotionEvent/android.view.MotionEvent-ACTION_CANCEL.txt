@@ -1,8 +1,0 @@
-http://developer.android.com/intl/zh-cn/reference/android/view/MotionEvent.html#ACTION_CANCEL
-
-public static final int ACTION_CANCEL
-
-Added in API level 1
-Constant for getActionMasked(): The current gesture has been aborted. You will not receive any more points in it. You should treat this as an up event, but not perform any action that you normally would.
-
-Constant Value: 3 (0x00000003)

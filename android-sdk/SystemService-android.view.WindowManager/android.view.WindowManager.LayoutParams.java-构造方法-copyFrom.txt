@@ -1,0 +1,157 @@
+
+        public final int copyFrom(LayoutParams o) {
+            int changes = 0;
+
+            if (width != o.width) {
+                width = o.width;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (height != o.height) {
+                height = o.height;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (x != o.x) {
+                x = o.x;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (y != o.y) {
+                y = o.y;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (horizontalWeight != o.horizontalWeight) {
+                horizontalWeight = o.horizontalWeight;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (verticalWeight != o.verticalWeight) {
+                verticalWeight = o.verticalWeight;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (horizontalMargin != o.horizontalMargin) {
+                horizontalMargin = o.horizontalMargin;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (verticalMargin != o.verticalMargin) {
+                verticalMargin = o.verticalMargin;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (type != o.type) {
+                type = o.type;
+                changes |= TYPE_CHANGED;
+            }
+            if (flags != o.flags) {
+                final int diff = flags ^ o.flags;
+                if ((diff & (FLAG_TRANSLUCENT_STATUS | FLAG_TRANSLUCENT_NAVIGATION)) != 0) {
+                    changes |= TRANSLUCENT_FLAGS_CHANGED;
+                }
+                flags = o.flags;
+                changes |= FLAGS_CHANGED;
+            }
+            if (privateFlags != o.privateFlags) {
+                privateFlags = o.privateFlags;
+                changes |= PRIVATE_FLAGS_CHANGED;
+            }
+            if (softInputMode != o.softInputMode) {
+                softInputMode = o.softInputMode;
+                changes |= SOFT_INPUT_MODE_CHANGED;
+            }
+            if (gravity != o.gravity) {
+                gravity = o.gravity;
+                changes |= LAYOUT_CHANGED;
+            }
+            if (format != o.format) {
+                format = o.format;
+                changes |= FORMAT_CHANGED;
+            }
+            if (windowAnimations != o.windowAnimations) {
+                windowAnimations = o.windowAnimations;
+                changes |= ANIMATION_CHANGED;
+            }
+            if (token == null) {
+                // NOTE: token only copied if the recipient doesn't
+                // already have one.
+                token = o.token;
+            }
+            if (packageName == null) {
+                // NOTE: packageName only copied if the recipient doesn't
+                // already have one.
+                packageName = o.packageName;
+            }
+            if (!mTitle.equals(o.mTitle)) {
+                mTitle = o.mTitle;
+                changes |= TITLE_CHANGED;
+            }
+            if (alpha != o.alpha) {
+                alpha = o.alpha;
+                changes |= ALPHA_CHANGED;
+            }
+            if (dimAmount != o.dimAmount) {
+                dimAmount = o.dimAmount;
+                changes |= DIM_AMOUNT_CHANGED;
+            }
+            if (screenBrightness != o.screenBrightness) {
+                screenBrightness = o.screenBrightness;
+                changes |= SCREEN_BRIGHTNESS_CHANGED;
+            }
+            if (buttonBrightness != o.buttonBrightness) {
+                buttonBrightness = o.buttonBrightness;
+                changes |= BUTTON_BRIGHTNESS_CHANGED;
+            }
+            if (rotationAnimation != o.rotationAnimation) {
+                rotationAnimation = o.rotationAnimation;
+                changes |= ROTATION_ANIMATION_CHANGED;
+            }
+
+            if (screenOrientation != o.screenOrientation) {
+                screenOrientation = o.screenOrientation;
+                changes |= SCREEN_ORIENTATION_CHANGED;
+            }
+
+            if (preferredRefreshRate != o.preferredRefreshRate) {
+                preferredRefreshRate = o.preferredRefreshRate;
+                changes |= PREFERRED_REFRESH_RATE_CHANGED;
+            }
+
+            if (preferredDisplayModeId != o.preferredDisplayModeId) {
+                preferredDisplayModeId = o.preferredDisplayModeId;
+                changes |= PREFERRED_DISPLAY_MODE_ID;
+            }
+
+            if (systemUiVisibility != o.systemUiVisibility
+                    || subtreeSystemUiVisibility != o.subtreeSystemUiVisibility) {
+                systemUiVisibility = o.systemUiVisibility;
+                subtreeSystemUiVisibility = o.subtreeSystemUiVisibility;
+                changes |= SYSTEM_UI_VISIBILITY_CHANGED;
+            }
+
+            if (hasSystemUiListeners != o.hasSystemUiListeners) {
+                hasSystemUiListeners = o.hasSystemUiListeners;
+                changes |= SYSTEM_UI_LISTENER_CHANGED;
+            }
+
+            if (inputFeatures != o.inputFeatures) {
+                inputFeatures = o.inputFeatures;
+                changes |= INPUT_FEATURES_CHANGED;
+            }
+
+            if (userActivityTimeout != o.userActivityTimeout) {
+                userActivityTimeout = o.userActivityTimeout;
+                changes |= USER_ACTIVITY_TIMEOUT_CHANGED;
+            }
+
+            if (!surfaceInsets.equals(o.surfaceInsets)) {
+                surfaceInsets.set(o.surfaceInsets);
+                changes |= SURFACE_INSETS_CHANGED;
+            }
+
+            if (hasManualSurfaceInsets != o.hasManualSurfaceInsets) {
+                hasManualSurfaceInsets = o.hasManualSurfaceInsets;
+                changes |= SURFACE_INSETS_CHANGED;
+            }
+
+            if (needsMenuKey != o.needsMenuKey) {
+                needsMenuKey = o.needsMenuKey;
+                changes |= NEEDS_MENU_KEY_CHANGED;
+            }
+
+            return changes;
+        }

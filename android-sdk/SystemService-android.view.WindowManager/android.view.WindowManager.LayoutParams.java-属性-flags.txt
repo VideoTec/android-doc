@@ -1,0 +1,441 @@
+
+        /** Window flag: as long as this window is visible to the user, allow
+         *  the lock screen to activate while the screen is on.
+         *  This can be used independently, or in combination with
+         *  {@link #FLAG_KEEP_SCREEN_ON} and/or {@link #FLAG_SHOW_WHEN_LOCKED} */
+        public static final int FLAG_ALLOW_LOCK_WHILE_SCREEN_ON     = 0x00000001;
+
+        /** Window flag: everything behind this window will be dimmed.
+         *  Use {@link #dimAmount} to control the amount of dim. */
+        public static final int FLAG_DIM_BEHIND        = 0x00000002;
+
+        /** Window flag: blur everything behind this window.
+         * @deprecated Blurring is no longer supported. */
+        @Deprecated
+        public static final int FLAG_BLUR_BEHIND        = 0x00000004;
+
+        /** Window flag: this window won't ever get key input focus, so the
+         * user can not send key or other button events to it.  Those will
+         * instead go to whatever focusable window is behind it.  This flag
+         * will also enable {@link #FLAG_NOT_TOUCH_MODAL} whether or not that
+         * is explicitly set.
+         *
+         * <p>Setting this flag also implies that the window will not need to
+         * interact with
+         * a soft input method, so it will be Z-ordered and positioned
+         * independently of any active input method (typically this means it
+         * gets Z-ordered on top of the input method, so it can use the full
+         * screen for its content and cover the input method if needed.  You
+         * can use {@link #FLAG_ALT_FOCUSABLE_IM} to modify this behavior. */
+        public static final int FLAG_NOT_FOCUSABLE      = 0x00000008;
+
+        /** Window flag: this window can never receive touch events. */
+        public static final int FLAG_NOT_TOUCHABLE      = 0x00000010;
+
+        /** Window flag: even when this window is focusable (its
+         * {@link #FLAG_NOT_FOCUSABLE} is not set), allow any pointer events
+         * outside of the window to be sent to the windows behind it.  Otherwise
+         * it will consume all pointer events itself, regardless of whether they
+         * are inside of the window. */
+        public static final int FLAG_NOT_TOUCH_MODAL    = 0x00000020;
+
+        /** Window flag: when set, if the device is asleep when the touch
+         * screen is pressed, you will receive this first touch event.  Usually
+         * the first touch event is consumed by the system since the user can
+         * not see what they are pressing on.
+         *
+         * @deprecated This flag has no effect.
+         */
+        @Deprecated
+        public static final int FLAG_TOUCHABLE_WHEN_WAKING = 0x00000040;
+
+        /** Window flag: as long as this window is visible to the user, keep
+         *  the device's screen turned on and bright. */
+        public static final int FLAG_KEEP_SCREEN_ON     = 0x00000080;
+
+        /** Window flag: place the window within the entire screen, ignoring
+         *  decorations around the border (such as the status bar).  The
+         *  window must correctly position its contents to take the screen
+         *  decoration into account.  This flag is normally set for you
+         *  by Window as described in {@link Window#setFlags}. */
+        public static final int FLAG_LAYOUT_IN_SCREEN   = 0x00000100;
+
+        /** Window flag: allow window to extend outside of the screen. */
+        public static final int FLAG_LAYOUT_NO_LIMITS   = 0x00000200;
+
+        /**
+         * Window flag: hide all screen decorations (such as the status bar) while
+         * this window is displayed.  This allows the window to use the entire
+         * display space for itself -- the status bar will be hidden when
+         * an app window with this flag set is on the top layer. A fullscreen window
+         * will ignore a value of {@link #SOFT_INPUT_ADJUST_RESIZE} for the window's
+         * {@link #softInputMode} field; the window will stay fullscreen
+         * and will not resize.
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowFullscreen} attribute; this attribute
+         * is automatically set for you in the standard fullscreen themes
+         * such as {@link android.R.style#Theme_NoTitleBar_Fullscreen},
+         * {@link android.R.style#Theme_Black_NoTitleBar_Fullscreen},
+         * {@link android.R.style#Theme_Light_NoTitleBar_Fullscreen},
+         * {@link android.R.style#Theme_Holo_NoActionBar_Fullscreen},
+         * {@link android.R.style#Theme_Holo_Light_NoActionBar_Fullscreen},
+         * {@link android.R.style#Theme_DeviceDefault_NoActionBar_Fullscreen}, and
+         * {@link android.R.style#Theme_DeviceDefault_Light_NoActionBar_Fullscreen}.</p>
+         */
+        public static final int FLAG_FULLSCREEN      = 0x00000400;
+
+        /** Window flag: override {@link #FLAG_FULLSCREEN} and force the
+         *  screen decorations (such as the status bar) to be shown. */
+        public static final int FLAG_FORCE_NOT_FULLSCREEN   = 0x00000800;
+
+        /** Window flag: turn on dithering when compositing this window to
+         *  the screen.
+         * @deprecated This flag is no longer used. */
+        @Deprecated
+        public static final int FLAG_DITHER             = 0x00001000;
+
+        /** Window flag: treat the content of the window as secure, preventing
+         * it from appearing in screenshots or from being viewed on non-secure
+         * displays.
+         *
+         * <p>See {@link android.view.Display#FLAG_SECURE} for more details about
+         * secure surfaces and secure displays.
+         */
+        public static final int FLAG_SECURE             = 0x00002000;
+
+        /** Window flag: a special mode where the layout parameters are used
+         * to perform scaling of the surface when it is composited to the
+         * screen. */
+        public static final int FLAG_SCALED             = 0x00004000;
+
+        /** Window flag: intended for windows that will often be used when the user is
+         * holding the screen against their face, it will aggressively filter the event
+         * stream to prevent unintended presses in this situation that may not be
+         * desired for a particular window, when such an event stream is detected, the
+         * application will receive a CANCEL motion event to indicate this so applications
+         * can handle this accordingly by taking no action on the event
+         * until the finger is released. */
+        public static final int FLAG_IGNORE_CHEEK_PRESSES    = 0x00008000;
+
+        /** Window flag: a special option only for use in combination with
+         * {@link #FLAG_LAYOUT_IN_SCREEN}.  When requesting layout in the
+         * screen your window may appear on top of or behind screen decorations
+         * such as the status bar.  By also including this flag, the window
+         * manager will report the inset rectangle needed to ensure your
+         * content is not covered by screen decorations.  This flag is normally
+         * set for you by Window as described in {@link Window#setFlags}.*/
+        public static final int FLAG_LAYOUT_INSET_DECOR = 0x00010000;
+
+        /** Window flag: invert the state of {@link #FLAG_NOT_FOCUSABLE} with
+         * respect to how this window interacts with the current method.  That
+         * is, if FLAG_NOT_FOCUSABLE is set and this flag is set, then the
+         * window will behave as if it needs to interact with the input method
+         * and thus be placed behind/away from it; if FLAG_NOT_FOCUSABLE is
+         * not set and this flag is set, then the window will behave as if it
+         * doesn't need to interact with the input method and can be placed
+         * to use more space and cover the input method.
+         */
+        public static final int FLAG_ALT_FOCUSABLE_IM = 0x00020000;
+
+        /** Window flag: if you have set {@link #FLAG_NOT_TOUCH_MODAL}, you
+         * can set this flag to receive a single special MotionEvent with
+         * the action
+         * {@link MotionEvent#ACTION_OUTSIDE MotionEvent.ACTION_OUTSIDE} for
+         * touches that occur outside of your window.  Note that you will not
+         * receive the full down/move/up gesture, only the location of the
+         * first down as an ACTION_OUTSIDE.
+         */
+        public static final int FLAG_WATCH_OUTSIDE_TOUCH = 0x00040000;
+
+        /** Window flag: special flag to let windows be shown when the screen
+         * is locked. This will let application windows take precedence over
+         * key guard or any other lock screens. Can be used with
+         * {@link #FLAG_KEEP_SCREEN_ON} to turn screen on and display windows
+         * directly before showing the key guard window.  Can be used with
+         * {@link #FLAG_DISMISS_KEYGUARD} to automatically fully dismisss
+         * non-secure keyguards.  This flag only applies to the top-most
+         * full-screen window.
+         */
+        public static final int FLAG_SHOW_WHEN_LOCKED = 0x00080000;
+
+        /** Window flag: ask that the system wallpaper be shown behind
+         * your window.  The window surface must be translucent to be able
+         * to actually see the wallpaper behind it; this flag just ensures
+         * that the wallpaper surface will be there if this window actually
+         * has translucent regions.
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowShowWallpaper} attribute; this attribute
+         * is automatically set for you in the standard wallpaper themes
+         * such as {@link android.R.style#Theme_Wallpaper},
+         * {@link android.R.style#Theme_Wallpaper_NoTitleBar},
+         * {@link android.R.style#Theme_Wallpaper_NoTitleBar_Fullscreen},
+         * {@link android.R.style#Theme_Holo_Wallpaper},
+         * {@link android.R.style#Theme_Holo_Wallpaper_NoTitleBar},
+         * {@link android.R.style#Theme_DeviceDefault_Wallpaper}, and
+         * {@link android.R.style#Theme_DeviceDefault_Wallpaper_NoTitleBar}.</p>
+         */
+        public static final int FLAG_SHOW_WALLPAPER = 0x00100000;
+
+        /** Window flag: when set as a window is being added or made
+         * visible, once the window has been shown then the system will
+         * poke the power manager's user activity (as if the user had woken
+         * up the device) to turn the screen on. */
+        public static final int FLAG_TURN_SCREEN_ON = 0x00200000;
+
+        /** Window flag: when set the window will cause the keyguard to
+         * be dismissed, only if it is not a secure lock keyguard.  Because such
+         * a keyguard is not needed for security, it will never re-appear if
+         * the user navigates to another window (in contrast to
+         * {@link #FLAG_SHOW_WHEN_LOCKED}, which will only temporarily
+         * hide both secure and non-secure keyguards but ensure they reappear
+         * when the user moves to another UI that doesn't hide them).
+         * If the keyguard is currently active and is secure (requires an
+         * unlock pattern) than the user will still need to confirm it before
+         * seeing this window, unless {@link #FLAG_SHOW_WHEN_LOCKED} has
+         * also been set.
+         */
+        public static final int FLAG_DISMISS_KEYGUARD = 0x00400000;
+
+        /** Window flag: when set the window will accept for touch events
+         * outside of its bounds to be sent to other windows that also
+         * support split touch.  When this flag is not set, the first pointer
+         * that goes down determines the window to which all subsequent touches
+         * go until all pointers go up.  When this flag is set, each pointer
+         * (not necessarily the first) that goes down determines the window
+         * to which all subsequent touches of that pointer will go until that
+         * pointer goes up thereby enabling touches with multiple pointers
+         * to be split across multiple windows.
+         */
+        public static final int FLAG_SPLIT_TOUCH = 0x00800000;
+
+        /**
+         * <p>Indicates whether this window should be hardware accelerated.
+         * Requesting hardware acceleration does not guarantee it will happen.</p>
+         *
+         * <p>This flag can be controlled programmatically <em>only</em> to enable
+         * hardware acceleration. To enable hardware acceleration for a given
+         * window programmatically, do the following:</p>
+         *
+         * <pre>
+         * Window w = activity.getWindow(); // in Activity's onCreate() for instance
+         * w.setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+         *         WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+         * </pre>
+         *
+         * <p>It is important to remember that this flag <strong>must</strong>
+         * be set before setting the content view of your activity or dialog.</p>
+         *
+         * <p>This flag cannot be used to disable hardware acceleration after it
+         * was enabled in your manifest using
+         * {@link android.R.attr#hardwareAccelerated}. If you need to selectively
+         * and programmatically disable hardware acceleration (for automated testing
+         * for instance), make sure it is turned off in your manifest and enable it
+         * on your activity or dialog when you need it instead, using the method
+         * described above.</p>
+         *
+         * <p>This flag is automatically set by the system if the
+         * {@link android.R.attr#hardwareAccelerated android:hardwareAccelerated}
+         * XML attribute is set to true on an activity or on the application.</p>
+         */
+        public static final int FLAG_HARDWARE_ACCELERATED = 0x01000000;
+
+        /**
+         * Window flag: allow window contents to extend in to the screen's
+         * overscan area, if there is one.  The window should still correctly
+         * position its contents to take the overscan area into account.
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowOverscan} attribute; this attribute
+         * is automatically set for you in the standard overscan themes
+         * such as
+         * {@link android.R.style#Theme_Holo_NoActionBar_Overscan},
+         * {@link android.R.style#Theme_Holo_Light_NoActionBar_Overscan},
+         * {@link android.R.style#Theme_DeviceDefault_NoActionBar_Overscan}, and
+         * {@link android.R.style#Theme_DeviceDefault_Light_NoActionBar_Overscan}.</p>
+         *
+         * <p>When this flag is enabled for a window, its normal content may be obscured
+         * to some degree by the overscan region of the display.  To ensure key parts of
+         * that content are visible to the user, you can use
+         * {@link View#setFitsSystemWindows(boolean) View.setFitsSystemWindows(boolean)}
+         * to set the point in the view hierarchy where the appropriate offsets should
+         * be applied.  (This can be done either by directly calling this function, using
+         * the {@link android.R.attr#fitsSystemWindows} attribute in your view hierarchy,
+         * or implementing you own {@link View#fitSystemWindows(android.graphics.Rect)
+         * View.fitSystemWindows(Rect)} method).</p>
+         *
+         * <p>This mechanism for positioning content elements is identical to its equivalent
+         * use with layout and {@link View#setSystemUiVisibility(int)
+         * View.setSystemUiVisibility(int)}; here is an example layout that will correctly
+         * position its UI elements with this overscan flag is set:</p>
+         *
+         * {@sample development/samples/ApiDemos/res/layout/overscan_activity.xml complete}
+         */
+        public static final int FLAG_LAYOUT_IN_OVERSCAN = 0x02000000;
+
+        /**
+         * Window flag: request a translucent status bar with minimal system-provided
+         * background protection.
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowTranslucentStatus} attribute; this attribute
+         * is automatically set for you in the standard translucent decor themes
+         * such as
+         * {@link android.R.style#Theme_Holo_NoActionBar_TranslucentDecor},
+         * {@link android.R.style#Theme_Holo_Light_NoActionBar_TranslucentDecor},
+         * {@link android.R.style#Theme_DeviceDefault_NoActionBar_TranslucentDecor}, and
+         * {@link android.R.style#Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor}.</p>
+         *
+         * <p>When this flag is enabled for a window, it automatically sets
+         * the system UI visibility flags {@link View#SYSTEM_UI_FLAG_LAYOUT_STABLE} and
+         * {@link View#SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN}.</p>
+         */
+        public static final int FLAG_TRANSLUCENT_STATUS = 0x04000000;
+
+        /**
+         * Window flag: request a translucent navigation bar with minimal system-provided
+         * background protection.
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowTranslucentNavigation} attribute; this attribute
+         * is automatically set for you in the standard translucent decor themes
+         * such as
+         * {@link android.R.style#Theme_Holo_NoActionBar_TranslucentDecor},
+         * {@link android.R.style#Theme_Holo_Light_NoActionBar_TranslucentDecor},
+         * {@link android.R.style#Theme_DeviceDefault_NoActionBar_TranslucentDecor}, and
+         * {@link android.R.style#Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor}.</p>
+         *
+         * <p>When this flag is enabled for a window, it automatically sets
+         * the system UI visibility flags {@link View#SYSTEM_UI_FLAG_LAYOUT_STABLE} and
+         * {@link View#SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION}.</p>
+         */
+        public static final int FLAG_TRANSLUCENT_NAVIGATION = 0x08000000;
+
+        /**
+         * Flag for a window in local focus mode.
+         * Window in local focus mode can control focus independent of window manager using
+         * {@link Window#setLocalFocus(boolean, boolean)}.
+         * Usually window in this mode will not get touch/key events from window manager, but will
+         * get events only via local injection using {@link Window#injectInputEvent(InputEvent)}.
+         */
+        public static final int FLAG_LOCAL_FOCUS_MODE = 0x10000000;
+
+        /** Window flag: Enable touches to slide out of a window into neighboring
+         * windows in mid-gesture instead of being captured for the duration of
+         * the gesture.
+         *
+         * This flag changes the behavior of touch focus for this window only.
+         * Touches can slide out of the window but they cannot necessarily slide
+         * back in (unless the other window with touch focus permits it).
+         *
+         * {@hide}
+         */
+        public static final int FLAG_SLIPPERY = 0x20000000;
+
+        /**
+         * Window flag: When requesting layout with an attached window, the attached window may
+         * overlap with the screen decorations of the parent window such as the navigation bar. By
+         * including this flag, the window manager will layout the attached window within the decor
+         * frame of the parent window such that it doesn't overlap with screen decorations.
+         */
+        public static final int FLAG_LAYOUT_ATTACHED_IN_DECOR = 0x40000000;
+
+        /**
+         * Flag indicating that this Window is responsible for drawing the background for the
+         * system bars. If set, the system bars are drawn with a transparent background and the
+         * corresponding areas in this window are filled with the colors specified in
+         * {@link Window#getStatusBarColor()} and {@link Window#getNavigationBarColor()}.
+         */
+        public static final int FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS = 0x80000000;
+
+        /**
+         * Various behavioral options/flags.  Default is none.
+         *
+         * @see #FLAG_ALLOW_LOCK_WHILE_SCREEN_ON
+         * @see #FLAG_DIM_BEHIND
+         * @see #FLAG_NOT_FOCUSABLE
+         * @see #FLAG_NOT_TOUCHABLE
+         * @see #FLAG_NOT_TOUCH_MODAL
+         * @see #FLAG_TOUCHABLE_WHEN_WAKING
+         * @see #FLAG_KEEP_SCREEN_ON
+         * @see #FLAG_LAYOUT_IN_SCREEN
+         * @see #FLAG_LAYOUT_NO_LIMITS
+         * @see #FLAG_FULLSCREEN
+         * @see #FLAG_FORCE_NOT_FULLSCREEN
+         * @see #FLAG_SECURE
+         * @see #FLAG_SCALED
+         * @see #FLAG_IGNORE_CHEEK_PRESSES
+         * @see #FLAG_LAYOUT_INSET_DECOR
+         * @see #FLAG_ALT_FOCUSABLE_IM
+         * @see #FLAG_WATCH_OUTSIDE_TOUCH
+         * @see #FLAG_SHOW_WHEN_LOCKED
+         * @see #FLAG_SHOW_WALLPAPER
+         * @see #FLAG_TURN_SCREEN_ON
+         * @see #FLAG_DISMISS_KEYGUARD
+         * @see #FLAG_SPLIT_TOUCH
+         * @see #FLAG_HARDWARE_ACCELERATED
+         * @see #FLAG_LOCAL_FOCUS_MODE
+         * @see #FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
+         */
+        @ViewDebug.ExportedProperty(flagMapping = {
+            @ViewDebug.FlagToString(mask = FLAG_ALLOW_LOCK_WHILE_SCREEN_ON, equals = FLAG_ALLOW_LOCK_WHILE_SCREEN_ON,
+                    name = "FLAG_ALLOW_LOCK_WHILE_SCREEN_ON"),
+            @ViewDebug.FlagToString(mask = FLAG_DIM_BEHIND, equals = FLAG_DIM_BEHIND,
+                    name = "FLAG_DIM_BEHIND"),
+            @ViewDebug.FlagToString(mask = FLAG_BLUR_BEHIND, equals = FLAG_BLUR_BEHIND,
+                    name = "FLAG_BLUR_BEHIND"),
+            @ViewDebug.FlagToString(mask = FLAG_NOT_FOCUSABLE, equals = FLAG_NOT_FOCUSABLE,
+                    name = "FLAG_NOT_FOCUSABLE"),
+            @ViewDebug.FlagToString(mask = FLAG_NOT_TOUCHABLE, equals = FLAG_NOT_TOUCHABLE,
+                    name = "FLAG_NOT_TOUCHABLE"),
+            @ViewDebug.FlagToString(mask = FLAG_NOT_TOUCH_MODAL, equals = FLAG_NOT_TOUCH_MODAL,
+                    name = "FLAG_NOT_TOUCH_MODAL"),
+            @ViewDebug.FlagToString(mask = FLAG_TOUCHABLE_WHEN_WAKING, equals = FLAG_TOUCHABLE_WHEN_WAKING,
+                    name = "FLAG_TOUCHABLE_WHEN_WAKING"),
+            @ViewDebug.FlagToString(mask = FLAG_KEEP_SCREEN_ON, equals = FLAG_KEEP_SCREEN_ON,
+                    name = "FLAG_KEEP_SCREEN_ON"),
+            @ViewDebug.FlagToString(mask = FLAG_LAYOUT_IN_SCREEN, equals = FLAG_LAYOUT_IN_SCREEN,
+                    name = "FLAG_LAYOUT_IN_SCREEN"),
+            @ViewDebug.FlagToString(mask = FLAG_LAYOUT_NO_LIMITS, equals = FLAG_LAYOUT_NO_LIMITS,
+                    name = "FLAG_LAYOUT_NO_LIMITS"),
+            @ViewDebug.FlagToString(mask = FLAG_FULLSCREEN, equals = FLAG_FULLSCREEN,
+                    name = "FLAG_FULLSCREEN"),
+            @ViewDebug.FlagToString(mask = FLAG_FORCE_NOT_FULLSCREEN, equals = FLAG_FORCE_NOT_FULLSCREEN,
+                    name = "FLAG_FORCE_NOT_FULLSCREEN"),
+            @ViewDebug.FlagToString(mask = FLAG_DITHER, equals = FLAG_DITHER,
+                    name = "FLAG_DITHER"),
+            @ViewDebug.FlagToString(mask = FLAG_SECURE, equals = FLAG_SECURE,
+                    name = "FLAG_SECURE"),
+            @ViewDebug.FlagToString(mask = FLAG_SCALED, equals = FLAG_SCALED,
+                    name = "FLAG_SCALED"),
+            @ViewDebug.FlagToString(mask = FLAG_IGNORE_CHEEK_PRESSES, equals = FLAG_IGNORE_CHEEK_PRESSES,
+                    name = "FLAG_IGNORE_CHEEK_PRESSES"),
+            @ViewDebug.FlagToString(mask = FLAG_LAYOUT_INSET_DECOR, equals = FLAG_LAYOUT_INSET_DECOR,
+                    name = "FLAG_LAYOUT_INSET_DECOR"),
+            @ViewDebug.FlagToString(mask = FLAG_ALT_FOCUSABLE_IM, equals = FLAG_ALT_FOCUSABLE_IM,
+                    name = "FLAG_ALT_FOCUSABLE_IM"),
+            @ViewDebug.FlagToString(mask = FLAG_WATCH_OUTSIDE_TOUCH, equals = FLAG_WATCH_OUTSIDE_TOUCH,
+                    name = "FLAG_WATCH_OUTSIDE_TOUCH"),
+            @ViewDebug.FlagToString(mask = FLAG_SHOW_WHEN_LOCKED, equals = FLAG_SHOW_WHEN_LOCKED,
+                    name = "FLAG_SHOW_WHEN_LOCKED"),
+            @ViewDebug.FlagToString(mask = FLAG_SHOW_WALLPAPER, equals = FLAG_SHOW_WALLPAPER,
+                    name = "FLAG_SHOW_WALLPAPER"),
+            @ViewDebug.FlagToString(mask = FLAG_TURN_SCREEN_ON, equals = FLAG_TURN_SCREEN_ON,
+                    name = "FLAG_TURN_SCREEN_ON"),
+            @ViewDebug.FlagToString(mask = FLAG_DISMISS_KEYGUARD, equals = FLAG_DISMISS_KEYGUARD,
+                    name = "FLAG_DISMISS_KEYGUARD"),
+            @ViewDebug.FlagToString(mask = FLAG_SPLIT_TOUCH, equals = FLAG_SPLIT_TOUCH,
+                    name = "FLAG_SPLIT_TOUCH"),
+            @ViewDebug.FlagToString(mask = FLAG_HARDWARE_ACCELERATED, equals = FLAG_HARDWARE_ACCELERATED,
+                    name = "FLAG_HARDWARE_ACCELERATED"),
+            @ViewDebug.FlagToString(mask = FLAG_LOCAL_FOCUS_MODE, equals = FLAG_LOCAL_FOCUS_MODE,
+                    name = "FLAG_LOCAL_FOCUS_MODE"),
+            @ViewDebug.FlagToString(mask = FLAG_TRANSLUCENT_STATUS, equals = FLAG_TRANSLUCENT_STATUS,
+                    name = "FLAG_TRANSLUCENT_STATUS"),
+            @ViewDebug.FlagToString(mask = FLAG_TRANSLUCENT_NAVIGATION, equals = FLAG_TRANSLUCENT_NAVIGATION,
+                    name = "FLAG_TRANSLUCENT_NAVIGATION"),
+            @ViewDebug.FlagToString(mask = FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS, equals = FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
+                    name = "FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS")
+        }, formatToHexString = true)
+        public int flags;

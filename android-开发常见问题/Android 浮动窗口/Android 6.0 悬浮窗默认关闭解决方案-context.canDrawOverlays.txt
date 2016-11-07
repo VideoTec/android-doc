@@ -1,3 +1,7 @@
+public static final String SYSTEM_ALERT_WINDOW = "android.permission.SYSTEM_ALERT_WINDOW";
+需要这个权限，才能开启
+如果不加这个权限， ACTION_MANAGE_OVERLAY_PERMISSION 界面的开关是灰的，不可用。
+
 https://developer.android.com/reference/android/provider/Settings.html#canDrawOverlays(android.content.Context)
 
 android.provider.Settings

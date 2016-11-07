@@ -1,0 +1,33 @@
+http://blog.csdn.net/myarrow/article/details/7254651
+
+盘旋 vs. 触摸工具
+工具与触摸设备接触或在触摸设备上一定范围内盘旋。
+不是所有的触摸设备都能识别触摸工具在触摸设备上盘旋。
+如基于射频的手写笔数字化仪，当一个工具在其上面一定范围内盘旋时，它可以检测到。
+
+InputReader 模块负责区分触摸工具中哪些是盘旋工具。
+同样，
+触摸工具(touching tools)和
+盘旋工具(hovering tools)以不同的方式报告给应用程序。
+
+onTouchEvent
+触摸工具通过触摸事件(touch events)报告给应用程序，
+如：
+MotionEvent.ACTION_DOWN,
+MotionEvent.ACTION_MOVE,
+MotionEvent.ACTION_DOWN,
+MotionEvent.ACTION_POINTER_DOWN and
+MotionEvent.ACTION_POINTER_UP。
+
+onGenericMotionEvent
+盘旋工具通过通用的运动事件(generic motion events)报告给应用程序，
+如：
+MotionEvent.ACTION_HOVER_ENTER,
+MotionEvent.ACTION_HOVER_MOVE and
+MotionEvent.ACTION_HOVER_EXIT.
+
+-------------------------------------
+https://stuff.mit.edu/afs/sipb/project/android/docs/about/versions/android-3.1.html
+non-touch motion events
+-------------------------------------
+Finally, since the motion events from joysticks, gamepads, mice, and trackballs are not touch events, the platform adds a new callback method for passing them to a View as "generic" motion events. Specifically, it reports the non-touch motion events to Views through a call to onGenericMotionEvent(), rather than to onTouchEvent().

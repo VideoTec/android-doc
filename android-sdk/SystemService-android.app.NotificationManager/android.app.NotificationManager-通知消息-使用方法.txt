@@ -19,7 +19,28 @@ notification是一种让你的应用程序在没有开启情况下或在后台�
       （1）正在进行的程序；
       （2）是通知事件；
 使用步骤：
-第一步：通过getSystemService（）方法得到NotificationManager对象
+第一步：通过getSystemService（）方法得到NotificationManager对象 getSystemService(NOTIFICATION_SERVICE);
 第二步：对Notification的一些属性进行设置比如：内容，图标，标题，相应notification的动作进行处理等等
 第三步：通过NotificationManager对象的notify（）方法来执行一个notification的消息
 第四步：通过NotificationManager对象的cancel（）方法来取消一个notificatioin的消息
+
+---------------------------------------
+---------------------------------------
+notify
+
+Added in API level 5
+void notify (String tag, 
+                int id, 
+                Notification notification)
+				
+notify
+
+Added in API level 1
+void notify (int id, 
+                Notification notification)
+
+----------------------------------
+cancel 方法：
+----------------------------------
+This is also the same tag and id you pass to the 
+cancel(int) or cancel(String, int) method to clear this notification.

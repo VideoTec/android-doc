@@ -1,0 +1,6 @@
+android.view
+public interface ViewManager
+
+参考：
+
+D:\doc\android\android-sdk\android.view.ViewManager

@@ -1,0 +1,9 @@
+
+Intent intent = new Intent(this, LoginPcConfirmActivity.class);
+intent.putExtra(RFUIExtraConfig.Extra_Login_Sessionid, mSessionid);
+intent.putExtra(RFUIExtraConfig.Extra_Login_Cancel_Notification, true);
+PendingIntent contentIntent = PendingIntent.getActivity(this, mSessionid.hashCode(),intent, PendingIntent.FLAG_CANCEL_CURRENT);
+builder.setContentIntent(contentIntent);
+
+问题： PendingIntent 能反复使用吗？
+http://stackoverflow.com/questions/14293964/same-instance-of-pending-intent-is-fired-again-and-again-despite-changing-the-e

@@ -1,0 +1,21 @@
+notify
+
+Added in API level 5
+void notify (String tag, 
+                int id, 
+                Notification notification)
+				
+notify
+
+Added in API level 1
+void notify (int id, 
+                Notification notification)
+				
+http://glgjing.github.io/blog/2015/11/18/android-kai-fa-zhi-notification-xiang-jie/
+
+要想更新通知，需要利用 NotificationManager.notify() 的 id 参数，
+该 id 在应用内需要唯一。
+要想更新特定 id 的通知，
+只需要创建新的 Notification，并发出与之前所用 id 相同的 Notification。
+如果之前的通知仍然可见，则系统会根据新的 Notification 对象的内容更新该通知。
+相反，如果之前的通知已被清除，系统则会创建一个新通知。

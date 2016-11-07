@@ -1,0 +1,13 @@
+接收不到 ACTION_UP 的原因：
+一般是由于：处理 ACTION_DOWN 时，返回了 false 造成的。
+
+还有一种情况：ACTION_DOWN 时，启动了一个 drag 事件。
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    btnUp.startDrag(null, new DragShadowBuilder(), null, 0);
+                    return true;
+                } else if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+                    Log.v(TAG, "dragTarget action up");
+                }
+                return false;
+            }

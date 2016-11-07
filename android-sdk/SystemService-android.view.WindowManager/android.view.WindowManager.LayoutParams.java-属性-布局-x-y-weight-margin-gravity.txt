@@ -1,0 +1,69 @@
+
+        /**
+         * X position for this window.  With the default gravity it is ignored.
+         * When using {@link Gravity#LEFT} or {@link Gravity#START} or {@link Gravity#RIGHT} or
+         * {@link Gravity#END} it provides an offset from the given edge.
+         */
+        @ViewDebug.ExportedProperty
+        public int x;
+
+        /**
+         * Y position for this window.  With the default gravity it is ignored.
+         * When using {@link Gravity#TOP} or {@link Gravity#BOTTOM} it provides
+         * an offset from the given edge.
+         */
+        @ViewDebug.ExportedProperty
+        public int y;
+
+        /**
+         * Indicates how much of the extra space will be allocated horizontally
+         * to the view associated with these LayoutParams. Specify 0 if the view
+         * should not be stretched. Otherwise the extra pixels will be pro-rated
+         * among all views whose weight is greater than 0.
+         */
+        @ViewDebug.ExportedProperty
+        public float horizontalWeight;
+
+        /**
+         * Indicates how much of the extra space will be allocated vertically
+         * to the view associated with these LayoutParams. Specify 0 if the view
+         * should not be stretched. Otherwise the extra pixels will be pro-rated
+         * among all views whose weight is greater than 0.
+         */
+        @ViewDebug.ExportedProperty
+        public float verticalWeight;
+
+        /**
+         * Placement of window within the screen as per {@link Gravity}.  Both
+         * {@link Gravity#apply(int, int, int, android.graphics.Rect, int, int,
+         * android.graphics.Rect) Gravity.apply} and
+         * {@link Gravity#applyDisplay(int, android.graphics.Rect, android.graphics.Rect)
+         * Gravity.applyDisplay} are used during window layout, with this value
+         * given as the desired gravity.  For example you can specify
+         * {@link Gravity#DISPLAY_CLIP_HORIZONTAL Gravity.DISPLAY_CLIP_HORIZONTAL} and
+         * {@link Gravity#DISPLAY_CLIP_VERTICAL Gravity.DISPLAY_CLIP_VERTICAL} here
+         * to control the behavior of
+         * {@link Gravity#applyDisplay(int, android.graphics.Rect, android.graphics.Rect)
+         * Gravity.applyDisplay}.
+         *
+         * @see Gravity
+         */
+        public int gravity;
+
+        /**
+         * The horizontal margin, as a percentage of the container's width,
+         * between the container and the widget.  See
+         * {@link Gravity#apply(int, int, int, android.graphics.Rect, int, int,
+         * android.graphics.Rect) Gravity.apply} for how this is used.  This
+         * field is added with {@link #x} to supply the <var>xAdj</var> parameter.
+         */
+        public float horizontalMargin;
+
+        /**
+         * The vertical margin, as a percentage of the container's height,
+         * between the container and the widget.  See
+         * {@link Gravity#apply(int, int, int, android.graphics.Rect, int, int,
+         * android.graphics.Rect) Gravity.apply} for how this is used.  This
+         * field is added with {@link #y} to supply the <var>yAdj</var> parameter.
+         */
+        public float verticalMargin;

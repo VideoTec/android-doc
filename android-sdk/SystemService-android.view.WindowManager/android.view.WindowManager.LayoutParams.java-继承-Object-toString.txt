@@ -1,0 +1,108 @@
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder(256);
+            sb.append("WM.LayoutParams{");
+            sb.append("(");
+            sb.append(x);
+            sb.append(',');
+            sb.append(y);
+            sb.append(")(");
+            sb.append((width== MATCH_PARENT ?"fill":(width==WRAP_CONTENT?"wrap":width)));
+            sb.append('x');
+            sb.append((height== MATCH_PARENT ?"fill":(height==WRAP_CONTENT?"wrap":height)));
+            sb.append(")");
+            if (horizontalMargin != 0) {
+                sb.append(" hm=");
+                sb.append(horizontalMargin);
+            }
+            if (verticalMargin != 0) {
+                sb.append(" vm=");
+                sb.append(verticalMargin);
+            }
+            if (gravity != 0) {
+                sb.append(" gr=#");
+                sb.append(Integer.toHexString(gravity));
+            }
+            if (softInputMode != 0) {
+                sb.append(" sim=#");
+                sb.append(Integer.toHexString(softInputMode));
+            }
+            sb.append(" ty=");
+            sb.append(type);
+            sb.append(" fl=#");
+            sb.append(Integer.toHexString(flags));
+            if (privateFlags != 0) {
+                if ((privateFlags & PRIVATE_FLAG_COMPATIBLE_WINDOW) != 0) {
+                    sb.append(" compatible=true");
+                }
+                sb.append(" pfl=0x").append(Integer.toHexString(privateFlags));
+            }
+            if (format != PixelFormat.OPAQUE) {
+                sb.append(" fmt=");
+                sb.append(format);
+            }
+            if (windowAnimations != 0) {
+                sb.append(" wanim=0x");
+                sb.append(Integer.toHexString(windowAnimations));
+            }
+            if (screenOrientation != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+                sb.append(" or=");
+                sb.append(screenOrientation);
+            }
+            if (alpha != 1.0f) {
+                sb.append(" alpha=");
+                sb.append(alpha);
+            }
+            if (screenBrightness != BRIGHTNESS_OVERRIDE_NONE) {
+                sb.append(" sbrt=");
+                sb.append(screenBrightness);
+            }
+            if (buttonBrightness != BRIGHTNESS_OVERRIDE_NONE) {
+                sb.append(" bbrt=");
+                sb.append(buttonBrightness);
+            }
+            if (rotationAnimation != ROTATION_ANIMATION_ROTATE) {
+                sb.append(" rotAnim=");
+                sb.append(rotationAnimation);
+            }
+            if (preferredRefreshRate != 0) {
+                sb.append(" preferredRefreshRate=");
+                sb.append(preferredRefreshRate);
+            }
+            if (preferredDisplayModeId != 0) {
+                sb.append(" preferredDisplayMode=");
+                sb.append(preferredDisplayModeId);
+            }
+            if (systemUiVisibility != 0) {
+                sb.append(" sysui=0x");
+                sb.append(Integer.toHexString(systemUiVisibility));
+            }
+            if (subtreeSystemUiVisibility != 0) {
+                sb.append(" vsysui=0x");
+                sb.append(Integer.toHexString(subtreeSystemUiVisibility));
+            }
+            if (hasSystemUiListeners) {
+                sb.append(" sysuil=");
+                sb.append(hasSystemUiListeners);
+            }
+            if (inputFeatures != 0) {
+                sb.append(" if=0x").append(Integer.toHexString(inputFeatures));
+            }
+            if (userActivityTimeout >= 0) {
+                sb.append(" userActivityTimeout=").append(userActivityTimeout);
+            }
+            if (surfaceInsets.left != 0 || surfaceInsets.top != 0 || surfaceInsets.right != 0 ||
+                    surfaceInsets.bottom != 0 || hasManualSurfaceInsets) {
+                sb.append(" surfaceInsets=").append(surfaceInsets);
+                if (hasManualSurfaceInsets) {
+                    sb.append(" (manual)");
+                }
+            }
+            if (needsMenuKey != NEEDS_MENU_UNSET) {
+                sb.append(" needsMenuKey=");
+                sb.append(needsMenuKey);
+            }
+            sb.append('}');
+            return sb.toString();
+        }

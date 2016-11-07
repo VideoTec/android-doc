@@ -1,0 +1,105 @@
+
+
+        /**
+         * If the window has requested hardware acceleration, but this is not
+         * allowed in the process it is in, then still render it as if it is
+         * hardware accelerated.  This is used for the starting preview windows
+         * in the system process, which don't need to have the overhead of
+         * hardware acceleration (they are just a static rendering), but should
+         * be rendered as such to match the actual window of the app even if it
+         * is hardware accelerated.
+         * Even if the window isn't hardware accelerated, still do its rendering
+         * as if it was.
+         * Like {@link #FLAG_HARDWARE_ACCELERATED} except for trusted system windows
+         * that need hardware acceleration (e.g. LockScreen), where hardware acceleration
+         * is generally disabled. This flag must be specified in addition to
+         * {@link #FLAG_HARDWARE_ACCELERATED} to enable hardware acceleration for system
+         * windows.
+         *
+         * @hide
+         */
+        public static final int PRIVATE_FLAG_FAKE_HARDWARE_ACCELERATED = 0x00000001;
+
+        /**
+         * In the system process, we globally do not use hardware acceleration
+         * because there are many threads doing UI there and they conflict.
+         * If certain parts of the UI that really do want to use hardware
+         * acceleration, this flag can be set to force it.  This is basically
+         * for the lock screen.  Anyone else using it, you are probably wrong.
+         *
+         * @hide
+         */
+        public static final int PRIVATE_FLAG_FORCE_HARDWARE_ACCELERATED = 0x00000002;
+
+        /**
+         * By default, wallpapers are sent new offsets when the wallpaper is scrolled. Wallpapers
+         * may elect to skip these notifications if they are not doing anything productive with
+         * them (they do not affect the wallpaper scrolling operation) by calling
+         * {@link
+         * android.service.wallpaper.WallpaperService.Engine#setOffsetNotificationsEnabled(boolean)}.
+         *
+         * @hide
+         */
+        public static final int PRIVATE_FLAG_WANTS_OFFSET_NOTIFICATIONS = 0x00000004;
+
+        /** In a multiuser system if this flag is set and the owner is a system process then this
+         * window will appear on all user screens. This overrides the default behavior of window
+         * types that normally only appear on the owning user's screen. Refer to each window type
+         * to determine its default behavior.
+         *
+         * {@hide} */
+        public static final int PRIVATE_FLAG_SHOW_FOR_ALL_USERS = 0x00000010;
+
+        /**
+         * Never animate position changes of the window.
+         *
+         * {@hide} */
+        public static final int PRIVATE_FLAG_NO_MOVE_ANIMATION = 0x00000040;
+
+        /** Window flag: special flag to limit the size of the window to be
+         * original size ([320x480] x density). Used to create window for applications
+         * running under compatibility mode.
+         *
+         * {@hide} */
+        public static final int PRIVATE_FLAG_COMPATIBLE_WINDOW = 0x00000080;
+
+        /** Window flag: a special option intended for system dialogs.  When
+         * this flag is set, the window will demand focus unconditionally when
+         * it is created.
+         * {@hide} */
+        public static final int PRIVATE_FLAG_SYSTEM_ERROR = 0x00000100;
+
+        /** Window flag: maintain the previous translucent decor state when this window
+         * becomes top-most.
+         * {@hide} */
+        public static final int PRIVATE_FLAG_INHERIT_TRANSLUCENT_DECOR = 0x00000200;
+
+        /**
+         * Flag whether the current window is a keyguard window, meaning that it will hide all other
+         * windows behind it except for windows with flag {@link #FLAG_SHOW_WHEN_LOCKED} set.
+         * Further, this can only be set by {@link LayoutParams#TYPE_STATUS_BAR}.
+         * {@hide}
+         */
+        public static final int PRIVATE_FLAG_KEYGUARD = 0x00000400;
+
+        /**
+         * Flag that prevents the wallpaper behind the current window from receiving touch events.
+         *
+         * {@hide}
+         */
+        public static final int PRIVATE_FLAG_DISABLE_WALLPAPER_TOUCH_EVENTS = 0x00000800;
+
+        /**
+         * Flag to force the status bar window to be visible all the time. If the bar is hidden when
+         * this flag is set it will be shown again and the bar will have a transparent background.
+         * This can only be set by {@link LayoutParams#TYPE_STATUS_BAR}.
+         *
+         * {@hide}
+         */
+        public static final int PRIVATE_FLAG_FORCE_STATUS_BAR_VISIBLE_TRANSPARENT = 0x00001000;
+
+        /**
+         * Control flags that are private to the platform.
+         * @hide
+         */
+        public int privateFlags;

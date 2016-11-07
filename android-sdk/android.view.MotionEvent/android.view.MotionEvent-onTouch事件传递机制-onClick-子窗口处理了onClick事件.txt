@@ -1,0 +1,17 @@
+http://stackoverflow.com/questions/17339548/android-parent-viewgroup-ontouch-being-ignored-in-favour-of-child-view-onclick
+
+parent Viewgroup ontouch being ignored in favour of child view onclick
+
+解决方法一：
+override onInterceptTouchEvent in your custom ViewGroup and detect gestures there
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return true;
+    }
+	
+解决方法二：
+子窗口，改 
+bigVideoView.setOnClickListener(this);
+为
+bigVideoView.setOnTouchListener(this);

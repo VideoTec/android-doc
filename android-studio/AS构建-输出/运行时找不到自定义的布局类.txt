@@ -1,0 +1,2 @@
+原因是，Android Studio instance-run 问题。
+删除，重新安装，就找到了

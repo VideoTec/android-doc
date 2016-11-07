@@ -1,0 +1,8 @@
+http://glgjing.github.io/blog/2015/11/18/android-kai-fa-zhi-notification-xiang-jie/
+
+删除通知
+
+删除通知可以有多种方式： 
+1. 通过 NotificationCompat.Builder 设置 setAutoCancel(true)，这样当用户点击通知后，通知自动删除。 
+2. 通过 NotificationManager.cancel(id) 方法，删除指定 id 的通知 
+3. 通过 NotificationManager.cancelAll() 方法，删除该应用的所有通知

@@ -1,0 +1,23 @@
+防止熄灭的方法：
+
+第一种情况：创建Activity时
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mVoWifiMgr = RFVoWifiMgr.getInstance();
+        contactMgr = RFContactMgr.getInstance();
+        mMainThreadHandler = new Handler(Looper.getMainLooper());
+
+        mVoWifiMgr.resetCSCallState(false);
+        mVoWifiFloatWindowMgr = RFVoWifiFloatWindowMgr.getInstance(getApplicationContext());
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
+第二种情况：创建浮窗时
+        mWMPara.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+		WindowManager mWM.addView(mFloatView, mWMPara);

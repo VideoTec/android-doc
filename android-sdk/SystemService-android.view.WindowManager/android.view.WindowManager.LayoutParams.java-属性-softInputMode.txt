@@ -1,0 +1,116 @@
+
+
+        /**
+         * Mask for {@link #softInputMode} of the bits that determine the
+         * desired visibility state of the soft input area for this window.
+         */
+        public static final int SOFT_INPUT_MASK_STATE = 0x0f;
+
+        /**
+         * Visibility state for {@link #softInputMode}: no state has been specified.
+         */
+        public static final int SOFT_INPUT_STATE_UNSPECIFIED = 0;
+
+        /**
+         * Visibility state for {@link #softInputMode}: please don't change the state of
+         * the soft input area.
+         */
+        public static final int SOFT_INPUT_STATE_UNCHANGED = 1;
+
+        /**
+         * Visibility state for {@link #softInputMode}: please hide any soft input
+         * area when normally appropriate (when the user is navigating
+         * forward to your window).
+         */
+        public static final int SOFT_INPUT_STATE_HIDDEN = 2;
+
+        /**
+         * Visibility state for {@link #softInputMode}: please always hide any
+         * soft input area when this window receives focus.
+         */
+        public static final int SOFT_INPUT_STATE_ALWAYS_HIDDEN = 3;
+
+        /**
+         * Visibility state for {@link #softInputMode}: please show the soft
+         * input area when normally appropriate (when the user is navigating
+         * forward to your window).
+         */
+        public static final int SOFT_INPUT_STATE_VISIBLE = 4;
+
+        /**
+         * Visibility state for {@link #softInputMode}: please always make the
+         * soft input area visible when this window receives input focus.
+         */
+        public static final int SOFT_INPUT_STATE_ALWAYS_VISIBLE = 5;
+
+        /**
+         * Mask for {@link #softInputMode} of the bits that determine the
+         * way that the window should be adjusted to accommodate the soft
+         * input window.
+         */
+        public static final int SOFT_INPUT_MASK_ADJUST = 0xf0;
+
+        /** Adjustment option for {@link #softInputMode}: nothing specified.
+         * The system will try to pick one or
+         * the other depending on the contents of the window.
+         */
+        public static final int SOFT_INPUT_ADJUST_UNSPECIFIED = 0x00;
+
+        /** Adjustment option for {@link #softInputMode}: set to allow the
+         * window to be resized when an input
+         * method is shown, so that its contents are not covered by the input
+         * method.  This can <em>not</em> be combined with
+         * {@link #SOFT_INPUT_ADJUST_PAN}; if
+         * neither of these are set, then the system will try to pick one or
+         * the other depending on the contents of the window. If the window's
+         * layout parameter flags include {@link #FLAG_FULLSCREEN}, this
+         * value for {@link #softInputMode} will be ignored; the window will
+         * not resize, but will stay fullscreen.
+         */
+        public static final int SOFT_INPUT_ADJUST_RESIZE = 0x10;
+
+        /** Adjustment option for {@link #softInputMode}: set to have a window
+         * pan when an input method is
+         * shown, so it doesn't need to deal with resizing but just panned
+         * by the framework to ensure the current input focus is visible.  This
+         * can <em>not</em> be combined with {@link #SOFT_INPUT_ADJUST_RESIZE}; if
+         * neither of these are set, then the system will try to pick one or
+         * the other depending on the contents of the window.
+         */
+        public static final int SOFT_INPUT_ADJUST_PAN = 0x20;
+
+        /** Adjustment option for {@link #softInputMode}: set to have a window
+         * not adjust for a shown input method.  The window will not be resized,
+         * and it will not be panned to make its focus visible.
+         */
+        public static final int SOFT_INPUT_ADJUST_NOTHING = 0x30;
+
+        /**
+         * Bit for {@link #softInputMode}: set when the user has navigated
+         * forward to the window.  This is normally set automatically for
+         * you by the system, though you may want to set it in certain cases
+         * when you are displaying a window yourself.  This flag will always
+         * be cleared automatically after the window is displayed.
+         */
+        public static final int SOFT_INPUT_IS_FORWARD_NAVIGATION = 0x100;
+
+        /**
+         * Desired operating mode for any soft input area.  May be any combination
+         * of:
+         *
+         * <ul>
+         * <li> One of the visibility states
+         * {@link #SOFT_INPUT_STATE_UNSPECIFIED}, {@link #SOFT_INPUT_STATE_UNCHANGED},
+         * {@link #SOFT_INPUT_STATE_HIDDEN}, {@link #SOFT_INPUT_STATE_ALWAYS_VISIBLE}, or
+         * {@link #SOFT_INPUT_STATE_VISIBLE}.
+         * <li> One of the adjustment options
+         * {@link #SOFT_INPUT_ADJUST_UNSPECIFIED},
+         * {@link #SOFT_INPUT_ADJUST_RESIZE}, or
+         * {@link #SOFT_INPUT_ADJUST_PAN}.
+         * </ul>
+         *
+         *
+         * <p>This flag can be controlled in your theme through the
+         * {@link android.R.attr#windowSoftInputMode} attribute.</p>
+         */
+        public int softInputMode;

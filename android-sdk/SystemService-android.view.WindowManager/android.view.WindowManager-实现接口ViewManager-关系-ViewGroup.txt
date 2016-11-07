@@ -1,0 +1,8 @@
+WindowManager
+ViewGroup
+
+第一点：
+两个类，都实现了 ViewManager 接口。
+
+第二点：
+WindowManager.LayoutParams 扩展了 ViewGroup.LayoutParams

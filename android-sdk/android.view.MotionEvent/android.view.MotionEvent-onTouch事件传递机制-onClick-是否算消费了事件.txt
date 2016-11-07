@@ -1,0 +1,21 @@
+http://blog.csdn.net/eclipsexys/article/details/8785149
+
+首先是onTouch事件的down事件发生，此时：
+长按，触发onLongClick事件，然后是onTouch事件的up事件发生，完毕。
+短按，先触发onTouch的up事件， 到一定时间后，自动触发onLongClick事件。
+
+onTouch事件中：down事件返回值标记此次事件是否为点击事件
+（返回false，是点击事件；返回true，不记为点击事件）
+
+首先，该View会先响应ACTION_DOWN事件，
+并返回一个boolean值，这里有两种判断：
+
+a：返回True，表示该View接受此按下动作，
+就是说这个点击动作的按下操作被中止，然后就是响应ACTION_UP事件。
+点击动作的按下操作被ACTION_DOWN接受之后就结束了，所以之后的OnClick/OnLongClick事件就不会响应了。
+
+b：返回false，表示该View不接受此按下动作，
+响应完之后，按下操作继续往下发，之后是响应ACTION_UP事件，
+这里又有一个判断：
+如果ACTION_UP事件返回True，表示ACTION_UP接受松开操作，松开操作中止；
+View会一直处于按下状态，之后View便会响应OnLongClick事件。

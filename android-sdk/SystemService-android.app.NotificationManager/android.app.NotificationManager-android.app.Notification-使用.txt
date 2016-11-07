@@ -1,0 +1,17 @@
+http://glgjing.github.io/blog/2015/11/18/android-kai-fa-zhi-notification-xiang-jie/
+
+NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+
+// 设置通知的基本信息：icon、标题、内容
+builder.setSmallIcon(R.drawable.notification_icon)
+builder.setContentTitle("My notification")
+builder.setContentText("Hello World!");
+
+// 设置通知的点击行为：这里启动一个 Activity
+Intent intent = new Intent(this, ResultActivity.class);
+PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+builder.setContentIntent(pendingIntent);
+
+// 发送通知 id 需要在应用内唯一
+NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+notificationManager.notify(id, builder.build());

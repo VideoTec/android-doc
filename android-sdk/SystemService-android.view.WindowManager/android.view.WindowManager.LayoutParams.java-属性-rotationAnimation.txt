@@ -1,0 +1,34 @@
+
+
+
+        /**
+         * Value for {@link #rotationAnimation} to define the animation used to
+         * specify that this window will rotate in or out following a rotation.
+         */
+        public static final int ROTATION_ANIMATION_ROTATE = 0;
+
+        /**
+         * Value for {@link #rotationAnimation} to define the animation used to
+         * specify that this window will fade in or out following a rotation.
+         */
+        public static final int ROTATION_ANIMATION_CROSSFADE = 1;
+
+        /**
+         * Value for {@link #rotationAnimation} to define the animation used to
+         * specify that this window will immediately disappear or appear following
+         * a rotation.
+         */
+        public static final int ROTATION_ANIMATION_JUMPCUT = 2;
+
+        /**
+         * Define the exit and entry animations used on this window when the device is rotated.
+         * This only has an affect if the incoming and outgoing topmost
+         * opaque windows have the #FLAG_FULLSCREEN bit set and are not covered
+         * by other windows. All other situations default to the
+         * {@link #ROTATION_ANIMATION_ROTATE} behavior.
+         *
+         * @see #ROTATION_ANIMATION_ROTATE
+         * @see #ROTATION_ANIMATION_CROSSFADE
+         * @see #ROTATION_ANIMATION_JUMPCUT
+         */
+        public int rotationAnimation = ROTATION_ANIMATION_ROTATE;

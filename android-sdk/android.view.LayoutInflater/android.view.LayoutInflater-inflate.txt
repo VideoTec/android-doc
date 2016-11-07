@@ -25,4 +25,6 @@ Optional view to be the parent of the generated hierarchy.
                     }
 
 Returns
-The root View of the inflated hierarchy. If root was supplied, this is the root View; otherwise it is the root of the inflated XML file.
+The root View of the inflated hierarchy. 
+If root was supplied, this is the root View; 
+otherwise it is the root of the inflated XML file.

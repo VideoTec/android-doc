@@ -1,0 +1,43 @@
+
+        public LayoutParams() {
+            super(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            type = TYPE_APPLICATION;
+            format = PixelFormat.OPAQUE;
+        }
+
+        public LayoutParams(int _type) {
+            super(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            type = _type;
+            format = PixelFormat.OPAQUE;
+        }
+
+        public LayoutParams(int _type, int _flags) {
+            super(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            type = _type;
+            flags = _flags;
+            format = PixelFormat.OPAQUE;
+        }
+
+        public LayoutParams(int _type, int _flags, int _format) {
+            super(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            type = _type;
+            flags = _flags;
+            format = _format;
+        }
+
+        public LayoutParams(int w, int h, int _type, int _flags, int _format) {
+            super(w, h);
+            type = _type;
+            flags = _flags;
+            format = _format;
+        }
+
+        public LayoutParams(int w, int h, int xpos, int ypos, int _type,
+                int _flags, int _format) {
+            super(w, h);
+            x = xpos;
+            y = ypos;
+            type = _type;
+            flags = _flags;
+            format = _format;
+        }

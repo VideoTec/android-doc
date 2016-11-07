@@ -1,7 +1,0 @@
-按 z-order 从上向下传递。
-
-如果某层，截获，ACTION_DOWN，返回 true，
-下面的 view 就收不到消息了。
-
-关于 z-order 注意： 
-android-layout-z-order-Android 5.0 Lollipop-属性-elevation

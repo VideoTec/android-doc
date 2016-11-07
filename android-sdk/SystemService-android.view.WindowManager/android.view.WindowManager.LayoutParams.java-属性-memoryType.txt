@@ -1,0 +1,19 @@
+
+        /** @deprecated this is ignored, this value is set automatically when needed. */
+        @Deprecated
+        public static final int MEMORY_TYPE_NORMAL = 0;
+        /** @deprecated this is ignored, this value is set automatically when needed. */
+        @Deprecated
+        public static final int MEMORY_TYPE_HARDWARE = 1;
+        /** @deprecated this is ignored, this value is set automatically when needed. */
+        @Deprecated
+        public static final int MEMORY_TYPE_GPU = 2;
+        /** @deprecated this is ignored, this value is set automatically when needed. */
+        @Deprecated
+        public static final int MEMORY_TYPE_PUSH_BUFFERS = 3;
+
+        /**
+         * @deprecated this is ignored
+         */
+        @Deprecated
+        public int memoryType;

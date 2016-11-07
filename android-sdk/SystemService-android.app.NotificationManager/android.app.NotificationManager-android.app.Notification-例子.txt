@@ -1,0 +1,16 @@
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle(getString(R.string.rf_str_app_name)).setSmallIcon(R.drawable.ic_launcher);
+        builder.setContentText(getString(R.string.rf_str_login_windows_login));
+        Intent intent = new Intent(this, LoginPcConfirmActivity.class);
+        intent.putExtra(RFUIExtraConfig.Extra_Login_Sessionid, mSessionid);
+        intent.putExtra(RFUIExtraConfig.Extra_Login_Cancel_Notification, true);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, mSessionid.hashCode(),
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentIntent(contentIntent);
+        builder.setWhen(System.currentTimeMillis());
+        builder.setPriority(Notification.PRIORITY_DEFAULT);
+        builder.setAutoCancel(true);
+        Notification notification = builder.build();
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(mSessionid.hashCode(), notification);
