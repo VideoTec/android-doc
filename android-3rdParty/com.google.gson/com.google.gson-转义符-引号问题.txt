@@ -1,0 +1,11 @@
+D:\doc\lang\Javascript\js-内置对象-JSON-字符串转成-js-object-转义双引号.html
+
+问题代码示例：
+
+	PublicPlatformUserInfo info = new PublicPlatformUserInfo();
+	info.paUuid = mPublicPlatformUuid;
+	info.type = "Android-1.X";
+	info.userId = "tel:+86" + mPhoneNumber;
+	info.token = getSsoToken().replace("\"", "\\\"");  这里把字符串中的 " 替换为 \"
+	Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+	callJsCode("javascript:" + param.script, gson.toJson(info), true);

@@ -1,0 +1,13 @@
+    /**
+     * Set the type of the window, as per the WindowManager.LayoutParams
+     * types.
+     *
+     * @param type The new window type (see WindowManager.LayoutParams).
+     */
+    public void setType(int type) {
+        final WindowManager.LayoutParams attrs = getAttributes();
+        attrs.type = type;
+        dispatchWindowAttributesChanged(attrs);
+    }
+	
+	参考 android.view.WindowManager.LayoutParams.java-属性-type.txt

@@ -1,3 +1,9 @@
+华为 
+工程菜单 | 后台设置 | LOG设置
+把所有日志，都选上。
+http://blog.csdn.net/seafishyls/article/details/52198814
+如果遇到usb连不上或者log无法输出，记得到工程模式下瞧瞧
+
 http://www.ithao123.cn/content-1378777.html
 
 [摘要：调试用的脚机为huawei-X1 ，logcat没有表现Log.v... 战Log.d...是由于脚机设置的缘由。 

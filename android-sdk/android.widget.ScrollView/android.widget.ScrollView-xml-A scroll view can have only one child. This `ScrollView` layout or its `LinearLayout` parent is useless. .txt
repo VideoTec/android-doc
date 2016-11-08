@@ -1,0 +1,14 @@
+布局文件里的错误提示：
+
+A scroll view can have only one child. This `ScrollView` layout or its `LinearLayout` parent is useless. 
+
+原因：
+
+http://stackoverflow.com/questions/25974350/a-scrollview-can-have-only-one-child
+
+Error is self explanatory.
+
+A scrollview can have only one direct child.
+
+So make a container layout, which contains all your children. 
+And place that container layout inside a scrollview.

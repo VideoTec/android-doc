@@ -1,0 +1,5 @@
+参考：
+D:\doc\android\android-sdk\SystemService-android.view.WindowManager\android.view.Window-PhoneWindow-方法-setType.txt
+
+参考：
+D:\doc\android\android-sdk\android.app.Dialog\android.app.AlertDialog.Builder-构造方法-Context.txt

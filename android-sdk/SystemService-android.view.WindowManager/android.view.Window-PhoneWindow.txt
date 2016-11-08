@@ -1,0 +1,12 @@
+android.view.Window
+
+/**
+ * Abstract base class for a top-level window look and behavior policy.  An
+ * instance of this class should be used as the top-level view added to the
+ * window manager. It provides standard UI policies such as a background, title
+ * area, default key processing, etc.
+ *
+ * <p>The only existing implementation of this abstract class is
+ * android.view.PhoneWindow, which you should instantiate when needing a
+ * Window.
+ */

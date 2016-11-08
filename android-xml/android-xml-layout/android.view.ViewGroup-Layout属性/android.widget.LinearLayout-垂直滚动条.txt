@@ -1,0 +1,14 @@
+
+    android:scrollbars="vertical"
+	
+LinearLayout android:scrollbars属性有什么作用代码中
+我在linearlayout中设置android:scrollbars="vertical"。
+但运行后没什么特别的效果。
+
+改属性是继承view的， 目的设置滚动条显示，
+有以下设置none（隐藏），horizontal（水平），vertical（垂直），
+并不是所有的view设置就有效果， LinearLayout 设置也没有效果， 
+要想在超过一屏时拖动效果，在最外层加上 ScrollView 
+
+参考：
+D:\doc\android\android-sdk\android.widget.ScrollView\android.widget.ScrollView.txt
