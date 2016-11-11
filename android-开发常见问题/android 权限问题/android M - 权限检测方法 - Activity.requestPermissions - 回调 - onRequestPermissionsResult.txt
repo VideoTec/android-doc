@@ -1,3 +1,6 @@
+1. 如果没有权限，会弹出系统提示框
+2. 不管，有还是没有权限，最终都会调用这个方法
+
 http://developer.android.com/intl/zh-cn/reference/android/app/Activity.html#onRequestPermissionsResult(int, java.lang.String[], int[])
 
 public void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults)

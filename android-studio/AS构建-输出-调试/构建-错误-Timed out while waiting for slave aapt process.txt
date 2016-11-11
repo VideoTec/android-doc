@@ -1,0 +1,9 @@
+错误信息：
+Exception in thread "png-cruncher_18" java.lang.RuntimeException: Timed out while waiting for slave aapt process, make sure the aapt execute at E:\android-sdk-windows\build-tools\23.0.2\aapt.exe can run successfully (some anti-virus may block it) or try setting environment variable SLAVE_AAPT_TIMEOUT to a value bigger than 5 seconds
+	at com.android.builder.png.AaptProcess.waitForReady(AaptProcess.java:108)
+	at com.android.builder.png.QueuedCruncher$1.creation(QueuedCruncher.java:110)
+	at com.android.builder.tasks.WorkQueue.run(WorkQueue.java:203)
+	at java.lang.Thread.run(Thread.java:745)
+    
+解决方法：
+重启 AndroidStudio

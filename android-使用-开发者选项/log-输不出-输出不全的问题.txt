@@ -1,2 +1,2 @@
-参考：
+参考
 D:\doc\android\android-sdk-tools-help\DebuggingTools-ADB\android-adb-logcat-不输出debug-info日志的原因.txt

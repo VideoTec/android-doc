@@ -1,6 +1,0 @@
-E:\doc\android\android-sdk-tools-help\DebuggingTools-ADB\android-adb-shell-pm-install-失败-INSTALL_FAILED_DEXOPT.txt
-08/22 19:30:40: Launching rongflymqtt
-$ adb push D:\work\androidrongflysip\rongflymqtt\build\outputs\apk\rongflymqtt-dev-debug.apk /data/local/tmp/com.feinno.rongfly
-$ adb shell pm install -r "/data/local/tmp/com.feinno.rongfly"
-	pkg: /data/local/tmp/com.feinno.rongfly
-Failure [INSTALL_FAILED_DEXOPT]

@@ -1,0 +1,20 @@
+    // 请求权限兼容低版本
+    private void requestPermissions(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE);
+    }
+	
+	例子：
+	
+	public void onOpenCamera(View v) {
+	ActivityCompat.requestPermissions(
+			this, new String[]{android.Manifest.permission.CAMERA}, 1);
+    }
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            openCamera();
+        }
+    }
+	

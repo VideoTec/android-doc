@@ -1,0 +1,16 @@
+http://www.androidchina.net/2467.html
+
+1. 导入 aar 的方式引用
+   File | New | New Module | Import .JAR/.AAR Package
+
+2. 使用配置依赖的方式引用
+   首先需要将 aar 文件放入引用 Module 的 libs 目录下，和一般的 jar 文件类似。
+   然后在 gradle 配置文件中把 libs 目录加入依赖
+   
+   repositories {
+      flatDir {
+        dirs 'libs'
+      }
+   }
+   接着在 gradle 的依赖配置中加入 compile(name: 'xxx', ext: 'aar') 这一句，
+   依赖即可关联完毕

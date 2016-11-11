@@ -1,0 +1,27 @@
+http://blog.csdn.net/hjq842382134/article/details/38538097
+
+不像在Eclipse，可以直接导出jar包。AndroidStudio只可以生成aar包。
+在网上看到许多朋友问怎么可以像Eclipse一样导出jar包，
+其实我们只要知道它的原理就可以了。
+用jar命令就可以打包你所需要的资源，并指定jar包名。
+
+在 build.gradle 中添加任务：
+
+//定义一个函数，target是生成jar包的文件名，classDir是class文件所在的文件夹  
+def makeJar(String target,String classDir){  
+    exec{  
+        executable "jar"   //调用jar  
+        args "cvf",target  
+        args "-C", classDir  
+        args "","."
+    }  
+}
+//新建一个task,名为buildLib,依赖build(build是一个自带的task)  
+task buildLib(dependsOn:['build'])<< {  
+    makeJar("volley.jar","build/intermediates/classes/release")    
+}  
+
+这段脚本，错误：
+
+Error:(4, 0) Process 'command 'jar'' finished with non-zero exit value 1
+<a href="openFile:D:\work\Demo\testlibrary\build.gradle">Open File</a>

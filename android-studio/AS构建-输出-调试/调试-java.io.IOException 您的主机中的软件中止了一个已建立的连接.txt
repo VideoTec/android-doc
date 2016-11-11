@@ -1,0 +1,4 @@
+java.io.IOException: 您的主机中的软件中止了一个已建立的连接
+
+解决方法，在控制台中，运行一下 
+adb shell

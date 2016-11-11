@@ -1,0 +1,14 @@
+代码：
+Camera camera = Camera.open(1);
+
+运行环境 6.0
+
+没有允许权限，调用时，出现异常：
+
+Caused by: java.lang.RuntimeException: Unknown camera error(-1)
+    at android.hardware.Camera.<init>(Camera.java:562)
+    at android.hardware.Camera.open(Camera.java:383)
+    at com.example.wangxiangfx.myapplication.MainActivity.openCamera(MainActivity.java:116)
+    at com.example.wangxiangfx.myapplication.MainActivity.onOpenCamera(MainActivity.java:112)
+    at java.lang.reflect.Method.invoke(Native Method) 
+    at android.support.v7.app.AppCompatViewInflater$DeclaredOnClickListener.onClick(AppCompatViewInflater.java:288) 

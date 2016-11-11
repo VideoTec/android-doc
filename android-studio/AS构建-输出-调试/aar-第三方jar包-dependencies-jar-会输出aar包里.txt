@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library' 
+库工程中的 libs 目录下的 jar 文件，会自动输出到 aar 文件里。
+怎么样才能不输出这些 jar 文件呢？
+
+http://stackoverflow.com/questions/26576635/how-to-exclude-a-jar-file-from-my-android-library-build-target
+
+I finally solved my problem.
+
+In my library project I added another empty libraries module 
+and moved external-java-lib.jar to its libs folder.
+
+In the build.gradle of the main module, I added dependency:
+
+dependencies {
+    compile project(':libraries')     
+}
+
+My directory structure is now:
+
+MyLibrary
+├── build.gradle
+├── gradle.properties
+├── main
+│   ├── build.gradle
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java ...
+│           └── res  ...
+├── libraries
+│   ├── build.gradle
+│   ├── libs
+│   │   ├── external-lib-1.jar
+│   │   └── external-lib-2.jar
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java ...
+│           └── res  ...
+└── settings.gradle
+
+After I build the library, 
+the output aar-package had no external-java-lib.jar in it. 
+So, this is exactly what I want.

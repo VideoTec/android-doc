@@ -1,0 +1,101 @@
+11-11 10:44:33.344 722-742/? E/ActivityManager: ANR in com.feinno.rongfly
+                   Reason: Broadcast of Intent { act=android.intent.action.SCREEN_OFF flg=0x50000010 }
+                   Load: 7.24 / 10.95 / 13.73
+                   CPU usage from 10246ms to 487ms ago with 99% awake:
+                     175% 23623/com.feinno.rongfly: 106% user + 69% kernel / faults: 1384 minor
+                     5.8% 722/system_server: 4.9% user + 0.9% kernel / faults: 857 minor 1 major
+                     4.7% 5059/com.tencent.android.qqdownloader: 3% user + 1.6% kernel / faults: 1145 minor
+                     0.4% 1297/com.kingroot.kinguser:service: 0.3% user + 0% kernel / faults: 1404 minor
+                     0.9% 264/surfaceflinger: 0.1% user + 0.8% kernel / faults: 2 minor
+                     0.8% 1119/com.bbk.launcher2: 0.8% user + 0% kernel / faults: 10 minor
+                     0.7% 19581/kworker/u:27: 0% user + 0.7% kernel
+                     0.6% 1379/mpdecision: 0% user + 0.6% kernel
+                     0.5% 310/adbd: 0% user + 0.5% kernel
+                     0.5% 922/com.android.systemui: 0.3% user + 0.2% kernel / faults: 9 minor
+                     0.3% 4048/kworker/0:5: 0% user + 0.3% kernel
+                     0.3% 23984/logcat: 0.1% user + 0.2% kernel
+                     0.3% 26081/kworker/0:1: 0% user + 0.3% kernel
+                     0.2% 125/mmcqd/0: 0% user + 0.2% kernel
+                     0.2% 1020/com.android.phone: 0.1% user + 0.1% kernel
+                     0.2% 23648/kworker/1:1: 0% user + 0.2% kernel
+                     0% 147/jbd2/mmcblk0p13: 0% user + 0% kernel
+                     0% 155/vivo_daemon: 0% user + 0% kernel / faults: 35 minor
+                     0.1% 256/servicemanager: 0% user + 0.1% kernel
+                     0% 1001/com.iqoo.ime.service: 0% user + 0% kernel / faults: 3 minor
+                     0% 1130/thermald: 0% user + 0% kernel / faults: 42 minor
+                     0% 1933/com.tencent.pb:push: 0% user + 0% kernel / faults: 3 minor
+                     0% 2383/com.tencent.android.qqdownloader:getapkinfo: 0% user + 0% kernel / faults: 3 minor
+                     0% 2542/com.yeecall.voice: 0% user + 0% kernel / faults: 5 minor
+                     0% 4634/com.cmcc.aoe.keepalive: 0% user + 0% kernel / faults: 60 minor
+          0% 12757/com.tencent.mtt:service: 0% user + 0% kernel / faults: 33 minor
+          0.1% 14087/com.cmcc.aoe.AOEService: 0% user + 0.1% kernel / faults: 11 minor
+          0% 14757/cn.com.fetion: 0% user + 0% kernel / faults: 33 minor
+          0.1% 19584/kworker/u:30: 0% user + 0.1% kernel
+          0.1% 23989/kworker/1:3: 0% user + 0.1% kernel
+          0.1% 31158/kworker/0:4: 0% user + 0.1% kernel
+         +0% 24347/sh: 0% user + 0% kernel
+         +0% 24348/app_process: 0% user + 0% kernel
+        0.4% TOTAL: 0.2% user + 0.1% kernel + 0% iowait
+        CPU usage from 1711ms to 2236ms later:
+          155% 23623/com.feinno.rongfly: 117% user + 38% kernel / faults: 122 minor
+            61% 23623/.feinno.rongfly: 55% user + 5.7% kernel
+           +0% 24383/PriorityThreadF: 0% user + 0% kernel
+          5.7% 722/system_server: 1.9% user + 3.8% kernel
+            5.7% 742/ActivityManager: 1.9% user + 3.8% kernel
+          3.8% 310/adbd: 0% user + 3.8% kernel
+            1.9% 310/adbd: 0% user + 1.9% kernel
+            1.9% 18616/adbd: 0% user + 1.9% kernel
+          1.5% 23984/logcat: 0% user + 1.5% kernel
+        57% TOTAL: 37% user + 20% kernel
+		
+代码：
+
+public class ScreenBroadcastReceiver extends BroadcastReceiver {
+    private String action = null;
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        action = intent.getAction();
+        if (Intent.ACTION_SCREEN_ON.equals(action)) {
+            // 开屏
+            SystemUtils.setScreenState(false);
+        } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
+            // 锁屏
+            SystemUtils.setScreenState(true);
+        } else if (Intent.ACTION_USER_PRESENT.equals(action)) {
+            // 解锁
+            SystemUtils.setScreenState(false);
+        }
+        LogFeinno.i("LOCK","SystemUtils.isScreenLock:"+SystemUtils.getScreenState()+"");
+
+    }
+}
+
+    /**
+     * 启动screen状态广播接收器
+     */
+    private void registerScreenBroadcastReceiver() {
+        mScreenReceiver = new ScreenBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        mContext.registerReceiver(mScreenReceiver, filter);
+    }
+
+    /**
+     * 获得锁屏状态
+     * <p/>
+     * 屏幕“亮”，表示有两种状态：a、未锁屏 b、目前正处于解锁状态 。这两种状态屏幕都是亮的
+     * 屏幕“暗”，表示目前屏幕是黑的 。
+     *
+     * @return
+     */
+    public static boolean getScreenState() {
+        return isScreenLock;
+    }
+
+    public static void setScreenState(boolean isLock) {
+        isScreenLock = isLock;
+    }

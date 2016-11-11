@@ -1,0 +1,22 @@
+http://www.androidchina.net/2467.html
+
+Android Studio 打包及引用 aar
+
+A 和 B 两个工程，想同时引用另一个公共的 Module C，
+而这个 Module 可能是一个比较复杂的 Android Module，
+可能包含了一些主题、UI 、资源文件等等，
+这时候，如果用 Module 依赖的方式来配置，
+不免有些困难，因为 A 和 B 都要导入 C，
+而且要随时关注 C 的更改。
+
+好在 Android Studio 提供了 aar 库的打包方式，
+我们可以把 C 作为 library 进行打包，输出 aar 文件，
+然后在 A 和 B 中，配置 aar 库依赖，就可以解决
+
+将 Module 配置为 library 后，构建输出一个 aar 文件，
+根据渠道和 BuildType 的不同，在相应的目录下可以找到。
+比如对 BuildType 为 debug 的配置，
+输出为：[ModuleName]/build/outputs/aar/[ModuleName]-debug.aar。
+一份 aar 文件其实就是一份 zip 包，和 jar 不同的是，
+它将一些资源文件、第三方库文件、so 文件等等都打包在内，
+而代码文件编译后压缩在在 classes.jar 中

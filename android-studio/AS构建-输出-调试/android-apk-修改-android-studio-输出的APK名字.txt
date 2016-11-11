@@ -1,0 +1,21 @@
+def getDateTimeStr() {
+    DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+    df.format(new Date());
+}
+
+rongflymqtt_feinno_v1.6.0.0001_20160701112756_v2732_release.apk
+从AS-run安装时提示错误，找不到
+D:\work\rongfly-sip\rongflymqtt\build\outputs\apk\
+rongflymqtt_feinno_v1.6.0.0001_20160701112540_v2732_release.apk does not exist on disk.
+
+rongflymqtt_feinno_v1.6.0.0001_20160701114536_v2732_release.apk
+从AS-run安装时提示错误，找不到
+D:\work\rongfly-sip\rongflymqtt\build\outputs\apk\
+rongflymqtt_feinno_v1.6.0.0001_20160701112540_v2732_release.apk does not exist on disk.
+
+原因是，gradle 安装的apk的名字是，
+使用gradle同步工程时，计算出的输出包名称。
+
+http://stackoverflow.com/questions/29006388/android-add-date-time-to-gradle-output-apk-filename/29006649#29006649
+
+[这里是错误的时间格式]
