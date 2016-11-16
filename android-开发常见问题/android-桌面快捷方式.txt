@@ -1,0 +1,31 @@
+参考：android.content.Intent-系统ACTION
+
+android.intent.action.CREATE_SHORTCUT
+就会自动加入到 系统launcher的快捷方式里面
+
+android.intent.extra.shortcut.ICON
+android.intent.extra.shortcut.ICON_RESOURCE
+android.intent.extra.shortcut.INTENT
+android.intent.extra.shortcut.NAME
+
+android.content.Intent.ShortcutIconResource
+
+<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");  
+
+配置文件里创建快捷方式：
+http://blog.csdn.net/panda1234lee/article/details/9042873
+<activity  
+   android:name="com.android.master.legend.widget.CreateSystemSettingsWidgetActivity"  
+   android:exported="true"  
+   android:icon="@drawable/ic_switcher_shortcut"  
+   android:label="@string/system_switcher_shortcut"  
+   android:screenOrientation="portrait"  
+   android:theme="@android:style/Theme.Translucent.NoTitleBar" >  
+   <intent-filter>  
+	   <action android:name="android.intent.action.CREATE_SHORTCUT" />  
+	   <category android:name="android.intent.category.DEFAULT" />  
+   </intent-filter>  
+</activity>  
+就会自动加入到 系统launcher的快捷方式里面

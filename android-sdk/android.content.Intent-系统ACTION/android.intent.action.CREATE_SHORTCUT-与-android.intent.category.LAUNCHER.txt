@@ -1,0 +1,32 @@
+---------------------------------------------------------------------
+问题，进程结束后，再点击，快捷图标，不启动 启动页面(LAUNCHER)。
+---------------------------------------------------------------------
+广播，
+Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT")
+
+怎么解决这个问题呢？
+
+ACTION_CREATE_SHORTCUT
+android.intent.category.LAUNCHER
+
+快捷方式启动ACT是 singleInstance 模式，
+每次启动时，不会执行定义了LAUNCHER的启动页。
+
+---------------------------------------------------------------------
+http://stackoverflow.com/questions/28228735/launching-activity-from-shortcut-always-launches-main-activity-also
+---------------------------------------------------------------------
+It happened to me also. However I found a working solution. 
+Just add android:launchMode="singleInstance" to the activity getting opened from your shortcut.
+
+In this case:
+
+<activity
+    android:name=".MainActivity2"
+    android:label="@string/title_activity_main_activity2" >
+    <intent-filter>
+        <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+        <category android:name="android.intent.category.CUSTOM_TEST" />
+    </intent-filter>
+</activity>
+
+I cannot find an explanation to this, because cant really find the problem root. It just works

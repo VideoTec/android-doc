@@ -1,0 +1,16 @@
+    public void setId(@IdRes int id) {
+        mID = id;
+        if (mID == View.NO_ID && mLabelForId != View.NO_ID) {
+            mID = generateViewId();
+        }
+    }
+	
+	调用 ：
+	local.setId(sLocalViewId);
+	
+	错误提示：
+	Expected resource of type id
+	
+	http://stackoverflow.com/questions/29696879/android-expected-resource-of-type-id
+	This is not a compiler error. It is just editor validation error(lint warning) 
+	as this is not a common way to deal with Ids.

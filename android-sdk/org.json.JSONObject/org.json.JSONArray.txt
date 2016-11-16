@@ -1,0 +1,26 @@
+https://developer.android.com/reference/org/json/JSONArray.html?hl=zh-cn
+
+A dense indexed sequence of values. 
+Values may be any mix of 
+JSONObjects, other 
+JSONArrays, 
+Strings, Booleans, Integers, Longs, Doubles, null or NULL. 
+
+Values may not be 
+NaNs, infinities, or of any type not listed here.
+
+JSONArray has the same type coercion behavior 
+and optional/mandatory accessors as JSONObject. 
+See that class' documentation for details.
+
+Warning: this class represents null in two incompatible ways: 
+the standard Java null reference, and the sentinel value NULL. 
+In particular, get fails if the requested index holds the null reference, 
+but succeeds if it holds JSONObject.NULL.
+
+Instances of this class are not thread safe. 
+Although this class is nonfinal, 
+it was not designed for inheritance and should not be subclassed. 
+In particular, self-use by overridable methods is not specified. 
+See Effective Java Item 17, 
+"Design and Document or inheritance or else prohibit it" for further information.

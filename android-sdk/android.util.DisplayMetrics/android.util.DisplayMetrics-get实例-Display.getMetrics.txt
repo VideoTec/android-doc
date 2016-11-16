@@ -1,0 +1,20 @@
+    /**
+     * Gets display metrics that describe the size and density of this display.
+     * <p>
+     * The size is adjusted based on the current rotation of the display.
+     * </p><p>
+     * The size returned by this method does not necessarily represent the
+     * actual raw size (native resolution) of the display.  The returned size may
+     * be adjusted to exclude certain system decor elements that are always visible.
+     * It may also be scaled to provide compatibility with older applications that
+     * were originally designed for smaller displays.
+     * </p>
+     *
+     * @param outMetrics A {@link DisplayMetrics} object to receive the metrics.
+     */
+    public void getMetrics(DisplayMetrics outMetrics) {
+        synchronized (this) {
+            updateDisplayInfoLocked();
+            mDisplayInfo.getAppMetrics(outMetrics, mDisplayAdjustments);
+        }
+    }

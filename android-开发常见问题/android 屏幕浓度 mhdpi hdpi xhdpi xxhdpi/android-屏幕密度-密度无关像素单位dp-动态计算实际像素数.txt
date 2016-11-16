@@ -1,0 +1,91 @@
+常量定义：
+
+android.util.DisplayMetrics
+
+    public static final int DENSITY_LOW = 120;
+    public static final int DENSITY_MEDIUM = 160;
+    public static final int DENSITY_TV = 213;
+    public static final int DENSITY_HIGH = 240;
+    public static final int DENSITY_280 = 280;
+    public static final int DENSITY_XHIGH = 320;
+    public static final int DENSITY_360 = 360;
+    public static final int DENSITY_400 = 400;
+    public static final int DENSITY_420 = 420;
+    public static final int DENSITY_XXHIGH = 480;
+    public static final int DENSITY_560 = 560;
+    public static final int DENSITY_XXXHIGH = 640;
+	
+	The reference density used throughout the system.
+    public static final int DENSITY_DEFAULT = DENSITY_MEDIUM;
+	
+	Scaling factor to convert a density in DPI units to the density scale.
+    public static final float DENSITY_DEFAULT_SCALE = 1.0f / DENSITY_DEFAULT;
+
+http://stackoverflow.com/questions/4605527/converting-pixels-to-dp
+
+/// Converts 14 dip into its equivalent px
+
+Resources r = getResources();
+float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, r.getDisplayMetrics());
+
+第二个答案
+
+/**
+ * This method converts dp unit to equivalent pixels, depending on device density. 
+ * 
+ * @param dp A value in dp (density independent pixels) unit. Which we need to convert into pixels
+ * @param context Context to get resources and device specific display metrics
+ * @return A float value to represent px equivalent to dp depending on device density
+ */
+public static float convertDpToPixel(float dp, Context context){
+    Resources resources = context.getResources();
+    DisplayMetrics metrics = resources.getDisplayMetrics();
+    float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    return px;
+}
+
+/**
+ * This method converts device specific pixels to density independent pixels.
+ * 
+ * @param px A value in px (pixels) unit. Which we need to convert into db
+ * @param context Context to get resources and device specific display metrics
+ * @return A float value to represent dp equivalent to px value
+ */
+public static float convertPixelsToDp(float px, Context context){
+    Resources resources = context.getResources();
+    DisplayMetrics metrics = resources.getDisplayMetrics();
+    float dp = px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    return dp;
+}
+
+第三个答案：
+
+Instead of trying to infer the dp conversion factor from the screen's density classification, 
+you can simply query it directly:
+
+getWindowManager().getDefaultDisplay().getMetrics(metrics);
+float logicalDensity = metrics.density;
+logicalDensity will then contain the factor 
+you need to multiply dp by to get physical pixel dimensions for the device screen.
+
+int px = (int) Math.ceil(dp * logicalDensity);
+
+第四种答案：
+
+http://stackoverflow.com/questions/8309354/formula-px-to-dp-dp-to-px-android
+
+Note: The widely used solution above is based on displayMetrics.density. 
+However, the docs explain that this value is a rounded value, used with the screen 'buckets'. 
+Eg. on my Nexus 10 it returns 2, where the real value would be 298dpi (real) / 160dpi (default) = 1.8625.
+
+public int dpToPx(int dp) {
+    DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+    int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));       
+    return px;
+}
+
+public int pxToDp(int px) {
+    DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+    int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    return dp;
+}

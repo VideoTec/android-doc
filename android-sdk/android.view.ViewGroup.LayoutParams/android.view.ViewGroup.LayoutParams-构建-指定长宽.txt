@@ -1,0 +1,18 @@
+        /**
+         * Creates a new set of layout parameters with the specified width
+         * and height.
+         *
+         * @param width the width, either {@link #WRAP_CONTENT},
+         *        {@link #FILL_PARENT} (replaced by {@link #MATCH_PARENT} in
+         *        API Level 8), or a fixed size in pixels
+         * @param height the height, either {@link #WRAP_CONTENT},
+         *        {@link #FILL_PARENT} (replaced by {@link #MATCH_PARENT} in
+         *        API Level 8), or a fixed size in pixels
+         */
+        public LayoutParams(int width, int height) {
+            this.width = width;
+            this.height = height;
+        }
+		
+		参考：
+		D:\doc\android\android-开发常见问题\android 屏幕浓度 mhdpi hdpi xhdpi xxhdpi\android-屏幕密度-密度无关像素单位dp-动态计算实际像素数.txt

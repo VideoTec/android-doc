@@ -1,5 +1,7 @@
 http://developer.android.com/intl/zh-cn/reference/org/json/JSONObject.html
 
+org.json.JSONObject
+
 A modifiable set of name/value mappings. Names are unique, non-null strings. Values may be any mix of JSONObjects, JSONArrays, Strings, Booleans, Integers, Longs, Doubles or NULL. Values may not be null, NaNs, infinities, or of any type not listed here.
 
 This class can coerce values to another type when requested.

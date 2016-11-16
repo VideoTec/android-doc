@@ -1,0 +1,26 @@
+http://blog.csdn.net/panda1234lee/article/details/9042873
+
+/**  
+     * 为程序创建桌面快捷方式  
+     */   
+    private void addShortcut(){    
+        Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");    
+                 
+        //快捷方式的名称    
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.app_name));    
+        shortcut.putExtra("duplicate", false); //不允许重复创建    
+   
+        /****************************此方法已失效*************************/  
+        //ComponentName comp = new ComponentName(this.getPackageName(), "."+this.getLocalClassName());    
+        //shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(Intent.ACTION_MAIN).setComponent(comp));  　　  
+　　　　 /******************************end*******************************/  
+　　　　　Intent shortcutIntent = new Intent(Intent.ACTION_MAIN);  
+　　　　　shortcutIntent.setClassName(this, this.getClass().getName());  
+　　　　　shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);  
+   
+        //快捷方式的图标    
+        ShortcutIconResource iconRes = Intent.ShortcutIconResource.fromContext(this, R.drawable.icon);    
+        shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes);    
+                 
+        sendBroadcast(shortcut);    
+    }  

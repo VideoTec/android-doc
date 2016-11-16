@@ -1,0 +1,9 @@
+
+    /**
+     * The absolute width of the display in pixels.
+     */
+    public int widthPixels;
+    /**
+     * The absolute height of the display in pixels.
+     */
+    public int heightPixels;

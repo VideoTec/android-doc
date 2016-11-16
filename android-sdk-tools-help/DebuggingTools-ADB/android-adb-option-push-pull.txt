@@ -7,3 +7,8 @@ adb push  就是从PC上复制一份文件到您的真机上
 adb push xxx /sdcard/
 
 adb pull /sdcard/xxx d:\xxx
+
+复制出日志文件：
+
+/sdcard/FetionX/FetionX/logs/log-20161115.log
+adb pull /sdcard/FetionX/FetionX/logs/log-20161115.log d:\log.log

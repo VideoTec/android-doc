@@ -1,0 +1,19 @@
+public static float convertDpToPixel(float dp, Context context){
+    Resources resources = context.getResources();
+    DisplayMetrics metrics = resources.getDisplayMetrics();
+    float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    return px;
+}
+
+源码：
+    /**
+     * Return the current display metrics that are in effect for this resource 
+     * object.  The returned object should be treated as read-only.
+     * 
+     * @return The resource's current display metrics. 
+     */
+    public DisplayMetrics getDisplayMetrics() {
+        if (DEBUG_CONFIG) Slog.v(TAG, "Returning DisplayMetrics: " + mMetrics.widthPixels
+                + "x" + mMetrics.heightPixels + " " + mMetrics.density);
+        return mMetrics;
+    }

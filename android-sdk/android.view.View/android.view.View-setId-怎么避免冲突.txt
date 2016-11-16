@@ -1,0 +1,45 @@
+http://blog.csdn.net/zhanwei_30/article/details/46753819
+
+if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+       myView.setId(Utils.generateViewId());
+   } else {
+       myView.setId(View.generateViewId());
+   }
+
+}
+
+注意：
+Call requires API level 17 (current min is 16): android.view.View#generateViewId
+
+/**
+ * Generate a value suitable for use in {@link #setId(int)}.
+ * This value will not collide with ID values generated at build time by aapt for R.id.
+ *
+ * @return a generated ID value
+ */
+public static int generateViewId() {
+	for (;;) {
+		final int result = sNextGeneratedId.get();
+		// aapt-generated IDs have the high byte nonzero; clamp to the range under that.
+		int newValue = result + 1;
+		if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
+		if (sNextGeneratedId.compareAndSet(result, newValue)) {
+			return result;
+		}
+	}
+}
+
+http://stackoverflow.com/questions/29696879/android-expected-resource-of-type-id
+
+定义 id 资源
+
+open your project's res/values/ folder
+create an xml file called ids.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="titleId" type="id" />
+    <item name="svId" type="id" />
+</resources>
+
+titleView.setId(R.id.titleId);

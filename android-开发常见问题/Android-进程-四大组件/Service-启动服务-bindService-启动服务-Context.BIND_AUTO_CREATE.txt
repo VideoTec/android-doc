@@ -1,0 +1,7 @@
+http://stackoverflow.com/questions/13273332/android-bindservice-not-working
+
+Perhaps try adding "Context.BIND_AUTO_CREATE" to the flags, 
+which will cause the service to be created and started. 
+I don't believe that Context.BIND_ADJUST_WITH_ACTIVITY will start it, 
+so the onServiceConnected may not be called 
+(it wasn't for me even though the bindService() call was returning true):

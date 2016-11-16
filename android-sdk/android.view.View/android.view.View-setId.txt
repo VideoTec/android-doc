@@ -1,0 +1,39 @@
+    /**
+     * Sets the identifier for this view. The identifier does not have to be
+     * unique in this view's hierarchy. The identifier should be a positive
+     * number.
+     *
+     * @see #NO_ID
+     * @see #getId()
+     * @see #findViewById(int)
+     *
+     * @param id a number used to identify the view
+     *
+     * @attr ref android.R.styleable#View_id
+     */
+    public void setId(int id) {
+        mID = id;
+        if (mID == View.NO_ID && mLabelForId != View.NO_ID) {
+            mID = generateViewId();
+        }
+    }
+	
+	/**
+     * Sets the identifier for this view. The identifier does not have to be
+     * unique in this view's hierarchy. The identifier should be a positive
+     * number.
+     *
+     * @see #NO_ID
+     * @see #getId()
+     * @see #findViewById(int)
+     *
+     * @param id a number used to identify the view
+     *
+     * @attr ref android.R.styleable#View_id
+     */
+    public void setId(@IdRes int id) {
+        mID = id;
+        if (mID == View.NO_ID && mLabelForId != View.NO_ID) {
+            mID = generateViewId();
+        }
+    }

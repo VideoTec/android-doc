@@ -1,0 +1,122 @@
+Object			get(int index)
+boolean			getBoolean(int index)
+double			getDouble(int index)
+int				getInt(int index)
+long			getLong(int index)
+String			getString(int index)
+JSONArray		getJSONArray(int index)
+JSONObject		getJSONObject(int index)
+
+boolean			isNull(int index)
+
+Object		opt(int index)
+boolean		optBoolean(int index)
+double		optDouble(int index)
+int			optInt(int index)
+long		optLong(int index)
+String		optString(int index)
+JSONArray	optJSONArray(int index)
+JSONObject	optJSONObject(int index)
+
+boolean		optBoolean(int index, boolean fallback)
+double		optDouble(int index, double fallback)
+int			optInt(int index, int fallback)
+long		optLong(int index, long fallback)
+String		optString(int index, String fallback)
+
+JSONArray	put(int index, boolean value)
+JSONArray	put(double value)
+JSONArray	put(int index, Object value)
+JSONArray	put(int index, long value)
+JSONArray	put(int index, int value)
+JSONArray	put(int index, double value)
+
+Object		remove(int index)
+
+------------------------------------------------------------------
+Object	get(int index)
+Returns the value at index.
+
+boolean	getBoolean(int index)
+Returns the value at index if it exists and is a boolean or can be coerced to a boolean.
+
+double	getDouble(int index)
+Returns the value at index if it exists and is a double or can be coerced to a double.
+
+int	getInt(int index)
+Returns the value at index if it exists and is an int or can be coerced to an int.
+
+JSONArray	getJSONArray(int index)
+Returns the value at index if it exists and is a JSONArray.
+
+JSONObject	getJSONObject(int index)
+Returns the value at index if it exists and is a JSONObject.
+
+long	getLong(int index)
+Returns the value at index if it exists and is a long or can be coerced to a long.
+
+String	getString(int index)
+Returns the value at index if it exists, coercing it if necessary.
+
+boolean	isNull(int index)
+Returns true if this array has no value at index, or if its value is the null reference or NULL.
+
+Object	opt(int index)
+Returns the value at index, or null if the array has no value at index.
+
+boolean	optBoolean(int index)
+Returns the value at index if it exists and is a boolean or can be coerced to a boolean.
+
+boolean	optBoolean(int index, boolean fallback)
+Returns the value at index if it exists and is a boolean or can be coerced to a boolean.
+
+double	optDouble(int index)
+Returns the value at index if it exists and is a double or can be coerced to a double.
+
+double	optDouble(int index, double fallback)
+Returns the value at index if it exists and is a double or can be coerced to a double.
+
+int	optInt(int index)
+Returns the value at index if it exists and is an int or can be coerced to an int.
+
+int	optInt(int index, int fallback)
+Returns the value at index if it exists and is an int or can be coerced to an int.
+
+JSONArray	optJSONArray(int index)
+Returns the value at index if it exists and is a JSONArray.
+
+JSONObject	optJSONObject(int index)
+Returns the value at index if it exists and is a JSONObject.
+
+long	optLong(int index)
+Returns the value at index if it exists and is a long or can be coerced to a long.
+
+long	optLong(int index, long fallback)
+Returns the value at index if it exists and is a long or can be coerced to a long.
+
+String	optString(int index)
+Returns the value at index if it exists, coercing it if necessary.
+
+String	optString(int index, String fallback)
+Returns the value at index if it exists, coercing it if necessary.
+
+JSONArray	put(int index, boolean value)
+Sets the value at index to value, null padding this array to the required length if necessary.
+
+JSONArray	put(double value)
+Appends value to the end of this array.
+
+JSONArray	put(int index, Object value)
+Sets the value at index to value, null padding this array to the required length if necessary.
+
+JSONArray	put(int index, long value)
+Sets the value at index to value, null padding this array to the required length if necessary.
+
+JSONArray	put(int index, int value)
+Sets the value at index to value, null padding this array to the required length if necessary.
+
+JSONArray	put(int index, double value)
+Sets the value at index to value, null padding this array to the required length if necessary.
+
+Object	remove(int index)
+Removes and returns the value at index, or null if the array has no value at index.

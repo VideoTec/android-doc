@@ -1,0 +1,8 @@
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+		
+        mSmallLyParamFull.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        mSmallLyParamFull.addRule(RelativeLayout.ALIGN_PARENT_END);
+		
+		lp.addRule(RelativeLayout.BELOW,  childView1.getId());//设置item3在     //chlidView1的下面

@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-开发常见问题\android 屏幕浓度 mhdpi hdpi xhdpi xxhdpi\android-屏幕密度-密度无关像素单位dp-动态计算实际像素数.txt

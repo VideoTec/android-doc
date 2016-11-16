@@ -1,0 +1,6 @@
+ViewGroup.java
+public static class LayoutParams {
+public static class MarginLayoutParams extends ViewGroup.LayoutParams {
+
+RelativeLayout.java
+public static class LayoutParams extends ViewGroup.MarginLayoutParams {

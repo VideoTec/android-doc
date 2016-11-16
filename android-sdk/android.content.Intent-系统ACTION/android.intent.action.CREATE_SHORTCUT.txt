@@ -1,0 +1,126 @@
+参考：
+D:\doc\android\android-开发常见问题\android-桌面快捷方式.txt
+
+广播，
+Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");  
+
+权限：
+<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+源码：
+    /**
+     * Activity Action: Creates a shortcut.
+     * <p>Input: Nothing.</p>
+     * <p>Output: An Intent representing the shortcut. The intent must contain three
+     * extras: SHORTCUT_INTENT (value: Intent), SHORTCUT_NAME (value: String),
+     * and SHORTCUT_ICON (value: Bitmap) or SHORTCUT_ICON_RESOURCE
+     * (value: ShortcutIconResource).</p>
+     *
+     * @see #EXTRA_SHORTCUT_INTENT
+     * @see #EXTRA_SHORTCUT_NAME
+     * @see #EXTRA_SHORTCUT_ICON
+     * @see #EXTRA_SHORTCUT_ICON_RESOURCE
+     * @see android.content.Intent.ShortcutIconResource
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_CREATE_SHORTCUT = "android.intent.action.CREATE_SHORTCUT";
+	用于，androidmanifest，配置act的 intent-filter 的 action
+	就会自动加入到 系统launcher的快捷方式里面
+
+    /**
+     * The name of the extra used to define the Intent of a shortcut.
+     *
+     * @see #ACTION_CREATE_SHORTCUT
+     */
+    public static final String EXTRA_SHORTCUT_INTENT = "android.intent.extra.shortcut.INTENT";
+    /**
+     * The name of the extra used to define the name of a shortcut.
+     *
+     * @see #ACTION_CREATE_SHORTCUT
+     */
+    public static final String EXTRA_SHORTCUT_NAME = "android.intent.extra.shortcut.NAME";
+    /**
+     * The name of the extra used to define the icon, as a Bitmap, of a shortcut.
+     *
+     * @see #ACTION_CREATE_SHORTCUT
+     */
+    public static final String EXTRA_SHORTCUT_ICON = "android.intent.extra.shortcut.ICON";
+    /**
+     * The name of the extra used to define the icon, as a ShortcutIconResource, of a shortcut.
+     *
+     * @see #ACTION_CREATE_SHORTCUT
+     * @see android.content.Intent.ShortcutIconResource
+     */
+    public static final String EXTRA_SHORTCUT_ICON_RESOURCE =
+            "android.intent.extra.shortcut.ICON_RESOURCE";
+
+    /**
+     * Represents a shortcut/live folder icon resource.
+     *
+     * @see Intent#ACTION_CREATE_SHORTCUT
+     * @see Intent#EXTRA_SHORTCUT_ICON_RESOURCE
+     * @see android.provider.LiveFolders#ACTION_CREATE_LIVE_FOLDER
+     * @see android.provider.LiveFolders#EXTRA_LIVE_FOLDER_ICON
+     */
+    public static class ShortcutIconResource implements Parcelable {
+        /**
+         * The package name of the application containing the icon.
+         */
+        public String packageName;
+
+        /**
+         * The resource name of the icon, including package, name and type.
+         */
+        public String resourceName;
+
+        /**
+         * Creates a new ShortcutIconResource for the specified context and resource
+         * identifier.
+         *
+         * @param context The context of the application.
+         * @param resourceId The resource idenfitier for the icon.
+         * @return A new ShortcutIconResource with the specified's context package name
+         *         and icon resource idenfitier.
+         */
+        public static ShortcutIconResource fromContext(Context context, int resourceId) {
+            ShortcutIconResource icon = new ShortcutIconResource();
+            icon.packageName = context.getPackageName();
+            icon.resourceName = context.getResources().getResourceName(resourceId);
+            return icon;
+        }
+
+        /**
+         * Used to read a ShortcutIconResource from a Parcel.
+         */
+        public static final Parcelable.Creator<ShortcutIconResource> CREATOR =
+            new Parcelable.Creator<ShortcutIconResource>() {
+
+                public ShortcutIconResource createFromParcel(Parcel source) {
+                    ShortcutIconResource icon = new ShortcutIconResource();
+                    icon.packageName = source.readString();
+                    icon.resourceName = source.readString();
+                    return icon;
+                }
+
+                public ShortcutIconResource[] newArray(int size) {
+                    return new ShortcutIconResource[size];
+                }
+            };
+
+        /**
+         * No special parcel contents.
+         */
+        public int describeContents() {
+            return 0;
+        }
+
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(packageName);
+            dest.writeString(resourceName);
+        }
+
+        @Override
+        public String toString() {
+            return resourceName;
+        }
+    }

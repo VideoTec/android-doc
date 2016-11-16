@@ -1,0 +1,25 @@
+--------------------------------------------------------
+String	toString()
+--------------------------------------------------------
+
+Encodes this object as a compact JSON string, such as:
+
+{"query":"Pizza","locations":[94043,90210]}
+
+--------------------------------------------------------
+String	toString(int indentSpaces)
+--------------------------------------------------------
+
+indentSpaces	int: 
+the number of spaces to indent for each level of nesting.
+
+Encodes this object as a human readable JSON string for debugging, 
+such as:
+
+ {
+     "query": "Pizza",
+     "locations": [
+         94043,
+         90210
+     ]
+ }

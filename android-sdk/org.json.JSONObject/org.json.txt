@@ -1,0 +1,13 @@
+https://developer.android.com/reference/org/json/package-summary.html?hl=zh-cn
+
+JSONArray	
+A dense indexed sequence of values. 
+
+JSONObject	
+A modifiable set of name/value mappings. 
+
+JSONStringer	
+Implements toString() and toString(). 
+
+JSONTokener	
+Parses a JSON (RFC 4627) encoded string into the corresponding object. 

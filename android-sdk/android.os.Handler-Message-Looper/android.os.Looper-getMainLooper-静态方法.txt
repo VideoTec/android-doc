@@ -1,0 +1,13 @@
+public static Looper getMainLooper ()
+Returns the application's main looper, which lives in the main thread of the application.
+
+示例：
+
+
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    EventBus.getDefault().post(new EBVoWifi(
+                            EBVoWifi.EBEventVoWifi.HideLocalVideoView));
+                }
+            }, 1500);
