@@ -1,0 +1,21 @@
+http://stackoverflow.com/questions/7298731/when-to-call-activity-context-or-application-context
+
+Some developers use custom subclasses of Application for their own global data, 
+which they retrieve via getApplicationContext(). 
+
+That's certainly possible. 
+I prefer static data members, 
+if for no other reason than you can only have one custom Application object. 
+I built one app using a custom Application object and found it to be painful. 
+Ms. Hackborn also agrees with this position.
+
+http://stackoverflow.com/questions/3826905/singletons-vs-application-context-in-android/3827166#3827166
+
+I very much recommend singletons. 
+If you have a singleton that needs a context, have:
+
+MySingleton.getInstance(Context c) {
+    //
+    // ... needing to create ...
+    sInstance = new MySingleton(c.getApplicationContext());
+}

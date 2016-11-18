@@ -1,0 +1,24 @@
+    public void onGetLocation(View v) {
+        RFProxy.getInstance(getApplicationContext())
+                .getLocationInfo(new IRFServiceFor3thCallbackMap.Stub() {
+                    @Override
+                    public void onLocateSucceed(String s) throws RemoteException {
+                        Log.i(TAG, "位置 " + s);
+                    }
+
+                    @Override
+                    public void onLocateFiled() throws RemoteException {
+                        Log.i(TAG, "位置 失败");
+                    }
+
+                    @Override
+                    public void onLocating() throws RemoteException {
+                        Log.i(TAG, "位置 定位...");
+                    }
+
+                    @Override
+                    public IBinder asBinder() {
+                        return null;  这会造成，调用者收到一个 null 回调对象。
+                    }
+                });
+    }

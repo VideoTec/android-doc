@@ -1,0 +1,50 @@
+http://stackoverflow.com/questions/5228160/what-exactly-does-using-the-application-context-mean/5228494#5228494
+
+The first rule I would give you: 
+if you don't know why you need it, you probably don't need it. 
+Use your activity object as the Context when you need a context.
+
+The callbacks you talk about are on the Activity class. 
+The Application Fundamentals describes what an Activity is: 
+http://developer.android.com/guide/topics/fundamentals.html#Components
+
+生命周期，超过 activity 时。
+The only time you want to use getApplicationContext() is 
+when you need a Context that exists outside of the lifecycle of an Activity class (or other component). 
+You'll want to find documentation on specific cases where this is desired, 
+there is a lot floating around. For example this one is part of the Android documentation: 
+http://android-developers.blogspot.de/2009/01/avoiding-memory-leaks.html
+
+http://stackoverflow.com/questions/7298731/when-to-call-activity-context-or-application-context
+
+disposal[英][dɪˈspəʊzl] [美][dɪˈspoʊzl]
+n.（事情的）处置；（自由）处置权；清理；排列
+adj.处理（或置放）废品的
+
+scenarios[英][sɪ'nɑ:ri:əʊz] [美][sɪ'nɑrioʊz]
+n.[意]情节；剧本；事态；脚本
+
+You only use getApplicationContext() when you know 
+you need a Context for something that may live longer than any other likely Context 
+you have at your disposal. Scenarios include:
+
+第一种情况：
+Use getApplicationContext() 
+if you need something tied to a Context that itself will have global scope. 
+I use getApplicationContext(), 
+for example, 
+in WakefulIntentService, for the static WakeLock to be used for the service. 
+Since that WakeLock is static, 
+and I need a Context to get at PowerManager to create it, 
+it is safest to use getApplicationContext().
+
+第二种情况：
+Use getApplicationContext() when you bind to a Service from an Activity, if you wish to pass the ServiceConnection (i.e., the handle to the binding) between Activity instances via onRetainNonConfigurationInstance(). Android internally tracks bindings via these ServiceConnections and holds references to the Contexts that create the bindings. If you bind from the Activity, then the new Activity instance will have a reference to the ServiceConnection which has an implicit reference to the old Activity, and the old Activity cannot be garbage collected.
+
+Here are reasons why not to use getApplicationContext() wherever you go:
+
+第一种情况
+It's not a complete Context, supporting everything that Activity does. Various things you will try to do with this Context will fail, mostly related to the GUI.
+
+第二种情况：
+It can create memory leaks, if the Context from getApplicationContext() holds onto something created by your calls on it that you don't clean up. With an Activity, if it holds onto something, once the Activity gets garbage collected, everything else flushes out too. The Application object remains for the lifetime of your process.

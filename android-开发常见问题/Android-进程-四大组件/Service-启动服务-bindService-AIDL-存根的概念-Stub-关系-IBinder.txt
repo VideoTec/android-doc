@@ -1,0 +1,59 @@
+
+------------------------------------------------
+绑定服务时服务端
+------------------------------------------------
+
+public class RFServiceFor3th extends Service {
+    private static final String TAG = "RF_RFServiceFor3th";
+    private static RFServiceFor3th sThis;
+
+    public static RFServiceFor3th getInstance() {
+        return sThis;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sThis = this;
+        LogFeinno.i(TAG, "创建了开放接口服务");
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        sThis = this;
+        LogFeinno.i(TAG, "绑定了开放接口服务");
+        return mBinder;  
+		
+		注意：
+		把 存根对象 转成 IBinder对象。
+		返回的是接口的存根对象。
+    }
+
+    private IRFServiceFor3th.Stub mBinder = new IRFServiceFor3th.Stub() {
+		接口的实现在这里
+	}
+}
+
+------------------------------------------------
+绑定服务时客户端
+------------------------------------------------
+
+    private IRFServiceFor3th mService;
+
+    private ServiceConnection mConn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.i(TAG, "绑定主端服务");
+            mService = IRFServiceFor3th.Stub.asInterface(service);
+			
+			注意：
+			把 IBinder对象 转成 AIDL对象
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.e(TAG, "解除绑定主端服务");
+            mService = null;
+        }
+    };

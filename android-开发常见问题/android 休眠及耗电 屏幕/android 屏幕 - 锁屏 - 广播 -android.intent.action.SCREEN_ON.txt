@@ -1,0 +1,35 @@
+参考：
+D:\doc\android\android-sdk\android.content.Intent-系统ACTION\android.intent.action.SCREEN_ON.txt
+
+        //监控锁屏状态
+        mScreenReceiver = new ScreenBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        mRFApplication.registerReceiver(mScreenReceiver, filter);
+		
+		private ScreenBroadcastReceiver mScreenReceiver;
+		
+		
+public class ScreenBroadcastReceiver extends BroadcastReceiver {
+    private String action = null;
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        action = intent.getAction();
+        if (Intent.ACTION_SCREEN_ON.equals(action)) {
+            // 开屏
+            SystemUtils.setScreenState(false);
+        } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
+            // 锁屏
+            SystemUtils.setScreenState(true);
+        } else if (Intent.ACTION_USER_PRESENT.equals(action)) {
+            // 解锁
+            SystemUtils.setScreenState(false);
+        }
+        LogFeinno.i("LOCK","SystemUtils.isScreenLock:"+SystemUtils.getScreenState()+"");
+
+    }
+}

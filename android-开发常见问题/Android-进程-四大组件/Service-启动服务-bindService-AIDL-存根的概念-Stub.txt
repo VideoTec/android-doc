@@ -1,0 +1,61 @@
+aidl 是 client/server 模式。
+
+server 端真正的实现在 stub 对象中。
+
+-------------------------------------------------------
+接口的存根 IRFServiceFor3thCallbackMap.Stub
+回调中应用
+-------------------------------------------------------
+
+    public void onGetLocation(View v) {
+        RFProxy.getInstance(getApplicationContext())
+                .getLocationInfo(new IRFServiceFor3thCallbackMap.Stub() {
+                    @Override
+                    public void onLocateSucceed(String s) throws RemoteException {
+                        Log.i(TAG, "位置 " + s);
+                    }
+
+                    @Override
+                    public void onLocateFiled() throws RemoteException {
+                        Log.i(TAG, "位置 失败");
+                    }
+
+                    @Override
+                    public void onLocating() throws RemoteException {
+                        Log.i(TAG, "位置 定位...");
+                    }
+                });
+    }
+	
+
+-------------------------------------------------------
+接口的存根 IRFServiceFor3th.Stub
+服务中应用
+-------------------------------------------------------
+public class RFServiceFor3th extends Service {
+    private static final String TAG = "RF_RFServiceFor3th";
+    private static RFServiceFor3th sThis;
+
+    public static RFServiceFor3th getInstance() {
+        return sThis;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sThis = this;
+        LogFeinno.i(TAG, "创建了开放接口服务");
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        sThis = this;
+        LogFeinno.i(TAG, "绑定了开放接口服务");
+        return mBinder;
+    }
+
+    private IRFServiceFor3th.Stub mBinder = new IRFServiceFor3th.Stub() {
+		接口的实现在这里
+	}
+}

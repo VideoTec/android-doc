@@ -1,0 +1,6 @@
+参考：
+android 菜单 
+
+File | New | New Module... | Import .JAR/.AAR Package
+
+会生成一个包含 aar 的子工程

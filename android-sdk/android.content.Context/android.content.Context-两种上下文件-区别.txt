@@ -1,0 +1,4 @@
+http://stackoverflow.com/questions/7298731/when-to-call-activity-context-or-application-context
+
+参考：
+D:\doc\android\android-sdk\android.content.Context\android.content.Context-两种上下文件-区别-什么时候需要application-context.txt

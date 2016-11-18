@@ -7,3 +7,6 @@ if this Context is an Activity that is stopped,
 the service will not be required to continue running until the Activity is resumed.
 
 http://meiyitianabc.blog.163.com/blog/static/10502212720112213727841/
+
+http://stackoverflow.com/questions/7298731/when-to-call-activity-context-or-application-context
+使用 application-context 调用，bindService 
