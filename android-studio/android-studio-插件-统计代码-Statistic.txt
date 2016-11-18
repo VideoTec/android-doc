@@ -1,0 +1,6 @@
+安装后，在 android monitor 同级视窗栏，会多一个， Statistic 栏
+
+问题，怎么去掉 R.java 文件
+忽略所有的 build 目录
+
+http://scarlettli.iteye.com/blog/2257660

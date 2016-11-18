@@ -1,0 +1,18 @@
+代码：
+
+    private ServiceConnection mConn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.i(TAG, "绑定主端服务 onServiceConnected");
+            mService = IRFServiceFor3th.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.e(TAG, "解除绑定主端服务 onServiceDisconnected");
+            mService = null;
+        }
+    };
+	
+	当服务所在进程退出时：
+	onServiceDisconnected 会被调用

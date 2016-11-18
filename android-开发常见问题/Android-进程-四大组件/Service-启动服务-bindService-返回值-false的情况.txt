@@ -1,0 +1,6 @@
+boolean ret = mCtx.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+
+第一种情况：服务所在的进程没有启动
+
+注意一：
+如果返回 false，将不会调用 onServiceDisconnected

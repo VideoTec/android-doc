@@ -5,3 +5,11 @@ which will cause the service to be created and started.
 I don't believe that Context.BIND_ADJUST_WITH_ACTIVITY will start it, 
 so the onServiceConnected may not be called 
 (it wasn't for me even though the bindService() call was returning true):
+
+参考：
+D:\doc\android\android-开发常见问题\Android-进程-四大组件\Service-启动服务-bindService-参数-flags.txt
+
+Context.BIND_AUTO_CREATE does not start the service, it only creates it.
+
+即
+如果，服务所在进程没有启动，不会启动服务进程。

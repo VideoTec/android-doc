@@ -1,6 +1,8 @@
 理解 bindService 的关键是
-1. 服务端 onBind 返回的 IBinder 对象怎么创建的
-2. 客户端 onServiceConnected 怎么处理绑定的 IBinder 对象
+1. 服务端 onBind 返回的 IBinder 对象怎么创建的 - 把接口的存跟对象.Stub强转成IBinder对象
+2. 客户端 onServiceConnected 怎么处理绑定的 IBinder 对象 - 把IBinder对象转成AIDL对象(asInterface)
+参考：
+D:\doc\android\android-开发常见问题\Android-进程-四大组件\Service-启动服务-bindService-AIDL-存根的概念-Stub.txt
 
 https://developer.android.com/reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)
 
@@ -24,6 +26,10 @@ the service will not be required to continue running until the Activity is resum
 
 This function will throw SecurityException 
 if you do not have permission to bind to the given service.
+
+返回值 
+If you have successfully bound to the service, true is returned; 
+false is returned if the connection is not made so you will not receive the service object.
 
 ---------------------------------------------------
 Note: 
