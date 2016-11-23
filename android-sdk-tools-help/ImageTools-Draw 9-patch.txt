@@ -2,5 +2,9 @@ http://developer.android.com/intl/zh-cn/tools/help/draw9patch.html
 
 E:\android-sdk-windows\tools\draw9patch.bat
 
-The Draw 9-patch tool is a WYSIWYG editor that allows you to create bitmap images that automatically resize to accommodate the contents of the view and the size of the screen. Selected parts of the image are scaled horizontally or vertically based indicators drawn within the image.
+The Draw 9-patch tool is a WYSIWYG editor 
+that allows you to create bitmap images 
+that automatically resize to accommodate the contents of the view and the size of the screen. 
+Selected parts of the image are scaled 
+horizontally or vertically based indicators drawn within the image.
 

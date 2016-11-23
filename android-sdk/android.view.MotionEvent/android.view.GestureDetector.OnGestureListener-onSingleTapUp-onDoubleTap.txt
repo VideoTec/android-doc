@@ -1,0 +1,17 @@
+http://www.cnblogs.com/sw926/p/3208158.html
+
+onSingleTapUp被调用，说明发生了单击事件，
+onSingleTapConfirmed被调用，说明确认发生了一个单击事件，不是双击的事件。
+
+需要注意的是onSingleTapUp已经是一click事件，
+onSingleTapUp 触发的时候是ACTION_UP事件。
+onSingleTapConfirmed 是在用户手指离开屏幕后触发，
+所以up并不是所有触屏事件的结束。
+
+首先发生了一个onSingleTapUp，说明完成了一次单击事件，
+然后发生了onDoubleTap，至此，一次双击事件已经完成。
+我们可以看到，onDoubleTap发生的时候是ACTION_DOWN事件，
+也就是说双击事件是第二次按下屏幕的时候触发，而不是第二次离开屏幕的时候触发，
+在onDoubleTap发生之后，
+就可以在onDoubleTapEvent中监听到双击事件发生后从按下到弹起的所有触屏事件。
+onDoubleTap发生后不会触发 onSingleTapUp和 onSingleTapConfirmed。

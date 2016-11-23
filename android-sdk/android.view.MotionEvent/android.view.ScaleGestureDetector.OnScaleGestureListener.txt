@@ -7,12 +7,42 @@ ScaleGestureDetector.SimpleOnScaleGestureListener
 
 Class Overview
 
-The listener for receiving notifications when gestures occur. If you want to listen for all the different gestures then implement this interface. 
+The listener for receiving notifications when gestures occur. 
+If you want to listen for all the different gestures then implement this interface. 
 
-If you only want to listen for a subset it might be easier to extend ScaleGestureDetector.SimpleOnScaleGestureListener. 
+If you only want to listen for a subset 
+it might be easier to extend ScaleGestureDetector.SimpleOnScaleGestureListener. 
 
 An application will receive events in the following order:
 
-1）One onScaleBegin(ScaleGestureDetector)
+1）One onScaleBegin(ScaleGestureDetector) 
+
+返回值：如果返回 false 后面两个事件，都不会收到
+
+Whether or not the detector should continue recognizing this gesture. 
+
+For example, 
+if a gesture is beginning with a focal point outside of a region where it makes sense, 
+onScaleBegin() may return false to ignore the rest of the gesture.
+
 2）Zero or more onScale(ScaleGestureDetector)
+
+返回值：
+
+accumulate[英][əˈkju:mjəleɪt] [美][əˈkjumjəˌlet]
+vt.& vi.堆积，积累
+vi.（数量）逐渐增加，（质量）渐渐提高
+
+没有测试出什么区别
+
+Whether or not the detector should consider this event as handled. 
+If an event was not handled, 
+the detector will continue to accumulate movement until an event is handled. 
+This can be useful if an application, 
+
+for example, 
+only wants to update scaling factors if the change is greater than 0.01.
+
 3）One onScaleEnd(ScaleGestureDetector)
+
+无返回值

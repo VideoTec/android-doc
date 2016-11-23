@@ -1,3 +1,28 @@
+    /**
+     * A convenience class to extend when you only want to listen for a subset
+     * of scaling-related events. This implements all methods in
+     * {@link OnScaleGestureListener} but does nothing.
+     * {@link OnScaleGestureListener#onScale(ScaleGestureDetector)} returns
+     * {@code false} so that a subclass can retrieve the accumulated scale
+     * factor in an overridden onScaleEnd.
+     * {@link OnScaleGestureListener#onScaleBegin(ScaleGestureDetector)} returns
+     * {@code true}.
+     */
+    public static class SimpleOnScaleGestureListener implements OnScaleGestureListener {
+
+        public boolean onScale(ScaleGestureDetector detector) {
+            return false;
+        }
+
+        public boolean onScaleBegin(ScaleGestureDetector detector) {
+            return true;
+        }
+
+        public void onScaleEnd(ScaleGestureDetector detector) {
+            // Intentionally empty
+        }
+    }
+
 http://developer.android.com/reference/android/view/ScaleGestureDetector.SimpleOnScaleGestureListener.html
 
 implements ScaleGestureDetector.OnScaleGestureListener

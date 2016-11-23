@@ -1,0 +1,6 @@
+onTouch 事件，
+
+从子向父传递
+兄弟间 z-order 向下传递
+
+透明 视图/ViewGroup，也会收到事件

@@ -1,0 +1,27 @@
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        super.dispatchTouchEvent(ev);
+        return gestureDetector.onTouchEvent(ev);
+    }
+	
+	源码：
+	
+	/**
+     * Called to process touch screen events.  You can override this to
+     * intercept all touch screen events before they are dispatched to the
+     * window.  Be sure to call this implementation for touch screen events
+     * that should be handled normally.
+     *
+     * @param ev The touch screen event.
+     *
+     * @return boolean Return true if this event was consumed.
+     */
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            onUserInteraction();
+        }
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }

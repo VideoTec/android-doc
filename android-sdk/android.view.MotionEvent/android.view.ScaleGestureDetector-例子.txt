@@ -1,0 +1,30 @@
+
+        final ScaleGestureDetector scaleGesture = new ScaleGestureDetector(this, new ScaleGestureDetector.OnScaleGestureListener() {
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                Log.i(TAG, "缩放值...： " + detector.getCurrentSpan());
+                return true;
+				
+				没有测试出，返不同值的区别。
+            }
+
+            @Override
+            public boolean onScaleBegin(ScaleGestureDetector detector) {
+                Log.i(TAG, "开始 缩放值： " + detector.getCurrentSpan());
+                return true;
+				
+				如果返回 false 后面两个事件 (onScale, onScaleEnd) 都不会产生。
+            }
+
+            @Override
+            public void onScaleEnd(ScaleGestureDetector detector) {
+                Log.i(TAG, "结束 缩放值： " + detector.getCurrentSpan());
+            }
+        });
+
+        mTextureView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return scaleGesture.onTouchEvent(event);
+            }
+        });

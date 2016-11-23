@@ -1,7 +1,8 @@
 public float getScaleFactor ()
 
 Added in API level 8
-Return the scaling factor from the previous scale event to the current event. This value is defined as (getCurrentSpan() / getPreviousSpan()).
+Return the scaling factor from the previous scale event to the current event. 
+This value is defined as (getCurrentSpan() / getPreviousSpan()).
 
 Returns
 The current scaling factor.

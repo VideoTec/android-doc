@@ -15,3 +15,59 @@ tap[英][tæp] [美][tæp]
 doubletap 和 doubleclick有什么区别
 tap:拍,打,拍打
 click: 点击 double click特指电脑鼠标的双击
+
+解释：
+http://www.cnblogs.com/sw926/p/3208158.html
+onSingleTapUp被调用，说明发生了单击事件，
+onSingleTapConfirmed被调用，说明确认发生了一个单击事件，不是双击的事件。
+
+需要注意的是onSingleTapUp已经是一click事件，
+onSingleTapUp 触发的时候是ACTION_UP事件。
+onSingleTapConfirmed 是在用户手指离开屏幕后触发，
+所以up并不是所有触屏事件的结束。
+
+在onDoubleTap发生之后，
+就可以在onDoubleTapEvent中监听到双击事件发生后从按下到弹起的所有触屏事件。
+onDoubleTap发生后不会触发 onSingleTapUp和 onSingleTapConfirmed。
+
+        boolean onSingleTapConfirmed(MotionEvent e);
+		boolean onDoubleTap(MotionEvent e);
+        boolean onDoubleTapEvent(MotionEvent e);
+		
+源码 ：
+
+    /**
+     * The listener that is used to notify when a double-tap or a confirmed
+     * single-tap occur.
+     */
+    public interface OnDoubleTapListener {
+        /**
+         * Notified when a single-tap occurs.
+         * <p>
+         * Unlike {@link OnGestureListener#onSingleTapUp(MotionEvent)}, this
+         * will only be called after the detector is confident that the user's
+         * first tap is not followed by a second tap leading to a double-tap
+         * gesture.
+         *
+         * @param e The down motion event of the single-tap.
+         * @return true if the event is consumed, else false
+         */
+        boolean onSingleTapConfirmed(MotionEvent e);
+ 
+        /**
+         * Notified when a double-tap occurs.
+         *
+         * @param e The down motion event of the first tap of the double-tap.
+         * @return true if the event is consumed, else false
+         */
+        boolean onDoubleTap(MotionEvent e);
+
+        /**
+         * Notified when an event within a double-tap gesture occurs, including
+         * the down, move, and up events.
+         *
+         * @param e The motion event that occurred during the double-tap gesture.
+         * @return true if the event is consumed, else false
+         */
+        boolean onDoubleTapEvent(MotionEvent e);
+    }

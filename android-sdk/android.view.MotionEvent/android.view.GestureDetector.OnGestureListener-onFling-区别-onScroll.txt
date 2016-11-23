@@ -1,0 +1,10 @@
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1212/2145.html
+
+当滑动（fling）比移动（scroll）有更高的效率时，
+为什么要让用户使用scroll操作呢？
+在面积很小而数据又很多的移动设备上，
+要显示远在后面的那些内容scroll是很困难的，这种情况下fling更适合。
+
+注：
+scroll表示手指滑动多少距离，界面跟着显示多少距离，而
+fling是根据你的滑动方向与轻重，还会自动滑动一段距离。

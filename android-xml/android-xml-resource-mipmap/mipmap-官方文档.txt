@@ -1,0 +1,10 @@
+http://android-developers.blogspot.co.uk/2014/10/getting-your-apps-ready-for-nexus-6-and.html
+
+Provide at least an xxxhdpi app icon 
+because devices can display large app icons on the launcher. 
+It’s best practice to place your app icons in mipmap- folders 
+(not the drawable- folders) 
+because they are used at resolutions different from the device’s current density.
+ 
+For example, 
+an xxxhdpi app icon can be used on the launcher for an xxhdpi device.

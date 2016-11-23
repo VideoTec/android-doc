@@ -1,0 +1,25 @@
+长宽越大的背景图造成内存占用过多问题？
+
+------------------------------------------------
+动态加载的图片
+------------------------------------------------
+
+http://stackoverflow.com/questions/18412343/outofmemory-when-loading-large-background-image
+http://stackoverflow.com/questions/18385362/high-resolution-image-outofmemoryerror
+
+解决方法：
+This can be done via:
+
+1）cropping the image so that it fits the screen
+2）compress the image further (use e.g. photoshop) before even using it in the app
+3）use the below method to load your bitmap
+4）recycle the bitmap as soon as you no loger need it
+5）make sure you do not keep multiple instances of it in memory
+6）set the reference to null after using the bitmap
+
+------------------------------------------------
+资源中的图片
+------------------------------------------------
+http://stackoverflow.com/questions/13118005/android-background-image-memory-usage
+
+Moving the image to drawable-nodpi only increases memory usage with barely 1M now.

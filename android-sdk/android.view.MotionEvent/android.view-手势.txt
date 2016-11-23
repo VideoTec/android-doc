@@ -1,0 +1,74 @@
+https://developer.android.com/training/gestures/index.html
+
+https://material.google.com/patterns/gestures.html#
+设计说明 - 手势图解
+
+lift[英][lɪft] [美][lɪft]
+vt.& vi.举起，抬起
+
+fling[英][flɪŋ] [美][flɪŋ]
+vt.& vi.猛扑；猛冲；急伸
+快掷
+
+swipe[英][swaɪp] [美][swaɪp]
+vt.重击；刷（磁卡）；偷窃
+轻滑
+
+Swipe在android里面是叫Fling
+
+Touch
+One-finger press, lift
+Example: Select
+
+Double touch
+One-finger press, lift, one-finger press, lift
+Example: Zoom in
+
+Drag, Swipe, or Fling
+One-finger press, move, lift
+Example: Dismiss, scroll, tilt, etc.
+
+Long press
+One-finger press, wait, lift
+Example: Select an element, such as a list item
+Long press is not used to display a contextual menu.
+
+Long-press drag
+One-finger press, wait, move, lift
+Example: Pick up and move, select multiple items
+
+Double-touch drag
+One-finger press, lift, one-finger press, move, lift
+Example: Zoom in, zoom out
+
+Pinch open
+Two-finger press, move outwards, lift
+Example: Zoom in
+
+Pinch closed
+Two-finger press, move inwards, lift
+Example: Zoom out
+
+Two-finger touch
+Two-finger press, lift
+Example: Zoom out
+
+Two-finger swipe, drag, fling
+Two-finger press, move, lift
+Example: Select multiple items, pan, tilt
+
+Two-finger long-press
+Two-finger press, wait, lift
+Example: None; this gesture is uncommon.
+
+Two-finger long-press drag
+Two-finger press, wait, move, lift
+Example: Pick up and move
+
+Two-finger double touch
+Two-finger press, lift, two-finger press, lift
+Example: Zoom out
+
+Rotate
+Two-finger press, simultaneously orbit both fingers around the center point, lift
+Example: Rotate content, such as a map

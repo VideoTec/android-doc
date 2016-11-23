@@ -1,0 +1,39 @@
+public boolean dispatchTouchEvent(MotionEvent ev) 时：
+onDown 返回 false 不影响 onFling
+
+mLyCtrlsContainer.setOnTouchListener 时:
+onDown 返回 false 影响 onFling，造成不产生这个事件
+
+http://stackoverflow.com/questions/17830529/onfling-not-being-called-for-some-reason
+
+According to me the fling is not working because of the scroll view.... 
+Add this code into your MainMenuSlider class.
+
+   GestureDetector gestureDetector
+    = new GestureDetector(myGestureListener);
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent e)
+    {
+        super.dispatchTouchEvent(e);
+        return gestureDetector.onTouchEvent(e);
+    }
+	
+http://stackoverflow.com/questions/13927305/how-to-set-onfling-event-of-gesture-on-scrollview-in-android
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        boolean handled = super.dispatchTouchEvent(ev);
+        handled = mGesture.onTouchEvent(ev);    
+        return handled;
+    }
+	
+http://stackoverflow.com/questions/4522637/android-onfling-not-responding
+
+onDown is called before the onFling event. 
+If you return false in onDown method, the motion event propagation will stop.
+
+Try to change return false in return true at the end of onDown method.
+
+The return values are explained, somewhat obtusely, 
+in the Input Events page of the Dev guide. 
+(scroll down below the example code to see).
