@@ -1,0 +1,14 @@
+folding[英][ˈfəʊldɪŋ] [美][ˈfoʊldɪŋ]
+
+adj.可折叠的
+v.折叠，对折交叠( fold的现在分词 )；包围；包起；笼罩
+
+第一种设置：
+编辑器，右击，菜单， folding
+
+第二种设置：
+Settings | Editor | Code Folding
+
+取消折叠的代码：
+One-line methods
+"Closures"

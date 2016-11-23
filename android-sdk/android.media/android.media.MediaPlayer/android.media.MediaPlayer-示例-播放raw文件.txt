@@ -1,0 +1,32 @@
+http://stackoverflow.com/questions/1283499/setting-data-source-to-an-raw-id-in-mediaplayer
+
+You can load the raw audio into an input stream and 
+load it into a MediaPlayer as you would a normal stream:
+
+InputStream ins = getResources().openRawResource(R.raw.example);
+
+and then follow a streaming tutorial like pocketjourney
+But this is overly complicated as you can just call
+
+mp = MediaPlayer.create(counterstrikesb.this, R.raw.example);
+
+代码：
+        try {
+            if (mMediaPlayer == null) {
+                mMediaPlayer = MediaPlayer.create(this, R.raw.ringing);
+            }
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+        } catch (Exception e) {
+            Log.e(TAG, "media player play exception", e);
+        }
+		
+异常：
+media player play exception
+  java.lang.IllegalStateException
+      at android.media.MediaPlayer._prepare(Native Method)
+	  
+原因：
+mp = MediaPlayer.create(...); is already preparing the MediaPlayer returned, 
+so you cannot call prepare (or its variants) again 
+(and there is no need for onPreparedListener as well).

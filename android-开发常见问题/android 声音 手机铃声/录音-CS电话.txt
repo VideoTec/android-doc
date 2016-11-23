@@ -1,0 +1,26 @@
+http://stackoverflow.com/questions/14728615/audiosource-voice-call-not-working-in-android-4-0-but-working-in-android-2-3
+
+https://developer.android.com/reference/android/media/MediaRecorder.AudioSource.html
+VOICE_CALL
+Voice call uplink + downlink audio source
+Capturing from VOICE_CALL source requires the CAPTURE_AUDIO_OUTPUT permission.
+
+http://stackoverflow.com/questions/10357187/mediarecorder-audiosource-voice-call-does-not-work-on-sgs2-call-recording
+
+http://stackoverflow.com/questions/6688444/android-recording-incoming-and-outgoing-calls
+
+First off, you have to be careful with recording calls 
+as there are legal requirements depending on the country.
+
+Here is a blog post on how to record audio using the MediaRecorder.
+
+I haven't tried recording phone call's but there is a option in MediaRecorder AudioSource for:
+
+VOICE_CALL - Voice call uplink + downlink audio source
+VOICE_DOWNLINK - Voice call downlink (Rx) audio source
+VOICE_UPLINK - Voice call uplink (Tx) audio source
+
+As long as the audio source options work, you should be good to go.
+
+http://www.benmccann.com/android-audio-recording-tutorial/
+录电话的例子

@@ -1,0 +1,11 @@
+https://developer.android.com/reference/android/media/MediaPlayer.html
+
+MediaPlayer class can be used to control playback of audio/video files and streams. 
+An example on how to use the methods in this class can be found in VideoView.
+
+Topics covered here are:
+
+1) State Diagram
+2) Valid and Invalid States
+3) Permissions
+4) Register informational and error callbacks

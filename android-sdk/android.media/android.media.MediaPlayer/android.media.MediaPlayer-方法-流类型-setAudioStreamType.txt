@@ -1,0 +1,27 @@
+https://developer.android.com/reference/android/media/MediaPlayer.html#setAudioStreamType(int)
+
+setAudioStreamType
+
+Added in API level 1
+
+void setAudioStreamType (int streamtype)
+Sets the audio stream type for this MediaPlayer. 
+See AudioManager for a list of stream types. 
+Must call this method before prepare() or prepareAsync() 
+in order for the target stream type to become effective thereafter.
+
+thereafter[英][ˌðeərˈɑ:ftə(r)] [美][ˌðerˈæftə(r)]
+adv.此后，在那之后；〈罕〉据此
+
+Parameters
+streamtype	int: the audio stream type
+
+AudioManager 流类型常量
+
+int	STREAM_ALARM 	The audio stream for alarms
+int	STREAM_DTMF 	The audio stream for DTMF Tones
+int	STREAM_MUSIC 	The audio stream for music playback
+int	STREAM_NOTIFICATION	The audio stream for notifications
+int	STREAM_RING		The audio stream for the phone ring
+int	STREAM_SYSTEM	The audio stream for system sounds
+int	STREAM_VOICE_CALL	The audio stream for phone calls

@@ -1,0 +1,60 @@
+https://developer.android.com/reference/android/media/MediaPlayer.html#Callbacks
+
+Applications may want to register for informational and error events 
+in order to be informed of some internal state update and 
+possible runtime errors during playback or streaming. 
+Registration for these events is done by properly setting the appropriate listeners
+ 
+(via calls to 
+setOnPreparedListener(OnPreparedListener)setOnPreparedListener, 
+setOnVideoSizeChangedListener(OnVideoSizeChangedListener)setOnVideoSizeChangedListener, 
+setOnSeekCompleteListener(OnSeekCompleteListener)setOnSeekCompleteListener, 
+setOnCompletionListener(OnCompletionListener)setOnCompletionListener, 
+setOnBufferingUpdateListener(OnBufferingUpdateListener)setOnBufferingUpdateListener, 
+setOnInfoListener(OnInfoListener)setOnInfoListener, 
+setOnErrorListener(OnErrorListener)setOnErrorListener, etc). 
+
+In order to receive the respective callback associated with these listeners, 
+applications are required to create MediaPlayer objects on a thread with its own Looper running 
+(main UI thread by default has a Looper running).
+
+----------------------------------------------------------------
+所有媒体事件
+----------------------------------------------------------------
+
+interface	MediaPlayer.OnBufferingUpdateListener
+Interface definition of a callback 
+to be invoked indicating buffering status of a media resource being streamed over the network. 
+
+interface	MediaPlayer.OnCompletionListener
+Interface definition for a callback 
+to be invoked when playback of a media source has completed. 
+
+interface	MediaPlayer.OnErrorListener
+Interface definition of a callback 
+to be invoked when there has been an error during an asynchronous operation 
+(other errors will throw exceptions at method call time). 
+
+interface	MediaPlayer.OnInfoListener
+Interface definition of a callback 
+to be invoked to communicate some info and/or warning about the media or its playback. 
+
+interface	MediaPlayer.OnPreparedListener
+Interface definition for a callback 
+to be invoked when the media source is ready for playback. 
+
+interface	MediaPlayer.OnSeekCompleteListener
+Interface definition of a callback 
+to be invoked indicating the completion of a seek operation. 
+
+interface	MediaPlayer.OnTimedMetaDataAvailableListener
+Interface definition of a callback 
+to be invoked when a track has timed metadata available. 
+
+interface	MediaPlayer.OnTimedTextListener
+Interface definition of a callback 
+to be invoked when a timed text is available for display. 
+
+interface	MediaPlayer.OnVideoSizeChangedListener
+Interface definition of a callback 
+to be invoked when the video size is first known or updated 

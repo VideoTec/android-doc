@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-sdk\android.media\android.media.MediaPlayer\android.media.MediaPlayer-prepare-异常-IllegalStateException.txt

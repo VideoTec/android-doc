@@ -1,0 +1,16 @@
+RuntimeException-Unable-to-start-activity-InfateException-BinaryXML file line2 error infating class unknown
+
+http://stackoverflow.com/questions/4512981/android-view-inflateexception-binary-xml-file-line-12-error-inflating-class/23202156#23202156
+
+是由于内存溢出造成的
+
+The inflate exception is not actually the problem, 
+but really comes from another deeper issue in your layout 
+that is then wrapped in an InflateException. 
+A common issue is an out of memory 
+exception when trying to inflate an imageview loading a drawable resource. 
+If one of this resources has a high pixel resolution 
+it would take a lot of memory causing then an inflate exception.
+
+So basically verify that the pixel resolution 
+in your drawables images are just the minimum necessary for your layout.

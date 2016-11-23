@@ -1,0 +1,7 @@
+开始播放前状态，必须是：
+1. prepared 状态
+2. paused 状态
+3. PlaybackCompleted 状态
+
+注释一：stopped 状态，播放前，必须先 prepare() 
+注释二：

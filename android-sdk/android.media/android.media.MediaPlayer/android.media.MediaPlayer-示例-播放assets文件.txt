@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
+
+AssetFileDescriptor afd = getAssets().openFd("AudioFile.mp3");
+player = new MediaPlayer();
+
+player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+
+player.prepare();
+player.start();
+
+Your version would work if you had only one file in the assets directory. 
+The asset directory contents are not actually 'real files' on disk. 
+All of them are put together one after another. 
+So, if you do not specify where to start and how many bytes to read, 
+the player will read up to the end 
+(that is, will keep playing all the files in assets directory)

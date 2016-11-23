@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/38658378/exclude-jar-library-from-aar
+
+修改 aar 模块工程，不要输出 冲突的 jar 包。
+
+You can simply move the library file 
+from dir yourmodule/libs to dir yourmoudle/ and modify " 
+provided files('libs/yourlibrary.jar') " 
+to "provided files('yourlibrary.jar')" in dependency.
+
+then clean the project and rebuild.

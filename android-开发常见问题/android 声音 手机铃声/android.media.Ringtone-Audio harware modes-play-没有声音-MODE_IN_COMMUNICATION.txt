@@ -1,0 +1,18 @@
+华为
+Dalvik/2.1.0 (Linux; U; Android 5.0; SM-N9008V Build/LRX21V)
+
+当设置为通话模式时，播放铃声听不见
+        AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        am.setMode(AudioManager.MODE_IN_COMMUNICATION);
+		
+		这个模式，也没有声音
+		am.setMode(AudioManager.MODE_NORMAL); 
+		
+		只有铃声模式下有声音
+		am.setMode(AudioManager.MODE_RINGTONE);
+		
+		mRingstone = RingtoneManager.getRingtone(this, Settings.System.DEFAULT_RINGTONE_URI);
+		mRingstone.play();
+		
+参考：
+D:\doc\android\android-开发常见问题\android 声音 手机铃声\android.media.Ringtone-声音路由和Audio harware modes-关系.txt

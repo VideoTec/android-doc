@@ -1,6 +1,15 @@
 @SuppressLint("SetJavaScriptEnabled") class method
 @SuppressWarnings("unused") class method field
 
+suppress[英][səˈpres] [美][səˈprɛs]
+vt.镇压，压制；止住，忍住；禁止发表；阻止…的生长（或发展）
+
+field can be converted to a local variable suppress
+@SuppressWarnings("FieldCanBeLocal")
+
+'getDrawable(int)' is deprecated
+@SuppressWarnings( "deprecation" )
+
 --------------------------
 例子： @SuppressWarnings("unused")
 --------------------------

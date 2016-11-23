@@ -1,0 +1,8 @@
+isLooping
+
+Added in API level 3
+boolean isLooping ()
+Checks whether the MediaPlayer is looping or non-looping.
+
+Returns
+boolean	true if the MediaPlayer is currently looping, false otherwise

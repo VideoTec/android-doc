@@ -1,0 +1,5 @@
+public static MediaPlayer create(Context context, Uri uri) 
+public static MediaPlayer create(Context context, Uri uri, SurfaceHolder holder)
+public static MediaPlayer create(Context context, Uri uri, SurfaceHolder holder, AudioAttributes audioAttributes, int audioSessionId)
+public static MediaPlayer create(Context context, int resid)
+public static MediaPlayer create(Context context, int resid, AudioAttributes audioAttributes, int audioSessionId)

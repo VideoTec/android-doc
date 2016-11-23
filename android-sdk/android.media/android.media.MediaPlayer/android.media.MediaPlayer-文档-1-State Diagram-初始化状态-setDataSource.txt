@@ -1,0 +1,2 @@
+状态：Idle -> 方法setDataSource -> 状态Initialized -> 方法prepare -> 状态Prepared
+                                                   -> 方法prepareAsync -> 状态Preparing

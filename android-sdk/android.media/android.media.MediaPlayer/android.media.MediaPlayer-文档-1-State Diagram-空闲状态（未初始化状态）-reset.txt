@@ -1,0 +1,12 @@
+reset
+
+Added in API level 1
+
+void reset ()
+
+Resets the MediaPlayer to its uninitialized state. 
+After calling this method, 
+you will have to initialize it again by setting the data source and calling prepare().
+
+reset() 方法，转入 空闲状态(未初始化状态)
+setDataSource() 方法，转入 初始化状态

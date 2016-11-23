@@ -1,0 +1,9 @@
+    //    圈子SDK
+    compile(name: 'circle', ext: 'aar') {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }
+    compile(name: 'circle-library', ext: 'aar') {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }

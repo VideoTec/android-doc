@@ -1,0 +1,21 @@
+    /**
+     * Prepares the player for playback, asynchronously.
+     *
+     * After setting the datasource and the display surface, you need to either
+     * call prepare() or prepareAsync(). For streams, you should call prepareAsync(),
+     * which returns immediately, rather than blocking until enough data has been
+     * buffered.
+     *
+     * @throws IllegalStateException if it is called in an invalid state
+     */
+    public native void prepareAsync() throws IllegalStateException;
+	
+	https://developer.android.com/reference/android/media/MediaPlayer.html#setOnPreparedListener(android.media.MediaPlayer.OnPreparedListener)
+	setOnPreparedListener(MediaPlayer.OnPreparedListener listener)
+	void setOnPreparedListener (MediaPlayer.OnPreparedListener listener)
+    Register a callback to be invoked when the media source is ready for playback.
+	
+	https://developer.android.com/reference/android/media/MediaPlayer.OnPreparedListener.html
+	public static interface MediaPlayer.OnPreparedListener
+		void onPrepared (MediaPlayer mp)
+		Called when the media file is ready for playback.
