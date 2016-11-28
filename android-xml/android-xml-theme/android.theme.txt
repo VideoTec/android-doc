@@ -1,0 +1,6 @@
+参考：
+D:\doc\android\android-xml\android-xml-resource\android-resource-type-Style.txt
+D:\doc\android\android-xml\android-xml-resource\android-resource-type-Style-and-theme.txt
+
+文档：
+https://developer.android.com/guide/topics/ui/themes.html

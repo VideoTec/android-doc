@@ -1,18 +1,11 @@
-extra 常量定义：
-    /**
-     * Used as an int extra field in {@link android.app.AlarmManager} intents
-     * to tell the application being invoked how many pending alarms are being
-     * delievered with the intent.  For one-shot alarms this will always be 1.
-     * For recurring alarms, this might be greater than 1 if the device was
-     * asleep or powered off at the time an earlier alarm would have been
-     * delivered.
-     */
-    public static final String EXTRA_ALARM_COUNT = "android.intent.extra.ALARM_COUNT";
-	
-action 常量定义：
-    /**
-     * Broadcast Action: This is broadcast when a user action should request a
-     * temporary system dialog to dismiss.  Some examples of temporary system
-     * dialogs are the notification window-shade and the recent tasks dialog.
-     */
-    public static final String ACTION_CLOSE_SYSTEM_DIALOGS = "android.intent.action.CLOSE_SYSTEM_DIALOGS";
+public static final String ACTION_CLOSE_SYSTEM_DIALOGS = "android.intent.action.CLOSE_SYSTEM_DIALOGS";
+参考：
+D:\doc\android\android-sdk\android.content.Intent-系统ACTION\Broadcast Action-android.intent.action.CLOSE_SYSTEM_DIALOGS.txt
+
+public static final String ACTION_SCREEN_OFF = "android.intent.action.SCREEN_OFF";
+参考：
+D:\doc\android\android-sdk\android.content.Intent-系统ACTION\Broadcast Action-android.intent.action.SCREEN_ON.txt
+
+com.android.launcher.action.INSTALL_SHORTCUT
+参考：
+D:\doc\android\android-sdk\android.content.Intent-系统ACTION\Broadcast Action-com.android.launcher.action.INSTALL_SHORTCUT.txt

@@ -1,0 +1,20 @@
+参考：
+D:\doc\android\android-xml\android-xml-theme\主题例子-activity-背景透明.txt
+
+示例代码：设置背景为透明
+getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+public static final int FEATURE_ACTION_BAR_OVERLAY = 9;
+public static final String STATUS_BAR_BACKGROUND_TRANSITION_NAME = "android:status:background";
+public static final String NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME =
+            "android:navigation:background";
+			
+    public void setClipToOutline(boolean clipToOutline) {}
+    public void setBackgroundDrawableResource(@DrawableRes int resId)
+    public abstract void setBackgroundDrawable(Drawable drawable);
+
+public abstract void setFeatureDrawableAlpha(int featureId, int alpha);
+public long getTransitionBackgroundFadeDuration() { return 0; }
+public void setTransitionBackgroundFadeDuration(long fadeDurationMillis) { }
+public abstract void setStatusBarColor(@ColorInt int color);
+public abstract void setNavigationBarColor(@ColorInt int color);

@@ -1,3 +1,7 @@
+参考：
+D:\doc\android\android-sdk\android.util.DisplayMetrics\android.util.DisplayMetrics-get实例-Resources.getDisplayMetrics.txt
+D:\doc\android\android-sdk\android.util.DisplayMetrics\android.util.DisplayMetrics-get实例-Display.getMetrics.txt
+
 http://www.cnblogs.com/wangtianxj/archive/2011/03/18/1988358.html
 
 有些时候，我们需要获取Android手机或Pad的屏幕的物理尺寸，
@@ -12,7 +16,11 @@ http://www.cnblogs.com/wangtianxj/archive/2011/03/18/1988358.html
         int height = metric.heightPixels;  // 屏幕高度（像素）
         float density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
         int densityDpi = metric.densityDpi;  // 屏幕密度DPI（120 / 160 / 240）
-    但是，需要注意的是，在一个低密度的小屏手机上，仅靠上面的代码是不能获取正确的尺寸的。比如说，一部240x320像素的低密度手机，如果运行上述代码，获取到的屏幕尺寸是320x427。因此，研究之后发现，若没有设定多分辨率支持的话，Android系统会将240x320的低密度（120）尺寸转换为中等密度（160）对应的尺寸，这样的话就大大影响了程序的编码。所以，需要在工程的AndroidManifest.xml文件中，加入supports-screens节点，具体的内容如下：
+    但是，需要注意的是，在一个低密度的小屏手机上，仅靠上面的代码是不能获取正确的尺寸的。
+	比如说，一部240x320像素的低密度手机，如果运行上述代码，获取到的屏幕尺寸是320x427。
+	因此，研究之后发现，若没有设定多分辨率支持的话，
+	Android系统会将240x320的低密度（120）尺寸转换为中等密度（160）对应的尺寸，这样的话就大大影响了程序的编码。
+	所以，需要在工程的AndroidManifest.xml文件中，加入supports-screens节点，具体的内容如下：
         <supports-screens
             android:smallScreens="true"
             android:normalScreens="true"

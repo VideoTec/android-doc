@@ -1,3 +1,6 @@
+
+	问题：今天测试 11.24，发现调用了多次
+	
 代码：
     private ServiceConnection mConn = new ServiceConnection() {
         @Override
@@ -19,3 +22,4 @@
 	mCtx.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
 	
 	回调 onServiceConnected ，只调用一次
+	

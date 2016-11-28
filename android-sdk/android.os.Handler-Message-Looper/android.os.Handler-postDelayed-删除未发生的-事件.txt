@@ -1,0 +1,38 @@
+mUserInfoHandler.removeCallbacks(mContactInfoCallbackRunnable);
+
+代码：
+
+        private final Map<String, List<UserInfoFor3th>> mUserInfos = new HashMap<>();
+        private Handler mUserInfoHandler;
+        private static final long DELAYED_TIME = 100;
+        private void sendUserInfo(String as, UserInfoFor3th info) {
+            if (mUserInfoHandler == null) {
+                HandlerThread contactInfoCallbackThread =
+                        new HandlerThread("user_info_send_broadcast_thread");
+                contactInfoCallbackThread.start();
+                mUserInfoHandler = new Handler(contactInfoCallbackThread.getLooper());
+            }
+            mUserInfoHandler.removeCallbacks(mContactInfoCallbackRunnable);
+            synchronized (mUserInfos) {
+                List<UserInfoFor3th> userInfos = mUserInfos.get(as);
+                if (userInfos == null) {
+                    userInfos = new ArrayList<>();
+                    mUserInfos.put(as, userInfos);
+                }
+                userInfos.add(info);
+            }
+            mUserInfoHandler.postDelayed(mContactInfoCallbackRunnable, DELAYED_TIME);
+        }
+		
+http://stackoverflow.com/questions/16050807/post-delay-method-android
+
+You can use removeCallbacks(runnable) method of the handler using 
+which you are calling postDelayed() method. For example, if you used:
+
+mHandler.postDelayed(mRunnable, mTime)
+
+for refreshing the activity, then use
+
+mHandler.removeCallbacks(mRunnable)
+
+in onPause() method of the activity.

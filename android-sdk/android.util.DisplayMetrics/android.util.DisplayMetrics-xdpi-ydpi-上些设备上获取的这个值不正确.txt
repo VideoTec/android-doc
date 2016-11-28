@@ -1,0 +1,19 @@
+------------------------------------------------
+xdpi / ydpi 取的值，不准确：
+------------------------------------------------
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        float xMulti = metrics.xdpi / DisplayMetrics.DENSITY_DEFAULT;
+        float yMulti = metrics.ydpi / DisplayMetrics.DENSITY_DEFAULT;
+		
+		vivo X510t 取得的值是：
+		xdpi: 160.421; ydpi: 159.895; density: 3.0
+		这里的值明显是错误的
+		
+		huawei nxt-al10 取的值是：
+		xdpi: 365.76; ydpi: 366.676; density: 3.0
+		
+https://code.google.com/p/android/issues/detail?id=67967
+Summary:
+We are building an application which requires to display the exact PPI values of the device. 
+However, 
+the PPI value returned by Android API (DisplayMetrics.xdpi / ydpi) is incorrect for some devices.

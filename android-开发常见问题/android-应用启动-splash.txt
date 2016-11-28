@@ -1,0 +1,21 @@
+https://www.bignerdranch.com/blog/splash-screens-the-right-way/
+启动页优化
+
+The very idea of the splash screen makes me a little angry. 
+Just saying the phrase makes me cringe.
+Splash screens just waste your time, right? 
+As an Android developer, when I see a splash screen, 
+I know that some poor dev had to add a three-second delay to the code.
+
+Then, 
+I have to stare at some picture for three seconds until I can use the app. 
+And I have to do this every time it’s launched. I know which app I opened. 
+I know what it does. Just let me use it!
+
+Armed with this knowledge, make your splash screen work the right way. 
+Don’t waste the user’s time, 
+but give them something nice to look at while they wait.
+
+http://www.jianshu.com/p/cd6ef8d3d74d 
+启动页优化
+

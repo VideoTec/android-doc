@@ -1,0 +1,18 @@
+http://www.jianshu.com/p/456df1434739  矢量图教程
+
+矢量图配置 
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 12
+        /**
+         * 1020版本 2.0.0
+         */
+        versionName "1.1.001"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+布局中应用
+         
+app:srcCompat="@drawable/ic_circle_dynamic_character"
+

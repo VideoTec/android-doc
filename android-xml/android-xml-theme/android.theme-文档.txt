@@ -1,0 +1,47 @@
+https://developer.android.com/guide/topics/ui/themes.html
+
+定义样式
+	继承
+	样式属性
+	
+对 UI 应用样式和主题
+	对视图应用样式
+	对 Activity 或应用应用主题
+	根据平台版本选择主题
+	
+使用平台样式和主题
+
+正文
+
+样式是指为 View 或窗口指定外观和格式的属性集合。
+样式可以指定高度、填充、字体颜色、字号、背景色等许多属性。 
+样式是在与指定布局的 XML 不同的 XML 资源中进行定义。
+
+Android 中的样式与网页设计中层叠样式表的原理类似 — 您可以通过它将设计与内容分离。
+
+例如，通过使用样式，您可以将以下布局 XML：
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#00FF00"
+    android:typeface="monospace"
+    android:text="@string/hello" />
+	
+简化成这个样子：
+
+<TextView
+    style="@style/CodeFont"
+    android:text="@string/hello" />
+	
+布局 XML 中所有与样式有关的属性都已移除，
+并置于一个名为 CodeFont 的样式定义内，然后通过 style 属性加以应用。 
+您会在下文中看到对该样式的定义。
+
+主题是指对整个 Activity 或应用而不是对单个 View（如上例所示）应用的样式。 
+以主题形式应用样式时，
+Activity 或应用中的每个视图都将应用其支持的每个样式属性。 
+
+例如，
+您可以 Activity 主题形式应用同一 CodeFont 样式，
+之后该 Activity 内的所有文本都将具有绿色固定宽度字体。

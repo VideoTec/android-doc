@@ -11,3 +11,17 @@
         p.height = (int)(inchHeight * (float)displayMetrics.ydpi);
         mSurfaceview.setLayoutParams(p);
     }
+	
+------------------------------------------------
+xdpi / ydpi 取的值，不准确：
+------------------------------------------------
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        float xMulti = metrics.xdpi / DisplayMetrics.DENSITY_DEFAULT;
+        float yMulti = metrics.ydpi / DisplayMetrics.DENSITY_DEFAULT;
+		
+		vivo X510t 取得的值是：
+		xdpi: 160.421; ydpi: 159.895; density: 3.0
+		这里的值明显是错误的
+		
+		huawei nxt-al10 取的值是：
+		xdpi: 365.76; ydpi: 366.676; density: 3.0

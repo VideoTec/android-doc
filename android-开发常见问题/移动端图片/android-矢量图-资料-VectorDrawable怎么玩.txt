@@ -1,0 +1,12 @@
+http://www.jianshu.com/p/456df1434739
+
+从5.0(API等级21)开始，android开始支持矢量图了。
+
+那么如果我想往下兼容改怎么办呢？
+这个问题要放在以前的话，我会说github下就有你要的答案。
+但现在我不会这么说，因为前段时间Google升级了support library，官方向后兼容了矢量图的使用。
+要问兼容到哪个版本，
+我告诉你矢量图兼容到API7，
+矢量图动画兼容到API11(是不是已经满足了你的使用)
+
+compile 'com.android.support:appcompat-v7:23.2.0'
