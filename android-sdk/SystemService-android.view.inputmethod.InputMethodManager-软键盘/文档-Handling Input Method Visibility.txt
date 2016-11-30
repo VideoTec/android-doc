@@ -1,0 +1,19 @@
+https://developer.android.com/training/keyboard-input/visibility.html
+
+Develop | Training | Best Practices for User Input | Handling Keyboard Input
+
+When input focus moves into or out of an editable text field, 
+Android shows or hides the input method (such as the on-screen keyboard) as appropriate. 
+The system also makes decisions about how your UI and the text field appear above the input method. 
+
+For example, 
+when the vertical space on the screen is constrained, 
+the text field might fill all space above the input method. 
+
+For most apps, 
+these default behaviors are all that's needed.
+
+In some cases, though, 
+you might want to more directly control the visibility of the input method and 
+specify how you'd like your layout to appear when the input method is visible. 
+This lesson explains how to control and respond to the input method visibility.

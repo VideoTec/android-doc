@@ -1,4 +1,26 @@
-    http://blog.csdn.net/netwalk/article/details/17094407
+示例代码：
+        /**
+         * Start tracking the key code associated with the given event.  This
+         * can only be called on a key down.  It will allow you to see any
+         * long press associated with the key, and will result in
+         * {@link KeyEvent#isTracking} return true on the long press and up
+         * events.
+         *
+         * <p>This is only needed if you are directly dispatching events, rather
+         * than handling them in {@link Callback#onKeyDown}.
+         */
+        public void startTracking(KeyEvent event, Object target) {
+            if (event.getAction() != ACTION_DOWN) {
+                throw new IllegalArgumentException(
+                        "Can only start tracking on a down event");
+            }
+            if (DEBUG) Log.v(TAG, "Start trackingt in " + target + ": " + this);
+            mDownKeyCode = event.getKeyCode();
+            mDownTarget = target;
+        }
+	
+	
+	http://blog.csdn.net/netwalk/article/details/17094407
     Android项目中有不少地方需要对按键的长按操作进行 响应；
     例如长按物理菜单按键/音量上下按键等
     在Activity以及View中均有一个方法onKeyLongPress()；

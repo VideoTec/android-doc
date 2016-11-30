@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-sdk\android.view.KeyEvent\android.view.KeyEvent-startTracking-示例.txt

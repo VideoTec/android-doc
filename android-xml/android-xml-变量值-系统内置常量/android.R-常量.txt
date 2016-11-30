@@ -1,0 +1,6 @@
+参考：
+D:\doc\android\android-sdk\android.animation\android-动画资源-常量.txt
+
+android.R.anim.fade_in
+android.R.anim.fade_out
+overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

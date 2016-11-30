@@ -1,0 +1,17 @@
+这里，把 TextView 写成了 TextureView，造成，显示不出来，
+各种改参数。。。
+总是没有向这个标签上看一上眼。
+
+        <TextureView
+            android:id="@+id/vowifi_bottom_bar_edit"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="11.5dp"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"
+            android:text="输入..."
+            android:textColor="#ff0091"
+            android:textSize="15sp" />

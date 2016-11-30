@@ -1,0 +1,15 @@
+https://developer.android.com/guide/topics/resources/drawable-resource.html?hl=zh-cn#Shape
+
+形状可绘制对象
+这是在 XML 中定义的一般形状。
+
+文件位置：
+res/drawable/filename.xml
+文件名用作资源 ID。
+
+编译的资源数据类型：
+指向 GradientDrawable 的资源指针。
+
+资源引用：
+在 Java 中：R.drawable.filename
+在 XML 中：@[package:]drawable/filename

@@ -1,0 +1,24 @@
+event.startTracking();  注意这行代码
+
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (getApplicationInfo().targetSdkVersion
+                >= Build.VERSION_CODES.ECLAIR) {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.isTracking()
+                    && !event.isCanceled()) {
+                onBackPressed();
+                return true;
+            }
+        }
+        return false;
+    }
+	
+	    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getApplicationInfo().targetSdkVersion
+                    >= Build.VERSION_CODES.ECLAIR) {
+                event.startTracking();  注意这行代码
+            } else {
+                onBackPressed();
+            }
+            return true;
+        }

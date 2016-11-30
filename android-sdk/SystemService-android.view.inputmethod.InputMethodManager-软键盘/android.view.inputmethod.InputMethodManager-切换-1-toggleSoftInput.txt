@@ -3,7 +3,9 @@ http://developer.android.com/intl/zh-cn/reference/android/view/inputmethod/Input
 public void toggleSoftInput (int showFlags, int hideFlags)
 
 showFlags
-Provides additional operating flags. May be 0 or have the SHOW_IMPLICIT, SHOW_FORCED bit set.
+Provides additional operating flags. 
+May be 0 or have the SHOW_IMPLICIT, SHOW_FORCED bit set.
 
 hideFlags
-Provides additional operating flags. May be 0 or have the HIDE_IMPLICIT_ONLY, HIDE_NOT_ALWAYS bit set.
+Provides additional operating flags. 
+May be 0 or have the HIDE_IMPLICIT_ONLY, HIDE_NOT_ALWAYS bit set.

@@ -1,0 +1,2 @@
+D:\doc\android\android-sdk\android.view.MotionEvent\android.view.GestureDetector.txt
+D:\doc\android\android-sdk\android.view.MotionEvent\android.view.ScaleGestureDetector.txt

@@ -1,0 +1,35 @@
+参考：
+D:\doc\android\android-sdk\android.view.View\android.view.View-findViewById-返回空.txt
+
+引用者：
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/layout_session_chat_normal_bottom_bar_view"
+                layout="@layout/rf_session_chat_normal_bottom_bar_layout"
+                android:visibility="visible" />
+				
+被引用者： rf_session_chat_normal_bottom_bar_layout.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/layout_session_chat_normal_bottom_container"  这个会被 引用者定义的id所取代
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    android:baselineAligned="false"
+    android:minHeight="49dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_session_chat_show_public"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9.5dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="19.8dp"
+        android:src="@drawable/rf_img_session_public_menu"
+        android:visibility="gone" />

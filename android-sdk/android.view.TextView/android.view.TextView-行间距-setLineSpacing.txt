@@ -1,0 +1,24 @@
+参考：
+D:\doc\android\android-xml\android-xml-layout\view-Layout属性\TextView-行间距-lineSpacingExtra.txt
+
+源码：
+
+    /**
+     * Sets line spacing for this TextView.  Each line will have its height
+     * multiplied by <code>mult</code> and have <code>add</code> added to it.
+     *
+     * @attr ref android.R.styleable#TextView_lineSpacingExtra
+     * @attr ref android.R.styleable#TextView_lineSpacingMultiplier
+     */
+    public void setLineSpacing(float add, float mult) {
+        if (mSpacingAdd != add || mSpacingMult != mult) {
+            mSpacingAdd = add;
+            mSpacingMult = mult;
+
+            if (mLayout != null) {
+                nullLayouts();
+                requestLayout();
+                invalidate();
+            }
+        }
+    }

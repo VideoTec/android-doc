@@ -1,3 +1,14 @@
+示例：
+        <activity
+            android:name=".ui.session.activity.RFChatVoWifiOverlay"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+		
+https://developer.android.com/guide/topics/manifest/activity-element.html#wsoft
+android:windowSoftInputMode
+D:\doc\android\android-sdk\SystemService-android.view.inputmethod.InputMethodManager-软键盘\android-windowSoftInputMode.txt
+
 http://technicalsearch.iteye.com/blog/1967715
 
 Android定义了一个属性
@@ -41,7 +52,8 @@ windowSoftInputMode, 用它可以让程序控制活动主窗口调整的方式�
 当软键盘弹出时，要对主窗口调整屏幕的大小以便留出软键盘的空间。
 
 "adjustPan"：
-（平移模式：当输入框不会被遮挡时，该模式没有对布局进行调整，然而当输入框将要被遮挡时，窗口就会进行平移。也就是说，该模式始终是保持输入框为可见。）
+（平移模式：当输入框不会被遮挡时，该模式没有对布局进行调整，然而当输入框将要被遮挡时，窗口就会进行平移。
+也就是说，该模式始终是保持输入框为可见。）
 该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。
 相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。
 这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作

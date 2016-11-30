@@ -1,0 +1,20 @@
+https://developer.android.com/training/keyboard-input/visibility.html#ShowOnStart
+
+Show the Input Method On Demand
+If there is a method in your activity's lifecycle where you want to ensure that the input method is visible, 
+you can use the InputMethodManager to show it.
+
+For example, the following method takes a View in which the user should type something, 
+calls requestFocus() to give it focus, then showSoftInput() to open the input method:
+
+public void showSoftKeyboard(View view) {
+    if (view.requestFocus()) {
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    }
+}
+
+Note: Once the input method is visible, you should not programmatically hide it. 
+The system hides the input method when the user finishes the task in the text field or 
+the user can hide it with a system control (such as with the Back button).

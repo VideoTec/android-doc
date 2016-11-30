@@ -9,3 +9,43 @@ InputMethodService为我们的输入法创建了一个Dialog，
 当我们点击输入框时，
 系统会对当前的主窗口进行调整，
 以便留出相应的空间来显示该Dialog在底部，或者全屏
+
+https://developer.android.com/training/keyboard-input/visibility.html#ShowOnStart
+
+Specify How Your UI Should Respond
+When the input method appears on the screen, 
+it reduces the amount of space available for your app's UI. 
+The system makes a decision as to how it should adjust the visible portion of your UI, 
+but it might not get it right. 
+To ensure the best behavior for your app, 
+you should specify how you'd like the system to display your UI in the remaining space.
+
+To declare your preferred treatment in an activity, 
+use the android:windowSoftInputMode attribute in your manifest's <activity> element with one of the "adjust" values.
+
+For example, 
+to ensure that the system resizes your layout 
+to the available space—which ensures that all of your layout content is accessible 
+(even though it probably requires scrolling) — use "adjustResize":
+
+<application ... >
+    <activity
+        android:windowSoftInputMode="adjustResize" ... >
+        ...
+    </activity>
+    ...
+</application>
+
+You can combine the adjustment specification with the initial input method visibility specification from above:
+
+    <activity
+        android:windowSoftInputMode="stateVisible|adjustResize" ... >
+        ...
+    </activity>
+	
+Specifying "adjustResize" is important if your UI includes controls 
+that the user might need to access immediately after or while performing text input. 
+
+For example, 
+if you use a relative layout to place a button bar at the bottom of the screen, 
+using "adjustResize" resizes the layout so the button bar appears above the input method.

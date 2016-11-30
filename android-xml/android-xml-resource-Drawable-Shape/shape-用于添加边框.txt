@@ -1,0 +1,5 @@
+参考：
+D:\doc\android\android-xml\android-xml-layout\view-Layout属性\边框.txt
+
+D:\doc\android\android-xml\android-xml-layout\view-Layout属性\EditText-边框-使用-shape.txt
+D:\doc\android\android-xml\android-xml-layout\android.view-问题-添加边框的方法.txt

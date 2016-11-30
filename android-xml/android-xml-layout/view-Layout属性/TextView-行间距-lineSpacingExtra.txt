@@ -1,0 +1,26 @@
+http://blog.csdn.net/ccpat/article/details/45507751
+
+在布局XML中有两个参数可以对TextView的行间距进行设置。 
+分别为：
+
+Android:lineSpacingExtra 
+表示额外的行间距数值，单位通常为dp
+
+android:lineSpacingMultiplier 
+表示行间距的倍数，没有单位。
+如android:lineSpacingMultiplier=”1.2”
+
+android:lineSpacingExtra和android:lineSpacingMultiplier
+可以在一起对同一个TextView进行设置，
+同时使用时会先增加android:lineSpacingMultiplier设置的倍数，
+再加上android:lineSpacingExtra设置的额外的间距。
+
+setLineSpacing()原型为
+public void setLineSpacing(float add, float mult); 
+参数add表示要增加的间距数值，对应android:lineSpacingExtra参数。 
+参数mult表示要增加的间距倍数，对应android:lineSpacingMultiplier参数。
+
+http://blog.csdn.net/bufanni12/article/details/45505265
+Android:lineSpacingExtra这个属性是用来设置文字的行间距的。
+但是最近手机升级到了5.0系统，
+发现单行或者多行的最后一行的下边距少了一块

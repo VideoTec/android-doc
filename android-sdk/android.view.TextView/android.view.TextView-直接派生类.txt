@@ -1,0 +1,10 @@
+https://developer.android.com/reference/android/widget/TextView.html
+
+AppCompatTextView, 
+Button, 
+CheckedTextView, 
+Chronometer, 
+DigitalClock, 
+EditText, 
+RowHeaderView, 
+TextClock

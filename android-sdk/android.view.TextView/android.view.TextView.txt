@@ -1,0 +1,16 @@
+https://developer.android.com/reference/android/widget/TextView.html
+
+
+java.lang.Object
+   ↳	android.view.View
+ 	   ↳	android.widget.TextView
+	   
+Displays text to the user and optionally allows them to edit it. 
+A TextView is a complete text editor, 
+however the basic class is configured to not allow editing; 
+see EditText for a subclass that configures the text view for editing.
+
+To allow users to copy some or all of the TextView's value and paste it somewhere else, 
+set the XML attribute android:textIsSelectable to "true" or call setTextIsSelectable(true). 
+The textIsSelectable flag allows users to make selection gestures in the TextView, 
+which in turn triggers the system's built-in copy/paste controls.

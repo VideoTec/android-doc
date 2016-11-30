@@ -10,6 +10,7 @@ In the layout files you can call to the colors or styles:
 android:textColor="@color/titlecolor"
 
 系统常量：
+
 @android:color/white
 
 android.graphics.Color

@@ -1,0 +1,5 @@
+参考：
+D:\doc\android\android-studio\Android-Studio-Lint-代码检测工具-修改检测标准.txt
+D:\doc\android\android-xml\as-lint-[Accessibility] Missing `contentDescription` attribute on image.txt
+D:\doc\lang\Java\java-代码优化-检测-inspection\'if' statement can be simplified.txt
+D:\doc\android\android-sdk\lint\setOnClickListener-may produce 'java.lang.NullPointerException'.txt

@@ -7,12 +7,18 @@ java.lang.Object
    ↳	android.view.GestureDetector
    
 Class Overview
-Detects various gestures and events using the supplied MotionEvents. The GestureDetector.OnGestureListener callback will notify users when a particular motion event has occurred. This class should only be used with MotionEvents reported via touch (don't use for trackball events).
+Detects various gestures and events using the supplied MotionEvents. 
+The GestureDetector.OnGestureListener callback will notify users when a particular motion event has occurred. 
+This class should only be used with MotionEvents reported via touch (don't use for trackball events).
 
 To use this class:
 
-第一步：Create an instance of the GestureDetector for your View
-第二步：In the onTouchEvent(MotionEvent) method ensure you call onTouchEvent(MotionEvent). The methods defined in your callback will be executed when the events occur.
+第一步：
+Create an instance of the GestureDetector for your View
+
+第二步：
+In the onTouchEvent(MotionEvent) method ensure you call onTouchEvent(MotionEvent). 
+The methods defined in your callback will be executed when the events occur.
 
 http://www.cnblogs.com/qingblog/archive/2012/12/03/2799862.html
 很多时候，一个好的用户界面能够吸引用户的眼球。

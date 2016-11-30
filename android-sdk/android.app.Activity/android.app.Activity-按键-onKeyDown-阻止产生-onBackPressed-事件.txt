@@ -16,7 +16,9 @@ and send the user to the first item in the ViewPager.
 ------------------------
 正确做法：
 ------------------------
-As correctly stated in the comments by Jade Byfield, a slightly easier way to do this would be to use onBackPressed() in the Activity. This will only work in API levels 5+.
+As correctly stated in the comments by Jade Byfield, 
+a slightly easier way to do this would be to use onBackPressed() in the Activity. 
+This will only work in API levels 5+.
 
 @Override
 public void onBackPressed() {

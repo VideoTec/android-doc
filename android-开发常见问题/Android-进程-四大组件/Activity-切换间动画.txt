@@ -1,0 +1,42 @@
+
+默认切换动画：
+the default animation (Slide in from the right) 
+
+http://stackoverflow.com/questions/2651360/how-to-provide-animation-when-calling-another-activity-in-android
+
+更改切换动画
+
+----------------------------------------------------
+第一种方法
+----------------------------------------------------
+
+Intent myIntent = new Intent(context, MyActivity.class);
+myIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+context.startActivity(myIntent);
+
+FLAG_ACTIVITY_NO_ANIMATION 作用：
+prevent the default animation (Slide in from the right) 
+启动时的动画去掉了，关闭时的动画还在
+
+去掉默认动画后：
+then in your Activity you simply have to specify your own animation
+
+----------------------------------------------------
+第二种方法：
+----------------------------------------------------
+For apps targeting API level 5+ there is the Activities overridePendingTransition method
+
+使用方法：
+overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+----------------------------------------------------
+第三种方法：
+----------------------------------------------------
+As of JELLY_BEAN an alternative to using this（指：overridePendingTransition） with starting activities 
+is to supply the desired animation information 
+through a ActivityOptions bundle to startActivity(Intent, Bundle) or a related function. 
+
+This allows you to specify a custom animation 
+even when starting an activity from outside the context of the current top activity.
+
+https://developer.android.com/reference/android/app/ActivityOptions.html

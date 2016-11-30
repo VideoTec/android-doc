@@ -1,0 +1,69 @@
+
+        mVoWifiBottomBarEditor = findViewById(R.id.vowifi_bottom_bar_edit);
+        mVoWifiBottomBarEditor.setOnClickListener(this);
+		
+		下面这种写法也提示
+		
+        mVoWifiBottomBarEditor = (TextView) findViewById(R.id.vowifi_bottom_bar_edit);
+        mVoWifiBottomBarEditor.setOnClickListener(this);
+		
+提示：
+Method invocation 'mVoWifiBottomBarEditor.setOnClickListener(this)' may produce 'java.lang.NullPointerException'
+
+Method invocation 'mVoWifiBottomBarEditor.setOnClickListener(this)' may produce 'java.lang.NullPointerException' less... (Ctrl+F1) 
+
+This inspection analyzes method control and data flow to report possible conditions that are always true or false, 
+expressions whose value is statically proven to be constant, and situations that can lead to nullability contract violations.
+
+Variables, method parameters and return values 
+marked as @Nullable or @NotNull are treated as nullable (or not-null, respectively) 
+and used during the analysis to check nullability contracts, e.g. report possible NullPointerException errors.
+
+More complex contracts can be defined using @Contract annotation, for example:
+@Contract("_, null -> null") — method returns null if its second argument is null 
+@Contract("_, null -> null; _, !null -> !null") — method returns null if its second argument is null and not-null otherwise
+@Contract("true -> fail") — a typical assertFalse method which throws an exception if true is passed to it 
+
+The inspection can be configured to use custom @Nullable
+@NotNull annotations (by default the ones from annotations.jar will be used)
+		
+分析：
+    @Nullable
+    public View findViewById(@IdRes int id) {
+        return getDelegate().findViewById(id);
+    }
+	为什么有地方，提示，有的地方不提示？提示的依据是什么？
+	
+解决方法一：
+http://stackoverflow.com/questions/36303638/method-invocation-fab-setonclicklistenernew-view-onclicklistener-override
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    if (fab != null)
+    fab.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                 .setAction("Action", null).show();
+           }
+     });
+
+解决方法二：
+有用的方法是
+1. 按行除警告 //noinspection ConstantConditions
+2. 按方法除警告 @SuppressWarnings("ConstantConditions")
+
+参考：
+http://stackoverflow.com/questions/31931812/suppress-potential-nullpointerexception-in-android-studio
+Android Studio doesn't offer any suppression option when I hit alt + enter, 
+just the options to add a (useless) null check.
+	 
+http://stackoverflow.com/questions/30113709/nullpointerexception-warning-on-getview-inside-onactivitycreated-onstart-onvie
+
+不管用
+
+@SuppressWarnings({"NullableProblems"})
+public Object myMethod(Object isNeverNull){
+    return isNeverNull.classMethod();
+}
+
+//noinspection NullableProblems
+datpurchased = (EditText) getView().findViewById(R.id.datepurchased); //datpurchased defined as instance variable in the class

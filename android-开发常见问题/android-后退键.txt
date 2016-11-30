@@ -1,0 +1,3 @@
+参考：
+D:\doc\android\android-sdk\android.app.Activity\android.app.Activity-按键-onKeyDown.txt
+D:\doc\android\android-sdk\android.view.KeyEvent\android.view.KeyEvent.txt

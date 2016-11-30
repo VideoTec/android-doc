@@ -1,0 +1,3 @@
+D:\doc\android\android-开发常见问题\Android-进程-四大组件\Activity-切换间动画.txt
+D:\doc\android\android-sdk\android.animation\android.view.animation.txt
+D:\doc\android\android-xml\android-xml-resource-动画\xml-attr-android.view.animation.Animation.txt

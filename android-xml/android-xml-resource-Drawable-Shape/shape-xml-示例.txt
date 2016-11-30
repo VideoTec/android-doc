@@ -1,0 +1,20 @@
+边框： 
+
+drawable/border.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke android:width="3dp"
+        android:color="#4799e8" />
+    <solid android:color="@android:color/transparent" />
+    <padding android:left="5dp"/>
+</shape>
+
+使用方法：
+
+    <EditText
+        android:layout_width="500dp"
+        android:layout_height="40dp"
+        android:hint="提示语"
+        android:background="@drawable/border"/>

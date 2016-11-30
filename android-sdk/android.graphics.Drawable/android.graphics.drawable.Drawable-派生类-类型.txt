@@ -8,7 +8,8 @@ LayerDrawable,
 NinePatchDrawable, 
 PictureDrawable, 
 RotateDrawable, RoundedBitmapDrawable, 
-ScaleDrawable, ShapeDrawable, 
+ScaleDrawable, 
+ShapeDrawable, 参考：D:\doc\android\android-xml\android-xml-resource-Drawable-Shape\shape-android.graphics.ShapeDrawable.txt 
 VectorDrawable
 
 间接派生类

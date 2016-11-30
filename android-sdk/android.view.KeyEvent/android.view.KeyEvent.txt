@@ -16,16 +16,51 @@ java.lang.Object
 Class Overview
 Object used to report key and button events.
 
-Each key press is described by a sequence of key events. A key press starts with a key event with ACTION_DOWN. If the key is held sufficiently long that it repeats, then the initial down is followed additional key events with ACTION_DOWN and a non-zero value for getRepeatCount(). The last key event is a ACTION_UP for the key up. If the key press is canceled, the key up event will have the FLAG_CANCELED flag set.
+Each key press is described by a sequence of key events. 
+A key press starts with a key event with ACTION_DOWN. 
+If the key is held sufficiently long that it repeats, 
+then the initial down is followed additional key events with ACTION_DOWN and a non-zero value for getRepeatCount(). 
+The last key event is a ACTION_UP for the key up. 
+If the key press is canceled, the key up event will have the FLAG_CANCELED flag set.
 
-Key events are generally accompanied by a key code (getKeyCode()), scan code (getScanCode()) and meta state (getMetaState()). Key code constants are defined in this class. Scan code constants are raw device-specific codes obtained from the OS and so are not generally meaningful to applications unless interpreted using the KeyCharacterMap. Meta states describe the pressed state of key modifiers such as META_SHIFT_ON or META_ALT_ON.
+Key events are generally accompanied by a key code (getKeyCode()), 
+scan code (getScanCode()) and meta state (getMetaState()). 
+Key code constants are defined in this class. 
+Scan code constants are raw device-specific codes obtained from the OS 
+and so are not generally meaningful to applications unless interpreted using the KeyCharacterMap. 
+Meta states describe the pressed state of key modifiers such as META_SHIFT_ON or META_ALT_ON.
 
-Key codes typically correspond one-to-one with individual keys on an input device. Many keys and key combinations serve quite different functions on different input devices so care must be taken when interpreting them. Always use the KeyCharacterMap associated with the input device when mapping keys to characters. Be aware that there may be multiple key input devices active at the same time and each will have its own key character map.
+Key codes typically correspond one-to-one with individual keys on an input device. 
+Many keys and key combinations serve quite different functions 
+on different input devices so care must be taken when interpreting them. 
+Always use the KeyCharacterMap associated with the input device when mapping keys to characters. 
+Be aware that there may be multiple key input devices active at the same time and 
+each will have its own key character map.
 
-As soft input methods can use multiple and inventive ways of inputting text, there is no guarantee that any key press on a soft keyboard will generate a key event: this is left to the IME's discretion, and in fact sending such events is discouraged. You should never rely on receiving KeyEvents for any key on a soft input method. In particular, the default software keyboard will never send any key event to any application targetting Jelly Bean or later, and will only send events for some presses of the delete and return keys to applications targetting Ice Cream Sandwich or earlier. Be aware that other software input methods may never send key events regardless of the version. Consider using editor actions like IME_ACTION_DONE if you need specific interaction with the software keyboard, as it gives more visibility to the user as to how your application will react to key presses.
+As soft input methods can use multiple and inventive ways of inputting text, 
+there is no guarantee that any key press on a soft keyboard will generate a key event: 
+this is left to the IME's discretion, and in fact sending such events is discouraged. 
+You should never rely on receiving KeyEvents for any key on a soft input method. 
 
-When interacting with an IME, the framework may deliver key events with the special action ACTION_MULTIPLE that either specifies that single repeated key code or a sequence of characters to insert.
+In particular, 
+the default software keyboard will never send any key event to any application 
+targetting Jelly Bean or later, 
+and will only send events for some presses of the delete and return keys to applications 
+targetting Ice Cream Sandwich or earlier. 
 
-In general, the framework cannot guarantee that the key events it delivers to a view always constitute complete key sequences since some events may be dropped or modified by containing views before they are delivered. The view implementation should be prepared to handle FLAG_CANCELED and should tolerate anomalous situations such as receiving a new ACTION_DOWN without first having received an ACTION_UP for the prior key press.
+Be aware that other software input methods may never send key events regardless of the version. 
+Consider using editor actions like IME_ACTION_DONE if you need specific interaction with the software keyboard, 
+as it gives more visibility to the user as to how your application will react to key presses.
+
+When interacting with an IME, 
+the framework may deliver key events with the special action ACTION_MULTIPLE 
+that either specifies that single repeated key code or a sequence of characters to insert.
+
+In general, the framework cannot guarantee that 
+the key events it delivers to a view always constitute complete key sequences 
+since some events may be dropped or modified by containing views before they are delivered. 
+The view implementation should be prepared to handle FLAG_CANCELED and 
+should tolerate anomalous situations such as receiving a new ACTION_DOWN 
+without first having received an ACTION_UP for the prior key press.
 
 Refer to InputDevice for more information about how different kinds of input devices and sources represent keys and buttons.

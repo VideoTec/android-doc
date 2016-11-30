@@ -1,0 +1,21 @@
+参考：
+D:\doc\android\android-sdk\lint\setOnClickListener-may produce 'java.lang.NullPointerException'.txt
+
+有用的方法是
+1. 按行除警告 //noinspection ConstantConditions
+2. 按方法除警告 @SuppressWarnings("ConstantConditions")
+
+参考：
+http://stackoverflow.com/questions/31931812/suppress-potential-nullpointerexception-in-android-studio
+Android Studio doesn't offer any suppression option when I hit alt + enter, 
+just the options to add a (useless) null check.
+
+示例图：android-lint-@SuppressLint-自动添加抑制警告代码-alt-enter.png
+
+inspection[英][ɪnˈspekʃn] [美][ɪnˈspɛkʃən]
+n.检查；检验；视察；检阅
+
+inspection 'Constant conditions & exceptions' options
+Suppress for class
+Suppress for method
+Suppress for statement

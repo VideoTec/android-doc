@@ -1,0 +1,4 @@
+https://developer.android.com/reference/android/widget/TextView.html#attr_android:hint
+
+android:textColorHint
+android:hint

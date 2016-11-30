@@ -1,0 +1,4 @@
+编译没出错，说明，布局文件里，确实有这个值。
+
+1. 因为 layout-include 的原因：
+D:\doc\android\android-xml\android-xml-layout\android-layout-重用-include-id-引用者定义的id取代.txt

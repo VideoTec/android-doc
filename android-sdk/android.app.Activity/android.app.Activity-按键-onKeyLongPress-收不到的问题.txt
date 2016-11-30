@@ -1,3 +1,5 @@
+参考：
+D:\doc\android\android-sdk\android.view.KeyEvent\android.view.KeyEvent-startTracking.txt
 
     /**
      * Default implementation of {@link KeyEvent.Callback#onKeyLongPress(int, KeyEvent)

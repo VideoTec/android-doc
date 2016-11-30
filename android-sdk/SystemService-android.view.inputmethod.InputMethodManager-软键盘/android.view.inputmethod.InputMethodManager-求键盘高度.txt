@@ -1,0 +1,31 @@
+http://stackoverflow.com/questions/13534365/getting-the-dimensions-of-the-soft-keyboard
+
+myLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+                @Override
+                public void onGlobalLayout() {
+                    // TODO Auto-generated method stub
+                    Rect r = new Rect();
+                    parent.getWindowVisibleDisplayFrame(r);
+
+                    int screenHeight = parent.getRootView().getHeight();
+                    int heightDifference = screenHeight - (r.bottom - r.top);
+                    Log.d("Keyboard Size", "Size: " + heightDifference);
+
+                    //boolean visible = heightDiff > screenHeight / 3;
+                }
+            });
+			
+We only resize views with the keyboard, so we could use this.
+
+http://stackoverflow.com/questions/16788959/is-there-any-way-in-android-to-get-the-height-of-virtual-keyboard-of-device
+
+root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
+     public void onGlobalLayout(){
+           int heightDiff = root.getRootView().getHeight()- root.getHeight();
+           // IF height diff is more then 150, consider keyboard as visible.  
+        }
+  });
+  
+	
+i think this only works when android:windowSoftInputMode="adjustResize" 
