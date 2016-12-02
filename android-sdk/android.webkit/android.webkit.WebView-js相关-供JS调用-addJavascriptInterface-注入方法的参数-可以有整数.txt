@@ -1,0 +1,40 @@
+    
+	java 注入的方法，有整数参数：
+	
+	class RFJSInterface {
+        @SuppressWarnings("unused")
+        @JavascriptInterface
+        public void onWebPageInfo(final String infoJson, final int shareTo) {
+            LogFeinno.i(TAG, "[from js: 网页分享]" + infoJson);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    shareWebContent(infoJson, shareTo);
+                }
+            });
+        }
+		
+	js 中的调用
+	
+    function fetchWebPageInfo(shareTo) {
+        var pageInfo = {};
+
+        if (typeof nickname === 'string' && nickname) pageInfo.author = nickname;
+        else pageInfo.author = '';
+
+        if (typeof title === 'string' && title) pageInfo.title = title;
+        else pageInfo.title = '';
+
+        if (typeof locations === 'string' && locations) pageInfo.bodyLink = locations;
+        else pageInfo.bodyLink = '';
+
+        if (typeof content === 'string' && content) pageInfo.description = content;
+        else pageInfo.description = getMetaData('description');
+
+        if (typeof imgsrc === 'string' && imgsrc) pageInfo.thumbLink = imgsrc;
+        else pageInfo.thumbLink = getImg();
+
+        var json = JSON.stringify(pageInfo);
+        rfNativeObj.onWebPageInfo(json, shareTo);
+        console.log('[javascript] 返回的网页信息: ' + json);
+    }

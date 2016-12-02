@@ -1,3 +1,13 @@
+https://developer.android.com/studio/write/draw9patch.html
+Create Resizable Bitmaps (9-Patch files)
+
+A normal PNG file (*.png) will be loaded 
+with an empty one-pixel border added around the image, 
+in which you can draw the stretchable patches and content area. 
+
+A previously saved NinePatch file (*.9.png) will be loaded as-is, 
+with no drawing area added, because it already exists.
+
 http://developer.android.com/intl/zh-cn/tools/help/draw9patch.html
 
 E:\android-sdk-windows\tools\draw9patch.bat
@@ -7,4 +17,8 @@ that allows you to create bitmap images
 that automatically resize to accommodate the contents of the view and the size of the screen. 
 Selected parts of the image are scaled 
 horizontally or vertically based indicators drawn within the image.
+
+放在资料文件的那人文件夹下？
+存在，drawable，目录下就可以了 [如果处理不当，会被拉伸的]
+D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch-被拉伸的问题.txt
 

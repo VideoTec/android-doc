@@ -1,0 +1,13 @@
+drawable
+drawable-hdpi
+drawable-nodpi
+drawable-xhdpi
+drawable-xxhdpi
+
+A set of six generalized densities:
+ldpi (low) ~120dpi
+mdpi (medium) ~160dpi   ===  dp  标准
+hdpi (high) ~240dpi
+xhdpi (extra-high) ~320dpi
+xxhdpi (extra-extra-high) ~480dpi
+xxxhdpi (extra-extra-extra-high) ~640dpi

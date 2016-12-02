@@ -1,0 +1,15 @@
+
+-----------------------------------------------
+com.google.json.JsonObject
+-----------------------------------------------
+
+JsonObject json = new JsonObject();
+json.addProperty("Version", "2016082217122365535");
+json.addProperty("Accout", "sip:+86" + number + "chinamobile.com");
+json.addProperty("Token",
+		RFLoginMgr.getInstance().getToken(RFConfig.AS_SourceId_Profile));
+connection.getOutputStream().write(json.toString().getBytes());
+
+结果：
+
+{"Version":"2016082217122365535","Accout":"sip:+8618410079483chinamobile.com","Token":"8484010001310200364D44644552554531515455774F4463784F4552454E6A4D7840687474703A2F2F3231382E3230352E3131352E3232303A31303038362F03000800000000051F67F804000130FF0020D9ADF153D968E61FE2958A3CC9C5E6874BF03DCDFB02BEF6ED4B03D41FA8147A"}

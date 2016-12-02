@@ -10,6 +10,18 @@ field can be converted to a local variable suppress
 'getDrawable(int)' is deprecated
 @SuppressWarnings( "deprecation" )
 
+Method invocation 'mVoWifiBottomBarEditor.setOnClickListener(this)' may produce 'java.lang.NullPointerException'
+1. 按行除警告 //noinspection ConstantConditions
+2. 按方法除警告 @SuppressWarnings("ConstantConditions")
+
+@SuppressWarnings("deprecation")
+或者
+//noinspection deprecation
+manager.setText(mWebView.getUrl());
+
+//noinspection ResultOfMethodCallIgnored
+new File(imgDir).mkdirs();
+
 --------------------------
 例子： @SuppressWarnings("unused")
 --------------------------

@@ -1,0 +1,5 @@
+AAPT err(Facade for 2069612351): ERROR: 9-patch image D:\work\androidrongflysip\rongflymqtt\src\main\res\drawable\rf_vowifi_chat_editor_bk.9.png malformed.
+AAPT err(Facade for 2069612351):        No marked region found along edge.
+AAPT err(Facade for 2069612351):        Found along left edge.
+
+原因是，只切两个边。

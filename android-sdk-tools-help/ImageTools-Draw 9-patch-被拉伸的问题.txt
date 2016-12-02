@@ -1,0 +1,5 @@
+直接把 .9 图放在， drawable 目录下，
+处理不当会被拉伸
+
+参考：
+D:\doc\android\android-xml\android-屏幕密度-res-目录下.txt

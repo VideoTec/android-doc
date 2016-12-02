@@ -1,4 +1,9 @@
 参考：
+
+总目录：
+D:\doc\android\android-开发常见问题\移动端图片\android-图片.txt
+
+其它
 D:\doc\android\android-xml\android-xml-resource-mipmap\mipmap-官方文档.txt
 D:\doc\android\android-sdk-tools-help\Image - Vector Asset Studio.txt 关于矢量图
 D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch.txt

@@ -2,6 +2,9 @@
 D:\doc\android\android-OutOfMemoryError\OutOfMemoryError-图片相关.txt
 D:\doc\android\android-sdk\android.graphics.Drawable\android.graphics.drawable.VectorDrawable.txt
 D:\doc\android\android-xml\android-xml-resource-mipmap\mipmap-官方文档.txt
+D:\doc\android\android-xml\android-图片.txt
+D:\doc\android\android-xml\android-屏幕密度-res-目录下.txt
 
 D:\doc\android\android-sdk-tools-help\Image Asset Studio.txt
 D:\doc\android\android-sdk-tools-help\Image - Vector Asset Studio.txt
+D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch.txt
