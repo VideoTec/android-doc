@@ -1,4 +1,105 @@
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
+字符串开头是 " 不是 { 造成了问题
+
+-------------------------------------
+16.12.05 第二次出现
+-------------------------------------
+出错的代码：public void toJson(JsonElement jsonElement, JsonWriter writer)
+
+    private void setNavHeader(JsonElement data) {
+        RFH5NavigationBarData barData = new Gson().fromJson(
+                data,
+                RFH5NavigationBarData.class);
+				
+试着改成 public <T> T fromJson(String json, Class<T> classOfT)
+这样改是正确的，还出错，是因为，下层 left, 对象，还是字符串，不是对象
+
+    private void setNavHeader(JsonElement data) {
+        RFH5NavigationBarData barData = new Gson().fromJson(
+                data.getAsString(),
+                RFH5NavigationBarData.class);
+				
+完整的数据：
+
+{"action":"setH5NavigationBar","data":"{\"left\":\"{\\\"code\\\":\\\"goBack\\\",\\\"type\\\":2,\\\"key\\\":\\\"取消\\\",\\\"color\\\":\\\"\\\",\\\"script\\\":\\\"window.clientInterface.navigationBarFuncs.goBack\\\"}\",\"title\":\"{\\\"type\\\":1,\\\"key\\\":\\\"投票\\\",\\\"color\\\":\\\"#010101\\\"}\",\"color\":\"#ff516a\"}"}
+
+RFH5NavigationBarData.class 类源码：
+
+/**
+ * h5 设置浏览器导航头的数据
+ * Created by wangxiangfx on 2016/12/5.
+ */
+public class RFH5NavigationBarData {
+    public static class CommonData {
+        public int type;
+        public String key;
+        public String callBack;
+        public String color;
+        public String code;
+        public String status; //disable enable
+    }
+    public CommonData left;
+    public CommonData right;
+    public CommonData title;
+    public String color;
+}
+
 异常信息：
+    Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at path $
+       at com.google.gson.internal.bind.JsonTreeReader.expect(JsonTreeReader.java:162)
+       at com.google.gson.internal.bind.JsonTreeReader.beginObject(JsonTreeReader.java:87)
+       at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+       at com.google.gson.Gson.fromJson(Gson.java:887) 
+       at com.google.gson.Gson.fromJson(Gson.java:952) 
+       at com.google.gson.Gson.fromJson(Gson.java:925) 
+       at com.feinno.rongfly.ui.browser.RFBrowserActivity.setNavHeader(RFBrowserActivity.java:1358) 
+	   
+查看JS代码：
+
+		var param = {};
+
+		// left
+		if (data.left) {
+		  // for (var i=0;i<data.left.length;i++) {
+		  //   var left = data.left[i];
+		  var left = data.left;
+			if (left.code) {
+			  !self.navigationBarFuncs[left.code] && left.callBack && (self.navigationBarFuncs[left.code] = left.callBack);
+			  //
+			  left.callBack && (delete left.callBack);
+			  //
+			  self.navigationBarFuncs[left.code] && (left.script = 'window.clientInterface.navigationBarFuncs.' + left.code);
+			}
+		  // }
+		  param.left = JSON.stringify(data.left);  【重点】这里是转成字符串了，不是对象了
+		}
+		
+总结：
+		{obj:{v1:1}}
+		{obj:"{v1:1}"}  
+		
+		结合下面两个类
+		
+		class C1 {
+			String obj;
+		}
+		class C2 {
+			static class Obj {
+				String v1;
+			}
+			Obj obj;
+		}
+		class C3 {
+		    JsonElement obj;
+		}
+		
+		第一种情况：
+		new Gson().fromJson({obj:"{v1:1}"}, C3.class); 得到的 obj
+		new Gson().fromJson({obj:"{v1:1}"}, C1.class); 得到的 obj
+	   
+-------------------------------------
+异常信息：
+-------------------------------------
 Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 10
 at com.google.gson.stream.JsonReader.expect(JsonReader.java:339)
 at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:322)

@@ -1,0 +1,18 @@
+// IRFService.aidl
+package com.feinno.androidprotocol;
+parcelable FtProtocolNotify;
+
+// IRFMainService.aidl
+import com.feinno.androidprotocol.FtProtocolNotify;
+
+实现：
+        @Override
+        public void onReceivedNotify(final FtProtocolNotify notify) throws RemoteException {
+            mHandle.post(new Runnable() {
+                @Override
+                public void run() {
+                    LogFeinno.e(TAG, "onReceive notify = " + notify);
+                    RFCoreManager.getInstance().onReceivedNotify(notify);
+                }
+            });
+        }

@@ -1,0 +1,11 @@
+https://zhidao.baidu.com/question/367521754796980764.html
+
+当Activity彻底运行起来之后回调onPostCreate方法，
+从官方解释可以看出 
+"Called when activity start-up is complete 
+(after onStart() and onRestoreInstanceState(Bundle) have been called)."
+
+不过这些理论的东西，需要实践，
+可以写一个类继承Activity，然后重写里面的所有方法，
+里面可以写上一个System.out.println()，这样运行之后，
+查看控制台的信息，就可以直观的看到activity的生命周期。

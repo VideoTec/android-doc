@@ -1,0 +1,32 @@
+    private void testGson() {
+        try {
+            String jsonStr = "{\"obj\":\"{\"v1\":1}\"}";
+            C3 c3 = new Gson().fromJson(jsonStr, C3.class);
+            C1 c1 = new Gson().fromJson(jsonStr, C1.class);
+            Log.i(TAG, "c3: " + c3.obj.getAsString());
+            Log.i(TAG, "c1: " + c1.obj);
+        } catch (Exception e) {
+            Log.e(TAG, "解析JSON错误", e);
+        }
+    }
+	
+	正确的写法：	
+            String jsonStr = "{\"obj\":\"{\\\"v1\\\":1}\"}";
+			【理解】JSON 中的转义符
+	
+异常：
+
+	 Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 12 path $.obj
+    at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1573)
+    at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:495)
+    at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:418)
+    at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:190)
+    at com.google.gson.Gson.fromJson(Gson.java:810)
+    at com.google.gson.Gson.fromJson(Gson.java:775) 
+    at com.google.gson.Gson.fromJson(Gson.java:724) 
+    at com.google.gson.Gson.fromJson(Gson.java:696) 
+    at com.example.wangxiangfx.myapplication.MainActivity$override.testGson(MainActivity.java:148) 
+    at com.example.wangxiangfx.myapplication.MainActivity$override.onToast(MainActivity.java:181) 
+    at com.example.wangxiangfx.myapplication.MainActivity$override.access$dispatch(MainActivity.java) 
+    at com.example.wangxiangfx.myapplication.MainActivity.onToast(MainActivity.java:0) 
+    at java.lang.reflect.Method.invoke(Native Method) 
