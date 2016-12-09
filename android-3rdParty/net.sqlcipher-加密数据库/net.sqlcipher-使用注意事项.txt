@@ -4,7 +4,15 @@ must occur before any other database operation.
 
 第二点：添加资源文件
 assets/icudt46l.zip
+另一种方法：通过 gradle 指定
+    compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
+	就不用指定了
+
 
 第二点：设置密码
 MyDatabaseHelper dbHelper = new MyDatabaseHelper(this, "demo.db", null, 1);
 db = dbHelper.getWritableDatabase("secret_key");
+
+第四点：权限问题：
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

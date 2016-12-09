@@ -1,0 +1,49 @@
+   @TargetApi(Build.VERSION_CODES.M)
+    private void openFetionDB() {
+        String[] permissions = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        requestPermissions(permissions, 2);
+        try {
+            File databaseFile = getDatabasePath("/sdcard/fetion2.db");
+            File databaseFileDes = getDatabasePath("/sdcard/fetion2-des.db");
+            databaseFileDes.mkdirs();
+            databaseFileDes.delete();
+            if (databaseFile.exists()) {
+                SQLiteDatabase database =
+                        SQLiteDatabase.openOrCreateDatabase(databaseFile, "chinasofti", null);
+                SQLiteDatabase databaseDes =
+                        SQLiteDatabase.openOrCreateDatabase(databaseFileDes, "", null);
+                Cursor tables = database.rawQuery(
+                        "SELECT name FROM sqlite_master WHERE type='table'",
+                        null);
+                if (tables.moveToFirst()) {
+                    while (!tables.isAfterLast()) {
+                        String tableName = tables.getString(0);
+                        Log.i(TAG, "表: " + tableName);
+                        Cursor columns = database.query(
+                                tableName, null, null, null, null, null, null);
+                        int index = 0;
+                        for (String columnName : columns.getColumnNames()) {
+                            Log.i(TAG, "列 " + index + ": " + columnName);
+                            index ++;
+                        }
+                        tables.moveToNext();
+                    }
+                }
+            } else {
+                Log.i(TAG, "数据库文件不存在");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "读数据库异常", e);
+        }
+    }
+	
+	枚举所有表：
+	Cursor tables = database.rawQuery(
+			"SELECT name FROM sqlite_master WHERE type='table'", null);
+	tables.getString(0)
+			
+	枚举表中所有列：
+	Cursor columns = database.query(
+			tableName, null, null, null, null, null, null);
+	columns.getColumnNames()
+	

@@ -1,0 +1,115 @@
+-------------------------------------------------------------
+SwipeBackLayout.java 监听drag事件
+mDragHelper = ViewDragHelper.create(this, new ViewDragCallback());
+-------------------------------------------------------------
+
+    private class ViewDragCallback extends ViewDragHelper.Callback {
+        private boolean mIsScrollOverValid;
+
+        @Override
+        public boolean tryCaptureView(View view, int i) {
+            boolean ret = mDragHelper.isEdgeTouched(ViewDragHelper.EDGE_LEFT, i);
+            if (ret) {
+                if (mListeners != null && !mListeners.isEmpty()) {
+                    for (SwipeListener listener : mListeners) {
+                        listener.onEdgeTouch();
+                    }
+                }
+                mIsScrollOverValid = true;
+            }
+            return ret;
+        }
+
+        @Override
+        public int getViewHorizontalDragRange(View child) {
+            return mTrackingEdge;
+        }
+
+        @Override
+        public int getViewVerticalDragRange(View child) {
+            return 0;
+        }
+
+        @Override
+        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+            super.onViewPositionChanged(changedView, left, top, dx, dy);
+            mScrollPercent = Math.abs((float) left / (mContentView.getWidth() /*+ mShadowLeft.getIntrinsicWidth()*/));
+            mContentLeft = left;
+            invalidate();
+            if (mScrollPercent < mScrollThreshold && !mIsScrollOverValid) {
+                mIsScrollOverValid = true;
+            }
+
+            if (mListeners != null && !mListeners.isEmpty()) {
+                for (SwipeListener listener : mListeners) {
+                    listener.onScroll(mScrollPercent, mContentLeft);
+                }
+            }
+            if (mScrollPercent >= 1) {
+                if (!mActivity.isFinishing()){
+                    if (mListeners != null && !mListeners.isEmpty()
+                            && mScrollPercent >= mScrollThreshold && mIsScrollOverValid) {
+                        mIsScrollOverValid = false;
+                        for (SwipeListener listener : mListeners) {
+                            listener.onScrollToClose();
+                        }
+                    }
+                    mActivity.finish();
+                }
+            }
+
+
+        }
+
+        @Override
+        public void onViewReleased(View releasedChild, float xvel, float yvel) {
+            final int childWidth = releasedChild.getWidth();
+
+            int left = 0, top = 0;
+            //判断释放以后是应该滑到最右边(关闭)，还是最左边（还原）
+            left = xvel > 0 || xvel == 0 && mScrollPercent > mScrollThreshold ? childWidth
+                    + mShadowLeft.getIntrinsicWidth() + OVERSCROLL_DISTANCE : 0;
+
+
+            mDragHelper.settleCapturedViewAt(left, top);
+            invalidate();
+        }
+
+        @Override
+        public int clampViewPositionHorizontal(View child, int left, int dx) {
+            return Math.min(child.getWidth(), Math.max(left, 0));
+        }
+
+    }
+	
+-------------------------------------------------------------
+SwipeBackLayout.java SwipeListener 监听器
+    /**
+     * The set of listeners to be sent events through.
+     */
+    private List<SwipeListener> mListeners;
+	
+接口实现：SwipeListener
+-------------------------------------------------------------
+
+
+    @Override
+    public void onScroll(float percent, int px) {
+        if (Build.VERSION.SDK_INT>11){
+            SwipeBackPage page = SwipeBackHelper.getPrePage(curPage);
+            if (page!=null){
+                page.getSwipeBackLayout().setX(Math.min(-offset * Math.max(1 - percent,0)+DEFAULT_OFFSET,0));
+                if (percent == 0){
+                    page.getSwipeBackLayout().setX(0);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onScrollToClose() {
+        SwipeBackPage page = SwipeBackHelper.getPrePage(curPage);
+        if (Build.VERSION.SDK_INT>11) {
+            if (page != null) page.getSwipeBackLayout().setX(0);
+        }
+    }

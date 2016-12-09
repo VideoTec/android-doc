@@ -1,0 +1,14 @@
+例子：
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SwipeBackHelper.onCreate(this);
+        SwipeBackHelper.getCurrentPage(this)
+                .setSwipeBackEnable(true)
+                .setSwipeSensitivity(0.5f)
+                .setSwipeRelateEnable(true)
+                .setSwipeRelateOffset(300)
+                .setSwipeEdgePercent(0.1f)//可滑动的范围。百分比。0.1表示为左边10%的屏幕
+                .setClosePercent(0.8f)//触发关闭Activity百分比
+                .setSwipeSensitivity(0.5f);//对横向滑动手势的敏感程度。0为迟钝 1为敏感,0.5f适中灵敏度

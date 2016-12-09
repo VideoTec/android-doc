@@ -1,3 +1,5 @@
+android.permission.WRITE_EXTERNAL_STORAGE 有了写权限，就不用申请读权限了
+
 http://developer.android.com/intl/zh-cn/reference/android/Manifest.permission.html#WRITE_EXTERNAL_STORAGE
 
 public static final String WRITE_EXTERNAL_STORAGE
@@ -5,9 +7,12 @@ public static final String WRITE_EXTERNAL_STORAGE
 Added in API level 4
 Allows an application to write to external storage.
 
-Note: If both your minSdkVersion and targetSdkVersion values are set to 3 or lower, the system implicitly grants your app this permission. If you don't need this permission, be sure your targetSdkVersion is 4 or higher.
+Note: If both your minSdkVersion and targetSdkVersion values are set to 3 or lower, 
+the system implicitly grants your app this permission. 
+If you don't need this permission, be sure your targetSdkVersion is 4 or higher.
 
-Starting in API level 19（4.4 KitKat）, this permission is not required to read/write files in your application-specific directories returned by getExternalFilesDir(String) and getExternalCacheDir().
+Starting in API level 19（4.4 KitKat）, 
+this permission is not required to read/write files in your application-specific directories returned by getExternalFilesDir(String) and getExternalCacheDir().
 
 Protection level: dangerous
 

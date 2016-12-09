@@ -1,0 +1,9 @@
+例子一：
+adb logcat -s RF_Browser_RFBrowserActivity:V
+
+例子二：
+adb -s ZX1G22CWCV logcat -s RF_Browser_RFBrowserActivity:V
+
+例子三：适配符
+adb shell
+logcat | grep xxx

@@ -1,4 +1,6 @@
-android-xml-manifest-package-名称-build.gradle-区别-英文.txt
+参考：
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-package-名称-build.gradle-区别-英文.txt
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-属性-package-build.gradle-applicationId.txt
 
 http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename
 

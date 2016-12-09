@@ -1,0 +1,51 @@
+代码：
+
+    private void openFetionDB() {
+        try {
+            File databaseFile = getDatabasePath("/sdcard/fetion2.db");
+            SQLiteDatabase database =
+                    SQLiteDatabase.openOrCreateDatabase(databaseFile, "chinasofti", null);
+        } catch (Exception e) {
+            Log.e(TAG, "读数据库异常", e);
+        }
+    }
+	
+异常：
+读数据库异常
+  net.sqlcipher.database.SQLiteException: error code 14: Could not open database
+      at net.sqlcipher.database.SQLiteDatabase.dbopen(Native Method)
+      at net.sqlcipher.database.SQLiteDatabase.openDatabaseInternal(SQLiteDatabase.java:2353)
+      at net.sqlcipher.database.SQLiteDatabase.openDatabase(SQLiteDatabase.java:1116)
+      at net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:1170)
+      at net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:1165)
+      at net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:1150)
+      at net.sqlcipher.database.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:1186)
+      at com.example.wangxiangfx.myapplication.MainActivity.openFetionDB(MainActivity.java:147)
+      at com.example.wangxiangfx.myapplication.MainActivity.onToast(MainActivity.java:217)
+      at java.lang.reflect.Method.invoke(Native Method)
+      at android.support.v7.app.AppCompatViewInflater$DeclaredOnClickListener.onClick(AppCompatViewInflater.java:288)
+      at android.view.View.performClick(View.java:5264)
+      at android.view.View$PerformClick.run(View.java:21297)
+      at android.os.Handler.handleCallback(Handler.java:743)
+      at android.os.Handler.dispatchMessage(Handler.java:95)
+      at android.os.Looper.loop(Looper.java:150)
+      at android.app.ActivityThread.main(ActivityThread.java:5546)
+      at java.lang.reflect.Method.invoke(Native Method)
+      at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)
+      at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:684)
+	  
+原因：
+http://stackoverflow.com/questions/17034511/android-database-sqlite-sqlitecantopendatabaseexception-unknown-error-code-14
+
+权限问题
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+Android 6.0 后，需要在运行时申请这个权限
+
+        String[] permissions = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        requestPermissions(permissions, 2);
+		
+    @Override
+    public void onRequestPermissionsResult{
+	}

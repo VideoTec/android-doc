@@ -1,0 +1,44 @@
+
+    compile 'net.zetetic:android-database-sqlcipher:3.5.4@aar'
+	
+	原因：
+	
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	
+	异常：
+	
+	12-07 15:39:53.004 1035-1035/com.example.wangxiangfx.myapplication D/Error: ERR: stack=java.lang.NoClassDefFoundError: Failed resolution of: Lnet/sqlcipher/database/SQLiteDatabase;
+     at com.example.wangxiangfx.myapplication.MainActivity.onCreate(MainActivity.java:69)
+     at android.app.Activity.performCreate(Activity.java:6367)
+     at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110)
+     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2397)
+     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2504)
+     at android.app.ActivityThread.access$900(ActivityThread.java:165)
+     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1368)
+     at android.os.Handler.dispatchMessage(Handler.java:102)
+     at android.os.Looper.loop(Looper.java:150)
+     at android.app.ActivityThread.main(ActivityThread.java:5546)
+     at java.lang.reflect.Method.invoke(Native Method)
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794)
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:684)
+  Caused by: java.lang.ClassNotFoundException: Didn't find class "net.sqlcipher.database.SQLiteDatabase" on path: DexPathList[[dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-support-annotations-23.4.0_6fa9d219412d42fd16071f6b7127e334e3680a1e-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_9-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_8-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_7-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_6-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_5-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_4-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_3-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_2-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_1-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-slice_0-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-internal_impl-23.4.0_7f15d45a03201c1194c42c6c8b6837df04505730-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-gson-2.3.1_38ad9ee2f24b2ada482889efc90e65fe03f1133f-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-com.android.support-support-vector-drawable-23.4.0_83939f0a1cb80b4e874a6707fb38589b5be063c1-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-com.android.support-support-v4-23.4.0_36183366f0b0112828a59e8993ecd6d98df4b87b-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-com.android.support-appcompat-v7-23.4.0_36e3f7d03c5f13fd2cf5ae4708f4e9043a23d3fe-classes.dex", dex file "/data/data/com.example.wangxiangfx.myapplication/files/instant-run/dex/slice-com.android.support-animated-vector-drawable-23.4.0_e74c124a68911eb2da576cc4d6c20c1950d18150-classes.dex"],nativeLibraryDirectories=[/data/app/com.example.wangxiangfx.myapplication-2/lib/arm64, /vendor/lib64, /system/lib64]]
+     at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)
+     at com.android.tools.fd.runtime.IncrementalClassLoader$DelegateClassLoader.findClass(IncrementalClassLoader.java:90)
+     at java.lang.ClassLoader.loadClass(ClassLoader.java:511)
+     at java.lang.ClassLoader.loadClass(ClassLoader.java:469)
+     at com.example.wangxiangfx.myapplication.MainActivity.onCreate(MainActivity.java:69) 
+     at android.app.Activity.performCreate(Activity.java:6367) 
+     at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1110) 
+     at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2397) 
+     at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2504) 
+     at android.app.ActivityThread.access$900(ActivityThread.java:165) 
+     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1368) 
+     at android.os.Handler.dispatchMessage(Handler.java:102) 
+     at android.os.Looper.loop(Looper.java:150) 
+     at android.app.ActivityThread.main(ActivityThread.java:5546) 
+     at java.lang.reflect.Method.invoke(Native Method) 
+     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:794) 
+     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:684) 
+ 	Suppressed: java.lang.ClassNotFoundException: Didn't find class "net.sqlcipher.database.SQLiteDatabase" on path: DexPathList[[zip file "/data/app/com.example.wangxiangfx.myapplication-2/ba
+12-07 15:39:53.004 1035-1035/com.example.wangxiangfx.myapplication D/Error: ERR: TOTAL BYTES WRITTEN: 20988

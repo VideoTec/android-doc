@@ -7,6 +7,9 @@ androidManifest.xml pacckage
 build.gradle applicationId
 是应用程序的ID名，每个应用程序必须惟一
 
+参考：
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-package-名称-build.gradle-区别-英文.txt
+
 http://stackoverflow.com/questions/24178007/how-does-the-new-applicationid-in-build-gradle-work
 
 One of the user visible changes in 0.11 is that 

@@ -1,0 +1,51 @@
+/**
+ * Created by Mr.Jude on 2015/8/3.
+ * 每个滑动页面的管理
+ */
+public class SwipeBackPage {
+    //仅为判断是否需要将mSwipeBackLayout注入进去
+    private boolean mEnable = true;
+    private boolean mRelativeEnable = false;
+
+    Activity mActivity;
+    SwipeBackLayout mSwipeBackLayout;
+	
+------------------------------------------------------------
+监听手势的VIEW
+------------------------------------------------------------
+
+com.jude.swipbackhelper.ViewDragHelper mDragHelper
+
+public class SwipeBackLayout extends FrameLayout {
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        if (!mEnable||mDisallowIntercept) {
+            return false;
+        }
+        try {
+            return mDragHelper.shouldInterceptTouchEvent(event);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (!mEnable) {
+            return false;
+        }
+        try {
+            mDragHelper.processTouchEvent(event);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public void setDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        mDisallowIntercept = disallowIntercept;
+    }

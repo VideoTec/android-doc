@@ -1,0 +1,23 @@
+什么是前景区域，参考：
+D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch-九宫格图片-文档.txt
+You can also define an optional drawable section of the image 
+(effectively, the padding lines) 
+by drawing a line on the right and bottom lines. 
+If a View object sets the NinePatch as its background and then specifies the View's text, 
+it will stretch itself so that all the text fits 
+inside only the area designated by the right and bottom lines (if included). 
+If the padding lines are not included, 
+Android uses the left and top lines to define this drawable area.
+
+前景区域设置无效的问题:
+paddingLeft 属性，会覆盖 .9.png 的
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/rf_vowifi_chat_editor_bk"
+        android:gravity="center_vertical"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:text="测试 .9.png"/>

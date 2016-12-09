@@ -1,0 +1,33 @@
+一个工程，只修改了 gradle 的 applicationId
+安装时，冲突：
+
+C:\Users\wangxiangfx>adb install D:\qq-bak\2498382401\FileRecv\FetionX_Android_o
+nline_v6.2.1_20161207202234_v20167414_release.apk
+3150 KB/s (36979039 bytes in 11.461s)
+        pkg: /data/local/tmp/FetionX_Android_online_v6.2.1_20161207202234_v20167
+414_release.apk
+Failure [INSTALL_FAILED_CONFLICTING_PROVIDER]
+
+这主要是由于调试的环境中已有一个同名的Provider存在。
+解决方法：删除干净原程序，或者重命名
+
+http://stackoverflow.com/questions/16267785/install-shows-error-in-console-install-failed-conflicting-provider
+
+The authority, as listed in android:authorities must be unique. 
+Quoting the documentation for this attribute:
+
+To avoid conflicts, authority names should use a Java-style naming convention 
+(such as com.example.provider.cartoonprovider). 
+
+Typically, 
+it's the name of the ContentProvider subclass that implements the provider
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.feinno.rongflycontacts.files"  这个必须是唯一的
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>

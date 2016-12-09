@@ -1,0 +1,4 @@
+https://chaosleong.gitbooks.io/gradle-for-android/content/appendix/applicationid_versus_packagename.html
+参考：
+D:\doc\android\android-studio\build.gradle-defaultConfig-applicationId.txt
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-package-名称-build.gradle-区别-英文.txt

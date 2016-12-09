@@ -1,3 +1,7 @@
+
+关于前景区域，也叫，padding 区域，参考：
+D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch-点九图-说明-前景区域-padding.txt
+
 http://www.cnblogs.com/vanezkw/archive/2012/07/19/2599092.html
 
 在“原始图像显示绘制区域”（这个名称自己取的）其实显示的是一张原始图片，

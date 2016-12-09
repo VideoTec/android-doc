@@ -1,0 +1,62 @@
+源码：
+https://github.com/Jude95/SwipeBackHelper
+
+使用：
+
+// SwipeBackHelper
+    public static void onPostCreate(Activity activity){
+        SwipeBackPage page;
+        if ((page = findHelperByActivity(activity)) == null){
+            throw new RuntimeException("You Should call SwipeBackHelper.onCreate(activity) first");
+        }
+        page.onPostCreate();
+    }
+	
+// SwipeBackPage
+    void onPostCreate(){
+        handleLayout();
+    }
+
+// SwipeBackPage
+    private void handleLayout(){
+        if (mEnable||mRelativeEnable){
+            mSwipeBackLayout.attachToActivity(mActivity);
+        }else {
+            mSwipeBackLayout.removeFromActivity(mActivity);
+        }
+    }
+	
+	
+//public class SwipeBackLayout extends FrameLayout
+
+    public void attachToActivity(Activity activity) {
+        if (getParent()!=null){
+            return;
+        }
+        mActivity = activity;
+        TypedArray a = activity.getTheme().obtainStyledAttributes(new int[]{
+                android.R.attr.windowBackground
+        });
+        int background = a.getResourceId(0, 0);
+        a.recycle();
+
+        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
+        View decorChild  = decor.findViewById(android.R.id.content);
+        while (decorChild.getParent() != decor){
+            decorChild = (View) decorChild.getParent();
+        }
+        decorChild.setBackgroundResource(background);
+        decor.removeView(decorChild);
+        addView(decorChild);
+        setContentView(decorChild);
+        decor.addView(this);
+    }
+
+    public void removeFromActivity(Activity activity){
+        if (getParent()==null)return;
+        ViewGroup decorChild = (ViewGroup) getChildAt(0);
+        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
+        decor.removeView(this);
+        removeView(decorChild);
+        decor.addView(decorChild);
+    }

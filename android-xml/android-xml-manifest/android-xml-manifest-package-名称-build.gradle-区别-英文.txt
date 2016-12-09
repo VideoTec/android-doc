@@ -127,3 +127,16 @@ If you have multiple manifests
 (e.g. a flavor specific manifest or a buildType specific manifest), 
 the package name is optional, 
 but if it is specified it must be identical to the package specified d in the main manifest.
+
+https://chaosleong.gitbooks.io/gradle-for-android/content/appendix/applicationid_versus_packagename.html
+
+package 还有另一个作用：
+用来命名资源类 R（以及用于解析相关的 Activity）
+
+“application id” 对应 apk 中 manifest 定义的应用包名，同时用于设备以及 Google Play 的应用唯一标识。
+“package” 用于在源码中引用 R 类以及解析注册相关的 activity/service，对应 Java 的包名概念。
+
+参照上面的做法，即能解耦 applicationId 和 package。
+意思是你能够完全自由地重构你的代码，改变用于 Activity 和 Service 的内部包，
+改变 Manifest 的 package，重构导入语句。
+这都不会影响到 app 的最终 id，app 的 id 对应 Gradle 文件中 applicationId 的值。

@@ -1,6 +1,31 @@
-参考：
+-----------------------------------------
+参考： 方法一
+-----------------------------------------
+
 android 菜单 
 
 File | New | New Module... | Import .JAR/.AAR Package
 
 会生成一个包含 aar 的子工程
+
+-----------------------------------------
+参考： 方法二
+-----------------------------------------
+http://stackoverflow.com/questions/16682847/how-to-manually-include-external-aar-package-using-new-gradle-android-build-syst
+
+allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile(name:'androidbase-debug', ext:'aar')
+    compile(name:'thirdpart-debug', ext:'aar')
+}

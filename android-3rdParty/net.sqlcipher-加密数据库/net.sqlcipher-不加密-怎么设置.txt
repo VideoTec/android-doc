@@ -1,0 +1,4 @@
+不传密码，就会不加密码吧
+
+SQLiteDatabase database =
+		SQLiteDatabase.openOrCreateDatabase(databaseFile, "chinasofti", null);

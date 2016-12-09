@@ -27,6 +27,8 @@ it will stretch itself so that all the text fits
 inside only the area designated by the right and bottom lines (if included). 
 If the padding lines are not included, 
 Android uses the left and top lines to define this drawable area.
+参考：
+D:\doc\android\android-sdk-tools-help\ImageTools-Draw 9-patch-点九图-说明-前景区域无效.txt
 
 To clarify the difference between the different lines, 
 the left and top lines define which pixels of the image 

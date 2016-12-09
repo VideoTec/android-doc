@@ -4,7 +4,9 @@ adb push <local> <remote>	Copies a specified file from your development computer
 adb pull  就是从真机上拷贝文件到您的PC上。
 adb push  就是从PC上复制一份文件到您的真机上
 
-adb push xxx /sdcard/
+adb push xxx /sdcard/  
+1. 必须加后面的 /
+2. 或者，指定文件名
 
 adb pull /sdcard/xxx d:\xxx
 

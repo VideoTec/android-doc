@@ -1,2 +1,65 @@
 E:\android\adt\sdk\platform-tools\adb logcat -c
 E:\android\adt\sdk\platform-tools\adb logcat -v threadtime -s VA:V VideoProcessor:V ProgressDialogTask:V DEBUG:V GLSurfaceView:V GLThread:V AndroidRuntime:V MediaPlayer:V ExcecuteProject:V FVideoJNI:V libc:V fvideo:V TestPVideo:V dalvikvm-heap:V dalvikvm:V TTTT:V> c:\logcat.txt
+
+wangxiangfx@wangxiangfx MINGW64 /
+$ adb -s ZX1G22CWCV shell
+shell@shamu:/ $ logcat --help
+logcat --help
+Usage: logcat [options] [filterspecs]
+options include:
+  -s              Set default filter to silent.
+                  Like specifying filterspec '*:S'
+  -f <filename>   Log to file. Default is stdout
+  -r <kbytes>     Rotate log every kbytes. Requires -f
+  -n <count>      Sets max number of rotated logs to <count>, default 4
+  -v <format>     Sets the log print format, where <format> is:
+
+                      brief color long printable process raw tag thread
+                      threadtime time usec
+
+  -D              print dividers between each log buffer
+  -c              clear (flush) the entire log and exit
+  -d              dump the log and then exit (don't block)
+  -t <count>      print only the most recent <count> lines (implies -d)
+  -t '<time>'     print most recent lines since specified time (implies -d)
+  -T <count>      print only the most recent <count> lines (does not imply -d)
+  -T '<time>'     print most recent lines since specified time (not imply -d)
+                  count is pure numerical, time is 'MM-DD hh:mm:ss.mmm'
+  -g              get the size of the log's ring buffer and exit
+  -L              dump logs from prior to last reboot
+  -b <buffer>     Request alternate ring buffer, 'main', 'system', 'radio',
+                  'events', 'crash' or 'all'. Multiple -b parameters are
+                  allowed and results are interleaved. The default is
+                  -b main -b system -b crash.
+  -B              output the log in binary.
+  -S              output statistics.
+  -G <size>       set size of log ring buffer, may suffix with K or M.
+  -p              print prune white and ~black list. Service is specified as
+                  UID, UID/PID or /PID. Weighed for quicker pruning if prefix
+                  with ~, otherwise weighed for longevity if unadorned. All
+                  other pruning activity is oldest first. Special case ~!
+                  represents an automatic quicker pruning for the noisiest
+                  UID as determined by the current statistics.
+  -P '<list> ...' set prune white and ~black list, using same format as
+                  printed above. Must be quoted.
+
+filterspecs are a series of
+  <tag>[:priority]
+
+where <tag> is a log component tag (or * for all) and priority is:
+  V    Verbose (default for <tag>)
+  D    Debug (default for '*')
+  I    Info
+  W    Warn
+  E    Error
+  F    Fatal
+  S    Silent (suppress all output)
+
+'*' by itself means '*:D' and <tag> by itself means <tag>:V.
+If no '*' filterspec or -s on command line, all filter defaults to '*:V'.
+eg: '*:S <tag>' prints only <tag>, '<tag>:S' suppresses all <tag> log messages.
+
+If not specified on the command line, filterspec is set from ANDROID_LOG_TAGS.
+
+If not specified with -v on command line, format is set from ANDROID_PRINTF_LOG
+or defaults to "threadtime"

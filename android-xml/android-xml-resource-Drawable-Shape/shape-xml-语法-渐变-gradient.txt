@@ -1,0 +1,87 @@
+gradient[英][ˈgreɪdiənt] [美][ˈɡrediənt]
+
+n.[物]梯度，陡度；（温度、气压等）变化率，
+梯度变化曲线；<英>（道路的）倾斜度，坡度
+
+adj.倾斜的；[动]步行的，能步行的
+
+<gradient
+	android:angle="integer"
+	android:centerX="float"
+	android:centerY="float"
+	android:centerColor="integer"
+	android:endColor="color"
+	android:gradientRadius="integer"
+	android:startColor="color"
+	android:type=["linear" | "radial" | "sweep"]
+	android:useLevel=["true" | "false"] />
+	
+<gradient>
+
+指定形状的渐变颜色。
+
+属性：
+
+android:angle
+整型。渐变的角度（度）。
+0 为从左到右，90 为从上到上。必须是 45 的倍数。默认值为 0。
+
+android:centerX
+浮点型。渐变中心的相对 X 轴位置 (0 - 1.0)。
+
+android:centerY
+浮点型。渐变中心的相对 Y 轴位置 (0 - 1.0)。
+
+android:centerColor
+颜色。起始颜色与结束颜色之间的可选颜色，
+以十六进制值或颜色资源表示。
+
+android:endColor
+颜色。结束颜色，
+表示为十六进制值或颜色资源。
+
+android:gradientRadius
+浮点型。渐变的半径。
+仅在 android:type="radial" 时适用。
+
+android:startColor
+颜色。起始颜色，
+表示为十六进制值或颜色资源。
+
+android:type
+关键字。要应用的渐变图案的类型。有效值为：
+值	说明
+"linear"	线性渐变。这是默认值。
+"radial"	径向渐变。起始颜色为中心颜色。
+"sweep"	流线型渐变。
+
+android:useLevel
+布尔值。如果这用作 LevelListDrawable，则此值为“true”。
+
+例子1：
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#000F1B"
+        android:centerColor="#11212B"
+        android:endColor="#000F1B" />
+</shape>
+
+例子2：
+
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+	<shape>
+            <gradient android:angle="270" android:endColor="#FFFFFF" android:startColor="#FFFFFF" />
+            <stroke android:width="1px" android:color="#d0d6d9" />
+    </shape>
+	</item>
+    <item android:state_pressed="true">
+	<shape>
+            <gradient android:angle="270" android:endColor="#ECEEEE" android:startColor="#ECEEEE" />
+            <stroke android:width="1px" android:color="#d0d6d9" />
+    </shape>
+	</item>
+</selector>

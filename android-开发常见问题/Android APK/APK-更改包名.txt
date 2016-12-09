@@ -1,0 +1,8 @@
+参考：
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-属性-package-应用的ID.txt
+
+修改APK包名，变成另一个应用
+
+只改 applicationId，打出的两个包，会冲突？
+    defaultConfig {
+        applicationId "com.feinno.rongfly"
