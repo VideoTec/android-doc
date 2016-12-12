@@ -1,0 +1,884 @@
+
+
+http://bbs.mob.com/thread-21441-1-1.html
+亲 这些报错是 由于我们的SDK 的包使用低版本的JDK编译的 
+这个不影响正常使用的我们 以后会用心版本的编译 就不会有这些报错了
+
+Android Studio 2.2.3
+
+引用了,使用 JDK 1.7 编译的JAR，出现下面的错误信息：
+
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.e) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.g) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.h) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.i) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.j) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.k) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.m) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.n) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.o) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.offline.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.map.p) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comapi.map.D) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comapi.map.h) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comapi.map.s) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.BDLocation$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.LocationClient$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.Poi$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$4) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$5) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$6) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.b.m$a$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.a$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.a$b$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.b$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.b$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.d$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.f$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.f$b$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.f$b$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.f$b$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.f$b$4) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.c.g$a$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.d$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.d$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.d$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.d$4) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.h$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.h$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.h$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.i$b$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.e.m$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.location.h.a$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.hp.hpl.sparta.Node$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.hp.hpl.sparta.Sparta$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.hp.hpl.sparta.Sparta$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(demo.Pinyin4jAppletDemo$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(demo.Pinyin4jAppletDemo$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(demo.Pinyin4jAppletDemo$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.utils.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.utils.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.utils.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.utils.e) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.android.bbalbs.common.util.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.f) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.i) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.j) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.k) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.lbsapi.auth.l) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.model.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.model.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.model.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comapi.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comjni.tools.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.vi.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.busline.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.e) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.f) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.h) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.core.i) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.district.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.geocode.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.geocode.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.geocode.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.poi.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.poi.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.c) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.d) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.e) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.f) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.g) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.i) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.j) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.k) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.l) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.m) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.n) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.route.o) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.share.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.sug.a) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.mapapi.search.sug.b) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.baidu.platform.comapi.search.e) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.squareup.haha.guava.base.Joiner$1) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.squareup.haha.guava.collect.Iterables$2) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+AGPBI: {"kind":"error","text":"warning: Ignoring InnerClasses attribute for an anonymous inner class","sources":[{}]}
+AGPBI: {"kind":"error","text":"(com.squareup.haha.guava.collect.Iterables$3) that doesn\u0027t come with an","sources":[{}]}
+AGPBI: {"kind":"error","text":"associated EnclosingMethod attribute. This class was probably produced by a","sources":[{}]}
+AGPBI: {"kind":"error","text":"compiler that did not target the modern .class file format. The recommended","sources":[{}]}
+AGPBI: {"kind":"error","text":"solution is to recompile the class from source, using an up-to-date compiler","sources":[{}]}
+AGPBI: {"kind":"error","text":"and without specifying any \"-target\" type options. The consequence of ignoring","sources":[{}]}
+AGPBI: {"kind":"error","text":"this warning is that reflective operations on this class will incorrectly","sources":[{}]}
+AGPBI: {"kind":"error","text":"indicate that it is *not* an inner class.","sources":[{}]}
+
+:rongflymqtt:validateSigningDevonlineDebug
+:rongflymqtt:packageDevonlineDebug
+:rongflymqtt:buildInfoGeneratorDevonlineDebug
+:rongflymqtt:compileDevonlineDebugSources
+:rongflymqtt:assembleDevonlineDebug
+
+BUILD SUCCESSFUL
+
+Total time: 11 mins 19.776 secs
