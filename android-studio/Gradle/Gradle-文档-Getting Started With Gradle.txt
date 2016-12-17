@@ -1,0 +1,11 @@
+https://gradle.org/getting-started-gradle/#toggle-id-1
+
+Getting Started With Gradle
+Expand to learn more about the journey to Build Happiness.
+Thinking Gradle
+
+Gradle is an open-source build automation tool for the Age of Continuous Delivery (CD). 
+持续交付（英语：Continuous delivery，缩写为 CD）
+Building software is no longer just about compiling, linking and packaging. 
+This guide will set you on your first steps to improved software delivery 
+by properly introducing Gradle’s key features and how everything fits together.
