@@ -1,3 +1,7 @@
+DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+float density = metrics.density; 
+用 dp 乘以 浓度 就可以了。
+
 常量定义：
 
 android.util.DisplayMetrics

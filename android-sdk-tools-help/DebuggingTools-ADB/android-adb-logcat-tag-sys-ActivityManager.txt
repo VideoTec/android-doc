@@ -1,0 +1,14 @@
+示例一：
+adb shell am start -D -n "cn.com.fetion/com.feinno.rongfly.SplashActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+
+I/ActivityManager: Force stopping cn.com.fetion appid=10323 user=-1: set debug app
+I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=cn.com.fetion/com.feinno.rongfly.SplashActivity} from uid 2000 on display 0
+I/ActivityManager: Start proc 26730:cn.com.fetion/u0a323 for activity cn.com.fetion/com.feinno.rongfly.SplashActivity
+
+示例一：
+点桌面图标
+
+I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10200000 cmp=com.google.android.googlequicksearchbox/com.google.android.launcher.GEL (has extras)} from uid 1000 on display 0
+I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=cn.com.fetion/com.feinno.rongfly.SplashActivity (has extras)} from uid 10035 on display 0
+I/ActivityManager: Start proc 29791:cn.com.fetion/u0a323 for activity cn.com.fetion/com.feinno.rongfly.SplashActivity
+W/ActivityManager: Unable to start service Intent { act=com.feinno.rongfly.interface pkg=com.feinno.rongfly } U=0: not found

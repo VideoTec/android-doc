@@ -1,0 +1,25 @@
+问题：
+
+android:layout_width="match_parent"
+同时
+android:layout_marginLeft="11.5dp"
+这样怎么计算的？边距会生效吗？生效，且经 parent 为基础
+
+示例：
+
+        <View
+            android:id="@+id/layout_session_chat_response_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_session_chat_response_container"
+            android:background="@color/rf_common_horizontal_divider_color" />
+			
+		修改行的，边距和背景色
+        ViewGroup.MarginLayoutParams lineLP =
+                (ViewGroup.MarginLayoutParams) mResponseTopLine.getLayoutParams();
+        lineLP.setMargins(
+                Math.round(12.5f * density),
+                lineLP.topMargin,
+                Math.round(12.5f * density),
+                lineLP.bottomMargin);
+        mResponseTopLine.setLayoutParams(lineLP);

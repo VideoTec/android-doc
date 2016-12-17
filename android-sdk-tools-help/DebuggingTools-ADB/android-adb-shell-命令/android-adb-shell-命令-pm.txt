@@ -1,0 +1,2 @@
+adb push D:\work\androidrongflysip\rongflymqtt\build\outputs\apk\rongflymqtt-devonline-debug.apk /data/local/tmp/cn.com.fetion
+adb shell pm install -r "/data/local/tmp/cn.com.fetion"

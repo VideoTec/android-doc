@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-package-名称-build.gradle-区别-英文.txt

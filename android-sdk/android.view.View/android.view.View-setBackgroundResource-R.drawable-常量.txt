@@ -1,0 +1,23 @@
+设置背景资源
+
+    /**
+     * Set the background to a given resource. The resource should refer to
+     * a Drawable object or 0 to remove the background.
+     * @param resid The identifier of the resource.
+     *
+     * @attr ref android.R.styleable#View_background
+     */
+    @RemotableViewMethod
+    public void setBackgroundResource(@DrawableRes int resid) {
+        if (resid != 0 && resid == mBackgroundResource) {
+            return;
+        }
+
+        Drawable d = null;
+        if (resid != 0) {
+            d = mContext.getDrawable(resid);
+        }
+        setBackground(d);
+
+        mBackgroundResource = resid;
+    }

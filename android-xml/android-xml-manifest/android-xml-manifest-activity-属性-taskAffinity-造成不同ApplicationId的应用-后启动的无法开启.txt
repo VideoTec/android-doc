@@ -1,0 +1,6 @@
+参考：
+D:\doc\android\android-studio\Gradle\build.gradle\Gradle-脚本文件-build.gradle-block-defaultConfig-applicationId-同一工程生成不同应用.txt
+
+如果未设置该属性，则 Activity 继承为应用设置的亲和关系
+（请参阅 <application> 元素的 taskAffinity 属性）。 
+应用默认亲和关系的名称是 <manifest> 元素设置的软件包名称。

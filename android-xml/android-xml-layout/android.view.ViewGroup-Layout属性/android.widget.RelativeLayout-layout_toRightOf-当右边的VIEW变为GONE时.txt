@@ -1,0 +1,24 @@
+当右边的 VIEW 变为 GONE 时，会怎么？
+
+结果，正常显示。变成GONE的右边元素的右对齐方式
+
+    <com.feinno.rongfly.utils.bitmap.fresco.InstrumentedDraweeView
+        android:id="@+id/iv_session_chat_item_user_photo"
+        android:layout_width="@dimen/chat_portrait_width"
+        android:layout_height="@dimen/chat_portrait_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/iv_session_chat_item_msg_time"
+        android:layout_marginLeft="@dimen/rf_common_padding_left"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImage="@drawable/rf_img_default_portrait_contact"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:roundedCornerRadius="4dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_session_item_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_session_chat_item_msg_time"
+        android:layout_marginLeft="9.5dp"
+        android:layout_toRightOf="@id/iv_session_chat_item_user_photo"
+        android:orientation="vertical">

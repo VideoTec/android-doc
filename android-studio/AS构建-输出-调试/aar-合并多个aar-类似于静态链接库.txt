@@ -1,0 +1,6 @@
+
+compile ('com.somepackage:LIBRARY_NAME:1.0.0@aar'){
+    transitive=true
+}
+
+compile project(':sdk3-debug') { transitive = true }

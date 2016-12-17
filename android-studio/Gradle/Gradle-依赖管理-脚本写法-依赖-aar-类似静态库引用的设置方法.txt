@@ -1,0 +1,2 @@
+参考：
+D:\doc\android\android-studio\AS构建-输出-调试\aar-合并多个aar-类似于静态链接库.txt

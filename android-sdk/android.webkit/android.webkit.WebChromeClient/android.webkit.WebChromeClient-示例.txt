@@ -1,0 +1,61 @@
+mWebView.setWebChromeClient(new RFChromeWebClient());
+
+
+    class RFChromeWebClient extends WebChromeClient {
+        private int oldProgress;
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            if (mType == TypeNormal || mType == TypePublicPlatformHistory) {
+                if (title.length() > 10) {
+                    String substring = title.substring(0, 10);
+                    showWindowMiddleTitle(substring + "...");
+                } else {
+                    showWindowMiddleTitle(title);
+                }
+            }
+        }
+
+        @Override
+        public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+            Log.i(TAG, consoleMessage.message() + " -- From line "
+                    + consoleMessage.lineNumber() + " of "
+                    + consoleMessage.sourceId());
+            return true;
+        }
+
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+            if (newProgress != 100) {
+                if (View.GONE == mProgressBar.getVisibility()) {
+                    mProgressBar.setVisibility(View.VISIBLE);
+                }
+
+                //控制进度条渐隐
+                if (oldProgress != newProgress) {
+                    LogFeinno.v(TAG, "网页加载进度: " + newProgress);
+                    if (newProgress > 90) {
+                        Animation animation = new AlphaAnimation(0.6f, 0.3f);
+                        animation.setDuration(500);
+                        mProgressBar.setAnimation(animation);
+                        oldProgress = newProgress;
+                    } else if (newProgress > 80) {
+                        Animation animation = new AlphaAnimation(1.0f, 0.6f);
+                        animation.setDuration(500);
+                        mProgressBar.setAnimation(animation);
+                        oldProgress = newProgress;
+                    } else {
+                        oldProgress = 0;
+                        mProgressBar.setAlpha(1.0f);
+                    }
+                }
+            } else {
+                mProgressBar.setVisibility(View.GONE);
+            }
+
+            mProgressBar.setProgress(newProgress);
+            mProgressBar.postInvalidate();
+        }
+    }

@@ -1,0 +1,19 @@
+英 [inˈtə:prit] 
+理解;解释( interpret的过去式和过去分词 );把…理解为;演绎（按自己的感觉演奏音乐或表现角色）
+
+    /**
+     * Set the default text size to the given value, interpreted as "scaled
+     * pixel" units.  This size is adjusted based on the current density and
+     * user font size preference.
+     *
+     * @param size The scaled pixel size.
+     *
+     * @attr ref android.R.styleable#TextView_textSize
+     */
+    @android.view.RemotableViewMethod
+    public void setTextSize(float size) {
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+    }
+	
+	参数：
+	float size 不是像素数

@@ -1,0 +1,13 @@
+例子：
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update("eS3x4T4dRd2s4d42EsRsW2wsogs3y71a65d1000001481881148".getBytes());
+            String sig = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+            Log.i(TAG, "sig: " + sig);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+		
+		结果
+		8089a0fa7b05c2cb5e65ad43f5b1ad4ab6015058
+		gImg+nsFwsteZa1D9bGtSrYBUFg=

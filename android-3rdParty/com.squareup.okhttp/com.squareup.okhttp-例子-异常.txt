@@ -1,0 +1,78 @@
+
+-----------------------------------------------------
+java.lang.IllegalArgumentException: unexpected url: 192.168.2.231:3000
+-----------------------------------------------------
+
+    public void onTest(View v) {
+        try {
+            String url = "192.168.2.231:3000";
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder().url(url).build();
+            Response response = client.newCall(request).execute();
+            Log.i(TAG, "返回： " + response.body().string());
+        } catch (IOException e) {
+            Log.e(TAG, "", e);
+        } catch (Exception e) {
+            Log.e(TAG, "", e);
+        }
+    }
+	
+	异常：
+	java.lang.IllegalArgumentException: unexpected url: 192.168.2.231:3000
+	
+	改为：
+	http://192.168.2.231:3000
+	
+-----------------------------------------------------
+java.net.SocketException: socket failed: EACCES (Permission denied)
+-----------------------------------------------------
+java.net.SocketException: socket failed: EACCES (Permission denied)
+			at libcore.io.IoBridge.socket(IoBridge.java:619)
+			at java.net.PlainSocketImpl.create(PlainSocketImpl.java:198)
+			at java.net.Socket.checkOpenAndCreate(Socket.java:689)
+			at java.net.Socket.setSoTimeout(Socket.java:543)
+			at okhttp3.internal.io.RealConnection.connectSocket(RealConnection.java:135)
+			at okhttp3.internal.io.RealConnection.connect(RealConnection.java:108)
+			at okhttp3.internal.http.StreamAllocation.findConnection(StreamAllocation.java:188)
+			at okhttp3.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:127)
+			at okhttp3.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+			at okhttp3.internal.http.HttpEngine.connect(HttpEngine.java:289)
+			at okhttp3.internal.http.HttpEngine.sendRequest(HttpEngine.java:241)
+			at okhttp3.RealCall.getResponse(RealCall.java:240)
+			at okhttp3.RealCall$ApplicationInterceptorChain.proceed(RealCall.java:198)
+			at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:160)
+			at okhttp3.RealCall.execute(RealCall.java:57)
+			
+RealCall.execute 异常：
+java.net.SocketException: socket failed: EACCES (Permission denied)
+
+权限：
+<uses-permission android:name="android.permission.INTERNET"/>
+	
+-----------------------------------------------------
+android.os.NetworkOnMainThreadException
+-----------------------------------------------------
+
+client.newCall(request).execute();
+需要在工作线程里运行
+
+android.os.NetworkOnMainThreadException
+	at android.os.StrictMode$AndroidBlockGuardPolicy.onNetwork(StrictMode.java:1273)
+	at libcore.io.BlockGuardOs.connect(BlockGuardOs.java:110)
+	at libcore.io.IoBridge.connectErrno(IoBridge.java:154)
+	at libcore.io.IoBridge.connect(IoBridge.java:122)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:183)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:452)
+	at java.net.Socket.connect(Socket.java:884)
+	at okhttp3.internal.Platform$Android.connectSocket(Platform.java:200)
+	at okhttp3.internal.io.RealConnection.connectSocket(RealConnection.java:137)
+	at okhttp3.internal.io.RealConnection.connect(RealConnection.java:108)
+	at okhttp3.internal.http.StreamAllocation.findConnection(StreamAllocation.java:188)
+	at okhttp3.internal.http.StreamAllocation.findHealthyConnection(StreamAllocation.java:127)
+	at okhttp3.internal.http.StreamAllocation.newStream(StreamAllocation.java:97)
+	at okhttp3.internal.http.HttpEngine.connect(HttpEngine.java:289)
+	at okhttp3.internal.http.HttpEngine.sendRequest(HttpEngine.java:241)
+	at okhttp3.RealCall.getResponse(RealCall.java:240)
+	at okhttp3.RealCall$ApplicationInterceptorChain.proceed(RealCall.java:198)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:160)
+	at okhttp3.RealCall.execute(RealCall.java:57)

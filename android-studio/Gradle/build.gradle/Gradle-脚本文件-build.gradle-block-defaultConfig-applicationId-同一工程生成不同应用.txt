@@ -1,0 +1,26 @@
+同一个工程，打不同 applicationId 的应用，
+
+productFlavors {
+        f1 {
+            applicationId = "com.example.my.pkg.f1"
+        }
+        f2 {
+            applicationId = "com.example.my.pkg.f2"
+        }
+}
+
+参考：
+https://blog.grandcentrix.net/how-to-install-different-app-variants-on-one-android-device/
+
+----------------------------------------------------
+D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-package-名称-为APK-修改包名-安装冲突.txt
+----------------------------------------------------
+Failure [INSTALL_FAILED_CONFLICTING_PROVIDER]
+
+----------------------------------------------------
+其中一个应用启动后，启动另一个进程时，会打开已经存在进程的ACT
+----------------------------------------------------
+12-13 20:56:28.671 1027-1717/? I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=cn.com.fetion/com.feinno.rongfly.SplashActivity (has extras)} from uid 10035 on display 0
+12-13 20:56:35.198 1027-1739/? I/ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.feinno.rongfly/.SplashActivity (has extras)} from uid 10035 on display 0
+
+参考：D:\doc\android\android-xml\android-xml-manifest\android-xml-manifest-activity-属性-taskAffinity-造成不同ApplicationId的应用-后启动的无法开启.txt

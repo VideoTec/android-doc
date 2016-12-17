@@ -15,3 +15,17 @@ Error:Failed to resolve: :rfservicefor3th-debug:
 构建日志：
 
 没有错误信息
+
+原因：缺少下面的代码
+
+allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+参考：
+D:\doc\android\android-studio\AS构建-输出-调试\aar-导入到AS工程中.txt

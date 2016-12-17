@@ -1,0 +1,27 @@
+http://stackoverflow.com/questions/34445399/create-an-aar-with-multiple-aars-jars
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile files('libs/eventbus.jar')
+    compile project(':sdk3-debug') { transitive = true }
+}
+
+Include the transitive flag at true.
+
+
+transitive	英[ˈtrænsətɪv]
+美[ˈtrænsɪtɪv, -zɪ-]
+adj.	过渡的; （指动词） 及物的; 转变的; <数><逻>可递的;
+n.	<语>及物动词;
+
+
+http://stackoverflow.com/questions/22795455/transitive-dependencies-not-resolved-for-aar-library-using-gradle
+
+I have solved my problem by setting transitive attribute for my aar dependency:
+
+compile ('com.somepackage:LIBRARY_NAME:1.0.0@aar'){
+    transitive=true
+}

@@ -1,0 +1,27 @@
+注意一：
+权限 - <uses-permission android:name="android.permission.INTERNET"/>
+
+注意二：
+必须在工作线程里运行
+
+注意三：
+"http://192.168.2.231:3000/readtimeout"; 
+必须是合法的 uri 地址，前面的 http:// 协议不能少
+
+
+    public void onTest(View v) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String url = "http://192.168.2.231:3000/readtimeout";
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(url).build();
+                    Response response = client.newCall(request).execute();
+                    Log.i(TAG, "返回： " + response.body().string());
+                } catch (Exception e) {
+                    Log.e(TAG, "", e);
+                }
+            }
+        }).start();
+    }

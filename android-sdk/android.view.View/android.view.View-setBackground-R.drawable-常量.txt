@@ -1,0 +1,10 @@
+http://stackoverflow.com/questions/12523005/how-set-background-drawable-programmatically-in-android
+
+layout.setBackgroundResource(R.drawable.ready); is correct.
+
+final int sdk = android.os.Build.VERSION.SDK_INT;
+if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+    layout.setBackgroundDrawable( getResources().getDrawable(R.drawable.ready) );
+} else {
+    layout.setBackground( getResources().getDrawable(R.drawable.ready));
+}

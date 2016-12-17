@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:drawable="@drawable/rf_img_session_chat_item_bg_left_press" android:state_pressed="true"/>
+    <item android:drawable="@drawable/rf_img_session_chat_item_bg_left"/>
+    
+</selector>
