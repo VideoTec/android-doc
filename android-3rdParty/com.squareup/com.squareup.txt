@@ -1,0 +1,9 @@
+https://squareup.com/
+
+美国SquareUP移动支付服务平台是美国一家移动支付公司，
+从你的移动设备上，借助Square的刷卡插件，接受信用卡付费
+
+http://square.github.io/
+
+As a company built on open source, 
+here are some of the internally-developed libraries we have contributed back to the community.

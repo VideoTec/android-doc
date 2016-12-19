@@ -7,3 +7,28 @@
         exclude module: 'support-v4'
         exclude module: 'support-annotations'
     }
+	
+	http://m.blog.csdn.net/article/details?id=50776045
+	
+	排除 transitive dependencies 
+通过configuration或者dependency可以除去 transitive dependencies：
+
+build.gradle
+configurations {
+    compile.exclude module: 'commons'
+    all*.exclude group: 'org.gradle.test.excludes', module: 'reports'
+}
+
+dependencies {
+    compile("org.gradle.test.excludes:api:1.0") {
+        exclude module: 'shared'
+    }
+}
+
+如果在configuration中定义一个exclude,那么所有依赖的transitive dependency (指定的)都会被去除。 
+定义exclude时候，或只指定group, 或只指定module名字，或二者都指定。
+
+compile('com.squareup.okhttp:okhttp-mt:2.5.0') {
+        force = true
+}
+我们在依赖okhttp的时候很可能发生冲突，就比如依赖的依赖中也包含了okhttp，这种场合下，就会产生版本冲突的问题，加上force = true表明的意思就是即使在有依赖库版本冲突的情况下坚持使用被标注的这个依赖库版本。

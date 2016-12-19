@@ -1,3 +1,6 @@
+参考：
+D:\doc\android\android-studio\AS构建-输出-调试\aar-导入到AS工程中-剔除模块.txt
+
 http://stackoverflow.com/questions/19575474/gradle-how-to-exclude-a-particular-package-from-a-jar
 
 If you have some sources that you don't want to be compiled, you have to declare a filter for the sources, not for the class files that are put in the Jar. Something like:

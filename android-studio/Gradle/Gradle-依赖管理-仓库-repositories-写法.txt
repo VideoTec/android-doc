@@ -1,0 +1,69 @@
+
+artifact	英['ɑ:təˌfækt]
+美[ˈɑrtəˌfækt]
+n.	人工制品，手工艺品，加工品; 石器;
+
+例子：
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+源码：
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/RepositoryHandler.html
+
+flatDir
+
+ivy
+Apache Ivy is a transitive dependency manager.
+Maven is a complete build tool, 
+whereas Ivy focuses purely on managing transitive dependencies.
+As of 2009 it functions as a sub-project of Apache Ant.
+
+jcenter
+maven
+mavenCentral
+mavenLocal
+
+例子：
+
+repositories {
+  flatDir name: 'libs', dirs: "$projectDir/libs"
+  flatDir dirs: ["$projectDir/libs1", "$projectDir/libs2"]
+}
+ 
+repositories {
+	jcenter {
+	  artifactUrls = ["http://www.mycompany.com/artifacts1", "http://www.mycompany.com/artifacts2"]
+	}
+	jcenter {
+	  name = "nonDefaultName"
+	  artifactUrls = ["http://www.mycompany.com/artifacts1"]
+	}
+}
+
+ repositories {
+     jcenter()
+ }
+ 
+  repositories {
+     mavenCentral artifactUrls: ["http://www.mycompany.com/artifacts1", "http://www.mycompany.com/artifacts2"]
+     mavenCentral name: "nonDefaultName", artifactUrls: ["http://www.mycompany.com/artifacts1"]
+ }
+ 
+  repositories {
+     mavenCentral()
+ }
+ 
+  repositories {
+     mavenLocal()
+ }
+ The location for the repository is determined as follows (in order of precedence):
+The value of system property 'maven.repo.local' if set;
+The value of element <localRepository> of ~/.m2/settings.xml if this file exists and element is set;
+The value of element <localRepository> of $M2_HOME/conf/settings.xml 
+(where $M2_HOME is the value of the environment variable with that name) if this file exists and element is set;
+The path ~/.m2/repository.

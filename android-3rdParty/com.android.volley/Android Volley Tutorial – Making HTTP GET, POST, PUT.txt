@@ -1,3 +1,7 @@
+https://github.com/mcxiaoke/android-volley
+
+compile 'com.mcxiaoke.volley:library:1.0.19'
+
 http://www.itsalif.info/content/android-volley-tutorial-http-get-post-put
 
 Google released Android Volley Library around May/June 2013, 

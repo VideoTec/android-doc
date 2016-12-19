@@ -1,0 +1,52 @@
+http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=1117
+
+Retrofit 是一个 RESTful 的 HTTP 网络请求框架的封装。
+注意这里并没有说它是网络请求框架，
+主要原因在于网络请求的工作并不是 Retrofit 来完成的。
+
+Retrofit 2.0 开始内置 OkHttp，
+前者专注于接口的封装，后者专注于网络请求的高效，二者分工协作
+
+我们的应用程序通过 Retrofit 请求网络，
+实际上是使用 Retrofit 接口层封装请求参数、Header、Url 等信息，
+之后由 OkHttp 完成后续的请求操作，
+
+在服务端返回数据之后，
+OkHttp 将原始的结果交给 Retrofit，
+后者根据用户的需求对结果进行解析的过程。
+
+讲到这里，你就会发现所谓 Retrofit，
+其实就是 Retrofitting OkHttp 了
+
+//定义服务接口
+//访问的地址：https://api.github.com/users/{user}/repos
+public interface GitHubService {
+  @GET("users/{user}/repos")
+  Call<List<Repo>> listRepos(@Path("user") String user);
+}
+
+Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl("https://api.github.com/")
+    .build(); 
+GitHubService service = retrofit.create(GitHubService.class);
+
+Call<List<Repo>> repos = service.listRepos("octocat");
+发请求的代码就像前面这一句，
+返回的 repos 其实并不是真正的数据结果，
+它更像一条指令，你可以在合适的时机去执行它：
+
+// 同步调用
+List<Repo> data = repos.execute(); 
+ 
+// 异步调用
+repos.enqueue(new Callback<List<Repo>>() {
+	@Override
+	public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
+		List<Repo> data = response.body();
+	}
+
+	@Override
+	public void onFailure(Call<List<Repo>> call, Throwable t) {
+		t.printStackTrace();
+	}
+});

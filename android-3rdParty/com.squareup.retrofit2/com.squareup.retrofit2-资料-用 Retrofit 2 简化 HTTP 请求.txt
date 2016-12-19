@@ -1,0 +1,10 @@
+用 Retrofit 2 简化 HTTP 请求
+https://realm.io/cn/news/droidcon-jake-wharton-simple-http-retrofit-2/
+
+Retrofit 作为简化 HTTP 请求的库，
+已经运行多年，2.0版本依然不辱使命的在做这些事情。
+
+不过 2.0 版本修复了一些长期影响开发者的设计，还加入了前所未有的强大特性。
+在 NYC 2015 的这一个分享中，
+Jake Wharton 的演讲涵盖了所有 Retrofit 2.0 的新特性，
+全面介绍了 Retrofit 2.0 工作原理。

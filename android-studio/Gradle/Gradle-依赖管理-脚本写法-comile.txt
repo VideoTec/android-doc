@@ -1,0 +1,25 @@
+参考：
+D:\doc\android\android-studio\AS构建-输出-调试\aar-导入到AS工程中-剔除模块.txt
+
+
+dependencies {
+    compile("org.gradle.test.excludes:api:1.0") {
+        exclude module: 'shared'
+    }
+
+	compile('com.squareup.okhttp:okhttp-mt:2.5.0') {
+		force = true
+	}
+	
+	compile ('com.somepackage:LIBRARY_NAME:1.0.0@aar'){
+		transitive=true
+	}
+	
+	compile('com.meituan.android.terminus:library:6.6.1.16@aar'){
+        transitive = true
+        exclude module: 'hotel_model'
+        exclude module: 'base_model'
+    }
+	
+	compile project(':sdk3-debug') { transitive = true }
+}

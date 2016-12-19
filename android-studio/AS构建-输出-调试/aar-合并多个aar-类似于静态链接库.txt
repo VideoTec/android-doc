@@ -1,6 +1,24 @@
+参考：
+D:\doc\android\android-studio\AS构建-输出-调试\aar-合并多个aar.txt
+
 
 compile ('com.somepackage:LIBRARY_NAME:1.0.0@aar'){
     transitive=true
 }
 
 compile project(':sdk3-debug') { transitive = true }
+
+http://m.blog.csdn.net/article/details?id=50776045
+
+transitive = true
+transitive dependencies 被称为依赖的依赖，称为“间接依赖”比较合适。
+
+compile('com.meituan.android.terminus:library:6.6.1.16@aar'){
+        transitive = true
+        exclude module: 'hotel_model'
+        exclude module: 'base_model'
+    }
+	
+在后面加上@aar，意指你只是下载该aar包，
+而并不下载该aar包所依赖的其他库，
+那如果想在使用@aar的前提下还能下载其依赖库，则需要添加transitive=true的条件。

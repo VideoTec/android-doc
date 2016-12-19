@@ -1,0 +1,10 @@
+https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en
+
+Understand jcenter and Maven Central
+Wonder why is there not only just one but two standard repositories out there?
+
+Actually both of them are the repositories having the same duty: hosting Java/Android libraries. It is a developers' choice to upload their libraries to which one or may be both.
+
+At first, Android Studio chose Maven Central as a default repository. Once you create a new project from old version of Android Studio, mavenCentral() would be automatically defined in build.gradle.
+
+But the big problem of Maven Central is it is not developer-friendly. It is surprisingly hard to upload the library to. To be able to do so, developer has to be at some level of geeky. And with some more reason for example a security concern and etc, Android Studio team decided to switch the default repository to jcenter instead as you can see that once you create a new project from latest version of Android Studio, jcenter() would be automatically defined instead of mavenCentral().

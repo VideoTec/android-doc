@@ -1,0 +1,19 @@
+示例脚本
+
+```
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: 'http://localhost:8080/repository/internal/') {
+            authentication (userName: 'wangxiang', password: 'feinno83')
+        }
+        pom.version = '1.0'
+        pom.artifactId = 'login'
+        pom.groupId = 'com.feinno.rongfly'
+    }
+}
+```
+
+https://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en

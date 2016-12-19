@@ -1,0 +1,32 @@
+总结原因：
+
+R.id 资源类的 id 都是在，APPLICATION 时生成的。
+创建 aar 时，得不到这些值
+
+http://www.mobile-open.com/2016/95692.html
+
+最坑爹的是,原来工程中处理点击事件,
+一般都是用 switch... case... 语句,现在也不能用了,
+必须全部替换成if...else...语句,貌似是说在library中的资源id都不是final 的了, 
+所有不能用switch...case....了, 这个解释我不能接受.
+
+AS 可自动转换
+alt-enter 弹出转换按钮
+
+http://fpcfjf.lofter.com/post/1cc5a33d_79db911
+
+错误的代码如下：
+
+        switch (v.getId()) 
+        { 
+
+         //注册 
+         case R.id.btn_register: 
+          doRegisterTask(); 
+            break;             ......        }
+			
+上网查了下资料，发现确实如提示所说，在SDK tools r14以上版本就不再这样使用了，解决的方法很简单，就是改成下面的样子。如果是在Eclipse中，可以直接使用Ctrl+1（数字1）来实现。
+
+if (R.id.btn_register == v.getId()){ 
+
+}这样，就可以使用了。这个东西本来在写库的开始就遇到这个问题了，但是忘记总结了。这里补记一下。吾未知老之将至也。

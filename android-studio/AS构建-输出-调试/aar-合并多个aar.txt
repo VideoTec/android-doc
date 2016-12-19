@@ -1,3 +1,12 @@
+没有官方的实现
+
+http://stackoverflow.com/questions/20700581/android-studio-how-to-package-single-aar-from-multiple-library-projects
+There is no mechanism to combine library.
+Providing a built-in mechanism for this is very low on our priority so don't expect it anytime soon.
+
+https://github.com/simpligility/android-maven-plugin/issues/518
+It seems google doesn't hurry with implementaion of merging aars :(
+
 http://stackoverflow.com/questions/34445399/create-an-aar-with-multiple-aars-jars
 
 dependencies {
@@ -6,17 +15,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile files('libs/eventbus.jar')
-    compile project(':sdk3-debug') { transitive = true }
+    compile project(':sdk3-debug') { transitive = true }  这个会引发错误，见下文
 }
 
 Include the transitive flag at true.
-
+默认为TRUE，意义是，APK包里是否包含包。不能控制 aar 包。
 
 transitive	英[ˈtrænsətɪv]
 美[ˈtrænsɪtɪv, -zɪ-]
 adj.	过渡的; （指动词） 及物的; 转变的; <数><逻>可递的;
 n.	<语>及物动词;
-
 
 http://stackoverflow.com/questions/22795455/transitive-dependencies-not-resolved-for-aar-library-using-gradle
 
@@ -25,3 +33,50 @@ I have solved my problem by setting transitive attribute for my aar dependency:
 compile ('com.somepackage:LIBRARY_NAME:1.0.0@aar'){
     transitive=true
 }
+
+https://guides.codepath.com/android/Building-your-own-Android-library
+
+Add the Gradle dependency
+
+Once the private S3 repository has been added to the list, you can simply add this line to the Gradle dependency list. The Android Gradle plug-in will search through all possible repositories searching for a match. Add this line to your app/build.gradle file:
+
+dependencies {
+  compile 'com.codepath:mylibrary:0.4-SNAPSHOT'
+}
+If you published multiple versions of your package as described here, you will need to specify the build type (i.e. release or debug). Gradle may assume that if you specify the build type to search for a .jar file, so you must also specify the @aar. Using this syntax doesn't follow the dependencies included in the package, so transitive=true must also be included as described in this Google discussion.
+
+dependencies {
+  releaseCompile('com.codepath:mylibrary:0.4:release@aar') {
+    transitive=true
+  }
+  debugCompile('com.codepath:mylibrary:0.4-SNAPSHOT:debug@aar') {
+    transitive=true
+  }
+}
+
+https://discuss.gradle.org/t/package-android-library-with-others-librairies-inside/6282
+
+------------------------------------------
+错误的写法：
+------------------------------------------
+
+    compile project(':thirdpart') {
+        transitive = true
+    }
+	
+Error:(112, 0) No such property: transitive for class: org.gradle.api.internal.project.DefaultProject_Decorated
+<a href="openFile:D:\work\androidrongflysip\rongflymqtt\build.gradle">Open File</a>
+
+   应该修改为
+   
+    compile (project(':thirdpart')) {
+        transitive = true
+    }
+	
+	因为 transitive 是 compile 的属性，不是 project 的
+
+http://stackoverflow.com/questions/34445399/create-an-aar-with-multiple-aars-jars
+
+ tried but I am unable to get past No such property: transitive for class: org.gradle.api.internal.project.DefaultProject_Decorated error. Even switching to default gradle wrapper in Build Tools -> Gradle settings from local gradle distribution didn't help
+ 
+ Can you please try: compile (project(':sdk3-debug')) { transitive = true } 
