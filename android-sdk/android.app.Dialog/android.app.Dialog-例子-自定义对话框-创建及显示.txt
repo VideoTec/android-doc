@@ -1,0 +1,80 @@
+
+------------------------------------------------------------
+自定义对话框创建及显示
+------------------------------------------------------------
+
+http://www.cnblogs.com/and_he/archive/2011/09/16/2178716.html
+
+package com.and.mydialog;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+
+public class MyDialog extends Dialog {
+
+    Context context;
+    public MyDialog(Context context) {
+        super(context);
+        // TODO Auto-generated constructor stub
+        this.context = context;
+    }
+    public MyDialog(Context context, int theme){
+        super(context, theme);
+        this.context = context;
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        this.setContentView(R.layout.dialog);
+    }
+
+}
+
+// 调用
+
+package com.and.mydialog;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.KeyEvent;
+
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MyDialogActivity extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        Button button = (Button) findViewById(R.id.button1);
+        button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+//                Dialog dialog = new MyDialog(MyDialogActivity.this,
+//                        R.style.MyDialog);
+                //此处直接new一个Dialog对象出来，在实例化的时候传入主题
+                Dialog dialog = new Dialog(MyDialogActivity.this, R.style.MyDialog);
+                //设置它的ContentView
+                dialog.setContentView(R.layout.dialog);
+
+                dialog.show();
+            }
+        });
+
+    }
+}

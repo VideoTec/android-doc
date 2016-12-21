@@ -1,0 +1,43 @@
+注意，html body 背景设置成透明
+
+	<style type="text/css">
+		body { background: transparent !important; } 
+    </style>
+	
+注意：webview 背景也要设置成透明
+布局中设置无效，必须动态设置 mWebView.setBackgroundColor(0);
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@android:color/transparent"/>
+
+http://stackoverflow.com/questions/5246425/android-problem-with-webview
+
+I faced the same issue too. Later I know we can't change the webView background. 
+You can change the layout background. I have tried this method working fine.
+
+<TableRow
+    android:id="@+id/tableRow5"
+
+    android:background="@drawable/fullshape"
+
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp" >
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+</TableRow>
+
+http://stackoverflow.com/questions/34041700/android-show-webview-in-a-circled-shape

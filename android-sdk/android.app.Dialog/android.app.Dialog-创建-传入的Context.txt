@@ -1,0 +1,12 @@
+http://www.jianshu.com/p/628ac6b68c15
+
+为什么Dialog不能用Application的Context
+
+先试一下用Application的上下文来创建Dialog，
+在调用它的show方法时程序会Crash，LogCat的异常信息如下：
+
+Caused by: android.view.WindowManager$BadTokenException: Unable to add window -- token null is not for an application
+                           at android.view.ViewRootImpl.setView(ViewRootImpl.java:685)
+                           at android.view.WindowManagerGlobal.addView(WindowManagerGlobal.java:342)
+                           at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:93)
+                           at android.app.Dialog.show(Dialog.java:316)

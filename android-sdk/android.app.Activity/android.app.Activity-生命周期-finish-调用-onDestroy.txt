@@ -1,6 +1,46 @@
+    /**
+     * Call this when your activity is done and should be closed.  The
+     * ActivityResult is propagated back to whoever launched you via
+     * onActivityResult().
+     */
+    public void finish() {
+        finish(false);
+    }
+
 http://stackoverflow.com/questions/2590947/about-finish-in-android
 
 Does it exits immediately or completes the function from which it was called ?
 
 The method that called finish() will run to completion. 
 The finish() operation will not even begin until you return control to Android.
+
+http://stackoverflow.com/questions/20938086/activity-receive-onresume-event-before-another-disappear
+
+当 onPause 有执行的任务时， onDestroy 不会被调用
+
+i have tested it know with my own closing activity, 
+and it only happens when onPause uses new Thread to do something, 
+because then onPause execution is finished and onResume of my activity called 
+even when the finishing activity is still displayed
+
+http://stackoverflow.com/questions/9134802/activity-not-calling-ondestroy-after-finish
+
+没有调用 onDestroy 的问题
+
+http://stackoverflow.com/questions/24196863/does-it-make-sense-to-call-finish-in-ondestroy
+
+That is correct. finish() is totally unnecessary in there. 
+The activity is already being torn down.
+
+Generally speaking, calling finish() 
+will trigger a call to onDestroy() somewhere down the line, but it is not guaranteed.
+
+Your app process could be terminated between the call to finish() and the invocation of onDestroy(), 
+or the battery could run out and so on.
+
+Therefore, as is also stated in the documentation, 
+calling finish() will generally lead to onDestroy(), and 
+you need not be calling it from within onDestroy().
+
+You can also use isFinishing() to 
+determine if the Activity is already in the process of finishing.

@@ -1,0 +1,55 @@
+
+当前台 act finish 后，出现下面这种情况：
+1. 先调用了 stack 中后面的 ACT 的 onresume
+2. 再调用了，finish 的 act 的 ondestroy 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSessionMgr.setUISession(mSession);
+		
+    @Override
+    protected void onDestroy() {
+        hideAll();
+        LogFeinno.d(TAG, "RFChatMainActivity onDestroy");
+        if (null != mRecorderVideoBroadCast) {
+            unregisterReceiver(mRecorderVideoBroadCast);
+            mSession.setRegisteredRecorderVideoBroadCast(false);
+        }
+        mSessionMgr.removeUploadProgressListener(mUploadProgressListener);
+        saveSessionDraft();
+        EventBus.getDefault().unregister(this);
+        mSessionMgr.setUISession(null);
+		
+解决方法一：
+
+如果有需要 finish 后立即执行的代码，可以重写 finish 方法
+这种方法的问题是，有时，并不是执行 finish 来结束 activity 的。
+
+解决方法二：把相关的操作放在 onPause 里
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mBuilder.refresh = false;
+        if (isFinishing()) {
+            mSessionMgr.removeUploadProgressListener(mUploadProgressListener);
+            mSessionMgr.setUISession(null);
+            mSessionMgr.clearSelectedMsgList();
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+		
+相同问题：
+
+http://stackoverflow.com/questions/20938086/activity-receive-onresume-event-before-another-disappear
+
+i have tested it know with my own closing activity, 
+and it only happens when onPause uses new Thread to do something, 
+because then onPause execution is finished and onResume of my activity called 
+even when the finishing activity is still displayed
+
+http://stackoverflow.com/questions/16748916/why-is-ondestroy-called-after-onresume-when-using-back-button
+Figured this out by myself. My understanding of what an Activity is was flawed. 
+Of course Android calls onDestroy() on the old Activity instance, 
+which can happen several seconds after the new one has been constructed.

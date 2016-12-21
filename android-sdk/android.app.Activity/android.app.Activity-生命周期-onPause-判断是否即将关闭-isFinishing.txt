@@ -1,0 +1,18 @@
+    /**
+     * Check to see whether this activity is in the process of finishing,
+     * either because you called {@link #finish} on it or someone else
+     * has requested that it finished.  This is often used in
+     * {@link #onPause} to determine whether the activity is simply pausing or
+     * completely finishing.
+     *
+     * @return If the activity is finishing, returns true; else returns false.
+     *
+     * @see #finish
+     */
+    public boolean isFinishing() {
+        return mFinished;
+    }
+	
+	经验证，
+	物理后退键关闭时，返回TRUE，
+	HOME 键暂停时，这个都返回FALSE

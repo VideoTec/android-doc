@@ -1,0 +1,3 @@
+https://developer.android.google.cn/guide/topics/ui/dialogs.html?hl=zh-cn
+参考：
+D:\doc\android\android-sdk\android.app.Dialog\android.app.Dialog-文档.txt

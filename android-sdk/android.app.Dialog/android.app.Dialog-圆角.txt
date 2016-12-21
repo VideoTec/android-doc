@@ -1,0 +1,14 @@
+第一：必须要做的
+
+dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+第二：
+
+设置 layout 的 background-shape 指定，圆角
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="70dp" />
+    <solid android:color="@android:color/white"/>
+</shape>

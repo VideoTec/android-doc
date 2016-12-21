@@ -1,3 +1,17 @@
+当调用 dialog.show 时， 且对话框没有创建，会触发这个事件
+如果需要，show 后，必须执行的动作，要放到 onStart 里去
+
+    /**
+     * Similar to {@link Activity#onCreate}, you should initialize your dialog
+     * in this method, including calling {@link #setContentView}.
+     * @param savedInstanceState If this dialog is being reinitalized after a
+     *     the hosting activity was previously shut down, holds the result from
+     *     the most recent call to {@link #onSaveInstanceState}, or null if this
+     *     is the first time.
+     */
+    protected void onCreate(Bundle savedInstanceState) {
+    }
+
 http://developer.android.com/reference/android/app/Dialog.html#onCreate(android.os.Bundle)
 
 protected void onCreate (Bundle savedInstanceState)
