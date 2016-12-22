@@ -1,3 +1,8 @@
+https://developer.android.com/reference/android/R.styleable.html
+
+参考：
+https://developer.android.com/reference/android/widget/TextView.html#lattrs
+
             <EditText
                 android:id="@+id/txt_add_work_position_id"
                 style="@null"

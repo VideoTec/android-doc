@@ -4,6 +4,7 @@ http://developer.android.com/reference/android/view/View.html#lattrs
 
 查看所有的 attributes
 http://developer.android.com/reference/android/R.styleable.html
+https://developer.android.com/reference/android/R.styleable.html
 http://developer.android.com/reference/android/R.attr.html
 
 参考

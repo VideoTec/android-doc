@@ -1,3 +1,39 @@
+    
+    /**
+     * This field should be made private, so it is hidden from the SDK.
+     * {@hide}
+     */
+    protected boolean mCancelable = true;
+	
+    /**
+     * @deprecated
+     * @hide
+     */
+    @Deprecated
+    protected Dialog(@NonNull Context context, boolean cancelable, Message cancelCallback) {
+        this(context);
+        mCancelable = cancelable;
+        mCancelMessage = cancelCallback;
+    }
+
+    protected Dialog(@NonNull Context context, boolean cancelable,
+            OnCancelListener cancelListener) {
+        this(context);
+        mCancelable = cancelable;
+        setOnCancelListener(cancelListener);
+    }
+	
+	/**
+     * Called when the dialog has detected the user's press of the back
+     * key.  The default implementation simply cancels the dialog (only if
+     * it is cancelable), but you can override this to do whatever you want.
+     */
+    public void onBackPressed() {
+        if (mCancelable) {
+            cancel();
+        }
+    }
+
 http://developer.android.com/intl/zh-cn/reference/android/app/Dialog.html#setCancelable(boolean)
 
 public void setCancelable (boolean flag)

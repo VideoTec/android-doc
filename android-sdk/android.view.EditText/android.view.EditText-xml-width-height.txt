@@ -1,0 +1,14 @@
+
+    <EditText
+        android:id="@+id/phone_edit"
+        android:layout_width="400dp"
+        android:layout_height="35dp"
+        android:inputType="" />
+		
+	运行后，编辑框里的文字被截了三分之一，应该有合适的字体大小
+	
+	android:layout_height="wrap_content"
+	这种设置，应该会被设置成字体的高度
+	
+    android:layout_width="wrap_content"
+	这个宽度会，根据输入自动扩展的

@@ -1,0 +1,29 @@
+参考：
+android.app.Dialog-取消-点窗口外取消-click outside close
+android.app.Dialog-取消-setOnCancelListener
+android.app.Dialog-取消-setCanceledOnTouchOutside
+android.app.Dialog-取消-setCancelable-是否响应back键
+android.app.Dialog-取消-cancel-dismiss
+
+http://luren85.iteye.com/blog/975131
+
+AlertDialog使用很方便，但是有一个问题就是：
+dismiss方法和cancel方法到底有什么不同？
+
+就是如果你在创建AlertDialog的时候调用了 setOnCancelListener 
+这个mCancelMessage变量有作用，否则dismiss和cancel等同
+
+源码：
+
+    /**
+     * Cancel the dialog.  This is essentially the same as calling {@link #dismiss()}, but it will
+     * also call your {@link DialogInterface.OnCancelListener} (if registered).
+     */
+    public void cancel() {
+        if (!mCanceled && mCancelMessage != null) {
+            mCanceled = true;
+            // Obtain a new message so this dialog can be re-used
+            Message.obtain(mCancelMessage).sendToTarget();
+        }
+        dismiss();
+    }

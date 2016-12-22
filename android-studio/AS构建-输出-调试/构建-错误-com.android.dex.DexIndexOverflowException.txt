@@ -1,0 +1,55 @@
+
+UNEXPECTED TOP-LEVEL EXCEPTION:
+com.android.dex.DexIndexOverflowException: method ID not in [0, 0xffff]: 65536
+	at com.android.dx.merge.DexMerger$6.updateIndex(DexMerger.java:484)
+	at com.android.dx.merge.DexMerger$IdMerger.mergeSorted(DexMerger.java:261)
+	at com.android.dx.merge.DexMerger.mergeMethodIds(DexMerger.java:473)
+	at com.android.dx.merge.DexMerger.mergeDexes(DexMerger.java:161)
+	at com.android.dx.merge.DexMerger.merge(DexMerger.java:188)
+	at com.android.dx.command.dexer.Main.mergeLibraryDexBuffers(Main.java:504)
+	at com.android.dx.command.dexer.Main.runMonoDex(Main.java:334)
+	at com.android.dx.command.dexer.Main.run(Main.java:277)
+	at com.android.dx.command.dexer.Main.main(Main.java:245)
+	at com.android.dx.command.Main.main(Main.java:106)
+	
+http://www.cnblogs.com/yeahgis/p/4660873.html
+
+同时在工程中引入了多个第三方jar包，
+导致调用的方法数超过了android设定的65536个（DEX 64K problem），
+进而导致dex无法生成，也就无法生成APK文件
+
+dependencies { 
+... 
+   compile 'com.android.support:multidex:' 
+   ... 
+}
+
+defaultConfig { 
+   ... 
+multiDexEnabled true 
+... 
+}
+
+分三种情况，由于我并未创建自己的Application.class，
+直接在AndroidManifest.xml文件的Application声明中添加;
+
+android:name="android.support.multidex.MultiDexApplication"
+
+其它两种情况，看下面的链接
+
+http://stackoverflow.com/questions/27377080/after-update-of-as-to-1-0-getting-method-id-not-in-0-0xffff-65536-error-i
+
+If you already have your own Application class, 
+make it extend android.support.multidex.MultiDexApplication instead of android.app.Application
+
+import android.support.multidex.MultiDexApplication;
+public class DemoApplication extends MultiDexApplication
+
+或者
+
+
+@Override
+protected void attachBaseContext(Context base) {
+	super.attachBaseContext(base);
+	MultiDex.install(this);
+}

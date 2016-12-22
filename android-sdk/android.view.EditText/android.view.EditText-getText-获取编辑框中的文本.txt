@@ -1,0 +1,8 @@
+
+    @Override
+    public Editable getText() {
+        return (Editable) super.getText();
+    }
+	
+	参考：
+	android.text.Editable 获取字符串 Editable.toString

@@ -1,0 +1,21 @@
+例如：
+
+number	0x00000002	A numeric only field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL.
+numberPassword	0x00000012	A numeric password field. Corresponds to TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_PASSWORD.
+phone	0x00000003	For entering a phone number. Corresponds to TYPE_CLASS_PHONE.
+
+https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType
+
+android:inputType
+
+The type of data being placed in a text field, 
+used to help an input method decide how to let the user enter text. 
+The constants here correspond to those defined by InputType. 
+
+Generally you can select a single value, though some can be combined together as indicated. 
+Setting this attribute to anything besides none also implies that the text is editable.
+
+Must be one or more (separated by '|') of the following constant values.
+
+参考：
+https://developer.android.com/reference/android/text/InputType.html

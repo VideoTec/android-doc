@@ -1,0 +1,21 @@
+
+dismiss	英[dɪsˈmɪs]
+美[dɪsˈmɪs]
+vt.	解雇，把…免职; 遣散，解散（队伍等）; 驳回，拒绝受理; 搁置;
+vi.	解散;
+
+
+    /**
+     * Dismiss this dialog, removing it from the screen. This method can be
+     * invoked safely from any thread.  Note that you should not override this
+     * method to do cleanup when the dialog is dismissed, instead implement
+     * that in {@link #onStop}.
+     */
+    @Override
+    public void dismiss() {
+        if (Looper.myLooper() == mHandler.getLooper()) {
+            dismissDialog();
+        } else {
+            mHandler.post(mDismissAction);
+        }
+    }

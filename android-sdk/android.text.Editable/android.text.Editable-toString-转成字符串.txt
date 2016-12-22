@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/2216201/editable-text-to-string
+
+If I understand correctly, 
+you want to get the String of an Editable object, right? 
+If yes, try using toString().
+
+Based on this code (which you provided in response to Alex's answer):
+
+Editable newTxt=(Editable)userName1.getText(); 
+String newString = newTxt.toString();
+
+It looks like you're trying to get the text out of a TextView or EditText. 
+If that's the case then this should work:
+
+String newString = userName1.getText().toString();
