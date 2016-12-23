@@ -1,0 +1,11 @@
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile('com.squareup.retrofit2:retrofit:2.1.0@jar') {
+        transitive = true
+    }
+    compile('com.mcxiaoke.volley:library:1.0.19')
+}
+
+1. 把 jar 放到 libs 目录下
+2. 执行 Sync Project with gradle

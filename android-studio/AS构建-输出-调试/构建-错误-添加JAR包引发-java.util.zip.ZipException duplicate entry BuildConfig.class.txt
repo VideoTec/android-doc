@@ -1,0 +1,18 @@
+添加 默电SDK的JAR包，构建时，出现下面的错误：
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':rongflymqtt:transformClassesWithJarMergingForDevexperienceDebug'.
+> com.android.build.api.transform.TransformException: 
+java.util.zip.ZipException: duplicate entry: com/aspire/strangecallssdk/BuildConfig.class
+
+* Try:
+Run with --stacktrace option to get the stack trace. 
+Run with --info or --debug option to get more log output.
+
+http://stackoverflow.com/questions/26718825/how-to-resolve-java-util-zip-zipexception
+The class BuildConfig is a magic class generated as part of the build process. 
+
+2016.12.23 遇到的问题是：
+原来已经有个相同的JAR包了，重复了

@@ -1,0 +1,12 @@
+    /**
+     * 初始化第三方sdk
+     */
+    private void initThirdSDK() {
+        ZhugeSDK.getInstance();
+        ZhugeSDK.getInstance().init(getApplicationContext());
+//        initTencentMtaSDK();
+        initBugly(true);
+    }
+	
+	//记录事件
+    ZhugeSDK.getInstance().track(mContext.getApplicationContext(), event.eid, eventObject);
